@@ -3,6 +3,7 @@ import Navbar from "./common/Navbar";
 import Sidebar from "./common/Sidebar";
 import DetailCard from "./common/DetailCard";
 import "./css/Dashboard.css";
+import Chart from "./common/Chart";
 
 function Dashboard() {
   return (
@@ -36,7 +37,7 @@ function Dashboard() {
               cardPrice={"Rs.25,000"}
             />
             <DetailCard
-              detailCardMargin={true}
+              detailCardMargin={false}
               materialIconName={"spa"}
               cardText={"Today Details"}
               cardPrice={"Rs.2,500,000"}
@@ -44,10 +45,13 @@ function Dashboard() {
           </div>
           <div className="chartCardSection">
             <div className="graphTableSection">
-              <div className="graphSection"></div>
-              <div className="tableSection"></div>
+              <div className="graphSection">
+                <Chart />
+              </div>
+              <div className="tableSection">{/* Table */}</div>
+              {/* hello */}
             </div>
-            <div className="circleGraphSection"></div>
+            <div className="circleGraphSection">{/* Hello2 */}</div>
           </div>
         </div>
       </div>

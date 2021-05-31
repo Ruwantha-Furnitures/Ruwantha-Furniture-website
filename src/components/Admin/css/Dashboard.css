@@ -41,73 +41,59 @@ ul {
 
 .cardSection {
   order: 2;
-  width: 75%;
+  width: 79%;
   display: flex;
-  flex-direction: row;
-  margin-left: 58px;
+  flex-direction: column;
+  margin-left: 62px;
 }
 
 .detailsCardSection {
   display: flex;
-  /* background-color: violet; */
   flex-direction: row;
-  /* background-color: violet; */
 }
 
 .chartCardSection {
   order: 2;
+  display: flex;
+  flex-direction: row;
+  margin-top: 28px;
 }
 
-/* Card Section */
-.detailCard {
-  width: 208px;
+.graphTableSection {
+  order: 1;
+  width: 65%;
   display: flex;
+  flex-direction: column;
+}
+
+.circleGraphSection {
+  order: 2;
+  width: 25%;
+}
+
+.graphSection {
+  order: 1;
+}
+
+.tableSection {
+  order: 2;
+}
+
+/* Gaph Section */
+.graphChart {
+  height: 288px;
   background: #ffffff;
   border-radius: 22px;
-  flex-direction: column;
-  height: 151px;
+  padding: 15px;
 }
 
-.detailCardMargin {
-  margin-right: 71px;
-}
-
-.cardIcon {
-  padding: 9px;
-}
-
-.cardDetail {
-  display: flex;
-}
-
-.cardPrice {
-  width: 128.55px;
-  height: 29.59px;
-}
-
-.material-icons.cardStyle {
-  color: #542b14;
-  font-size: 34px;
-}
-
-.cardTextStyle1 {
+.chartLabel {
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
   line-height: 33px;
 
-  color: rgba(0, 0, 0, 0.44);
-}
-.cardTextStyle2 {
-  font-style: normal;
-  font-weight: bold;
-  font-size: 30px;
-  line-height: 41px;
-
-  color: #000000;
-}
-
-.cardwrapper {
-  margin-left: 10px;
-  margin-bottom: 18px;
+  color: rgba(0, 0, 0, 0.7);
+  margin-left: 31px;
+  /* padding: 10px; */
 }

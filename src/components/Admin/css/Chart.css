@@ -1,0 +1,18 @@
+/* Gaph Section */
+.graphChart {
+  height: 288px;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 15px;
+}
+
+.chartLabel {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+
+  color: rgba(0, 0, 0, 0.7);
+  margin-left: 31px;
+  /* padding: 10px; */
+}
