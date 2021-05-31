@@ -1,0 +1,67 @@
+/* Sidebar */
+.sidebarBar {
+  position: relative;
+  background: #ffffff;
+  border-radius: 22px;
+}
+
+.sideList {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-left: 15px;
+}
+
+.lineSection {
+  display: flex;
+  flex-direction: row;
+  height: 42px;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 15px;
+  margin-top: 9px;
+  cursor: pointer;
+}
+
+.lineIcon {
+  order: 1;
+  margin-right: 12px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.lineText {
+  order: 2;
+}
+
+.lineSection:hover {
+  background-color: #542b14;
+  width: 80%;
+  color: #f7f7f7;
+  border-radius: 22px;
+  cursor: pointer;
+}
+
+.lineSection:hover > .lineIcon > .material-icons.iconWidth {
+  color: #f7f7f7;
+}
+.lineSection:hover > .lineText > .lineTextStyle {
+  color: #f7f7f7;
+}
+
+.material-icons.iconWidth {
+  font-size: 24px;
+  color: #542b14;
+  padding: 4px;
+}
+
+.lineTextStyle {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 33px;
+  color: #000000;
+}
+
+.lineSection.margin-bottom {
+  margin-bottom: 23px;
+}
