@@ -1,0 +1,53 @@
+/* Card Section */
+.detailCard {
+  width: 208px;
+  display: flex;
+  background: #ffffff;
+  border-radius: 22px;
+  flex-direction: column;
+  height: 151px;
+}
+
+.detailCardMargin {
+  margin-right: 71px;
+}
+
+.cardIcon {
+  padding: 9px;
+}
+
+.cardDetail {
+  display: flex;
+}
+
+.cardPrice {
+  width: 128.55px;
+  height: 29.59px;
+}
+
+.material-icons.cardStyle {
+  color: #542b14;
+  font-size: 34px;
+}
+
+.cardTextStyle1 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+
+  color: rgba(0, 0, 0, 0.44);
+}
+.cardTextStyle2 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 41px;
+
+  color: #000000;
+}
+
+.cardwrapper {
+  margin-left: 10px;
+  margin-bottom: 18px;
+}
