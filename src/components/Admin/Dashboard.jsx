@@ -2,18 +2,21 @@ import React from "react";
 import Navbar from "./common/Navbar";
 import Sidebar from "./common/Sidebar";
 import DetailCard from "./common/DetailCard";
-import "./css/Dashboard.css";
 import Chart from "./common/Chart";
-import Table from "./common/Table";
+import TableCard from "./common/TableCard";
+import PieChartCard from "./common/PieChartCard";
+import "./css/Dashboard.css";
 
 function Dashboard() {
   return (
     <div className="bodycontainer">
+      {/* Navigation */}
       <div className="navSection">
         <Navbar />
       </div>
       {/* Body */}
       <div className="bodySection">
+        {/* Sidebar */}
         <div className="sidebarSection">
           <Sidebar />
         </div>
@@ -22,7 +25,7 @@ function Dashboard() {
             <DetailCard
               detailCardMargin={true}
               materialIconName={"price_change"}
-              cardText={"Today Details"}
+              cardText={"Today Sales"}
               cardPrice={"Rs.1000"}
             />
             <DetailCard
@@ -40,7 +43,7 @@ function Dashboard() {
             <DetailCard
               detailCardMargin={false}
               materialIconName={"spa"}
-              cardText={"Today Details"}
+              cardText={"Total Income"}
               cardPrice={"Rs.2,500,000"}
             />
           </div>
@@ -50,11 +53,12 @@ function Dashboard() {
                 <Chart />
               </div>
               <div className="tableSection">
-                <Table />
+                <TableCard />
               </div>
-              {/* hello */}
             </div>
-            <div className="circleGraphSection">{/* Hello2 */}</div>
+            <div className="circleGraphSection">
+              <PieChartCard />
+            </div>
           </div>
         </div>
       </div>

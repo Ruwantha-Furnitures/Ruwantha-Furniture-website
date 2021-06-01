@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/Table.css";
 
-function Table() {
+function TableCard() {
   return (
     <div className="table">
       <div className="tabletitle">
@@ -61,4 +61,4 @@ function Table() {
   );
 }
 
-export default Table;
+export default TableCard;
