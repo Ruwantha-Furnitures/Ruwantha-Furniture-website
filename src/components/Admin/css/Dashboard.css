@@ -68,7 +68,11 @@ ul {
 
 .circleGraphSection {
   order: 2;
+<<<<<<< HEAD
   width: 25%;
+=======
+  width: 35%;
+>>>>>>> 972f75c61830d150ac6c720ef3b49c7d5f634360
 }
 
 .graphSection {
@@ -78,6 +82,7 @@ ul {
 .tableSection {
   order: 2;
 }
+<<<<<<< HEAD
 
 /* Gaph Section */
 .graphChart {
@@ -97,3 +102,5 @@ ul {
   margin-left: 31px;
   /* padding: 10px; */
 }
+=======
+>>>>>>> 972f75c61830d150ac6c720ef3b49c7d5f634360
