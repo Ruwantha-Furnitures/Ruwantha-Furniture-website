@@ -1,0 +1,62 @@
+/* table Section */
+
+.table {
+  /* height: 288px; */
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 15px;
+  margin-top: 28px;
+}
+
+.tableTitleStyle {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+
+  color: #000000;
+  margin-left: 31px;
+}
+
+.tableShow {
+  width: 100%;
+  /* height: 181px; */
+  margin-top: 15px;
+}
+
+table {
+  width: 100%;
+  margin-bottom: 16px;
+  background-color: transparent;
+  border-collapse: collapse;
+}
+
+thead {
+  display: flexbox;
+}
+
+th {
+  text-align: inherit;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+
+  color: rgba(0, 0, 0, 0.86);
+  padding: 12px 8px;
+  vertical-align: middle;
+  box-sizing: border-box;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+  /* width: 15%; */
+}
+
+th a {
+  text-decoration: none;
+}
+td {
+  padding: 9px 11px;
+  vertical-align: middle;
+
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+}
