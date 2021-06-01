@@ -16,8 +16,7 @@ class indexnav extends React.Component{
     render(){
       const navlink = {
         color: "white",
-        fontweight: "bold",
-        fontsize: "20px"        
+        fontweight: "bold"          
       };
 
       const HoverText = styled.p`
@@ -45,14 +44,13 @@ class indexnav extends React.Component{
                                       <Form inline>
                                       <div className="row">
                                         <div className="col-md-6">
-                                            <Button class="btn">Sign Up</Button>
+                                            <Nav.Link href="/signup" ><Button class="btn">Sign Up</Button></Nav.Link>
                                           </div>
                                           <div className="col-md-6">
-                                            <Button class="btn">Login</Button>
+                                            <Nav.Link href="/login" ><Button class="btn">Login</Button></Nav.Link>
                                           </div>
                                         </div>                                                                                
-                                      </Form>
-                                    
+                                      </Form>                                    
                                 </Navbar.Collapse>
                             </Navbar>
                             <br />                                                  

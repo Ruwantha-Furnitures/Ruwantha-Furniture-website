@@ -1,24 +1,33 @@
 import React, { Component } from "react";
+import { Container, Row, Col } from 'reactstrap';
 import Navigation from "../js/indexnav";
 import Footer from "../../Common/Footer";
- 
+import backcover from "../../../../assets/login13.jpg";
+import "../css/Login.css"
 class Login extends Component {
-  render() {
+    render() {
+    const backcontainer = {
+        marginTop: "20px",
+        backgroundColor: "#CAC1C1",
+        padding: "30px",
+        borderRadius: "20px",
+        width: "40%",  
+        marginBottom: "20px",
+        justifyItems: "left",
+        justifyContent: "left",
+        marginLeft: "30px"
+
+        
+      };
+      
     return (
-      <div>
-        <Navigation></Navigation>    
-        <h2>Login</h2>
-        <p>Mauris sem velit, vehicula eget sodales vitae,
-        rhoncus eget sapien:</p>
-        <ol>
-          <li>Nulla pulvinar diam</li>
-          <li>Facilisis bibendum</li>
-          <li>Vestibulum vulputate</li>
-          <li>Eget erat</li>
-          <li>Id porttitor</li>
-        </ol>
-        <Footer></Footer>
-      </div>
+        <div>        
+            <Navigation></Navigation>    
+            <div style={backcontainer}> 
+                
+            </div>        
+            <Footer></Footer>
+        </div>
     );
   }
 }
