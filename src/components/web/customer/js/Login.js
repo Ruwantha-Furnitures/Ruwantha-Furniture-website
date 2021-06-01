@@ -7,7 +7,7 @@ class Login extends Component {
     return (
       <div>
         <Navigation></Navigation>    
-        <h2>STUFF</h2>
+        <h2>Login</h2>
         <p>Mauris sem velit, vehicula eget sodales vitae,
         rhoncus eget sapien:</p>
         <ol>
