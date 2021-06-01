@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from 'reactstrap';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
-import topimg from '../../../assets/topimg4.jpg';
-import item1 from '../../../assets/items/10.jpg';
-import item2 from '../../../assets/items/9.jpg';
-import item3 from '../../../assets/items/11.jpg';
-import item4 from '../../../assets/items/14.jpg';
+import topimg from '../../../../assets/topimg4.jpg';
+import item1 from '../../../../assets/items/10.jpg';
+import item2 from '../../../../assets/items/9.jpg';
+import item3 from '../../../../assets/items/11.jpg';
+import item4 from '../../../../assets/items/14.jpg';
+import Navigation from "../js/indexnav";
+import Footer from "../../Common/Footer";
 import '../css/Home.css';  
   
 class Home extends Component {
@@ -14,7 +17,9 @@ class Home extends Component {
       marginTop: "20px",
       backgroundColor: "#CAC1C1",
       padding: "30px",
-      borderRadius: "20px"      
+      borderRadius: "20px",
+      width: "100%",  
+      marginBottom: "20px"
     };
     const innercontainer = {
       backgroundColor: "#FFF",
@@ -38,7 +43,8 @@ class Home extends Component {
       backgroundRepeat: "no-repeat"       
     }
     return (    
-        <div>                        
+        <div>   
+          <Navigation></Navigation>                     
           <img src={topimg} alt="topimg" style={topimage} fluid/>
           <Container fluid="md" style={backcontainer}>
                 <Row className="justify-content-md-center">
@@ -85,8 +91,8 @@ class Home extends Component {
                   </Col>
                 </Row>             
             </Container>
-            
-      </div>
+            <Footer></Footer>
+      </div>      
     );
   }
 }

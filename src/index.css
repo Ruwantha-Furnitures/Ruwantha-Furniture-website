@@ -1,0 +1,49 @@
+Nav{
+    color: #FFF;
+    font-weight: bold;    
+  }
+  .btn{  
+    background-color: #CAC1C1;
+    justify-content: center;
+    margin-right: 1px;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    width: 120px;
+    height: 40px;  
+    justify-content: center;
+    margin-top: 0px;  
+  }
+  .btn:hover{
+    background-color: #FC7A30;
+    color: #FFF;
+  }
+  
+  @media screen and (max-width: 798px) {
+    .btn{
+      display: block;
+      margin-top: 10px;
+      justify-items: left;
+      justify-content: left;    
+    }
+  }
+  
+  @media screen and (max-width: 400px) {
+    .btn{
+      display: block;
+      margin-top: 10px;
+      justify-items: left;
+      justify-content: left;    
+    }
+  }
+  
+  .footer{
+    background-color: blue;
+    width: 100%;
+  }
+  
+  
+  
+    
+  
