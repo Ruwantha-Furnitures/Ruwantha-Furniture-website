@@ -68,11 +68,8 @@ ul {
 
 .circleGraphSection {
   order: 2;
-<<<<<<< HEAD
-  width: 25%;
-=======
+
   width: 35%;
->>>>>>> 972f75c61830d150ac6c720ef3b49c7d5f634360
 }
 
 .graphSection {
@@ -82,25 +79,3 @@ ul {
 .tableSection {
   order: 2;
 }
-<<<<<<< HEAD
-
-/* Gaph Section */
-.graphChart {
-  height: 288px;
-  background: #ffffff;
-  border-radius: 22px;
-  padding: 15px;
-}
-
-.chartLabel {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 33px;
-
-  color: rgba(0, 0, 0, 0.7);
-  margin-left: 31px;
-  /* padding: 10px; */
-}
-=======
->>>>>>> 972f75c61830d150ac6c720ef3b49c7d5f634360
