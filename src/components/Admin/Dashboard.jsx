@@ -4,6 +4,7 @@ import Sidebar from "./common/Sidebar";
 import DetailCard from "./common/DetailCard";
 import "./css/Dashboard.css";
 import Chart from "./common/Chart";
+import Table from "./common/Table";
 
 function Dashboard() {
   return (
@@ -48,7 +49,9 @@ function Dashboard() {
               <div className="graphSection">
                 <Chart />
               </div>
-              <div className="tableSection">{/* Table */}</div>
+              <div className="tableSection">
+                <Table />
+              </div>
               {/* hello */}
             </div>
             <div className="circleGraphSection">{/* Hello2 */}</div>
