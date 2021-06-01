@@ -49,7 +49,7 @@ function Dashboard() {
                 <Chart />
               </div>
               <div className="tableSection">{/* Table */}</div>
-              {/* hello */}
+              hellogit
             </div>
             <div className="circleGraphSection">{/* Hello2 */}</div>
           </div>
