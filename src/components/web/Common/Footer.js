@@ -18,7 +18,7 @@ return (
 				<FooterLink href="#"><img src={logo} alt={logo} width={200} height={200}></img></FooterLink>
 			</Column>
 			<Column>
-				<Heading>About Us</Heading>
+				<Heading style={{fontSize:"16px"}}>About Us</Heading>
 				<FooterLink href="#">Aim</FooterLink>
 				<FooterLink href="#">Vision</FooterLink>
 				<FooterLink href="#">Testimonials</FooterLink>
