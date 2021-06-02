@@ -29,21 +29,27 @@ export default function LoginForm() {
 
   const formlabel = {
     color: "#FFF",
-    paddig: "10px",
+    paddig: "20px"
   }
 
   const loginform = {    
     justifyContent: "left",
-    justifyItem: "left"
+    justifyItem: "left",
+    margin: "10px",
+    padding: "30px",
+    backgroundColor: "rgb(41, 27, 27, 0.9)",        
+    backgroundColor: "rgb(1,1,1, 0.8)",            
+    borderRadius: "20px",                    
+    color: "#FFF"
   }
 
 
   return (
-    <div className="Login">        
-      <Form style={loginform} onSubmit={handleSubmit}>
+    <div className="Login" >        
+      <Form style={loginform} onSubmit={handleSubmit} align="left">
         <center><img src={Avatar} style={avatar}/></center><br />
         <Form.Group size="lg" controlId="email">
-          <Form.Label style={formlabel}>Email</Form.Label>
+          <Form.Label>Email</Form.Label>
           <Form.Control
             autoFocus
             type="email"

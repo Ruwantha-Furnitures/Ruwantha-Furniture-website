@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Container, Row, Col } from 'reactstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import topimg from '../../../../assets/topimg4.jpg';
+import topimg from '../../../../assets/topimg2.jpg';
 import item1 from '../../../../assets/items/10.jpg';
 import item2 from '../../../../assets/items/9.jpg';
 import item3 from '../../../../assets/items/11.jpg';
