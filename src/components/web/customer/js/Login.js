@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from 'reactstrap';
+import styled from 'styled-components';
 import Navigation from "../js/indexnav";
 import LoginForm from "../js/LoginForm";
 import Footer from "../../Common/Footer";
