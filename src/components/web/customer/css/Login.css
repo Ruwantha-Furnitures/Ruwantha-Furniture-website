@@ -1,6 +1,10 @@
-body{
-    background-image: url(../../../../assets/login7.jpg);
-    background-size: cover;
-    background-position: 0vh;
-    background-repeat: no-repeat;
-}
+@media all and (min-width: 480px) {
+    .Login {
+      padding: 60px 0;
+    }
+  
+    .Login form {
+      margin: 0 auto;
+      max-width: 320px;
+    }
+  }
