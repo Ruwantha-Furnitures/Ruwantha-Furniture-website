@@ -16,4 +16,6 @@ npm install --save reactstrap react react-dom (put this in to src, public sepera
 
 npm install styled-components (Styled-Components --> add hover etc)
 
-npm install react-dimensions ---> Dimensions of screen
+npm install react-dimensions ---> Dimensions of screen (not worked)
+
+npm install react-slideshow-image -S ---> slide show

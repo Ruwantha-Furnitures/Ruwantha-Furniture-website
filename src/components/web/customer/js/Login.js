@@ -10,22 +10,7 @@ import "../css/Login.css"
 
 class Login extends Component {
     render() {
-      const formcontainer = {
-        margin: "20px",
-        padding: "10px",
-        backgroundColor: "rgb(41, 27, 27, 0.9)",        
-        backgroundColor: "rgb(1,1,1, 0.8)",            
-        borderRadius: "20px",
-        width: "30%",          
-        justifyItems: "center",
-        justifyContent: "center",        
-        color: "#FFF",
-        
-        '@media (max-width: 500px)': {
-          width: "100%",   
-        },
-      };
-      
+
     return (
       <div style={{              
         backgroundImage: `url(${backcover})`,        
@@ -35,14 +20,10 @@ class Login extends Component {
         height: '100%',
         width: '100%',        
       }}>        
-            <Navigation></Navigation>    
-              <div align='center'>     
-                <div style={formcontainer}>
-                <div align='left'>   
-                  <LoginForm></LoginForm>
-                </div>
-                </div>
-            </div>        
+            <Navigation></Navigation>                    
+            <Container align="center">              
+                <LoginForm></LoginForm>               
+            </Container>              
             <Footer></Footer>
         </div>        
     );
