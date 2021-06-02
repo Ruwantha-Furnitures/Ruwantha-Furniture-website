@@ -4,27 +4,33 @@ Nav{
   }
   .btn{  
     background-color: #CAC1C1;
-    justify-content: center;
-    margin-right: 1px;
+    justify-content: left;
+    justify-items: left;    
     color: black;
     font-weight: bold;
     border: none;
     border-radius: 20px;
     width: 120px;
     height: 40px;      
-    margin-top: 0px;      
+    margin-left: -30px;      
   }
   .btn:hover{
     background-color: #FC7A30;
     color: #FFF;
   }
   
+  .footer{
+    background-color: blue;
+    width: 100%;
+  }
+
   @media screen and (max-width: 798px) {
     .btn{
       display: block;
       margin-top: 10px;
       justify-items: left;
-      justify-content: left;    
+      justify-content: left;  
+      margin-left: 0px;    
     }
   }
   
@@ -34,13 +40,11 @@ Nav{
       margin-top: 10px;
       justify-items: left;
       justify-content: left;    
-    }
+      margin-left: 0px;    
+    }    
   }
   
-  .footer{
-    background-color: blue;
-    width: 100%;
-  }
+  
   
   
   

@@ -32,14 +32,14 @@ export default function LoginForm() {
     paddig: "10px",
   }
 
-  const loginform = {
+  const loginform = {    
     justifyContent: "left",
     justifyItem: "left"
   }
 
 
   return (
-    <div className="Login">
+    <div className="Login">        
       <Form style={loginform} onSubmit={handleSubmit}>
         <center><img src={Avatar} style={avatar}/></center><br />
         <Form.Group size="lg" controlId="email">
