@@ -20,7 +20,6 @@
 
 .tableShow {
   width: 100%;
-  /* height: 181px; */
   margin-top: 15px;
 }
 
@@ -38,7 +37,7 @@ thead {
 th {
   text-align: inherit;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 600;
   font-size: 16px;
   line-height: 22px;
 
@@ -56,7 +55,23 @@ th a {
 td {
   padding: 9px 11px;
   vertical-align: middle;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+
+  color: rgba(0, 0, 0, 0.76);
 
   border-top: 1px solid rgba(0, 0, 0, 0.06);
   border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+}
+
+.moreInfo {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+
+  color: rgba(0, 0, 0, 0.76);
+  cursor: pointer;
 }

@@ -21,7 +21,7 @@ function Products() {
           <div className="detailsSection">
             <div className="detailCard">
               <div className="tabletitle">
-                <h1 className="tableTitleStyle">Products</h1>
+                <h1 className="tableTitleProductStyle">Products</h1>
               </div>
               <div className="tablebody">
                 <table className="tableShow">
@@ -36,63 +36,63 @@ function Products() {
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Desk(Plastic)</td>
+                      <td className="moreInfo">Desk(Plastic)</td>
                       <td>Product Type 1</td>
                       <td>Rs.25000</td>
                       <td>Rs.250</td>
                       <td>No.12</td>
                     </tr>
                     <tr>
-                      <td>Desk(Plastic)</td>
+                      <td className="moreInfo">Desk(Plastic)</td>
                       <td>Product Type 1</td>
                       <td>Rs.25000</td>
                       <td>Rs.250</td>
                       <td>No.12</td>
                     </tr>
                     <tr>
-                      <td>Desk(Plastic)</td>
+                      <td className="moreInfo">Desk(Plastic)</td>
                       <td>Product Type 1</td>
                       <td>Rs.25000</td>
                       <td>Rs.250</td>
                       <td>No.12</td>
                     </tr>
                     <tr>
-                      <td>Desk(Plastic)</td>
+                      <td className="moreInfo">Desk(Plastic)</td>
                       <td>Product Type 1</td>
                       <td>Rs.25000</td>
                       <td>Rs.250</td>
                       <td>No.12</td>
                     </tr>
                     <tr>
-                      <td>Desk(Plastic)</td>
+                      <td className="moreInfo">Desk(Plastic)</td>
                       <td>Product Type 1</td>
                       <td>Rs.25000</td>
                       <td>Rs.250</td>
                       <td>No.12</td>
                     </tr>
                     <tr>
-                      <td>Desk(Plastic)</td>
+                      <td className="moreInfo">Desk(Plastic)</td>
                       <td>Product Type 1</td>
                       <td>Rs.25000</td>
                       <td>Rs.250</td>
                       <td>No.12</td>
                     </tr>
                     <tr>
-                      <td>Desk(Plastic)</td>
+                      <td className="moreInfo">Desk(Plastic)</td>
                       <td>Product Type 1</td>
                       <td>Rs.25000</td>
                       <td>Rs.250</td>
                       <td>No.12</td>
                     </tr>
                     <tr>
-                      <td>Desk(Plastic)</td>
+                      <td className="moreInfo">Desk(Plastic)</td>
                       <td>Product Type 1</td>
                       <td>Rs.25000</td>
                       <td>Rs.250</td>
                       <td>No.12</td>
                     </tr>
                     <tr>
-                      <td>Desk(Plastic)</td>
+                      <td className="moreInfo">Desk(Plastic)</td>
                       <td>Product Type 1</td>
                       <td>Rs.25000</td>
                       <td>Rs.250</td>
@@ -116,7 +116,7 @@ function Products() {
                     </span>
                   </div>
                   <div className="allProductsRowText">
-                    <h1 className="allProductsRowTextStyle">Product 1</h1>
+                    <h1 className="allProductsRowTextStyle">Table</h1>
                   </div>
                 </div>
                 <div className="allProductsTableRow">
@@ -126,7 +126,7 @@ function Products() {
                     </span>
                   </div>
                   <div className="allProductsRowText">
-                    <h1 className="allProductsRowTextStyle">Product 1</h1>
+                    <h1 className="allProductsRowTextStyle">Chair</h1>
                   </div>
                 </div>
                 <div className="allProductsTableRow">
@@ -136,7 +136,7 @@ function Products() {
                     </span>
                   </div>
                   <div className="allProductsRowText">
-                    <h1 className="allProductsRowTextStyle">Product 1</h1>
+                    <h1 className="allProductsRowTextStyle">Cupboard</h1>
                   </div>
                 </div>
                 <div className="allProductsTableRow">
@@ -146,7 +146,7 @@ function Products() {
                     </span>
                   </div>
                   <div className="allProductsRowText">
-                    <h1 className="allProductsRowTextStyle">Product 1</h1>
+                    <h1 className="allProductsRowTextStyle">Desk</h1>
                   </div>
                 </div>
                 <div className="allProductsTableRow">
@@ -156,7 +156,7 @@ function Products() {
                     </span>
                   </div>
                   <div className="allProductsRowText">
-                    <h1 className="allProductsRowTextStyle">Product 1</h1>
+                    <h1 className="allProductsRowTextStyle">Desk(High)</h1>
                   </div>
                 </div>
                 <div className="allProductsTableRow">
@@ -166,7 +166,7 @@ function Products() {
                     </span>
                   </div>
                   <div className="allProductsRowText">
-                    <h1 className="allProductsRowTextStyle">Product 1</h1>
+                    <h1 className="allProductsRowTextStyle">Cabinet</h1>
                   </div>
                 </div>
                 <div className="allProductsTableRow">
@@ -176,7 +176,7 @@ function Products() {
                     </span>
                   </div>
                   <div className="allProductsRowText">
-                    <h1 className="allProductsRowTextStyle">Product 1</h1>
+                    <h1 className="allProductsRowTextStyle">Gaming Chair</h1>
                   </div>
                 </div>
               </div>
