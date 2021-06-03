@@ -75,3 +75,30 @@ td {
   color: rgba(0, 0, 0, 0.76);
   cursor: pointer;
 }
+
+.tablePagination {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 40px;
+}
+
+.paginationLink {
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+}
+
+.material-icons.paginationArrowIcon {
+  color: #542b14;
+  font-size: 27px;
+}
+
+.material-icons.paginationCircleIcon {
+  color: #b89068;
+  font-size: 17px;
+}
+.material-icons.paginationCircleIcon.active {
+  color: #542b14;
+  font-size: 17px;
+}
