@@ -55,7 +55,6 @@ function Dashboard() {
               <div className="graphSection">
                 <Chart />
               </div>
-
               <div className="tableSection">
                 <TableCard />
               </div>
