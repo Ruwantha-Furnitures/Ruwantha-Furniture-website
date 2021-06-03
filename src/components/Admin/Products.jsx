@@ -1,8 +1,10 @@
 import React from "react";
 import Navbar from "./common/Navbar";
+import ProductsTable from "./common/ProductsTable";
 import Sidebar from "./common/Sidebar";
-import "./css/productStyle/Products.css";
-// import "./css/PieChardCard.css";
+import "./css/Products.css";
+import "./css/Main.css";
+import AllProductsView from "./common/AllProductsView";
 
 function Products() {
   return (
@@ -20,198 +22,11 @@ function Products() {
         <div className="cardDataSection">
           <div className="detailsSection">
             <div className="detailCard">
-              <div className="tabletitle">
-                <h1 className="tableTitleProductStyle">Products</h1>
-              </div>
-              <div className="tablebody">
-                <table className="tableShow">
-                  <thead>
-                    <tr>
-                      <th>Product</th>
-                      <th>Product Type</th>
-                      <th>Price</th>
-                      <th>Discount</th>
-                      <th>Qunatity</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td className="moreInfo">Desk(Plastic)</td>
-                      <td>Product Type 1</td>
-                      <td>Rs.25000</td>
-                      <td>Rs.250</td>
-                      <td>No.12</td>
-                    </tr>
-                    <tr>
-                      <td className="moreInfo">Desk(Plastic)</td>
-                      <td>Product Type 1</td>
-                      <td>Rs.25000</td>
-                      <td>Rs.250</td>
-                      <td>No.12</td>
-                    </tr>
-                    <tr>
-                      <td className="moreInfo">Desk(Plastic)</td>
-                      <td>Product Type 1</td>
-                      <td>Rs.25000</td>
-                      <td>Rs.250</td>
-                      <td>No.12</td>
-                    </tr>
-                    <tr>
-                      <td className="moreInfo">Desk(Plastic)</td>
-                      <td>Product Type 1</td>
-                      <td>Rs.25000</td>
-                      <td>Rs.250</td>
-                      <td>No.12</td>
-                    </tr>
-                    <tr>
-                      <td className="moreInfo">Desk(Plastic)</td>
-                      <td>Product Type 1</td>
-                      <td>Rs.25000</td>
-                      <td>Rs.250</td>
-                      <td>No.12</td>
-                    </tr>
-                    <tr>
-                      <td className="moreInfo">Desk(Plastic)</td>
-                      <td>Product Type 1</td>
-                      <td>Rs.25000</td>
-                      <td>Rs.250</td>
-                      <td>No.12</td>
-                    </tr>
-                    <tr>
-                      <td className="moreInfo">Desk(Plastic)</td>
-                      <td>Product Type 1</td>
-                      <td>Rs.25000</td>
-                      <td>Rs.250</td>
-                      <td>No.12</td>
-                    </tr>
-                    <tr>
-                      <td className="moreInfo">Desk(Plastic)</td>
-                      <td>Product Type 1</td>
-                      <td>Rs.25000</td>
-                      <td>Rs.250</td>
-                      <td>No.12</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              {/* Pagination */}
-              <div className="tablePagination">
-                <a href="#" className="paginationLink">
-                  <span class="material-icons paginationArrowIcon">
-                    arrow_back_ios
-                  </span>
-                </a>
-                <a href="#" className="paginationLink">
-                  <span className="material-icons paginationCircleIcon active">
-                    circle
-                  </span>
-                </a>
-                <a href="#" className="paginationLink">
-                  <span className="material-icons paginationCircleIcon">
-                    circle
-                  </span>
-                </a>
-                <a href="#" className="paginationLink">
-                  <span className="material-icons paginationCircleIcon">
-                    circle
-                  </span>
-                </a>
-                <a href="#" className="paginationLink">
-                  <span className="material-icons paginationCircleIcon">
-                    circle
-                  </span>
-                </a>
-                <a href="#" className="paginationLink">
-                  <span className="material-icons paginationCircleIcon">
-                    circle
-                  </span>
-                </a>
-                <a href="#" className="paginationLink">
-                  <span class="material-icons paginationArrowIcon">
-                    arrow_forward_ios
-                  </span>
-                </a>
-              </div>
+              <ProductsTable />
             </div>
           </div>
           <div className="productsViewSection">
-            <div className="allProductsSection">
-              <div className="allProductsLabel">
-                <h1 className="allProductsLabelStyle">All Products</h1>
-              </div>
-              <div className="allProductsTable">
-                <div className="allProductsTableRow">
-                  <div className="allProductsRowPointer">
-                    <span className="material-icons allProductPointerSize">
-                      circle
-                    </span>
-                  </div>
-                  <div className="allProductsRowText">
-                    <h1 className="allProductsRowTextStyle">Table</h1>
-                  </div>
-                </div>
-                <div className="allProductsTableRow">
-                  <div className="allProductsRowPointer">
-                    <span className="material-icons allProductPointerSize">
-                      circle
-                    </span>
-                  </div>
-                  <div className="allProductsRowText">
-                    <h1 className="allProductsRowTextStyle">Chair</h1>
-                  </div>
-                </div>
-                <div className="allProductsTableRow">
-                  <div className="allProductsRowPointer">
-                    <span className="material-icons allProductPointerSize">
-                      circle
-                    </span>
-                  </div>
-                  <div className="allProductsRowText">
-                    <h1 className="allProductsRowTextStyle">Cupboard</h1>
-                  </div>
-                </div>
-                <div className="allProductsTableRow">
-                  <div className="allProductsRowPointer">
-                    <span className="material-icons allProductPointerSize">
-                      circle
-                    </span>
-                  </div>
-                  <div className="allProductsRowText">
-                    <h1 className="allProductsRowTextStyle">Desk</h1>
-                  </div>
-                </div>
-                <div className="allProductsTableRow">
-                  <div className="allProductsRowPointer">
-                    <span className="material-icons allProductPointerSize">
-                      circle
-                    </span>
-                  </div>
-                  <div className="allProductsRowText">
-                    <h1 className="allProductsRowTextStyle">Desk(High)</h1>
-                  </div>
-                </div>
-                <div className="allProductsTableRow">
-                  <div className="allProductsRowPointer">
-                    <span className="material-icons allProductPointerSize">
-                      circle
-                    </span>
-                  </div>
-                  <div className="allProductsRowText">
-                    <h1 className="allProductsRowTextStyle">Cabinet</h1>
-                  </div>
-                </div>
-                <div className="allProductsTableRow">
-                  <div className="allProductsRowPointer">
-                    <span className="material-icons allProductPointerSize">
-                      circle
-                    </span>
-                  </div>
-                  <div className="allProductsRowText">
-                    <h1 className="allProductsRowTextStyle">Gaming Chair</h1>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <AllProductsView />
           </div>
         </div>
       </div>
