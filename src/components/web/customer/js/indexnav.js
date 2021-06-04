@@ -1,12 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from 'styled-components'; //to add hover
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    useParams,
-  } from "react-router-dom";
+import { Container, Row, Col } from 'reactstrap';
 import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap';
 import "../../../../index.css";
 import logo from "../../../../assets/logo.png";
@@ -16,7 +11,9 @@ class indexnav extends React.Component{
     render(){
       const navlink = {
         color: "white",
-        fontweight: "bold"          
+        fontweight: "bold",
+        padding: "10px",
+        marginTop: "10px"
       };
 
       const HoverText = styled.p`
@@ -29,10 +26,10 @@ class indexnav extends React.Component{
 
         return(
             <div>
-                <div className="row">
+                <Row>
                     <div className="col-md-12">                        
                           <Navbar variant="dark" expand="lg" sticky="top" style={{backgroundColor:'#291B1B'}}>   
-                                <Navbar.Brand href="#home"><img src={logo} alt={logo} width={100} height={100}></img></Navbar.Brand>
+                                <Navbar.Brand href="#home"><img src={logo} alt={logo} width={120} height={100}></img></Navbar.Brand>
                                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                                 <Navbar.Collapse id="basic-navbar-nav">
                                     <Nav className="mr-auto">                                      
@@ -55,7 +52,7 @@ class indexnav extends React.Component{
                             </Navbar>
                             <br />                                                  
                     </div>
-                </div>
+                  </Row>
             </div>
         )  
     }
