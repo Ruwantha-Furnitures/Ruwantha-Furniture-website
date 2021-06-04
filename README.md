@@ -19,3 +19,5 @@ npm install styled-components (Styled-Components --> add hover etc)
 npm install react-dimensions ---> Dimensions of screen (not worked)
 
 npm install react-slideshow-image -S ---> slide show
+
+npm install --save react-bootstrap (put this in to src, public seperately) (not worked)
