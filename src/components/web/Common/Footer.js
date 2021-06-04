@@ -8,34 +8,24 @@ FooterLink,
 Heading,
 } from "./FooterStyles";
 import logo from "../../../assets/logo.png";
+import Appicon from "../../../assets/google.svg";
 
 const Footer = () => {
 return (
 	<Box>
 	<Container>
-		<Row>	
+		<Row className="justify-content-md-center">	
 			<Column>
-				<FooterLink href="#"><img src={logo} alt={logo} width={200} height={200}></img></FooterLink>
+				<FooterLink href="#">Ruwantha Furniture</FooterLink>
 			</Column>
+
 			<Column>
-				<Heading style={{fontSize:"16px"}}>About Us</Heading>
-				<FooterLink href="#">Aim</FooterLink>
-				<FooterLink href="#">Vision</FooterLink>
-				<FooterLink href="#">Testimonials</FooterLink>
-			</Column>
-			<Column>
-				<Heading>About Us</Heading>
-				<FooterLink href="#">Aim</FooterLink>
-				<FooterLink href="#">Vision</FooterLink>
-				<FooterLink href="#">Testimonials</FooterLink>
-			</Column>
-			<Column>
-				<Heading>About Us</Heading>
-				<FooterLink href="#">Aim</FooterLink>
-				<FooterLink href="#">Vision</FooterLink>
-				<FooterLink href="#">Testimonials</FooterLink>
+				<FooterLink href="#">Get Augmented Reality featured app for your phone</FooterLink>
 			</Column>
 		
+			<Column>
+				<FooterLink href="#"><img src={Appicon} width={130}/></FooterLink>	
+			</Column>
 		</Row>
 	</Container>
 	</Box>

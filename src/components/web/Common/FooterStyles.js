@@ -6,7 +6,7 @@ background: #291B1B;
 position: fix;
 bottom: 0px;
 width: 100%;
-margin top:20px;
+margin top:5px;
 
 @media (max-width: 1000px) {
 	padding: 70px 30px;
@@ -26,7 +26,6 @@ export const Column = styled.div`
 display: flex;
 flex-direction: column;
 text-align: left;
-margin-left: 60px;
 `;
 
 export const Row = styled.div`
@@ -43,12 +42,11 @@ grid-gap: 20px;
 
 export const FooterLink = styled.a`
 color: #fff;
-margin-bottom: 20px;
+margin-bottom: 10px;
 font-size: 18px;
 text-decoration: none;
 
-&:hover {
-	color: green;
+&:hover {	
 	transition: 200ms ease-in;
 }
 `;

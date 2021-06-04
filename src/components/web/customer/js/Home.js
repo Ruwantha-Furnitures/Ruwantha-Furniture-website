@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import topimg from '../../../../assets/topimg4.jpg';
 import ProductBox from "../js/ProductCards";
 import Navigation from "../js/indexnav";
+import Slideshow from '../js/Banner';
 import Footer from "../../Common/Footer";
 import '../css/Home.css';  
   
@@ -19,7 +20,7 @@ class Home extends Component {
     return (    
         <div>   
             <Navigation></Navigation>                     
-            <img src={topimg} alt="topimg" style={topimage} fluid/>
+            <Slideshow></Slideshow>
             <ProductBox></ProductBox>
             <Footer></Footer>
       </div>      
