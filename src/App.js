@@ -1,8 +1,7 @@
-// import './App.css';
-
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ChartTest from "./components/Admin/common/ChartTest";
 import Dashboard from "./components/Admin/Dashboard";
+import Products from "./components/Admin/Products";
 
 import Home from './components/web/customer/js/Home';
 import Product from './components/web/customer/js/Product';
@@ -17,6 +16,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/dashboard/products" component={Products} />
           <Route exact path="/chart" component={ChartTest} />
 
           

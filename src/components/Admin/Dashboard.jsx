@@ -6,6 +6,7 @@ import DetailCard from "./common/DetailCard";
 import Chart from "./common/Chart";
 import TableCard from "./common/TableCard";
 import PieChartCard from "./common/PieChartCard";
+import "./css/Main.css";
 import "./css/Dashboard.css";
 
 function Dashboard() {
@@ -55,7 +56,6 @@ function Dashboard() {
               <div className="graphSection">
                 <Chart />
               </div>
-
               <div className="tableSection">
                 <TableCard />
               </div>

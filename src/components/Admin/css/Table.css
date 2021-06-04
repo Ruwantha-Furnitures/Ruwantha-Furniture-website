@@ -20,7 +20,6 @@
 
 .tableShow {
   width: 100%;
-  /* height: 181px; */
   margin-top: 15px;
 }
 
@@ -38,7 +37,7 @@ thead {
 th {
   text-align: inherit;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 600;
   font-size: 16px;
   line-height: 22px;
 
@@ -56,7 +55,60 @@ th a {
 td {
   padding: 9px 11px;
   vertical-align: middle;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+
+  color: rgba(0, 0, 0, 0.76);
 
   border-top: 1px solid rgba(0, 0, 0, 0.06);
   border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+}
+
+.tableTitleProductStyle {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+
+  color: #000000;
+  margin-left: 8px;
+}
+
+.moreInfo {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+
+  color: rgba(0, 0, 0, 0.76);
+  cursor: pointer;
+}
+
+.tablePagination {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 40px;
+}
+
+.paginationLink {
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+}
+
+.material-icons.paginationArrowIcon {
+  color: #542b14;
+  font-size: 27px;
+}
+
+.material-icons.paginationCircleIcon {
+  color: #b89068;
+  font-size: 17px;
+}
+.material-icons.paginationCircleIcon.active {
+  color: #542b14;
+  font-size: 17px;
 }
