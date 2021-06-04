@@ -2,15 +2,16 @@ import React, { Component } from "react";
 import Navigation from "../js/indexnav";
 import Footer from "../../Common/Footer";
  
-class About extends Component {
+class Signup extends Component {
   render() {
     return (
       <div>
-        <Navigation></Navigation>   
-        <h2>About</h2>
+        <Navigation></Navigation>    
+        <h2>Signup</h2>
         <p>Mauris sem velit, vehicula eget sodales vitae,
         rhoncus eget sapien:</p>
-        <ol>          
+        <ol>
+          <li>Nulla pulvinar diam</li>
           <li>Facilisis bibendum</li>
           <li>Vestibulum vulputate</li>
           <li>Eget erat</li>
@@ -22,4 +23,5 @@ class About extends Component {
   }
 }
  
-export default About;
+export default Signup;
+
