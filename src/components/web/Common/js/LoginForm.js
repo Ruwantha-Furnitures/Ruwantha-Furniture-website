@@ -36,7 +36,7 @@ export default function LoginForm() {
     justifyContent: "left",
     justifyItem: "left",
     margin: "10px",
-    padding: "30px",
+    padding: "40px",
     backgroundColor: "rgb(41, 27, 27, 0.9)",        
     backgroundColor: "rgb(1,1,1, 0.8)",            
     borderRadius: "20px",                    
