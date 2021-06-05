@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from 'reactstrap';
 import styled from 'styled-components';
-import Navigation from "../js/indexnav";
-import LoginForm from "../js/LoginForm";
-import Footer from "../../Common/Footer";
+import Navigation from "../../customer/js/indexnav";
+import LoginForm from "./LoginForm";
+import Footer from "./Footer";
 import backcover from "../../../../assets/login9.jpg";
 import "../css/Login.css"
 
@@ -21,7 +21,7 @@ class Login extends Component {
         width: '100%',        
       }}>        
             <Navigation></Navigation>                    
-            <Container align="center">              
+            <Container align="center">                  
                 <LoginForm></LoginForm>               
             </Container>              
             <Footer></Footer>

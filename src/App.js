@@ -7,7 +7,7 @@ import Home from './components/web/customer/js/Home';
 import Product from './components/web/customer/js/Product';
 import AboutUs from './components/web/customer/js/About';
 import ContactUs from './components/web/customer/js/Contact';
-import Login from './components/web/customer/js/Login';
+import Login from '../src/components/web/Common/js/Login';
 import Signup from './components/web/customer/js/Signup';
 
 function App() {

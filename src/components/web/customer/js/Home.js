@@ -6,7 +6,7 @@ import topimg from '../../../../assets/topimg4.jpg';
 import ProductBox from "../js/ProductCards";
 import Navigation from "../js/indexnav";
 import Slideshow from '../js/Banner';
-import Footer from "../../Common/Footer";
+import Footer from "../../Common/js/Footer";
 import '../css/Home.css';  
   
 class Home extends Component {

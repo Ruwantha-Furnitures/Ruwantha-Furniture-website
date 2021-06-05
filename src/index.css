@@ -18,11 +18,6 @@ Nav{
     background-color: #FC7A30;
     color: #FFF;
   }
-  
-  .footer{
-    background-color: blue;
-    width: 100%;
-  }
 
   @media screen and (max-width: 798px) {
     .btn{
