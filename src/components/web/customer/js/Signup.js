@@ -1,23 +1,26 @@
 import React, { Component } from "react";
+import { Container, Row, Col } from 'reactstrap';
 import Navigation from "../js/indexnav";
 import Footer from "../../Common/js/Footer";
+import SignForm from "./SignupForm";
+import backcover from "../../../../assets/login9.jpg";
  
 class Signup extends Component {
   render() {
     return (
-      <div>
-        <Navigation></Navigation>    
-        <h2>Signup</h2>
-        <p>Mauris sem velit, vehicula eget sodales vitae,
-        rhoncus eget sapien:</p>
-        <ol>
-          <li>Nulla pulvinar diam</li>
-          <li>Facilisis bibendum</li>
-          <li>Vestibulum vulputate</li>
-          <li>Eget erat</li>
-          <li>Id porttitor</li>
-        </ol>
-        <Footer></Footer>
+      <div style={{              
+        backgroundImage: `url(${backcover})`,        
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        objectFit:'cover',
+        height: '100%',
+        width: '100%'    
+      }}>
+        <Navigation></Navigation>
+        <Container align="center"> 
+          <SignForm></SignForm>   
+        </Container>                    
+        <Footer></Footer>       
       </div>
     );
   }

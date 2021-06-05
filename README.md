@@ -21,3 +21,5 @@ npm install react-dimensions ---> Dimensions of screen (not worked)
 npm install react-slideshow-image -S ---> slide show
 
 npm install --save react-bootstrap (put this in to src, public seperately) 
+
+npm install react-google-login
