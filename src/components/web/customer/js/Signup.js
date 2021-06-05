@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Navigation from "../js/indexnav";
-import Footer from "../../Common/Footer";
+import Footer from "../../Common/js/Footer";
  
 class Signup extends Component {
   render() {

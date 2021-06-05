@@ -23,7 +23,7 @@ export class Banner extends Component {
                                 className="d-block w-100"  
                                 src={Slide1}  />  
                             <Carousel.Caption>  
-                                <h3>First Demo </h3>  
+                                <h3>Ruwantha Furniture</h3>  
                             </Carousel.Caption>  
                         </Carousel.Item  >  
                         <Carousel.Item style={{'height':"500px"}}>  
@@ -31,7 +31,7 @@ export class Banner extends Component {
                                 className="d-block w-100"  
                                 src={Slide2}  />  
                             <Carousel.Caption>  
-                                <h3>Second Demo</h3>  
+                                <h3>Ruwantha Furniture</h3>   
                             </Carousel.Caption>  
                         </Carousel.Item>  
                         <Carousel.Item style={{'height':"500px"}}>  
@@ -39,7 +39,7 @@ export class Banner extends Component {
                                 className="d-block w-100"  
                                 src={Slide3}  />  
                                 <Carousel.Caption>  
-                                    <h3>Third Demo</h3>  
+                                    <h3>Ruwantha Furniture</h3>   
                                 </Carousel.Caption>  
                         </Carousel.Item> 
                         <Carousel.Item style={{'height':"500px"}}>  
@@ -47,7 +47,7 @@ export class Banner extends Component {
                                 className="d-block w-100"  
                                 src={Slide4}  />  
                                 <Carousel.Caption>  
-                                    <h3>Third Demo</h3>  
+                                    <h3>Ruwantha Furniture</h3>   
                                 </Carousel.Caption>  
                         </Carousel.Item>  
                         <Carousel.Item style={{'height':"500px"}}>  
@@ -55,7 +55,7 @@ export class Banner extends Component {
                                 className="d-block w-100"  
                                 src={Slide5}  />  
                                 <Carousel.Caption>  
-                                    <h3>Third Demo</h3>  
+                                    <h3>Ruwantha Furniture</h3>   
                                 </Carousel.Caption>  
                         </Carousel.Item> 
                         <Carousel.Item style={{'height':"500px"}}>  
@@ -63,7 +63,7 @@ export class Banner extends Component {
                                 className="d-block w-100"  
                                 src={Slide6}  />  
                                 <Carousel.Caption>  
-                                    <h3>Third Demo</h3>  
+                                    <h3>Ruwantha Furniture</h3>   
                                 </Carousel.Caption>  
                         </Carousel.Item> 
                         <Carousel.Item style={{'height':"500px"}}>  
@@ -71,7 +71,7 @@ export class Banner extends Component {
                                 className="d-block w-100"  
                                 src={Slide7}  />  
                                 <Carousel.Caption>  
-                                    <h3>Third Demo</h3>  
+                                    <h3>Ruwantha Furniture</h3>   
                                 </Carousel.Caption>  
                         </Carousel.Item> 
                         <Carousel.Item style={{'height':"500px"}}>  
@@ -79,7 +79,7 @@ export class Banner extends Component {
                                 className="d-block w-100"  
                                 src={Slide8}  />  
                                 <Carousel.Caption>  
-                                    <h3>Third Demo</h3>  
+                                    <h3>Ruwantha Furniture</h3>   
                                 </Carousel.Caption>  
                         </Carousel.Item> 
                         <Carousel.Item style={{'height':"500px"}}>  
@@ -87,7 +87,7 @@ export class Banner extends Component {
                                 className="d-block w-100"  
                                 src={Slide9}  />  
                                 <Carousel.Caption>  
-                                    <h3>Third Demo</h3>  
+                                    <h3>Ruwantha Furniture</h3>   
                                 </Carousel.Caption>  
                         </Carousel.Item> 
                         <Carousel.Item style={{'height':"500px"}}>  
@@ -95,7 +95,7 @@ export class Banner extends Component {
                                 className="d-block w-100"  
                                 src={Slide10}  />  
                                 <Carousel.Caption>  
-                                    <h3>Third Demo</h3>  
+                                    <h3>Ruwantha Furniture</h3>   
                                 </Carousel.Caption>  
                         </Carousel.Item> 
                     </Carousel>                          

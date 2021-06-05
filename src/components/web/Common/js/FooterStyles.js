@@ -43,11 +43,13 @@ grid-gap: 20px;
 export const FooterLink = styled.a`
 color: #fff;
 margin-bottom: 10px;
-font-size: 18px;
+font-size: 14px;
 text-decoration: none;
 
 &:hover {	
 	transition: 200ms ease-in;
+	color: #FC7A30;
+	text-decoration: none;
 }
 `;
 
