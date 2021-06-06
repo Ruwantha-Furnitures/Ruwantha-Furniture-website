@@ -36,7 +36,7 @@ export default function SignupForm() {
     justifyContent: "left",
     justifyItem: "left",
     margin: "10px",
-    padding: "30px",
+    padding: "20px",
     backgroundColor: "rgb(41, 27, 27, 0.9)",        
     backgroundColor: "rgb(1,1,1, 0.8)",            
     borderRadius: "20px",                    
@@ -110,7 +110,7 @@ export default function SignupForm() {
                 <Row>
                     <Col sm={6}>
                         <Form.Group size="lg" controlId="password">
-                            <Form.Label style={formlabel}>Password</Form.Label>
+                            <Form.Label>Password</Form.Label>
                             <Form.Control
                                 type="password"
                                 value={password}
@@ -120,7 +120,7 @@ export default function SignupForm() {
                     </Col>
                     <Col sm={6}>
                         <Form.Group size="lg" controlId="cpassword">
-                            <Form.Label style={formlabel}>Confirm Password</Form.Label>
+                            <Form.Label>Confirm Password</Form.Label>
                             <Form.Control
                                 type="password"
                                 value={cpassword}
