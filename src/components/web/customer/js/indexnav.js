@@ -4,7 +4,7 @@ import styled from 'styled-components'; //to add hover
 import { Container, Row, Col } from 'reactstrap';
 import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap';
 import "../../../../index.css";
-import logo from "../../../../assets/logo1.png";
+import logo from "../../../../assets/logo.png";
 
 
 class indexnav extends React.Component{
@@ -28,8 +28,8 @@ class indexnav extends React.Component{
                 <Row>
                     <div className="col-md-12">                        
                         <Navbar variant="dark" expand="lg" sticky="top" style={{backgroundColor:'#291B1B'}}>   
-                            <Navbar.Brand href="#home"><img src={logo} alt={logo} width={50} height={50}></img></Navbar.Brand>
-                            <Navbar.Brand href="#home" style={{color: '#FC7A30', fontStyle:'italic'}}><center>Ruwantha <br /> Furniture</center></Navbar.Brand>
+                            <Navbar.Brand href="#home"><img src={logo} alt={logo} width={60} height={60}></img></Navbar.Brand>
+                            <Navbar.Brand href="#home" style={{color: '#FC7A30', fontStyle:'italic' , marginTop: '0px'}}><center>Ruwantha Furniture</center></Navbar.Brand>
                                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                                 <Navbar.Collapse id="basic-navbar-nav">
                                     <Nav className="mr-auto">  

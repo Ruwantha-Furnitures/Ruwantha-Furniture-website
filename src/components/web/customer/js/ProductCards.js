@@ -42,8 +42,8 @@ class ProductCards extends Component {
     }
     return (    
         <div>   
-          <Container fluid="md" style={backcontainer}>
-                <Row className="justify-content-md-center">
+          <Container style={backcontainer}>
+                <Row className="justify-content-md-center" xs={12}>
                     <Col>
                       <Container style={innercontainer}>
                           <div>
