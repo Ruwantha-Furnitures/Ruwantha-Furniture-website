@@ -1,6 +1,6 @@
 import React from "react";
 import { PieChart, Pie, Cell } from "recharts";
-import "../css/PieChardCard.css";
+import PieChartCardStyle from "../../../css/dashboard/PieChardCard.module.css";
 
 function PieChartCard() {
   const data = [
@@ -24,11 +24,13 @@ function PieChartCard() {
   ];
 
   return (
-    <div className="pieChartSection">
-      <div className="pieChartLabel">
-        <h1 className="pieChartLabelStyle">Sales Of Product</h1>
+    <div className={PieChartCardStyle.pieChartSection}>
+      <div className={PieChartCardStyle.pieChartLabel}>
+        <h1 className={PieChartCardStyle.pieChartLabelStyle}>
+          Sales Of Product
+        </h1>
       </div>
-      <div className="pieChart">
+      <div className={PieChartCardStyle.pieChart}>
         {" "}
         <PieChart
           width={250}
@@ -54,82 +56,96 @@ function PieChartCard() {
           </Pie>
         </PieChart>
       </div>
-      <div className="pieChartTable">
-        <div className="tablerow">
-          <div className="rowPointer">
-            <span className="material-icons pointerSize">circle</span>
+      <div className={PieChartCardStyle.pieChartTable}>
+        <div className={PieChartCardStyle.tablerow}>
+          <div className={PieChartCardStyle.rowPointer}>
+            <span className={"material-icons " + PieChartCardStyle.pointerSize}>
+              circle
+            </span>
           </div>
-          <div className="rowText">
-            <h1 className="rowTextStyle">Product 1</h1>
+          <div className={PieChartCardStyle.rowText}>
+            <h1 className={PieChartCardStyle.rowTextStyle}>Product 1</h1>
           </div>
-          <div className="rowPercentage">
-            <h1 className="rowPercentageStyle">25%</h1>
-          </div>
-        </div>
-        <div className="tablerow">
-          <div className="rowPointer">
-            <span className="material-icons pointerSize">circle</span>
-          </div>
-          <div className="rowText">
-            <h1 className="rowTextStyle">Product 2</h1>
-          </div>
-          <div className="rowPercentage">
-            <h1 className="rowPercentageStyle">45%</h1>
+          <div className={PieChartCardStyle.rowPercentage}>
+            <h1 className={PieChartCardStyle.rowPercentageStyle}>25%</h1>
           </div>
         </div>
-        <div className="tablerow">
-          <div className="rowPointer">
-            <span className="material-icons pointerSize">circle</span>
+        <div className={PieChartCardStyle.tablerow}>
+          <div className={PieChartCardStyle.rowPointer}>
+            <span className={"material-icons " + PieChartCardStyle.pointerSize}>
+              circle
+            </span>
           </div>
-          <div className="rowText">
-            <h1 className="rowTextStyle">Product 3</h1>
+          <div className={PieChartCardStyle.rowText}>
+            <h1 className={PieChartCardStyle.rowTextStyle}>Product 2</h1>
           </div>
-          <div className="rowPercentage">
-            <h1 className="rowPercentageStyle">25%</h1>
-          </div>
-        </div>
-        <div className="tablerow">
-          <div className="rowPointer">
-            <span className="material-icons pointerSize">circle</span>
-          </div>
-          <div className="rowText">
-            <h1 className="rowTextStyle">Product 4</h1>
-          </div>
-          <div className="rowPercentage">
-            <h1 className="rowPercentageStyle">15%</h1>
+          <div className={PieChartCardStyle.rowPercentage}>
+            <h1 className={PieChartCardStyle.rowPercentageStyle}>45%</h1>
           </div>
         </div>
-        <div className="tablerow">
-          <div className="rowPointer">
-            <span className="material-icons pointerSize">circle</span>
+        <div className={PieChartCardStyle.tablerow}>
+          <div className={PieChartCardStyle.rowPointer}>
+            <span className={"material-icons " + PieChartCardStyle.pointerSize}>
+              circle
+            </span>
           </div>
-          <div className="rowText">
-            <h1 className="rowTextStyle">Product 5</h1>
+          <div className={PieChartCardStyle.rowText}>
+            <h1 className={PieChartCardStyle.rowTextStyle}>Product 3</h1>
           </div>
-          <div className="rowPercentage">
-            <h1 className="rowPercentageStyle">10%</h1>
-          </div>
-        </div>
-        <div className="tablerow">
-          <div className="rowPointer">
-            <span className="material-icons pointerSize">circle</span>
-          </div>
-          <div className="rowText">
-            <h1 className="rowTextStyle">Product 6</h1>
-          </div>
-          <div className="rowPercentage">
-            <h1 className="rowPercentageStyle">8%</h1>
+          <div className={PieChartCardStyle.rowPercentage}>
+            <h1 className={PieChartCardStyle.rowPercentageStyle}>25%</h1>
           </div>
         </div>
-        <div className="tablerow">
-          <div className="rowPointer">
-            <span className="material-icons pointerSize">circle</span>
+        <div className={PieChartCardStyle.tablerow}>
+          <div className={PieChartCardStyle.rowPointer}>
+            <span className={"material-icons " + PieChartCardStyle.pointerSize}>
+              circle
+            </span>
           </div>
-          <div className="rowText">
-            <h1 className="rowTextStyle">Other</h1>
+          <div className={PieChartCardStyle.rowText}>
+            <h1 className={PieChartCardStyle.rowTextStyle}>Product 4</h1>
           </div>
-          <div className="rowPercentage">
-            <h1 className="rowPercentageStyle">2%</h1>
+          <div className={PieChartCardStyle.rowPercentage}>
+            <h1 className={PieChartCardStyle.rowPercentageStyle}>15%</h1>
+          </div>
+        </div>
+        <div className={PieChartCardStyle.tablerow}>
+          <div className={PieChartCardStyle.rowPointer}>
+            <span className={"material-icons " + PieChartCardStyle.pointerSize}>
+              circle
+            </span>
+          </div>
+          <div className={PieChartCardStyle.rowText}>
+            <h1 className={PieChartCardStyle.rowTextStyle}>Product 5</h1>
+          </div>
+          <div className={PieChartCardStyle.rowPercentage}>
+            <h1 className={PieChartCardStyle.rowPercentageStyle}>10%</h1>
+          </div>
+        </div>
+        <div className={PieChartCardStyle.tablerow}>
+          <div className={PieChartCardStyle.rowPointer}>
+            <span className={"material-icons " + PieChartCardStyle.pointerSize}>
+              circle
+            </span>
+          </div>
+          <div className={PieChartCardStyle.rowText}>
+            <h1 className={PieChartCardStyle.rowTextStyle}>Product 6</h1>
+          </div>
+          <div className={PieChartCardStyle.rowPercentage}>
+            <h1 className={PieChartCardStyle.rowPercentageStyle}>8%</h1>
+          </div>
+        </div>
+        <div className={PieChartCardStyle.tablerow}>
+          <div className={PieChartCardStyle.rowPointer}>
+            <span className={"material-icons " + PieChartCardStyle.pointerSize}>
+              circle
+            </span>
+          </div>
+          <div className={PieChartCardStyle.rowText}>
+            <h1 className={PieChartCardStyle.rowTextStyle}>Other</h1>
+          </div>
+          <div className={PieChartCardStyle.rowPercentage}>
+            <h1 className={PieChartCardStyle.rowPercentageStyle}>2%</h1>
           </div>
         </div>
       </div>

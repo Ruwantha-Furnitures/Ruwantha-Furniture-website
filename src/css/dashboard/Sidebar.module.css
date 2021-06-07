@@ -41,14 +41,19 @@
   cursor: pointer;
 }
 
-.lineSection:hover > .lineIcon > .material-icons.iconWidth {
+.lineSection:hover > .lineIcon > .iconWidth {
   color: #f7f7f7;
 }
 .lineSection:hover > .lineText > .lineTextStyle {
   color: #f7f7f7;
 }
 
-.material-icons.iconWidth {
+/* .material-icons.iconWidth {
+  font-size: 24px;
+  color: #542b14;
+  padding: 4px;
+} */
+.iconWidth {
   font-size: 24px;
   color: #542b14;
   padding: 4px;
@@ -62,6 +67,6 @@
   color: #000000;
 }
 
-.lineSection.margin-bottom {
+/* .marginBbttom {
   margin-bottom: 23px;
-}
+} */

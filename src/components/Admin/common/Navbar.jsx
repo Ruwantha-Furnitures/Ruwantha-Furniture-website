@@ -1,39 +1,43 @@
 import React from "react";
-import "../css/Navbar.css";
+import NavbarStyle from "../../../css/dashboard/Navbar.module.css";
 
 function Navbar() {
   return (
-    <div className="navgation">
-      <div className="logoSection">
-        <div className="logodiv">
-          <div className="logo"></div>
-          <div className="logoname">
-            <h1 className="logonameStyle">Ruwantha Furniture</h1>
+    <div className={NavbarStyle.navgation}>
+      <div className={NavbarStyle.logoSection}>
+        <div className={NavbarStyle.logodiv}>
+          <div className={NavbarStyle.logo}></div>
+          <div className={NavbarStyle.logoname}>
+            <h1 className={NavbarStyle.logonameStyle}>Ruwantha Furniture</h1>
           </div>
         </div>
       </div>
-      <div className="searchSection">
-        <div className="search">
-          <div className="searchicon">
-            <span className="material-icons md-36">search</span>
+      <div className={NavbarStyle.searchSection}>
+        <div className={NavbarStyle.search}>
+          <div className={NavbarStyle.searchicon}>
+            <span className={"material-icons " + NavbarStyle.searchIconStyle}>
+              search
+            </span>
           </div>
-          <div className="searchText">
+          <div className={NavbarStyle.searchText}>
             <input
-              id="search"
               type="search"
               placeholder="Search Here"
-              className="searchinput"
+              className={NavbarStyle.searchinput}
             />
           </div>
         </div>
       </div>
-      <div className="profileSection">
-        <div className="alignSection">
-          <div className="profileIcon">
-            <span className="material-icons accounticon"> account_circle </span>
+      <div className={NavbarStyle.profileSection}>
+        <div className={NavbarStyle.alignSection}>
+          <div className={NavbarStyle.profileIcon}>
+            <span className={"material-icons " + NavbarStyle.accounticon}>
+              {" "}
+              account_circle{" "}
+            </span>
           </div>
-          <div className="logout">
-            <button className="logoutButton">Log Out</button>
+          <div className={NavbarStyle.logout}>
+            <button className={NavbarStyle.logoutButton}>Log Out</button>
           </div>
         </div>
       </div>

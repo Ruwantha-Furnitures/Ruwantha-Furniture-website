@@ -1,6 +1,6 @@
 import React from "react";
 import { BarChart, Bar, XAxis, Cell } from "recharts";
-import "../css/Chart.css";
+import ChartStyle from "../../../css/dashboard/Chart.module.css";
 
 function Chart() {
   const barColors = ["#542B14", "#B89068"];
@@ -79,7 +79,7 @@ function Chart() {
     },
   ];
   return (
-    <div className="graphChart">
+    <div className={ChartStyle.graphChart}>
       <BarChart
         width={650}
         height={250}
@@ -99,7 +99,7 @@ function Chart() {
           ))}
         </Bar>
       </BarChart>
-      <h1 className="chartLabel">Sales of the Year</h1>
+      <h1 className={ChartStyle.chartLabel}>Sales of the Year</h1>
     </div>
   );
 }

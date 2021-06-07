@@ -21,7 +21,7 @@
 .logo {
   order: 1;
   width: 25%;
-  background-image: url(../img/Ellipse\ 2.png);
+  background-image: url(../../assets/dashboard/img/Ellipse\ 2.png);
   height: 50px;
   margin-left: 10px;
   background-position: center;
@@ -69,7 +69,8 @@
   padding: 5px;
   display: flex;
 }
-.material-icons.md-36 {
+
+.searchIconStyle {
   font-size: 36px;
   color: #f7f7f7;
 }
@@ -124,7 +125,7 @@ input:-webkit-autofill:active {
   cursor: pointer;
 }
 
-.material-icons.accounticon {
+.accounticon {
   color: #542b14;
   font-size: 44px;
 }
