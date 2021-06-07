@@ -52,7 +52,7 @@ function LoginForm(props) {
         <div className="Login" >        
       <Form style={loginform} onSubmit={handleSubmit} align="left">
         <center><img src={Avatar} style={avatar}/></center><br />
-        <Form.Group size="lg" controlId="email">
+        <Form.Group size="sm" controlId="email">
           <Form.Label>Email</Form.Label>
           <Form.Control
             autoFocus
@@ -61,7 +61,7 @@ function LoginForm(props) {
             onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>
-        <Form.Group size="lg" controlId="password">
+        <Form.Group size="sm" controlId="password">
           <Form.Label style={formlabel}>Password</Form.Label>
           <Form.Control
             type="password"
