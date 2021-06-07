@@ -1,49 +1,55 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
 import Form from "react-bootstrap/Form";
 import { Container, Row, Col } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from "react-bootstrap/Button";
-import '../css/Signup.css';
+import '../css/ContactForm.css';
+import PropTypes from 'prop-types';
 
-export default function ContactForm() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [telephone, setTelephone] = useState("");
-  const [description, setDescription] = useState("");
-  
+ContactForm.propTypes = {
+    
+};
 
-  function validateForm() {
-    //Put the correct validation 
-  }
+function ContactForm(props) {
 
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
+        const [name, setName] = useState("");
+        const [email, setEmail] = useState("");
+        const [telephone, setTelephone] = useState("");
+        const [description, setDescription] = useState("");
+        
+      
+        function validateForm() {
+          //Put the correct validation 
+        }
+      
+        function handleSubmit(event) {
+          event.preventDefault();
+        }
+      
+        const belowlinks = {
+          color: "#FFF",
+          paddig: "10px"
+        }
+      
+        const formlabel = {
+          color: "#FFF",
+          paddig: "20px"
+        }
+      
+        const loginform = {    
+          justifyContent: "left",
+          justifyItem: "left",
+          margin: "0px",
+          padding: "0px",
+          backgroundColor: "rgb(41, 27, 27, 0.9)",        
+          backgroundColor: "rgb(1,1,1, 0.8)",            
+          borderRadius: "0px",                    
+          color: "#FFF",
+      
+        }
 
-  const belowlinks = {
-    color: "#FFF",
-    paddig: "10px"
-  }
-
-  const formlabel = {
-    color: "#FFF",
-    paddig: "20px"
-  }
-
-  const loginform = {    
-    justifyContent: "left",
-    justifyItem: "left",
-    margin: "0px",
-    padding: "0px",
-    backgroundColor: "rgb(41, 27, 27, 0.9)",        
-    backgroundColor: "rgb(1,1,1, 0.8)",            
-    borderRadius: "0px",                    
-    color: "#FFF",
-
-  }
-
-  return (
-    <div className="Login" style={loginform} >              
+    return (
+        <div className="Login" style={loginform} >              
         <div class='row'>
             <Form onSubmit={handleSubmit} align="left">
                 <h2 style={{marginTop: '20px'}}>CONTACT US</h2>
@@ -51,7 +57,7 @@ export default function ContactForm() {
                     <Col sm={12}>
                         <Form.Group size="lg" controlId="name">
                             <Form.Label>Name</Form.Label>
-                            <Form.Control  style={{width: '400px'}}
+                            <Form.Control  style={{width: '200px'}}
                                 autoFocus
                                 type="text"
                                 value={name}
@@ -100,5 +106,7 @@ export default function ContactForm() {
             </Form>
       </div>
     </div>
-  );
+    );
 }
+
+export default ContactForm;

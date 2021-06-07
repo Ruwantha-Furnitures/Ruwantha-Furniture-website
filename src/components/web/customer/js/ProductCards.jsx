@@ -1,48 +1,50 @@
-import React, { Component } from "react";
+import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import item1 from '../../../../assets/items/10.jpg';
 import item2 from '../../../../assets/items/9.jpg';
 import item3 from '../../../../assets/items/11.jpg';
 import item4 from '../../../../assets/items/14.jpg';
 import '../css/Home.css';  
-  
-class ProductCards extends Component {
-  render() {
+import PropTypes from 'prop-types';
+
+ProductCards.propTypes = {
+    
+};
+
+function ProductCards(props) {
     const backcontainer = {
-      marginTop: "20px",
-      backgroundColor: "#CAC1C1",
-      padding: "30px",
-      borderRadius: "20px",
-      width: "100%",  
-      marginBottom: "20px"
-    };
-    const innercontainer = {
-      backgroundColor: "#FFF",
-      padding: "6px",
-      borderRadius: "20px",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",      
-    };
-    const funitureimg = {      
-      marginTop: "10px",
-      borderRadius: "20px",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center"
-    };
-    const topimage = {
-      marginTop: "-50px",
-      width: "100%",
-      backgroundSize : "cover",
-      backgroundRepeat: "no-repeat"       
-    }
-    return (    
-        <div>   
-          <Container style={backcontainer}>
+        marginTop: "20px",
+        backgroundColor: "#CAC1C1",
+        padding: "30px",
+        borderRadius: "20px",
+        width: "100%",  
+        marginBottom: "20px"
+      };
+      const innercontainer = {
+        backgroundColor: "#FFF",
+        padding: "6px",
+        borderRadius: "20px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"      
+      };
+      const funitureimg = {      
+        marginTop: "10px",
+        borderRadius: "20px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+      };
+      const topimage = {
+        marginTop: "-50px",
+        width: "100%",
+        backgroundSize : "cover",
+        backgroundRepeat: "no-repeat"       
+      }
+    return (
+        <div>
+            <Container style={backcontainer}>
                 <Row className="justify-content-md-center" xs={12}>
                     <Col>
                       <Container style={innercontainer}>
@@ -87,9 +89,8 @@ class ProductCards extends Component {
                   </Col>
                 </Row>             
             </Container>            
-      </div>      
+        </div>
     );
-  }
 }
- 
+
 export default ProductCards;
