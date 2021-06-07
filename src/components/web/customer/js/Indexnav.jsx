@@ -5,11 +5,14 @@ import { Container, Row, Col } from 'reactstrap';
 import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap';
 import "../../../../index.css";
 import logo from "../../../../assets/logo.png";
+import PropTypes from 'prop-types';
 
+Indexnav.propTypes = {
+    
+};
 
-class indexnav extends React.Component{
-    render(){
-      const navlink = {
+function Indexnav(props) {
+    const navlink = {
         color: "white",        
         padding: "10px",
         marginTop: "0px"
@@ -22,12 +25,11 @@ class indexnav extends React.Component{
           cursor: pointer;
         }
       `
-
-        return(
-            <div>
-                <Row>
+    return (
+        <div>
+            <Row>
                     <div className="col-md-12">                        
-                        <Navbar variant="dark" expand="lg" sticky="top" style={{backgroundColor:'#291B1B'}}>   
+                        <Navbar variant="dark" expand="lg" sticky="top" style={{backgroundColor:'#291B1B', maxWidth:'100%'}}>   
                             <Navbar.Brand href="#home"><img src={logo} alt={logo} width={60} height={60}></img></Navbar.Brand>
                             <Navbar.Brand href="#home" style={{color: '#FC7A30', fontStyle:'italic' , marginTop: '0px'}}><center>Ruwantha Furniture</center></Navbar.Brand>
                                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -54,9 +56,8 @@ class indexnav extends React.Component{
                             <br />                                                  
                     </div>
                   </Row>
-            </div>
-        )  
-    }
+        </div>
+    );
 }
 
-export default indexnav;
+export default Indexnav;

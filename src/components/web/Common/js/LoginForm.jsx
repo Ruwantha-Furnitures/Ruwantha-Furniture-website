@@ -1,51 +1,55 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "../css/Login.css";
 import Avatar from "../../../../assets/avatar.png";
+import PropTypes from 'prop-types';
 
-export default function LoginForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+LoginForm.propTypes = {
+    
+};
 
-  function validateForm() {
-    return email.length > 0 && password.length > 0;
-  }
+function LoginForm(props) {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
+    function validateForm() {
+        return email.length > 0 && password.length > 0;
+    }
 
-  const avatar = {
-      width: '40%',
-      height: '40%',
-      borderRadius: '50%'
-  }
+    function handleSubmit(event) {
+        event.preventDefault();
+    }
 
-  const belowlinks = {
-    color: "#FFF",
-    paddig: "10px"
-  }
+    const avatar = {
+        width: '40%',
+        height: '40%',
+        borderRadius: '50%'
+    }
 
-  const formlabel = {
-    color: "#FFF",
-    paddig: "20px"
-  }
+    const belowlinks = {
+        color: "#FFF",
+        paddig: "10px"
+    }
 
-  const loginform = {    
-    justifyContent: "left",
-    justifyItem: "left",
-    margin: "10px",
-    padding: "40px",
-    backgroundColor: "rgb(41, 27, 27, 0.9)",        
-    backgroundColor: "rgb(1,1,1, 0.8)",            
-    borderRadius: "20px",                    
-    color: "#FFF"
-  }
+    const formlabel = {
+        color: "#FFF",
+        paddig: "20px"
+    }
 
+    const loginform = {    
+        justifyContent: "left",
+        justifyItem: "left",
+        margin: "10px",
+        padding: "40px",
+        backgroundColor: "rgb(41, 27, 27, 0.9)",        
+        backgroundColor: "rgb(1,1,1, 0.8)",            
+        borderRadius: "20px",                    
+        color: "#FFF"
+    }
 
-  return (
-    <div className="Login" >        
+    return (
+        <div className="Login" >        
       <Form style={loginform} onSubmit={handleSubmit} align="left">
         <center><img src={Avatar} style={avatar}/></center><br />
         <Form.Group size="lg" controlId="email">
@@ -70,5 +74,7 @@ export default function LoginForm() {
         <center><a href={"#"} style={belowlinks}>Forgot Password</a></center>
       </Form>
     </div>
-  );
+    );
 }
+
+export default LoginForm;
