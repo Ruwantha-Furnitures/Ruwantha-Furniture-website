@@ -3,7 +3,6 @@ import Form from "react-bootstrap/Form";
 import { Container, Row, Col } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from "react-bootstrap/Button";
-import '../css/ContactForm.css';
 import PropTypes from 'prop-types';
 
 ContactForm.propTypes = {
@@ -48,17 +47,15 @@ function ContactForm(props) {
       
         }
 
-    return (
-        <div className="Login" style={loginform} >              
-        <div class='row'>
+    return (                    
+        <div className="col-md-12" style={loginform}> 
             <Form onSubmit={handleSubmit} align="left">
                 <h2 style={{marginTop: '20px'}}>CONTACT US</h2>
                 <Row>
                     <Col sm={12}>
-                        <Form.Group size="lg" controlId="name">
+                        <Form.Group size="sm" controlId="name">
                             <Form.Label>Name</Form.Label>
-                            <Form.Control  style={{width: '200px'}}
-                                autoFocus
+                            <Form.Control  style={{width: '200px'}}                                
                                 type="text"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
@@ -68,9 +65,9 @@ function ContactForm(props) {
                 </Row>
                 <Row>
                     <Col sm={12}>
-                        <Form.Group size="lg" controlId="telephone">
+                        <Form.Group size="sm" controlId="telephone">
                             <Form.Label>Telephone</Form.Label>
-                            <Form.Control                    
+                            <Form.Control style={{width: '200px'}}                     
                                 type="tele"
                                 value={telephone}
                                 onChange={(e) => setTelephone(e.target.value)}
@@ -80,9 +77,9 @@ function ContactForm(props) {
                 </Row>
                 <Row>
                     <Col sm={12}>
-                        <Form.Group size="lg" controlId="email">
+                        <Form.Group size="sm" controlId="email">
                             <Form.Label>Email</Form.Label>
-                            <Form.Control                    
+                            <Form.Control style={{width: '200px'}}                    
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
@@ -92,9 +89,9 @@ function ContactForm(props) {
                 </Row>
                 <Row>
                     <Col sm={12}>
-                        <Form.Group size="lg" controlId="description">
+                        <Form.Group size="sm" controlId="description">
                             <Form.Label>Description</Form.Label>
-                            <Form.Control
+                            <Form.Control style={{width: '200px'}} 
                                 type="textarea"
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
@@ -104,8 +101,7 @@ function ContactForm(props) {
                 </Row>
                 <center><button block size="lg" type="submit" class='btn'>Submit</button></center><br />
             </Form>
-      </div>
-    </div>
+      </div>    
     );
 }
 

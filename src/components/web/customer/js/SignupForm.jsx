@@ -52,7 +52,7 @@ export default function SignupForm() {
                 <center><h2>SIGN UP</h2></center><br />
                 <Row>
                     <Col sm={6}>
-                        <Form.Group size="lg" controlId="name">
+                        <Form.Group size="sm" controlId="name">
                             <Form.Label>Name</Form.Label>
                             <Form.Control
                                 autoFocus
@@ -63,7 +63,7 @@ export default function SignupForm() {
                         </Form.Group>
                     </Col>
                     <Col sm={6}>
-                        <Form.Group size="lg" controlId="uname">
+                        <Form.Group size="sm" controlId="uname">
                             <Form.Label style={formlabel}>Username</Form.Label>
                             <Form.Control
                                 type="text"
@@ -75,7 +75,7 @@ export default function SignupForm() {
                 </Row>
                 <Row>
                     <Col sm={12}>
-                        <Form.Group size="lg" controlId="address">
+                        <Form.Group size="sm" controlId="address">
                             <Form.Label style={formlabel}>Address</Form.Label>
                             <Form.Control
                                 type="text"
@@ -87,7 +87,7 @@ export default function SignupForm() {
                 </Row>
                 <Row>
                     <Col sm={6}>
-                        <Form.Group size="lg" controlId="telephone">
+                        <Form.Group size="sm" controlId="telephone">
                             <Form.Label>Telephone</Form.Label>
                             <Form.Control                    
                                 type="tele"
@@ -97,7 +97,7 @@ export default function SignupForm() {
                         </Form.Group>  
                     </Col>
                     <Col sm={6}>
-                        <Form.Group size="lg" controlId="email">
+                        <Form.Group size="sm" controlId="email">
                             <Form.Label>Email</Form.Label>
                             <Form.Control                    
                                 type="email"
@@ -109,7 +109,7 @@ export default function SignupForm() {
                 </Row>
                 <Row>
                     <Col sm={6}>
-                        <Form.Group size="lg" controlId="password">
+                        <Form.Group size="sm" controlId="password">
                             <Form.Label>Password</Form.Label>
                             <Form.Control
                                 type="password"
@@ -119,7 +119,7 @@ export default function SignupForm() {
                         </Form.Group>
                     </Col>
                     <Col sm={6}>
-                        <Form.Group size="lg" controlId="cpassword">
+                        <Form.Group size="sm" controlId="cpassword">
                             <Form.Label>Confirm Password</Form.Label>
                             <Form.Control
                                 type="password"
