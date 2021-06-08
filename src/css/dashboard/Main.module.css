@@ -4,15 +4,24 @@
   margin: 0;
   padding: 0;
   font-family: "Nunito Sans", sans-serif;
+  box-sizing: inherit;
 }
 
 body {
-  background: #eeeff5;
+  background: #eeeff5 !important;
 }
 
 ul {
   list-style: none;
 }
+
+h1 {
+  margin-bottom: 0;
+}
+/* 
+.bootstrapEffect {
+  box-sizing: inherit !important;
+} */
 
 .bodycontainer {
   display: flex;
