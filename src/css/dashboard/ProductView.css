@@ -118,9 +118,10 @@
   font-weight: 600;
   font-size: 17px;
   line-height: 19px;
-  text-align: center;
+  text-align: start;
   color: #000000;
-  width: 36%;
+  width: 32%;
+  padding-left: 31px;
   display: inline-block;
 }
 

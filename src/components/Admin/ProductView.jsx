@@ -77,10 +77,10 @@ function ProductView() {
                         />
                       </div>
                       <div className="productViewData">
-                        <label className="productViewLabelStyle">Type</label>
+                        <label className="productViewLabelStyle">Colour</label>
                         <input
                           type="text"
-                          value="Dining Suite"
+                          value="Brown"
                           className="productViewInputStyle"
                           readOnly
                         />
@@ -88,19 +88,19 @@ function ProductView() {
                     </div>
                     <div className="productViewFormLine">
                       <div className="productViewData">
-                        <label className="productViewLabelStyle">Type</label>
+                        <label className="productViewLabelStyle">Width</label>
                         <input
                           type="text"
-                          value="Dining Suite"
+                          value="172cm"
                           className="productViewInputStyle"
                           readOnly
                         />
                       </div>
                       <div className="productViewData">
-                        <label className="productViewLabelStyle">Type</label>
+                        <label className="productViewLabelStyle">Height</label>
                         <input
                           type="text"
-                          value="Dining Suite"
+                          value="185cm"
                           className="productViewInputStyle"
                           readOnly
                         />
@@ -108,19 +108,21 @@ function ProductView() {
                     </div>
                     <div className="productViewFormLine">
                       <div className="productViewData">
-                        <label className="productViewLabelStyle">Type</label>
+                        <label className="productViewLabelStyle">Price</label>
                         <input
                           type="text"
-                          value="Dining Suite"
+                          value="Rs.50 000"
                           className="productViewInputStyle"
                           readOnly
                         />
                       </div>
                       <div className="productViewData">
-                        <label className="productViewLabelStyle">Type</label>
+                        <label className="productViewLabelStyle">
+                          Discount
+                        </label>
                         <input
                           type="text"
-                          value="Dining Suite"
+                          value="10%"
                           className="productViewInputStyle"
                           readOnly
                         />
