@@ -1,0 +1,4 @@
+<div class='container-fluid' >   
+                </div> 
+
+<Navbar.Brand href="#home"><img src={logo} alt={logo} width={120} height={100}></img></Navbar.Brand>
