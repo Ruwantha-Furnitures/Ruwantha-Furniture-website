@@ -11,7 +11,7 @@ import ContactUs from "./components/web/customer/js/Contact";
 import Login from "./components/web/customer/js/Login";
 import Signup from "./components/web/customer/js/Signup";
 import test from "./components/Admin/test/test";
-// import test from "./components/other/test";
+import ProductView from "./components/Admin/ProductView";
 
 function App() {
   return (
@@ -20,7 +20,8 @@ function App() {
         <Switch>
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/dashboard/products" component={Products} />
-          <Route exact path="/test" component={test} />
+          <Route exact path="/dashboard/product/view" component={ProductView} />
+          <Route exact path="/dashboard/test" component={test} />
 
           <Route exact path="/home" component={Home} />
           <Route exact path="/product" component={Product} />
