@@ -1,14 +1,15 @@
 import React from "react";
-// import "../css/Table.css";
+import { Link } from "react-router-dom";
+import TableStyle from "../../../css/dashboard/Table.module.css";
 
 function ProductsTable() {
   return (
     <React.Fragment>
-      <div className="tabletitle">
-        <h1 className="tableTitleProductStyle">Products</h1>
+      <div className={TableStyle.tabletitle}>
+        <h1 className={TableStyle.tableTitleProductStyle}>Products</h1>
       </div>
-      <div className="tablebody">
-        <table className="tableShow">
+      <div className={TableStyle.tablebody}>
+        <table className={TableStyle.tableShow}>
           <thead>
             <tr>
               <th>Product</th>
@@ -20,56 +21,56 @@ function ProductsTable() {
           </thead>
           <tbody>
             <tr>
-              <td className="moreInfo">Desk(Plastic)</td>
+              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
               <td>Product Type 1</td>
               <td>Rs.25000</td>
               <td>Rs.250</td>
               <td>No.12</td>
             </tr>
             <tr>
-              <td className="moreInfo">Desk(Plastic)</td>
+              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
               <td>Product Type 1</td>
               <td>Rs.25000</td>
               <td>Rs.250</td>
               <td>No.12</td>
             </tr>
             <tr>
-              <td className="moreInfo">Desk(Plastic)</td>
+              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
               <td>Product Type 1</td>
               <td>Rs.25000</td>
               <td>Rs.250</td>
               <td>No.12</td>
             </tr>
             <tr>
-              <td className="moreInfo">Desk(Plastic)</td>
+              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
               <td>Product Type 1</td>
               <td>Rs.25000</td>
               <td>Rs.250</td>
               <td>No.12</td>
             </tr>
             <tr>
-              <td className="moreInfo">Desk(Plastic)</td>
+              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
               <td>Product Type 1</td>
               <td>Rs.25000</td>
               <td>Rs.250</td>
               <td>No.12</td>
             </tr>
             <tr>
-              <td className="moreInfo">Desk(Plastic)</td>
+              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
               <td>Product Type 1</td>
               <td>Rs.25000</td>
               <td>Rs.250</td>
               <td>No.12</td>
             </tr>
             <tr>
-              <td className="moreInfo">Desk(Plastic)</td>
+              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
               <td>Product Type 1</td>
               <td>Rs.25000</td>
               <td>Rs.250</td>
               <td>No.12</td>
             </tr>
             <tr>
-              <td className="moreInfo">Desk(Plastic)</td>
+              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
               <td>Product Type 1</td>
               <td>Rs.25000</td>
               <td>Rs.250</td>
@@ -78,32 +79,49 @@ function ProductsTable() {
           </tbody>
         </table>
       </div>
-      <div className="tablePagination">
-        <a href="#" className="paginationLink">
-          <span class="material-icons paginationArrowIcon">arrow_back_ios</span>
-        </a>
-        <a href="#" className="paginationLink">
-          <span className="material-icons paginationCircleIcon active">
+      <div className={TableStyle.tablePagination}>
+        <Link to="#" className={TableStyle.paginationLink}>
+          <span class={"material-icons " + TableStyle.paginationArrowIcon}>
+            arrow_back_ios
+          </span>
+        </Link>
+        <Link to="#" className={TableStyle.paginationLink}>
+          <span
+            className={
+              "material-icons " +
+              TableStyle.paginationCircleIcon +
+              " " +
+              TableStyle.active
+            }
+          >
             circle
           </span>
-        </a>
-        <a href="#" className="paginationLink">
-          <span className="material-icons paginationCircleIcon">circle</span>
-        </a>
-        <a href="#" className="paginationLink">
-          <span className="material-icons paginationCircleIcon">circle</span>
-        </a>
-        <a href="#" className="paginationLink">
-          <span className="material-icons paginationCircleIcon">circle</span>
-        </a>
-        <a href="#" className="paginationLink">
-          <span className="material-icons paginationCircleIcon">circle</span>
-        </a>
-        <a href="#" className="paginationLink">
-          <span class="material-icons paginationArrowIcon">
+        </Link>
+        <Link to="#" className={TableStyle.paginationLink}>
+          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
+            circle
+          </span>
+        </Link>
+        <Link to="#" className={TableStyle.paginationLink}>
+          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
+            circle
+          </span>
+        </Link>
+        <Link to="#" className={TableStyle.paginationLink}>
+          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
+            circle
+          </span>
+        </Link>
+        <Link to="#" className={TableStyle.paginationLink}>
+          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
+            circle
+          </span>
+        </Link>
+        <Link to="#" className={TableStyle.paginationLink}>
+          <span class={"material-icons " + TableStyle.paginationArrowIcon}>
             arrow_forward_ios
           </span>
-        </a>
+        </Link>
       </div>
     </React.Fragment>
   );

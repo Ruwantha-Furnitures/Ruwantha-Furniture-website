@@ -5,7 +5,7 @@ import ProductBox from "../js/ProductCards";
 import Navigation from "../js/indexnav";
 import Footer from "../../Common/Footer";
 import "../css/Home.css";
-import "../../../../css/web/test.less";
+// import "../../../../css/web/test.less";
 
 class Home extends Component {
   render() {

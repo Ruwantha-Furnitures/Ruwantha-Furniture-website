@@ -7,7 +7,7 @@ import {
   NavDropdown,
   Form,
   FormControl,
-  Button,
+  // Button,
 } from "react-bootstrap";
 import "../../../../index.css";
 import logo from "../../../../assets/logo.png";
@@ -64,13 +64,20 @@ class indexnav extends React.Component {
                   <div className="row">
                     <div className="col-md-6">
                       <Nav.Link href="/signup">
-                        <Button className={StyleButton.btn}>Sign Up</Button>
+                        {/* <input type="button" className={StyleButton.btn} /> */}
+                        <button type="button" className={StyleButton.btn}>
+                          Sign Up
+                        </button>
+                        {/* <Button className={StyleButton.btn}>Sign Up</Button> */}
                       </Nav.Link>
                     </div>
                     <div className="col-md-6">
                       <Nav.Link href="/login">
+                        <button type="button" className={StyleButton.btn}>
+                          Sign In
+                        </button>
                         {/* <Button className="btn">Login</Button> */}
-                        <Button variant="secondary">Primary</Button>
+                        {/* <Button variant="secondary">Primary</Button> */}
                       </Nav.Link>
                     </div>
                   </div>

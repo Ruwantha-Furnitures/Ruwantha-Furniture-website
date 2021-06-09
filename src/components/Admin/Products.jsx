@@ -1,37 +1,36 @@
-// import React from "react";
-// import Navbar from "./common/Navbar";
-// import ProductsTable from "./common/ProductsTable";
-// import Sidebar from "./common/Sidebar";
-// import "./css/Products.css";
-// import "./css/Main.css";
-// import AllProductsView from "./common/AllProductsView";
+import React from "react";
+import Navbar from "./common/Navbar";
+import ProductsTable from "./common/ProductsTable";
+import Sidebar from "./common/Sidebar";
+import AllProductsView from "./common/AllProductsView";
+import MainStyle from "../../css/dashboard/Main.module.css";
+import ProductStyle from "../../css/dashboard/Products.module.css";
 
-// function Products() {
-//   return (
-//     <div className="bodycontainer">
-//       <div className="navSection">
-//         <Navbar />
-//       </div>
-//       {/* Body */}
-//       <div className="bodySection">
-//         {/* Sidebar */}
+function Products() {
+  return (
+    <div className={MainStyle.bodycontainer}>
+      <div className={MainStyle.navSection}>
+        <Navbar />
+      </div>
+      {/* Body */}
+      <div className={MainStyle.bodySection}>
+        {/* Sidebar */}
+        <div className={MainStyle.sidebarSection}>
+          <Sidebar />
+        </div>
+        <div className={ProductStyle.cardDataSection}>
+          <div className={ProductStyle.detailsSection}>
+            <div className={ProductStyle.detailCard}>
+              <ProductsTable />
+            </div>
+          </div>
+          <div className={ProductStyle.productsViewSection}>
+            <AllProductsView />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
-//         <div className="sidebarSection">
-//           <Sidebar />
-//         </div>
-//         <div className="cardDataSection">
-//           <div className="detailsSection">
-//             <div className="detailCard">
-//               <ProductsTable />
-//             </div>
-//           </div>
-//           <div className="productsViewSection">
-//             <AllProductsView />
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Products;
+export default Products;

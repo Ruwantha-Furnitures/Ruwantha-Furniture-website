@@ -99,16 +99,16 @@ td {
   align-items: center;
 }
 
-.material-icons.paginationArrowIcon {
+.paginationArrowIcon {
   color: #542b14;
   font-size: 27px;
 }
 
-.material-icons.paginationCircleIcon {
+.paginationCircleIcon {
   color: #b89068;
   font-size: 17px;
 }
-.material-icons.paginationCircleIcon.active {
+.paginationCircleIcon.active {
   color: #542b14;
   font-size: 17px;
 }
