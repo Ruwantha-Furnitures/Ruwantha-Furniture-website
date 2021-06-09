@@ -1,4 +1,4 @@
-.productViewTitleStyle {
+.titleStyle {
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
@@ -8,12 +8,12 @@
   margin-left: 7px;
 }
 
-.productViewDetails {
+.details {
   display: flex;
   flex-direction: column;
 }
 
-.productViewImgDescPart {
+.imgDescPart {
   order: 1;
   width: 100%;
   display: flex;
@@ -21,7 +21,7 @@
   margin-top: 8px;
 }
 
-.prductViewInfoPart {
+.infoPart {
   order: 2;
   width: 100%;
   background-color: #dbdbdb;
@@ -32,7 +32,7 @@
   margin-bottom: 6px;
 }
 
-.productViewImg {
+.Img {
   order: 1;
   width: 45%;
   height: 253px;
@@ -40,7 +40,7 @@
   margin-right: 39px;
 }
 
-.productViewDesc {
+.desc {
   order: 2;
   width: 55%;
   /* width: 287px; */
@@ -51,23 +51,23 @@
   border-radius: 22px;
 }
 
-.ProductImageStyle {
+.productImageStyle {
   width: 100%;
   /* position: inherit; */
   border-radius: 22px;
 }
 
-.productViewDescTitle {
+.descTitle {
   order: 1;
   margin-top: 10px;
 }
 
-.productViewDescDetails {
+.descDetails {
   order: 2;
   margin-top: 9px;
 }
 
-.productViewDescButtons {
+.descButtons {
   order: 3;
   display: inline-flex;
   justify-content: center;
@@ -75,7 +75,7 @@
   margin-bottom: 16px;
 }
 
-.productViewDescTitleStyle {
+.descTitleStyle {
   font-weight: 600;
   font-size: 21px;
   line-height: 33px;
@@ -83,7 +83,7 @@
   justify-content: center;
 }
 
-.productViewDescDetailsStyle {
+.descDetailsStyle {
   font-size: 16px;
   display: flex;
   justify-content: center;
@@ -91,7 +91,7 @@
   margin-right: 25px;
 }
 
-.productViewDescButton {
+.descButton {
   height: 38px;
 }
 
@@ -99,7 +99,7 @@
   margin-right: 25px;
 }
 
-.productViewDescButtonStyle {
+.descButtonStyle {
   width: 92px;
   height: 33px;
   background: #be622e;
@@ -114,7 +114,7 @@
   cursor: pointer;
 }
 
-.productViewLabelStyle {
+.labelStyle {
   font-weight: 600;
   font-size: 17px;
   line-height: 19px;
@@ -125,11 +125,11 @@
   display: inline-block;
 }
 
-.productViewForm {
+.form {
   margin: 17px;
 }
 
-.productViewFormLine {
+.formLine {
   display: inline-flex;
   width: 100%;
   margin-bottom: 24px;
@@ -139,11 +139,11 @@
   margin-top: 24px;
 }
 
-.productViewData {
+.data {
   width: 50%;
 }
 
-.productViewInputStyle {
+.inputStyle {
   height: 33px;
   background: #ffffff;
   border-radius: 22px;

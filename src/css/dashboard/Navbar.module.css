@@ -128,10 +128,13 @@ input:-webkit-autofill:active {
 .accounticon {
   color: #542b14;
   font-size: 44px;
+  display: flex;
 }
 
 .logout {
   height: 38px;
+  display: flex;
+  align-items: center;
 }
 
 .alignSection {
