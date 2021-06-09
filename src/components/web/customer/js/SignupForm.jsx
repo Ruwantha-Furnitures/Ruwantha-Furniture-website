@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import { Container, Row, Col } from 'reactstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from "react-bootstrap/Button";
 import '../css/Signup.css';
 
 export default function SignupForm() {
+  require("bootstrap/dist/css/bootstrap.min.css");
   const [name, setName] = useState("");
   const [uname, setUname] = useState("");
   const [email, setEmail] = useState("");

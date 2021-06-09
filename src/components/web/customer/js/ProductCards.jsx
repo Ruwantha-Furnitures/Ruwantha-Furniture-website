@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+//import "bootstrap/dist/css/bootstrap.min.css";
 import item1 from "../../../../assets/items/10.jpg";
 import item2 from "../../../../assets/items/9.jpg";
 import item3 from "../../../../assets/items/11.jpg";
