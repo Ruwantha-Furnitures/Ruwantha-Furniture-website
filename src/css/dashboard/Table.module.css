@@ -91,6 +91,7 @@ td {
   flex-direction: row;
   justify-content: flex-end;
   margin-top: 40px;
+  float: right;
 }
 
 .paginationLink {

@@ -5,6 +5,12 @@
   border-radius: 22px;
 }
 
+.sidebarLink {
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+}
+
 .sideList {
   margin-top: 40px;
   margin-bottom: 60px;

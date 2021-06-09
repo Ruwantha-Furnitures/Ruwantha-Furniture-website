@@ -81,7 +81,7 @@ function ProductsTable() {
       </div>
       <div className={TableStyle.tablePagination}>
         <Link to="#" className={TableStyle.paginationLink}>
-          <span class={"material-icons " + TableStyle.paginationArrowIcon}>
+          <span className={"material-icons " + TableStyle.paginationArrowIcon}>
             arrow_back_ios
           </span>
         </Link>
@@ -118,7 +118,7 @@ function ProductsTable() {
           </span>
         </Link>
         <Link to="#" className={TableStyle.paginationLink}>
-          <span class={"material-icons " + TableStyle.paginationArrowIcon}>
+          <span className={"material-icons " + TableStyle.paginationArrowIcon}>
             arrow_forward_ios
           </span>
         </Link>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import SidebarStyle from "../../../css/dashboard/Sidebar.module.css";
 
 function Sidebar() {
@@ -7,28 +8,32 @@ function Sidebar() {
       <div className={SidebarStyle.sideList}>
         <ul>
           <li>
-            <div className={SidebarStyle.lineSection}>
-              <div className={SidebarStyle.lineIcon}>
-                <span className={"material-icons " + SidebarStyle.iconWidth}>
-                  home
-                </span>
+            <Link to="/dashboard" className={SidebarStyle.sidebarLink}>
+              <div className={SidebarStyle.lineSection}>
+                <div className={SidebarStyle.lineIcon}>
+                  <span className={"material-icons " + SidebarStyle.iconWidth}>
+                    home
+                  </span>
+                </div>
+                <div className={SidebarStyle.lineText}>
+                  <h1 className={SidebarStyle.lineTextStyle}>Dashboard</h1>
+                </div>
               </div>
-              <div className={SidebarStyle.lineText}>
-                <h1 className={SidebarStyle.lineTextStyle}>Dashboard</h1>
-              </div>
-            </div>
+            </Link>
           </li>
           <li>
-            <div className={SidebarStyle.lineSection}>
-              <div className={SidebarStyle.lineIcon}>
-                <span className={"material-icons " + SidebarStyle.iconWidth}>
-                  chair
-                </span>
+            <Link to="/dashboard/products" className={SidebarStyle.sidebarLink}>
+              <div className={SidebarStyle.lineSection}>
+                <div className={SidebarStyle.lineIcon}>
+                  <span className={"material-icons " + SidebarStyle.iconWidth}>
+                    chair
+                  </span>
+                </div>
+                <div className={SidebarStyle.lineText}>
+                  <h1 className={SidebarStyle.lineTextStyle}>Product</h1>
+                </div>
               </div>
-              <div className={SidebarStyle.lineText}>
-                <h1 className={SidebarStyle.lineTextStyle}>Product</h1>
-              </div>
-            </div>
+            </Link>
           </li>
           <li>
             <div className={SidebarStyle.lineSection}>
