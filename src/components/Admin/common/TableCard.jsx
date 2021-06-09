@@ -1,14 +1,14 @@
 import React from "react";
-import "../css/Table.css";
+import TableCardStyle from "../../../css/dashboard/Table.module.css";
 
 function TableCard() {
   return (
-    <div className="table">
-      <div className="tabletitle">
-        <h1 className="tableTitleStyle">Top Selling Products</h1>
+    <div className={TableCardStyle.table}>
+      <div className={TableCardStyle.tabletitle}>
+        <h1 className={TableCardStyle.tableTitleStyle}>Top Selling Products</h1>
       </div>
-      <div className="tablebody">
-        <table className="tableShow">
+      <div className={TableCardStyle.tablebody}>
+        <table className={TableCardStyle.tableShow}>
           <thead>
             <tr>
               <th>Product</th>
