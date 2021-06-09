@@ -10,7 +10,7 @@ import {
 } from "react-bootstrap";
 
 function test() {
-  require("bootstrap/dist/css/bootstrap.min.css");
+  require("bootstrap/dist/css/bootstrap.min.css");//for the component only
   return (
     <>
       <Navbar bg="dark" variant="dark">

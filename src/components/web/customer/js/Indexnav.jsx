@@ -1,17 +1,18 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from 'styled-components'; //to add hover
 import { Container, Row, Col } from 'reactstrap';
 import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap';
-import "../../../../index.css";
 import logo from "../../../../assets/logo.png";
 import PropTypes from 'prop-types';
+import NavButtonStyle from "../css/common.module.css"
 
 Indexnav.propTypes = {
     
 };
 
 function Indexnav(props) {
+    require("bootstrap/dist/css/bootstrap.min.css");
     const navlink = {
         color: "white",        
         padding: "20px",
@@ -50,10 +51,10 @@ function Indexnav(props) {
                     <Form inline>                
                         <Row>
                             <Col sm={6}>
-                                <a href="/signup" ><Button class="btn">Sign Up</Button></a>
+                                <a href="/signup" ><button className={NavButtonStyle.btn}>Sign Up</button></a>
                             </Col>
                             <Col sm={6}>
-                                <a href="/login" ><Button class="btn">Login</Button></a>
+                                <a href="/login" ><Button className={NavButtonStyle.btn}>Login</Button></a>
                             </Col>
                         </Row>                   
                     </Form>    
