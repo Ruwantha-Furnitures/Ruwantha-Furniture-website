@@ -1,6 +1,6 @@
 import React from 'react';
 import Navigation from "./Indexnav";
-import Footer from "../../Common/js/Footer";
+import Footer from "../Common/Footer";
 import ProductBox from "./ProductCards";
 import PropTypes from 'prop-types';
 

@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import "../css/Login.css";
-import Avatar from "../../../../assets/avatar.png";
+import "../../../css/web/Login.css";
+import Avatar from "../../../assets/avatar.png";
+import NavButtonStyle from "../../../css/web/common.module.css";
 import PropTypes from 'prop-types';
 
 LoginForm.propTypes = {
@@ -69,7 +70,7 @@ function LoginForm(props) {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
-            <center><button block size="lg" type="submit" class='btn'>Login</button></center><br />
+            <center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Login</button></center><br />
             <center><a href={"#"} style={belowlinks}>Don't have an account?</a></center>
             <center><a href={"#"} style={belowlinks}>Forgot Password</a></center>
           </Form>

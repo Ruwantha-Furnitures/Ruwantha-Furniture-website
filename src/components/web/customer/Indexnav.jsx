@@ -2,10 +2,11 @@ import React from 'react';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from 'styled-components'; //to add hover
 import { Container, Row, Col } from 'reactstrap';
+import { Link } from "react-router-dom";
 import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap';
 import logo from "../../../../assets/logo.png";
 import PropTypes from 'prop-types';
-import NavButtonStyle from "../css/common.module.css";
+import NavButtonStyle from "../../../css/web/common.module.css";
 
 Indexnav.propTypes = {
     
@@ -51,10 +52,10 @@ function Indexnav(props) {
                     <Form inline>                
                         <Row>
                             <Col sm={6}>
-                                <a href="/signup" ><Button className={NavButtonStyle.btn}>Sign Up</Button></a>
+                                <Link to="/signup" ><button className={NavButtonStyle.btn}>Sign Up</button></Link>
                             </Col>
                             <Col sm={6}>
-                                <a href="/login" ><Button className={NavButtonStyle.btn}>Login</Button></a>
+                                <Link to="/login" ><button className={NavButtonStyle.btn}>Login</button></Link>
                             </Col>
                         </Row>                   
                     </Form>    

@@ -8,8 +8,8 @@ FooterLink,
 Heading,
 } from "./FooterStyles";
 
-import logo from "../../../../assets/logo.png";
-import Appicon from "../../../../assets/google.svg";
+import logo from "../../../assets/logo.png";
+import Appicon from "../../../assets/google.svg";
 
 const Footer = () => {
 return (
