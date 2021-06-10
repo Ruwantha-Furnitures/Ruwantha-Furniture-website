@@ -1,0 +1,22 @@
+
+.innerbox {
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(0,0,0,0.8);
+    width: 30%;    
+    margin-bottom: 20px;  
+    border-radius: 20px;  
+    color: #FFF;
+}
+
+@media screen and (max-width: 798px) {
+    .innerbox {            
+        width: 30%;
+    }
+  }
+  
+  @media screen and (max-width: 400px) {
+    .innerbox {
+        width: 100%;
+    }
+  }

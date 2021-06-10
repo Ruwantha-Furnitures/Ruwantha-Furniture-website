@@ -19,7 +19,7 @@ Banner.propTypes = {
 function Banner(props) {
     return (
         <div>
-             <div className='container-fluid' >  
+             <div style={{marginTop: '-50px'}}>  
                     <Carousel> 
                         <Carousel.Item style={{'height':"500px"}} >  
                             <img style={{'height':"500px"}}  

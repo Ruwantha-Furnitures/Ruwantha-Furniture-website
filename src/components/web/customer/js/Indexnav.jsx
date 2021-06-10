@@ -5,7 +5,7 @@ import { Container, Row, Col } from 'reactstrap';
 import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap';
 import logo from "../../../../assets/logo.png";
 import PropTypes from 'prop-types';
-import NavButtonStyle from "../css/common.module.css"
+import NavButtonStyle from "../css/common.module.css";
 
 Indexnav.propTypes = {
     
@@ -15,7 +15,7 @@ function Indexnav(props) {
     require("bootstrap/dist/css/bootstrap.min.css");
     const navlink = {
         color: "white",        
-        padding: "20px",
+        padding: "10px",
         marginTop: "0px"
       };
 
@@ -51,7 +51,7 @@ function Indexnav(props) {
                     <Form inline>                
                         <Row>
                             <Col sm={6}>
-                                <a href="/signup" ><button className={NavButtonStyle.btn}>Sign Up</button></a>
+                                <a href="/signup" ><Button className={NavButtonStyle.btn}>Sign Up</Button></a>
                             </Col>
                             <Col sm={6}>
                                 <a href="/login" ><Button className={NavButtonStyle.btn}>Login</Button></a>
