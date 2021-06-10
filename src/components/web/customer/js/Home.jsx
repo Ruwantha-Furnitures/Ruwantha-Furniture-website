@@ -26,15 +26,9 @@ function Home(props) {
         <div>
             <Navigation></Navigation>                     
             <Slideshow></Slideshow>
-            <ProductBox></ProductBox>    
-            <div className="col-md-12">         
-                <Row>
-                <Col sm={8} style={contactImg}></Col>
-                <Col sm={4}><ContactFormHome></ContactFormHome></Col>              
-                </Row>
-                
-                <Footer></Footer>
-            </div>
+            <ProductBox></ProductBox>                        
+               
+            <Footer></Footer>            
         </div>
     );
 }

@@ -50,30 +50,30 @@ function LoginForm(props) {
 
     return (
         <div className="Login" >        
-      <Form style={loginform} onSubmit={handleSubmit} align="left">
-        <center><img src={Avatar} style={avatar}/></center><br />
-        <Form.Group size="sm" controlId="email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            autoFocus
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group size="sm" controlId="password">
-          <Form.Label style={formlabel}>Password</Form.Label>
-          <Form.Control
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form.Group>
-        <center><button block size="lg" type="submit" class='btn'>Login</button></center><br />
-        <center><a href={"#"} style={belowlinks}>Don't have an account?</a></center>
-        <center><a href={"#"} style={belowlinks}>Forgot Password</a></center>
-      </Form>
-    </div>
+          <Form style={loginform} onSubmit={handleSubmit} align="left">
+            <center><img src={Avatar} style={avatar}/></center><br />
+            <Form.Group size="sm" controlId="email">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                autoFocus
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group size="sm" controlId="password">
+              <Form.Label style={formlabel}>Password</Form.Label>
+              <Form.Control
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
+            <center><button block size="lg" type="submit" class='btn'>Login</button></center><br />
+            <center><a href={"#"} style={belowlinks}>Don't have an account?</a></center>
+            <center><a href={"#"} style={belowlinks}>Forgot Password</a></center>
+          </Form>
+        </div>
     );
 }
 

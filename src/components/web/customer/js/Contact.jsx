@@ -1,30 +1,26 @@
 import React, {useState} from 'react';
-import Form from "react-bootstrap/Form";
 import Navigation from "./Indexnav";
 import { Container, Row, Col } from 'reactstrap';
-import Topimg from '../../../../assets/topimg1.jpg';
+import Topimg from '../../../../assets/topimg2.jpg';
+import ConForm from './ContactForm';
 import Footer from "../../Common/js/Footer";
-import '../css/Form.css'
 
 function Contact(props) {
-    require("bootstrap/dist/css/bootstrap.min.css");
+    
     const contactImg = {
         backgroundImage: `url(${Topimg})` ,
+        repeat: 'none',
         padding: '0',
-        margin: '0'
+        MaxWidth: "100%"
     }
-    return (        
-        <div className="col-md-12" style={contactImg}>
-            <Navigation></Navigation>               
-            <center>
-                <div class="formbox">
-                    <form>
-                        dfasfdsf
-                    </form>
-                </div>
-            </center>        
+    return (                            
+        <div className="col-md-12" style={contactImg}>                                     
+            <Navigation></Navigation> 
+            <Container align="right">
+                <ConForm></ConForm>
+            </Container>
             <Footer></Footer>            
-        </div>
+        </div>                   
     );
 }
 
