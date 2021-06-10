@@ -4,8 +4,8 @@ import { Container, Row, Col } from 'reactstrap';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from "react-bootstrap/Button";
 import PropTypes from 'prop-types';
-import NavButtonStyle from "../css/common.module.css";
-import FormStyle from '../css/Form.module.css';
+import NavButtonStyle from "../../../css/web/common.module.css";
+import FormStyle from '../../../css/web/Form.module.css';
 
 ContactForm.propTypes = {
     

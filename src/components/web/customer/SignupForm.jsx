@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import { Container, Row, Col } from 'reactstrap';
 //import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from "react-bootstrap/Button";
-import '../css/Signup.css';
+import NavButtonStyle from "../../../css/web/common.module.css";
+import '../../../css/web/Signup.css';
 
 export default function SignupForm() {
   require("bootstrap/dist/css/bootstrap.min.css");
@@ -142,7 +142,7 @@ export default function SignupForm() {
                         </Form>
                     </Col>
                 </Row>
-                <center><button block size="lg" type="submit" class='btn'>Sign Up</button></center><br />
+                <center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Sign Up</button></center><br />
             </Form>
       </div>
     </div>

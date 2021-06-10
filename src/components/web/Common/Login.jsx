@@ -1,11 +1,11 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import styled from 'styled-components';
-import Navigation from "../../customer/js/Indexnav";
+import Navigation from "../customer/Indexnav";
 import LoginForm from "./LoginForm";
 import Footer from "./Footer";
-import backcover from "../../../../assets/login9.jpg";
-import "../css/Login.css"
+import backcover from "../../../assets/login9.jpg";
+import "../../../css/web/Login.css"
 import PropTypes from 'prop-types';
 
 Login.propTypes = {

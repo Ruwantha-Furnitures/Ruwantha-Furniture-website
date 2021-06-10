@@ -2,20 +2,20 @@ import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
 //import 'bootstrap/dist/css/bootstrap.min.css';
-import Topimg from '../../../../assets/topimg1.jpg';
-import ProductBox from "./ProductCards";
-import Navigation from "./Indexnav";
-import Slideshow from './Banner';
-import ContactFormHome from "./ContactForm";
-import Footer from "../../Common/js/Footer";
-import '../css/Home.css';  
+import Topimg from '../../../assets/topimg1.jpg';
+import ProductBox from "../customer/ProductCards";
+import Navigation from "./UserNav";
+import Slideshow from '../customer/Banner';
+import Footer from "../Common/Footer";
+import '../../../css/web/Home.css';  
+import '../../../css/web/common.module.css';  
 import PropTypes from 'prop-types';
 
-Home.propTypes = {
+CustomerHome.propTypes = {
     
 };
 
-function Home(props) {
+function CustomerHome(props) {
     require("bootstrap/dist/css/bootstrap.min.css");
     const contactImg = {
         backgroundImage: `url(${Topimg})` ,
@@ -26,11 +26,10 @@ function Home(props) {
         <div>
             <Navigation></Navigation>                     
             <Slideshow></Slideshow>
-            <ProductBox></ProductBox>                        
-               
+            <ProductBox></ProductBox>                                       
             <Footer></Footer>            
         </div>
     );
 }
 
-export default Home;
+export default CustomerHome;
