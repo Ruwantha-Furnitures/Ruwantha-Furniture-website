@@ -4,7 +4,7 @@ import styled from 'styled-components'; //to add hover
 import { Container, Row, Col } from 'reactstrap';
 import { Link } from "react-router-dom";
 import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap';
-import logo from "../../../../assets/logo.png";
+import logo from "../../../assets/logo.png";
 import PropTypes from 'prop-types';
 import NavButtonStyle from "../../../css/web/common.module.css";
 

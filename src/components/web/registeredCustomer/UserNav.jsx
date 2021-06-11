@@ -5,8 +5,10 @@ import { Container, Row, Col } from 'reactstrap';
 import { Link } from "react-router-dom";
 import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap';
 import logo from "../../../assets/logo.png";
+import ShoppingCart from "./Cart";
 import PropTypes from 'prop-types';
 import NavButtonStyle from "../../../css/web/common.module.css";
+import "../../../css/web/cart.css";
 
 UserNav.propTypes = {
     
@@ -37,8 +39,8 @@ function UserNav(props) {
       `
     return (        
             <div> 
-            <Navbar variant="dark" expand="lg" sticky="top" style={{backgroundColor:'#291B1B', maxWidth:'100%'}}>
-            <Navbar.Brand href="#home" style={{marginTop:'-20px'}}>
+            <Navbar variant="dark" expand="lg" sticky="top" style={{backgroundColor: '#291B1B', maxWidth: '100%'}}>
+            <Navbar.Brand href="#home" style={{marginTop: '-20px'}}>
                     <img src={logo} alt={logo} width={100} height={100}></img>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -53,16 +55,10 @@ function UserNav(props) {
                         <Row>
                             <Col>
                                 <Link to="/login" >
-                                    <span class="fa-stack fa-2x has-badge" data-count="5">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
-                                        </span>
-
-                                        <span class="fa-stack fa-2x has-badge" data-count="5">
-                                        <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
-                                        <i style="" class="fa fa-shopping-cart fa-stack-2x red-cart"></i>
-                                    </span>
+                                    <ShoppingCart></ShoppingCart>
                                 </Link>
+                            </Col>
+                            <Col>
                                 <Link to="/login" ><button className={NavButtonStyle.btn}>Logout</button></Link>
                             </Col>
                         </Row>                   

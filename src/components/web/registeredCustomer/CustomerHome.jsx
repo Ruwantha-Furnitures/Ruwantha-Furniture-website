@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
-
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import Topimg from '../../../assets/topimg1.jpg';
 import ProductBox from "../customer/ProductCards";
@@ -25,7 +24,7 @@ function CustomerHome(props) {
     return (
         <div>
             <Navigation></Navigation>                     
-            <Slideshow></Slideshow>
+            <Slideshow></Slideshow>            
             <ProductBox></ProductBox>                                       
             <Footer></Footer>            
         </div>
