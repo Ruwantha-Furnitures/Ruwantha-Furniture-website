@@ -31,10 +31,9 @@ function ProductAdd() {
                 <div className={ProductViewFormStyle.details}>
                   <div className={ProductViewFormStyle.imgDescPart}>
                     <div className={ProductViewFormStyle.Img}>
-                      <img
-                        src={ProductImage}
-                        alt=""
-                        className={ProductViewFormStyle.productImageStyle}
+                      <input
+                        type="file"
+                        className={ProductViewFormStyle.productImageAddStyle}
                       />
                     </div>
                     <div className={ProductViewFormStyle.desc}>
@@ -65,28 +64,6 @@ function ProductAdd() {
                           />
                         </div>
                       </div>
-                      {/* <div className={ProductViewFormStyle.descButtons}>
-                      <div
-                        className={
-                          ProductViewFormStyle.descButton +
-                          " " +
-                          ProductViewFormStyle.sidemargin
-                        }
-                      >
-                        <button
-                          className={ProductViewFormStyle.descButtonStyle}
-                        >
-                          Update
-                        </button>
-                      </div>
-                      <div className={ProductViewFormStyle.descButton}>
-                        <button
-                          className={ProductViewFormStyle.descButtonStyle}
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </div> */}
                     </div>
                   </div>
                   <div className={ProductViewFormStyle.infoPart}>
@@ -170,6 +147,13 @@ function ProductAdd() {
                         </div>
                       </div>
                     </div>
+                  </div>
+                </div>
+                <div className={ProductViewFormStyle.descButtonsAdd}>
+                  <div className={ProductViewFormStyle.descButtonAdd}>
+                    <button className={ProductViewFormStyle.descButtonAddStyle}>
+                      Add Product
+                    </button>
                   </div>
                 </div>
               </form>
