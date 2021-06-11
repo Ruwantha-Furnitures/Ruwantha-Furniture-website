@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import Navigation from "./Indexnav";
 import Footer from "../Common/Footer";
 import SignForm from "./SignupForm";
-import backcover from "../../../../assets/login9.jpg";
+import backcover from "../../../assets/login9.jpg";
 import PropTypes from 'prop-types';
 
 Signup.propTypes = {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
 //import 'bootstrap/dist/css/bootstrap.min.css';
-import Topimg from '../../../../assets/topimg1.jpg';
+import Topimg from '../../../assets/topimg1.jpg';
 import ProductBox from "./ProductCards";
 import Navigation from "./Indexnav";
 import Slideshow from './Banner';
