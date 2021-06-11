@@ -34,17 +34,17 @@
 
 .Img {
   order: 1;
-  width: 45%;
-  height: 253px;
+  width: 34%;
+  height: 221px;
   display: flex;
   margin-right: 39px;
 }
 
 .desc {
   order: 2;
-  width: 55%;
+  width: 60.5%;
   /* width: 287px; */
-  height: 253px;
+  height: 221px;
   background-color: #dbdbdb;
   display: flex;
   flex-direction: column;
@@ -59,12 +59,12 @@
 
 .descTitle {
   order: 1;
-  margin-top: 10px;
+  /* margin-top: 0px; */
 }
 
 .descDetails {
   order: 2;
-  margin-top: 9px;
+  margin-top: 0px;
 }
 
 .descButtons {
@@ -89,6 +89,44 @@
   justify-content: center;
   margin-left: 25px;
   margin-right: 25px;
+}
+
+.dataProductTitle {
+  /* display: flex; */
+  display: inline-flex;
+  width: 99.5%;
+  margin-top: 15px;
+  /* flex-direction: row;*/
+}
+
+.labelProductTitle {
+  order: 1;
+  width: 29%;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 19px;
+  text-align: start;
+  color: #000000;
+  align-items: center;
+  /* justify-content: normal; */
+  /* width: 32%; */
+  /* margin-top: 12px; */
+  padding-left: 31px;
+  display: flex;
+}
+
+.inputProductTitle {
+  order: 2;
+  height: 33px;
+  background: #ffffff;
+  border-radius: 22px;
+  border: none;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  color: #000000;
+  padding-left: 15px;
+  width: 56.6%;
 }
 
 .descButton {
@@ -126,21 +164,57 @@
 }
 
 .form {
-  margin: 17px;
+  margin: 14px;
 }
 
 .formLine {
   display: inline-flex;
   width: 100%;
-  margin-bottom: 24px;
+  margin-bottom: 21px;
 }
 
 .setMarginTop {
-  margin-top: 24px;
+  margin-top: 9px;
 }
 
 .data {
   width: 50%;
+}
+
+.dataTitle {
+  width: 100%;
+  /* display: inline-flex; */
+  display: flex;
+  flex-direction: column;
+}
+
+.labelStyleTitle {
+  order: 1;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 19px;
+  text-align: start;
+  color: #000000;
+  /* width: 32%; */
+  margin-top: 12px;
+  padding-left: 31px;
+  display: inline-block;
+}
+
+.inputStyleTitle {
+  order: 2;
+  height: 33px;
+  background: #ffffff;
+  border-radius: 22px;
+  border: none;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  color: #000000;
+  padding-left: 15px;
+  width: 88%;
+  margin-left: 20px;
+  margin-top: 13px;
 }
 
 .inputStyle {
@@ -158,4 +232,30 @@
 
 input[type="text"]:focus {
   outline: none;
+}
+/* input[type="textarea"]:focus {
+  outline: none;
+} */
+
+textarea:focus {
+  outline: none;
+}
+
+.inputStyleDesc {
+  order: 2;
+
+  height: 106px;
+  background: #ffffff;
+  border-radius: 22px;
+  border: none;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  color: #000000;
+  padding-left: 15px;
+  padding-top: 9px;
+  width: 88%;
+  margin-left: 20px;
+  margin-top: 13px;
+  resize: none;
 }
