@@ -81,6 +81,7 @@
   line-height: 33px;
   display: flex;
   justify-content: center;
+  margin-top: 6px;
 }
 
 .descDetailsStyle {
@@ -89,6 +90,7 @@
   justify-content: center;
   margin-left: 25px;
   margin-right: 25px;
+  margin-top: 6px;
 }
 
 .dataProductTitle {
