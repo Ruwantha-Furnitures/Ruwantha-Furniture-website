@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import { Container, Row, Col } from "reactstrap";
-import Button from "react-bootstrap/Button";
-import "../css/Signup.css";
+
+import NavButtonStyle from "../../../css/web/common.module.css";
+import "../../../css/web/Signup.css";
 
 export default function SignupForm() {
   require("bootstrap/dist/css/bootstrap.min.css");
-
   const [name, setName] = useState("");
   const [uname, setUname] = useState("");
   const [email, setEmail] = useState("");
@@ -152,7 +152,12 @@ export default function SignupForm() {
             </Col>
           </Row>
           <center>
-            <button block size="lg" type="submit" class="btn">
+            <button
+              block
+              size="lg"
+              type="submit"
+              className={NavButtonStyle.btn}
+            >
               Sign Up
             </button>
           </center>

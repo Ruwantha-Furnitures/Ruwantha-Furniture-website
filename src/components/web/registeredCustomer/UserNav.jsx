@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components"; //to add hover
 import { Container, Row, Col } from "reactstrap";
+import { Link } from "react-router-dom";
 import {
   Navbar,
   Nav,
@@ -9,18 +10,19 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
-import "../../../../index.css";
-import logo from "../../../../assets/logo.png";
+import logo from "../../../assets/logo.png";
+import ShoppingCart from "./Cart";
 import PropTypes from "prop-types";
-import ButtonStyles from "../../../../css/style.module.css";
+import NavButtonStyle from "../../../css/web/common.module.css";
+import "../../../css/web/cart.css";
 
-Indexnav.propTypes = {};
+UserNav.propTypes = {};
 
-function Indexnav(props) {
+function UserNav(props) {
   require("bootstrap/dist/css/bootstrap.min.css");
   const navlink = {
     color: "white",
-    padding: "20px",
+    padding: "10px",
     marginTop: "0px",
   };
 
@@ -53,30 +55,30 @@ function Indexnav(props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/home" style={navlink}>
+            <Nav.Link href="/chome" style={navlink}>
               <HoverText1>Home</HoverText1>
             </Nav.Link>
-            <Nav.Link href="/product" style={navlink}>
+            <Nav.Link href="/cproduct" style={navlink}>
               <HoverText1>Product</HoverText1>
             </Nav.Link>
-            <Nav.Link href="/about-us" style={navlink}>
+            <Nav.Link href="/cabout-us" style={navlink}>
               <HoverText1>About Us</HoverText1>
             </Nav.Link>
-            <Nav.Link href="/contact-us" style={navlink}>
+            <Nav.Link href="/ccontact-us" style={navlink}>
               <HoverText1>Contact Us</HoverText1>
             </Nav.Link>
           </Nav>
           <Form inline>
             <Row>
-              <Col sm={6}>
-                <a href="/signup">
-                  <button className={ButtonStyles.btn}>Sign Up</button>
-                </a>
+              <Col>
+                <Link to="/login">
+                  <ShoppingCart></ShoppingCart>
+                </Link>
               </Col>
-              <Col sm={6}>
-                <a href="/login">
-                  <button className={ButtonStyles.btn}>Login</button>
-                </a>
+              <Col>
+                <Link to="/login">
+                  <button className={NavButtonStyle.btn}>Logout</button>
+                </Link>
               </Col>
             </Row>
           </Form>
@@ -87,4 +89,4 @@ function Indexnav(props) {
   );
 }
 
-export default Indexnav;
+export default UserNav;

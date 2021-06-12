@@ -6,12 +6,17 @@ import ProductView from "./components/Admin/ProductView";
 import ProductAdd from "./components/Admin/ProductAdd";
 import test from "./components/Admin/test/test";
 
-import Home from "./components/web/customer/js/Home.jsx";
-import Product from "./components/web/customer/js/Product.jsx";
-import AboutUs from "./components/web/customer/js/About.jsx";
-import ContactUs from "./components/web/customer/js/Contact.jsx";
-import Login from "../src/components/web/Common/js/Login.jsx";
-import Signup from "./components/web/customer/js/Signup.jsx";
+import Home from "./components/web/customer/Home.jsx";
+import Product from "./components/web/customer/Product.jsx";
+import AboutUs from "./components/web/customer/About.jsx";
+import ContactUs from "./components/web/customer/Contact.jsx";
+import Login from "../src/components/web/Common/Login.jsx";
+import Signup from "./components/web/customer/Signup.jsx";
+
+import Customer_Home from "./components/web/registeredCustomer/CustomerHome.jsx";
+import Customer_Product from "./components/web/registeredCustomer/CustomerProduct.jsx";
+import Customer_AboutUs from "./components/web/registeredCustomer/CustomerAbout.jsx";
+import Customer_ContactUs from "./components/web/registeredCustomer/CustomerContact.jsx";
 
 function App() {
   return (
@@ -30,6 +35,11 @@ function App() {
           <Route exact path="/contact-us" component={ContactUs} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
+
+          <Route exact path="/customer_home" component={Customer_Home} />
+          <Route exact path="/customer_product" component={Customer_Product} />
+          <Route exact path="/customer_about-us" component={Customer_AboutUs} />
+          <Route exact path="/customer_contact-us" component={Customer_ContactUs} />
         </Switch>
       </div>
     </Router>
