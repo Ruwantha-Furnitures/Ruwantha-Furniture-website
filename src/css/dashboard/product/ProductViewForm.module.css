@@ -38,6 +38,7 @@
   height: 221px;
   display: flex;
   margin-right: 39px;
+  position: relative;
 }
 
 .desc {
@@ -65,7 +66,7 @@
   content: "";
   display: flex;
   justify-content: center;
-  background-image: url(../../../assets/dashboard//product/addPhoto.png);
+  /* background-image: url(../../../assets/dashboard//product/addPhoto.png); */
   align-items: center;
   border-radius: 22px;
   outline: none;
@@ -75,7 +76,16 @@
   visibility: initial;
   width: 99%;
   height: 99%;
-  background-size: cover;
+  position: absolute;
+  z-index: 2;
+}
+
+.productImagePreviewStyle {
+  width: 100%;
+  border-radius: 22px;
+  position: relative;
+  z-index: 0;
+  object-fit: cover;
 }
 
 .descTitle {

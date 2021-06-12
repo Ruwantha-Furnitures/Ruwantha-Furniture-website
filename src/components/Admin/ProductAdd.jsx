@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./common/Navbar";
 import Sidebar from "./common/Sidebar";
 // import ProductViewForm from "./product/ProductViewForm";
@@ -6,9 +6,31 @@ import AllProductsView from "./common/AllProductsView";
 import MainStyle from "../../css/dashboard/Main.module.css";
 import ProductStyle from "../../css/dashboard/Products.module.css";
 import ProductViewFormStyle from "../../css/dashboard/product/ProductViewForm.module.css";
-import ProductImage from "../../assets/items/14.jpg";
+import ProductImage from "../../assets/dashboard/product/addPhoto.png";
 
 function ProductAdd() {
+  const [picture, setPicture] = useState(null);
+  const [imgData, setImgData] = useState(null);
+  const [status, setStatus] = useState("edit");
+
+  const onChangePicture = (e) => {
+    if (e.target.files[0]) {
+      console.log("picture: ", e.target.files);
+      setPicture(e.target.files[0]);
+      const reader = new FileReader();
+      reader.addEventListener("load", () => {
+        setImgData(reader.result);
+      });
+      reader.readAsDataURL(e.target.files[0]);
+    }
+    setStatus("profile");
+  };
+
+  const onSubmit = () => {
+    console.log("hello");
+    setStatus("edit");
+  };
+
   return (
     <div className={MainStyle.bodycontainer}>
       <div className={MainStyle.navSection}>
@@ -34,8 +56,18 @@ function ProductAdd() {
                       <input
                         type="file"
                         className={ProductViewFormStyle.productImageAddStyle}
+                        onChange={onChangePicture}
+                      />
+                      <img
+                        src={imgData !== null ? imgData : ProductImage}
+                        alt="upload-img"
+                        // onClick={(e) => onSubmit(e)}
+                        className={
+                          ProductViewFormStyle.productImagePreviewStyle
+                        }
                       />
                     </div>
+
                     <div className={ProductViewFormStyle.desc}>
                       <div className={ProductViewFormStyle.descTitle}>
                         <div className={ProductViewFormStyle.dataProductTitle}>
