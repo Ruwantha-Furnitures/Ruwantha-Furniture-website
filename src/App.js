@@ -15,7 +15,6 @@ import Signup from "./components/web/customer/Signup.jsx";
 
 import Customer_Home from "./components/web/registeredCustomer/CustomerHome.jsx";
 import Customer_Product from "./components/web/registeredCustomer/CustomerProduct.jsx";
-import Customer_AboutUs from "./components/web/registeredCustomer/CustomerAbout.jsx";
 import Customer_ContactUs from "./components/web/registeredCustomer/CustomerContact.jsx";
 
 function App() {
@@ -36,8 +35,7 @@ function App() {
           <Route exact path="/signup" component={Signup} />
 
           <Route exact path="/customer_home" component={Customer_Home} />
-          <Route exact path="/customer_product" component={Customer_Product} />
-          <Route exact path="/customer_about-us" component={Customer_AboutUs} />
+          <Route exact path="/customer_product" component={Customer_Product} />          
           <Route exact path="/customer_contact-us" component={Customer_ContactUs} />
         </Switch>
       </div>

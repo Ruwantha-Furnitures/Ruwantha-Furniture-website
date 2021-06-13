@@ -28,16 +28,17 @@ function ContactForm(props) {
     
     return (                    
         <div>                    
-        <Form className={FormStyle.innerbox} align="left">
+        <Form className={FormStyle.innerbox}>
         <center>
             <h2 style={{marginTop: '20px'}}>CONTACT US</h2>                    
-                <Form.Group size="xs" controlId="name" >
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control  style={{width: '260px'}}                                
+                <Form.Group size="xs" controlId="name">
+                    <Form.Label align="left">Name
+                    <Form.Control style={{width: '260px'}}                             
                         type="text"
                         value={name}
+                        placeholder="Name"
                         onChange={(e) => setName(e.target.value)}
-                    />
+                    /></Form.Label>
                 </Form.Group>
 
                 <Form.Group size="xs" controlId="telephone">

@@ -45,8 +45,7 @@ function Indexnav(props) {
                 <Navbar.Collapse id="basic-navbar-nav" >
                     <Nav className="mr-auto">
                         <Nav.Link href="/home" style={navlink}><HoverText1>Home</HoverText1></Nav.Link>
-                        <Nav.Link href="/product" style={navlink}><HoverText1>Product</HoverText1></Nav.Link>
-                        <Nav.Link href="/about-us" style={navlink}><HoverText1>About Us</HoverText1></Nav.Link>
+                        <Nav.Link href="/product" style={navlink}><HoverText1>Product</HoverText1></Nav.Link>                        
                         <Nav.Link href="/contact-us" style={navlink}><HoverText1>Contact Us</HoverText1></Nav.Link>
                     </Nav>
                     <Form inline>                

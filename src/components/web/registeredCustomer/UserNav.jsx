@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap';
 import logo from "../../../assets/logo.png";
 import ShoppingCart from "./Cart";
+import Person from "./PersonIcon";
 import PropTypes from 'prop-types';
 import NavButtonStyle from "../../../css/web/common.module.css";
 import "../../../css/web/cart.css";
@@ -47,19 +48,23 @@ function UserNav(props) {
                 <Navbar.Collapse id="basic-navbar-nav" >
                     <Nav className="mr-auto">
                         <Nav.Link href="/chome" style={navlink}><HoverText1>Home</HoverText1></Nav.Link>
-                        <Nav.Link href="/cproduct" style={navlink}><HoverText1>Product</HoverText1></Nav.Link>
-                        <Nav.Link href="/cabout-us" style={navlink}><HoverText1>About Us</HoverText1></Nav.Link>
+                        <Nav.Link href="/cproduct" style={navlink}><HoverText1>Product</HoverText1></Nav.Link>                        
                         <Nav.Link href="/ccontact-us" style={navlink}><HoverText1>Contact Us</HoverText1></Nav.Link>
                     </Nav>
                     <Form inline>                
                         <Row>
                             <Col>
                                 <Link to="/login" >
+                                    <Person></Person>
+                                </Link>
+                            </Col>
+                            <Col>
+                                <Link to="/login" >
                                     <ShoppingCart></ShoppingCart>
                                 </Link>
                             </Col>
                             <Col>
-                                <Link to="/login" ><button className={NavButtonStyle.btn}>Logout</button></Link>
+                                <Link to="/login" ><button className={NavButtonStyle.btn} style={{marginTop:'-10px'}}>Logout</button></Link>
                             </Col>
                         </Row>                   
                     </Form>    
