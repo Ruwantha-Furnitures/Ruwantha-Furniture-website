@@ -4,6 +4,7 @@ import Dashboard from "./components/Admin/Dashboard";
 import Products from "./components/Admin/Products";
 import ProductView from "./components/Admin/ProductView";
 import ProductAdd from "./components/Admin/ProductAdd";
+import ProductSell from "./components/Admin/ProductSell";
 import test from "./components/Admin/test/test";
 
 import Home from "./components/web/customer/Home.jsx";
@@ -27,6 +28,7 @@ function App() {
           <Route exact path="/dashboard/products" component={Products} />
           <Route exact path="/dashboard/product/view" component={ProductView} />
           <Route exact path="/dashboard/product/add" component={ProductAdd} />
+          <Route exact path="/dashboard/product/sell" component={ProductSell} />
           <Route exact path="/dashboard/test" component={test} />
 
           <Route exact path="/home" component={Home} />
@@ -39,7 +41,11 @@ function App() {
           <Route exact path="/customer_home" component={Customer_Home} />
           <Route exact path="/customer_product" component={Customer_Product} />
           <Route exact path="/customer_about-us" component={Customer_AboutUs} />
-          <Route exact path="/customer_contact-us" component={Customer_ContactUs} />
+          <Route
+            exact
+            path="/customer_contact-us"
+            component={Customer_ContactUs}
+          />
         </Switch>
       </div>
     </Router>
