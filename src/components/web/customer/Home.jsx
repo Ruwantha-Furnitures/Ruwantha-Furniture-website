@@ -6,7 +6,7 @@ import ProductBox from "./ProductCards";
 import Navigation from "./Indexnav";
 
 import Slideshow from "./Banner";
-import ContactFormHome from "./ContactForm";
+// import ContactFormHome from "./ContactForm";
 
 import Footer from "../Common/Footer";
 import "../../../css/web/Home.css";
