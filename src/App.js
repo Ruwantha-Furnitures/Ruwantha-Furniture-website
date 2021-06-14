@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Dashboard from "./components/Admin/Dashboard";
 import Products from "./components/Admin/Products";
+
 import ProductView from "./components/Admin/ProductView";
 import ProductAdd from "./components/Admin/ProductAdd";
 import ProductSell from "./components/Admin/ProductSell";
@@ -18,6 +19,7 @@ import Signup from "./components/web/customer/Signup.jsx";
 import Customer_Home from "./components/web/registeredCustomer/CustomerHome.jsx";
 import Customer_Product from "./components/web/registeredCustomer/CustomerProduct.jsx";
 import Customer_ContactUs from "./components/web/registeredCustomer/CustomerContact.jsx";
+
 
 function App() {
   return (
