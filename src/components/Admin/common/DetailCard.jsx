@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/DetailCard.css";
+import DetailCardStyle from "../../../css/dashboard/DetailCard.module.css";
 
 function DetailCard({
   detailCardMargin,
@@ -10,18 +10,22 @@ function DetailCard({
   return (
     <div
       className={
-        detailCardMargin ? "detailCard detailCardMargin" : "detailCard"
+        detailCardMargin
+          ? ` ${DetailCardStyle.detailCard} ${DetailCardStyle.detailCardMarginStyle}`
+          : `${DetailCardStyle.detailCard}`
       }
     >
-      <div className="cardwrapper">
-        <div className="cardIcon">
-          <span className="material-icons cardStyle">{materialIconName}</span>
+      <div className={DetailCardStyle.cardwrapper}>
+        <div className={DetailCardStyle.cardIcon}>
+          <span className={"material-icons " + DetailCardStyle.cardStyle}>
+            {materialIconName}
+          </span>
         </div>
-        <div className="cardDetails">
-          <h1 className="cardTextStyle1">{cardText}</h1>
+        <div className={DetailCardStyle.cardDetails}>
+          <h1 className={DetailCardStyle.cardTextStyle1}>{cardText}</h1>
         </div>
-        <div className="cardPrice">
-          <h1 className="cardTextStyle2">{cardPrice}</h1>
+        <div className={DetailCardStyle.cardPrice}>
+          <h1 className={DetailCardStyle.cardTextStyle2}>{cardPrice}</h1>
         </div>
       </div>
     </div>
