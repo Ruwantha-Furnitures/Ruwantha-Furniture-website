@@ -47,9 +47,9 @@ function UserNav(props) {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" >
                     <Nav className="mr-auto">
-                        <Nav.Link href="/chome" style={navlink}><HoverText1>Home</HoverText1></Nav.Link>
-                        <Nav.Link href="/cproduct" style={navlink}><HoverText1>Product</HoverText1></Nav.Link>                        
-                        <Nav.Link href="/ccontact-us" style={navlink}><HoverText1>Contact Us</HoverText1></Nav.Link>
+                        <Nav.Link href="/customer_home" style={navlink}><HoverText1>Home</HoverText1></Nav.Link>
+                        <Nav.Link href="/customer_product" style={navlink}><HoverText1>Product</HoverText1></Nav.Link>                        
+                        <Nav.Link href="/customer_contact-us" style={navlink}><HoverText1>Contact Us</HoverText1></Nav.Link>
                     </Nav>
                     <Form inline>                
                         <Row>
