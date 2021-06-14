@@ -2,7 +2,7 @@
 .innerbox {
     padding: 10px;    
     background-color: rgb(0,0,0,0.8);
-    width: 30%;    
+    width: 30%;        
     margin-bottom: 20px;  
     border-radius: 20px;  
     color: #FFF;
@@ -10,7 +10,17 @@
 
 Form [type='text']{
     background-color: rgb(0,0,0,0);
-    border-color: azure;    
+    border: solid 2px #FFF;  
+}
+
+Form [type='email']{
+    background-color: rgb(0,0,0,0);
+    border: solid 2px #FFF;  
+}
+
+.textareastyle{
+    background-color: rgb(0,0,0,0);
+    border: solid 2px #FFF;  
 }
 
 @media screen and (max-width: 798px) {

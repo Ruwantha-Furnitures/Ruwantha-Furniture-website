@@ -6,7 +6,6 @@ import Topimg from '../../../assets/topimg1.jpg';
 import ProductBox from "./ProductCards";
 import Navigation from "./Indexnav";
 import Slideshow from './Banner';
-import ContactFormHome from "./ContactForm";
 import Footer from "../Common/Footer";
 import '../../../css/web/Home.css';  
 import PropTypes from 'prop-types';

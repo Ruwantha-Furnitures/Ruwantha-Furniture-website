@@ -31,43 +31,43 @@ function ContactForm(props) {
         <Form className={FormStyle.innerbox}>
         <center>
             <h2 style={{marginTop: '20px'}}>CONTACT US</h2>                    
-                <Form.Group size="xs" controlId="name">
-                    <Form.Label align="left">Name
+                <Form.Group size="xs" controlId="name">                    
                     <Form.Control style={{width: '260px'}}                             
                         type="text"
                         value={name}
                         placeholder="Name"
                         onChange={(e) => setName(e.target.value)}
-                    /></Form.Label>
+                    />
                 </Form.Group>
 
-                <Form.Group size="xs" controlId="telephone">
-                    <Form.Label>Telephone</Form.Label>
+                <Form.Group size="xs" controlId="telephone">                    
                     <Form.Control style={{width: '260px'}}                     
-                        type="tele"
+                        type="text"
                         value={telephone}
+                        placeholder="Telephone"
                         onChange={(e) => setTelephone(e.target.value)}
                     />
                 </Form.Group>  
 
-                <Form.Group size="xs" controlId="email">
-                    <Form.Label>Email</Form.Label>
+                <Form.Group size="xs" controlId="email">                    
                     <Form.Control style={{width: '260px'}}                    
                         type="email"
                         value={email}
+                        placeholder="Email"
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </Form.Group>
 
-                <Form.Group size="xs" controlId="description">
-                    <Form.Label>Description</Form.Label>
-                    <Form.Control style={{width: '260px'}} 
-                        type="textarea"
+                <Form.Group size="xs" controlId="description">                    
+                    <Form.Control style={{width: '260px'}} className={FormStyle.textareastyle}
+                        as="textarea" 
+                        rows={3}
                         value={description}
+                        placeholder="Message"
                         onChange={(e) => setDescription(e.target.value)}
                     />
                 </Form.Group>
-                <Form.Group size="xs" controlId="description">
+                <Form.Group size="xs">
                     <center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Submit</button></center><br />    
                 </Form.Group>                
             </center>
