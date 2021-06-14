@@ -1,5 +1,5 @@
-import React from 'react';
-import Carousel from 'react-bootstrap/Carousel'  ;
+import React from "react";
+import Carousel from "react-bootstrap/Carousel";
 import Slide1 from "../../../assets/slideshow/s1.jpg";
 import Slide2 from "../../../assets/slideshow/s2.jpg";
 import Slide3 from "../../../assets/slideshow/s3.jpg";
@@ -10,101 +10,120 @@ import Slide7 from "../../../assets/slideshow/s7.jpg";
 import Slide8 from "../../../assets/slideshow/s8.jpg";
 import Slide9 from "../../../assets/slideshow/s9.jpg";
 import Slide10 from "../../../assets/slideshow/s10.jpg";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-Banner.propTypes = {
-    
-};
+Banner.propTypes = {};
 
 function Banner(props) {
-    return (
-        <div>
-             <div style={{marginTop: '-50px'}}>  
-                    <Carousel> 
-                        <Carousel.Item style={{'height':"500px"}} >  
-                            <img style={{'height':"500px"}}  
-                                className="d-block w-100"  
-                                src={Slide1}  />  
-                            <Carousel.Caption>  
-                                <h3>Ruwantha Furniture</h3>  
-                            </Carousel.Caption>  
-                        </Carousel.Item  >  
-                        <Carousel.Item style={{'height':"500px"}}>  
-                            <img style={{'height':"500px"}}  
-                                className="d-block w-100"  
-                                src={Slide2}  />  
-                            <Carousel.Caption>  
-                                <h3>Ruwantha Furniture</h3>   
-                            </Carousel.Caption>  
-                        </Carousel.Item>  
-                        <Carousel.Item style={{'height':"500px"}}>  
-                            <img style={{'height':"500px"}}  
-                                className="d-block w-100"  
-                                src={Slide3}  />  
-                                <Carousel.Caption>  
-                                    <h3>Ruwantha Furniture</h3>   
-                                </Carousel.Caption>  
-                        </Carousel.Item> 
-                        <Carousel.Item style={{'height':"500px"}}>  
-                            <img style={{'height':"500px"}}  
-                                className="d-block w-100"  
-                                src={Slide4}  />  
-                                <Carousel.Caption>  
-                                    <h3>Ruwantha Furniture</h3>   
-                                </Carousel.Caption>  
-                        </Carousel.Item>  
-                        <Carousel.Item style={{'height':"500px"}}>  
-                            <img style={{'height':"500px"}}  
-                                className="d-block w-100"  
-                                src={Slide5}  />  
-                                <Carousel.Caption>  
-                                    <h3>Ruwantha Furniture</h3>   
-                                </Carousel.Caption>  
-                        </Carousel.Item> 
-                        <Carousel.Item style={{'height':"500px"}}>  
-                            <img style={{'height':"500px"}}  
-                                className="d-block w-100"  
-                                src={Slide6}  />  
-                                <Carousel.Caption>  
-                                    <h3>Ruwantha Furniture</h3>   
-                                </Carousel.Caption>  
-                        </Carousel.Item> 
-                        <Carousel.Item style={{'height':"500px"}}>  
-                            <img style={{'height':"500px"}}  
-                                className="d-block w-100"  
-                                src={Slide7}  />  
-                                <Carousel.Caption>  
-                                    <h3>Ruwantha Furniture</h3>   
-                                </Carousel.Caption>  
-                        </Carousel.Item> 
-                        <Carousel.Item style={{'height':"500px"}}>  
-                            <img style={{'height':"500px"}}  
-                                className="d-block w-100"  
-                                src={Slide8}  />  
-                                <Carousel.Caption>  
-                                    <h3>Ruwantha Furniture</h3>   
-                                </Carousel.Caption>  
-                        </Carousel.Item> 
-                        <Carousel.Item style={{'height':"500px"}}>  
-                            <img style={{'height':"500px"}}  
-                                className="d-block w-100"  
-                                src={Slide9}  />  
-                                <Carousel.Caption>  
-                                    <h3>Ruwantha Furniture</h3>   
-                                </Carousel.Caption>  
-                        </Carousel.Item> 
-                        <Carousel.Item style={{'height':"500px"}}>  
-                            <img style={{'height':"500px"}}  
-                                className="d-block w-100"  
-                                src={Slide10}  />  
-                                <Carousel.Caption>  
-                                    <h3>Ruwantha Furniture</h3>   
-                                </Carousel.Caption>  
-                        </Carousel.Item> 
-                    </Carousel>                          
-                </div>  
-        </div>
-    );
+  return (
+    <div>
+      <div style={{ marginTop: "-50px" }}>
+        <Carousel>
+          <Carousel.Item style={{ height: "500px" }}>
+            <img
+              style={{ height: "500px" }}
+              className="d-block w-100"
+              alt="img"
+              src={Slide1}
+            />
+            <Carousel.Caption>
+              <h3>Ruwantha Furniture</h3>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item style={{ height: "500px" }}>
+            <img
+              style={{ height: "500px" }}
+              className="d-block w-100"
+              src={Slide2}
+            />
+            <Carousel.Caption>
+              <h3>Ruwantha Furniture</h3>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item style={{ height: "500px" }}>
+            <img
+              style={{ height: "500px" }}
+              className="d-block w-100"
+              src={Slide3}
+            />
+            <Carousel.Caption>
+              <h3>Ruwantha Furniture</h3>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item style={{ height: "500px" }}>
+            <img
+              style={{ height: "500px" }}
+              className="d-block w-100"
+              src={Slide4}
+            />
+            <Carousel.Caption>
+              <h3>Ruwantha Furniture</h3>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item style={{ height: "500px" }}>
+            <img
+              style={{ height: "500px" }}
+              className="d-block w-100"
+              src={Slide5}
+            />
+            <Carousel.Caption>
+              <h3>Ruwantha Furniture</h3>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item style={{ height: "500px" }}>
+            <img
+              style={{ height: "500px" }}
+              className="d-block w-100"
+              src={Slide6}
+            />
+            <Carousel.Caption>
+              <h3>Ruwantha Furniture</h3>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item style={{ height: "500px" }}>
+            <img
+              style={{ height: "500px" }}
+              className="d-block w-100"
+              src={Slide7}
+            />
+            <Carousel.Caption>
+              <h3>Ruwantha Furniture</h3>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item style={{ height: "500px" }}>
+            <img
+              style={{ height: "500px" }}
+              className="d-block w-100"
+              src={Slide8}
+            />
+            <Carousel.Caption>
+              <h3>Ruwantha Furniture</h3>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item style={{ height: "500px" }}>
+            <img
+              style={{ height: "500px" }}
+              className="d-block w-100"
+              src={Slide9}
+            />
+            <Carousel.Caption>
+              <h3>Ruwantha Furniture</h3>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item style={{ height: "500px" }}>
+            <img
+              style={{ height: "500px" }}
+              className="d-block w-100"
+              src={Slide10}
+            />
+            <Carousel.Caption>
+              <h3>Ruwantha Furniture</h3>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+      </div>
+    </div>
+  );
 }
 
 export default Banner;
