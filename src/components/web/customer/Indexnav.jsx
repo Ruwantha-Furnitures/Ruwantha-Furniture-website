@@ -32,43 +32,6 @@ function Indexnav(props) {
     }
   `;
 
-<<<<<<< HEAD
-      const HoverText1 = styled.p`
-        color: #fff;
-        :hover {
-          color: #FC7A30;
-          cursor: pointer;
-        }
-      `
-    return (        
-            <div> 
-            <Navbar variant="dark" expand="lg" sticky="top" style={{backgroundColor:'#291B1B', maxWidth:'100%'}}>
-            <Navbar.Brand href="#home" style={{marginTop:'-20px'}}>
-                    <img src={logo} alt={logo} width={100} height={100}></img>
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav" >
-                    <Nav className="mr-auto">
-                        <Nav.Link href="/home" style={navlink}><HoverText1>Home</HoverText1></Nav.Link>
-                        <Nav.Link href="/product" style={navlink}><HoverText1>Product</HoverText1></Nav.Link>                        
-                        <Nav.Link href="/contact-us" style={navlink}><HoverText1>Contact Us</HoverText1></Nav.Link>
-                    </Nav>
-                    <Form inline>                
-                        <Row>
-                            <Col sm={6}>
-                                <Link to="/signup" ><button className={NavButtonStyle.btn}>Sign Up</button></Link>
-                            </Col>
-                            <Col sm={6}>
-                                <Link to="/login" ><button className={NavButtonStyle.btn}>Login</button></Link>
-                            </Col>
-                        </Row>                   
-                    </Form>    
-                </Navbar.Collapse>            
-            </Navbar>            
-            <br />    
-        </div>
-    );
-=======
   const HoverText1 = styled.p`
     color: #fff;
     :hover {
@@ -122,7 +85,6 @@ function Indexnav(props) {
       <br />
     </div>
   );
->>>>>>> 9ddd21e54f96ae4e1a573a0977954fe2e413fc53
 }
 
 export default Indexnav;

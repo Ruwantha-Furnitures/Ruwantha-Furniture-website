@@ -222,6 +222,17 @@
   display: inline-block;
 }
 
+.labelStyleforLong {
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 19px;
+  text-align: start;
+  color: #000000;
+  width: 16%;
+  padding-left: 31px;
+  display: inline-block;
+}
+
 .form {
   margin: 14px;
 }
@@ -238,6 +249,10 @@
 
 .data {
   width: 50%;
+}
+
+.dataforLong {
+  width: 100%;
 }
 
 .dataTitle {
@@ -287,6 +302,19 @@
   color: #000000;
   padding-left: 15px;
   width: 48%;
+}
+
+.inputStyleforLong {
+  height: 33px;
+  background: #ffffff;
+  border-radius: 22px;
+  border: none;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  color: #000000;
+  padding-left: 15px;
+  width: 74%;
 }
 
 input[type="text"]:focus {

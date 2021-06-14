@@ -13,6 +13,7 @@ import {
 import logo from "../../../assets/logo.png";
 import ShoppingCart from "./Cart";
 
+
 import Person from "./PersonIcon";
 import PropTypes from 'prop-types';
 
@@ -38,6 +39,7 @@ function UserNav(props) {
       cursor: pointer;
     }
   `;
+
       const HoverText1 = styled.p`
         color: #fff;
         :hover {
@@ -80,6 +82,7 @@ function UserNav(props) {
             <br />    
         </div>
     );
+
 }
 
 export default UserNav;
