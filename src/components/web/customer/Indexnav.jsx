@@ -1,20 +1,22 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from 'styled-components'; //to add hover
 import { Container, Row, Col } from 'reactstrap';
+import { Link } from "react-router-dom";
 import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap';
-import "../../../../index.css";
-import logo from "../../../../assets/logo.png";
+import logo from "../../../assets/logo.png";
 import PropTypes from 'prop-types';
+import NavButtonStyle from "../../../css/web/common.module.css";
 
 Indexnav.propTypes = {
     
 };
 
 function Indexnav(props) {
+    require("bootstrap/dist/css/bootstrap.min.css");
     const navlink = {
         color: "white",        
-        padding: "20px",
+        padding: "10px",
         marginTop: "0px"
       };
 
@@ -43,17 +45,16 @@ function Indexnav(props) {
                 <Navbar.Collapse id="basic-navbar-nav" >
                     <Nav className="mr-auto">
                         <Nav.Link href="/home" style={navlink}><HoverText1>Home</HoverText1></Nav.Link>
-                        <Nav.Link href="/product" style={navlink}><HoverText1>Product</HoverText1></Nav.Link>
-                        <Nav.Link href="/about-us" style={navlink}><HoverText1>About Us</HoverText1></Nav.Link>
+                        <Nav.Link href="/product" style={navlink}><HoverText1>Product</HoverText1></Nav.Link>                        
                         <Nav.Link href="/contact-us" style={navlink}><HoverText1>Contact Us</HoverText1></Nav.Link>
                     </Nav>
                     <Form inline>                
                         <Row>
                             <Col sm={6}>
-                                <a href="/signup" ><Button class="btn">Sign Up</Button></a>
+                                <Link to="/signup" ><button className={NavButtonStyle.btn}>Sign Up</button></Link>
                             </Col>
                             <Col sm={6}>
-                                <a href="/login" ><Button class="btn">Login</Button></a>
+                                <Link to="/login" ><button className={NavButtonStyle.btn}>Login</button></Link>
                             </Col>
                         </Row>                   
                     </Form>    

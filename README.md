@@ -23,3 +23,9 @@ npm install react-slideshow-image -S ---> slide show
 npm install --save react-bootstrap (put this in to src, public seperately) 
 
 npm install react-google-login
+
+-------Shopping cart--------------
+
+npm install @material-ui/core
+
+npm install @material-ui/icons

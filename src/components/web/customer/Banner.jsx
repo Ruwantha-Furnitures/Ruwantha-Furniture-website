@@ -1,15 +1,15 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel'  ;
-import Slide1 from "../../../../assets/slideshow/s1.jpg";
-import Slide2 from "../../../../assets/slideshow/s2.jpg";
-import Slide3 from "../../../../assets/slideshow/s3.jpg";
-import Slide4 from "../../../../assets/slideshow/s4.jpg";
-import Slide5 from "../../../../assets/slideshow/s5.jpg";
-import Slide6 from "../../../../assets/slideshow/s6.jpg";
-import Slide7 from "../../../../assets/slideshow/s7.jpg";
-import Slide8 from "../../../../assets/slideshow/s8.jpg";
-import Slide9 from "../../../../assets/slideshow/s9.jpg";
-import Slide10 from "../../../../assets/slideshow/s10.jpg";
+import Slide1 from "../../../assets/slideshow/s1.jpg";
+import Slide2 from "../../../assets/slideshow/s2.jpg";
+import Slide3 from "../../../assets/slideshow/s3.jpg";
+import Slide4 from "../../../assets/slideshow/s4.jpg";
+import Slide5 from "../../../assets/slideshow/s5.jpg";
+import Slide6 from "../../../assets/slideshow/s6.jpg";
+import Slide7 from "../../../assets/slideshow/s7.jpg";
+import Slide8 from "../../../assets/slideshow/s8.jpg";
+import Slide9 from "../../../assets/slideshow/s9.jpg";
+import Slide10 from "../../../assets/slideshow/s10.jpg";
 import PropTypes from 'prop-types';
 
 Banner.propTypes = {
@@ -19,7 +19,7 @@ Banner.propTypes = {
 function Banner(props) {
     return (
         <div>
-             <div className='container-fluid' >  
+             <div style={{marginTop: '-50px'}}>  
                     <Carousel> 
                         <Carousel.Item style={{'height':"500px"}} >  
                             <img style={{'height':"500px"}}  

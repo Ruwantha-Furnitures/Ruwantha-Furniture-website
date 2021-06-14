@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ChartTest from "./components/Admin/common/ChartTest";
 import Dashboard from "./components/Admin/Dashboard";
 import Products from "./components/Admin/Products";
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 import Home from './components/web/customer/js/Home.jsx';
@@ -21,6 +22,21 @@ import Signup from "./components/web/customer/js/Signup";
 import test from "./components/Admin/test/test";
 import ProductView from "./components/Admin/ProductView";
 >>>>>>> dashboard
+=======
+import ProductView from "./components/Admin/ProductView";
+import test from "./components/Admin/test/test";
+
+import Home from "./components/web/customer/Home.jsx";
+import Product from "./components/web/customer/Product.jsx";
+import AboutUs from "./components/web/customer/About.jsx";
+import ContactUs from "./components/web/customer/Contact.jsx";
+import Login from "../src/components/web/Common/Login.jsx";
+import Signup from "./components/web/customer/Signup.jsx";
+
+import Customer_Home from "./components/web/registeredCustomer/CustomerHome.jsx";
+import Customer_Product from "./components/web/registeredCustomer/CustomerProduct.jsx";
+import Customer_ContactUs from "./components/web/registeredCustomer/CustomerContact.jsx";
+>>>>>>> 86afcb16f25950737c2a02d197813952a1d4f912
 
 function App() {
   return (
@@ -38,6 +54,10 @@ function App() {
           <Route exact path="/contact-us" component={ContactUs} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
+
+          <Route exact path="/customer_home" component={Customer_Home} />
+          <Route exact path="/customer_product" component={Customer_Product} />          
+          <Route exact path="/customer_contact-us" component={Customer_ContactUs} />
         </Switch>
       </div>
     </Router>
