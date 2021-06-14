@@ -12,7 +12,9 @@ import {
 } from "react-bootstrap";
 import logo from "../../../assets/logo.png";
 import ShoppingCart from "./Cart";
+import Person from "./PersonIcon";
 import PropTypes from "prop-types";
+
 import NavButtonStyle from "../../../css/web/common.module.css";
 import "../../../css/web/cart.css";
 
@@ -55,16 +57,13 @@ function UserNav(props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/chome" style={navlink}>
+            <Nav.Link href="/customer_home" style={navlink}>
               <HoverText1>Home</HoverText1>
             </Nav.Link>
-            <Nav.Link href="/cproduct" style={navlink}>
+            <Nav.Link href="/customer_product" style={navlink}>
               <HoverText1>Product</HoverText1>
             </Nav.Link>
-            <Nav.Link href="/cabout-us" style={navlink}>
-              <HoverText1>About Us</HoverText1>
-            </Nav.Link>
-            <Nav.Link href="/ccontact-us" style={navlink}>
+            <Nav.Link href="/customer_contact-us" style={navlink}>
               <HoverText1>Contact Us</HoverText1>
             </Nav.Link>
           </Nav>
@@ -72,12 +71,22 @@ function UserNav(props) {
             <Row>
               <Col>
                 <Link to="/login">
+                  <Person></Person>
+                </Link>
+              </Col>
+              <Col>
+                <Link to="/login">
                   <ShoppingCart></ShoppingCart>
                 </Link>
               </Col>
               <Col>
                 <Link to="/login">
-                  <button className={NavButtonStyle.btn}>Logout</button>
+                  <button
+                    className={NavButtonStyle.btn}
+                    style={{ marginTop: "-10px" }}
+                  >
+                    Logout
+                  </button>
                 </Link>
               </Col>
             </Row>
