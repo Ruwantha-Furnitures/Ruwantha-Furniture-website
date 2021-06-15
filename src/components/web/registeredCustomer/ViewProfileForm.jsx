@@ -11,39 +11,41 @@ function ViewProfileForm() {
         paddig: "20px"
     }
 
-    const loginform = {    
-        justifyContent: "left",
-        justifyItem: "left",
-        margin: "10px",
-        padding: "40px",
-        backgroundColor: "rgb(41, 27, 27, 0.9)",        
-        backgroundColor: "rgb(1,1,1, 0.8)",            
-        borderRadius: "20px",                    
-        color: "#FFF"
-    }
     return (            
         <div>
              <Form className={FormStyle.innerbox}>
                 <center>
-                    <h2 style={{marginTop: '20px'}}>PROFILE</h2>                    
+                    <h2 style={{marginTop: '20px'}}>PROFILE</h2> 
+                    <br />                   
                     <Form.Group size="xs" controlId="name" >                    
-                        <Form.Control style={{width: '260px'}} className={FormStyle.textBox}                            
+                        <Form.Control style={{width: '260px'}} className={FormStyle.textBox}                                            
                             type="text"                            
-                            placeholder="Name"                            
+                            value={"Asini"}          
+                            readOnly                    
                         />
                     </Form.Group>
+
+                    <Form.Group size="xs" controlId="address">                    
+                        <Form.Control style={{width: '260px'}}  className={FormStyle.textBox}                    
+                            type="text"                            
+                            value={"Ambalangoda"}   
+                            readOnly                       
+                        />
+                    </Form.Group> 
 
                     <Form.Group size="xs" controlId="telephone">                    
                         <Form.Control style={{width: '260px'}}  className={FormStyle.textBox}                    
                             type="text"                            
-                            placeholder="Telephone"                            
+                            value={"0773153130"}   
+                            readOnly                         
                         />
                     </Form.Group>  
 
                     <Form.Group size="xs" controlId="email">                    
                         <Form.Control style={{width: '260px'}}  className={FormStyle.emailBox}                   
                             type="email"                            
-                            placeholder="Email"                            
+                            value={"asinipathila@gmail.com"}    
+                            readOnly                         
                         />
                     </Form.Group>    
                     <Form.Group size="xs">

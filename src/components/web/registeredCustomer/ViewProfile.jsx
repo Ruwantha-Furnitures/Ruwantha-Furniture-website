@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Navigation from "./UserNav";
 import Footer from "../Common/Footer";
+import { Container, Row, Col } from 'reactstrap';
 import ProfileForm from "../registeredCustomer/ViewProfileForm";
 import Topimg from '../../../assets/topimg2.jpg';
 
@@ -14,7 +15,9 @@ function ViewProfile() {
     return (
       <div className="col-md-12" style={contactImg}>                                     
             <Navigation></Navigation> 
-            <ProfileForm></ProfileForm>
+            <Container align="center"> 
+                <ProfileForm></ProfileForm>
+            </Container>
             <Footer></Footer>    
         </div>
     );

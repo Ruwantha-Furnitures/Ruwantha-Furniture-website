@@ -44,7 +44,10 @@ function App() {
           <Route exact path="/customer_home" component={Customer_Home} />
           <Route exact path="/customer_product" component={Customer_Product} />          
           <Route exact path="/customer_contact-us" component={Customer_ContactUs} />
+
           <Route exact path="/viewProfile" component={ViewProfile} />
+          <Route exact path="/viewProductPage" component={Customer_Product} />
+          
 
           <Route exact path="/updateProfile" component={UpdateProfile} />
           <Route exact path="/recoveryPassword" component={RecoveryPassword} />
