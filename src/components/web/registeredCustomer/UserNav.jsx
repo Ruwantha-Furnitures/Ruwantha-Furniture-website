@@ -61,7 +61,7 @@ function UserNav(props) {
                     <Form inline>                
                         <Row>
                             <Col>
-                                <Link to="/login" >
+                                <Link to="/viewProfile" >
                                     <Person></Person>
                                 </Link>
                             </Col>

@@ -8,17 +8,17 @@
     color: #FFF;
 }
 
-Form [type='text']{
+Form .textBox{
     background-color: rgb(0,0,0,0);
     border: solid 2px #FFF;  
 }
 
-Form [type='email']{
+Form .emailBox{
     background-color: rgb(0,0,0,0);
     border: solid 2px #FFF;  
 }
 
-.textareastyle{
+Form .textareastyle{
     background-color: rgb(0,0,0,0);
     border: solid 2px #FFF;  
 }
