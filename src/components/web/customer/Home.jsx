@@ -5,8 +5,12 @@ import Topimg from "../../../assets/topimg1.jpg";
 import ProductBox from "./ProductCards";
 import Navigation from "./Indexnav";
 
+<<<<<<< HEAD
+import Slideshow from './Banner';
+=======
 import Slideshow from "./Banner";
 // import ContactFormHome from "./ContactForm";
+>>>>>>> master
 
 import Footer from "../Common/Footer";
 import "../../../css/web/Home.css";
