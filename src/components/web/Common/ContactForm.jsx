@@ -24,7 +24,8 @@ function ContactForm() {
         <div>                    
         <Form className={FormStyle.innerbox}>
         <center>
-            <h2 style={{marginTop: '20px'}}>CONTACT US</h2>                    
+            <h2 style={{marginTop: '20px'}}>CONTACT US</h2>   
+            <br />                 
                 <Form.Group size="xs" controlId="name" >                    
                     <Form.Control style={{width: '260px'}} className={FormStyle.textBox}                            
                         type="text"
