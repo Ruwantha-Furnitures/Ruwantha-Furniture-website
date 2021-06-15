@@ -1,17 +1,15 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-import { Container, Row, Col } from 'reactstrap';
-//import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Row, Col } from "reactstrap";
 import Button from "react-bootstrap/Button";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import NavButtonStyle from "../../../css/web/common.module.css";
-import FormStyle from '../../../css/web/Form.module.css';
+import FormStyle from "../../../css/web/Form.module.css";
 
-ContactForm.propTypes = {
-    
-};
+ContactForm.propTypes = {};
 
 function ContactForm(props) {
+
     require("bootstrap/dist/css/bootstrap.min.css");
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -71,9 +69,9 @@ function ContactForm(props) {
                     <center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Submit</button></center><br />    
                 </Form.Group>                
             </center>
-            </Form>            
-      </div>    
-    );
+        </Form>
+    </div>
+  );
 }
 
 export default ContactForm;

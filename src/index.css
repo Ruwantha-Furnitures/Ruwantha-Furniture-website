@@ -1,0 +1,73 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+Nav{
+    color: #FFF;
+    font-weight: bold;  
+    padding: 0;      
+  }
+
+  .btn{  
+    background-color: #CAC1C1;
+    justify-content: left;
+    justify-items: left;    
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    width: 120px;
+    height: 40px;      
+    margin-left: 0px;      
+  }
+  .btn:hover{
+    background-color: #FC7A30;
+    color: #FFF;
+  }
+=======
+Nav {
+  color: #fff;
+  font-weight: bold;
+}
+.btn {
+  background-color: #cac1c1;
+  justify-content: left;
+  justify-items: left;
+  color: black;
+  font-weight: bold;
+  border: none;
+  border-radius: 20px;
+  width: 120px;
+  height: 40px;
+  margin-left: 0px;
+}
+.btn:hover {
+  background-color: #fc7a30;
+  color: #fff;
+}
+
+.footer {
+  background-color: blue;
+  width: 100%;
+}
+
+@media screen and (max-width: 798px) {
+  .btn {
+    display: block;
+    margin-top: 10px;
+    justify-items: left;
+    justify-content: left;
+    margin-left: 0px;
+  }
+}
+>>>>>>> dashboard
+
+@media screen and (max-width: 400px) {
+  .btn {
+    display: block;
+    margin-top: 10px;
+    justify-items: left;
+    justify-content: left;
+    margin-left: 0px;
+  }
+}
+=======
+>>>>>>> 86afcb16f25950737c2a02d197813952a1d4f912
