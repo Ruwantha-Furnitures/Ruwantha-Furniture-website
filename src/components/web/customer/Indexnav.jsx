@@ -27,7 +27,6 @@ function Indexnav(props) {
           cursor: pointer;
         }
       `
-
       const HoverText1 = styled.p`
         color: #fff;
         :hover {
@@ -66,3 +65,4 @@ function Indexnav(props) {
 }
 
 export default Indexnav;
+

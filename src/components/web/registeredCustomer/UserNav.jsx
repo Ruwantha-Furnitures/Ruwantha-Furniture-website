@@ -36,6 +36,7 @@ function UserNav(props) {
       cursor: pointer;
     }
   `;
+
       const HoverText1 = styled.p`
         color: #fff;
         :hover {
