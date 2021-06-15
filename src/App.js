@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Dashboard from "./components/Admin/Dashboard";
 import Products from "./components/Admin/Products";
-
 import ProductView from "./components/Admin/ProductView";
 import ProductAdd from "./components/Admin/ProductAdd";
 import ProductSell from "./components/Admin/ProductSell";
@@ -19,7 +18,7 @@ import Signup from "./components/web/customer/Signup.jsx";
 import Customer_Home from "./components/web/registeredCustomer/CustomerHome.jsx";
 import Customer_Product from "./components/web/registeredCustomer/CustomerProduct.jsx";
 import Customer_ContactUs from "./components/web/registeredCustomer/CustomerContact.jsx";
-
+import ProfileChangePassword from "./components/Admin/ProfileChangePassword";
 
 function App() {
   return (
@@ -31,6 +30,11 @@ function App() {
           <Route exact path="/dashboard/product/view" component={ProductView} />
           <Route exact path="/dashboard/product/add" component={ProductAdd} />
           <Route exact path="/dashboard/product/sell" component={ProductSell} />
+          <Route
+            exact
+            path="/dashboard/profile/changePassword"
+            component={ProfileChangePassword}
+          />
           <Route exact path="/dashboard/test" component={test} />
 
           <Route exact path="/home" component={Home} />
