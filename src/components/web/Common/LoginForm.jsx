@@ -4,13 +4,9 @@ import Button from "react-bootstrap/Button";
 import "../../../css/web/Login.css";
 import Avatar from "../../../assets/avatar.png";
 import NavButtonStyle from "../../../css/web/common.module.css";
-import PropTypes from 'prop-types';
+import FormStyle from "../../../css/web/Form.module.css";
 
-LoginForm.propTypes = {
-    
-};
-
-function LoginForm(props) {
+function LoginForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -42,8 +38,7 @@ function LoginForm(props) {
         justifyContent: "left",
         justifyItem: "left",
         margin: "10px",
-        padding: "40px",
-        backgroundColor: "rgb(41, 27, 27, 0.9)",        
+        padding: "40px",          
         backgroundColor: "rgb(1,1,1, 0.8)",            
         borderRadius: "20px",                    
         color: "#FFF"
@@ -53,20 +48,19 @@ function LoginForm(props) {
         <div className="Login" >        
           <Form style={loginform} onSubmit={handleSubmit} align="left">
             <center><img src={Avatar} style={avatar}/></center><br />
-            <Form.Group size="sm" controlId="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                autoFocus
+            <Form.Group size="sm" controlId="email">                
+              <Form.Control className={FormStyle.emailBox}               
                 type="email"
                 value={email}
+                placeholder="Email"
                 onChange={(e) => setEmail(e.target.value)}
               />
             </Form.Group>
-            <Form.Group size="sm" controlId="password">
-              <Form.Label style={formlabel}>Password</Form.Label>
-              <Form.Control
+            <Form.Group size="sm" controlId="password">               
+              <Form.Control className={FormStyle.passwordBox}  
                 type="password"
                 value={password}
+                placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>

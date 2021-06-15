@@ -1,13 +1,8 @@
 import React from 'react';
 import Navigation from "./Indexnav";
 import Footer from "../Common/Footer";
-import PropTypes from 'prop-types';
 
-About.propTypes = {
-    
-};
-
-function About(props) {
+function About() {
     return (
         <div>
             <Navigation></Navigation>   

@@ -10,11 +10,8 @@ import Slide7 from "../../../assets/slideshow/s7.jpg";
 import Slide8 from "../../../assets/slideshow/s8.jpg";
 import Slide9 from "../../../assets/slideshow/s9.jpg";
 import Slide10 from "../../../assets/slideshow/s10.jpg";
-import PropTypes from "prop-types";
 
-Banner.propTypes = {};
-
-function Banner(props) {
+function Banner() {
   return (
     <div>
       <div style={{ marginTop: "-50px" }}>
