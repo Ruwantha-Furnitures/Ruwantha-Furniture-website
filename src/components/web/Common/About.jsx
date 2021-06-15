@@ -1,12 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card'
-import PropTypes from 'prop-types';
 
-CustomerAbout.propTypes = {
-    
-};
-
-function CustomerAbout(props) {
+function CustomerAbout() {
     require("bootstrap/dist/css/bootstrap.min.css");
     return (
         <div>            

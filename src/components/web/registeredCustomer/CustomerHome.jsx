@@ -7,11 +7,8 @@ import Slideshow from "../customer/Banner";
 import Footer from "../Common/Footer";
 import "../../../css/web/Home.css";
 import "../../../css/web/common.module.css";
-import PropTypes from "prop-types";
 
-CustomerHome.propTypes = {};
-
-function CustomerHome(props) {
+function CustomerHome() {
   require("bootstrap/dist/css/bootstrap.min.css");
   const contactImg = {
     backgroundImage: `url(${Topimg})`,

@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import FormContact from '../Common/ContactForm';
 import Navigation from "./UserNav";
 import Footer from "../Common/Footer";
 import About from "../Common/About";
@@ -8,12 +6,7 @@ import ConForm from "../Common/ContactForm";
 import { Container, Row, Col } from 'reactstrap';
 import Topimg from '../../../assets/topimg2.jpg';
 
-
-CustomerContact.propTypes = {
-    
-};
-
-function CustomerContact(props) {
+function CustomerContact() {
     const contactImg = {
         backgroundImage: `url(${Topimg})` ,
         repeat: 'none',

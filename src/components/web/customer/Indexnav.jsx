@@ -8,11 +8,7 @@ import logo from "../../../assets/logo.png";
 import PropTypes from 'prop-types';
 import NavButtonStyle from "../../../css/web/common.module.css";
 
-Indexnav.propTypes = {
-    
-};
-
-function Indexnav(props) {
+function Indexnav() {
     require("bootstrap/dist/css/bootstrap.min.css");
     const navlink = {
         color: "white",        

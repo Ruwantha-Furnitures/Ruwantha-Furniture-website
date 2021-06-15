@@ -12,16 +12,11 @@ import {
 } from "react-bootstrap";
 import logo from "../../../assets/logo.png";
 import ShoppingCart from "./Cart";
-
 import Person from "./PersonIcon";
-import PropTypes from 'prop-types';
-
 import NavButtonStyle from "../../../css/web/common.module.css";
 import "../../../css/web/cart.css";
 
-UserNav.propTypes = {};
-
-function UserNav(props) {
+function UserNav() {
   require("bootstrap/dist/css/bootstrap.min.css");
   const navlink = {
     color: "white",
