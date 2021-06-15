@@ -4,13 +4,10 @@ import { Container, Row, Col } from "reactstrap";
 import Topimg from "../../../assets/topimg1.jpg";
 import ProductBox from "./ProductCards";
 import Navigation from "./Indexnav";
-<<<<<<< HEAD
-import Slideshow from './Banner';
-=======
-import Slideshow from "./Banner";
-import ContactFormHome from "./ContactForm";
 
->>>>>>> 9ddd21e54f96ae4e1a573a0977954fe2e413fc53
+import Slideshow from "./Banner";
+// import ContactFormHome from "./ContactForm";
+
 import Footer from "../Common/Footer";
 import "../../../css/web/Home.css";
 import PropTypes from "prop-types";

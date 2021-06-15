@@ -14,8 +14,6 @@ import logo from "../../../assets/logo.png";
 import ShoppingCart from "./Cart";
 
 import Person from "./PersonIcon";
-import PropTypes from 'prop-types';
-
 import PropTypes from "prop-types";
 
 import NavButtonStyle from "../../../css/web/common.module.css";
@@ -38,6 +36,7 @@ function UserNav(props) {
       cursor: pointer;
     }
   `;
+
       const HoverText1 = styled.p`
         color: #fff;
         :hover {
