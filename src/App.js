@@ -16,6 +16,7 @@ import Signup from "./components/web/customer/Signup.jsx";
 import Customer_Home from "./components/web/registeredCustomer/CustomerHome.jsx";
 import Customer_Product from "./components/web/registeredCustomer/CustomerProduct.jsx";
 import Customer_ContactUs from "./components/web/registeredCustomer/CustomerContact.jsx";
+import ViewProfile from "./components/web/registeredCustomer/ViewProfile.jsx";
 
 function App() {
   return (
@@ -37,6 +38,8 @@ function App() {
           <Route exact path="/customer_home" component={Customer_Home} />
           <Route exact path="/customer_product" component={Customer_Product} />          
           <Route exact path="/customer_contact-us" component={Customer_ContactUs} />
+          <Route exact path="/viewProfile" component={ViewProfile} />
+          
         </Switch>
       </div>
     </Router>
