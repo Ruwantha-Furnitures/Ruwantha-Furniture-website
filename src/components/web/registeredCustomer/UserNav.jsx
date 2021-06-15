@@ -16,8 +16,6 @@ import ShoppingCart from "./Cart";
 import Person from "./PersonIcon";
 import PropTypes from 'prop-types';
 
-import PropTypes from "prop-types";
-
 import NavButtonStyle from "../../../css/web/common.module.css";
 import "../../../css/web/cart.css";
 
