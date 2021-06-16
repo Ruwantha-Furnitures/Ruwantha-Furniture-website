@@ -4,7 +4,7 @@ import styled from 'styled-components'; //to add hover
 import { Container, Row, Col } from 'reactstrap';
 import { Link } from "react-router-dom";
 import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap';
-import logo from "../../../assets/logo.png";
+import logo from "../../../assets/nlogo.png";
 import PropTypes from 'prop-types';
 import NavButtonStyle from "../../../css/web/common.module.css";
 
@@ -13,7 +13,7 @@ function Indexnav() {
     const navlink = {
         color: "white",        
         padding: "10px",
-        marginTop: "0px"
+        marginTop: "20px"
       };
 
       const HoverText = styled.p`
@@ -33,8 +33,11 @@ function Indexnav() {
     return (        
             <div> 
             <Navbar variant="dark" expand="lg" sticky="top" style={{backgroundColor:'#291B1B', maxWidth:'100%'}}>
-            <Navbar.Brand href="#home" style={{marginTop:'-20px'}}>
-                    <img src={logo} alt={logo} width={100} height={100}></img>
+                <Navbar.Brand href="#home" style={{marginTop:'0px'}}>
+                    <img src={logo} alt={logo} width={60} height={60}></img>
+                </Navbar.Brand>
+                <Navbar.Brand>
+                    AR Magic  
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" >
