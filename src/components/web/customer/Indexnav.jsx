@@ -34,7 +34,7 @@ function Indexnav() {
             <div> 
             <Navbar variant="dark" expand="lg" sticky="top" style={{backgroundColor:'#291B1B', maxWidth:'100%'}}>
                 <Navbar.Brand href="#home" style={{marginTop:'0px'}}>
-                    <img src={logo} alt={logo} width={60} height={60}></img>
+                    <img src={logo} alt={logo} width={50} height={50}></img>
                 </Navbar.Brand>
                 <Navbar.Brand>
                     AR Magic  
@@ -42,9 +42,9 @@ function Indexnav() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" >
                     <Nav className="mr-auto">
-                        <Nav.Link href="/home" style={navlink}><HoverText1>Home</HoverText1></Nav.Link>
-                        <Nav.Link href="/product" style={navlink}><HoverText1>Product</HoverText1></Nav.Link>                        
-                        <Nav.Link href="/contact-us" style={navlink}><HoverText1>Contact Us</HoverText1></Nav.Link>
+                        <Nav.Link href="/home">Home</Nav.Link>
+                        <Nav.Link href="/product">Product</Nav.Link>                        
+                        <Nav.Link href="/contact-us">Contact Us</Nav.Link>
                     </Nav>
                     <Form inline>                
                         <Row>

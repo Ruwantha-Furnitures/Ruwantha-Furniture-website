@@ -46,6 +46,31 @@ function ProductCards() {
     <div>
       <Container style={backcontainer}>
         <Row className="justify-content-md-center" xs={12}>
+        <Col>
+            <Container style={innercontainer}>
+              <div>
+                <center>
+                  <img
+                    src={item4}
+                    alt={item4}
+                    width={200}
+                    height={150}
+                    style={funitureimg}
+                  />
+                </center>
+                <p class="textinbox">
+                  Canton Dining Suite
+                  <br /> Rs. 72,975
+                </p>
+                <center>    
+                  <Rating></Rating>
+                </center>
+                <center>
+                  <Link to="/viewProduct"><button class="addtocart">View</button></Link>
+                </center>
+              </div>
+            </Container>
+          </Col>
           <Col>
             <Container style={innercontainer}>
               <div>
@@ -65,7 +90,7 @@ function ProductCards() {
                   <Rating></Rating>
                 </center>
                 <center>
-                  <button class="addtocart">Add to cart</button>
+                  <button class="addtocart">View</button>
                 </center>                
               </div>
             </Container>
@@ -76,7 +101,7 @@ function ProductCards() {
                 <center>
                   <img
                     src={item2}
-                    alt={item1}
+                    alt={item2}
                     width={200}
                     height={150}
                     style={funitureimg}
@@ -90,7 +115,7 @@ function ProductCards() {
                   <Rating></Rating>
                 </center>
                 <center>
-                  <button class="addtocart">Add to cart</button>
+                  <button class="addtocart">View</button>
                 </center>
               </div>
             </Container>
@@ -101,7 +126,7 @@ function ProductCards() {
                 <center>
                   <img
                     src={item3}
-                    alt={item2}
+                    alt={item3}
                     width={200}
                     height={150}
                     style={funitureimg}
@@ -115,36 +140,11 @@ function ProductCards() {
                   <Rating></Rating>
                 </center>
                 <center>
-                  <button class="addtocart">Add to cart</button>
+                  <button class="addtocart">View</button>
                 </center>
               </div>
             </Container>
-          </Col>
-          <Col>
-            <Container style={innercontainer}>
-              <div>
-                <center>
-                  <img
-                    src={item4}
-                    alt={item3}
-                    width={200}
-                    height={150}
-                    style={funitureimg}
-                  />
-                </center>
-                <p class="textinbox">
-                  Canton Dining Suite
-                  <br /> Rs. 72,975
-                </p>
-                <center>    
-                  <Rating></Rating>
-                </center>
-                <center>
-                  <button class="addtocart">Add to cart</button>
-                </center>
-              </div>
-            </Container>
-          </Col>
+          </Col>          
         </Row>
         <Row className="justify-content-md-center">
           <Col>

@@ -10,7 +10,7 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
-import logo from "../../../assets/logo.png";
+import logo from "../../../assets/nlogo.png";
 import ShoppingCart from "./Cart";
 import Person from "./PersonIcon";
 import NavButtonStyle from "../../../css/web/common.module.css";
@@ -18,42 +18,24 @@ import "../../../css/web/cart.css";
 
 function UserNav() {
   require("bootstrap/dist/css/bootstrap.min.css");
-  const navlink = {
-    color: "white",
-    padding: "10px",
-    marginTop: "0px",
-  };
-
-  const HoverText = styled.p`
-    color: #111;
-    :hover {
-      color: #fc7a30;
-      cursor: pointer;
-    }
-  `;
-
-      const HoverText1 = styled.p`
-        color: #fff;
-        :hover {
-          color: #FC7A30;
-          cursor: pointer;
-        }
-      `
-    return (        
-            <div> 
+    return (             
+        <div> 
             <Navbar variant="dark" expand="lg" sticky="top" style={{backgroundColor: '#291B1B', maxWidth: '100%'}}>
-            <Navbar.Brand href="#home" style={{marginTop: '-20px'}}>
-                    <img src={logo} alt={logo} width={100} height={100}></img>
+                <Navbar.Brand href="#home" style={{marginTop:'0px'}}>
+                    <img src={logo} alt={logo} width={50} height={50}></img>
+                </Navbar.Brand>
+                <Navbar.Brand>
+                    AR Magic  
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" >
                     <Nav className="mr-auto">
-                        <Nav.Link href="/customer_home" style={navlink}><HoverText1>Home</HoverText1></Nav.Link>
-                        <Nav.Link href="/customer_product" style={navlink}><HoverText1>Product</HoverText1></Nav.Link>                        
-                        <Nav.Link href="/customer_contact-us" style={navlink}><HoverText1>About</HoverText1></Nav.Link>
+                        <Nav.Link href="/customer_home">Home</Nav.Link>
+                        <Nav.Link href="/customer_product">Product</Nav.Link>                        
+                        <Nav.Link href="/customer_contact-us">About</Nav.Link>
                     </Nav>
                     <Form inline>                
-                        <Row>
+                       <Row>
                             <Col>
                                 <Link to="/viewProfile" >
                                     <Person></Person>
