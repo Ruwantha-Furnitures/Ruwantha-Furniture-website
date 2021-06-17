@@ -5,7 +5,7 @@ import Footer from "../Common/Footer";
 import SignForm from "./SignupForm";
 import backcover from "../../../assets/login9.jpg";
 
-function Signup(props) {
+function Signup() {
     return (
         <div style={{              
             backgroundImage: `url(${backcover})`,        

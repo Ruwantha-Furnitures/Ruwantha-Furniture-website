@@ -1,6 +1,12 @@
-Nav {
-    color: #fff;
-    font-weight: bold;
+  Nav {
+    color: #fff;    
+  }
+  .subnav{
+    height: 50px;
+  }  
+  .Productimage{
+    width: 400px;    
+    border-radius: 20px;
   }
   .btn {
     background-color: #cac1c1;
@@ -32,6 +38,12 @@ Nav {
       justify-content: left;
       margin-left: 0px;
     }
+    .subnav{
+      height: 60px;
+    }
+    .Productimage{
+      width: 300px;    
+    }
   }
   
   @media screen and (max-width: 400px) {
@@ -41,6 +53,12 @@ Nav {
       justify-items: left;
       justify-content: left;
       margin-left: 0px;
+    }
+    .subnav{
+      height: 60px;
+    }
+    .Productimage{
+      width: 300px;    
     }
   }
   
