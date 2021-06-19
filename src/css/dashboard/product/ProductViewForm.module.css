@@ -12,11 +12,6 @@
   background-color: none;
 }
 
-form [type="text"] {
-  /* background-color: rgb(0,0,0,0); */
-  /* border: solid 2px #FFF; */
-}
-
 .details {
   display: flex;
   flex-direction: column;
@@ -221,7 +216,7 @@ form [type="text"] {
 
 .productTypeTitle {
   height: 33px;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 23px;
   line-height: 18px;
   color: #000000;
