@@ -31,6 +31,7 @@ import UpdateProfile from "./components/web/registeredCustomer/UpdateProfile.jsx
 //for nuwan
 import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery.jsx";
 import ProductTypeAdd from "./components/Dashboard/ProductTypeAdd";
+import ProductCategoryAdd from "./components/Dashboard/ProductCategoryAdd";
 
 function App() {
   return (
@@ -47,6 +48,11 @@ function App() {
             exact
             path="/dashboard/product/addProductType"
             component={ProductTypeAdd}
+          />
+          <Route
+            exact
+            path="/dashboard/product/addProductCategory"
+            component={ProductCategoryAdd}
           />
 
           <Route
