@@ -1,13 +1,17 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Dashboard from "./components/Admin/Dashboard";
-import Products from "./components/Admin/Products";
-import ProductView from "./components/Admin/ProductView";
-import ProductAdd from "./components/Admin/ProductAdd";
-import ProductSell from "./components/Admin/ProductSell";
-import ProfileChangePassword from "./components/Admin/ProfileChangePassword";
-import test from "./components/Admin/test/test";
 
+// Dashboard Components
+import Dashboard from "./components/Dashboard/DashboardHome";
+import Products from "./components/Dashboard/Products";
+import ProductView from "./components/Dashboard/ProductView";
+import ProductAdd from "./components/Dashboard/ProductAdd";
+import ProductSell from "./components/Dashboard/ProductSell";
+import ProfileChangePassword from "./components/Dashboard/ProfileChangePassword";
+import Customers from "./components/Dashboard/Customers";
+// import test from "./components/Dashboard/test/test";
+
+// Web Components
 import Home from "./components/web/customer/Home.jsx";
 import Product from "./components/web/customer/Product.jsx";
 import AboutUs from "./components/web/customer/About.jsx";
@@ -32,18 +36,22 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
+          {/* Dashboard */}
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/dashboard/products" component={Products} />
           <Route exact path="/dashboard/product/view" component={ProductView} />
           <Route exact path="/dashboard/product/add" component={ProductAdd} />
           <Route exact path="/dashboard/product/sell" component={ProductSell} />
+
           <Route
             exact
             path="/dashboard/profile/changePassword"
             component={ProfileChangePassword}
           />
+          <Route exact path="/dashboard/customers" component={Customers} />
 
-          <Route exact path="/home" component={Home} />
+          {/* Web */}
+          <Route exact path="/" component={Home} />
           <Route exact path="/product" component={Product} />
           <Route exact path="/about-us" component={AboutUs} />
           <Route exact path="/contact-us" component={ContactUs} />
