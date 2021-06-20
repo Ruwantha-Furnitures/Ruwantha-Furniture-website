@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { Container, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import Rating from "../Common/StartRating";
@@ -8,43 +8,43 @@ import item3 from "../../../assets/items/11.jpg";
 import item4 from "../../../assets/items/14.jpg";
 import "../../../css/web/Home.css";
 
-function AllProductCards() {
-  require("bootstrap/dist/css/bootstrap.min.css");
+function CustomerProductCard() {
+    require("bootstrap/dist/css/bootstrap.min.css");
 
-  const [itemCount, setItemCount] = React.useState(0);
-
-  const backcontainer = {
-    marginTop: "20px",
-    backgroundColor: "#CAC1C1",
-    padding: "30px",
-    borderRadius: "20px",
-    width: "100%",
-    marginBottom: "20px",
-  };
-  const innercontainer = {
-    backgroundColor: "#FFF",
-    padding: "6px",
-    borderRadius: "20px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  };
-  const funitureimg = {
-    marginTop: "10px",
-    borderRadius: "20px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  };
-  const topimage = {
-    marginTop: "-50px",
-    width: "100%",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-  };
-  return (
+    const [itemCount, setItemCount] = React.useState(0);
+  
+    const backcontainer = {
+      marginTop: "20px",
+      backgroundColor: "#CAC1C1",
+      padding: "30px",
+      borderRadius: "20px",
+      width: "100%",
+      marginBottom: "20px",
+    };
+    const innercontainer = {
+      backgroundColor: "#FFF",
+      padding: "6px",
+      borderRadius: "20px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    };
+    const funitureimg = {
+      marginTop: "10px",
+      borderRadius: "20px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    };
+    const topimage = {
+      marginTop: "-50px",
+      width: "100%",
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
+    };
+    return (
     <div>
-      <Container style={backcontainer}>
+        <Container style={backcontainer}>
         <Row className="justify-content-md-center" xs={12}>
         <Col>
             <Container style={innercontainer}>
@@ -52,7 +52,7 @@ function AllProductCards() {
                 <center>
                   <img
                     src={item4}
-                    alt={item3}
+                    alt={item4}
                     width={200}
                     height={150}
                     style={funitureimg}
@@ -66,12 +66,12 @@ function AllProductCards() {
                   <Rating></Rating>
                 </center>
                 <center>
-                <Link to="/viewProduct"><button class="addtocart">Add to cart</button></Link>
+                  <Link to="/viewProductDetail"><button class="addtocart">View</button></Link>
                 </center>
               </div>
             </Container>
-          </Col>
-          <Col>
+        </Col>
+        <Col>
             <Container style={innercontainer}>
               <div>
                 <center>
@@ -85,23 +85,23 @@ function AllProductCards() {
                 </center>
                 <p class="textinbox">
                   Wiscon Sofa <br /> Rs. 191,675
-                </p>    
+                </p>
                 <center>    
                   <Rating></Rating>
-                </center>            
-                <center>                  
-                  <button class="addtocart">Add to cart</button>
-                </center>                            
+                </center>
+                <center>
+                  <button class="addtocart">View</button>
+                </center>                
               </div>
             </Container>
-          </Col>
-          <Col>
+        </Col>
+        <Col>
             <Container style={innercontainer}>
               <div>
                 <center>
                   <img
                     src={item2}
-                    alt={item1}
+                    alt={item2}
                     width={200}
                     height={150}
                     style={funitureimg}
@@ -115,18 +115,18 @@ function AllProductCards() {
                   <Rating></Rating>
                 </center>
                 <center>
-                  <button class="addtocart">Add to cart</button>
+                  <button class="addtocart">View</button>
                 </center>
               </div>
             </Container>
-          </Col>
-          <Col>
+        </Col>
+        <Col>
             <Container style={innercontainer}>
               <div>
                 <center>
                   <img
                     src={item3}
-                    alt={item2}
+                    alt={item3}
                     width={200}
                     height={150}
                     style={funitureimg}
@@ -140,15 +140,22 @@ function AllProductCards() {
                   <Rating></Rating>
                 </center>
                 <center>
-                  <button class="addtocart">Add to cart</button>
+                  <button class="addtocart">View</button>
                 </center>
               </div>
             </Container>
           </Col>          
         </Row>
+        <Row className="justify-content-md-center">
+          <Col>
+            <center>
+              <Link to="/viewProductPage"><button class="viewAll">View All Products</button></Link>
+            </center>
+          </Col>
+        </Row>
       </Container>
     </div>
-  );
+    )
 }
 
-export default AllProductCards;
+export default CustomerProductCard

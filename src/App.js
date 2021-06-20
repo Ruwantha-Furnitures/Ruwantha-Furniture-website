@@ -18,6 +18,7 @@ import Customer_Product from "./components/web/registeredCustomer/CustomerProduc
 import Customer_ContactUs from "./components/web/registeredCustomer/CustomerContact.jsx";
 import ViewProfile from "./components/web/registeredCustomer/ViewProfile.jsx";
 import View_Product from "./components/web/customer/ViewProductDetails.jsx";
+import View_Product_Details from "./components/web/registeredCustomer/CustomerViewProductDetails";
 
 //for medani akka
 import UpdateProfile from "./components/web/registeredCustomer/UpdateProfile.jsx";
@@ -49,6 +50,7 @@ function App() {
           <Route exact path="/viewProfile" component={ViewProfile} />
           <Route exact path="/viewProductPage" component={Customer_Product} />
           <Route exact path="/viewProduct" component={View_Product} />
+          <Route exact path="/viewProductDetail" component={View_Product_Details} />
           
 
           <Route exact path="/updateProfile" component={UpdateProfile} />

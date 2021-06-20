@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import Topimg from "../../../assets/topimg1.jpg";
-import ProductBox from "../customer/ProductCards";
+import ProductBox from "../registeredCustomer/CustomerProductCard";
 import Navigation from "./UserNav";
 import Slideshow from "../customer/Banner";
 import Footer from "../Common/Footer";
