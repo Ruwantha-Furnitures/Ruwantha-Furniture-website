@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from "react-bootstrap/Form";
 import { Container, Row, Col } from 'reactstrap';
+import { Link } from "react-router-dom";
 import FormStyle from "../../../css/web/Form.module.css";
 import NavButtonStyle from "../../../css/web/common.module.css";
 
@@ -49,7 +50,9 @@ function ViewProfileForm() {
                         />
                     </Form.Group>    
                     <Form.Group size="xs">
-                        <center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Update</button></center><br />    
+                        <Link to='/updateProfile'>
+                            <center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Update</button></center><br />    
+                        </Link>
                     </Form.Group>          
                 </center>
             </Form>

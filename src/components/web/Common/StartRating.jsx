@@ -1,6 +1,6 @@
 import React from "react";
-// import { Rating } from '@material-ui/lab';
-// import Typography from "@material-ui/core/Typography";
+import { Rating } from '@material-ui/lab';
+import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 
 export default function StarRating() {
@@ -8,7 +8,7 @@ export default function StarRating() {
 
   return (
     <div>
-      {/* <Box component="fieldset" mb={3} borderColor="transparent">
+     {/*} <Box component="fieldset" mb={3} borderColor="transparent">
         <Typography component="legend">Controlled</Typography>
         <Rating
           name="simple-controlled"
@@ -17,10 +17,10 @@ export default function StarRating() {
             setValue(newValue);
           }}
         />
-      </Box> */}
-      {/* <Box component="fieldset" mb={3} borderColor="transparent">
+      </Box>*/}
+      <Box component="fieldset" mb={3} borderColor="transparent">
         <Rating name="read-only" value={value} readOnly />
-      </Box> */}
+      </Box> 
       {/* <Box component="fieldset" mb={3} borderColor="transparent">
         <Typography component="legend">Disabled</Typography>
         <Rating name="disabled" value={value} disabled />
