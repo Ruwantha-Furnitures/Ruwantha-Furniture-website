@@ -24,6 +24,7 @@ import Customer_Product from "./components/web/registeredCustomer/CustomerProduc
 import Customer_ContactUs from "./components/web/registeredCustomer/CustomerContact.jsx";
 import ViewProfile from "./components/web/registeredCustomer/ViewProfile.jsx";
 import View_Product from "./components/web/customer/ViewProductDetails.jsx";
+import View_Product_Details from "./components/web/registeredCustomer/CustomerViewProductDetails";
 
 //for medani akka
 import UpdateProfile from "./components/web/registeredCustomer/UpdateProfile.jsx";
