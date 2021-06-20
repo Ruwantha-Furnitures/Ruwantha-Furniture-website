@@ -8,7 +8,7 @@ function Navbar() {
         <div className={NavbarStyle.logodiv}>
           <div className={NavbarStyle.logo}></div>
           <div className={NavbarStyle.logoname}>
-            <h1 className={NavbarStyle.logonameStyle}>Ruwantha Furniture</h1>
+            <h1 className={NavbarStyle.logonameStyle}>AR Magic</h1>
           </div>
         </div>
       </div>
