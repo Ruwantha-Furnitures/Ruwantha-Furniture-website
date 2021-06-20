@@ -8,11 +8,10 @@ function UpdateProfileForm() {
     require("bootstrap/dist/css/bootstrap.min.css");
     const formlabel = {
         color: "#FFF",
-        paddig: "50px"
+        paddig: "20px"
     }
 
     return (            
-        /*<div style={{marginTop:'80px'}}>*/
         <div>
              <Form className={FormStyle.innerbox}>
                 <center>
@@ -21,46 +20,36 @@ function UpdateProfileForm() {
                     <Form.Group size="xs" controlId="name" >                    
                         <Form.Control style={{width: '260px'}} className={FormStyle.textBox}                                            
                             type="text"                            
-                            value={"Asini"}          
-                            readOnly                    
+                            value={"Asini"}                                                       
                         />
                     </Form.Group>
 
                     <Form.Group size="xs" controlId="address">                    
                         <Form.Control style={{width: '260px'}}  className={FormStyle.textBox}                    
                             type="text"                            
-                            value={"Ambalangoda"}   
-                            readOnly                       
+                            value={"Ambalangoda"}                                                   
                         />
                     </Form.Group> 
 
                     <Form.Group size="xs" controlId="telephone">                    
                         <Form.Control style={{width: '260px'}}  className={FormStyle.textBox}                    
                             type="text"                            
-                            value={"0773153130"}   
-                            readOnly                         
+                            value={"0773153130"}                                                  
                         />
                     </Form.Group>  
 
                     <Form.Group size="xs" controlId="email">                    
                         <Form.Control style={{width: '260px'}}  className={FormStyle.emailBox}                   
                             type="email"                            
-                            value={"asinipathila@gmail.com"}    
-                            readOnly                         
+                            value={"asinipathila@gmail.com"}                                          
                         />
-                    </Form.Group>
-                   
-                    <Form.Group size="xs">              
-                        <Row>
-                            <Col sm={6}>
-                                <button className={NavButtonStyle.btn}>Update</button>
-                            </Col>
-                            <Col sm={6}>
-                                <button className={NavButtonStyle.btn}>Delete</button>
-                            </Col>
-                        </Row>                   
-                    </Form.Group>   
-                
+                    </Form.Group>    
+                    <Form.Group size="xs">
+                        <center>
+                            <button block size="lg" type="submit" className={NavButtonStyle.btn}>Update</button>
+                            <button block size="lg" type="submit" className={NavButtonStyle.btn}>Update</button>
+                        </center><br />    
+                    </Form.Group>          
                 </center>
             </Form>
         </div>

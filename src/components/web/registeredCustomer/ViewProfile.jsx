@@ -14,7 +14,7 @@ function ViewProfile() {
       MaxWidth: "100%"
   }
     return (
-      <div className="col-md-12" style={contactImg}>                                     
+        <div className="col-md-12" style={contactImg}>                                     
             <Navigation></Navigation> 
             <Subnavigation></Subnavigation>
             <Container align="center"> 
