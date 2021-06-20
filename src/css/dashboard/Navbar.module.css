@@ -17,14 +17,14 @@
   display: flex;
   flex-direction: row;
 }
-
 .logo {
   order: 1;
   width: 25%;
-  background-image: url(../../assets/dashboard/img/Ellipse\ 2.png);
+  background-image: url(../../assets/dashboard/img/newLogo.png);
   height: 50px;
   margin-left: 10px;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .logoname {
