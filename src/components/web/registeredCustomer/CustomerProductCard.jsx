@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { Container, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import Rating from "../Common/StartRating";
@@ -8,43 +8,43 @@ import item3 from "../../../assets/items/11.jpg";
 import item4 from "../../../assets/items/14.jpg";
 import "../../../css/web/Home.css";
 
-function ProductCards() {
-  require("bootstrap/dist/css/bootstrap.min.css");
+function CustomerProductCard() {
+    require("bootstrap/dist/css/bootstrap.min.css");
 
-  const [itemCount, setItemCount] = React.useState(0);
-
-  const backcontainer = {
-    marginTop: "20px",
-    backgroundColor: "#CAC1C1",
-    padding: "30px",
-    borderRadius: "20px",
-    width: "100%",
-    marginBottom: "20px",
-  };
-  const innercontainer = {
-    backgroundColor: "#FFF",
-    padding: "6px",
-    borderRadius: "20px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  };
-  const funitureimg = {
-    marginTop: "10px",
-    borderRadius: "20px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  };
-  const topimage = {
-    marginTop: "-50px",
-    width: "100%",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-  };
-  return (
+    const [itemCount, setItemCount] = React.useState(0);
+  
+    const backcontainer = {
+      marginTop: "20px",
+      backgroundColor: "#CAC1C1",
+      padding: "30px",
+      borderRadius: "20px",
+      width: "100%",
+      marginBottom: "20px",
+    };
+    const innercontainer = {
+      backgroundColor: "#FFF",
+      padding: "6px",
+      borderRadius: "20px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    };
+    const funitureimg = {
+      marginTop: "10px",
+      borderRadius: "20px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    };
+    const topimage = {
+      marginTop: "-50px",
+      width: "100%",
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
+    };
+    return (
     <div>
-      <Container style={backcontainer}>
+        <Container style={backcontainer}>
         <Row className="justify-content-md-center" xs={12}>
         <Col>
             <Container style={innercontainer}>
@@ -66,12 +66,12 @@ function ProductCards() {
                   <Rating></Rating>
                 </center>
                 <center>
-                  <Link to="/viewProduct"><button class="addtocart">View</button></Link>
+                  <Link to="/viewProductDetail"><button class="addtocart">View</button></Link>
                 </center>
               </div>
             </Container>
-          </Col>
-          <Col>
+        </Col>
+        <Col>
             <Container style={innercontainer}>
               <div>
                 <center>
@@ -94,8 +94,8 @@ function ProductCards() {
                 </center>                
               </div>
             </Container>
-          </Col>
-          <Col>
+        </Col>
+        <Col>
             <Container style={innercontainer}>
               <div>
                 <center>
@@ -119,8 +119,8 @@ function ProductCards() {
                 </center>
               </div>
             </Container>
-          </Col>
-          <Col>
+        </Col>
+        <Col>
             <Container style={innercontainer}>
               <div>
                 <center>
@@ -155,7 +155,7 @@ function ProductCards() {
         </Row>
       </Container>
     </div>
-  );
+    )
 }
 
-export default ProductCards;
+export default CustomerProductCard

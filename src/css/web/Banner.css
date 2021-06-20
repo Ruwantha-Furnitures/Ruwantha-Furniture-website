@@ -6,7 +6,7 @@ div { position: relative; }
   z-index: 3;
   animation: slideshow 12s linear 0s infinite;
   margin-top: -50px;
-  margin-bottom: 10px;
+  margin-bottom: 10px;  
 }
 
 .slide:nth-child(2) {

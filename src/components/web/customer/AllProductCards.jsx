@@ -1,16 +1,18 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import item1 from "../../../../assets/items/10.jpg";
-import item2 from "../../../../assets/items/9.jpg";
-import item3 from "../../../../assets/items/11.jpg";
-import item4 from "../../../../assets/items/14.jpg";
-import "../css/Home.css";
-import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import Rating from "../Common/StartRating";
+import item1 from "../../../assets/items/10.jpg";
+import item2 from "../../../assets/items/9.jpg";
+import item3 from "../../../assets/items/11.jpg";
+import item4 from "../../../assets/items/14.jpg";
+import "../../../css/web/Home.css";
 
-ProductCards.propTypes = {};
+function AllProductCards() {
+  require("bootstrap/dist/css/bootstrap.min.css");
 
-function ProductCards(props) {
+  const [itemCount, setItemCount] = React.useState(0);
+
   const backcontainer = {
     marginTop: "20px",
     backgroundColor: "#CAC1C1",
@@ -44,6 +46,31 @@ function ProductCards(props) {
     <div>
       <Container style={backcontainer}>
         <Row className="justify-content-md-center" xs={12}>
+        <Col>
+            <Container style={innercontainer}>
+              <div>
+                <center>
+                  <img
+                    src={item4}
+                    alt={item3}
+                    width={200}
+                    height={150}
+                    style={funitureimg}
+                  />
+                </center>
+                <p class="textinbox">
+                  Canton Dining Suite
+                  <br /> Rs. 72,975
+                </p>
+                <center>    
+                  <Rating></Rating>
+                </center>
+                <center>
+                <Link to="/viewProduct"><button class="addtocart">Add to cart</button></Link>
+                </center>
+              </div>
+            </Container>
+          </Col>
           <Col>
             <Container style={innercontainer}>
               <div>
@@ -58,10 +85,13 @@ function ProductCards(props) {
                 </center>
                 <p class="textinbox">
                   Wiscon Sofa <br /> Rs. 191,675
-                </p>
-                <center>
+                </p>    
+                <center>    
+                  <Rating></Rating>
+                </center>            
+                <center>                  
                   <button class="addtocart">Add to cart</button>
-                </center>
+                </center>                            
               </div>
             </Container>
           </Col>
@@ -81,6 +111,9 @@ function ProductCards(props) {
                   Eliza Sofa
                   <br /> Rs. 76,175
                 </p>
+                <center>    
+                  <Rating></Rating>
+                </center>
                 <center>
                   <button class="addtocart">Add to cart</button>
                 </center>
@@ -103,45 +136,19 @@ function ProductCards(props) {
                   Serena Single Seater
                   <br /> Rs. 30,875
                 </p>
+                <center>    
+                  <Rating></Rating>
+                </center>
                 <center>
                   <button class="addtocart">Add to cart</button>
                 </center>
               </div>
             </Container>
-          </Col>
-          <Col>
-            <Container style={innercontainer}>
-              <div>
-                <center>
-                  <img
-                    src={item4}
-                    alt={item3}
-                    width={200}
-                    height={150}
-                    style={funitureimg}
-                  />
-                </center>
-                <p class="textinbox">
-                  Canton Dining Suite
-                  <br /> Rs. 72,975
-                </p>
-                <center>
-                  <button class="addtocart">Add to cart</button>
-                </center>
-              </div>
-            </Container>
-          </Col>
-        </Row>
-        <Row className="justify-content-md-center">
-          <Col>
-            <center>
-              <button class="viewAll">View All Products</button>
-            </center>
-          </Col>
+          </Col>          
         </Row>
       </Container>
     </div>
   );
 }
 
-export default ProductCards;
+export default AllProductCards;

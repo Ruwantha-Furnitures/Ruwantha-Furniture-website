@@ -2,15 +2,10 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import { Container, Row, Col } from "reactstrap";
 import Button from "react-bootstrap/Button";
-import PropTypes from "prop-types";
 import NavButtonStyle from "../../../css/web/common.module.css";
 import FormStyle from "../../../css/web/Form.module.css";
 
-ContactForm.propTypes = {};
-
-function ContactForm(props) {
-
-
+function ContactForm() {
     require("bootstrap/dist/css/bootstrap.min.css");
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -29,7 +24,8 @@ function ContactForm(props) {
         <div>                    
         <Form className={FormStyle.innerbox}>
         <center>
-            <h2 style={{marginTop: '20px'}}>CONTACT US</h2>                    
+            <h2 style={{marginTop: '20px'}}>CONTACT US</h2>   
+            <br />                 
                 <Form.Group size="xs" controlId="name" >                    
                     <Form.Control style={{width: '260px'}} className={FormStyle.textBox}                            
                         type="text"

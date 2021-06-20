@@ -5,7 +5,7 @@ import Topimg from '../../../assets/topimg2.jpg';
 import ConForm from "../Common/ContactForm";
 import Footer from "../Common/Footer";
 
-function Contact(props) {
+function Contact() {
     
     const contactImg = {
         backgroundImage: `url(${Topimg})` ,

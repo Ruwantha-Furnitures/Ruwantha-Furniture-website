@@ -1,57 +1,26 @@
 import React, {useState} from 'react';
-import Form from "react-bootstrap/Form";
-import PropTypes from 'prop-types';
+import Navigation from "./UserNav";
+import Footer from "../Common/Footer";
+import { Container, Row, Col } from 'reactstrap';
+import ProfileForm from "../registeredCustomer/ViewProfileForm";
+import Subnavigation from "./Subnav";
+import Topimg from '../../../assets/topimg2.jpg';
 
-ViewProfile.propTypes = {
-    
-};
-
-function ViewProfile(props) {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
-    function validateForm() {
-        return email.length > 0 && password.length > 0;
-    }
-
-    function handleSubmit(event) {
-        event.preventDefault();
-    }
-    const formlabel = {
-        color: "#FFF",
-        paddig: "20px"
-    }
-
-    const loginform = {    
-        justifyContent: "left",
-        justifyItem: "left",
-        margin: "10px",
-        padding: "40px",
-        backgroundColor: "rgb(41, 27, 27, 0.9)",        
-        backgroundColor: "rgb(1,1,1, 0.8)",            
-        borderRadius: "20px",                    
-        color: "#FFF"
-    }
+function ViewProfile() {
+    const contactImg = {
+      backgroundImage: `url(${Topimg})` ,
+      repeat: 'none',
+      padding: '0',
+      MaxWidth: "100%"
+  }
     return (
-        <div>
-             <Form style={loginform} onSubmit={handleSubmit} align="left">        
-            <Form.Group size="sm" controlId="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control                
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group size="sm" controlId="password">
-              <Form.Label style={formlabel}>Password</Form.Label>
-              <Form.Control
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </Form.Group>            
-          </Form>
+      <div className="col-md-12" style={contactImg}>                                     
+            <Navigation></Navigation> 
+            <Subnavigation></Subnavigation>
+            <Container align="center"> 
+                <ProfileForm></ProfileForm>
+            </Container>
+            <Footer></Footer>    
         </div>
     );
 }

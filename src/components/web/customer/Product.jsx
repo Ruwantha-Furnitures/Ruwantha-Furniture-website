@@ -1,12 +1,7 @@
 import React from 'react';
 import Navigation from "./Indexnav";
 import Footer from "../Common/Footer";
-import ProductBox from "./ProductCards";
-import PropTypes from 'prop-types';
-
-Product.propTypes = {
-    
-};
+import ProductBox from "./AllProductCards";
 
 function Product(props) {
     return (

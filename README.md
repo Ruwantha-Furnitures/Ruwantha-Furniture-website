@@ -29,3 +29,7 @@ npm install react-google-login
 npm install @material-ui/core
 
 npm install @material-ui/icons
+
+-------Star Rating---------------
+
+npm install @material-ui/lab
