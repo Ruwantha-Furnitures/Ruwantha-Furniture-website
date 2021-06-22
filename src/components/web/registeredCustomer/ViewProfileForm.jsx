@@ -21,32 +21,28 @@ function ViewProfileForm() {
                     <Form.Group size="xs" controlId="name" >                    
                         <Form.Control style={{width: '260px'}} className={FormStyle.textBox}                                            
                             type="text"                            
-                            value={"Asini"}          
-                            readOnly                    
+                            value={"Asini"}                                                     
                         />
                     </Form.Group>
 
                     <Form.Group size="xs" controlId="address">                    
                         <Form.Control style={{width: '260px'}}  className={FormStyle.textBox}                    
                             type="text"                            
-                            value={"Ambalangoda"}   
-                            readOnly                       
+                            value={"Ambalangoda"}                                              
                         />
                     </Form.Group> 
 
                     <Form.Group size="xs" controlId="telephone">                    
                         <Form.Control style={{width: '260px'}}  className={FormStyle.textBox}                    
                             type="text"                            
-                            value={"0773153130"}   
-                            readOnly                         
+                            value={"0773153130"}                                                      
                         />
                     </Form.Group>  
 
                     <Form.Group size="xs" controlId="email">                    
-                        <Form.Control style={{width: '260px'}}  className={FormStyle.emailBox}                   
+                        <Form.Control style={{width: '260px'}}  className={FormStyle.emailBox}               
                             type="email"                            
-                            value={"asinipathila@gmail.com"}    
-                            readOnly                         
+                            value={"asinipathila@gmail.com"}                                                                                    
                         />
                     </Form.Group>    
                     <Form.Group size="xs">
