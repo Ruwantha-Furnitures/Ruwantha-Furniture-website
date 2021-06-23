@@ -4,7 +4,7 @@ import Sidebar from "./common/Sidebar";
 import AllProductsView from "./common/AllProductsView";
 import MainStyle from "../../css/dashboard/Main.module.css";
 import ProductStyle from "../../css/dashboard/Products.module.css";
-import CustomersTable from "./common/CustomersTable";
+import CustomersTable from "../Dashboard/customer/CustomersTable";
 
 function Customers() {
   return (

@@ -36,16 +36,21 @@ function Sidebar() {
             </Link>
           </li>
           <li>
-            <div className={SidebarStyle.lineSection}>
-              <div className={SidebarStyle.lineIcon}>
-                <span className={"material-icons " + SidebarStyle.iconWidth}>
-                  local_offer
-                </span>
+            <Link
+              to="/dashboard/product/sell"
+              className={SidebarStyle.sidebarLink}
+            >
+              <div className={SidebarStyle.lineSection}>
+                <div className={SidebarStyle.lineIcon}>
+                  <span className={"material-icons " + SidebarStyle.iconWidth}>
+                    local_offer
+                  </span>
+                </div>
+                <div className={SidebarStyle.lineText}>
+                  <h1 className={SidebarStyle.lineTextStyle}>Sell Product</h1>
+                </div>
               </div>
-              <div className={SidebarStyle.lineText}>
-                <h1 className={SidebarStyle.lineTextStyle}>Sell Product</h1>
-              </div>
-            </div>
+            </Link>
           </li>
           <li>
             <div className={SidebarStyle.lineSection}>

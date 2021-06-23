@@ -33,6 +33,7 @@ import CustomerUpdateProfile from "./components/web/registeredCustomer/UpdatePro
 import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery.jsx";
 import ProductTypeAdd from "./components/Dashboard/ProductTypeAdd";
 import ProductCategoryAdd from "./components/Dashboard/ProductCategoryAdd";
+import CustomerProfile from "./components/Dashboard/CustomerProfile";
 
 function App() {
   return (
@@ -62,6 +63,11 @@ function App() {
             component={ProfileChangePassword}
           />
           <Route exact path="/dashboard/customers" component={Customers} />
+          <Route
+            exact
+            path="/dashboard/customer/detials"
+            component={CustomerProfile}
+          />
 
           {/* Web */}
           <Route exact path="/home" component={Home} />
@@ -72,16 +78,27 @@ function App() {
           <Route exact path="/signup" component={Signup} />
 
           <Route exact path="/customer_home" component={Customer_Home} />
-          <Route exact path="/customer_product" component={Customer_Product} />          
-          <Route exact path="/customer_contact-us" component={Customer_ContactUs} />
+          <Route exact path="/customer_product" component={Customer_Product} />
+          <Route
+            exact
+            path="/customer_contact-us"
+            component={Customer_ContactUs}
+          />
 
           <Route exact path="/viewProfile" component={ViewProfile} />
           <Route exact path="/viewProductPage" component={Customer_Product} />
           <Route exact path="/viewProduct" component={View_Product} />
-          <Route exact path="/viewProductDetail" component={View_Product_Details} />
-          
+          <Route
+            exact
+            path="/viewProductDetail"
+            component={View_Product_Details}
+          />
 
-          <Route exact path="/updateProfile" component={CustomerUpdateProfile} />
+          <Route
+            exact
+            path="/updateProfile"
+            component={CustomerUpdateProfile}
+          />
           <Route exact path="/recoveryPassword" component={RecoveryPassword} />
         </Switch>
       </div>
