@@ -426,3 +426,34 @@ select:focus {
   margin-top: 13px;
   resize: none;
 }
+
+.labelStyleforLongDesc {
+  height: 106px;
+  background: #ffffff;
+  border-radius: 22px;
+  border: none;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  color: #000000;
+  padding-left: 15px;
+  width: 74%;
+  padding-top: 9px;
+  margin-top: 13px;
+  resize: none;
+}
+
+.addInlineFlex {
+  display: inline-flex;
+}
+
+.addMarginBottom {
+  margin-top: 18px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+}

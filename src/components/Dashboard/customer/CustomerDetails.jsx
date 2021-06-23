@@ -1,73 +1,14 @@
 import React from "react";
 import ProductViewFormStyle from "../../../css/dashboard/product/ProductViewForm.module.css";
 
-function ProductSellForm() {
+function CustomerDetails() {
   return (
     <React.Fragment>
       <div>
-        <h1 className={ProductViewFormStyle.titleStyle}>Product Sell Page</h1>
+        <h1 className={ProductViewFormStyle.titleStyle}>Customer Profile</h1>
       </div>
       <form action="#" className={ProductViewFormStyle.formStyle}>
         <div className={ProductViewFormStyle.details}>
-          <div className={ProductViewFormStyle.infoPart}>
-            <div className={ProductViewFormStyle.form}>
-              <div
-                className={
-                  ProductViewFormStyle.formLine +
-                  " " +
-                  ProductViewFormStyle.setMarginTop
-                }
-              >
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Product
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Product Name"
-                    className={ProductViewFormStyle.inputStyle}
-                  />
-                </div>
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Price
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Product Price"
-                    className={ProductViewFormStyle.inputStyle}
-                  />
-                </div>
-              </div>
-              <div className={ProductViewFormStyle.formLine}>
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Quantity
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Product Qunatity"
-                    className={ProductViewFormStyle.inputStyle}
-                  />
-                </div>
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Discount
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Product Discount"
-                    className={ProductViewFormStyle.inputStyle}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
           <div className={ProductViewFormStyle.infoPart}>
             <div className={ProductViewFormStyle.form}>
               <div
@@ -84,7 +25,7 @@ function ProductSellForm() {
                   <input
                     type="text"
                     value=""
-                    placeholder="Customer First Name"
+                    placeholder="Tharindu"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
@@ -95,7 +36,7 @@ function ProductSellForm() {
                   <input
                     type="text"
                     value=""
-                    placeholder="Customer Last Name"
+                    placeholder="Gihan"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
@@ -108,7 +49,7 @@ function ProductSellForm() {
                   <input
                     type="text"
                     value=""
-                    placeholder="Customer Email Address"
+                    placeholder="wtgihan@gmail.com"
                     className={ProductViewFormStyle.inputStyleforLong}
                   />
                 </div>
@@ -121,7 +62,7 @@ function ProductSellForm() {
                   <input
                     type="text"
                     value=""
-                    placeholder="Customer Dilever Address"
+                    placeholder="Gonapura Poddala Galle"
                     className={ProductViewFormStyle.inputStyleforLong}
                   />
                 </div>
@@ -145,8 +86,32 @@ function ProductSellForm() {
                   <input
                     type="text"
                     value=""
-                    placeholder="Payment Method"
+                    placeholder="Customer Number"
                     className={ProductViewFormStyle.inputStyle}
+                  />
+                </div>
+              </div>
+              <div className={ProductViewFormStyle.formLine}>
+                <div
+                  className={
+                    ProductViewFormStyle.dataforLong +
+                    " " +
+                    ProductViewFormStyle.addInlineFlex
+                  }
+                >
+                  <label
+                    className={
+                      ProductViewFormStyle.labelStyleforLong +
+                      " " +
+                      ProductViewFormStyle.addMarginBottom
+                    }
+                  >
+                    Review
+                  </label>
+                  <textarea
+                    value=""
+                    placeholder="Customer Review..."
+                    className={ProductViewFormStyle.labelStyleforLongDesc}
                   />
                 </div>
               </div>
@@ -157,7 +122,7 @@ function ProductSellForm() {
         <div className={ProductViewFormStyle.descButtonsAdd}>
           <div className={ProductViewFormStyle.descButtonAdd}>
             <button className={ProductViewFormStyle.descButtonAddStyle}>
-              Sell Product
+              Back Home
             </button>
           </div>
         </div>
@@ -166,4 +131,4 @@ function ProductSellForm() {
   );
 }
 
-export default ProductSellForm;
+export default CustomerDetails;
