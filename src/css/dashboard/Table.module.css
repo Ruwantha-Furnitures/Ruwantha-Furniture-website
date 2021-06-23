@@ -117,3 +117,11 @@ td {
 .rateStar {
   font-size: 22px;
 }
+
+.linkStyle {
+  /* display: inline-flex; */
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.86);
+  font-weight: 800;
+  /* align-items: center; */
+}
