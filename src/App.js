@@ -34,6 +34,7 @@ import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecove
 import ProductTypeAdd from "./components/Dashboard/ProductTypeAdd";
 import ProductCategoryAdd from "./components/Dashboard/ProductCategoryAdd";
 import CustomerProfile from "./components/Dashboard/CustomerProfile";
+import PurchaseOrders from "./components/Dashboard/PurchaseOrders";
 
 function App() {
   return (
@@ -55,6 +56,11 @@ function App() {
             exact
             path="/dashboard/product/addProductCategory"
             component={ProductCategoryAdd}
+          />
+          <Route
+            exact
+            path="/dashboard/purchaseOrders"
+            component={PurchaseOrders}
           />
 
           <Route
