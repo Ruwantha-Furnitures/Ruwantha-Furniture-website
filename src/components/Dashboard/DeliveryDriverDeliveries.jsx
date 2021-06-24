@@ -48,31 +48,71 @@ function DeliveryDriverDeliveries() {
                         <td>0778522736</td>
                         <td>2021-03-17</td>
                         <td>Rs.25000</td>
-                        <td>NotCompleted</td>
+                        <td>
+                          <span
+                            className={
+                              TableStyle.statusStyle +
+                              " " +
+                              TableStyle.statusColorNotCompleted
+                            }
+                          >
+                            NotCompleted
+                          </span>
+                        </td>
                       </tr>
                       <tr>
                         <td className={TableStyle.moreInfo}>No:2</td>
-                        <td>Tharindu Gihan</td>
+                        <td>Himasha Anjali</td>
                         <td>0778522736</td>
                         <td>2021-03-17</td>
                         <td>Rs.25000</td>
-                        <td>Completed</td>
+                        <td>
+                          <span
+                            className={
+                              TableStyle.statusStyle +
+                              " " +
+                              TableStyle.statusColorNotCompleted
+                            }
+                          >
+                            NotCompleted
+                          </span>
+                        </td>
                       </tr>
                       <tr>
                         <td className={TableStyle.moreInfo}>No:3</td>
-                        <td>Tharindu Gihan</td>
+                        <td>Sathira Dimuthu</td>
                         <td>0778522736</td>
                         <td>2021-03-17</td>
                         <td>Rs.25000</td>
-                        <td>NotCompleted</td>
+                        <td>
+                          <span
+                            className={
+                              TableStyle.statusStyle +
+                              " " +
+                              TableStyle.statusColorNotCompleted
+                            }
+                          >
+                            NotCompleted
+                          </span>
+                        </td>
                       </tr>
                       <tr>
                         <td className={TableStyle.moreInfo}>No:4</td>
-                        <td>Tharindu Gihan</td>
+                        <td>Anushaka Tharindu</td>
                         <td>0778522736</td>
                         <td>2021-03-17</td>
                         <td>Rs.25000</td>
-                        <td>NotCompleted</td>
+                        <td>
+                          <span
+                            className={
+                              TableStyle.statusStyle +
+                              " " +
+                              TableStyle.statusColorCompleted
+                            }
+                          >
+                            Completed
+                          </span>
+                        </td>
                       </tr>
                       <tr>
                         <td className={TableStyle.moreInfo}>No:5</td>
@@ -80,23 +120,53 @@ function DeliveryDriverDeliveries() {
                         <td>0778522736</td>
                         <td>2021-03-17</td>
                         <td>Rs.25000</td>
-                        <td>NotCompleted</td>
+                        <td>
+                          <span
+                            className={
+                              TableStyle.statusStyle +
+                              " " +
+                              TableStyle.statusColorCompleted
+                            }
+                          >
+                            Completed
+                          </span>
+                        </td>
                       </tr>
                       <tr>
                         <td className={TableStyle.moreInfo}>No:6</td>
-                        <td>Tharindu Gihan</td>
+                        <td>Thanuj Dasun</td>
                         <td>0778522736</td>
                         <td>2021-03-17</td>
                         <td>Rs.25000</td>
-                        <td>Completed</td>
+                        <td>
+                          <span
+                            className={
+                              TableStyle.statusStyle +
+                              " " +
+                              TableStyle.statusColorCompleted
+                            }
+                          >
+                            Completed
+                          </span>
+                        </td>
                       </tr>
                       <tr>
                         <td className={TableStyle.moreInfo}>No:7</td>
-                        <td>Tharindu Gihan</td>
+                        <td>Dimuthu Rathnasinghe</td>
                         <td>0778522736</td>
                         <td>2021-03-17</td>
                         <td>Rs.25000</td>
-                        <td>NotCompleted</td>
+                        <td>
+                          <span
+                            className={
+                              TableStyle.statusStyle +
+                              " " +
+                              TableStyle.statusColorCompleted
+                            }
+                          >
+                            Completed
+                          </span>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
