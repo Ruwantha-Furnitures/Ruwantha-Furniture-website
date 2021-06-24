@@ -1,23 +1,25 @@
 import styled from 'styled-components';
 
 export const Box = styled.div`
-padding: 20px 20px;
+padding: 10px 10px;
 background: #291B1B;
 position: fix;
 bottom: 0px;
 width: 100%;
 margin top:5px;
 @media (max-width: 1000px) {
-	padding: 70px 30px;
+	padding: 40px;
+	justify-content: center;
+	justify-item: center;
 }
 `;
 
 export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: center;	
 	max-width: 1000px;
-	margin: 0 auto;
+	margin: 0 auto;	
 	/* background: red; */
 `
 
