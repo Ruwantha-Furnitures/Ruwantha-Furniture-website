@@ -35,6 +35,7 @@ import ProductTypeAdd from "./components/Dashboard/ProductTypeAdd";
 import ProductCategoryAdd from "./components/Dashboard/ProductCategoryAdd";
 import CustomerProfile from "./components/Dashboard/CustomerProfile";
 import PurchaseOrders from "./components/Dashboard/PurchaseOrders";
+import DeliveryDrivers from "./components/Dashboard/DeliveryDrivers";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
         <Switch>
           {/* Dashboard */}
           <Route exact path="/dashboard" component={Dashboard} />
+          {/* Dashboard-Product */}
           <Route exact path="/dashboard/products" component={Products} />
           <Route exact path="/dashboard/product/view" component={ProductView} />
           <Route exact path="/dashboard/product/add" component={ProductAdd} />
@@ -63,16 +65,26 @@ function App() {
             component={PurchaseOrders}
           />
 
+          {/* Dashboard-Profiles */}
           <Route
             exact
             path="/dashboard/profile/changePassword"
             component={ProfileChangePassword}
           />
+
+          {/* Dashboard-Customer */}
           <Route exact path="/dashboard/customers" component={Customers} />
           <Route
             exact
             path="/dashboard/customer/detials"
             component={CustomerProfile}
+          />
+
+          {/* Dashboard-Dilvery Drivers */}
+          <Route
+            exact
+            path="/dashboard/deliveryDrivers"
+            component={DeliveryDrivers}
           />
 
           {/* Web */}
