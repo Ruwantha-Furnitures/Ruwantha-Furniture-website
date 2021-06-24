@@ -4,9 +4,9 @@ import Sidebar from "./common/Sidebar";
 import AllProductsView from "./common/AllProductsView";
 import MainStyle from "../../css/dashboard/Main.module.css";
 import ProductStyle from "../../css/dashboard/Products.module.css";
-import CustomersTable from "../Dashboard/customer/CustomersTable";
+import CustomerDetails from "./customer/CustomerDetails";
 
-function Customers() {
+function CustomerProfile() {
   return (
     <div className={MainStyle.bodycontainer}>
       <div className={MainStyle.navSection}>
@@ -21,8 +21,8 @@ function Customers() {
         <div className={ProductStyle.cardDataSection}>
           <div className={ProductStyle.detailsSection}>
             <div className={ProductStyle.detailCard}>
-              {/* CustomerTable */}
-              <CustomersTable />
+              {/* Customer View Profile */}
+              <CustomerDetails />
             </div>
           </div>
           <div className={ProductStyle.productsViewSection}>
@@ -34,4 +34,4 @@ function Customers() {
   );
 }
 
-export default Customers;
+export default CustomerProfile;

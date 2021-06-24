@@ -16,7 +16,7 @@ function CustomersTable() {
               <th>Email</th>
               <th>Contact Number</th>
               <th>Payment</th>
-              <th>Qunatity</th>
+              <th>Rating</th>
             </tr>
           </thead>
           <tbody>

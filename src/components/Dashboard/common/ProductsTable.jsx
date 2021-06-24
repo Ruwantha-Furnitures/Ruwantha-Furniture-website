@@ -12,10 +12,32 @@ function ProductsTable() {
         <table className={TableStyle.tableShow}>
           <thead>
             <tr>
-              <th>Product</th>
-              <th>Product Type</th>
+              <th>
+                <Link
+                  to="/dashboard/product/add"
+                  className={TableStyle.linkStyle}
+                >
+                  Product
+                </Link>
+              </th>
+              <th>
+                <Link
+                  to="/dashboard/product/addProductType"
+                  className={TableStyle.linkStyle}
+                >
+                  Type
+                </Link>
+              </th>
+              <th>
+                <Link
+                  to="/dashboard/product/addProductCategory"
+                  className={TableStyle.linkStyle}
+                >
+                  Category
+                </Link>
+              </th>
+
               <th>Price</th>
-              <th>Discount</th>
               <th>Qunatity</th>
             </tr>
           </thead>
@@ -23,57 +45,57 @@ function ProductsTable() {
             <tr>
               <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
               <td>Product Type 1</td>
+              <td>Category 1</td>
               <td>Rs.25000</td>
-              <td>Rs.250</td>
               <td>No.12</td>
             </tr>
             <tr>
               <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
               <td>Product Type 1</td>
+              <td>Category 1</td>
               <td>Rs.25000</td>
-              <td>Rs.250</td>
               <td>No.12</td>
             </tr>
             <tr>
               <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
               <td>Product Type 1</td>
+              <td>Category 1</td>
               <td>Rs.25000</td>
-              <td>Rs.250</td>
               <td>No.12</td>
             </tr>
             <tr>
               <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
               <td>Product Type 1</td>
+              <td>Category 1</td>
               <td>Rs.25000</td>
-              <td>Rs.250</td>
               <td>No.12</td>
             </tr>
             <tr>
               <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
               <td>Product Type 1</td>
+              <td>Category 1</td>
               <td>Rs.25000</td>
-              <td>Rs.250</td>
               <td>No.12</td>
             </tr>
             <tr>
               <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
               <td>Product Type 1</td>
+              <td>Category 1</td>
               <td>Rs.25000</td>
-              <td>Rs.250</td>
               <td>No.12</td>
             </tr>
             <tr>
               <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
               <td>Product Type 1</td>
+              <td>Category 1</td>
               <td>Rs.25000</td>
-              <td>Rs.250</td>
               <td>No.12</td>
             </tr>
             <tr>
               <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
               <td>Product Type 1</td>
+              <td>Category 1</td>
               <td>Rs.25000</td>
-              <td>Rs.250</td>
               <td>No.12</td>
             </tr>
           </tbody>
