@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
-import Topimg from "../../../assets/topimg1.jpg";
+import ConForm from "../Common/ContactForm";
+import Topimg from "../../../assets/topimg6.jpg";
 import ProductBox from "./ProductCards";
 import Navigation from "./Indexnav";
 import Slideshow from './Banner';
@@ -11,9 +12,10 @@ import "../../../css/web/Home.css";
 function Home() {
   require("bootstrap/dist/css/bootstrap.min.css");
   const contactImg = {
-    backgroundImage: `url(${Topimg})`,
-    padding: "0",
-    margin: "0",
+    backgroundImage: `url(${Topimg})` ,
+    repeat: 'none',
+    padding: '15px',
+    MaxWidth: "100%"
   };
 
   return (
@@ -21,7 +23,11 @@ function Home() {
       <Navigation></Navigation>
       <Slideshow></Slideshow>
       <ProductBox></ProductBox>
-
+      <div style={contactImg}>
+        <Container align="left">
+          <ConForm></ConForm>
+        </Container>
+      </div>
       <Footer></Footer>
     </div>
   );

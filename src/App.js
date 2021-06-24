@@ -14,7 +14,6 @@ import Customers from "./components/Dashboard/Customers";
 // Web Components
 import Home from "./components/web/customer/Home.jsx";
 import Product from "./components/web/customer/Product.jsx";
-import AboutUs from "./components/web/customer/About.jsx";
 import ContactUs from "./components/web/customer/Contact.jsx";
 import Login from "../src/components/web/Common/Login.jsx";
 import Signup from "./components/web/customer/Signup.jsx";
@@ -25,16 +24,13 @@ import Customer_ContactUs from "./components/web/registeredCustomer/CustomerCont
 import ViewProfile from "./components/web/registeredCustomer/ViewProfile.jsx";
 import View_Product from "./components/web/customer/ViewProductDetails.jsx";
 import View_Product_Details from "./components/web/registeredCustomer/CustomerViewProductDetails";
-
-//for medani akka
 import CustomerUpdateProfile from "./components/web/registeredCustomer/UpdateProfile.jsx";
+import CustomerChangePassword from './components/web/registeredCustomer/CustomerChangePassword.jsx'
 
 //for nuwan
 import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery.jsx";
 import ProductTypeAdd from "./components/Dashboard/ProductTypeAdd";
 import ProductCategoryAdd from "./components/Dashboard/ProductCategoryAdd";
-import CustomerProfile from "./components/Dashboard/CustomerProfile";
-import PurchaseOrders from "./components/Dashboard/PurchaseOrders";
 
 function App() {
   return (
@@ -57,11 +53,6 @@ function App() {
             path="/dashboard/product/addProductCategory"
             component={ProductCategoryAdd}
           />
-          <Route
-            exact
-            path="/dashboard/purchaseOrders"
-            component={PurchaseOrders}
-          />
 
           <Route
             exact
@@ -69,42 +60,26 @@ function App() {
             component={ProfileChangePassword}
           />
           <Route exact path="/dashboard/customers" component={Customers} />
-          <Route
-            exact
-            path="/dashboard/customer/detials"
-            component={CustomerProfile}
-          />
 
           {/* Web */}
           <Route exact path="/home" component={Home} />
-          <Route exact path="/product" component={Product} />
-          <Route exact path="/about-us" component={AboutUs} />
+          <Route exact path="/product" component={Product} />          
           <Route exact path="/contact-us" component={ContactUs} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
 
           <Route exact path="/customer_home" component={Customer_Home} />
-          <Route exact path="/customer_product" component={Customer_Product} />
-          <Route
-            exact
-            path="/customer_contact-us"
-            component={Customer_ContactUs}
-          />
+          <Route exact path="/customer_product" component={Customer_Product} />          
+          <Route exact path="/customer_contact-us" component={Customer_ContactUs} />
 
           <Route exact path="/viewProfile" component={ViewProfile} />
           <Route exact path="/viewProductPage" component={Customer_Product} />
           <Route exact path="/viewProduct" component={View_Product} />
-          <Route
-            exact
-            path="/viewProductDetail"
-            component={View_Product_Details}
-          />
+          <Route exact path="/viewProductDetail" component={View_Product_Details} />
+          <Route exact path="/changepassword" component={CustomerChangePassword} />    
+          
 
-          <Route
-            exact
-            path="/updateProfile"
-            component={CustomerUpdateProfile}
-          />
+          <Route exact path="/updateProfile" component={CustomerUpdateProfile} />
           <Route exact path="/recoveryPassword" component={RecoveryPassword} />
         </Switch>
       </div>
