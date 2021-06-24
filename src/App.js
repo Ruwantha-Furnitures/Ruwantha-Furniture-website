@@ -36,6 +36,7 @@ import ProductCategoryAdd from "./components/Dashboard/ProductCategoryAdd";
 import CustomerProfile from "./components/Dashboard/CustomerProfile";
 import PurchaseOrders from "./components/Dashboard/PurchaseOrders";
 import DeliveryDrivers from "./components/Dashboard/DeliveryDrivers";
+import DeliveryDriverProfile from "./components/Dashboard/DeliveryDriverProfile";
 
 function App() {
   return (
@@ -85,6 +86,11 @@ function App() {
             exact
             path="/dashboard/deliveryDrivers"
             component={DeliveryDrivers}
+          />
+          <Route
+            exact
+            path="/dashboard/deliveryDriver/profile"
+            component={DeliveryDriverProfile}
           />
 
           {/* Web */}
