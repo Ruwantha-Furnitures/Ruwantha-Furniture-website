@@ -32,7 +32,7 @@ function UserNav() {
                     <Nav className="mr-auto">
                         <Nav.Link href="/customer_home">Home</Nav.Link>
                         <Nav.Link href="/customer_product">Product</Nav.Link>                        
-                        <Nav.Link href="/customer_contact-us">About</Nav.Link>
+                        <Nav.Link href="/customer_contact-us">About Us</Nav.Link>
                     </Nav>
                     <Form inline>                
                        <Row>

@@ -2,7 +2,6 @@ import React from 'react';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from 'styled-components'; //to add hover
 import { Container, Row, Col } from 'reactstrap';
-import { Link } from "react-router-dom";
 import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap';
 import SubNavStyle from "../../../css/web/common.module.css";
 
@@ -34,7 +33,7 @@ function Subnav() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" >      
                 <Nav className="mr-auto">
-                    <Nav.Link href="#home">Change Password</Nav.Link>
+                    <Nav.Link href="changepassword">Change Password</Nav.Link>
                     <Nav.Link href="#features">Purchased History</Nav.Link>
                     <Nav.Link href="#pricing">Add Review</Nav.Link>
                 </Nav>

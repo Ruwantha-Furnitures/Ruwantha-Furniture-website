@@ -1,11 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
-import Badge from "@material-ui/core/Badge";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import Button from "@material-ui/core/Button";
-import AddIcon from "@material-ui/icons/Add";
-import RemoveIcon from "@material-ui/icons/Remove";
+import { Link } from "react-router-dom";
+import Rating from "../Common/StartRating";
 import item1 from "../../../assets/items/10.jpg";
 import item2 from "../../../assets/items/9.jpg";
 import item3 from "../../../assets/items/11.jpg";
@@ -50,6 +46,31 @@ function AllProductCards() {
     <div>
       <Container style={backcontainer}>
         <Row className="justify-content-md-center" xs={12}>
+        <Col>
+            <Container style={innercontainer}>
+              <div>
+                <center>
+                  <img
+                    src={item4}
+                    alt={item3}
+                    width={200}
+                    height={150}
+                    style={funitureimg}
+                  />
+                </center>
+                <p class="textinbox">
+                  Canton Dining Suite
+                  <br /> Rs. 72,975
+                </p>
+                <center>    
+                  <Rating></Rating>
+                </center>
+                <center>
+                <Link to="/viewProduct"><button class="addtocart">Add to cart</button></Link>
+                </center>
+              </div>
+            </Container>
+          </Col>
           <Col>
             <Container style={innercontainer}>
               <div>
@@ -64,31 +85,13 @@ function AllProductCards() {
                 </center>
                 <p class="textinbox">
                   Wiscon Sofa <br /> Rs. 191,675
-                </p>
-                <center>
+                </p>    
+                <center>    
+                  <Rating></Rating>
+                </center>            
+                <center>                  
                   <button class="addtocart">Add to cart</button>
-                </center>
-                <center>
-                <ButtonGroup>
-                  <Button
-                      onClick={() => {
-                      setItemCount(Math.max(itemCount - 1, 0));
-                      }}
-                    >
-                      {" "}
-                      <RemoveIcon fontSize="small" />
-                  </Button>
-                                 
-                  <Button
-                      onClick={() => {
-                      setItemCount(itemCount + 1);
-                      }}
-                    >
-                      {" "}
-                      <AddIcon fontSize="small" />
-                  </Button>
-                </ButtonGroup>
-                </center>                
+                </center>                            
               </div>
             </Container>
           </Col>
@@ -108,6 +111,9 @@ function AllProductCards() {
                   Eliza Sofa
                   <br /> Rs. 76,175
                 </p>
+                <center>    
+                  <Rating></Rating>
+                </center>
                 <center>
                   <button class="addtocart">Add to cart</button>
                 </center>
@@ -130,41 +136,15 @@ function AllProductCards() {
                   Serena Single Seater
                   <br /> Rs. 30,875
                 </p>
+                <center>    
+                  <Rating></Rating>
+                </center>
                 <center>
                   <button class="addtocart">Add to cart</button>
                 </center>
               </div>
             </Container>
-          </Col>
-          <Col>
-            <Container style={innercontainer}>
-              <div>
-                <center>
-                  <img
-                    src={item4}
-                    alt={item3}
-                    width={200}
-                    height={150}
-                    style={funitureimg}
-                  />
-                </center>
-                <p class="textinbox">
-                  Canton Dining Suite
-                  <br /> Rs. 72,975
-                </p>
-                <center>
-                  <button class="addtocart">Add to cart</button>
-                </center>
-              </div>
-            </Container>
-          </Col>
-        </Row>
-        <Row className="justify-content-md-center">
-          <Col>
-            <center>
-              <button class="viewAll">View All Products</button>
-            </center>
-          </Col>
+          </Col>          
         </Row>
       </Container>
     </div>

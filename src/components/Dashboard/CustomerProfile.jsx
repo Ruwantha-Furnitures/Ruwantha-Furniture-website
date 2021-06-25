@@ -2,11 +2,11 @@ import React from "react";
 import Navbar from "./common/Navbar";
 import Sidebar from "./common/Sidebar";
 import AllProductsView from "./common/AllProductsView";
-import ProductForm from "../Admin/product/ProductForm";
 import MainStyle from "../../css/dashboard/Main.module.css";
 import ProductStyle from "../../css/dashboard/Products.module.css";
+import CustomerDetails from "./customer/CustomerDetails";
 
-function ProductAdd() {
+function CustomerProfile() {
   return (
     <div className={MainStyle.bodycontainer}>
       <div className={MainStyle.navSection}>
@@ -21,8 +21,8 @@ function ProductAdd() {
         <div className={ProductStyle.cardDataSection}>
           <div className={ProductStyle.detailsSection}>
             <div className={ProductStyle.detailCard}>
-              {/* Product Add Form Part */}
-              <ProductForm />
+              {/* Customer View Profile */}
+              <CustomerDetails />
             </div>
           </div>
           <div className={ProductStyle.productsViewSection}>
@@ -34,4 +34,4 @@ function ProductAdd() {
   );
 }
 
-export default ProductAdd;
+export default CustomerProfile;

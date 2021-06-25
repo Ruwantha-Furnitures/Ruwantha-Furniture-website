@@ -17,14 +17,14 @@
   display: flex;
   flex-direction: row;
 }
-
 .logo {
   order: 1;
   width: 25%;
-  background-image: url(../../assets/dashboard/img/Ellipse\ 2.png);
+  background-image: url(../../assets/dashboard/img/newLogo.png);
   height: 50px;
   margin-left: 10px;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .logoname {
@@ -116,7 +116,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px #b89068 inset !important;
+  -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
 }
 
 .profileIcon {

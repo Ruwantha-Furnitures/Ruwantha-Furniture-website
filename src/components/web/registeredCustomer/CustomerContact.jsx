@@ -4,22 +4,25 @@ import Footer from "../Common/Footer";
 import About from "../Common/About";
 import ConForm from "../Common/ContactForm";
 import { Container, Row, Col } from 'reactstrap';
-import Topimg from '../../../assets/topimg2.jpg';
+import Topimg from '../../../assets/topimg10.jpg';
 
 function CustomerContact() {
     const contactImg = {
         backgroundImage: `url(${Topimg})` ,
         repeat: 'none',
-        padding: '0',
+        padding: '35px',
         MaxWidth: "100%"
     }
 
     return (        
-        <div className="col-md-12" style={contactImg}>                                     
+        <div>                                     
             <Navigation></Navigation> 
-            <Container align="right">
-                <ConForm></ConForm>
-            </Container>
+            <About></About>
+            <div style={contactImg}>
+                <Container align="left">
+                    <ConForm></ConForm>
+                </Container>
+            </div>            
             <Footer></Footer>            
         </div>                      
     );

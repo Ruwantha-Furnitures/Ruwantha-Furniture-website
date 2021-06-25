@@ -113,3 +113,33 @@ td {
   color: #542b14;
   font-size: 17px;
 }
+
+.rateStar {
+  font-size: 22px;
+}
+
+.linkStyle {
+  /* display: inline-flex; */
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.86);
+  font-weight: 800;
+  /* align-items: center; */
+}
+
+.statusStyle {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #ffffff;
+  border-radius: 22px;
+  height: 1px;
+  padding: 3px 8px;
+}
+
+.statusColorNotCompleted {
+  background-color: #be2e2e;
+}
+
+.statusColorCompleted {
+  background-color: #2ebe72;
+}

@@ -38,3 +38,106 @@ return (
 	</div>
 );
 }
+
+
+////////////////////////////////////////////////
+Rating ----------------------------------------
+
+import React from 'react';
+import Rating from '@material-ui/lab/Rating';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+
+export default function SimpleRating() {
+  const [value, setValue] = React.useState(2);
+
+  return (
+    <div>
+      <Box component="fieldset" mb={3} borderColor="transparent">
+        <Typography component="legend">Controlled</Typography>
+        <Rating
+          name="simple-controlled"
+          value={value}
+          onChange={(event, newValue) => {
+            setValue(newValue);
+          }}
+        />
+      </Box>
+      <Box component="fieldset" mb={3} borderColor="transparent">
+        <Typography component="legend">Read only</Typography>
+        <Rating name="read-only" value={value} readOnly />
+      </Box>
+      <Box component="fieldset" mb={3} borderColor="transparent">
+        <Typography component="legend">Disabled</Typography>
+        <Rating name="disabled" value={value} disabled />
+      </Box>
+      <Box component="fieldset" mb={3} borderColor="transparent">
+        <Typography component="legend">Pristine</Typography>
+        <Rating name="pristine" value={null} />
+      </Box>
+    </div>
+  );
+}
+
+
+/////////////update Profile form //////////
+import React from 'react';
+import Form from "react-bootstrap/Form";
+import { Container, Row, Col } from 'reactstrap';
+import FormStyle from "../../../css/web/Form.module.css";
+import NavButtonStyle from "../../../css/web/common.module.css";
+
+function UpdateProfileForm() {
+    require("bootstrap/dist/css/bootstrap.min.css");
+
+    const formlabel = {
+        color: "#FFF",
+        paddig: "20px"
+    }
+
+    return (            
+        <div>
+             <Form className={FormStyle.innerbox}>
+                <center>
+                    <h2 style={{marginTop: '20px'}}>PROFILE</h2> 
+                    <br />                   
+                    <Form.Group size="xs" controlId="name" >                    
+                        <input style={{width: '260px'}} className={FormStyle.textBox}                                            
+                            type="text"                            
+                            value={"Asini"}                                 
+                        />
+                    </Form.Group>
+
+                    <Form.Group size="xs" controlId="address">                    
+                        <Form.Control style={{width: '260px'}}  className={FormStyle.textBox}                    
+                            type="text"                            
+                            value={"Ambalangoda"}                                                   
+                        />
+                    </Form.Group> 
+
+                    <Form.Group size="xs" controlId="telephone">                    
+                        <Form.Control style={{width: '260px'}}  className={FormStyle.textBox}                    
+                            type="text"                            
+                            value={"0773153130"}                                                  
+                        />
+                    </Form.Group>  
+
+                    <Form.Group size="xs" controlId="email">                    
+                        <Form.Control style={{width: '260px'}}  className={FormStyle.emailBox}                   
+                            type="email"                            
+                            value={"asinipathila@gmail.com"}                                          
+                        />
+                    </Form.Group>    
+                    <Form.Group size="xs">
+                        <center>
+                            <button block size="lg" type="submit" className={NavButtonStyle.btn}>Update</button>
+                            <button block size="lg" type="submit" className={NavButtonStyle.btn}>Delete</button>
+                        </center><br />    
+                    </Form.Group>          
+                </center>
+            </Form>
+        </div>
+    )
+}
+
+export default UpdateProfileForm

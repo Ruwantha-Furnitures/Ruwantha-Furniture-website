@@ -1,7 +1,9 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
-import Topimg from "../../../assets/topimg1.jpg";
-import ProductBox from "../customer/ProductCards";
+import ProductBox from "../registeredCustomer/CustomerProductCard";
+import Part2 from "../Common/LandingPagepart2";
+import ConForm from "../Common/ContactForm";
+import Topimg from '../../../assets/topimg6.jpg';
 import Navigation from "./UserNav";
 import Slideshow from "../customer/Banner";
 import Footer from "../Common/Footer";
@@ -11,15 +13,21 @@ import "../../../css/web/common.module.css";
 function CustomerHome() {
   require("bootstrap/dist/css/bootstrap.min.css");
   const contactImg = {
-    backgroundImage: `url(${Topimg})`,
-    padding: "0",
-    margin: "0",
+    backgroundImage: `url(${Topimg})` ,
+    repeat: 'none',
+    padding: '15px',
+    MaxWidth: "100%"
   };
   return (
     <div>
       <Navigation></Navigation>
       <Slideshow></Slideshow>
       <ProductBox></ProductBox>
+      <div style={contactImg}>
+        <Container align="left">
+          <ConForm></ConForm>
+        </Container>
+      </div> 
       <Footer></Footer>
     </div>
   );

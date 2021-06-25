@@ -27,7 +27,6 @@ function Dashboard() {
               <DetailCard
                 detailCardMargin={true}
                 materialIconName={"price_change"}
-                cardText={"Today Details"}
                 cardText={"Today Sales"}
                 cardPrice={"Rs.1000"}
               />
@@ -46,7 +45,6 @@ function Dashboard() {
               <DetailCard
                 detailCardMargin={false}
                 materialIconName={"spa"}
-                cardText={"Today Details"}
                 cardText={"Total Income"}
                 cardPrice={"Rs.2,500,000"}
               />

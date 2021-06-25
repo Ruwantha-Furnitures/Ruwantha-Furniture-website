@@ -2,79 +2,79 @@ import React from "react";
 import { Link } from "react-router-dom";
 import TableStyle from "../../../css/dashboard/Table.module.css";
 
-function ProductsTable() {
+function PurchaseOrdersTable() {
   return (
     <React.Fragment>
       <div className={TableStyle.tabletitle}>
-        <h1 className={TableStyle.tableTitleProductStyle}>Products</h1>
+        <h1 className={TableStyle.tableTitleProductStyle}>Purchase Orders</h1>
       </div>
       <div className={TableStyle.tablebody}>
         <table className={TableStyle.tableShow}>
           <thead>
             <tr>
-              <th>Product</th>
-              <th>Product Type</th>
-              <th>Price</th>
+              <th>Order</th>
+              <th>Customer Name</th>
+              <th>Customer Email</th>
               <th>Discount</th>
-              <th>Qunatity</th>
+              <th>Price</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
-              <td>Product Type 1</td>
-              <td>Rs.25000</td>
-              <td>Rs.250</td>
-              <td>No.12</td>
+              <td className={TableStyle.moreInfo}>Order 1</td>
+              <td>Tharindu Gihan</td>
+              <td>wtgihan@gmail.com</td>
+              <td>10%</td>
+              <td>Rs.100000</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
-              <td>Product Type 1</td>
-              <td>Rs.25000</td>
-              <td>Rs.250</td>
-              <td>No.12</td>
+              <td className={TableStyle.moreInfo}>Order 1</td>
+              <td>Tharindu Gihan</td>
+              <td>wtgihan@gmail.com</td>
+              <td>10%</td>
+              <td>Rs.100000</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
-              <td>Product Type 1</td>
-              <td>Rs.25000</td>
-              <td>Rs.250</td>
-              <td>No.12</td>
+              <td className={TableStyle.moreInfo}>Order 1</td>
+              <td>Tharindu Gihan</td>
+              <td>wtgihan@gmail.com</td>
+              <td>10%</td>
+              <td>Rs.100000</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
-              <td>Product Type 1</td>
-              <td>Rs.25000</td>
-              <td>Rs.250</td>
-              <td>No.12</td>
+              <td className={TableStyle.moreInfo}>Order 1</td>
+              <td>Tharindu Gihan</td>
+              <td>wtgihan@gmail.com</td>
+              <td>10%</td>
+              <td>Rs.100000</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
-              <td>Product Type 1</td>
-              <td>Rs.25000</td>
-              <td>Rs.250</td>
-              <td>No.12</td>
+              <td className={TableStyle.moreInfo}>Order 1</td>
+              <td>Tharindu Gihan</td>
+              <td>wtgihan@gmail.com</td>
+              <td>10%</td>
+              <td>Rs.100000</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
-              <td>Product Type 1</td>
-              <td>Rs.25000</td>
-              <td>Rs.250</td>
-              <td>No.12</td>
+              <td className={TableStyle.moreInfo}>Order 1</td>
+              <td>Tharindu Gihan</td>
+              <td>wtgihan@gmail.com</td>
+              <td>10%</td>
+              <td>Rs.100000</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
-              <td>Product Type 1</td>
-              <td>Rs.25000</td>
-              <td>Rs.250</td>
-              <td>No.12</td>
+              <td className={TableStyle.moreInfo}>Order 1</td>
+              <td>Tharindu Gihan</td>
+              <td>wtgihan@gmail.com</td>
+              <td>10%</td>
+              <td>Rs.100000</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
-              <td>Product Type 1</td>
-              <td>Rs.25000</td>
-              <td>Rs.250</td>
-              <td>No.12</td>
+              <td className={TableStyle.moreInfo}>Order 1</td>
+              <td>Tharindu Gihan</td>
+              <td>wtgihan@gmail.com</td>
+              <td>10%</td>
+              <td>Rs.100000</td>
             </tr>
           </tbody>
         </table>
@@ -127,4 +127,4 @@ function ProductsTable() {
   );
 }
 
-export default ProductsTable;
+export default PurchaseOrdersTable;

@@ -24,7 +24,7 @@ function Banner() {
               src={Slide1}
             />
             <Carousel.Caption>
-              <h3>Ruwantha Furniture</h3>
+              <h3>AR Magic</h3>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item style={{ height: "500px" }}>
@@ -34,7 +34,7 @@ function Banner() {
               src={Slide2}
             />
             <Carousel.Caption>
-              <h3>Ruwantha Furniture</h3>
+            <h3>AR Magic</h3>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item style={{ height: "500px" }}>
@@ -44,7 +44,7 @@ function Banner() {
               src={Slide3}
             />
             <Carousel.Caption>
-              <h3>Ruwantha Furniture</h3>
+              <h3>AR Magic</h3>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item style={{ height: "500px" }}>
@@ -54,7 +54,7 @@ function Banner() {
               src={Slide4}
             />
             <Carousel.Caption>
-              <h3>Ruwantha Furniture</h3>
+              <h3>AR Magic</h3>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item style={{ height: "500px" }}>
@@ -64,7 +64,7 @@ function Banner() {
               src={Slide5}
             />
             <Carousel.Caption>
-              <h3>Ruwantha Furniture</h3>
+              <h3>AR Magic</h3>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item style={{ height: "500px" }}>
@@ -74,7 +74,7 @@ function Banner() {
               src={Slide6}
             />
             <Carousel.Caption>
-              <h3>Ruwantha Furniture</h3>
+              <h3>AR Magic</h3>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item style={{ height: "500px" }}>
@@ -84,7 +84,7 @@ function Banner() {
               src={Slide7}
             />
             <Carousel.Caption>
-              <h3>Ruwantha Furniture</h3>
+              <h3>AR Magic</h3>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item style={{ height: "500px" }}>
@@ -94,7 +94,7 @@ function Banner() {
               src={Slide8}
             />
             <Carousel.Caption>
-              <h3>Ruwantha Furniture</h3>
+              <h3>AR Magic</h3>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item style={{ height: "500px" }}>
@@ -104,7 +104,7 @@ function Banner() {
               src={Slide9}
             />
             <Carousel.Caption>
-              <h3>Ruwantha Furniture</h3>
+              <h3>AR Magic</h3>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item style={{ height: "500px" }}>
@@ -114,7 +114,7 @@ function Banner() {
               src={Slide10}
             />
             <Carousel.Caption>
-              <h3>Ruwantha Furniture</h3>
+              <h3>AR Magic</h3>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
