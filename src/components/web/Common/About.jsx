@@ -37,13 +37,7 @@ function CustomerAbout() {
                         <Card.Body>
                             <Card.Title><center>Our Vision</center></Card.Title>
                             <Card.Text align="justify">                    
-                            AR Magic website is aimed to provide you with the latest furniture models and accessories at a
-                             price you can afford. We always consider the superior selection, value, and quality which we 
-                             provide the customers. Also, our App will be providing the Augmented reality technology where 
-                             the customer can view the furniture with their home arrangement, which is not currently available
-                              in Sri Lankan furniture industry. Our staff is ready to assist you with any questions regarding 
-                              your purchases. Both App and the website pave the way to shop with great confidence that you the
-                               customer will always be treated with the utmost care and respect.
+                            To be the best in providing furniture with the latest designs along with the highest userbase at affordable prices and to give the best-augmented reality shopping experience to our customers.
                             </Card.Text>                            
                         </Card.Body>
                         </Card>  
@@ -55,13 +49,7 @@ function CustomerAbout() {
                         <Card.Body>
                             <Card.Title><center>Our Mission</center></Card.Title>
                             <Card.Text align="justify">          
-                            AR Magic website is aimed to provide you with the latest furniture models and accessories at a
-                             price you can afford. We always consider the superior selection, value, and quality which we 
-                             provide the customers. Also, our App will be providing the Augmented reality technology where 
-                             the customer can view the furniture with their home arrangement, which is not currently available
-                              in Sri Lankan furniture industry. Our staff is ready to assist you with any questions regarding 
-                              your purchases. Both App and the website pave the way to shop with great confidence that you the
-                               customer will always be treated with the utmost care and respect.
+                            Recognize our clients' needs and wants and satisfy them with great attention and commitment to producing standard furniture and give value to the money you spent.
                             </Card.Text>                            
                         </Card.Body>
                         </Card> 
@@ -73,13 +61,8 @@ function CustomerAbout() {
                         <Card.Body>
                             <Card.Title><center>Our Achievements</center></Card.Title>
                             <Card.Text align="justify">                  
-                            AR Magic website is aimed to provide you with the latest furniture models and accessories at a
-                             price you can afford. We always consider the superior selection, value, and quality which we 
-                             provide the customers. Also, our App will be providing the Augmented reality technology where 
-                             the customer can view the furniture with their home arrangement, which is not currently available
-                              in Sri Lankan furniture industry. Our staff is ready to assist you with any questions regarding 
-                              your purchases. Both App and the website pave the way to shop with great confidence that you the
-                               customer will always be treated with the utmost care and respect.
+                            More than 5000+ customers reached our website throughout the last two months beginning from the month of May. 
+                            We were able to achieve our estimated revenue for the year 2021 in the middle of the year.
                             </Card.Text>                            
                         </Card.Body>
                         </Card>  
