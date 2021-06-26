@@ -3,10 +3,9 @@ import { Container, Row, Col } from "reactstrap";
 import Topimg from "../../../assets/topimg1.jpg";
 import ProductBox from "./ProductCards";
 import Navigation from "./Indexnav";
-import Slideshow from './Banner';
+import Slideshow from "./Banner";
 import Footer from "../Common/Footer";
 import "../../../css/web/Home.css";
-
 
 function Home() {
   require("bootstrap/dist/css/bootstrap.min.css");
@@ -21,7 +20,6 @@ function Home() {
       <Navigation></Navigation>
       <Slideshow></Slideshow>
       <ProductBox></ProductBox>
-
       <Footer></Footer>
     </div>
   );
