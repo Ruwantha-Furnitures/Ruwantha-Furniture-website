@@ -11,6 +11,7 @@ import ProfileChangePassword from "./components/Dashboard/ProfileChangePassword"
 import Customers from "./components/Dashboard/Customers";
 // import test from "./components/Dashboard/test/test";
 
+// new
 // Web Components
 import Home from "./components/web/customer/Home.jsx";
 import Product from "./components/web/customer/Product.jsx";
