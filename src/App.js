@@ -9,6 +9,13 @@ import ProductAdd from "./components/Dashboard/ProductAdd";
 import ProductSell from "./components/Dashboard/ProductSell";
 import ProfileChangePassword from "./components/Dashboard/ProfileChangePassword";
 import Customers from "./components/Dashboard/Customers";
+import ProductTypeAdd from "./components/Dashboard/ProductTypeAdd";
+import ProductCategoryAdd from "./components/Dashboard/ProductCategoryAdd";
+import CustomerProfile from "./components/Dashboard/CustomerProfile";
+import PurchaseOrders from "./components/Dashboard/PurchaseOrders";
+import DeliveryDrivers from "./components/Dashboard/DeliveryDrivers";
+import DeliveryDriverProfile from "./components/Dashboard/DeliveryDriverProfile";
+import DeliveryDriverDeliveries from "./components/Dashboard/DeliveryDriverDeliveries";
 // import test from "./components/Dashboard/test/test";
 
 // new
@@ -32,13 +39,6 @@ import CustomerUpdateProfile from "./components/web/registeredCustomer/UpdatePro
 
 //for nuwan
 import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery.jsx";
-import ProductTypeAdd from "./components/Dashboard/ProductTypeAdd";
-import ProductCategoryAdd from "./components/Dashboard/ProductCategoryAdd";
-import CustomerProfile from "./components/Dashboard/CustomerProfile";
-import PurchaseOrders from "./components/Dashboard/PurchaseOrders";
-import DeliveryDrivers from "./components/Dashboard/DeliveryDrivers";
-import DeliveryDriverProfile from "./components/Dashboard/DeliveryDriverProfile";
-import DeliveryDriverDeliveries from "./components/Dashboard/DeliveryDriverDeliveries";
 
 function App() {
   return (
