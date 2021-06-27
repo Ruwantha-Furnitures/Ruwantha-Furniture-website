@@ -1,8 +1,8 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
+import Part2 from "../Common/LandingPagepart2";
 import ConForm from "../Common/ContactForm";
-import CustomizeProduct from "../Common/LandingPagepart2";
-import Topimg from "../../../assets/topimg18.jpg";
+import Topimg from '../../../assets/topimg19.jpg';
 import ProductBox from "./ProductCards";
 import Navigation from "./Indexnav";
 import Slideshow from './Banner';
@@ -14,8 +14,8 @@ function Home() {
   require("bootstrap/dist/css/bootstrap.min.css");
   const contactImg = {
     backgroundImage: `url(${Topimg})` , 
-    backgroundSize: 'cover',    
-    repeat: 'none',    
+    repeat: 'none',
+    padding: '15px',
     MaxWidth: "100%"
   };
 
@@ -24,9 +24,9 @@ function Home() {
       <Navigation></Navigation>
       <Slideshow></Slideshow>
       <ProductBox></ProductBox>
-      <CustomizeProduct></CustomizeProduct>
+      <Part2></Part2>
       <div style={contactImg}>
-        <Container align="center">
+        <Container align="left">
           <ConForm></ConForm>
         </Container>
       </div>
