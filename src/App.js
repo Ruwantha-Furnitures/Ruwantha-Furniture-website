@@ -9,6 +9,13 @@ import ProductAdd from "./components/Dashboard/ProductAdd";
 import ProductSell from "./components/Dashboard/ProductSell";
 import ProfileChangePassword from "./components/Dashboard/ProfileChangePassword";
 import Customers from "./components/Dashboard/Customers";
+import ProductTypeAdd from "./components/Dashboard/ProductTypeAdd";
+import ProductCategoryAdd from "./components/Dashboard/ProductCategoryAdd";
+import CustomerProfile from "./components/Dashboard/CustomerProfile";
+import PurchaseOrders from "./components/Dashboard/PurchaseOrders";
+import DeliveryDrivers from "./components/Dashboard/DeliveryDrivers";
+import DeliveryDriverProfile from "./components/Dashboard/DeliveryDriverProfile";
+import DeliveryDriverDeliveries from "./components/Dashboard/DeliveryDriverDeliveries";
 // import test from "./components/Dashboard/test/test";
 
 // Web Components
@@ -29,8 +36,6 @@ import CustomerChangePassword from './components/web/registeredCustomer/Customer
 
 //for nuwan
 import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery.jsx";
-import ProductTypeAdd from "./components/Dashboard/ProductTypeAdd";
-import ProductCategoryAdd from "./components/Dashboard/ProductCategoryAdd";
 
 function App() {
   return (
@@ -39,6 +44,7 @@ function App() {
         <Switch>
           {/* Dashboard */}
           <Route exact path="/dashboard" component={Dashboard} />
+          {/* Dashboard-Product */}
           <Route exact path="/dashboard/products" component={Products} />
           <Route exact path="/dashboard/product/view" component={ProductView} />
           <Route exact path="/dashboard/product/add" component={ProductAdd} />
@@ -53,13 +59,43 @@ function App() {
             path="/dashboard/product/addProductCategory"
             component={ProductCategoryAdd}
           />
+          <Route
+            exact
+            path="/dashboard/purchaseOrders"
+            component={PurchaseOrders}
+          />
 
+          {/* Dashboard-Profiles Section*/}
           <Route
             exact
             path="/dashboard/profile/changePassword"
             component={ProfileChangePassword}
           />
+
+          {/* Dashboard-Customer Section */}
           <Route exact path="/dashboard/customers" component={Customers} />
+          <Route
+            exact
+            path="/dashboard/customer/detials"
+            component={CustomerProfile}
+          />
+
+          {/* Dashboard-Dilvery Drivers Section*/}
+          <Route
+            exact
+            path="/dashboard/deliveryDrivers"
+            component={DeliveryDrivers}
+          />
+          <Route
+            exact
+            path="/dashboard/deliveryDriver/profile"
+            component={DeliveryDriverProfile}
+          />
+          <Route
+            exact
+            path="/dashboard/deliveryDriver/deliveries"
+            component={DeliveryDriverDeliveries}
+          />
 
           {/* Web */}
           <Route exact path="/home" component={Home} />
