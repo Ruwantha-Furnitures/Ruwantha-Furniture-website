@@ -8,7 +8,7 @@ import item3 from "../../../assets/items/11.jpg";
 import item4 from "../../../assets/items/14.jpg";
 import "../../../css/web/Home.css";
 
-function AllProductCards() {
+function ProductCards() {
   require("bootstrap/dist/css/bootstrap.min.css");
 
   const [itemCount, setItemCount] = React.useState(0);
@@ -52,7 +52,7 @@ function AllProductCards() {
                 <center>
                   <img
                     src={item4}
-                    alt={item3}
+                    alt={item4}
                     width={200}
                     height={150}
                     style={funitureimg}
@@ -66,7 +66,7 @@ function AllProductCards() {
                   <Rating></Rating>
                 </center>
                 <center>
-                <Link to="/viewProduct"><button class="addtocart">View</button></Link>
+                  <Link to="/viewProduct"><button class="addtocart">View</button></Link>
                 </center>
               </div>
             </Container>
@@ -85,13 +85,13 @@ function AllProductCards() {
                 </center>
                 <p class="textinbox">
                   Wiscon Sofa <br /> Rs. 191,675
-                </p>    
+                </p>
                 <center>    
                   <Rating></Rating>
-                </center>            
-                <center>                  
+                </center>
+                <center>
                   <button class="addtocart">View</button>
-                </center>                            
+                </center>                
               </div>
             </Container>
           </Col>
@@ -101,7 +101,7 @@ function AllProductCards() {
                 <center>
                   <img
                     src={item2}
-                    alt={item1}
+                    alt={item2}
                     width={200}
                     height={150}
                     style={funitureimg}
@@ -126,7 +126,7 @@ function AllProductCards() {
                 <center>
                   <img
                     src={item3}
-                    alt={item2}
+                    alt={item3}
                     width={200}
                     height={150}
                     style={funitureimg}
@@ -146,9 +146,16 @@ function AllProductCards() {
             </Container>
           </Col>          
         </Row>
+        <Row className="justify-content-md-center">
+          <Col>
+            <center>
+              <Link to="/viewProductPage"><button class="viewAll">View All Products</button></Link>
+            </center>
+          </Col>
+        </Row>
       </Container>
     </div>
   );
 }
 
-export default AllProductCards;
+export default ProductCards;
