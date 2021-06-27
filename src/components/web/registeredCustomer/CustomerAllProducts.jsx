@@ -66,7 +66,7 @@ function CustomerAllProducts() {
                         <Rating></Rating>
                     </center>
                     <center>
-                    <Link to="/viewProduct"><button class="addtocart">Add to cart</button></Link>
+                    <Link to="/viewProduct"><button class="addtocart">View</button></Link>
                     </center>
                     </div>
                 </Container>
@@ -90,7 +90,7 @@ function CustomerAllProducts() {
                         <Rating></Rating>
                     </center>            
                     <center>                  
-                        <button class="addtocart">Add to cart</button>
+                        <button class="addtocart">View</button>
                     </center>                            
                     </div>
                 </Container>
@@ -115,7 +115,7 @@ function CustomerAllProducts() {
                         <Rating></Rating>
                     </center>
                     <center>
-                        <button class="addtocart">Add to cart</button>
+                        <button class="addtocart">View</button>
                     </center>
                     </div>
                 </Container>
@@ -140,7 +140,7 @@ function CustomerAllProducts() {
                         <Rating></Rating>
                     </center>
                     <center>
-                        <button class="addtocart">Add to cart</button>
+                        <button class="addtocart">View</button>
                     </center>
                     </div>
                 </Container>

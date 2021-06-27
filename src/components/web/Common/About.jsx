@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import topimg from "../../../assets/topimg11.jpg";
+import vision from "../../../assets/visionmission.jpg";
 import webapp from "../../../assets/6.png";
 import { Container, Row, Col } from "reactstrap";
 import Appicon from "../../../assets/google.svg";
@@ -30,45 +31,56 @@ function CustomerAbout() {
                         <br />
                     </Col> 
                 </Row>
-                <Row sm={12} align="center">  
-                    <Col sm={4}>
-                        <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src={topimg} />
-                        <Card.Body>
-                            <Card.Title><center>Our Vision</center></Card.Title>
-                            <Card.Text align="justify">                    
-                            To be the best in providing furniture with the latest designs along with the highest userbase at affordable prices and to give the best-augmented reality shopping experience to our customers.
+
+                <Row sm={12} align="justify">
+                    <Col sm={12}>
+                        <Card>
+                        <Card.Img variant="top" src={vision} />
+                        <Card.Body>                            
+                            <Card.Text>                    
+                                <Row sm={12} align="center"> 
+                                    <Col sm={4}>
+                                        <Card style={{ width: '18rem' }}>                                        
+                                        <Card.Body>
+                                            <Card.Title><center>Our Vision</center></Card.Title>
+                                            <Card.Text align="justify">       
+                                            To be the best in providing furniture with the latest designs along with the highest userbase at affordable prices and to give the best-augmented reality shopping experience to our customers.
+                                            </Card.Text>                            
+                                        </Card.Body>
+                                        </Card>  
+                                        <br />
+                                    </Col>
+                                    <Col sm={4}>
+                                        <Card style={{ width: '18rem' }}>                        
+                                        <Card.Body>
+                                            <Card.Title><center>Our Mission</center></Card.Title>
+                                            <Card.Text align="justify">          
+                                            Recognize our clients' needs and wants and satisfy them with great attention and commitment to producing standard furniture and give value to the money you spent.<br />
+                                            </Card.Text>                            
+                                        </Card.Body>
+                                        </Card> 
+                                        <br /> 
+                                    </Col>
+                                    <Col sm={4}>
+                                        <Card style={{ width: '18rem' }}>                                        
+                                        <Card.Body>
+                                            <Card.Title><center>Our Achievements</center></Card.Title>
+                                            <Card.Text align="justify">                  
+                                            More than 5000+ customers reached our website throughout the last two months beginning from the month of May. 
+                                            We were able to achieve our estimated revenue for the year 2021 in the middle of the year.
+                                            </Card.Text>                            
+                                        </Card.Body>
+                                        </Card>  
+                                        <br />
+                                    </Col>                                                                         
+                               </Row>
                             </Card.Text>                            
                         </Card.Body>
                         </Card>  
                         <br />
-                    </Col>
-                    <Col sm={4}>
-                        <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src={topimg} />
-                        <Card.Body>
-                            <Card.Title><center>Our Mission</center></Card.Title>
-                            <Card.Text align="justify">          
-                            Recognize our clients' needs and wants and satisfy them with great attention and commitment to producing standard furniture and give value to the money you spent.
-                            </Card.Text>                            
-                        </Card.Body>
-                        </Card> 
-                        <br /> 
-                    </Col>
-                    <Col sm={4}>
-                        <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src={topimg} />
-                        <Card.Body>
-                            <Card.Title><center>Our Achievements</center></Card.Title>
-                            <Card.Text align="justify">                  
-                            More than 5000+ customers reached our website throughout the last two months beginning from the month of May. 
-                            We were able to achieve our estimated revenue for the year 2021 in the middle of the year.
-                            </Card.Text>                            
-                        </Card.Body>
-                        </Card>  
-                        <br />
-                    </Col>                    
-                </Row>   
+                    </Col> 
+                </Row>
+
                 <Row sm={12} align="justify">
                     <Col sm={12}>
                         <Card>

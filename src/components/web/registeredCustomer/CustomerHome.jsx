@@ -3,7 +3,7 @@ import { Container, Row, Col } from "reactstrap";
 import ProductBox from "../registeredCustomer/CustomerProductCard";
 import Part2 from "../Common/LandingPagepart2";
 import ConForm from "../Common/ContactForm";
-import Topimg from '../../../assets/topimg6.jpg';
+import Topimg from '../../../assets/topimg19.jpg';
 import Navigation from "./UserNav";
 import Slideshow from "../customer/Banner";
 import Footer from "../Common/Footer";
@@ -23,6 +23,7 @@ function CustomerHome() {
       <Navigation></Navigation>
       <Slideshow></Slideshow>
       <ProductBox></ProductBox>
+      <Part2></Part2>
       <div style={contactImg}>
         <Container align="left">
           <ConForm></ConForm>
