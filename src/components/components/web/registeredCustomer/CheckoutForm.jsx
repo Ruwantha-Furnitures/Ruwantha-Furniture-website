@@ -13,7 +13,7 @@ function CheckoutForm() {
     const loginform = {    
         justifyContent: "left",
         justifyItem: "left",
-        margin: "10px",
+        margin: "0px",
         padding: "40px",          
         backgroundColor: "#fc7a30",            
         backgroundColor: "rgb(1,1,1,0.8)",    
