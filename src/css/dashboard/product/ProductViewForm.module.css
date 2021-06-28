@@ -462,3 +462,9 @@ input:-webkit-autofill:active {
 .addRightMargin {
   margin-right: 10px;
 }
+
+.linkStyle {
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+}
