@@ -1,5 +1,6 @@
 import React from "react";
 import ProductViewFormStyle from "../../../css/dashboard/product/ProductViewForm.module.css";
+import ProductCategoryList from "./ProductCategoryList";
 
 function ProductCategoryAddForm() {
   return (
@@ -35,41 +36,7 @@ function ProductCategoryAddForm() {
               </div>
             </div>
             <div className={ProductViewFormStyle.typesList}>
-              <h1 className={ProductViewFormStyle.productTypeTitle}>
-                Categories
-              </h1>
-              <div className={ProductViewFormStyle.productType}>
-                <span class={"material-icons " + ProductViewFormStyle.iconSize}>
-                  circle
-                </span>
-                <h1 className={ProductViewFormStyle.productTypeName}>
-                  Category 01
-                </h1>
-              </div>
-              <div className={ProductViewFormStyle.productType}>
-                <span class={"material-icons " + ProductViewFormStyle.iconSize}>
-                  circle
-                </span>
-                <h1 className={ProductViewFormStyle.productTypeName}>
-                  Category 02
-                </h1>
-              </div>
-              <div className={ProductViewFormStyle.productType}>
-                <span class={"material-icons " + ProductViewFormStyle.iconSize}>
-                  circle
-                </span>
-                <h1 className={ProductViewFormStyle.productTypeName}>
-                  Category 03
-                </h1>
-              </div>
-              <div className={ProductViewFormStyle.productType}>
-                <span class={"material-icons " + ProductViewFormStyle.iconSize}>
-                  circle
-                </span>
-                <h1 className={ProductViewFormStyle.productTypeName}>
-                  Category 04
-                </h1>
-              </div>
+              <ProductCategoryList />
             </div>
           </div>
         </div>

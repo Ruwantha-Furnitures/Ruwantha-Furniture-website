@@ -1,0 +1,160 @@
+.navgation {
+  display: flex;
+  flex-direction: row;
+  background: #ffffff;
+  border-radius: 22px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.logoSection {
+  order: 1;
+  width: 25%;
+  position: relative;
+}
+
+.logodiv {
+  display: flex;
+  flex-direction: row;
+}
+.logo {
+  order: 1;
+  width: 25%;
+  background-image: url(../../assets/dashboard/img/newLogo.png);
+  height: 50px;
+  margin-left: 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.logoname {
+  order: 2;
+  width: 75%;
+  display: flex;
+  align-items: center;
+}
+
+.logonameStyle {
+  justify-content: center;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 25px;
+}
+
+.searchSection {
+  order: 2;
+  width: 75%;
+  position: relative;
+}
+
+.profileSection {
+  order: 3;
+  width: 25%;
+  position: relative;
+  display: flex;
+}
+
+.search {
+  background: #b89068;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  height: 38px;
+}
+
+.searchicon {
+  order: 1;
+  margin-left: 15px;
+  padding: 5px;
+  display: flex;
+}
+
+.searchIconStyle {
+  font-size: 36px;
+  color: #f7f7f7;
+}
+
+.searchText {
+  order: 2;
+  width: 100%;
+  margin-left: 10px;
+}
+
+.searchinput {
+  width: 80%;
+  height: 37px;
+  background: #b89068;
+  border: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 19px;
+  line-height: 25px;
+  color: #f7f7f7;
+}
+
+.searchText > ::placeholder {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 19px;
+  line-height: 25px;
+  color: #f7f7f7;
+}
+
+.searchText > input:focus {
+  outline: none;
+  color: #000000;
+}
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+}
+
+.profileIcon {
+  align-items: center;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.accounticon {
+  color: #542b14;
+  font-size: 44px;
+  display: flex;
+}
+
+.logout {
+  height: 38px;
+  display: flex;
+  align-items: center;
+}
+
+.alignSection {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 90px;
+}
+
+.logoutButton {
+  width: 92px;
+  height: 33px;
+  background: #b89068;
+  border-radius: 22px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}

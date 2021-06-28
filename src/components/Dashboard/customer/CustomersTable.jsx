@@ -21,7 +21,14 @@ function CustomersTable() {
           </thead>
           <tbody>
             <tr>
-              <td className={TableStyle.moreInfo}>Tharindu Gihan</td>
+              <td>
+                <Link
+                  to="/dashboard/customer/detials"
+                  className={TableStyle.linkStyle}
+                >
+                  Tharindu Gihan
+                </Link>
+              </td>
               <td>wtgihan@gmail.com</td>
               <td>0778522736</td>
               <td>Rs.25000</td>
@@ -44,7 +51,14 @@ function CustomersTable() {
               </td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Himasha Anjali</td>
+              <td>
+                <Link
+                  to="/dashboard/customer/detials"
+                  className={TableStyle.linkStyle}
+                >
+                  Himasha Anjali
+                </Link>
+              </td>
               <td>anjali@gmail.com</td>
               <td>0778522436</td>
               <td>Rs.15000</td>
@@ -67,7 +81,14 @@ function CustomersTable() {
               </td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Sathira Dimuthu</td>
+              <td className={TableStyle.moreInfo}>
+                <Link
+                  to="/dashboard/customer/detials"
+                  className={TableStyle.linkStyle}
+                >
+                  Sathira Dimuthu
+                </Link>
+              </td>
               <td>dimuthu@gmail.com</td>
               <td>0778222736</td>
               <td>Rs.35000</td>
@@ -90,7 +111,14 @@ function CustomersTable() {
               </td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Anushka Tharindu</td>
+              <td>
+                <Link
+                  to="/dashboard/customer/detials"
+                  className={TableStyle.linkStyle}
+                >
+                  Anushka Tharindu
+                </Link>
+              </td>
               <td>anushka@gmail.com</td>
               <td>0774536987</td>
               <td>Rs.45000</td>
@@ -113,7 +141,14 @@ function CustomersTable() {
               </td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Himasha Anjali</td>
+              <td>
+                <Link
+                  to="/dashboard/customer/detials"
+                  className={TableStyle.linkStyle}
+                >
+                  Himasha Anjali
+                </Link>
+              </td>
               <td>anjali@gmail.com</td>
               <td>0778522436</td>
               <td>Rs.15000</td>
@@ -136,7 +171,14 @@ function CustomersTable() {
               </td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Sathira Dimuthu</td>
+              <td>
+                <Link
+                  to="/dashboard/customer/detials"
+                  className={TableStyle.linkStyle}
+                >
+                  Sathira Dimuthu
+                </Link>
+              </td>
               <td>dimuthu@gmail.com</td>
               <td>0778222736</td>
               <td>Rs.35000</td>
@@ -159,7 +201,14 @@ function CustomersTable() {
               </td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Anushka Tharindu</td>
+              <td>
+                <Link
+                  to="/dashboard/customer/detials"
+                  className={TableStyle.linkStyle}
+                >
+                  Anushka Tharindu
+                </Link>
+              </td>
               <td>anushka@gmail.com</td>
               <td>0774536987</td>
               <td>Rs.45000</td>

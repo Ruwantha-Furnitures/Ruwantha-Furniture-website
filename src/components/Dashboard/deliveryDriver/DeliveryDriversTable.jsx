@@ -12,7 +12,14 @@ function DeliveryDriversTable() {
         <table className={TableStyle.tableShow}>
           <thead>
             <tr>
-              <th>Delivery Driver</th>
+              <th>
+                <Link
+                  to="/dashboard/deliveryDriver/profile"
+                  className={TableStyle.linkStyle}
+                >
+                  Delivery Driver
+                </Link>
+              </th>
               <th>Email</th>
               <th>Contact Number</th>
               <th>Payment(Basic)</th>
