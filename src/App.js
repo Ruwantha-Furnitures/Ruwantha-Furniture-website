@@ -16,6 +16,8 @@ import PurchaseOrders from "./components/Dashboard/PurchaseOrders";
 import DeliveryDrivers from "./components/Dashboard/DeliveryDrivers";
 import DeliveryDriverProfile from "./components/Dashboard/DeliveryDriverProfile";
 import DeliveryDriverDeliveries from "./components/Dashboard/DeliveryDriverDeliveries";
+import ProductTypeView from "./components/Dashboard/ProductTypeView";
+import ProductCategoryView from "./components/Dashboard/ProductCategoryView";
 // import test from "./components/Dashboard/test/test";
 
 // Web Components
@@ -36,8 +38,6 @@ import CustomerChangePassword from "./components/web/registeredCustomer/Customer
 
 //for nuwan
 import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery.jsx";
-import ProductTypeView from "./components/Dashboard/ProductTypeView";
-import ProductCategoryView from "./components/Dashboard/ProductCategoryView";
 
 function App() {
   return (

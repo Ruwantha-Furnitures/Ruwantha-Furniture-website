@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import NavbarStyle from "../../../css/dashboard/Navbar.module.css";
 
 function Navbar() {
@@ -31,10 +32,15 @@ function Navbar() {
       <div className={NavbarStyle.profileSection}>
         <div className={NavbarStyle.alignSection}>
           <div className={NavbarStyle.profileIcon}>
-            <span className={"material-icons " + NavbarStyle.accounticon}>
-              {" "}
-              account_circle{" "}
-            </span>
+            <Link
+              to="/dashboard/profile/changePassword"
+              className={NavbarStyle.linkStyle}
+            >
+              <span className={"material-icons " + NavbarStyle.accounticon}>
+                {" "}
+                account_circle{" "}
+              </span>
+            </Link>
           </div>
           <div className={NavbarStyle.logout}>
             <button className={NavbarStyle.logoutButton}>Log Out</button>
