@@ -31,12 +31,12 @@ import Customer_Home from "./components/web/registeredCustomer/CustomerHome.jsx"
 import Customer_Product from "./components/web/registeredCustomer/CustomerProduct.jsx";
 import Customer_ContactUs from "./components/web/registeredCustomer/CustomerContact.jsx";
 import ViewProfile from "./components/web/registeredCustomer/ViewProfile.jsx";
+import Customer_Cart from "./components/web/registeredCustomer/ViewCart.jsx";
+
 import View_Product from "./components/web/customer/ViewProductDetails.jsx";
 import View_Product_Details from "./components/web/registeredCustomer/CustomerViewProductDetails";
 import CustomerUpdateProfile from "./components/web/registeredCustomer/UpdateProfile.jsx";
-import CustomerChangePassword from "./components/web/registeredCustomer/CustomerChangePassword.jsx";
-
-//for nuwan
+import CustomerChangePassword from './components/web/registeredCustomer/CustomerChangePassword.jsx'
 import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery.jsx";
 
 function App() {
@@ -111,38 +111,24 @@ function App() {
 
           {/* Web */}
           <Route exact path="/home" component={Home} />
-          <Route exact path="/product" component={Product} />
+          <Route exact path="/product" component={Product} />          
           <Route exact path="/contact-us" component={ContactUs} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
 
           <Route exact path="/customer_home" component={Customer_Home} />
-          <Route exact path="/customer_product" component={Customer_Product} />
-          <Route
-            exact
-            path="/customer_contact-us"
-            component={Customer_ContactUs}
-          />
-
+          <Route exact path="/customer_product" component={Customer_Product} />          
+          <Route exact path="/customer_contact-us" component={Customer_ContactUs} />          
           <Route exact path="/viewProfile" component={ViewProfile} />
+          <Route exact path="/cart" component={Customer_Cart} />
+
           <Route exact path="/viewProductPage" component={Customer_Product} />
           <Route exact path="/viewProduct" component={View_Product} />
-          <Route
-            exact
-            path="/viewProductDetail"
-            component={View_Product_Details}
-          />
-          <Route
-            exact
-            path="/changepassword"
-            component={CustomerChangePassword}
-          />
+          <Route exact path="/viewProductDetail" component={View_Product_Details} />
+          <Route exact path="/changepassword" component={CustomerChangePassword} />    
+          
 
-          <Route
-            exact
-            path="/updateProfile"
-            component={CustomerUpdateProfile}
-          />
+          <Route exact path="/updateProfile" component={CustomerUpdateProfile} />
           <Route exact path="/recoveryPassword" component={RecoveryPassword} />
         </Switch>
       </div>
