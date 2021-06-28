@@ -66,7 +66,7 @@ function LoginForm() {
               />
             </Form.Group>
             <center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Login</button></center><br />
-            <center><a href={"#"} style={belowlinks}>Don't have an account?</a></center>
+            <center><Link to="/signup" style={belowlinks}>Don't have an account?</Link></center>
             <center><Link to='/recoveryPassword' style={belowlinks}>Forgot Password</Link></center>
           </Form>
         </div>

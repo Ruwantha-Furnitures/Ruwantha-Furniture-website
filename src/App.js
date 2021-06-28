@@ -16,8 +16,8 @@ import PurchaseOrders from "./components/Dashboard/PurchaseOrders";
 import DeliveryDrivers from "./components/Dashboard/DeliveryDrivers";
 import DeliveryDriverProfile from "./components/Dashboard/DeliveryDriverProfile";
 import DeliveryDriverDeliveries from "./components/Dashboard/DeliveryDriverDeliveries";
-import ProductTypeView from "./components/Dashboard/ProductTypeView";
-import ProductCategoryView from "./components/Dashboard/ProductCategoryView";
+//import ProductTypeView from "./components/Dashboard/ProductTypeView";
+//import ProductCategoryView from "./components/Dashboard/ProductCategoryView";
 // import test from "./components/Dashboard/test/test";
 
 // Web Components
@@ -56,21 +56,25 @@ function App() {
             path="/dashboard/product/addProductType"
             component={ProductTypeAdd}
           />
+          {/*
           <Route
             exact
             path="/dashboard/product/viewProductType"
             component={ProductTypeView}
           />
+          */}
           <Route
             exact
             path="/dashboard/product/addProductCategory"
             component={ProductCategoryAdd}
           />
+          {/*
           <Route
             exact
             path="/dashboard/product/viewProductCategory"
             component={ProductCategoryView}
           />
+          */}
           <Route
             exact
             path="/dashboard/purchaseOrders"
