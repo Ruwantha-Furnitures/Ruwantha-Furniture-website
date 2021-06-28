@@ -37,6 +37,7 @@ import CustomerChangePassword from "./components/web/registeredCustomer/Customer
 //for nuwan
 import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery.jsx";
 import ProductTypeView from "./components/Dashboard/ProductTypeView";
+import ProductCategoryView from "./components/Dashboard/ProductCategoryView";
 
 function App() {
   return (
@@ -64,6 +65,11 @@ function App() {
             exact
             path="/dashboard/product/addProductCategory"
             component={ProductCategoryAdd}
+          />
+          <Route
+            exact
+            path="/dashboard/product/viewProductCategory"
+            component={ProductCategoryView}
           />
           <Route
             exact
