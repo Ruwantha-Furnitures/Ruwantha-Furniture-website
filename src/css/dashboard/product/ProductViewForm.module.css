@@ -275,9 +275,10 @@
 .descButtonAddStyle {
   /* width: 108px;
   height: 39px; */
-  padding: 11px;
-  padding-left: 14px;
-  padding-right: 14px;
+  /* height: 33px; */
+  padding: 8px;
+  padding-left: 18px;
+  padding-right: 19px;
   background: #be622e;
   border-radius: 22px;
   font-style: normal;
@@ -456,4 +457,8 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+}
+
+.addRightMargin {
+  margin-right: 10px;
 }
