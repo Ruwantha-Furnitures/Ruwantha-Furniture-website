@@ -158,3 +158,9 @@ input:-webkit-autofill:active {
   border: none;
   cursor: pointer;
 }
+
+.linkStyle {
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+}

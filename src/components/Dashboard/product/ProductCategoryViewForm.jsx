@@ -2,12 +2,12 @@ import React from "react";
 import ProductViewFormStyle from "../../../css/dashboard/product/ProductViewForm.module.css";
 import ProductCategoryList from "./ProductCategoryList";
 
-function ProductCategoryAddForm() {
+function ProductCategoryViewForm() {
   return (
     <React.Fragment>
       <div>
         <h1 className={ProductViewFormStyle.titleStyle}>
-          Product Category Add
+          Product Category View
         </h1>
       </div>
       <form action="#">
@@ -17,25 +17,35 @@ function ProductCategoryAddForm() {
               <div className={ProductViewFormStyle.descTitle}>
                 <div className={ProductViewFormStyle.dataProductTitle}>
                   <label className={ProductViewFormStyle.labelProductTitle}>
-                    New Category
+                    Category
                   </label>
                   <input
                     type="text"
                     value=""
-                    placeholder="New Product Category"
+                    placeholder="Category 1"
                     className={ProductViewFormStyle.inputProductTitle}
                   />
                 </div>
                 <div className={ProductViewFormStyle.descButtonsAddType}>
                   <div className={ProductViewFormStyle.descButtonAdd}>
+                    <button
+                      className={
+                        ProductViewFormStyle.descButtonAddStyle +
+                        " " +
+                        ProductViewFormStyle.addRightMargin
+                      }
+                    >
+                      Update
+                    </button>
                     <button className={ProductViewFormStyle.descButtonAddStyle}>
-                      Add Category
+                      Delete
                     </button>
                   </div>
                 </div>
               </div>
             </div>
             <div className={ProductViewFormStyle.typesList}>
+              {/* Product Category List View */}
               <ProductCategoryList />
             </div>
           </div>
@@ -45,4 +55,4 @@ function ProductCategoryAddForm() {
   );
 }
 
-export default ProductCategoryAddForm;
+export default ProductCategoryViewForm;

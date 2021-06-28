@@ -53,6 +53,57 @@ function Sidebar() {
             </Link>
           </li>
           <li>
+            <Link
+              to="/dashboard/purchaseOrders"
+              className={SidebarStyle.sidebarLink}
+            >
+              <div className={SidebarStyle.lineSection}>
+                <div className={SidebarStyle.lineIcon}>
+                  <span className={"material-icons " + SidebarStyle.iconWidth}>
+                    inventory_2
+                  </span>
+                </div>
+                <div className={SidebarStyle.lineText}>
+                  <h1 className={SidebarStyle.lineTextStyle}>Orders</h1>
+                </div>
+              </div>
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/dashboard/deliveryDrivers"
+              className={SidebarStyle.sidebarLink}
+            >
+              <div className={SidebarStyle.lineSection}>
+                <div className={SidebarStyle.lineIcon}>
+                  <span className={"material-icons " + SidebarStyle.iconWidth}>
+                    local_shipping
+                  </span>
+                </div>
+                <div className={SidebarStyle.lineText}>
+                  <h1 className={SidebarStyle.lineTextStyle}>Delivery</h1>
+                </div>
+              </div>
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/dashboard/customers"
+              className={SidebarStyle.sidebarLink}
+            >
+              <div className={SidebarStyle.lineSection}>
+                <div className={SidebarStyle.lineIcon}>
+                  <span className={"material-icons " + SidebarStyle.iconWidth}>
+                    supervisor_account
+                  </span>
+                </div>
+                <div className={SidebarStyle.lineText}>
+                  <h1 className={SidebarStyle.lineTextStyle}>Customers</h1>
+                </div>
+              </div>
+            </Link>
+          </li>
+          <li>
             <div className={SidebarStyle.lineSection}>
               <div className={SidebarStyle.lineIcon}>
                 <span className={"material-icons " + SidebarStyle.iconWidth}>
