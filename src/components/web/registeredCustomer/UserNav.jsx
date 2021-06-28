@@ -42,7 +42,7 @@ function UserNav() {
                                 </Link>
                             </Col>
                             <Col>
-                                <Link to="/login" >
+                                <Link to="/cart" >
                                     <ShoppingCart></ShoppingCart>
                                 </Link>
                             </Col>

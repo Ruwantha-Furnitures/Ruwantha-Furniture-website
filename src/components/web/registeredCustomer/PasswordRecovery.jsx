@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import FormRecovery from './PasswordRecoveryForm';
 
 function UpdateProfile() {
     return (
         <div>
-            <h1>Test-Nuwan</h1>
+            <FormRecovery></FormRecovery>
         </div>
     )
 }
