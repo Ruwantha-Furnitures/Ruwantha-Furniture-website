@@ -7,12 +7,7 @@ import NavButtonStyle from "../../../css/web/common.module.css";
 import FormStyle from "../../../css/web/Form.module.css";
 
 function PasswordRecoveryForm() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
-    function validateForm() {
-        return email.length > 0 && password.length > 0;
-    }
+    const [email, setEmail] = useState("");    
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -48,6 +43,7 @@ function PasswordRecoveryForm() {
         <div className="Login" >        
           <Form style={loginform} onSubmit={handleSubmit} align="left">
             <center><img src={Avatar} style={avatar}/></center><br />
+            <center><h6>Enter Your Email Address</h6></center><br />
             <Form.Group size="sm" controlId="email">                
               <Form.Control className={FormStyle.emailBox}               
                 type="email"
@@ -56,17 +52,7 @@ function PasswordRecoveryForm() {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </Form.Group>
-            <Form.Group size="sm" controlId="password">               
-              <Form.Control className={FormStyle.passwordBox}  
-                type="password"
-                value={password}
-                placeholder="Password"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </Form.Group>
-            <center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Login</button></center><br />
-            <center><a href={"#"} style={belowlinks}>Don't have an account?</a></center>
-            <center><a href={"#"} style={belowlinks}>Forgot Password</a></center>
+            <center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Submit</button></center><br />
           </Form>
         </div>
     );

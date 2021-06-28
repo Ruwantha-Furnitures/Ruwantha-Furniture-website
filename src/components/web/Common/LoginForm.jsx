@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 import "../../../css/web/Login.css";
 import Avatar from "../../../assets/avatar.png";
 import NavButtonStyle from "../../../css/web/common.module.css";
@@ -65,8 +66,8 @@ function LoginForm() {
               />
             </Form.Group>
             <center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Login</button></center><br />
-            <center><a href={"#"} style={belowlinks}>Don't have an account?</a></center>
-            <center><a href={"#"} style={belowlinks}>Forgot Password</a></center>
+            <center><Link to="/signup" style={belowlinks}>Don't have an account?</Link></center>
+            <center><Link to='/recoveryPassword' style={belowlinks}>Forgot Password</Link></center>
           </Form>
         </div>
     );
