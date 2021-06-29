@@ -15,6 +15,7 @@ Form .textBox{
     height: 40px;
     border-radius: 5px;
     padding: 5px;
+    margin: 5px;
 } 
 
 Form .emailBox{
@@ -24,6 +25,7 @@ Form .emailBox{
     height: 40px;
     border-radius: 5px;
     padding: 5px;
+    margin: 5px;
 }
 
 Form .passwordBox{
@@ -32,18 +34,15 @@ Form .passwordBox{
     height: 40px;
     border-radius: 5px;
     padding: 5px;
+    margin: 5px;
 }
 
 Form .textareastyle{
     background-color: rgb(0,0,0,0);
     border: solid 2px #FFF;      
     border-radius: 5px;
-    padding: 5px;    
-}
-
-.textareastyle {
-  background-color: rgb(0, 0, 0, 0);
-  border: solid 2px #fff;
+    padding: 5px;   
+    margin: 5px; 
 }
 
 @media screen and (max-width: 798px) {

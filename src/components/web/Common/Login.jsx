@@ -5,7 +5,7 @@ import Navigation from "../customer/Indexnav";
 import LoginForm from "./LoginForm";
 import Footer from "./Footer";
 import backcover from "../../../assets/login9.jpg";
-import "../../../css/web/Login.css"
+import "../../../css/web/Login.css";
 
 function Login() {
     return (
