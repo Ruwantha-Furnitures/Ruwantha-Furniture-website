@@ -30,15 +30,20 @@ function AssignDriverOrderList() {
               <td>2021-03-17</td>
               <td>Rs.25000</td>
               <td>
-                <span
-                  className={
-                    TableStyle.statusStyle +
-                    " " +
-                    TableStyle.statusColorNotCompleted
-                  }
+                <Link
+                  to="/dashboard/assignDriver"
+                  className={TableStyle.linkStyle}
                 >
-                  Not Assigned
-                </span>
+                  <span
+                    className={
+                      TableStyle.statusStyle +
+                      " " +
+                      TableStyle.statusColorNotCompleted
+                    }
+                  >
+                    Not Assigned
+                  </span>
+                </Link>
               </td>
             </tr>
             <tr>
@@ -48,15 +53,20 @@ function AssignDriverOrderList() {
               <td>2021-03-17</td>
               <td>Rs.25000</td>
               <td>
-                <span
-                  className={
-                    TableStyle.statusStyle +
-                    " " +
-                    TableStyle.statusColorNotCompleted
-                  }
+                <Link
+                  to="/dashboard/assignDriver"
+                  className={TableStyle.linkStyle}
                 >
-                  Not Assigned
-                </span>
+                  <span
+                    className={
+                      TableStyle.statusStyle +
+                      " " +
+                      TableStyle.statusColorNotCompleted
+                    }
+                  >
+                    Not Assigned
+                  </span>
+                </Link>
               </td>
             </tr>
             <tr>
@@ -66,16 +76,21 @@ function AssignDriverOrderList() {
               <td>2021-03-17</td>
               <td>Rs.25000</td>
               <td>
-                <span
-                  className={
-                    TableStyle.statusStyle +
-                    " " +
-                    TableStyle.statusColorNotCompleted
-                  }
+                <Link
+                  to="/dashboard/assignDriver"
+                  className={TableStyle.linkStyle}
                 >
-                  Not Assigned
-                  {/* should link for assign order page */}
-                </span>
+                  <span
+                    className={
+                      TableStyle.statusStyle +
+                      " " +
+                      TableStyle.statusColorNotCompleted
+                    }
+                  >
+                    Not Assigned
+                    {/* should link for assign order page */}
+                  </span>
+                </Link>
               </td>
             </tr>
             <tr>
