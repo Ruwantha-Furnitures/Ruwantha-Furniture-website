@@ -39,6 +39,7 @@ import CustomerUpdateProfile from "./components/web/registeredCustomer/UpdatePro
 import CustomerChangePassword from "./components/web/registeredCustomer/CustomerChangePassword.jsx";
 import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery.jsx";
 import AssignOrderDriver from "./components/Dashboard/AssignOrderDriver";
+import AssignDriver from "./components/Dashboard/AssignDriver";
 
 function App() {
   return (
@@ -85,6 +86,11 @@ function App() {
             exact
             path="/dashboard/assignListOrderDriver"
             component={AssignOrderDriver}
+          />
+          <Route
+            exact
+            path="/dashboard/assignDriver"
+            component={AssignDriver}
           />
 
           {/* Dashboard-Profiles Section*/}
