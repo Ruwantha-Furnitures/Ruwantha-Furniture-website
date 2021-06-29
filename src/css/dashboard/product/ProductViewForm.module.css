@@ -201,6 +201,19 @@
   width: 56.6%;
 }
 
+.inputFormSelectStyle {
+  height: 33px;
+  background: #ffffff;
+  border-radius: 22px;
+  border: none;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  color: #000000;
+  padding-left: 15px;
+  width: 48%;
+}
+
 .productType {
   height: auto;
   /* background: #ffffff; */

@@ -71,6 +71,23 @@ function Sidebar() {
           </li>
           <li>
             <Link
+              to="/dashboard/completedOrders"
+              className={SidebarStyle.sidebarLink}
+            >
+              <div className={SidebarStyle.lineSection}>
+                <div className={SidebarStyle.lineIcon}>
+                  <span className={"material-icons " + SidebarStyle.iconWidth}>
+                    fact_check
+                  </span>
+                </div>
+                <div className={SidebarStyle.lineText}>
+                  <h1 className={SidebarStyle.lineTextStyle}>Completed </h1>
+                </div>
+              </div>
+            </Link>
+          </li>
+          <li>
+            <Link
               to="/dashboard/deliveryDrivers"
               className={SidebarStyle.sidebarLink}
             >
@@ -81,7 +98,24 @@ function Sidebar() {
                   </span>
                 </div>
                 <div className={SidebarStyle.lineText}>
-                  <h1 className={SidebarStyle.lineTextStyle}>Delivery</h1>
+                  <h1 className={SidebarStyle.lineTextStyle}>Drivers</h1>
+                </div>
+              </div>
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/dashboard/assignListOrderDriver"
+              className={SidebarStyle.sidebarLink}
+            >
+              <div className={SidebarStyle.lineSection}>
+                <div className={SidebarStyle.lineIcon}>
+                  <span className={"material-icons " + SidebarStyle.iconWidth}>
+                    assignment
+                  </span>
+                </div>
+                <div className={SidebarStyle.lineText}>
+                  <h1 className={SidebarStyle.lineTextStyle}>Assign</h1>
                 </div>
               </div>
             </Link>
