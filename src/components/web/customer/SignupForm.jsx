@@ -5,15 +5,18 @@ import FormStyle from "../../../css/web/Form.module.css";
 import NavButtonStyle from "../../../css/web/common.module.css";
 import "../../../css/web/Signup.css";
 
-export default function SignupForm() {
+const SignupForm= ({ signUpHandler }) =>  {
   require("bootstrap/dist/css/bootstrap.min.css");
   const [name, setName] = useState("");
-  const [uname, setUname] = useState("");
   const [email, setEmail] = useState("");
-  const [telephone, setTelephone] = useState("");
   const [address, setAddress] = useState("");
+  const [contactNo, setContactNo] = useState("");
   const [password, setPassword] = useState("");
-  const [cpassword, setCPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const submitHandler = () => {
+    signUpHandler({ name, email, address, contactNo, password });
+  };
 
   const loginform = {
     margin: "0px",
@@ -27,86 +30,80 @@ export default function SignupForm() {
                 <br />
                 <h2>SIGN UP</h2>
             </center>            
+                           
+            <input style={{width: '260px'}} className={FormStyle.textBox}                   
+                type="text"                    
+                placeholder="Name"
+                onChangeText={(name) => setName(name)}
+                required
+            />
+                                
+            <input style={{width: '260px'}} className={FormStyle.textBox} 
+                type="text"                    
+                placeholder="Address"
+                onChangeText={(address) => setAddress(address)}
+                required
+            />
+                                  
+            <input style={{width: '260px'}} className={FormStyle.textBox} 
+                type="tele"
+                value={contactNo}
+                placeholder="Telephone"
+                onChangeText={(contact) => setContactNo(contact)}
+                required
+            />            
+                   
+            <input style={{width: '260px'}} className={FormStyle.emailBox} 
+                type="email"
+                value={email}
+                placeholder="Email"
+                onChangeText={(email) => setEmail(email)}
+                required
+            />
+               
+            <input style={{width: '260px'}} className={FormStyle.passwordBox} 
+                type="password"
+                value={password}
+                placeholder="Password"
+                onChangeText={(password) => setPassword(password)}
+                required
+            />
+           
+            <input style={{width: '260px'}} className={FormStyle.passwordBox} 
+                type="password"
+                value={confirmPassword}
+                placeholder="Confirm Password"
+                onChangeText={(confirmPassword) => setConfirmPassword(confirmPassword)}
+                required
+            />
 
-            <Form.Group size="sm" controlId="name">                
-                <Form.Control style={{width: '260px'}} className={FormStyle.textBox}                   
-                    type="text"
-                    value={name}
-                    placeholder="Name"
-                    onChange={(e) => setName(e.target.value)}
-                />
-            </Form.Group>            
-
-            <Form.Group size="sm" controlId="address">                
-                <Form.Control style={{width: '260px'}} className={FormStyle.textBox} 
-                    type="text"
-                    value={address}
-                    placeholder="Address"
-                    onChange={(e) => setAddress(e.target.value)}
-                />
-            </Form.Group>
-
-            <Form.Group size="sm" controlId="telephone">                
-                <Form.Control style={{width: '260px'}} className={FormStyle.textBox} 
-                  type="tele"
-                  value={telephone}
-                  placeholder="Telephone"
-                  onChange={(e) => setTelephone(e.target.value)}
-                />
-            </Form.Group>
-
-            <Form.Group size="sm" controlId="email">                
-                <Form.Control style={{width: '260px'}} className={FormStyle.emailBox} 
-                    type="email"
-                    value={email}
-                    placeholder="Email"
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-            </Form.Group>
-            <Form.Group size="sm" controlId="password">                
-                <Form.Control style={{width: '260px'}} className={FormStyle.passwordBox} 
-                    type="password"
-                    value={password}
-                    placeholder="Password"
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-            </Form.Group>
-            <Form.Group size="sm" controlId="cpassword">                
-                <Form.Control style={{width: '260px'}} className={FormStyle.passwordBox} 
-                    type="password"
-                    value={cpassword}
-                    placeholder="Confirm Password"
-                    onChange={(e) => setCPassword(e.target.value)}
-                />
-            </Form.Group>
-
-            <Form.Group>
-              <center>
+            <center>
                 {["checkbox"].map((type) => (
                 <div key={`inline-${type}`} className="mb-3">                    
-                        <Form.Check
-                          inline
-                          label=" I agree to the terms and conditions"
-                          name="group1"
-                          type={type}
-                          id={`inline-${type}-1`}
-                      />                    
-                  </div>
+                    <Form.Check
+                        inline
+                        label=" I agree to the terms and conditions"
+                        name="group1"
+                        type={type}
+                        id={`inline-${type}-1`}
+                    />                    
+                </div>
                 ))}
-                </center>
-                <center>
+            </center>
+            <center>                    
                 <button
                     block
                     size="lg"
                     type="submit"
                     className={NavButtonStyle.btn}
+                    onPress={submitHandler}
                 >
                     Sign Up
                 </button>
                 </center>
-                <br />  
-              </Form.Group>
+                <br />                
           </Form>          
     </div>
   );
 }
+export default SignupForm;
