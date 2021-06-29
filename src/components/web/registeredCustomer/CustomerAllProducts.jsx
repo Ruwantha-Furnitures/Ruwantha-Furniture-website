@@ -1,11 +1,9 @@
 import React from 'react';
+import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import Rating from "../Common/StartRating";
-import item1 from "../../../assets/items/10.jpg";
-import item2 from "../../../assets/items/9.jpg";
-import item3 from "../../../assets/items/11.jpg";
-import item4 from "../../../assets/items/14.jpg";
+import item from "../../../assets/items/1.jpg";
 import "../../../css/web/Home.css";
 
 function CustomerAllProducts() {
@@ -13,140 +11,56 @@ function CustomerAllProducts() {
 
     const [itemCount, setItemCount] = React.useState(0);
   
-    const backcontainer = {
-      marginTop: "20px",
-      backgroundColor: "#CAC1C1",
-      padding: "30px",
-      borderRadius: "20px",
-      width: "100%",
-      marginBottom: "20px",
-    };
     const innercontainer = {
-      backgroundColor: "#FFF",
+      backgroundColor: "transparent",
       padding: "6px",
       borderRadius: "20px",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
+      display: "flex",      
+      alignItems: "center"           
     };
     const funitureimg = {
-      marginTop: "10px",
-      borderRadius: "20px",
+      marginTop: "10px",      
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
+      borderRadius: '20px'
     };
-    const topimage = {
-      marginTop: "-50px",
-      width: "100%",
-      backgroundSize: "cover",
-      backgroundRepeat: "no-repeat",
-    };
+
     return (
-      <div>
-        <Container style={backcontainer}>
-            <Row className="justify-content-md-center" xs={12}>
-            <Col>
-                <Container style={innercontainer}>
-                    <div>
+      <div >        
+        <Row sm={12}>            
+            <Col sm={4}>                
+                <div>
                     <center>
-                        <img
-                        src={item4}
-                        alt={item3}
-                        width={200}
-                        height={150}
-                        style={funitureimg}
+                    <Card style={{ width: '18rem', marginBottom: '20px', border:'solid 1px black', borderRadius: '20px'}}>
+                        <center>
+                        <img variant="top"
+                            src={item}
+                            alt={item}
+                            width={200}
+                            height={150}
+                            style={funitureimg}
                         />
-                    </center>
-                    <p class="textinbox">
-                        Canton Dining Suite
-                        <br /> Rs. 72,975
-                    </p>
-                    <center>    
-                        <Rating></Rating>
-                    </center>
-                    <center>
-                    <Link to="/viewProduct"><button class="addtocart">View</button></Link>
-                    </center>
-                    </div>
-                </Container>
-                </Col>
-                <Col>
-                <Container style={innercontainer}>
-                    <div>
-                    <center>
-                        <img
-                        src={item1}
-                        alt={item1}
-                        width={200}
-                        height={150}
-                        style={funitureimg}
-                        />
-                    </center>
-                    <p class="textinbox">
-                        Wiscon Sofa <br /> Rs. 191,675
-                    </p>    
-                    <center>    
-                        <Rating></Rating>
-                    </center>            
-                    <center>                  
-                        <button class="addtocart">View</button>
-                    </center>                            
-                    </div>
-                </Container>
-                </Col>
-                <Col>
-                <Container style={innercontainer}>
-                    <div>
-                    <center>
-                        <img
-                        src={item2}
-                        alt={item1}
-                        width={200}
-                        height={150}
-                        style={funitureimg}
-                        />
-                    </center>
-                    <p class="textinbox">
-                        Eliza Sofa
-                        <br /> Rs. 76,175
-                    </p>
-                    <center>    
-                        <Rating></Rating>
-                    </center>
-                    <center>
-                        <button class="addtocart">View</button>
-                    </center>
-                    </div>
-                </Container>
-                </Col>
-                <Col>
-                <Container style={innercontainer}>
-                    <div>
-                    <center>
-                        <img
-                        src={item3}
-                        alt={item2}
-                        width={200}
-                        height={150}
-                        style={funitureimg}
-                        />
-                    </center>
-                    <p class="textinbox">
-                        Serena Single Seater
-                        <br /> Rs. 30,875
-                    </p>
-                    <center>    
-                        <Rating></Rating>
-                    </center>
-                    <center>
-                        <button class="addtocart">View</button>
-                    </center>
-                    </div>
-                </Container>
-                </Col>          
-            </Row>
-        </Container>
+                        </center>
+                        <Card.Body>
+                            <Card.Title><center>Canton Dining Suite</center></Card.Title>
+                            <Card.Text>                    
+                                <p class="textinbox">                        
+                                    Rs. 72,975
+                                </p>
+                                <center>    
+                                    <Rating></Rating>
+                                </center>
+                                <center>
+                                    <Link to="/viewProduct"><button class="addtocart">View</button></Link>
+                                </center>
+                            </Card.Text>                            
+                        </Card.Body>
+                    </Card>          
+                    </center>                              
+                </div>                
+            </Col>                
+        </Row>        
     </div>
     )
 }

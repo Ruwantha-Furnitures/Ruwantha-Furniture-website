@@ -19,7 +19,7 @@ function ChangePasswordForm() {
         <div>                    
         <Form className={FormStyle.innerbox}>
         <center>
-            <h2 style={{marginTop: '20px'}}>CHANGE PASSWORD</h2>   
+            <h2 style={{marginTop: '20px'}}>CHANGE <br />PASSWORD</h2>   
             <br />                 
             <Form.Group size="sm" controlId="password">               
               <Form.Control className={FormStyle.passwordBox}  style={{width: '260px'}} 

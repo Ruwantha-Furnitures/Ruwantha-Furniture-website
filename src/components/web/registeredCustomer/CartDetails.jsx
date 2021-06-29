@@ -29,6 +29,7 @@ function CartDetails() {
                                 </Col>
                                 <Col sm={7}>
                                     <h4>Serena Single Seater</h4>
+                                    <h6>Rs.72975</h6>
                                 </Col>
                                 <Col sm={2}>
                                 <img src={close} style={{width:'30px', borderRadius: '20px'}}></img>
