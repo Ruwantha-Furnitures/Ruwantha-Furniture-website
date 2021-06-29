@@ -40,6 +40,7 @@ import CustomerChangePassword from "./components/web/registeredCustomer/Customer
 import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery.jsx";
 import AssignOrderDriver from "./components/Dashboard/AssignOrderDriver";
 import AssignDriver from "./components/Dashboard/AssignDriver";
+import CompletedOrders from "./components/Dashboard/CompletedOrders";
 
 function App() {
   return (
@@ -81,6 +82,11 @@ function App() {
             exact
             path="/dashboard/purchaseOrders"
             component={PurchaseOrders}
+          />
+          <Route
+            exact
+            path="/dashboard/completedOrders"
+            component={CompletedOrders}
           />
           <Route
             exact
