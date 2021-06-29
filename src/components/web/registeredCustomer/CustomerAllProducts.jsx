@@ -23,22 +23,25 @@ function CustomerAllProducts() {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
+      borderRadius: '20px'
     };
 
     return (
-      <div>        
+      <div >        
         <Row sm={12}>            
             <Col sm={4}>                
                 <div>
                     <center>
-                    <Card style={{ width: '18rem', marginBottom: '20px', border:'solid 1px black'}}>
-                        <Card.Img variant="top"
+                    <Card style={{ width: '18rem', marginBottom: '20px', border:'solid 1px black', borderRadius: '20px'}}>
+                        <center>
+                        <img variant="top"
                             src={item}
                             alt={item}
                             width={200}
                             height={150}
                             style={funitureimg}
                         />
+                        </center>
                         <Card.Body>
                             <Card.Title><center>Canton Dining Suite</center></Card.Title>
                             <Card.Text>                    
