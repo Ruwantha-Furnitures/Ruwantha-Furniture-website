@@ -1,9 +1,26 @@
-import React from 'react'
+import React from 'react';
+import { Container, Row, Col } from 'reactstrap';
+import Navigation from "../customer/Indexnav";
+import Footer from "../Common/Footer";
+import backcover from "../../../assets/login9.jpg";
+import "../../../css/web/Login.css";
+import FormRecovery from './PasswordRecoveryForm';
 
 function UpdateProfile() {
     return (
-        <div>
-            <h1>Test-Nuwan</h1>
+        <div style={{              
+            backgroundImage: `url(${backcover})`,        
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            objectFit:'cover',
+            height: '100%',
+            width: '100%',        
+          }}>        
+            <Navigation></Navigation>                    
+            <Container align="center">                  
+                <FormRecovery></FormRecovery>            
+            </Container>              
+            <Footer></Footer>            
         </div>
     )
 }

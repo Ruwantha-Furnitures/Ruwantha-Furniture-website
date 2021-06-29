@@ -1,19 +1,13 @@
 import React, {useState} from 'react';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
 import "../../../css/web/Login.css";
-import Avatar from "../../../assets/avatar.png";
+import Avatar from "../../../assets/pwrecovery.png";
 import NavButtonStyle from "../../../css/web/common.module.css";
 import FormStyle from "../../../css/web/Form.module.css";
 
-function LoginForm() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
-    function validateForm() {
-        return email.length > 0 && password.length > 0;
-    }
+function PasswordRecoveryForm() {
+    const [email, setEmail] = useState("");    
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -49,6 +43,7 @@ function LoginForm() {
         <div className="Login" >        
           <Form style={loginform} onSubmit={handleSubmit} align="left">
             <center><img src={Avatar} style={avatar}/></center><br />
+            <center><h6>Enter Your Email Address</h6></center><br />
             <Form.Group size="sm" controlId="email">                
               <Form.Control className={FormStyle.emailBox}               
                 type="email"
@@ -57,20 +52,10 @@ function LoginForm() {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </Form.Group>
-            <Form.Group size="sm" controlId="password">               
-              <Form.Control className={FormStyle.passwordBox}  
-                type="password"
-                value={password}
-                placeholder="Password"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </Form.Group>
-            <center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Login</button></center><br />
-            <center><Link to="/signup" style={belowlinks}>Don't have an account?</Link></center>
-            <center><Link to='/recoveryPassword' style={belowlinks}>Forgot Password</Link></center>
+            <center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Submit</button></center><br />
           </Form>
         </div>
     );
 }
 
-export default LoginForm;
+export default PasswordRecoveryForm;

@@ -9,7 +9,7 @@ function LandingPagepart2() {
     return (
         <div>
             <Container>
-            <Row sm={12} align="center">  
+                <Row sm={12} align="center">  
                     <Col sm={12}>
                         <Card>
                         <Card.Img variant="top" src={Custom} />
