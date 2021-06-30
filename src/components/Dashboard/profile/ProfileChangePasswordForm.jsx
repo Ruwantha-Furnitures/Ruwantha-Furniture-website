@@ -31,8 +31,6 @@ function ProfileChangePasswordForm() {
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
-              </div>
-              <div className={ProductViewFormStyle.formLine}>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
                     Current
@@ -44,12 +42,25 @@ function ProfileChangePasswordForm() {
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
+              </div>
+              <div className={ProductViewFormStyle.formLine}>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>New</label>
                   <input
                     type="text"
                     value=""
                     placeholder="New Password"
+                    className={ProductViewFormStyle.inputStyle}
+                  />
+                </div>
+                <div className={ProductViewFormStyle.data}>
+                  <label className={ProductViewFormStyle.labelStyle}>
+                    Confirm
+                  </label>
+                  <input
+                    type="text"
+                    value=""
+                    placeholder="Confirm Password"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>

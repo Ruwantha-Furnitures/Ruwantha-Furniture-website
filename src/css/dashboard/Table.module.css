@@ -122,8 +122,49 @@ td {
   /* display: inline-flex; */
   text-decoration: none;
   color: rgba(0, 0, 0, 0.86);
+  /* padding: 2px; */
   font-weight: 800;
   /* align-items: center; */
+}
+
+.linkStylePostion {
+  position: absolute;
+  top: 24%;
+}
+
+.linkStyle:hover .tooltip {
+  visibility: visible;
+}
+
+.tooltip {
+  visibility: hidden;
+  width: 128px;
+  background-color: #be622e;
+  color: #fff;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  border-radius: 22px;
+  padding: 5px 0;
+  position: absolute;
+  /* position: relative; */
+  z-index: 1;
+  bottom: 135%;
+  left: 63%;
+  margin-left: -60px;
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #be622e transparent transparent transparent;
 }
 
 .statusStyle {
@@ -139,7 +180,6 @@ td {
 .statusColorNotCompleted {
   background-color: #be2e2e;
 }
-
 .statusColorCompleted {
   background-color: #2ebe72;
 }

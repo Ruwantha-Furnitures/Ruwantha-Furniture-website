@@ -15,25 +15,34 @@ function ProductsTable() {
               <th>
                 <Link
                   to="/dashboard/product/add"
-                  className={TableStyle.linkStyle}
+                  className={
+                    TableStyle.linkStyle + " " + TableStyle.linkStylePostion
+                  }
                 >
                   Product
+                  <span className={TableStyle.tooltip}>Add Product</span>
                 </Link>
               </th>
               <th>
                 <Link
                   to="/dashboard/product/addProductType"
-                  className={TableStyle.linkStyle}
+                  className={
+                    TableStyle.linkStyle + " " + TableStyle.linkStylePostion
+                  }
                 >
                   Type
+                  <span className={TableStyle.tooltip}>Add Type</span>
                 </Link>
               </th>
               <th>
                 <Link
                   to="/dashboard/product/addProductCategory"
-                  className={TableStyle.linkStyle}
+                  className={
+                    TableStyle.linkStyle + " " + TableStyle.linkStylePostion
+                  }
                 >
                   Category
+                  <span className={TableStyle.tooltip}>Add Category</span>
                 </Link>
               </th>
 
