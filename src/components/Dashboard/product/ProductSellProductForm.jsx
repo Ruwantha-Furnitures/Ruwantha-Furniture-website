@@ -1,12 +1,12 @@
 import React from "react";
 import ProductViewFormStyle from "../../../css/dashboard/product/ProductViewForm.module.css";
 
-function ProfileChangePasswordForm() {
+function ProductSellProductForm() {
   return (
     <React.Fragment>
       <div>
         <h1 className={ProductViewFormStyle.titleStyle}>
-          Profile Change Password
+          Product Sell Page - Product
         </h1>
       </div>
       <form action="#" className={ProductViewFormStyle.formStyle}>
@@ -22,45 +22,47 @@ function ProfileChangePasswordForm() {
               >
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
-                    Username
+                    Product
                   </label>
                   <input
                     type="text"
                     value=""
-                    placeholder="User Email"
+                    placeholder="Product Name"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
-                    Current
+                    Price
                   </label>
                   <input
                     type="text"
                     value=""
-                    placeholder="Current Password"
+                    placeholder="Product Price"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
               </div>
               <div className={ProductViewFormStyle.formLine}>
                 <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>New</label>
+                  <label className={ProductViewFormStyle.labelStyle}>
+                    Quantity
+                  </label>
                   <input
                     type="text"
                     value=""
-                    placeholder="New Password"
+                    placeholder="Product Qunatity"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
-                    Confirm
+                    Discount
                   </label>
                   <input
                     type="text"
                     value=""
-                    placeholder="Confirm Password"
+                    placeholder="Product Discount"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
@@ -71,8 +73,19 @@ function ProfileChangePasswordForm() {
 
         <div className={ProductViewFormStyle.descButtonsAdd}>
           <div className={ProductViewFormStyle.descButtonAdd}>
+            <button
+              className={
+                ProductViewFormStyle.descButtonAddStyle +
+                " " +
+                ProductViewFormStyle.descButtonAddStyleColor +
+                " " +
+                ProductViewFormStyle.addRightMargin
+              }
+            >
+              Add Product
+            </button>
             <button className={ProductViewFormStyle.descButtonAddStyle}>
-              Change Password
+              Sell Product
             </button>
           </div>
         </div>
@@ -81,4 +94,4 @@ function ProfileChangePasswordForm() {
   );
 }
 
-export default ProfileChangePasswordForm;
+export default ProductSellProductForm;
