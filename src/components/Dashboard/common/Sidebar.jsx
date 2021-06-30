@@ -37,7 +37,7 @@ function Sidebar() {
           </li>
           <li>
             <Link
-              to="/dashboard/product/sell"
+              to="/dashboard/product/sell/customer"
               className={SidebarStyle.sidebarLink}
             >
               <div className={SidebarStyle.lineSection}>

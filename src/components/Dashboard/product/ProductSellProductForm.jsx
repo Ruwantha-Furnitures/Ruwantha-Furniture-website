@@ -1,12 +1,12 @@
 import React from "react";
 import ProductViewFormStyle from "../../../css/dashboard/product/ProductViewForm.module.css";
 
-function ProductSellForm() {
+function ProductSellProductForm() {
   return (
     <React.Fragment>
       <div>
         <h1 className={ProductViewFormStyle.titleStyle}>
-          Product Sell Page - Customer
+          Product Sell Page - Product
         </h1>
       </div>
       <form action="#" className={ProductViewFormStyle.formStyle}>
@@ -22,73 +22,47 @@ function ProductSellForm() {
               >
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
-                    First Name
+                    Product
                   </label>
                   <input
                     type="text"
                     value=""
-                    placeholder="Customer First Name"
+                    placeholder="Product Name"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
-                    Last Name
+                    Price
                   </label>
                   <input
                     type="text"
                     value=""
-                    placeholder="Customer Last Name"
+                    placeholder="Product Price"
                     className={ProductViewFormStyle.inputStyle}
-                  />
-                </div>
-              </div>
-              <div className={ProductViewFormStyle.formLine}>
-                <div className={ProductViewFormStyle.dataforLong}>
-                  <label className={ProductViewFormStyle.labelStyleforLong}>
-                    Email
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Customer Email Address"
-                    className={ProductViewFormStyle.inputStyleforLong}
-                  />
-                </div>
-              </div>
-              <div className={ProductViewFormStyle.formLine}>
-                <div className={ProductViewFormStyle.dataforLong}>
-                  <label className={ProductViewFormStyle.labelStyleforLong}>
-                    Address
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Customer Dilever Address"
-                    className={ProductViewFormStyle.inputStyleforLong}
                   />
                 </div>
               </div>
               <div className={ProductViewFormStyle.formLine}>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
-                    Number
+                    Quantity
                   </label>
                   <input
                     type="text"
                     value=""
-                    placeholder="Customer Number"
+                    placeholder="Product Qunatity"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
-                    Payment
+                    Discount
                   </label>
                   <input
                     type="text"
                     value=""
-                    placeholder="Payment Method"
+                    placeholder="Product Discount"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
@@ -99,6 +73,17 @@ function ProductSellForm() {
 
         <div className={ProductViewFormStyle.descButtonsAdd}>
           <div className={ProductViewFormStyle.descButtonAdd}>
+            <button
+              className={
+                ProductViewFormStyle.descButtonAddStyle +
+                " " +
+                ProductViewFormStyle.descButtonAddStyleColor +
+                " " +
+                ProductViewFormStyle.addRightMargin
+              }
+            >
+              Add Product
+            </button>
             <button className={ProductViewFormStyle.descButtonAddStyle}>
               Sell Product
             </button>
@@ -109,4 +94,4 @@ function ProductSellForm() {
   );
 }
 
-export default ProductSellForm;
+export default ProductSellProductForm;
