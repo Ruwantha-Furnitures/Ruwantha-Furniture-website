@@ -19,6 +19,7 @@ import DeliveryDriverDeliveries from "./components/Dashboard/DeliveryDriverDeliv
 import ProductTypeView from "./components/Dashboard/ProductTypeView";
 import ProductCategoryView from "./components/Dashboard/ProductCategoryView";
 // import test from "./components/Dashboard/test/test";
+import DeliveryDriverView from "./components/Dashboard/DeliveryDriverView";
 
 // Web Components
 import Home from "./components/web/customer/Home.jsx";
@@ -98,6 +99,7 @@ function App() {
             path="/dashboard/assignDriver"
             component={AssignDriver}
           />
+         
 
           {/* Dashboard-Profiles Section*/}
           <Route
@@ -120,6 +122,11 @@ function App() {
             exact
             path="/dashboard/deliveryDrivers"
             component={DeliveryDrivers}
+          />
+           <Route
+            exact
+            path="/dashboard/deliveryDriver/view"
+            component={DeliveryDriverView}
           />
           <Route
             exact
