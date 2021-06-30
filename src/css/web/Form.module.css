@@ -4,7 +4,7 @@
   width: 35%;
   margin-bottom: 20px;
   border-radius: 20px;
-  color: #fff;
+  color: #fff;  
 }
 
 
@@ -16,6 +16,7 @@ Form .textBox{
     border-radius: 5px;
     padding: 5px;
     margin: 5px;
+    width: 100%;
 } 
 
 Form .emailBox{
@@ -26,6 +27,7 @@ Form .emailBox{
     border-radius: 5px;
     padding: 5px;
     margin: 5px;
+    width: 100%;
 }
 
 Form .passwordBox{
@@ -35,6 +37,8 @@ Form .passwordBox{
     border-radius: 5px;
     padding: 5px;
     margin: 5px;
+    color: #FFF;
+    width: 100%;
 }
 
 Form .textareastyle{
@@ -43,6 +47,16 @@ Form .textareastyle{
     border-radius: 5px;
     padding: 5px;   
     margin: 5px; 
+    width: 100%;
+}
+
+Form .dropBox{
+  background-color: rgb(0,0,0,0);
+  border: solid 2px #FFF;      
+  border-radius: 5px;
+  padding: 5px;   
+  margin: 5px; 
+  width: 100%;
 }
 
 @media screen and (max-width: 798px) {

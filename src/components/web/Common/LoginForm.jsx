@@ -11,14 +11,6 @@ function LoginForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    function validateForm() {
-        return email.length > 0 && password.length > 0;
-    }
-
-    function handleSubmit(event) {
-        event.preventDefault();
-    }
-
     const avatar = {
         width: '40%',
         height: '40%',
@@ -47,24 +39,22 @@ function LoginForm() {
 
     return (
         <div className="Login" >        
-          <Form style={loginform} onSubmit={handleSubmit} align="left">
+          <Form style={loginform} align="left">
             <center><img src={Avatar} style={avatar}/></center><br />
-            <Form.Group size="sm" controlId="email">                
-              <Form.Control className={FormStyle.emailBox}               
-                type="email"
-                value={email}
+            
+              <input className={FormStyle.emailBox}               
+                type="email"                
                 placeholder="Email"
                 onChange={(e) => setEmail(e.target.value)}
               />
-            </Form.Group>
-            <Form.Group size="sm" controlId="password">               
-              <Form.Control className={FormStyle.passwordBox}  
-                type="password"
-                value={password}
+                         
+              <input className={FormStyle.passwordBox}  
+                type="password"                
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
               />
-            </Form.Group>
+              <br /><br />
+            
             <center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Login</button></center><br />
             <center><Link to="/signup" style={belowlinks}>Don't have an account?</Link></center>
             <center><Link to='/recoveryPassword' style={belowlinks}>Forgot Password</Link></center>

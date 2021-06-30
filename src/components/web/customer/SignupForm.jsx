@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-import { Container, Row, Col } from "reactstrap";
 import FormStyle from "../../../css/web/Form.module.css";
 import NavButtonStyle from "../../../css/web/common.module.css";
 import "../../../css/web/Signup.css";
@@ -20,12 +19,12 @@ const SignupForm= ({ signUpHandler }) =>  {
 
   const loginform = {
     margin: "0px",
-    padding: "30px",    
+    padding: "20px",    
   };
 
   return (
       <div style={loginform}>                    
-        <Form className={FormStyle.innerbox}>      
+        <Form className={FormStyle.innerbox} onSubmit={submitHandler}>      
             <center>
                 <br />
                 <h2>SIGN UP</h2>
@@ -34,53 +33,49 @@ const SignupForm= ({ signUpHandler }) =>  {
             <input style={{width: '260px'}} className={FormStyle.textBox}                   
                 type="text"                    
                 placeholder="Name"
-                onChangeText={(name) => setName(name)}
+                onChange={(name) => setName(name)}
                 required
             />
                                 
             <input style={{width: '260px'}} className={FormStyle.textBox} 
                 type="text"                    
                 placeholder="Address"
-                onChangeText={(address) => setAddress(address)}
+                onChange={(address) => setAddress(address)}
                 required
             />
                                   
             <input style={{width: '260px'}} className={FormStyle.textBox} 
-                type="tele"
-                value={contactNo}
+                type="tele"                
                 placeholder="Telephone"
-                onChangeText={(contact) => setContactNo(contact)}
+                onChange={(contact) => setContactNo(contact)}
                 required
             />            
                    
             <input style={{width: '260px'}} className={FormStyle.emailBox} 
-                type="email"
-                value={email}
+                type="email"                
                 placeholder="Email"
-                onChangeText={(email) => setEmail(email)}
+                onChange={(email) => setEmail(email)}
                 required
             />
                
             <input style={{width: '260px'}} className={FormStyle.passwordBox} 
-                type="password"
-                value={password}
+                type="password"                
                 placeholder="Password"
-                onChangeText={(password) => setPassword(password)}
+                onChange={(password) => setPassword(password)}
                 required
             />
            
             <input style={{width: '260px'}} className={FormStyle.passwordBox} 
-                type="password"
-                value={confirmPassword}
+                type="password"                
                 placeholder="Confirm Password"
-                onChangeText={(confirmPassword) => setConfirmPassword(confirmPassword)}
+                onChange={(confirmPassword) => setConfirmPassword(confirmPassword)}
                 required
             />
 
             <center>
                 {["checkbox"].map((type) => (
                 <div key={`inline-${type}`} className="mb-3">                    
-                    <Form.Check
+                    <Form.Check style={{fontSize: "14px"}}
                         inline
                         label=" I agree to the terms and conditions"
                         name="group1"
@@ -91,18 +86,13 @@ const SignupForm= ({ signUpHandler }) =>  {
                 ))}
             </center>
             <center>                    
-                <button
-                    block
-                    size="lg"
+                <button                                        
                     type="submit"
-                    className={NavButtonStyle.btn}
-                    onPress={submitHandler}
-                >
-                    Sign Up
-                </button>
-                </center>
-                <br />                
-          </Form>          
+                    className={NavButtonStyle.btn}                                      
+                >Sign Up</button>
+            </center>
+            <br />                
+        </Form>          
     </div>
   );
 }

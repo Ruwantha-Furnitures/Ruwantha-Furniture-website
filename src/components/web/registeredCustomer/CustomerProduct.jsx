@@ -5,13 +5,13 @@ import Footer from "../Common/Footer";
 import ProductBox from "./CustomerAllProducts";
 
 function CustomerProduct() {
-    const contactImg = {
-        backgroundColor:'#fffeea',
+    require("bootstrap/dist/css/bootstrap.min.css");
+    const contactImg = {        
         MaxWidth: "100%"
     }
     return (
         <div style={contactImg}>  
-        <Navigation></Navigation>         
+        <Navigation></Navigation>               
         <Container fluid align="center"> 
             <ProductBox></ProductBox>
         </Container>

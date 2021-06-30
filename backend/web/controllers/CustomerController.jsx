@@ -5,7 +5,7 @@ const saltrounds = 10;
 const db = mysql.createPool({
   host: "localhost",
   user: "root",
-  password: "",
+  password: "1234",
   database: "armagic",
 });
 
