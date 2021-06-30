@@ -27,7 +27,7 @@ function CustomerAllProducts() {
     };
 
     return (
-      <div >        
+    <div >                   
         <Row sm={12}>            
             <Col sm={4}>                
                 <div>

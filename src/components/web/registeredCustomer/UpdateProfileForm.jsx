@@ -11,55 +11,41 @@ function UpdateProfileForm() {
     const [telephone, setTelephone] = useState("0773153130");
     const [email, setEmail] = useState("asinipathmila@gmail.com");
     
-
-    const formlabel = {
-        color: "#FFF",
-        paddig: "20px"
-    }
-
     return (            
         <div>
-             <Form className={FormStyle.innerbox}>
+            <Form className={FormStyle.innerbox} style={{margin: '40px'}}>
                 <center>
                     <h2 style={{marginTop: '20px'}}>PROFILE</h2> 
-                    <br />                   
-                    <Form.Group size="xs" controlId="name" >                    
-                        <input style={{width: '260px'}} className={FormStyle.textBox}                                            
-                            type="text"                            
-                            value={name}        
-                            onChange={(e) => setName(e.target.value)}                                  
-                        />
-                    </Form.Group>
-
-                    <Form.Group size="xs" controlId="address">                    
-                        <Form.Control style={{width: '260px'}}  className={FormStyle.textBox}                    
-                            type="text"                            
-                            value={address}        
-                            onChange={(e) => setAddress(e.target.value)}                                                    
-                        />
-                    </Form.Group> 
-
-                    <Form.Group size="xs" controlId="telephone">                    
-                        <Form.Control style={{width: '260px'}}  className={FormStyle.textBox}                    
-                            type="text"                            
-                            value={telephone}        
-                            onChange={(e) => setTelephone(e.target.value)}                                                   
-                        />
-                    </Form.Group>  
-
-                    <Form.Group size="xs" controlId="email">                    
-                        <Form.Control style={{width: '260px'}}  className={FormStyle.emailBox}                   
-                            type="email"                            
-                            value={email}        
-                            onChange={(e) => setEmail(e.target.value)}                                  
-                        />
-                    </Form.Group>    
-                    <Form.Group size="xs">
-                        <center>
-                            <button block size="lg" type="submit" className={NavButtonStyle.btn}>Update</button>
-                            <button block size="lg" type="submit" className={NavButtonStyle.btn}>Delete</button>
-                        </center><br />    
-                    </Form.Group>          
+                    <br />                                                           
+                    <input style={{width: '260px'}} className={FormStyle.textBox}                                            
+                        type="text"                                                    
+                        onChange={(e) => setName(e.target.value)}  
+                        required                                
+                    />                    
+                
+                    <input style={{width: '260px'}}  className={FormStyle.textBox}                    
+                        type="text"                                                    
+                        onChange={(e) => setAddress(e.target.value)} 
+                        required                                                   
+                    />                
+                    
+                    <input style={{width: '260px'}}  className={FormStyle.textBox}                    
+                        type="text"                                                
+                        onChange={(e) => setTelephone(e.target.value)}  
+                        required                                                 
+                    />                    
+            
+                    <input style={{width: '260px'}}  className={FormStyle.emailBox}                   
+                        type="email"                                                    
+                        onChange={(e) => setEmail(e.target.value)}  
+                        required                                
+                    />
+                    <br /> 
+                    <br />                
+                    <center>
+                        <button block size="lg" type="submit" className={NavButtonStyle.btn}>Update</button>
+                        <button block size="lg" type="submit" className={NavButtonStyle.btn}>Delete</button>
+                    </center><br />                        
                 </center>
             </Form>
         </div>

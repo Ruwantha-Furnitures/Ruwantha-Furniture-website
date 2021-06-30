@@ -2,30 +2,30 @@
 
 const express = require("express");
 const app = express();
-
+const cors = require("cors");
 const mysql = require("mysql");
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "1234",
+  password: "",
   database: "armagic",
 });
 
-const {customerRouter}=require("./routes/customers");
+const { customerRouter } = require("./routes/customers.js");
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
-app.use("/customer",customerRouter);
+app.use("/api/customer", customerRouter);
 
 async function connectDB() {
-    try {
-        await connection.connect();
-        console.log("Connected to Database")
-    } catch (error) {
-        console.log("error")
-    }
+  try {
+    await connection.connect();
+    console.log("Connected to Database");
+  } catch (error) {
+    console.log("error");
+  }
 }
 
 app.listen(3000, () => {

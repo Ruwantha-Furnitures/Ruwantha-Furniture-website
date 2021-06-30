@@ -41,3 +41,7 @@ npm init -y         (in the backend folder)
 npm install express mysql   (in the backend folder)
 
 npm install --save-dev nodemon  (in the backend folder)
+
+----------------------------------------
+
+npm install axios

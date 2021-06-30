@@ -4,8 +4,19 @@ import Navigation from "./Indexnav";
 import Footer from "../Common/Footer";
 import SignForm from "./SignupForm";
 import backcover from "../../../assets/login9.jpg";
+import axios from "axios";
 
-function Signup() {
+const Signup = ({navigation}) => {
+  const signUpHandler = async (data) => {
+    try{
+        await axios.post("http://192.168.8.175:3000/api/customer/signup",{
+        data,
+      });
+      console.log("Request successful");
+    }catch (error){
+      console.log(error);
+    } 
+  };
     return (
         <div style={{              
             backgroundImage: `url(${backcover})`,        
@@ -17,7 +28,7 @@ function Signup() {
           }}>
             <Navigation></Navigation>
             <Container align="center"> 
-              <SignForm></SignForm>   
+              <SignForm navigation={navigation} signUpHandler={signUpHandler} ></SignForm>   
             </Container>                    
             <Footer></Footer>       
           </div>
