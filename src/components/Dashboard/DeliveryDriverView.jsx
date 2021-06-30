@@ -4,8 +4,8 @@ import Sidebar from "./common/Sidebar";
 import AllProductsView from "./common/AllProductsView";
 import MainStyle from "../../css/dashboard/Main.module.css";
 import ProductStyle from "../../css/dashboard/Products.module.css";
-// import DeliveryDriverViewForm from "./deliveryDriver/DeliveryDriverViewForm";
-import DeliveryDriverDetails from './deliveryDriver/DeliveryDriverDetails';
+import DeliveryDriverViewForm from "./deliveryDriver/DeliveryDriverViewForm";
+
 
 function DeliveryDriverView() {
   return (
@@ -23,8 +23,8 @@ function DeliveryDriverView() {
           <div className={ProductStyle.detailsSection}>
             <div className={ProductStyle.detailCard}>
               {/* Delivery Driver View Profile */}
-              <DeliveryDriverDetails/>
-              {/* <DeliveryDriverViewForm /> */}
+              
+              <DeliveryDriverViewForm/>
             </div>
           </div>
           <div className={ProductStyle.productsViewSection}>
