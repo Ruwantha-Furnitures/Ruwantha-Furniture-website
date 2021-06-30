@@ -42,6 +42,7 @@ import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecove
 import AssignOrderDriver from "./components/Dashboard/AssignOrderDriver";
 import AssignDriver from "./components/Dashboard/AssignDriver";
 import CompletedOrders from "./components/Dashboard/CompletedOrders";
+import DeliveryDriverAvalability from "./components/Dashboard/DeliveryDriverAvalability";
 
 function App() {
   return (
@@ -137,6 +138,11 @@ function App() {
             exact
             path="/dashboard/deliveryDriver/deliveries"
             component={DeliveryDriverDeliveries}
+          />
+           <Route
+            exact
+            path="/dashboard/deliveryDriver/availablity"
+            component={DeliveryDriverAvalability}
           />
 
           {/* Web */}
