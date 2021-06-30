@@ -42,7 +42,12 @@ import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecove
 import AssignOrderDriver from "./components/Dashboard/AssignOrderDriver";
 import AssignDriver from "./components/Dashboard/AssignDriver";
 import CompletedOrders from "./components/Dashboard/CompletedOrders";
+
 import DeliveryDriverAvalability from "./components/Dashboard/DeliveryDriverAvalability";
+
+import ProductSellProductForm from "./components/Dashboard/product/ProductSellProductForm";
+import ProductSellCustomer from "./components/Dashboard/ProductSellCustomer";
+
 
 function App() {
   return (
@@ -55,7 +60,16 @@ function App() {
           <Route exact path="/dashboard/products" component={Products} />
           <Route exact path="/dashboard/product/view" component={ProductView} />
           <Route exact path="/dashboard/product/add" component={ProductAdd} />
-          <Route exact path="/dashboard/product/sell" component={ProductSell} />
+          <Route
+            exact
+            path="/dashboard/product/sell/product"
+            component={ProductSell}
+          />
+          <Route
+            exact
+            path="/dashboard/product/sell/customer"
+            component={ProductSellCustomer}
+          />
           <Route
             exact
             path="/dashboard/product/addProductType"

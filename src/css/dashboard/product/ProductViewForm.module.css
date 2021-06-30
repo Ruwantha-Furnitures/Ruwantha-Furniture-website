@@ -304,6 +304,10 @@
   cursor: pointer;
 }
 
+.descButtonAddStyleColor {
+  background: #be622ec7;
+}
+
 .labelStyle {
   font-weight: 600;
   font-size: 17px;

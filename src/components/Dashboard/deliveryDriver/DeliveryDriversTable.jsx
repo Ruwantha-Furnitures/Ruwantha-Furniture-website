@@ -15,9 +15,12 @@ function DeliveryDriversTable() {
               <th>
                 <Link
                   to="/dashboard/deliveryDriver/profile"
-                  className={TableStyle.linkStyle}
+                  className={
+                    TableStyle.linkStyle + " " + TableStyle.linkStylePostion
+                  }
                 >
                   Delivery Driver
+                  <span className={TableStyle.tooltip}>Add Driver</span>
                 </Link>
               </th>
               <th>Email</th>
