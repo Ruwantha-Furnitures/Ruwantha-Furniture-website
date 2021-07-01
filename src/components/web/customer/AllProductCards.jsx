@@ -32,7 +32,8 @@ function AllProductCards() {
             <Col sm={4}>                
                 <div>
                     <center>
-                    <Card style={{ width: '18rem',background: 'rgb(0,0,0,0.8)', color:'white', marginBottom: '20px', border:'solid 1px black', borderRadius: '20px'}}>
+                    {/*<Card style={{ width: '18rem',background: 'rgb(0,0,0,0.8)', color:'white', marginBottom: '20px', border:'solid 1px black', borderRadius: '20px'}}>*/}
+                    <Card style={{ width: '18rem' , border: 'solid 1px black'}}>
                         <center>
                         <img variant="top"
                             src={item}
@@ -52,7 +53,7 @@ function AllProductCards() {
                                     <Rating></Rating>
                                 </center>
                                 <center>
-                                    <Link to="/viewProduct"><button class="addtocart">View</button></Link>
+                                    <Link to="/viewProduct"><button class="addtocart">Read More</button></Link>
                                 </center>
                             </Card.Text>                            
                         </Card.Body>

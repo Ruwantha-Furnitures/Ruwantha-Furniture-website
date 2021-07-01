@@ -9,7 +9,8 @@ import Topimg from '../../../assets/background.jpg';
 function CustomerProduct() {
     require("bootstrap/dist/css/bootstrap.min.css");
     const contactImg = {  
-      backgroundImage: `url(${Topimg})` ,      
+        //backgroundImage: `url(${Topimg})` ,      
+        backgroundColor: 'white',
         MaxWidth: "100%"
     }
     return (
