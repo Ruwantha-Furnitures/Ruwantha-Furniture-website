@@ -18,6 +18,14 @@ import DeliveryDriverProfile from "./components/Dashboard/DeliveryDriverProfile"
 import DeliveryDriverDeliveries from "./components/Dashboard/DeliveryDriverDeliveries";
 import ProductTypeView from "./components/Dashboard/ProductTypeView";
 import ProductCategoryView from "./components/Dashboard/ProductCategoryView";
+
+import AssignOrderDriver from "./components/Dashboard/AssignOrderDriver";
+import AssignDriver from "./components/Dashboard/AssignDriver";
+import CompletedOrders from "./components/Dashboard/CompletedOrders";
+import DeliveryDriverAvalability from "./components/Dashboard/DeliveryDriverAvalability";
+import ProductSellProductForm from "./components/Dashboard/product/ProductSellProductForm";
+import ProductSellCustomer from "./components/Dashboard/ProductSellCustomer";
+
 // import test from "./components/Dashboard/test/test";
 import DeliveryDriverView from "./components/Dashboard/DeliveryDriverView";
 
@@ -39,15 +47,7 @@ import View_Product_Details from "./components/web/registeredCustomer/CustomerVi
 import CustomerUpdateProfile from "./components/web/registeredCustomer/UpdateProfile.jsx";
 import CustomerChangePassword from "./components/web/registeredCustomer/CustomerChangePassword.jsx";
 import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery.jsx";
-import AssignOrderDriver from "./components/Dashboard/AssignOrderDriver";
-import AssignDriver from "./components/Dashboard/AssignDriver";
-import CompletedOrders from "./components/Dashboard/CompletedOrders";
-
-import DeliveryDriverAvalability from "./components/Dashboard/DeliveryDriverAvalability";
-
-import ProductSellProductForm from "./components/Dashboard/product/ProductSellProductForm";
-import ProductSellCustomer from "./components/Dashboard/ProductSellCustomer";
-
+import CustomerPayment from "./components/web/registeredCustomer/Checkout.jsx";
 
 function App() {
   return (
@@ -195,6 +195,8 @@ function App() {
             component={CustomerUpdateProfile}
           />
           <Route exact path="/recoveryPassword" component={RecoveryPassword} />
+
+          <Route exact path="/payment" component={CustomerPayment} />
         </Switch>
       </div>
     </Router>
