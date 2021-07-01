@@ -1,6 +1,6 @@
 import React from 'react';
 import Navigation from "./Indexnav";
-import Product from "../Common/ProductDetails";
+import Product from "./ProductDetails";
 import Footer from "../Common/Footer";
 
 function ViewProductDetails() {

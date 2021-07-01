@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Form from "react-bootstrap/Form";
 import { Container, Row, Col } from 'reactstrap';
+import Button from 'react-bootstrap/Button';
 import FormStyle from "../../../css/web/Form.module.css";
 import NavButtonStyle from "../../../css/web/common.module.css";
 
@@ -15,7 +16,7 @@ function UpdateProfileForm() {
         <div>
             <Form className={FormStyle.innerbox} style={{margin: '40px'}}>
                 <center>
-                    <h2 style={{marginTop: '20px'}}>PROFILE</h2> 
+                    <h2 style={{marginTop: '20px'}}>Update Profile</h2> 
                     <br />                                                           
                     <input style={{width: '260px'}} className={FormStyle.textBox}                                            
                         type="text"                                                    
@@ -43,8 +44,10 @@ function UpdateProfileForm() {
                     <br /> 
                     <br />                
                     <center>
-                        <button block size="lg" type="submit" className={NavButtonStyle.btn}>Update</button>
-                        <button block size="lg" type="submit" className={NavButtonStyle.btn}>Delete</button>
+                        {/*<button block size="lg" type="submit" className={NavButtonStyle.btn}>Update</button>
+                        <button block size="lg" type="submit" className={NavButtonStyle.btn}>Delete</button>*/}                        
+                        <Button variant="danger">Cancel</Button>{' '}
+                        <Button variant="success">Update</Button>{' '}
                     </center><br />                        
                 </center>
             </Form>

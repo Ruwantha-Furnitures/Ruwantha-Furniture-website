@@ -42,6 +42,13 @@ npm install express mysql   (in the backend folder)
 
 npm install --save-dev nodemon  (in the backend folder)
 
+npm install bcrypt  (in the backend folder)
+
+npm run devStart  (in the backend folder)
+
+npm install cors  (in the backend folder)
+
 ----------------------------------------
 
 npm install axios
+
