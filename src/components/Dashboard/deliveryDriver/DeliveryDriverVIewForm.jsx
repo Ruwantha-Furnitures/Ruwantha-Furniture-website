@@ -1,12 +1,12 @@
 import React from "react";
 import ProductViewFormStyle from "../../../css/dashboard/product/ProductViewForm.module.css";
 
-function ProductSellForm() {
+function DeliveryDriverViewForm() {
   return (
     <React.Fragment>
       <div>
         <h1 className={ProductViewFormStyle.titleStyle}>
-          Product Sell Page - Customer
+          Delivery Driver Profile
         </h1>
       </div>
       <form action="#" className={ProductViewFormStyle.formStyle}>
@@ -27,7 +27,7 @@ function ProductSellForm() {
                   <input
                     type="text"
                     value=""
-                    placeholder="Customer First Name"
+                    placeholder="Driver First Name"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
@@ -38,7 +38,7 @@ function ProductSellForm() {
                   <input
                     type="text"
                     value=""
-                    placeholder="Customer Last Name"
+                    placeholder="Driver Last Name"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
@@ -51,7 +51,7 @@ function ProductSellForm() {
                   <input
                     type="text"
                     value=""
-                    placeholder="Customer Email Address"
+                    placeholder="Delivery Driver Email"
                     className={ProductViewFormStyle.inputStyleforLong}
                   />
                 </div>
@@ -64,7 +64,7 @@ function ProductSellForm() {
                   <input
                     type="text"
                     value=""
-                    placeholder="Customer Dilever Address"
+                    placeholder="Delivery Driver Address"
                     className={ProductViewFormStyle.inputStyleforLong}
                   />
                 </div>
@@ -77,7 +77,7 @@ function ProductSellForm() {
                   <input
                     type="text"
                     value=""
-                    placeholder="Customer Number"
+                    placeholder="Driver Contact Number"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
@@ -88,7 +88,32 @@ function ProductSellForm() {
                   <input
                     type="text"
                     value=""
-                    placeholder="Payment Method"
+                    placeholder="Basic Payment"
+                    className={ProductViewFormStyle.inputStyle}
+                  />
+                </div>
+              </div>
+
+              <div className={ProductViewFormStyle.formLine}>
+                <div className={ProductViewFormStyle.data}>
+                  <label className={ProductViewFormStyle.labelStyle}>
+                    Vehicle
+                  </label>
+                  <input
+                    type="text"
+                    value=""
+                    placeholder="Vehicle Number"
+                    className={ProductViewFormStyle.inputStyle}
+                  />
+                </div>
+                <div className={ProductViewFormStyle.data}>
+                  <label className={ProductViewFormStyle.labelStyle}>
+                    Type
+                  </label>
+                  <input
+                    type="text"
+                    value=""
+                    placeholder="Vehicle Type"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
@@ -99,8 +124,17 @@ function ProductSellForm() {
 
         <div className={ProductViewFormStyle.descButtonsAdd}>
           <div className={ProductViewFormStyle.descButtonAdd}>
+            <button
+              className={
+                ProductViewFormStyle.descButtonAddStyle +
+                " " +
+                ProductViewFormStyle.addRightMargin
+              }
+            >
+              Update
+            </button>
             <button className={ProductViewFormStyle.descButtonAddStyle}>
-              Sell Product
+              Delete
             </button>
           </div>
         </div>
@@ -109,4 +143,4 @@ function ProductSellForm() {
   );
 }
 
-export default ProductSellForm;
+export default DeliveryDriverViewForm;

@@ -19,6 +19,7 @@ import DeliveryDriverDeliveries from "./components/Dashboard/DeliveryDriverDeliv
 import ProductTypeView from "./components/Dashboard/ProductTypeView";
 import ProductCategoryView from "./components/Dashboard/ProductCategoryView";
 // import test from "./components/Dashboard/test/test";
+import DeliveryDriverView from "./components/Dashboard/DeliveryDriverView";
 
 // Web Components
 import Home from "./components/web/customer/Home.jsx";
@@ -42,6 +43,12 @@ import AssignOrderDriver from "./components/Dashboard/AssignOrderDriver";
 import AssignDriver from "./components/Dashboard/AssignDriver";
 import CompletedOrders from "./components/Dashboard/CompletedOrders";
 
+import DeliveryDriverAvalability from "./components/Dashboard/DeliveryDriverAvalability";
+
+import ProductSellProductForm from "./components/Dashboard/product/ProductSellProductForm";
+import ProductSellCustomer from "./components/Dashboard/ProductSellCustomer";
+
+
 function App() {
   return (
     <Router>
@@ -53,7 +60,16 @@ function App() {
           <Route exact path="/dashboard/products" component={Products} />
           <Route exact path="/dashboard/product/view" component={ProductView} />
           <Route exact path="/dashboard/product/add" component={ProductAdd} />
-          <Route exact path="/dashboard/product/sell" component={ProductSell} />
+          <Route
+            exact
+            path="/dashboard/product/sell/product"
+            component={ProductSell}
+          />
+          <Route
+            exact
+            path="/dashboard/product/sell/customer"
+            component={ProductSellCustomer}
+          />
           <Route
             exact
             path="/dashboard/product/addProductType"
@@ -98,6 +114,7 @@ function App() {
             path="/dashboard/assignDriver"
             component={AssignDriver}
           />
+         
 
           {/* Dashboard-Profiles Section*/}
           <Route
@@ -121,6 +138,11 @@ function App() {
             path="/dashboard/deliveryDrivers"
             component={DeliveryDrivers}
           />
+           <Route
+            exact
+            path="/dashboard/deliveryDriver/view"
+            component={DeliveryDriverView}
+          />
           <Route
             exact
             path="/dashboard/deliveryDriver/profile"
@@ -130,6 +152,11 @@ function App() {
             exact
             path="/dashboard/deliveryDriver/deliveries"
             component={DeliveryDriverDeliveries}
+          />
+           <Route
+            exact
+            path="/dashboard/deliveryDriver/availablity"
+            component={DeliveryDriverAvalability}
           />
 
           {/* Web */}

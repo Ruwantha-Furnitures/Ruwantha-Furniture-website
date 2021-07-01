@@ -4,9 +4,9 @@ import Sidebar from "./common/Sidebar";
 import AllProductsView from "./common/AllProductsView";
 import MainStyle from "../../css/dashboard/Main.module.css";
 import ProductStyle from "../../css/dashboard/Products.module.css";
-import ProductSellProductForm from "./product/ProductSellProductForm";
+import DeliveryDriverAvalabilityForm from "./deliveryDriver/DeliveryDriverAvalabilityForm";
 
-function ProductSell() {
+function DeliveryDriverAvalability() {
   return (
     <div className={MainStyle.bodycontainer}>
       <div className={MainStyle.navSection}>
@@ -21,8 +21,8 @@ function ProductSell() {
         <div className={ProductStyle.cardDataSection}>
           <div className={ProductStyle.detailsSection}>
             <div className={ProductStyle.detailCard}>
-              {/* Product Sell Form Customer Part */}
-              <ProductSellProductForm />
+              {/* Delivery Driver View Profile */}
+              <DeliveryDriverAvalabilityForm />
             </div>
           </div>
           <div className={ProductStyle.productsViewSection}>
@@ -34,4 +34,4 @@ function ProductSell() {
   );
 }
 
-export default ProductSell;
+export default DeliveryDriverAvalability;
