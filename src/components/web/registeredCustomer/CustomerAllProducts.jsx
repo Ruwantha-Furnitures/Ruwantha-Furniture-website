@@ -3,7 +3,6 @@ import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import Rating from "../Common/StartRating";
-import Search from "../Common/SearchProduct";
 import item from "../../../assets/items/1.jpg";
 import "../../../css/web/Home.css";
 
@@ -20,7 +19,7 @@ function CustomerAllProducts() {
       alignItems: "center"           
     };
     const funitureimg = {
-      marginTop: "10px",      
+      marginTop: "30px",      
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
@@ -29,15 +28,11 @@ function CustomerAllProducts() {
 
     return (
     <div >  
-        <Row sm={12}>
-            <Search></Search>
-        </Row>
-
         <Row sm={12}>            
             <Col sm={4}>                
                 <div>
                     <center>
-                    <Card style={{ width: '18rem', marginBottom: '20px', border:'solid 1px black', borderRadius: '20px'}}>
+                    <Card style={{ width: '18rem',background: 'rgb(0,0,0,0.8)', color:'white', marginBottom: '20px', border:'solid 1px black', borderRadius: '20px'}}>
                         <center>
                         <img variant="top"
                             src={item}
@@ -57,7 +52,7 @@ function CustomerAllProducts() {
                                     <Rating></Rating>
                                 </center>
                                 <center>
-                                    <Link to="/viewProduct"><button class="addtocart">View</button></Link>
+                                    <Link to="#"><button class="addtocart">View</button></Link>
                                 </center>
                             </Card.Text>                            
                         </Card.Body>

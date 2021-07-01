@@ -12,9 +12,11 @@ function ViewCart() {
             <Container>
                 <center><h2>My Cart</h2></center>
                 <Row sm={12}>
-                    <Col sm={8}>
+                    <Col sm={12}>
                         <CustomerCartDetails></CustomerCartDetails>
                     </Col>
+                </Row>
+                <Row sm={12}>
                     <Col sm={4}>
                         <CustomerCheckoutForm></CustomerCheckoutForm>  
                     </Col>

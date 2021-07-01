@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mysql = require("mysql");
+
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -11,7 +12,7 @@ const connection = mysql.createConnection({
   database: "armagic",
 });
 
-const { customerRouter } = require("./routes/customers.js");
+const { customerRouter } = require("./web/routes/Customers.js");
 
 app.use(cors());
 app.use(express.json());
@@ -28,7 +29,7 @@ async function connectDB() {
   }
 }
 
-app.listen(3000, () => {
-  console.log("Application is running on the port 3000");
+app.listen(3002, () => {
+  console.log("Application is running on the port 3002");
   connectDB();
 });

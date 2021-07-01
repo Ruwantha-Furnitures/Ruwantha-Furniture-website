@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import FormStyle from "../../../css/web/Form.module.css";
 import NavButtonStyle from "../../../css/web/common.module.css";
 import "../../../css/web/Signup.css";
+import Button from 'react-bootstrap/Button';
 
 const SignupForm= ({ signUpHandler }) =>  {
   require("bootstrap/dist/css/bootstrap.min.css");
@@ -13,7 +14,7 @@ const SignupForm= ({ signUpHandler }) =>  {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const submitHandler = () => {
+  const submitHandler = (e) => { e.preventDefault()
     signUpHandler({ name, email, address, contactNo, password });
   };
 
@@ -30,45 +31,51 @@ const SignupForm= ({ signUpHandler }) =>  {
                 <h2>SIGN UP</h2>
             </center>            
                            
-            <input style={{width: '260px'}} className={FormStyle.textBox}                   
+            <input  style={{width: '260px'}} className={FormStyle.textBox}                   
                 type="text"                    
                 placeholder="Name"
-                onChange={(name) => setName(name)}
+                value= {name}
+                onChange={(e) => setName(e.target.value)}
                 required
             />
                                 
             <input style={{width: '260px'}} className={FormStyle.textBox} 
                 type="text"                    
                 placeholder="Address"
-                onChange={(address) => setAddress(address)}
+                value= {address}
+                onChange={(e) => setAddress(e.target.value)}
                 required
             />
                                   
             <input style={{width: '260px'}} className={FormStyle.textBox} 
                 type="tele"                
                 placeholder="Telephone"
-                onChange={(contact) => setContactNo(contact)}
+                value ={contactNo}
+                onChange={(e) => setContactNo(e.target.value)}
                 required
             />            
                    
             <input style={{width: '260px'}} className={FormStyle.emailBox} 
                 type="email"                
                 placeholder="Email"
-                onChange={(email) => setEmail(email)}
+                value = {email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
             />
                
             <input style={{width: '260px'}} className={FormStyle.passwordBox} 
                 type="password"                
                 placeholder="Password"
-                onChange={(password) => setPassword(password)}
+                value = {password}
+                onChange={(e) => setPassword(e.target.value)}
                 required
             />
            
             <input style={{width: '260px'}} className={FormStyle.passwordBox} 
-                type="password"                
+                type="password"  
+                value ={confirmPassword}              
                 placeholder="Confirm Password"
-                onChange={(confirmPassword) => setConfirmPassword(confirmPassword)}
+                onChange={(e) => setConfirmPassword(e.target.value)}
                 required
             />
 
@@ -86,10 +93,9 @@ const SignupForm= ({ signUpHandler }) =>  {
                 ))}
             </center>
             <center>                    
-                <button                                        
-                    type="submit"
-                    className={NavButtonStyle.btn}                                      
-                >Sign Up</button>
+                {/*<button  type="submit" className={NavButtonStyle.btn}>Sign Up</button>*/}                
+                <Button variant="danger" type="reset">Cancel</Button>{' '}
+                <Button variant="success" type="submit">Signup</Button>{' '}
             </center>
             <br />                
         </Form>          

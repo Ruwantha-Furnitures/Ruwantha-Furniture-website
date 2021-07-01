@@ -8,8 +8,9 @@ import axios from "axios";
 
 const Signup = ({navigation}) => {
   const signUpHandler = async (data) => {
+    //console.log(data);
     try{
-        await axios.post("http://192.168.8.175:3000/api/customer/signup",{
+        await axios.post("http://192.168.56.1:3002/api/customer/signup",{
         data,
       });
       console.log("Request successful");
