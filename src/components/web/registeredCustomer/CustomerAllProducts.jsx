@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import Rating from "../Common/StartRating";
+import Search from "../Common/SearchProduct";
 import item from "../../../assets/items/1.jpg";
 import "../../../css/web/Home.css";
 
@@ -27,7 +28,11 @@ function CustomerAllProducts() {
     };
 
     return (
-    <div >                   
+    <div >  
+        <Row sm={12}>
+            <Search></Search>
+        </Row>
+
         <Row sm={12}>            
             <Col sm={4}>                
                 <div>
