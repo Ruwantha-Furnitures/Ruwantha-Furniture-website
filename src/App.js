@@ -48,6 +48,7 @@ import CustomerUpdateProfile from "./components/web/registeredCustomer/UpdatePro
 import CustomerChangePassword from "./components/web/registeredCustomer/CustomerChangePassword.jsx";
 import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery.jsx";
 import CustomerPayment from "./components/web/registeredCustomer/Checkout.jsx";
+import CustomerCheckout from "./components/web/registeredCustomer/CustomerCheckoutDeteails.jsx";
 
 function App() {
   return (
@@ -195,7 +196,8 @@ function App() {
             component={CustomerUpdateProfile}
           />
           <Route exact path="/recoveryPassword" component={RecoveryPassword} />
-
+          <Route exact path="/customer_checkout" component={CustomerCheckout} />
+          
           <Route exact path="/payment" component={CustomerPayment} />
         </Switch>
       </div>

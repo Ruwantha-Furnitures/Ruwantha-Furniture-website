@@ -4,6 +4,12 @@
 
 #Ruwantha Furniture
 
+AR Magic
+
+email - ucscarmagic@gmail.com
+
+password - TYPucsc123
+
 **External Libraries**
 
 npm i react-router-dom --save
@@ -51,4 +57,8 @@ npm install cors  (in the backend folder)
 ----------------------------------------
 
 npm install axios
+
+
+
+
 
