@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import Form from "react-bootstrap/Form";
 import "../../../css/web/Login.css";
 import FormStyle from "../../../css/web/Form.module.css";
+import Button from 'react-bootstrap/Button';
+import { Link } from "react-router-dom";
 import NavButtonStyle from "../../../css/web/common.module.css";
 
 function CheckoutForm() {
@@ -41,7 +43,8 @@ function CheckoutForm() {
                     placeholder="Password"                    
                 />
                 </Form.Group>
-                <center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Checkout</button></center>
+                {/*<center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Checkout</button></center>*/}
+                <Link to='/customer_checkout'><center><Button variant="success">Checkout</Button></center></Link>
             </Form>
         </div>
     )

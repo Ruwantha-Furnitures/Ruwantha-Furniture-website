@@ -39,7 +39,7 @@ function ViewProfileForm() {
                     <Link to='/updateProfile'>
                         {/*<center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Update</button></center><br />*/}
                         {/*<Button variant="outline-success">Update</Button>*/}
-                        <Button variant="success">Update</Button>
+                        <Button variant="success">Go to update page</Button>
                     </Link>                                     
                 </center>
                 <br />   
