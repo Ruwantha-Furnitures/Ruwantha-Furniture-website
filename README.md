@@ -54,6 +54,12 @@ npm run devStart  (in the backend folder)
 
 npm install cors  (in the backend folder)
 
+npm install sequelize (in the backend folder)
+
+npm install sequelize mysql2 sequelize-cli (in the backend folder)
+
+sequelize init (in the backend folder)
+
 ----------------------------------------
 
 npm install axios

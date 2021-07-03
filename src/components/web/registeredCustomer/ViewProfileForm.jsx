@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button';
 import { Container, Row, Col } from 'reactstrap';
 import { Link } from "react-router-dom";
 import FormStyle from "../../../css/web/Form.module.css";
-import NavButtonStyle from "../../../css/web/common.module.css";
 
 function ViewProfileForm() {
     require("bootstrap/dist/css/bootstrap.min.css");

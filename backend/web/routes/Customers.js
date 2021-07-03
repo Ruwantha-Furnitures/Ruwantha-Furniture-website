@@ -3,8 +3,8 @@ const mysql = require("mysql");
 
 const router = express.Router();
 
-const { getCustomersController} = require("../controllers/CustomerController");
+const { SignUpController} = require("../controllers/SignupController");
 
-router.post("/signup",getCustomersController);
+router.post("/signup",SignUpController);
 
 module.exports = { customerRouter: router };
