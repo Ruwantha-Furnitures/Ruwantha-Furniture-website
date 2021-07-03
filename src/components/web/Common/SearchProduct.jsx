@@ -25,7 +25,7 @@ function SearchProduct() {
                 </Nav>
                 <Form inline>
                     <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                    <Button variant="success" style={{border:'solid 1px rgb(92, 75, 75)'}}>Search</Button>                    
+                    <Button variant="outline-success">Search</Button>                    
                 </Form>
             </Navbar.Collapse>
             </Navbar>
