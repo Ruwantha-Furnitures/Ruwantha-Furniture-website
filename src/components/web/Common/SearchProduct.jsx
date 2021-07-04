@@ -13,11 +13,11 @@ function SearchProduct() {
     require("bootstrap/dist/css/bootstrap.min.css");
     return (
         <div>            
-            <Navbar expand="lg"  sticky="top" style={{backgroundColor:'#ededed', maxWidth:'100%', marginTop:'0px', marginBottom: '20px'}}>            
+            <Navbar expand="lg"  sticky="top" style={{ maxWidth:'100%', marginTop:'0px', marginBottom: '20px'}}>            
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    <NavDropdown title="Select Category" id="category-dropdown" style={{border:'black', fontWeight:'bold', borderRadius: '5px'}}>
+                    <NavDropdown title="Select Category" id="category-dropdown" style={{border:'solid 1px black', fontWeight:'bold', borderRadius: '5px'}}>
                         <NavDropdown.Item >Chair</NavDropdown.Item>
                         <NavDropdown.Item >Sofa</NavDropdown.Item>
                         <NavDropdown.Item >Bed</NavDropdown.Item>                    
@@ -28,8 +28,7 @@ function SearchProduct() {
                     <Button variant="outline-success">Search</Button>                    
                 </Form>
             </Navbar.Collapse>
-            </Navbar>
-            <br />                      
+            </Navbar>                       
         </div>
     );
 }
