@@ -19,9 +19,10 @@ function ViewCart() {
                     <Col sm={4}>
                         <CustomerCheckoutForm></CustomerCheckoutForm>  
                     </Col>
-                </Row>      
-                <br /><br />                                                                                                          
-            </Container>            
+                </Row>                                                                                                                              
+            </Container>    
+            <br /><br />  
+            <br /><br />          
             <Footer></Footer>  
         </div>
     )

@@ -7,19 +7,12 @@ import Topimg from '../../../assets/topimg2.jpg';
 import Form from './CustomerCheckoutDetailsForm';
 
 function CustomerCheckoutDeteails() {    
-    const contactImg = {
-        backgroundImage: `url(${Topimg})` ,
-        repeat: 'none',
-        padding: '0',
-        MaxWidth: "100%"
-    }
+
     return (
-        <div className="col-md-12" style={contactImg}>                                     
+        <div>                                     
             <Navigation></Navigation> 
-            <Subnavigation></Subnavigation>
-            <Container align="center"> 
-                <Form></Form>
-            </Container>
+            <Subnavigation></Subnavigation>            
+            <Form></Form>            
             <Footer></Footer>    
         </div>
     );
