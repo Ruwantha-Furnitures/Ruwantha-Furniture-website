@@ -25,7 +25,25 @@
     background-color: #fc7a30;
     color: #fff;
   }
+
+  .paybtn {
+    background-color: #28a745 ;
+    color: white;
+    font-size: 14px;
+    justify-content: left;
+    justify-items: left;        
+    border: none;
+    border-radius: 5px;
+    width: 130px;
+    height: 40px;
+    margin-left: 0px;     
+  }
   
+  .paybtn:hover {
+    background: #208f4e;
+    transition: 0.5s;
+  }
+
   .footer {
     background-color: blue;
     width: 100%;

@@ -9,20 +9,21 @@ function ViewCart() {
     return (
         <div>
             <Navigation></Navigation> 
-            <Container>
-                <center><h2>My Cart</h2></center>
+            <Container>                
                 <Row sm={12}>
-                    <Col sm={8}>
+                    <Col sm={8}>                        
                         <CustomerCartDetails></CustomerCartDetails>
                     </Col>
-               
+
                     <Col sm={4}>
                         <CustomerCheckoutForm></CustomerCheckoutForm>  
                     </Col>
                 </Row>                                                                                                                              
             </Container>    
             <br /><br />  
-            <br /><br />          
+            <br /><br />  
+            <br /><br />        
+            <br /><br />
             <Footer></Footer>  
         </div>
     )

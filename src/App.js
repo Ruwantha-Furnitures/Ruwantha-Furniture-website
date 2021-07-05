@@ -47,7 +47,7 @@ import View_Product_Details from "./components/web/registeredCustomer/CustomerVi
 import CustomerUpdateProfile from "./components/web/registeredCustomer/UpdateProfile.jsx";
 import CustomerChangePassword from "./components/web/registeredCustomer/CustomerChangePassword.jsx";
 import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery.jsx";
-import CustomerPayment from "./components/web/registeredCustomer/Checkout.jsx";
+import CustomerPayment from "./components/web/registeredCustomer/PaymentForm.jsx";
 import CustomerCheckout from "./components/web/registeredCustomer/CustomerCheckoutDeteails.jsx";
 
 function App() {

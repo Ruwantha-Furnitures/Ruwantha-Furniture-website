@@ -9,13 +9,14 @@ import Slideshow from "../customer/Banner";
 import Footer from "../Common/Footer";
 import "../../../css/web/Home.css";
 import "../../../css/web/common.module.css";
+import Card from 'react-bootstrap/Card';
 
 function CustomerHome() {
   require("bootstrap/dist/css/bootstrap.min.css");
   const contactImg = {
     backgroundImage: `url(${Topimg})` ,
     repeat: 'none',
-    padding: '15px',
+    padding: '30px',    
     MaxWidth: "100%"
   };
   return (
@@ -24,10 +25,10 @@ function CustomerHome() {
       <Slideshow></Slideshow>
       <ProductBox></ProductBox>
       <Part2></Part2>
-      <div style={contactImg}>
-        <Container align="left">
+      <div>
+        <Card align="left" style={contactImg}>          
           <ConForm></ConForm>
-        </Container>
+        </Card>        
       </div> 
       <Footer></Footer>
     </div>

@@ -1,4 +1,6 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
+import NavButtonStyle from "../../../css/web/common.module.css";
 
 const Payment = ({ orderId, name, amount }) => {
     
@@ -49,7 +51,8 @@ const Payment = ({ orderId, name, amount }) => {
     window.payhere.startPayment(payment);
   }
 
-  return <button onClick={pay}>Pay with Payhere</button>;
+  return <button type='submit' className={NavButtonStyle.paybtn} onClick={pay}>Pay with Payhere</button>;
+  
 };
 
 export default Payment;

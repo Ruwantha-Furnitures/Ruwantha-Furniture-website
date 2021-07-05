@@ -3,33 +3,24 @@ import { Container, Row, Col } from "reactstrap";
 import productImg from "../../../assets/items/1.jpg";
 import Table from 'react-bootstrap/Table';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import AddIcon from "@material-ui/icons/Add";
-import RemoveIcon from "@material-ui/icons/Remove";
-import Button from "@material-ui/core/Button";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
+import Form from "react-bootstrap/Form";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 function CartDetails() {
     const [itemCount, setItemCount] = React.useState(1);
 
-    const backcontainer = {
-        marginTop: "20px",
-        backgroundColor: "#CAC1C1",
-        padding: "5px",
-        borderRadius: "20px",        
-        marginBottom: "15px",
-      };
-      const innercontainer = {        
-        backgroundColor: "#FFF",
-        padding: "10px",
-        borderRadius: "20px",
-        width: "100%"
-      };
+    const rowStyle={
+        margin: '10px'
+    };
+
     return (
         <div>
-            <Container style={backcontainer}>                
-                <Container style={innercontainer}>
-                    <Row sm={12}>
+            <Card style={{marginBottom: '20px'}}>
+                <Form style={{padding: '20px'}}>
+                    <Row sm={12} style={rowStyle}>
                         <Col sm={12}>
+                            <h2>Shopping Cart</h2><br />
                             <Table responsive="sm">
                                 <thead>
                                     <tr>
@@ -56,8 +47,8 @@ function CartDetails() {
                             </Table>
                         </Col> 
                     </Row>
-                </Container>                   
-            </Container>
+                </Form>
+            </Card>
         </div>
     )
 }

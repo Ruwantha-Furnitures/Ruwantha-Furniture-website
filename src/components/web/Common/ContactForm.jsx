@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import { Container, Row, Col } from "reactstrap";
 import Button from "react-bootstrap/Button";
+import Card from 'react-bootstrap/Card';
 import NavButtonStyle from "../../../css/web/common.module.css";
 import FormStyle from "../../../css/web/Form.module.css";
 
@@ -22,7 +23,9 @@ function ContactForm() {
     
     return (                    
         <div>                    
-        <Form className={FormStyle.innerbox}>
+        {/*<Form className={FormStyle.innerbox}>*/}
+        <Card className={FormStyle.cardbox} style={{ width: '22rem'}}>
+        <Form>
         <center>
             <h2 style={{marginTop: '20px'}}>CONTACT US</h2>   
             <br />                 
@@ -63,13 +66,14 @@ function ContactForm() {
                     />
                 </Form.Group>
                 <br />
-                <Form.Group size="xs">
+                <Form.Group size="xs">                    
+                    <Button variant="outline-danger">Cancel</Button>{' '}   
                     <Button variant="success">Submit</Button>{' '}
-                    <Button variant="danger">Cancel</Button>{' '}   
                 </Form.Group>                
             </center>
             <br />
         </Form>
+        </Card>
     </div>
   );
 }
