@@ -13,37 +13,55 @@ function ProductsTable() {
           <thead>
             <tr>
               <th>
-                <Link
-                  to="/dashboard/product/add"
-                  className={
-                    TableStyle.linkStyle + " " + TableStyle.linkStylePostion
-                  }
-                >
+                <div className={TableStyle.header}>
                   Product
-                  <span className={TableStyle.tooltip}>Add Product</span>
-                </Link>
+                  <Link
+                    to="/dashboard/product/add"
+                    className={TableStyle.linkStyle}
+                  >
+                    <span
+                      className={
+                        "material-icons" + " " + TableStyle.addIconStyle
+                      }
+                    >
+                      add_circle
+                    </span>
+                  </Link>
+                </div>
               </th>
               <th>
-                <Link
-                  to="/dashboard/product/addProductType"
-                  className={
-                    TableStyle.linkStyle + " " + TableStyle.linkStylePostion
-                  }
-                >
+                <div className={TableStyle.header}>
                   Type
-                  <span className={TableStyle.tooltip}>Add Type</span>
-                </Link>
+                  <Link
+                    to="/dashboard/product/addType"
+                    className={TableStyle.linkStyle}
+                  >
+                    <span
+                      className={
+                        "material-icons" + " " + TableStyle.addIconStyle
+                      }
+                    >
+                      add_circle
+                    </span>
+                  </Link>
+                </div>
               </th>
               <th>
-                <Link
-                  to="/dashboard/product/addProductCategory"
-                  className={
-                    TableStyle.linkStyle + " " + TableStyle.linkStylePostion
-                  }
-                >
+                <div className={TableStyle.header}>
                   Category
-                  <span className={TableStyle.tooltip}>Add Category</span>
-                </Link>
+                  <Link
+                    to="/dashboard/product/addProductCategory"
+                    className={TableStyle.linkStyle}
+                  >
+                    <span
+                      className={
+                        "material-icons" + " " + TableStyle.addIconStyle
+                      }
+                    >
+                      add_circle
+                    </span>
+                  </Link>
+                </div>
               </th>
 
               <th>Price</th>
