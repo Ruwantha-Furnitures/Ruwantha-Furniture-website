@@ -12,11 +12,26 @@ function CompleteOrderList() {
         <table className={TableStyle.tableShow}>
           <thead>
             <tr>
-              <th>Order Id</th>
-              <th>Customer</th>
-              <th>Contact Number</th>
-              <th>Date</th>
-              <th>Driver</th>
+              <th>
+                {" "}
+                <div className={TableStyle.header}>Order Id</div>
+              </th>
+              <th>
+                {" "}
+                <div className={TableStyle.header}>Customer</div>
+              </th>
+              <th>
+                {" "}
+                <div className={TableStyle.header}>Contact Number</div>
+              </th>
+              <th>
+                {" "}
+                <div className={TableStyle.header}>Date</div>
+              </th>
+              <th>
+                {" "}
+                <div className={TableStyle.header}>Driver</div>
+              </th>
             </tr>
           </thead>
           <tbody>

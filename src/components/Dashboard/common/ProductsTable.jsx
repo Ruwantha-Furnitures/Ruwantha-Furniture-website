@@ -17,7 +17,7 @@ function ProductsTable() {
                   Product
                   <Link
                     to="/dashboard/product/add"
-                    className={TableStyle.linkStyle}
+                    className={TableStyle.linkStyleAdd}
                   >
                     <span
                       className={
@@ -34,12 +34,10 @@ function ProductsTable() {
                   Type
                   <Link
                     to="/dashboard/product/addType"
-                    className={TableStyle.linkStyle}
+                    className={TableStyle.linkStyleAdd}
                   >
                     <span
-                      className={
-                        "material-icons" + " " + TableStyle.addIconStyle
-                      }
+                      className={"material-icons " + TableStyle.addIconStyle}
                     >
                       add_circle
                     </span>
@@ -51,12 +49,10 @@ function ProductsTable() {
                   Category
                   <Link
                     to="/dashboard/product/addProductCategory"
-                    className={TableStyle.linkStyle}
+                    className={TableStyle.linkStyleAdd}
                   >
                     <span
-                      className={
-                        "material-icons" + " " + TableStyle.addIconStyle
-                      }
+                      className={"material-icons " + TableStyle.addIconStyle}
                     >
                       add_circle
                     </span>
@@ -64,8 +60,12 @@ function ProductsTable() {
                 </div>
               </th>
 
-              <th>Price</th>
-              <th>Qunatity</th>
+              <th>
+                <div className={TableStyle.header}>Price</div>
+              </th>
+              <th>
+                <div className={TableStyle.header}>Qunatity</div>
+              </th>
             </tr>
           </thead>
           <tbody>

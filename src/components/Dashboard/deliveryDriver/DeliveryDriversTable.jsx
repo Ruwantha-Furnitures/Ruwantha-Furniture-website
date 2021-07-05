@@ -13,20 +13,32 @@ function DeliveryDriversTable() {
           <thead>
             <tr>
               <th>
-                <Link
-                  to="/dashboard/deliveryDriver/profile"
-                  className={
-                    TableStyle.linkStyle + " " + TableStyle.linkStylePostion
-                  }
-                >
+                <div className={TableStyle.header}>
                   Delivery Driver
-                  <span className={TableStyle.tooltip}>Add Driver</span>
-                </Link>
+                  <Link
+                    to="/dashboard/deliveryDriver/profile"
+                    className={TableStyle.linkStyleAdd}
+                  >
+                    <span
+                      className={"material-icons " + TableStyle.addIconStyle}
+                    >
+                      add_circle
+                    </span>
+                  </Link>
+                </div>
               </th>
-              <th>Email</th>
-              <th>Contact Number</th>
-              <th>Payment(Basic)</th>
-              <th>Area</th>
+              <th>
+                <div className={TableStyle.header}>Email</div>
+              </th>
+              <th>
+                <div className={TableStyle.header}>Contact Number</div>
+              </th>
+              <th>
+                <div className={TableStyle.header}>Payment(Basic)</div>
+              </th>
+              <th>
+                <div className={TableStyle.header}>Area</div>
+              </th>
             </tr>
           </thead>
           <tbody>

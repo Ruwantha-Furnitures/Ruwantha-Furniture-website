@@ -12,11 +12,21 @@ function CustomersTable() {
         <table className={TableStyle.tableShow}>
           <thead>
             <tr>
-              <th>Customer Name</th>
-              <th>Email</th>
-              <th>Contact Number</th>
-              <th>Payment</th>
-              <th>Rating</th>
+              <th>
+                <div className={TableStyle.header}>Customer Name</div>
+              </th>
+              <th>
+                <div className={TableStyle.header}>Email</div>
+              </th>
+              <th>
+                <div className={TableStyle.header}>Contact Number</div>
+              </th>
+              <th>
+                <div className={TableStyle.header}>Payment</div>
+              </th>
+              <th>
+                <div className={TableStyle.header}>Rating</div>
+              </th>
             </tr>
           </thead>
           <tbody>
