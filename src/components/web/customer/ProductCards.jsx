@@ -149,7 +149,7 @@ function ProductCards() {
         <Row className="justify-content-md-center">
           <Col>
             <center>
-              <Link to="/viewProductPage"><button class="viewAll">View All Products</button></Link>
+              <Link to="/product"><button class="viewAll">View All Products</button></Link>
             </center>
           </Col>
         </Row>

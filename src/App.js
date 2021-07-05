@@ -18,11 +18,16 @@ import DeliveryDriverProfile from "./components/Dashboard/DeliveryDriverProfile"
 import DeliveryDriverDeliveries from "./components/Dashboard/DeliveryDriverDeliveries";
 import ProductTypeView from "./components/Dashboard/ProductTypeView";
 import ProductCategoryView from "./components/Dashboard/ProductCategoryView";
+
 import AssignOrderDriver from "./components/Dashboard/AssignOrderDriver";
 import AssignDriver from "./components/Dashboard/AssignDriver";
 import CompletedOrders from "./components/Dashboard/CompletedOrders";
+import DeliveryDriverAvalability from "./components/Dashboard/DeliveryDriverAvalability";
+import ProductSellProductForm from "./components/Dashboard/product/ProductSellProductForm";
 import ProductSellCustomer from "./components/Dashboard/ProductSellCustomer";
+
 // import test from "./components/Dashboard/test/test";
+import DeliveryDriverView from "./components/Dashboard/DeliveryDriverView";
 
 // Web Components
 import Home from "./components/web/customer/Home.jsx";
@@ -42,6 +47,9 @@ import View_Product_Details from "./components/web/registeredCustomer/CustomerVi
 import CustomerUpdateProfile from "./components/web/registeredCustomer/UpdateProfile.jsx";
 import CustomerChangePassword from "./components/web/registeredCustomer/CustomerChangePassword.jsx";
 import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery.jsx";
+
+import CustomerPayment from "./components/web/registeredCustomer/Checkout.jsx";
+import CustomerCheckout from "./components/web/registeredCustomer/CustomerCheckoutDeteails.jsx";
 
 function App() {
   return (
@@ -133,14 +141,23 @@ function App() {
           />
           <Route
             exact
+            path="/dashboard/deliveryDriver/view"
+            component={DeliveryDriverView}
+          />
+          <Route
+            exact
             path="/dashboard/deliveryDriver/profile"
             component={DeliveryDriverProfile}
           />
-
           <Route
             exact
             path="/dashboard/deliveryDriver/deliveries"
             component={DeliveryDriverDeliveries}
+          />
+          <Route
+            exact
+            path="/dashboard/deliveryDriver/availablity"
+            component={DeliveryDriverAvalability}
           />
 
           {/* Web */}
@@ -179,6 +196,9 @@ function App() {
             component={CustomerUpdateProfile}
           />
           <Route exact path="/recoveryPassword" component={RecoveryPassword} />
+          <Route exact path="/customer_checkout" component={CustomerCheckout} />
+
+          <Route exact path="/payment" component={CustomerPayment} />
         </Switch>
       </div>
     </Router>

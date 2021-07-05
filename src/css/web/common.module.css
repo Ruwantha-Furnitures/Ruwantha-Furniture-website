@@ -8,6 +8,7 @@
     width: 400px;    
     border-radius: 20px;
   }
+
   .btn {
     background-color: #cac1c1;
     justify-content: left;
@@ -15,7 +16,7 @@
     color: black;
     font-weight: bold;
     border: none;
-    border-radius: 20px;
+    border-radius: 5px;
     width: 120px;
     height: 40px;
     margin-left: 0px;    

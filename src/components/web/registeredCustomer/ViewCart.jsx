@@ -15,11 +15,14 @@ function ViewCart() {
                     <Col sm={8}>
                         <CustomerCartDetails></CustomerCartDetails>
                     </Col>
+               
                     <Col sm={4}>
                         <CustomerCheckoutForm></CustomerCheckoutForm>  
                     </Col>
-                </Row>                                                                                                                 
-            </Container>            
+                </Row>                                                                                                                              
+            </Container>    
+            <br /><br />  
+            <br /><br />          
             <Footer></Footer>  
         </div>
     )

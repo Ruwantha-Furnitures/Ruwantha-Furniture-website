@@ -62,10 +62,13 @@ function ContactForm() {
                         onChange={(e) => setDescription(e.target.value)}
                     />
                 </Form.Group>
+                <br />
                 <Form.Group size="xs">
-                    <center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Submit</button></center><br />    
+                    <Button variant="success">Submit</Button>{' '}
+                    <Button variant="danger">Cancel</Button>{' '}   
                 </Form.Group>                
             </center>
+            <br />
         </Form>
     </div>
   );

@@ -17,37 +17,33 @@ function ChangePasswordForm() {
 
     return (                    
         <div>                    
-        <Form className={FormStyle.innerbox}>
+        <Form className={FormStyle.innerbox} style={{margin: '40px'}}>
         <center>
-            <h2 style={{marginTop: '20px'}}>CHANGE PASSWORD</h2>   
+            <h2 style={{marginTop: '20px'}}>CHANGE <br />PASSWORD</h2>   
             <br />                 
-            <Form.Group size="sm" controlId="password">               
-              <Form.Control className={FormStyle.passwordBox}  style={{width: '260px'}} 
-                type="password"
-                value={password}
+                       
+            <input className={FormStyle.passwordBox}  style={{width: '260px'}} 
+                type="password"                
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group size="sm" controlId="newpassword">               
-              <Form.Control className={FormStyle.passwordBox}  style={{width: '260px'}} 
+                required
+            />            
+            
+            <input className={FormStyle.passwordBox}  style={{width: '260px'}} 
                 type="password"
-                value={newpassword}
                 placeholder="New Password"
                 onChange={(e) => setNewPassword(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group size="sm" controlId="confirmpassword">               
-              <Form.Control className={FormStyle.passwordBox}  style={{width: '260px'}}             
-                type="password"
-                value={confirmpassword}
+                required
+            />
+                        
+            <input className={FormStyle.passwordBox}  style={{width: '260px'}}             
+                type="password"            
                 placeholder="Confirm Password"
                 onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group size="xs">
-                <center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Submit</button></center><br />    
-            </Form.Group>                
+                required
+            />
+            <br /><br />
+            <center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Submit</button></center><br />                
         </center>
         </Form>
     </div>

@@ -4,6 +4,12 @@
 
 #Ruwantha Furniture
 
+AR Magic
+
+email - ucscarmagic@gmail.com
+
+password - TYPucsc123
+
 **External Libraries**
 
 npm i react-router-dom --save
@@ -41,3 +47,24 @@ npm init -y         (in the backend folder)
 npm install express mysql   (in the backend folder)
 
 npm install --save-dev nodemon  (in the backend folder)
+
+npm install bcrypt  (in the backend folder)
+
+npm run devStart  (in the backend folder)
+
+npm install cors  (in the backend folder)
+
+npm install sequelize (in the backend folder)
+
+npm install sequelize mysql2 sequelize-cli (in the backend folder)
+
+sequelize init (in the backend folder)
+
+----------------------------------------
+
+npm install axios
+
+
+
+
+

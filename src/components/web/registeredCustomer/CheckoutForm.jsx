@@ -1,49 +1,62 @@
 import React, {useState} from 'react';
 import Form from "react-bootstrap/Form";
-import "../../../css/web/Login.css";
 import FormStyle from "../../../css/web/Form.module.css";
+import Button from 'react-bootstrap/Button';
+import { Link } from "react-router-dom";
+import { Container, Row, Col } from 'reactstrap';
+import "../../../css/web/Login.css";
 import NavButtonStyle from "../../../css/web/common.module.css";
 
 function CheckoutForm() {
-    const formlabel = {
-        color: "#FFF",
-        paddig: "20px"
-    }
-
-    const loginform = {    
-        justifyContent: "left",
-        justifyItem: "left",
-        margin: "0px",
-        padding: "40px",          
-        backgroundColor: "#fc7a30",            
-        backgroundColor: "rgb(1,1,1,0.8)",    
-        borderRadius: "20px",                    
-        color: "#FFF"
-    }
+    const backcontainer = {
+        marginTop: "20px",
+        backgroundColor: "#CAC1C1",
+        padding: "5px",
+        borderRadius: "20px",        
+        marginBottom: "15px",
+      };
+      const innercontainer = {        
+        backgroundColor: "#FFF",
+        padding: "30px",
+        borderRadius: "20px",
+        width: "100%"
+      };
 
     return (
-        <div className="Login" >         
-            <Form style={loginform} align="left">   
-                <center><h2>SUMMARY</h2></center>
-                <Form.Group size="sm" controlId="email">  
-                <Form.Label>Total Amount</Form.Label>              
-                <Form.Control className={FormStyle.textBox}                             
-                    type="type"    
-                    value="Asini"
-                    placeholder="Email"                                        
-                />
-                </Form.Group>
-                <Form.Group size="sm" controlId="quantity">   
-                <Form.Label>Total Quantity</Form.Label>              
-                <Form.Control className={FormStyle.textBox}  
-                    type="text"
-                    value="Asini"
-                    placeholder="Password"                    
-                />
-                </Form.Group>
-                <center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Checkout</button></center>
-            </Form>
-        </div>
+    <div>         
+        <Container style={backcontainer}>                
+            <Container style={innercontainer}>
+                <center><h2 style={{margin: '20px'}}>Your Order</h2></center>
+                <Row sm={12}>
+                    <Col sm={7}>
+                        <Form.Label>Total Purchase</Form.Label>  
+                    </Col>
+                    <Col sm={5}>
+                        <Form.Label>Total</Form.Label> 
+                    </Col>
+                </Row> 
+                <Row sm={12}>
+                    <Col sm={7}>
+                        <Form.Label>Discount</Form.Label>  
+                    </Col>
+                    <Col sm={5}>
+                        <Form.Label>Discount</Form.Label> 
+                    </Col>
+                </Row> 
+                <Row sm={12}>
+                    <Col sm={7}>
+                        <Form.Label><b>Total</b></Form.Label>  
+                    </Col>
+                    <Col sm={5}>
+                        <Form.Label><b style={{fontSize: '20px'}}>Rs. Total</b></Form.Label> 
+                    </Col>
+                </Row>      
+                <br />                                                              
+                {/*<center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Checkout</button></center>*/}
+                <Link to='/customer_checkout'><center><Button variant="success">Checkout</Button></center></Link>
+           </Container>
+        </Container>
+    </div>
     )
 }
 
