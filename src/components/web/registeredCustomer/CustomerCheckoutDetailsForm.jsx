@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
-import Form from "react-bootstrap/Form";
 import "../../../css/web/Login.css";
-import FormStyle from "../../../css/web/Form.module.css";
+import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from 'reactstrap';
