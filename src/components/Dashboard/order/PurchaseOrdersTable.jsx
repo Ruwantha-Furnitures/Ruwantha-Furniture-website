@@ -12,11 +12,21 @@ function PurchaseOrdersTable() {
         <table className={TableStyle.tableShow}>
           <thead>
             <tr>
-              <th>Order</th>
-              <th>Customer Name</th>
-              <th>Customer Email</th>
-              <th>Discount</th>
-              <th>Price</th>
+              <th>
+                <div className={TableStyle.header}>Order</div>
+              </th>
+              <th>
+                <div className={TableStyle.header}>Customer Name</div>
+              </th>
+              <th>
+                <div className={TableStyle.header}>Customer Email</div>
+              </th>
+              <th>
+                <div className={TableStyle.header}>Discount</div>
+              </th>
+              <th>
+                <div className={TableStyle.header}>Price</div>
+              </th>
             </tr>
           </thead>
           <tbody>
