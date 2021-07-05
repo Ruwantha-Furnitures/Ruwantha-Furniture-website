@@ -9,7 +9,7 @@ import Topimg from '../../../assets/background.jpg';
 import Coverimg from '../../../assets/productbanner.png';
 import { CardImg } from 'react-bootstrap';
 
-function CustomerProduct() {
+function Product() {
     require("bootstrap/dist/css/bootstrap.min.css");
     const contactImg = {  
         //backgroundImage: `url(${Coverimg})` ,              
@@ -39,4 +39,4 @@ function CustomerProduct() {
     )
 }
 
-export default CustomerProduct;
+export default Product;

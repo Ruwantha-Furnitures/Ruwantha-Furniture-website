@@ -10,7 +10,7 @@ function ViewCart() {
         <div>
             <Navigation></Navigation> 
             <Container>
-                <center><h2>My Cart</h2></center>
+                <center><h2>Shopping Cart</h2></center>
                 <Row sm={12}>
                     <Col sm={8}>
                         <CustomerCartDetails></CustomerCartDetails>
@@ -22,7 +22,8 @@ function ViewCart() {
                 </Row>                                                                                                                              
             </Container>    
             <br /><br />  
-            <br /><br />          
+            <br /><br />  
+            <br /><br />        
             <Footer></Footer>  
         </div>
     )
