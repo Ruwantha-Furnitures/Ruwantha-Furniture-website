@@ -1,31 +1,21 @@
 import React, {useState} from 'react';
 import Form from "react-bootstrap/Form";
-import FormStyle from "../../../css/web/Form.module.css";
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from 'reactstrap';
 import "../../../css/web/Login.css";
 import NavButtonStyle from "../../../css/web/common.module.css";
 
 function CheckoutForm() {
-    const backcontainer = {
-        marginTop: "20px",
-        backgroundColor: "#CAC1C1",
-        padding: "5px",
-        borderRadius: "20px",        
-        marginBottom: "15px",
-      };
-      const innercontainer = {        
-        backgroundColor: "#FFF",
-        padding: "30px",
-        borderRadius: "20px",
-        width: "100%"
-      };
+    const rowStyle={
+        margin: '10px'
+    };    
 
     return (
-    <div>         
-        <Container style={backcontainer}>                
-            <Container style={innercontainer}>
+    <div>   
+        <Card style={{marginBottom: '20px'}}>      
+            <Form style={{padding: '20px'}}>            
                 <center><h2 style={{margin: '20px'}}>Your Order</h2></center>
                 <Row sm={12}>
                     <Col sm={7}>
@@ -53,9 +43,9 @@ function CheckoutForm() {
                 </Row>      
                 <br />                                                              
                 {/*<center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Checkout</button></center>*/}
-                <Link to='/customer_checkout'><center><Button variant="success">Checkout</Button></center></Link>
-           </Container>
-        </Container>
+                <Link to='/customer_checkout'><center><Button variant="success" style={{width: '100%'}}>Checkout</Button></center></Link>
+           </Form>
+        </Card>        
     </div>
     )
 }
