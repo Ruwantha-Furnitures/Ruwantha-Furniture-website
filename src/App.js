@@ -18,6 +18,10 @@ import DeliveryDriverProfile from "./components/Dashboard/DeliveryDriverProfile"
 import DeliveryDriverDeliveries from "./components/Dashboard/DeliveryDriverDeliveries";
 import ProductTypeView from "./components/Dashboard/ProductTypeView";
 import ProductCategoryView from "./components/Dashboard/ProductCategoryView";
+import AssignOrderDriver from "./components/Dashboard/AssignOrderDriver";
+import AssignDriver from "./components/Dashboard/AssignDriver";
+import CompletedOrders from "./components/Dashboard/CompletedOrders";
+import ProductSellCustomer from "./components/Dashboard/ProductSellCustomer";
 // import test from "./components/Dashboard/test/test";
 
 // Web Components
@@ -38,11 +42,6 @@ import View_Product_Details from "./components/web/registeredCustomer/CustomerVi
 import CustomerUpdateProfile from "./components/web/registeredCustomer/UpdateProfile.jsx";
 import CustomerChangePassword from "./components/web/registeredCustomer/CustomerChangePassword.jsx";
 import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery.jsx";
-import AssignOrderDriver from "./components/Dashboard/AssignOrderDriver";
-import AssignDriver from "./components/Dashboard/AssignDriver";
-import CompletedOrders from "./components/Dashboard/CompletedOrders";
-import ProductSellProductForm from "./components/Dashboard/product/ProductSellProductForm";
-import ProductSellCustomer from "./components/Dashboard/ProductSellCustomer";
 
 function App() {
   return (
@@ -137,6 +136,7 @@ function App() {
             path="/dashboard/deliveryDriver/profile"
             component={DeliveryDriverProfile}
           />
+
           <Route
             exact
             path="/dashboard/deliveryDriver/deliveries"
