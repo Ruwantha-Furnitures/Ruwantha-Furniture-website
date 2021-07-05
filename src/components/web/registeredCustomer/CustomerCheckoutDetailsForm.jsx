@@ -76,7 +76,8 @@ function CustomerCheckoutDeteailsForm() {
                 </Col>
                 <Col sm={4}>
                     <Card>
-                        <Form style={{padding: '20px'}}>
+                        <Form style={{padding: '20px',margin: '10px'}}>
+                            <center><h2>Your Order</h2></center><br/>
                             <Row sm={12}>
                                 <Col sm={7}>
                                     <Form.Label>Total Purchase</Form.Label>  

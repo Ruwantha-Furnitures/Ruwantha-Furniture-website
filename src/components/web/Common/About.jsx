@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import topimg from "../../../assets/topimg11.jpg";
+import topimg from "../../../assets/topimg17.jpg";
 import vision from "../../../assets/visionmission.jpg";
 import webapp from "../../../assets/6.png";
 import { Container, Row, Col } from "reactstrap";

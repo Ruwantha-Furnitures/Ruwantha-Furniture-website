@@ -53,7 +53,7 @@ function CustomerAllProducts() {
                                     <Rating></Rating>
                                 </center>
                                 <center>
-                                    <Link to="/viewProduct"><button class="addtocart">Read More</button></Link>
+                                    <Link to="/viewProductDetail"><button class="addtocart">Read More</button></Link>
                                 </center>
                             </Card.Text>                            
                         </Card.Body>
