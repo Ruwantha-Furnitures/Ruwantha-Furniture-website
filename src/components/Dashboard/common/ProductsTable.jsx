@@ -5,7 +5,7 @@ import TableStyle from "../../../css/dashboard/Table.module.css";
 function ProductsTable() {
   return (
     <React.Fragment>
-      <div className={TableStyle.tabletitle}>
+      <div>
         <h1 className={TableStyle.tableTitleProductStyle}>Products</h1>
       </div>
       <div className={TableStyle.tablebody}>
