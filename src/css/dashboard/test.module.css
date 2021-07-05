@@ -1,0 +1,17 @@
+/* .dateText > input:focus {
+  outline: none;
+  color: #000000;
+} */
+
+/* [type="date"]::-webkit-date-cancel-button,
+[type="date"]::-webkit-date-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+} */
+
+/* input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+} */

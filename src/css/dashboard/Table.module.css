@@ -124,6 +124,25 @@ td {
   font-weight: 800;
 }
 
+.linkStyleAdd {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.86);
+  font-weight: 800;
+  align-items: center;
+  display: inline-flex;
+}
+
+.addIconStyle {
+  margin-left: 13px;
+}
+
+.header {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+
 .linkStylePostion {
   position: relative;
 }

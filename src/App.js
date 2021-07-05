@@ -47,6 +47,7 @@ import View_Product_Details from "./components/web/registeredCustomer/CustomerVi
 import CustomerUpdateProfile from "./components/web/registeredCustomer/UpdateProfile.jsx";
 import CustomerChangePassword from "./components/web/registeredCustomer/CustomerChangePassword.jsx";
 import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery.jsx";
+
 import CustomerPayment from "./components/web/registeredCustomer/Checkout.jsx";
 import CustomerCheckout from "./components/web/registeredCustomer/CustomerCheckoutDeteails.jsx";
 
@@ -115,7 +116,6 @@ function App() {
             path="/dashboard/assignDriver"
             component={AssignDriver}
           />
-         
 
           {/* Dashboard-Profiles Section*/}
           <Route
@@ -139,7 +139,7 @@ function App() {
             path="/dashboard/deliveryDrivers"
             component={DeliveryDrivers}
           />
-           <Route
+          <Route
             exact
             path="/dashboard/deliveryDriver/view"
             component={DeliveryDriverView}
@@ -154,7 +154,7 @@ function App() {
             path="/dashboard/deliveryDriver/deliveries"
             component={DeliveryDriverDeliveries}
           />
-           <Route
+          <Route
             exact
             path="/dashboard/deliveryDriver/availablity"
             component={DeliveryDriverAvalability}
@@ -197,7 +197,7 @@ function App() {
           />
           <Route exact path="/recoveryPassword" component={RecoveryPassword} />
           <Route exact path="/customer_checkout" component={CustomerCheckout} />
-          
+
           <Route exact path="/payment" component={CustomerPayment} />
         </Switch>
       </div>
@@ -206,6 +206,3 @@ function App() {
 }
 
 export default App;
-
-
-

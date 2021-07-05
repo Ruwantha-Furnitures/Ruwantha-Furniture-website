@@ -13,19 +13,17 @@ function Navbar() {
           </div>
         </div>
       </div>
-      <div className={NavbarStyle.searchSection}>
-        <div className={NavbarStyle.search}>
-          <div className={NavbarStyle.searchicon}>
-            <span className={"material-icons " + NavbarStyle.searchIconStyle}>
-              search
+      <div className={NavbarStyle.dateSection}>
+        <div className={NavbarStyle.date}>
+          <div className={NavbarStyle.dateicon}>
+            <span className={"material-icons " + NavbarStyle.dateIconStyle}>
+              date_range
             </span>
           </div>
-          <div className={NavbarStyle.searchText}>
-            <input
-              type="search"
-              placeholder="Search Here"
-              className={NavbarStyle.searchinput}
-            />
+          <div className={NavbarStyle.dateText}>
+            <h1 className={NavbarStyle.dateTitle}>
+              Today is 25th of Sunday in 2021
+            </h1>
           </div>
         </div>
       </div>
@@ -37,8 +35,7 @@ function Navbar() {
               className={NavbarStyle.linkStyle}
             >
               <span className={"material-icons " + NavbarStyle.accounticon}>
-                {" "}
-                account_circle{" "}
+                manage_accounts
               </span>
             </Link>
           </div>

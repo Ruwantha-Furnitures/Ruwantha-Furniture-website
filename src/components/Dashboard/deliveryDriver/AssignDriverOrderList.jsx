@@ -14,12 +14,24 @@ function AssignDriverOrderList() {
         <table className={TableStyle.tableShow}>
           <thead>
             <tr>
-              <th>Order Id</th>
-              <th>Customer</th>
-              <th>Contact Number</th>
-              <th>Date</th>
-              <th>Payment</th>
-              <th>Driver Status</th>
+              <th>
+                <div className={TableStyle.header}>Order Id</div>
+              </th>
+              <th>
+                <div className={TableStyle.header}>Customer</div>
+              </th>
+              <th>
+                <div className={TableStyle.header}>Contact Number</div>
+              </th>
+              <th>
+                <div className={TableStyle.header}>Date</div>
+              </th>
+              <th>
+                <div className={TableStyle.header}>Payment</div>
+              </th>
+              <th>
+                <div className={TableStyle.header}>Driver Status</div>
+              </th>
             </tr>
           </thead>
           <tbody>
