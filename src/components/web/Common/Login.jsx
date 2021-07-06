@@ -17,11 +17,11 @@ function Login() {
             height: '100%',
             width: '100%',        
           }}>        
-                <Navigation></Navigation>                    
-                <Container align="center">                  
-                    <LoginForm></LoginForm>               
-                </Container>              
-                <Footer></Footer>
+            <Navigation></Navigation>                    
+            <Container align="right">                  
+                <LoginForm></LoginForm>               
+            </Container>              
+            <Footer></Footer>
         </div> 
     );
 }

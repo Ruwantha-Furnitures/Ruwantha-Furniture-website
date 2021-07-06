@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import FormStyle from "../../../css/web/Form.module.css";
 import NavButtonStyle from "../../../css/web/common.module.css";
 import "../../../css/web/Signup.css";
-import Button from 'react-bootstrap/Button';
 
 const SignupForm= ({ signUpHandler }) =>  {
   require("bootstrap/dist/css/bootstrap.min.css");
@@ -24,10 +25,10 @@ const SignupForm= ({ signUpHandler }) =>  {
   };
 
   return (
-      <div style={loginform}>                    
-        <Form className={FormStyle.innerbox} onSubmit={submitHandler}>      
-            <center>
-                <br />
+      <div>      
+        <Card className={FormStyle.cardbox} style={{marginBottom: '20px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
+            <Form style={{padding: '20px',margin: '10px'}} onSubmit={submitHandler}>          
+            <center>        
                 <h2>SIGN UP</h2>
             </center>            
                            
@@ -38,6 +39,7 @@ const SignupForm= ({ signUpHandler }) =>  {
                 onChange={(e) => setName(e.target.value)}
                 required
             />
+            <br />
                                 
             <input style={{width: '260px'}} className={FormStyle.textBox} 
                 type="text"                    
@@ -46,6 +48,7 @@ const SignupForm= ({ signUpHandler }) =>  {
                 onChange={(e) => setAddress(e.target.value)}
                 required
             />
+            <br />
                                   
             <input style={{width: '260px'}} className={FormStyle.textBox} 
                 type="tele"                
@@ -53,7 +56,8 @@ const SignupForm= ({ signUpHandler }) =>  {
                 value ={contactNo}
                 onChange={(e) => setContactNo(e.target.value)}
                 required
-            />            
+            />    
+            <br />        
                    
             <input style={{width: '260px'}} className={FormStyle.emailBox} 
                 type="email"                
@@ -62,6 +66,7 @@ const SignupForm= ({ signUpHandler }) =>  {
                 onChange={(e) => setEmail(e.target.value)}
                 required
             />
+            <br />
                
             <input style={{width: '260px'}} className={FormStyle.passwordBox} 
                 type="password"                
@@ -70,6 +75,7 @@ const SignupForm= ({ signUpHandler }) =>  {
                 onChange={(e) => setPassword(e.target.value)}
                 required
             />
+            <br />
            
             <input style={{width: '260px'}} className={FormStyle.passwordBox} 
                 type="password"  
@@ -78,6 +84,7 @@ const SignupForm= ({ signUpHandler }) =>  {
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
             />
+            <br />
 
             <center>
                 {["checkbox"].map((type) => (
@@ -96,9 +103,9 @@ const SignupForm= ({ signUpHandler }) =>  {
                 {/*<button  type="submit" className={NavButtonStyle.btn}>Sign Up</button>*/}                
                 <Button variant="danger" type="reset">Cancel</Button>{' '}
                 <Button variant="success" type="submit">Signup</Button>{' '}
-            </center>
-            <br />                
-        </Form>          
+            </center>                           
+        </Form> 
+        </Card>                       
     </div>
   );
 }
