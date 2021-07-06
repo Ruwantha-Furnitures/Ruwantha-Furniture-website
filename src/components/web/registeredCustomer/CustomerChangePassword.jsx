@@ -17,7 +17,7 @@ function CustomerChangePassword() {
           <div className="col-md-12" style={contactImg}>                                     
               <Navigation></Navigation> 
               <Subnavigation></Subnavigation>
-              <Container align="center"> 
+              <Container align="left"> 
                   <Form></Form>
               </Container>
               <Footer></Footer>    

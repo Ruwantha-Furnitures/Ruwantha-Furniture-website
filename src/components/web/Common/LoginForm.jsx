@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import Card from 'react-bootstrap/Card';
 import "../../../css/web/Login.css";
 import Avatar from "../../../assets/avatar.png";
 import NavButtonStyle from "../../../css/web/common.module.css";
@@ -38,15 +39,18 @@ function LoginForm() {
     }
 
     return (
-        <div className="Login" >        
-          <Form style={loginform} align="left">
-            <center><img src={Avatar} style={avatar}/></center><br />
+        <div>        
+          <Card className={FormStyle.cardbox} style={{marginBottom: '20px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
+            <Form style={{padding: '20px',margin: '10px'}}>  
+            {/* <center><img src={Avatar} style={avatar}/></center><br /> */}
             
-              <input className={FormStyle.emailBox}               
-                type="email"                
-                placeholder="Email"
+              <center><h2>Login</h2></center><br />
+              
+              <label style={{margin: '8px' , textAlign: 'left'}}>Email</label>                                     
+              <input  className={FormStyle.emailBox}
+                type='email'
                 onChange={(e) => setEmail(e.target.value)}
-              />
+              ></input><br />              
                          
               <input className={FormStyle.passwordBox}  
                 type="password"                
@@ -55,10 +59,11 @@ function LoginForm() {
               />
               <br /><br />
             
-            <center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Login</button></center><br />
-            <center><Link to="/signup" style={belowlinks}>Don't have an account?</Link></center>
-            <center><Link to='/recoveryPassword' style={belowlinks}>Forgot Password</Link></center>
-          </Form>
+              <Button variant="success" type="submit">Signup</Button>{' '}
+              <center><Link to="/signup" style={belowlinks}>Don't have an account?</Link></center>
+              <center><Link to='/recoveryPassword' style={belowlinks}>Forgot Password</Link></center>
+            </Form>
+          </Card>
         </div>
     );
 }

@@ -4,7 +4,7 @@ import Footer from "../Common/Footer";
 import { Container, Row, Col } from 'reactstrap';
 import ProfileForm from "../registeredCustomer/UpdateProfileForm";
 import Subnavigation from "./Subnav";
-import Topimg from '../../../assets/topimg2.jpg';
+import Topimg from '../../../assets/topimg29.jpg';
 
 function UpdateProfile() {
     const contactImg = {
@@ -17,7 +17,7 @@ function UpdateProfile() {
         <div className="col-md-12" style={contactImg}>  
             <Navigation></Navigation> 
             <Subnavigation></Subnavigation>
-            <Container align="center"> 
+            <Container align="left"> 
                 <ProfileForm></ProfileForm>
             </Container>
             <Footer></Footer>    

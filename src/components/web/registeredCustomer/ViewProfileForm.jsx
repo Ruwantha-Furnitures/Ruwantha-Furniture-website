@@ -11,7 +11,7 @@ function ViewProfileForm() {
     require("bootstrap/dist/css/bootstrap.min.css");
     const title={
         margin: '10px',
-        padding: '5px',
+        padding: '3px',
     };
 
     const rowStyle={
@@ -20,7 +20,8 @@ function ViewProfileForm() {
 
     const textboxStyle = {
         width: '100%',
-        border: 'solid 2px gray', 
+        backgroundColor: '#eeeff5',
+        border: 'none',
         height: '40px',
         borderRadius: '5px',
         padding: '5px',
@@ -29,19 +30,19 @@ function ViewProfileForm() {
 
     return (                    
         <div>
-             <Card style={{marginBottom: '0px', width: '25rem'}}>                        
-                <Form style={{padding: '20px'}}>
+            <Card className={FormStyle.cardbox} style={{marginBottom: '20px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
+                <Form style={{padding: '15px'}}>
                     <Row style={rowStyle}>                                
                         <center><img src={Avatar} alt={Avatar} width={50} height={50}></img></center>
                         <center><h3 style={title}>Profile</h3></center>
                     </Row> 
-                    <label style={{margin: '8px'}}>Name</label>                                     
+                    <label style={{margin: '4px'}}><b>Name</b></label>
                     <input type='text' style={textboxStyle}></input><br />
-                    <label style={{margin: '8px'}}>Address</label><br />  
+                    <label style={{margin: '4px'}}><b>Address</b></label><br />  
                     <input type='text' style={textboxStyle}></input><br />
-                    <label style={{margin: '8px'}}>Contact No</label><br />    
+                    <label style={{margin: '4px'}}><b>Contact No</b></label><br />    
                     <input type='text' style={textboxStyle}></input><br />                  
-                    <label style={{margin: '8px'}}>Email</label><br />                              
+                    <label style={{margin: '4px'}}><b>Email</b></label><br />                              
                     <input type='text' style={textboxStyle}></input><br />                               
                     <div align="right"><br />
                     <Link to='/updateProfile'>                        

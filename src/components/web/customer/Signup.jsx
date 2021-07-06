@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import Navigation from "./Indexnav";
 import Footer from "../Common/Footer";
 import SignForm from "./SignupForm";
-import backcover from "../../../assets/login9.jpg";
+import backcover from "../../../assets/topimg27.jpg";
 import axios from "axios";
 
 const Signup = ({navigation}) => {
@@ -21,14 +21,14 @@ const Signup = ({navigation}) => {
     return (
         <div style={{              
             backgroundImage: `url(${backcover})`,        
-            backgroundRepeat: 'no-repeat',
+            backgroundRepeat: 'no-repeat',                        
             backgroundSize: 'cover',
             objectFit:'cover',
             height: '100%',
             width: '100%'    
           }}>
             <Navigation></Navigation>
-            <Container align="center"> 
+            <Container align="right"> 
               <SignForm navigation={navigation} signUpHandler={signUpHandler} ></SignForm>   
             </Container>                    
             <Footer></Footer>       

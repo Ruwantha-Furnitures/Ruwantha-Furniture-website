@@ -48,7 +48,7 @@ npm install express mysql   (in the backend folder)
 
 npm install --save-dev nodemon  (in the backend folder)
 
-npm install bcrypt  (in the backend folder)
+npm install bcrypt  (in the backend folder for encryption)
 
 npm run devStart  (in the backend folder)
 
@@ -63,6 +63,10 @@ sequelize init (in the backend folder)
 ----------------------------------------
 
 npm install axios
+
+npm add react-photo-gallery (Create gallary) - Not used
+
+npm install --save mdbreact (Create gallary)
 
 
 
