@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components'; //to add hover
 import { Container, Row, Col } from 'reactstrap';
 import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap';
-import SubNavStyle from "../../../css/web/common.module.css";
 
 function Subnav() {
     require("bootstrap/dist/css/bootstrap.min.css");

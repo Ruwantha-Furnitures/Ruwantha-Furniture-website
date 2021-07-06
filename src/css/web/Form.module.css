@@ -1,36 +1,36 @@
 .innerbox {
   padding: 10px;
-  background-color: rgb(0, 0, 0, 0.8);
+  background-color:rgb(255, 255, 255);
   width: 35%;
   margin-bottom: 20px;
-  border-radius: 20px;
-  color: #fff;  
+  border-radius: 5px;
+  color: black;  
 }
 
 .cardbox {
   padding: 10px;
-  background-color:rgb(255, 255, 255,0.6);
+  background-color:rgb(255, 255, 255);
   /* width: 22rem; */
   margin-bottom: 20px;  
   border-radius: 20px;
-  color: black;  
+  color: black;    
 }
 
 Form .textBox{
-    background-color: rgb(0,0,0,0);
-    border: solid 1px black;  
-    color: #FFF;
+    background-color: #eeeff5;
+    border: none;  
+    color: black;
     height: 40px;
     border-radius: 5px;
     padding: 5px;
     margin: 5px;
-    width: 100%;
+    width: 100%;      
 } 
 
 Form .emailBox{
-    background-color: rgb(0,0,0,0);
-    border: solid 1px black;  
-    color: #FFF;
+    background-color: #eeeff5;
+    border: none;  
+    color: black;
     height: 40px;
     border-radius: 5px;
     padding: 5px;
@@ -39,10 +39,11 @@ Form .emailBox{
 }
 
 Form .passwordBox{
-    background-color: rgb(0,0,0,0);
-    border: solid 1px black;  
-    height: 40px;
+    background-color: #eeeff5;
+    border: none;  
+    color: black;
     border-radius: 5px;
+    height: 40px;
     padding: 5px;
     margin: 5px;
     color: #FFF;
@@ -50,9 +51,9 @@ Form .passwordBox{
 }
 
 Form .textareastyle{
-    background-color: rgb(0,0,0,0);
-    /* border: solid 2px #FFF;       */
-    border: solid 1px black;  
+    background-color: #eeeff5;
+    border: none;  
+    color: black; 
     border-radius: 5px;
     padding: 5px;   
     margin: 5px; 

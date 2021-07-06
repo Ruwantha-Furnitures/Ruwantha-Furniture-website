@@ -1,12 +1,14 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import Part2 from "../Common/LandingPagepart2";
-import ConForm from "../Common/ContactForm";
+import ConForm from "../Common/CustomizeProduct";
 import Topimg from '../../../assets/topimg19.jpg';
 import ProductBox from "./ProductCards";
 import Navigation from "./Indexnav";
 import Slideshow from './Banner';
 import Footer from "../Common/Footer";
+import Card from 'react-bootstrap/Card';
+import Gallary from '../Common/ImageGallary';
 import "../../../css/web/Home.css";
 
 
@@ -23,13 +25,15 @@ function Home() {
     <div>
       <Navigation></Navigation>
       <Slideshow></Slideshow>
-      <ProductBox></ProductBox>
-      <Part2></Part2>
-      <div style={contactImg}>
-        <Container align="left">
-          <ConForm></ConForm>
-        </Container>
-      </div>
+      <ProductBox></ProductBox>      
+      <Container fluid><Gallary></Gallary></Container>      
+      <div>
+        <Card style={contactImg}>               
+          <Container align="left">
+            <ConForm></ConForm>  
+          </Container>          
+        </Card>        
+      </div> 
       <Footer></Footer>
     </div>
   );
