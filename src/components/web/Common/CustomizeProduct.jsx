@@ -6,7 +6,7 @@ import Card from 'react-bootstrap/Card';
 import NavButtonStyle from "../../../css/web/common.module.css";
 import FormStyle from "../../../css/web/Form.module.css";
 
-function ContactForm() {
+function CustomizeProduct() {
     require("bootstrap/dist/css/bootstrap.min.css");
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -24,10 +24,10 @@ function ContactForm() {
     return (                    
         <div>                    
         {/*<Form className={FormStyle.innerbox}>*/}
-        <Card className={FormStyle.cardbox} style={{marginBottom: '20px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
+        <Card className={FormStyle.cardbox} style={{ width: '22rem'}}>
         <Form>
         <center>
-            <h2 style={{marginTop: '20px'}}>CONTACT US</h2>   
+            <h2 style={{marginTop: '20px'}}>Customize Your Furniture</h2>   
             <br />                 
                 <Form.Group size="xs" controlId="name" >                    
                     <Form.Control style={{width: '260px'}} className={FormStyle.textBox}                            
@@ -78,4 +78,4 @@ function ContactForm() {
   );
 }
 
-export default ContactForm;
+export default CustomizeProduct;
