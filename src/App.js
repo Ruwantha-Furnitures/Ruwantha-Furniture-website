@@ -49,6 +49,7 @@ import CustomerChangePassword from "./components/web/registeredCustomer/Customer
 import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery.jsx";
 import CustomerPayment from "./components/web/registeredCustomer/PaymentForm.jsx";
 import CustomerCheckout from "./components/web/registeredCustomer/CustomerCheckoutDeteails.jsx";
+import ProductUpdate from "./components/Dashboard/ProductUpdate";
 
 function App() {
   return (
@@ -61,6 +62,11 @@ function App() {
           <Route exact path="/dashboard/products" component={Products} />
           <Route exact path="/dashboard/product/view" component={ProductView} />
           <Route exact path="/dashboard/product/add" component={ProductAdd} />
+          <Route
+            exact
+            path="/dashboard/product/update"
+            component={ProductUpdate}
+          />
           <Route
             exact
             path="/dashboard/product/sell/product"
