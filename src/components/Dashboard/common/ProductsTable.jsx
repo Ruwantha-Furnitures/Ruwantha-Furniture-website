@@ -5,8 +5,31 @@ import TableStyle from "../../../css/dashboard/Table.module.css";
 function ProductsTable() {
   return (
     <React.Fragment>
-      <div>
+      <div className={TableStyle.titleHeader}>
         <h1 className={TableStyle.tableTitleProductStyle}>Products</h1>
+        <div className={TableStyle.searchSection}>
+          <form action="#">
+            <div className={TableStyle.search}>
+              <div className={TableStyle.searchicon}>
+                <span
+                  className={"material-icons " + TableStyle.searchIconStyle}
+                >
+                  search
+                </span>
+              </div>
+
+              <div className={TableStyle.searchText}>
+                <input
+                  type="search"
+                  placeholder="Search Here"
+                  value=""
+                  name="search"
+                  className={TableStyle.searchinput}
+                />
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
       <div className={TableStyle.tablebody}>
         <table className={TableStyle.tableShow}>
@@ -20,9 +43,7 @@ function ProductsTable() {
                     className={TableStyle.linkStyleAdd}
                   >
                     <span
-                      className={
-                        "material-icons" + " " + TableStyle.addIconStyle
-                      }
+                      className={"material-icons " + TableStyle.addIconStyle}
                     >
                       add_circle
                     </span>

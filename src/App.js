@@ -23,7 +23,7 @@ import AssignOrderDriver from "./components/Dashboard/AssignOrderDriver";
 import AssignDriver from "./components/Dashboard/AssignDriver";
 import CompletedOrders from "./components/Dashboard/CompletedOrders";
 import DeliveryDriverAvalability from "./components/Dashboard/DeliveryDriverAvalability";
-import ProductSellProductForm from "./components/Dashboard/product/ProductSellProductForm";
+// import ProductSellProductForm from "./components/Dashboard/product/ProductSellProductForm";
 import ProductSellCustomer from "./components/Dashboard/ProductSellCustomer";
 
 // import test from "./components/Dashboard/test/test";
@@ -115,7 +115,6 @@ function App() {
             path="/dashboard/assignDriver"
             component={AssignDriver}
           />
-         
 
           {/* Dashboard-Profiles Section*/}
           <Route
@@ -139,7 +138,7 @@ function App() {
             path="/dashboard/deliveryDrivers"
             component={DeliveryDrivers}
           />
-           <Route
+          <Route
             exact
             path="/dashboard/deliveryDriver/view"
             component={DeliveryDriverView}
@@ -154,7 +153,7 @@ function App() {
             path="/dashboard/deliveryDriver/deliveries"
             component={DeliveryDriverDeliveries}
           />
-           <Route
+          <Route
             exact
             path="/dashboard/deliveryDriver/availablity"
             component={DeliveryDriverAvalability}
@@ -197,7 +196,7 @@ function App() {
           />
           <Route exact path="/recoveryPassword" component={RecoveryPassword} />
           <Route exact path="/customer_checkout" component={CustomerCheckout} />
-          
+
           <Route exact path="/payment" component={CustomerPayment} />
         </Switch>
       </div>
@@ -206,6 +205,3 @@ function App() {
 }
 
 export default App;
-
-
-
