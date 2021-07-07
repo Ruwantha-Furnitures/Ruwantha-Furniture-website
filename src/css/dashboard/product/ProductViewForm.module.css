@@ -3,9 +3,71 @@
   font-weight: 600;
   font-size: 24px;
   line-height: 33px;
-
   color: #000000;
   margin-left: 7px;
+}
+
+.titleHeader {
+  display: flex;
+  flex-direction: row;
+}
+
+.tableTitleHeaderStyle {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+
+  color: #000000;
+  margin-left: 8px;
+  width: 88%;
+  order: 1;
+  position: relative;
+}
+
+.backSection {
+  order: 2;
+  width: 12%;
+  position: relative;
+}
+
+.back {
+  background: #be622e;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  height: 32px;
+  flex-direction: row;
+}
+
+.backButtonStyle {
+  padding-left: 0px;
+  padding-right: 0px;
+  background: #be622e;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+.linkStyle {
+  text-decoration: none;
+}
+
+.backStyle {
+  order: 1;
+  margin-left: 15px;
+  padding: 5px;
+  display: flex;
+}
+
+.backIconStyle {
+  font-size: 15px;
+  color: #f7f7f7;
 }
 
 .formStyle {

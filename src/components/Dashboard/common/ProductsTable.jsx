@@ -54,7 +54,7 @@ function ProductsTable() {
                 <div className={TableStyle.header}>
                   Type
                   <Link
-                    to="/dashboard/product/addType"
+                    to="/dashboard/product/addProductType"
                     className={TableStyle.linkStyleAdd}
                   >
                     <span
