@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ProductViewFormStyle from "../../../css/dashboard/product/ProductViewForm.module.css";
 import ProductImage from "../../../assets/dashboard/product/addPhotoNew2.png";
+import { Link } from "react-router-dom";
 
 function ProductForm() {
   // const [picture, setPicture] = useState(null);
@@ -19,8 +20,29 @@ function ProductForm() {
   };
   return (
     <React.Fragment>
-      <div>
-        <h1 className={ProductViewFormStyle.titleStyle}>Product Add</h1>
+      <div className={ProductViewFormStyle.titleHeader}>
+        <h1 className={ProductViewFormStyle.tableTitleHeaderStyle}>
+          Product Add
+        </h1>
+        <div className={ProductViewFormStyle.backSection}>
+          <div className={ProductViewFormStyle.back}>
+            <Link
+              to="/dashboard/products"
+              className={ProductViewFormStyle.linkStyle}
+            >
+              <div className={ProductViewFormStyle.backStyle}>
+                <span
+                  className={
+                    "material-icons " + ProductViewFormStyle.backIconStyle
+                  }
+                >
+                  arrow_back_ios
+                </span>
+                <div className={ProductViewFormStyle.backButtonStyle}>Back</div>
+              </div>
+            </Link>
+          </div>
+        </div>
       </div>
       <form action="#">
         <div className={ProductViewFormStyle.details}>
