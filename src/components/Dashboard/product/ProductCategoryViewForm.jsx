@@ -4,6 +4,10 @@ import ProductCategoryList from "./ProductCategoryList";
 import { Link } from "react-router-dom";
 
 function ProductCategoryViewForm() {
+  const handleUpdate = () => {
+    window.location = "/dashboard/product/updateProductCategory";
+  };
+
   return (
     <React.Fragment>
       <div className={ProductViewFormStyle.titleHeader}>
@@ -30,56 +34,57 @@ function ProductCategoryViewForm() {
           </div>
         </div>
       </div>
-      <form action="#">
-        <div className={ProductViewFormStyle.details}>
-          <div className={ProductViewFormStyle.imgDescPart}>
-            <div className={ProductViewFormStyle.typeForm}>
-              <div className={ProductViewFormStyle.descTitle}>
-                <div className={ProductViewFormStyle.dataProductTitle}>
-                  <label className={ProductViewFormStyle.labelProductTitle}>
-                    Category
-                  </label>
-                  <input
-                    type="text"
-                    value="Category 1"
-                    placeholder="Category 1"
-                    className={ProductViewFormStyle.inputProductTitle}
-                    readOnly
-                  />
-                </div>
-                <div className={ProductViewFormStyle.descButtonsAddType}>
-                  <div className={ProductViewFormStyle.descButtonAdd}>
-                    <button
-                      className={
-                        ProductViewFormStyle.buttonStyle +
-                        " " +
-                        ProductViewFormStyle.successButtonColor +
-                        " " +
-                        ProductViewFormStyle.addRightMargin
-                      }
-                    >
-                      Update
-                    </button>
-                    <button
-                      className={
-                        ProductViewFormStyle.buttonStyle +
-                        " " +
-                        ProductViewFormStyle.deleteButtonColor
-                      }
-                    >
-                      Delete
-                    </button>
-                  </div>
+      {/* <form action="#"> */}
+      <div className={ProductViewFormStyle.details}>
+        <div className={ProductViewFormStyle.imgDescPart}>
+          <div className={ProductViewFormStyle.typeForm}>
+            <div className={ProductViewFormStyle.descTitle}>
+              <div className={ProductViewFormStyle.dataProductTitle}>
+                <label className={ProductViewFormStyle.labelProductTitle}>
+                  Category
+                </label>
+                <input
+                  type="text"
+                  value="Category 1"
+                  placeholder="Category 1"
+                  className={ProductViewFormStyle.inputProductTitle}
+                  readOnly
+                />
+              </div>
+              <div className={ProductViewFormStyle.descButtonsAddType}>
+                <div className={ProductViewFormStyle.descButtonAdd}>
+                  <button
+                    className={
+                      ProductViewFormStyle.buttonStyle +
+                      " " +
+                      ProductViewFormStyle.successButtonColor +
+                      " " +
+                      ProductViewFormStyle.addRightMargin
+                    }
+                    onClick={handleUpdate}
+                  >
+                    Update
+                  </button>
+                  <button
+                    className={
+                      ProductViewFormStyle.buttonStyle +
+                      " " +
+                      ProductViewFormStyle.deleteButtonColor
+                    }
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             </div>
-            <div className={ProductViewFormStyle.typesList}>
-              {/* Product Category List View */}
-              <ProductCategoryList />
-            </div>
+          </div>
+          <div className={ProductViewFormStyle.typesList}>
+            {/* Product Category List View */}
+            <ProductCategoryList />
           </div>
         </div>
-      </form>
+      </div>
+      {/* </form> */}
     </React.Fragment>
   );
 }

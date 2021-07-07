@@ -50,6 +50,8 @@ import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecove
 import CustomerPayment from "./components/web/registeredCustomer/PaymentForm.jsx";
 import CustomerCheckout from "./components/web/registeredCustomer/CustomerCheckoutDeteails.jsx";
 import ProductUpdate from "./components/Dashboard/ProductUpdate";
+import ProductCategoryUpdate from "./components/Dashboard/ProductCategoryUpdate";
+import ProductTypeUpdate from "./components/Dashboard/ProductTypeUpdate";
 
 function App() {
   return (
@@ -88,6 +90,11 @@ function App() {
             path="/dashboard/product/viewProductType"
             component={ProductTypeView}
           />
+          <Route
+            exact
+            path="/dashboard/product/updateProductType"
+            component={ProductTypeUpdate}
+          />
 
           <Route
             exact
@@ -99,6 +106,11 @@ function App() {
             exact
             path="/dashboard/product/viewProductCategory"
             component={ProductCategoryView}
+          />
+          <Route
+            exact
+            path="/dashboard/product/updateProductCategory"
+            component={ProductCategoryUpdate}
           />
 
           <Route
