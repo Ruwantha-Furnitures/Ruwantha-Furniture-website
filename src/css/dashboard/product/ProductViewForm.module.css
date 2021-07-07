@@ -347,6 +347,14 @@
   cursor: pointer;
 }
 
+.deleteButtonColor {
+  background: #be2e2e;
+}
+
+.successButtonColor {
+  background: #2ebe3a;
+}
+
 .descButtonAddStyle {
   /* width: 108px;
   height: 39px; */

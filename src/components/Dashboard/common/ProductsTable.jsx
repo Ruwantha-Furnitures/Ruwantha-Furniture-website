@@ -52,7 +52,12 @@ function ProductsTable() {
               </th>
               <th>
                 <div className={TableStyle.header}>
-                  Type
+                  <Link
+                    to="/dashboard/product/addProductType"
+                    className={TableStyle.linkStyleAdd}
+                  >
+                    Type
+                  </Link>
                   <Link
                     to="/dashboard/product/addProductType"
                     className={TableStyle.linkStyleAdd}
@@ -67,7 +72,12 @@ function ProductsTable() {
               </th>
               <th>
                 <div className={TableStyle.header}>
-                  Category
+                  <Link
+                    to="/dashboard/product/addProductType"
+                    className={TableStyle.linkStyleAdd}
+                  >
+                    Category
+                  </Link>
                   <Link
                     to="/dashboard/product/addProductCategory"
                     className={TableStyle.linkStyleAdd}
@@ -91,56 +101,126 @@ function ProductsTable() {
           </thead>
           <tbody>
             <tr>
-              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
+              <td>
+                <Link
+                  to="/dashboard/product/view"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Desk(Plastic)
+                </Link>
+              </td>
               <td>Product Type 1</td>
               <td>Category 1</td>
               <td>Rs.25000</td>
               <td>No.12</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
+              <td>
+                {" "}
+                <Link
+                  to="/dashboard/product/view"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  {" "}
+                  Desk(Plastic)
+                </Link>
+              </td>
               <td>Product Type 1</td>
               <td>Category 1</td>
               <td>Rs.25000</td>
               <td>No.12</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
+              <td>
+                {" "}
+                <Link
+                  to="/dashboard/product/view"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  {" "}
+                  Desk(Plastic)
+                </Link>
+              </td>
               <td>Product Type 1</td>
               <td>Category 1</td>
               <td>Rs.25000</td>
               <td>No.12</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
+              <td>
+                {" "}
+                <Link
+                  to="/dashboard/product/view"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  {" "}
+                  Desk(Plastic)
+                </Link>
+              </td>
               <td>Product Type 1</td>
               <td>Category 1</td>
               <td>Rs.25000</td>
               <td>No.12</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
+              <td>
+                {" "}
+                <Link
+                  to="/dashboard/product/view"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  {" "}
+                  Desk(Plastic)
+                </Link>
+              </td>
               <td>Product Type 1</td>
               <td>Category 1</td>
               <td>Rs.25000</td>
               <td>No.12</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
+              <td>
+                {" "}
+                <Link
+                  to="/dashboard/product/view"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  {" "}
+                  Desk(Plastic)
+                </Link>
+              </td>
               <td>Product Type 1</td>
               <td>Category 1</td>
               <td>Rs.25000</td>
               <td>No.12</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
+              <td>
+                {" "}
+                <Link
+                  to="/dashboard/product/view"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  {" "}
+                  Desk(Plastic)
+                </Link>
+              </td>
               <td>Product Type 1</td>
               <td>Category 1</td>
               <td>Rs.25000</td>
               <td>No.12</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Desk(Plastic)</td>
+              <td>
+                {" "}
+                <Link
+                  to="/dashboard/product/view"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  {" "}
+                  Desk(Plastic)
+                </Link>
+              </td>
               <td>Product Type 1</td>
               <td>Category 1</td>
               <td>Rs.25000</td>
