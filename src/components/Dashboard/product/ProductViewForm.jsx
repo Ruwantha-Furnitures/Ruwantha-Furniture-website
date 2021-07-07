@@ -4,6 +4,11 @@ import ProductViewFormStyle from "../../../css/dashboard/product/ProductViewForm
 import { Link } from "react-router-dom";
 
 function ProductViewForm() {
+  const handleUpdate = () => {
+    console.log("Hello");
+    window.location = "/dashboard/product/update";
+  };
+
   return (
     <React.Fragment>
       <div className={ProductViewFormStyle.titleHeader}>
@@ -68,6 +73,7 @@ function ProductViewForm() {
                     " " +
                     ProductViewFormStyle.successButtonColor
                   }
+                  onClick={handleUpdate}
                 >
                   Update
                 </button>

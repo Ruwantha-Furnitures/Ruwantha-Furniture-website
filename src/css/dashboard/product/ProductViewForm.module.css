@@ -374,6 +374,21 @@
   cursor: pointer;
 }
 
+.buttonStyle {
+  padding: 8px;
+  padding-left: 18px;
+  padding-right: 19px;
+  border-radius: 22px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
 .descButtonAddStyleColor {
   background: #be622ec7;
 }
