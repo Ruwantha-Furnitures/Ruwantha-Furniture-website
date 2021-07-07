@@ -19,13 +19,8 @@ function LoginForm() {
     }
 
     const belowlinks = {
-        color: "#FFF",
+        color: "black",
         paddig: "10px"
-    }
-
-    const formlabel = {
-        color: "#FFF",
-        paddig: "20px"
     }
 
     const loginform = {    
@@ -45,10 +40,10 @@ function LoginForm() {
             {/* <center><img src={Avatar} style={avatar}/></center><br /> */}
             
               <center><h2>Login</h2></center><br />
-              
-              <label style={{margin: '8px' , textAlign: 'left'}}>Email</label>                                     
+                                                               
               <input  className={FormStyle.emailBox}
                 type='email'
+                placeholder='Email'
                 onChange={(e) => setEmail(e.target.value)}
               ></input><br />              
                          
