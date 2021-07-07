@@ -18,7 +18,7 @@ function Login() {
             width: '100%',        
           }}>        
             <Navigation></Navigation>                    
-            <Container align="right">                  
+            <Container align="left">                  
                 <LoginForm></LoginForm>               
             </Container>              
             <Footer></Footer>

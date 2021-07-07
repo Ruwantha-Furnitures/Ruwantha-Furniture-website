@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Customer = sequelize.define(
+    const Item = sequelize.define(
       "Item",
       {
         itemid: {
@@ -35,10 +35,10 @@ module.exports = (sequelize, DataTypes) => {
       },
       {
         freezeTableName: true,
-        tableName: "Customer",
+        tableName: "Item",
       }
     );
   
-    return Customer;
+    return Item;
   };
   

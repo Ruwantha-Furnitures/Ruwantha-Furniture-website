@@ -66,7 +66,6 @@ npm install axios
 
 npm add react-photo-gallery (Create gallary) - Not used
 
-npm install --save mdbreact (Create gallary)
 
 
 
