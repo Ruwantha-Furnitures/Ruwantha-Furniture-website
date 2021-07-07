@@ -1,14 +1,12 @@
 const express = require("express");
-const mysql = require("mysql");
-
 const router = express.Router();
+//const mysql = require("mysql");
 
 const { SignUpController} = require("../controllers/SignupController");
-
-const { ItemController} = require("../controllers/ItemController");
+const { itemController } = require("../controllers/item.contoller");
 
 router.post("/signup",SignUpController);
 
-router.post("/items",ItemController);
+router.get('/item', itemController.allItems);
 
 module.exports = { customerRouter: router };
