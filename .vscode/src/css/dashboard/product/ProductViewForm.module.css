@@ -272,6 +272,10 @@
   cursor: pointer;
 }
 
+.deleteButtonColor {
+  background: #be382e;
+}
+
 .descButtonAddStyle {
   /* width: 108px;
   height: 39px; */
