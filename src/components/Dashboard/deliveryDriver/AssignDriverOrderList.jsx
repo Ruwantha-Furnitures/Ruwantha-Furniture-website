@@ -5,10 +5,33 @@ import TableStyle from "../../../css/dashboard/Table.module.css";
 function AssignDriverOrderList() {
   return (
     <React.Fragment>
-      <div className={TableStyle.tabletitle}>
+      <div className={TableStyle.titleHeader}>
         <h1 className={TableStyle.tableTitleProductStyle}>
           Assign Drivers For Orders
         </h1>
+        <div className={TableStyle.searchSection}>
+          <form action="#">
+            <div className={TableStyle.search}>
+              <div className={TableStyle.searchicon}>
+                <span
+                  className={"material-icons " + TableStyle.searchIconStyle}
+                >
+                  search
+                </span>
+              </div>
+
+              <div className={TableStyle.searchText}>
+                <input
+                  type="search"
+                  placeholder="Search Here"
+                  value=""
+                  name="search"
+                  className={TableStyle.searchinput}
+                />
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
       <div className={TableStyle.tablebody}>
         <table className={TableStyle.tableShow}>
