@@ -3,6 +3,8 @@ import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.
 import { Link } from "react-router-dom";
 
 function DeliveryDriverViewForm() {
+  const url = window.location.pathname.split("/");
+  const driverViewLocation = url[3];
   const handleUpdate = () => {
     window.location = "/dashboard/deliveryDriver/update";
   };
@@ -16,7 +18,11 @@ function DeliveryDriverViewForm() {
         <div className={ProductViewFormStyle.backSection}>
           <div className={ProductViewFormStyle.back}>
             <Link
-              to="/dashboard/deliveryDrivers"
+              to={
+                driverViewLocation === "view"
+                  ? "/dashboard/deliveryDrivers"
+                  : "/dashboard/completedOrders"
+              }
               className={ProductViewFormStyle.linkStyle}
             >
               <div className={ProductViewFormStyle.backStyle}>
@@ -144,31 +150,33 @@ function DeliveryDriverViewForm() {
         </div>
       </div>
 
-      <div className={ProductViewFormStyle.descButtonsAdd}>
-        <div className={ProductViewFormStyle.descButtonAdd}>
-          <button
-            className={
-              ProductViewFormStyle.buttonStyle +
-              " " +
-              ProductViewFormStyle.successButtonColor +
-              " " +
-              ProductViewFormStyle.addRightMargin
-            }
-            onClick={handleUpdate}
-          >
-            Update
-          </button>
-          <button
-            className={
-              ProductViewFormStyle.buttonStyle +
-              " " +
-              ProductViewFormStyle.deleteButtonColor
-            }
-          >
-            Delete
-          </button>
+      {driverViewLocation === "view" && (
+        <div className={ProductViewFormStyle.descButtonsAdd}>
+          <div className={ProductViewFormStyle.descButtonAdd}>
+            <button
+              className={
+                ProductViewFormStyle.buttonStyle +
+                " " +
+                ProductViewFormStyle.successButtonColor +
+                " " +
+                ProductViewFormStyle.addRightMargin
+              }
+              onClick={handleUpdate}
+            >
+              Update
+            </button>
+            <button
+              className={
+                ProductViewFormStyle.buttonStyle +
+                " " +
+                ProductViewFormStyle.deleteButtonColor
+              }
+            >
+              Delete
+            </button>
+          </div>
         </div>
-      </div>
+      )}
       {/* </form> */}
     </React.Fragment>
   );

@@ -3,6 +3,10 @@ import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.
 import { Link } from "react-router-dom";
 
 function OrderDetailsForm() {
+  const url = window.location.pathname.split("/");
+  const orderLocation = url[2];
+  console.log(url);
+
   return (
     <React.Fragment>
       <div className={ProductViewFormStyle.titleHeader}>
@@ -12,7 +16,11 @@ function OrderDetailsForm() {
         <div className={ProductViewFormStyle.backSection}>
           <div className={ProductViewFormStyle.back}>
             <Link
-              to="/dashboard/purchaseOrders"
+              to={
+                orderLocation === "purchaseOrders"
+                  ? "/dashboard/purchaseOrders"
+                  : "/dashboard/completedOrders"
+              }
               className={ProductViewFormStyle.linkStyle}
             >
               <div className={ProductViewFormStyle.backStyle}>

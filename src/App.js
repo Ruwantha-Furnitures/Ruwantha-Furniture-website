@@ -134,6 +134,11 @@ function App() {
           />
           <Route
             exact
+            path="/dashboard/completedOrder/details"
+            component={OrderDetails}
+          />
+          <Route
+            exact
             path="/dashboard/completedOrders"
             component={CompletedOrders}
           />
@@ -175,6 +180,12 @@ function App() {
             path="/dashboard/deliveryDriver/view"
             component={DeliveryDriverView}
           />
+          <Route
+            exact
+            path="/dashboard/deliveryDriver/viewOnly"
+            component={DeliveryDriverView}
+          />
+
           <Route
             exact
             path="/dashboard/deliveryDriver/update"
