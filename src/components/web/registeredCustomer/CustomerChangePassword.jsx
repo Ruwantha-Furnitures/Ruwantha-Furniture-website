@@ -13,6 +13,7 @@ function CustomerChangePassword() {
         padding: '0',
         MaxWidth: "100%"
     }
+    
       return (
           <div className="col-md-12" style={contactImg}>                                     
               <Navigation></Navigation> 

@@ -6,9 +6,22 @@ import ProductBox from "./CustomerAllProducts";
 import Search from "../Common/SearchProduct";
 import Coverimg from '../../../assets/productbanner.png';
 import Card from 'react-bootstrap/Card';
+import axios from "axios";
 
+const CustomerProduct = ({navigation}) => {
+    const itemUpHandler = async (data) => {
+      //console.log(data);
+      try{
+          await axios.get("http://192.168.56.1:3002/api/customer/item",{
+          data,
+        });
+        console.log("Request successful");
+      }catch (error){
+        console.log(error);
+      } 
+    };
+    
 
-function CustomerProduct() {
     require("bootstrap/dist/css/bootstrap.min.css");
     const contactImg = {  
         //backgroundImage: `url(${Coverimg})` ,              
@@ -25,7 +38,7 @@ function CustomerProduct() {
                     <Card.Img variant="top" src={Coverimg} />                    
                     <Card.Body>
                         <Container fluid align="center">                             
-                            <ProductBox></ProductBox>
+                            <ProductBox navigation={ navigation } itemUpHandler={ itemUpHandler }></ProductBox>
                         </Container>                        
                     </Card.Body>
                 </Card>  
