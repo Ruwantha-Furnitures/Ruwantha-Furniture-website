@@ -3,9 +3,9 @@ const router = express.Router();
 //const mysql = require("mysql");
 
 const { SignUpController} = require("../controllers/SignupController");
-const { ItemController } = require("../controllers/item.contoller");
+const { ItemController } = require("../controllers/item.contoller.js");
 
-router.post("/signup",SignUpController);
+router.post("/signup", SignUpController);
 
 router.get('/item', ItemController);
 
