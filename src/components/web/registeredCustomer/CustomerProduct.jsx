@@ -4,7 +4,7 @@ import Navigation from "./UserNav";
 import Footer from "../Common/Footer";
 import ProductBox from "./CustomerAllProducts";
 import Search from "../Common/SearchProduct";
-import Coverimg from '../../../assets/productbanner.png';
+// import Coverimg from '../../../assets/productbanner.png';
 import Card from 'react-bootstrap/Card';
 import axios from "axios";
 
@@ -30,12 +30,12 @@ const CustomerProduct = ({navigation}) => {
     return (
         <div style={contactImg}>  
         <Navigation></Navigation>  
-        <Container>
+        <Container fluid>
         <Row sm={12} align="justify">
             <Col sm={12}>                
                 <Card>     
                     <Search></Search>               
-                    <Card.Img variant="top" src={Coverimg} />                    
+                    {/* <Card.Img variant="top" src={Coverimg} />                     */}
                     <Card.Body>
                         <Container fluid align="center">                             
                             <ProductBox navigation={ navigation } itemUpHandler={ itemUpHandler }></ProductBox>
