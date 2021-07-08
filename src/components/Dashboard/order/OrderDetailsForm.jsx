@@ -15,6 +15,12 @@ function OrderDetailsForm() {
   if (orderLocation === "assigndOrder") {
     navigate = "/dashboard/assignListOrderDriver";
   }
+  if (orderLocation === "deliveryDriver") {
+    navigate = "/dashboard/deliveryDriver/deliveries";
+  }
+  if (orderLocation === "deliveryDriverNotifications") {
+    navigate = "/dashboard/deliveryDriver/notifications";
+  }
 
   console.log(url);
 
@@ -305,6 +311,21 @@ function OrderDetailsForm() {
           </div>
         </div>
       </div>
+      {orderLocation === "deliveryDriver" && (
+        <div className={ProductViewFormStyle.descButtonsAdd}>
+          <div className={ProductViewFormStyle.descButtonAdd}>
+            <button
+              className={
+                ProductViewFormStyle.buttonStyle +
+                " " +
+                ProductViewFormStyle.successButtonColor
+              }
+            >
+              Complete
+            </button>
+          </div>
+        </div>
+      )}
     </React.Fragment>
   );
 }

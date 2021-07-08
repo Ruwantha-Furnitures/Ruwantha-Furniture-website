@@ -5,8 +5,8 @@ import SidebarStyle from "../../../css/dashboard/Sidebar.module.css";
 function Sidebar() {
   // Admin
   // Owner
-  // Delivery Driver
-  const user = "Owner";
+  // DeliveryDriver
+  const user = "DeliveryDriver";
 
   return (
     <div className={SidebarStyle.sidebarBar}>
@@ -186,6 +186,87 @@ function Sidebar() {
                     </div>
                     <div className={SidebarStyle.lineText}>
                       <h1 className={SidebarStyle.lineTextStyle}>Messages</h1>
+                    </div>
+                  </div>
+                </Link>
+              </li>
+            </>
+          )}
+          {user === "DeliveryDriver" && (
+            <>
+              <li>
+                <Link
+                  to="/dashboard/deliveryDriver/deliveries"
+                  className={SidebarStyle.sidebarLink}
+                >
+                  <div className={SidebarStyle.lineSection}>
+                    <div className={SidebarStyle.lineIcon}>
+                      <span
+                        className={"material-icons " + SidebarStyle.iconWidth}
+                      >
+                        home_repair_service
+                      </span>
+                    </div>
+                    <div className={SidebarStyle.lineText}>
+                      <h1 className={SidebarStyle.lineTextStyle}>Deliveries</h1>
+                    </div>
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/deliveryDriver/notifications"
+                  className={SidebarStyle.sidebarLink}
+                >
+                  <div className={SidebarStyle.lineSection}>
+                    <div className={SidebarStyle.lineIcon}>
+                      <span
+                        className={"material-icons " + SidebarStyle.iconWidth}
+                      >
+                        notifications
+                      </span>
+                    </div>
+                    <div className={SidebarStyle.lineText}>
+                      <h1 className={SidebarStyle.lineTextStyle}>
+                        Notifications
+                      </h1>
+                    </div>
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link to="" className={SidebarStyle.sidebarLink}>
+                  <div className={SidebarStyle.lineSection}>
+                    <div className={SidebarStyle.lineIcon}>
+                      <span
+                        className={"material-icons " + SidebarStyle.iconWidth}
+                      >
+                        account_box
+                      </span>
+                    </div>
+                    <div className={SidebarStyle.lineText}>
+                      <h1 className={SidebarStyle.lineTextStyle}>Profile</h1>
+                    </div>
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/deliveryDriver/availablity"
+                  className={SidebarStyle.sidebarLink}
+                >
+                  <div className={SidebarStyle.lineSection}>
+                    <div className={SidebarStyle.lineIcon}>
+                      <span
+                        className={"material-icons " + SidebarStyle.iconWidth}
+                      >
+                        assistant
+                      </span>
+                    </div>
+                    <div className={SidebarStyle.lineText}>
+                      <h1 className={SidebarStyle.lineTextStyle}>
+                        Availability
+                      </h1>
                     </div>
                   </div>
                 </Link>

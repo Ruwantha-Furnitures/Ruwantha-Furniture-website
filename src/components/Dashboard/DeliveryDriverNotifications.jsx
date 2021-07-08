@@ -4,9 +4,9 @@ import Sidebar from "./common/Sidebar";
 import AllProductsView from "./common/AllProductsView";
 import MainStyle from "../../css/dashboard/Main.module.css";
 import ProductStyle from "../../css/dashboard/Products.module.css";
-import DeliveriesTable from "./deliveryDriver/DeliveriesTable";
+import DeliveryDriverNotificationsTable from "./deliveryDriver/DeliveryDriverNotificationsTable";
 
-function DeliveryDriverDeliveries() {
+function DeliveryDriverNotifications() {
   return (
     <div className={MainStyle.bodycontainer}>
       <div className={MainStyle.navSection}>
@@ -22,7 +22,7 @@ function DeliveryDriverDeliveries() {
           <div className={ProductStyle.detailsSection}>
             <div className={ProductStyle.detailCard}>
               {/* Dilvery Drivers Table */}
-              <DeliveriesTable />
+              <DeliveryDriverNotificationsTable />
             </div>
           </div>
           <div className={ProductStyle.productsViewSection}>
@@ -34,4 +34,4 @@ function DeliveryDriverDeliveries() {
   );
 }
 
-export default DeliveryDriverDeliveries;
+export default DeliveryDriverNotifications;

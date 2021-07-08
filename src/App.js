@@ -57,6 +57,7 @@ import OrderDetails from "./components/Dashboard/OrderDetails";
 import DeliveryDriverUpdate from "./components/Dashboard/DeliveryDriverUpdate";
 import CustomerMessages from "./components/Dashboard/CustomerMessages";
 import CustomerMessageView from "./components/Dashboard/CustomerMessageView";
+import DeliveryDriverNotifications from "./components/Dashboard/DeliveryDriverNotifications";
 
 function App() {
   return (
@@ -129,6 +130,7 @@ function App() {
             component={PurchaseOrders}
           />
 
+          {/* For Navigations Purpose */}
           <Route
             exact
             path="/dashboard/purchaseOrder/details"
@@ -144,6 +146,18 @@ function App() {
             path="/dashboard/assigndOrder/details"
             component={OrderDetails}
           />
+          <Route
+            exact
+            path="/dashboard/deliveryDriver/details"
+            component={OrderDetails}
+          />
+          <Route
+            exact
+            path="/dashboard/deliveryDriverNotifications/details"
+            component={OrderDetails}
+          />
+          {/* End Navigations Purpose */}
+
           <Route
             exact
             path="/dashboard/completedOrders"
@@ -217,6 +231,11 @@ function App() {
             exact
             path="/dashboard/deliveryDriver/deliveries"
             component={DeliveryDriverDeliveries}
+          />
+          <Route
+            exact
+            path="/dashboard/deliveryDriver/notifications"
+            component={DeliveryDriverNotifications}
           />
           <Route
             exact
