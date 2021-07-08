@@ -1,5 +1,5 @@
 import React from "react";
-import ProductViewFormStyle from "../../../css/dashboard/product/ProductViewForm.module.css";
+import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.css";
 import { Link } from "react-router-dom";
 
 function DeliveryDriverDetails() {
