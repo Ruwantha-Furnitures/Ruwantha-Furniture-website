@@ -52,6 +52,7 @@ import CustomerCheckout from "./components/web/registeredCustomer/CustomerChecko
 import ProductUpdate from "./components/Dashboard/ProductUpdate";
 import ProductCategoryUpdate from "./components/Dashboard/ProductCategoryUpdate";
 import ProductTypeUpdate from "./components/Dashboard/ProductTypeUpdate";
+import ProductSellAmount from "./components/Dashboard/ProductSellAmount";
 
 function App() {
   return (
@@ -68,6 +69,11 @@ function App() {
             exact
             path="/dashboard/product/update"
             component={ProductUpdate}
+          />
+          <Route
+            exact
+            path="/dashboard/product/sell/amount"
+            component={ProductSellAmount}
           />
           <Route
             exact
