@@ -23,6 +23,7 @@ function ProductsTable() {
                   type="search"
                   placeholder="Search Here"
                   value=""
+                  id="search"
                   name="search"
                   className={TableStyle.searchinput}
                 />

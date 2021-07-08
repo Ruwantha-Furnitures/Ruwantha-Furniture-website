@@ -1,15 +1,43 @@
 import React from "react";
-import ProductViewFormStyle from "../../../css/dashboard/product/ProductViewForm.module.css";
+import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.css";
+import { Link } from "react-router-dom";
 
 function ProductSellProductForm() {
+  const handleSellProduct = (e) => {
+    e.preventDefault();
+    window.location = "/dashboard/product/sell/amount";
+  };
   return (
     <React.Fragment>
-      <div>
-        <h1 className={ProductViewFormStyle.titleStyle}>
+      <div className={ProductViewFormStyle.titleHeader}>
+        <h1 className={ProductViewFormStyle.tableTitleHeaderStyle}>
           Product Sell Page - Product
         </h1>
+        <div className={ProductViewFormStyle.backSection}>
+          <div className={ProductViewFormStyle.back}>
+            <Link
+              to="/dashboard/product/sell/customer"
+              className={ProductViewFormStyle.linkStyle}
+            >
+              <div className={ProductViewFormStyle.backStyle}>
+                <span
+                  className={
+                    "material-icons " + ProductViewFormStyle.backIconStyle
+                  }
+                >
+                  arrow_back_ios
+                </span>
+                <div className={ProductViewFormStyle.backButtonStyle}>Back</div>
+              </div>
+            </Link>
+          </div>
+        </div>
       </div>
-      <form action="#" className={ProductViewFormStyle.formStyle}>
+      <form
+        action="#"
+        className={ProductViewFormStyle.formStyle}
+        onSubmit={(e) => handleSellProduct(e)}
+      >
         <div className={ProductViewFormStyle.details}>
           <div className={ProductViewFormStyle.infoPart}>
             <div className={ProductViewFormStyle.form}>

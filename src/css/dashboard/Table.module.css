@@ -119,7 +119,7 @@ td {
 .searchinput {
   width: 80%;
   height: 32px;
-  background: #b890681f;
+  background: #b89068;
   border: none;
   font-style: normal;
   font-weight: normal;
@@ -147,11 +147,11 @@ td {
   appearance: none;
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+input[type="search"]:-webkit-autofill,
+input[type="search"]:-webkit-autofill:hover,
+input[type="search"]:-webkit-autofill:focus,
+input[type="search"]:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #b89068 inset !important;
 }
 
 .moreInfo {

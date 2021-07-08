@@ -1,11 +1,37 @@
 import React from "react";
-import ProductViewFormStyle from "../../../css/dashboard/product/ProductViewForm.module.css";
+import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.css";
+import { Link } from "react-router-dom";
 
 function CustomerDetails() {
   return (
     <React.Fragment>
       <div>
-        <h1 className={ProductViewFormStyle.titleStyle}>Customer Profile</h1>
+        <div className={ProductViewFormStyle.titleHeader}>
+          <h1 className={ProductViewFormStyle.tableTitleHeaderStyle}>
+            Customer Profile
+          </h1>
+          <div className={ProductViewFormStyle.backSection}>
+            <div className={ProductViewFormStyle.back}>
+              <Link
+                to="/dashboard/customers"
+                className={ProductViewFormStyle.linkStyle}
+              >
+                <div className={ProductViewFormStyle.backStyle}>
+                  <span
+                    className={
+                      "material-icons " + ProductViewFormStyle.backIconStyle
+                    }
+                  >
+                    arrow_back_ios
+                  </span>
+                  <div className={ProductViewFormStyle.backButtonStyle}>
+                    Back
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
       <form action="#" className={ProductViewFormStyle.formStyle}>
         <div className={ProductViewFormStyle.details}>
@@ -116,14 +142,6 @@ function CustomerDetails() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className={ProductViewFormStyle.descButtonsAdd}>
-          <div className={ProductViewFormStyle.descButtonAdd}>
-            <button className={ProductViewFormStyle.descButtonAddStyle}>
-              Back Home
-            </button>
           </div>
         </div>
       </form>
