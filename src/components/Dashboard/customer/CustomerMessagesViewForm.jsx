@@ -2,18 +2,18 @@ import React from "react";
 import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.css";
 import { Link } from "react-router-dom";
 
-function CustomerDetails() {
+function CustomerMessagesViewForm() {
   return (
     <React.Fragment>
       <div>
         <div className={ProductViewFormStyle.titleHeader}>
           <h1 className={ProductViewFormStyle.tableTitleHeaderStyle}>
-            Customer Profile
+            Customer Message
           </h1>
           <div className={ProductViewFormStyle.backSection}>
             <div className={ProductViewFormStyle.back}>
               <Link
-                to="/dashboard/customers"
+                to="/dashboard/customerMessages"
                 className={ProductViewFormStyle.linkStyle}
               >
                 <div className={ProductViewFormStyle.backStyle}>
@@ -94,30 +94,6 @@ function CustomerDetails() {
                 </div>
               </div>
               <div className={ProductViewFormStyle.formLine}>
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Number
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Customer Number"
-                    className={ProductViewFormStyle.inputStyle}
-                  />
-                </div>
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Payment
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Customer Number"
-                    className={ProductViewFormStyle.inputStyle}
-                  />
-                </div>
-              </div>
-              <div className={ProductViewFormStyle.formLine}>
                 <div
                   className={
                     ProductViewFormStyle.dataforLong +
@@ -132,11 +108,11 @@ function CustomerDetails() {
                       ProductViewFormStyle.addMarginBottom
                     }
                   >
-                    Review
+                    Message
                   </label>
                   <textarea
                     value=""
-                    placeholder="Customer Review..."
+                    placeholder="Customer Message..."
                     className={ProductViewFormStyle.labelStyleforLongDesc}
                   />
                 </div>
@@ -149,4 +125,4 @@ function CustomerDetails() {
   );
 }
 
-export default CustomerDetails;
+export default CustomerMessagesViewForm;

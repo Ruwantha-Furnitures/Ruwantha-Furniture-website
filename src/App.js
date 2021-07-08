@@ -55,6 +55,8 @@ import ProductTypeUpdate from "./components/Dashboard/ProductTypeUpdate";
 import ProductSellAmount from "./components/Dashboard/ProductSellAmount";
 import OrderDetails from "./components/Dashboard/OrderDetails";
 import DeliveryDriverUpdate from "./components/Dashboard/DeliveryDriverUpdate";
+import CustomerMessages from "./components/Dashboard/CustomerMessages";
+import CustomerMessageView from "./components/Dashboard/CustomerMessageView";
 
 function App() {
   return (
@@ -167,6 +169,16 @@ function App() {
 
           {/* Dashboard-Customer Section */}
           <Route exact path="/dashboard/customers" component={Customers} />
+          <Route
+            exact
+            path="/dashboard/customerMessages"
+            component={CustomerMessages}
+          />
+          <Route
+            exact
+            path="/dashboard/customerMessage/view"
+            component={CustomerMessageView}
+          />
 
           <Route
             exact
