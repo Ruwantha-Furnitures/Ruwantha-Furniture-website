@@ -235,7 +235,10 @@ function Sidebar() {
                 </Link>
               </li>
               <li>
-                <Link to="" className={SidebarStyle.sidebarLink}>
+                <Link
+                  to="/dashboard/deliveryDriverProfile"
+                  className={SidebarStyle.sidebarLink}
+                >
                   <div className={SidebarStyle.lineSection}>
                     <div className={SidebarStyle.lineIcon}>
                       <span

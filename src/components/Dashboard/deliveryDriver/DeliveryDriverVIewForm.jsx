@@ -5,8 +5,14 @@ import { Link } from "react-router-dom";
 function DeliveryDriverViewForm() {
   const url = window.location.pathname.split("/");
   const driverViewLocation = url[3];
+  const driverProfileSet = url[2];
+
   const handleUpdate = () => {
-    window.location = "/dashboard/deliveryDriver/update";
+    if (driverProfileSet === "deliveryDriverProfile") {
+      window.location = "/dashboard/deliveryDriverProfile/update";
+    } else {
+      window.location = "/dashboard/deliveryDriver/update";
+    }
   };
 
   return (
@@ -16,30 +22,33 @@ function DeliveryDriverViewForm() {
           Delivery Driver Profile
         </h1>
         <div className={ProductViewFormStyle.backSection}>
-          <div className={ProductViewFormStyle.back}>
-            <Link
-              to={
-                driverViewLocation === "view"
-                  ? "/dashboard/deliveryDrivers"
-                  : "/dashboard/completedOrders"
-              }
-              className={ProductViewFormStyle.linkStyle}
-            >
-              <div className={ProductViewFormStyle.backStyle}>
-                <span
-                  className={
-                    "material-icons " + ProductViewFormStyle.backIconStyle
-                  }
-                >
-                  arrow_back_ios
-                </span>
-                <div className={ProductViewFormStyle.backButtonStyle}>Back</div>
-              </div>
-            </Link>
-          </div>
+          {driverProfileSet !== "deliveryDriverProfile" && (
+            <div className={ProductViewFormStyle.back}>
+              <Link
+                to={
+                  driverViewLocation === "view"
+                    ? "/dashboard/deliveryDrivers"
+                    : "/dashboard/completedOrders"
+                }
+                className={ProductViewFormStyle.linkStyle}
+              >
+                <div className={ProductViewFormStyle.backStyle}>
+                  <span
+                    className={
+                      "material-icons " + ProductViewFormStyle.backIconStyle
+                    }
+                  >
+                    arrow_back_ios
+                  </span>
+                  <div className={ProductViewFormStyle.backButtonStyle}>
+                    Back
+                  </div>
+                </div>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
-      {/* <form action="#" className={ProductViewFormStyle.formStyle}> */}
       <div className={ProductViewFormStyle.details}>
         <div className={ProductViewFormStyle.infoPart}>
           <div className={ProductViewFormStyle.form}>
@@ -177,7 +186,24 @@ function DeliveryDriverViewForm() {
           </div>
         </div>
       )}
-      {/* </form> */}
+      {driverProfileSet === "deliveryDriverProfile" && (
+        <div className={ProductViewFormStyle.descButtonsAdd}>
+          <div className={ProductViewFormStyle.descButtonAdd}>
+            <button
+              className={
+                ProductViewFormStyle.buttonStyle +
+                " " +
+                ProductViewFormStyle.successButtonColor +
+                " " +
+                ProductViewFormStyle.addRightMargin
+              }
+              onClick={handleUpdate}
+            >
+              Go Update
+            </button>
+          </div>
+        </div>
+      )}
     </React.Fragment>
   );
 }

@@ -3,6 +3,9 @@ import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.
 import { Link } from "react-router-dom";
 
 function DeliveryDriverUpdateForm() {
+  const url = window.location.pathname.split("/");
+  const driverProfileSet = url[2];
+
   return (
     <React.Fragment>
       <div className={ProductViewFormStyle.titleHeader}>
@@ -12,7 +15,11 @@ function DeliveryDriverUpdateForm() {
         <div className={ProductViewFormStyle.backSection}>
           <div className={ProductViewFormStyle.back}>
             <Link
-              to="/dashboard/deliveryDrivers"
+              to={
+                driverProfileSet === "deliveryDriverProfile"
+                  ? "/dashboard/deliveryDriverProfile"
+                  : "/dashboard/deliveryDrivers"
+              }
               className={ProductViewFormStyle.linkStyle}
             >
               <div className={ProductViewFormStyle.backStyle}>

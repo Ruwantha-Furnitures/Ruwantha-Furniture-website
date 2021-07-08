@@ -216,10 +216,20 @@ function App() {
             path="/dashboard/deliveryDriver/viewOnly"
             component={DeliveryDriverView}
           />
+          <Route
+            exact
+            path="/dashboard/deliveryDriverProfile"
+            component={DeliveryDriverView}
+          />
 
           <Route
             exact
             path="/dashboard/deliveryDriver/update"
+            component={DeliveryDriverUpdate}
+          />
+          <Route
+            exact
+            path="/dashboard/deliveryDriverProfile/update"
             component={DeliveryDriverUpdate}
           />
           <Route

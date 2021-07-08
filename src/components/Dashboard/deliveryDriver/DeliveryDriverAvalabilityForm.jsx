@@ -6,7 +6,7 @@ function DeliveryDriverAvalabilityForm() {
     <React.Fragment>
       <div>
         <h1 className={ProductViewFormStyle.titleStyle}>
-          Delivery Driver Profile
+          Delivery Driver Availability
         </h1>
       </div>
       <form action="#" className={ProductViewFormStyle.formStyle}>
@@ -57,19 +57,6 @@ function DeliveryDriverAvalabilityForm() {
                 </div>
               </div>
               <div className={ProductViewFormStyle.formLine}>
-                <div className={ProductViewFormStyle.dataforLong}>
-                  <label className={ProductViewFormStyle.labelStyleforLong}>
-                    Address
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Delivery Driver Address"
-                    className={ProductViewFormStyle.inputStyleforLong}
-                  />
-                </div>
-              </div>
-              <div className={ProductViewFormStyle.formLine}>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
                     Number
@@ -108,14 +95,13 @@ function DeliveryDriverAvalabilityForm() {
                 </div>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
-                    Type
+                    Availability
                   </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Vehicle Type"
-                    className={ProductViewFormStyle.inputStyle}
-                  />
+                  {/* Drivers filter by area and according to avaliable status */}
+                  <select className={ProductViewFormStyle.inputFormSelectStyle}>
+                    <option value="Availabile">Availabile</option>
+                    <option value="Not Availabile">Not Availabile</option>
+                  </select>
                 </div>
               </div>
             </div>
