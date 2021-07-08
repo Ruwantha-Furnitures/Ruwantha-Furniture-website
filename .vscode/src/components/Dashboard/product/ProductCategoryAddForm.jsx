@@ -21,6 +21,8 @@ function ProductCategoryAddForm() {
                   <input
                     type="text"
                     value=""
+                    onChange=""
+                    readOnly
                     placeholder="New Product Category"
                     className={ProductViewFormStyle.inputProductTitle}
                   />
@@ -28,7 +30,7 @@ function ProductCategoryAddForm() {
                 <div className={ProductViewFormStyle.descButtonsAddType}>
                   <div className={ProductViewFormStyle.descButtonAdd}>
                     <button className={ProductViewFormStyle.descButtonAddStyle}>
-                      Add Category
+                      Add Categor
                     </button>
                   </div>
                 </div>

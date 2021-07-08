@@ -3,12 +3,12 @@ import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.
 import ProductCategoryList from "./ProductCategoryList";
 import { Link } from "react-router-dom";
 
-function ProductCategoryAddForm() {
+function ProductCategoryUpdateForm() {
   return (
     <React.Fragment>
       <div className={ProductViewFormStyle.titleHeader}>
         <h1 className={ProductViewFormStyle.tableTitleHeaderStyle}>
-          Product Category Add
+          Product Category Update
         </h1>
         <div className={ProductViewFormStyle.backSection}>
           <div className={ProductViewFormStyle.back}>
@@ -49,8 +49,14 @@ function ProductCategoryAddForm() {
                 </div>
                 <div className={ProductViewFormStyle.descButtonsAddType}>
                   <div className={ProductViewFormStyle.descButtonAdd}>
-                    <button className={ProductViewFormStyle.descButtonAddStyle}>
-                      Add Category
+                    <button
+                      className={
+                        ProductViewFormStyle.buttonStyle +
+                        " " +
+                        ProductViewFormStyle.successButtonColor
+                      }
+                    >
+                      Update
                     </button>
                   </div>
                 </div>
@@ -66,4 +72,4 @@ function ProductCategoryAddForm() {
   );
 }
 
-export default ProductCategoryAddForm;
+export default ProductCategoryUpdateForm;

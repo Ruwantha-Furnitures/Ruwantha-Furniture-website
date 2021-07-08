@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import TableStyle from "../../../css/dashboard/Table.module.css";
 
-function PurchaseOrdersTable() {
+function CustomersMessagesTable() {
   return (
     <React.Fragment>
       <div className={TableStyle.titleHeader}>
-        <h1 className={TableStyle.tableTitleProductStyle}>Purchase Orders</h1>
+        <h1 className={TableStyle.tableTitleProductStyle}>Messages</h1>
         <div className={TableStyle.searchSection}>
           <form action="#">
             <div className={TableStyle.search}>
@@ -36,19 +36,19 @@ function PurchaseOrdersTable() {
           <thead>
             <tr>
               <th>
-                <div className={TableStyle.header}>Order</div>
+                <div className={TableStyle.header}>Message</div>
               </th>
               <th>
                 <div className={TableStyle.header}>Customer Name</div>
               </th>
               <th>
-                <div className={TableStyle.header}>Customer Email</div>
+                <div className={TableStyle.header}>Email</div>
               </th>
               <th>
-                <div className={TableStyle.header}>Discount</div>
+                <div className={TableStyle.header}>Contact Number</div>
               </th>
               <th>
-                <div className={TableStyle.header}>Price</div>
+                <div className={TableStyle.header}>Area</div>
               </th>
             </tr>
           </thead>
@@ -56,114 +56,100 @@ function PurchaseOrdersTable() {
             <tr>
               <td>
                 <Link
-                  to="/dashboard/purchaseOrder/details"
-                  className={TableStyle.linkStyleAdd}
+                  to="/dashboard/customerMessage/view"
+                  className={TableStyle.linkStyle}
                 >
-                  Order 1
+                  No:1
                 </Link>
               </td>
               <td>Tharindu Gihan</td>
               <td>wtgihan@gmail.com</td>
-              <td>10%</td>
-              <td>Rs.100000</td>
+              <td>0778522736</td>
+              <td>Galle</td>
             </tr>
             <tr>
               <td>
                 <Link
-                  to="/dashboard/purchaseOrder/details"
-                  className={TableStyle.linkStyleAdd}
+                  to="/dashboard/customerMessage/view"
+                  className={TableStyle.linkStyle}
                 >
-                  Order 2
+                  No:2
                 </Link>
               </td>
-              <td>Tharindu Gihan</td>
-              <td>wtgihan@gmail.com</td>
-              <td>10%</td>
-              <td>Rs.100000</td>
+              <td>Himasha Anjali</td>
+              <td>anjali@gmail.com</td>
+              <td>0778522436</td>
+              <td>Colombo</td>
             </tr>
             <tr>
               <td>
                 <Link
-                  to="/dashboard/purchaseOrder/details"
-                  className={TableStyle.linkStyleAdd}
+                  to="/dashboard/customerMessage/view"
+                  className={TableStyle.linkStyle}
                 >
-                  Order 3
+                  No:3
                 </Link>
               </td>
-              <td>Tharindu Gihan</td>
-              <td>wtgihan@gmail.com</td>
-              <td>10%</td>
-              <td>Rs.100000</td>
+              <td>Sathira Dimuthu</td>
+              <td>dimuthu@gmail.com</td>
+              <td>0778222736</td>
+              <td>Galle</td>
             </tr>
             <tr>
               <td>
                 <Link
-                  to="/dashboard/purchaseOrder/details"
-                  className={TableStyle.linkStyleAdd}
+                  to="/dashboard/customerMessage/view"
+                  className={TableStyle.linkStyle}
                 >
-                  Order 4
+                  No:4
                 </Link>
               </td>
-              <td>Tharindu Gihan</td>
-              <td>wtgihan@gmail.com</td>
-              <td>10%</td>
-              <td>Rs.100000</td>
+              <td>Anushka Tharindu</td>
+              <td>anushka@gmail.com</td>
+              <td>0774536987</td>
+              <td>Pandura</td>
             </tr>
             <tr>
               <td>
                 <Link
-                  to="/dashboard/purchaseOrder/details"
-                  className={TableStyle.linkStyleAdd}
+                  to="/dashboard/customerMessage/view"
+                  className={TableStyle.linkStyle}
                 >
-                  Order 5
+                  No:5
                 </Link>
               </td>
-              <td>Tharindu Gihan</td>
-              <td>wtgihan@gmail.com</td>
-              <td>10%</td>
-              <td>Rs.100000</td>
+              <td>Himasha Anjali</td>
+              <td>anjali@gmail.com</td>
+              <td>0778522436</td>
+              <td>Colombo</td>
             </tr>
             <tr>
               <td>
                 <Link
-                  to="/dashboard/purchaseOrder/details"
-                  className={TableStyle.linkStyleAdd}
+                  to="/dashboard/customerMessage/view"
+                  className={TableStyle.linkStyle}
                 >
-                  Order 6
+                  No:6
                 </Link>
               </td>
-              <td>Tharindu Gihan</td>
-              <td>wtgihan@gmail.com</td>
-              <td>10%</td>
-              <td>Rs.100000</td>
+              <td>Sathira Dimuthu</td>
+              <td>dimuthu@gmail.com</td>
+              <td>0778222736</td>
+              <td>Poddala</td>
             </tr>
             <tr>
               <td>
                 <Link
-                  to="/dashboard/purchaseOrder/details"
-                  className={TableStyle.linkStyleAdd}
+                  to="/dashboard/customerMessage/view"
+                  className={TableStyle.linkStyle}
                 >
-                  Order 7
+                  No:7
                 </Link>
               </td>
-              <td>Tharindu Gihan</td>
-              <td>wtgihan@gmail.com</td>
-              <td>10%</td>
-              <td>Rs.100000</td>
-            </tr>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/purchaseOrder/details"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Order 8
-                </Link>
-              </td>
-              <td>Tharindu Gihan</td>
-              <td>wtgihan@gmail.com</td>
-              <td>10%</td>
-              <td>Rs.100000</td>
+              <td>Anushka Tharindu</td>
+              <td>anushka@gmail.com</td>
+              <td>0774536987</td>
+              <td>Galle</td>
             </tr>
           </tbody>
         </table>
@@ -216,4 +202,4 @@ function PurchaseOrdersTable() {
   );
 }
 
-export default PurchaseOrdersTable;
+export default CustomersMessagesTable;

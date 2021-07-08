@@ -1,7 +1,12 @@
 import React from "react";
-import ProductViewFormStyle from "../../../css/dashboard/product/ProductViewForm.module.css";
+import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.css";
 
 function ProductSellForm() {
+  const handleSellProduct = (e) => {
+    e.preventDefault();
+    window.location = "/dashboard/product/sell/product";
+  };
+
   return (
     <React.Fragment>
       <div>
@@ -9,7 +14,11 @@ function ProductSellForm() {
           Product Sell Page - Customer
         </h1>
       </div>
-      <form action="#" className={ProductViewFormStyle.formStyle}>
+      <form
+        action="#"
+        className={ProductViewFormStyle.formStyle}
+        onSubmit={(e) => handleSellProduct(e)}
+      >
         <div className={ProductViewFormStyle.details}>
           <div className={ProductViewFormStyle.infoPart}>
             <div className={ProductViewFormStyle.form}>

@@ -4,9 +4,9 @@ import Sidebar from "./common/Sidebar";
 import AllProductsView from "./common/AllProductsView";
 import MainStyle from "../../css/dashboard/Main.module.css";
 import ProductStyle from "../../css/dashboard/Products.module.css";
-import ProductsTable from "./common/ProductsTable";
+import ProductTypeUpdateForm from "./product/ProductTypeUpdateForm";
 
-function Products() {
+function ProductTypeUpdate() {
   return (
     <div className={MainStyle.bodycontainer}>
       <div className={MainStyle.navSection}>
@@ -21,7 +21,8 @@ function Products() {
         <div className={ProductStyle.cardDataSection}>
           <div className={ProductStyle.detailsSection}>
             <div className={ProductStyle.detailCard}>
-              <ProductsTable />
+              {/* Product Type Form Part */}
+              <ProductTypeUpdateForm />
             </div>
           </div>
           <div className={ProductStyle.productsViewSection}>
@@ -33,4 +34,4 @@ function Products() {
   );
 }
 
-export default Products;
+export default ProductTypeUpdate;
