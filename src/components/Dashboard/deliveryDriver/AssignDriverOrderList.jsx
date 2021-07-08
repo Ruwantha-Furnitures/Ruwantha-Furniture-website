@@ -59,7 +59,14 @@ function AssignDriverOrderList() {
           </thead>
           <tbody>
             <tr>
-              <td className={TableStyle.moreInfo}>No:1</td>
+              <td>
+                <Link
+                  to="/dashboard/assigndOrder/details"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Order 1
+                </Link>
+              </td>
               <td>Tharindu Gihan</td>
               <td>0778522736</td>
               <td>2021-03-17</td>
@@ -82,7 +89,14 @@ function AssignDriverOrderList() {
               </td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>No:2</td>
+              <td>
+                <Link
+                  to="/dashboard/assigndOrder/details"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Order 2
+                </Link>
+              </td>
               <td>Himasha Anjali</td>
               <td>0778522736</td>
               <td>2021-03-17</td>
@@ -105,7 +119,14 @@ function AssignDriverOrderList() {
               </td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>No:3</td>
+              <td>
+                <Link
+                  to="/dashboard/assigndOrder/details"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Order 3
+                </Link>
+              </td>
               <td>Sathira Dimuthu</td>
               <td>0778522736</td>
               <td>2021-03-17</td>
@@ -129,7 +150,14 @@ function AssignDriverOrderList() {
               </td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>No:4</td>
+              <td>
+                <Link
+                  to="/dashboard/assigndOrder/details"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Order 4
+                </Link>
+              </td>
               <td>Anushaka Tharindu</td>
               <td>0778522736</td>
               <td>2021-03-17</td>
@@ -147,7 +175,14 @@ function AssignDriverOrderList() {
               </td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>No:5</td>
+              <td>
+                <Link
+                  to="/dashboard/assigndOrder/details"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Order 5
+                </Link>
+              </td>
               <td>Tharindu Gihan</td>
               <td>0778522736</td>
               <td>2021-03-17</td>
@@ -165,7 +200,14 @@ function AssignDriverOrderList() {
               </td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>No:6</td>
+              <td>
+                <Link
+                  to="/dashboard/assigndOrder/details"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Order 6
+                </Link>
+              </td>
               <td>Thanuj Dasun</td>
               <td>0778522736</td>
               <td>2021-03-17</td>
@@ -183,7 +225,14 @@ function AssignDriverOrderList() {
               </td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>No:7</td>
+              <td>
+                <Link
+                  to="/dashboard/assigndOrder/details"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Order 7
+                </Link>
+              </td>
               <td>Dimuthu Rathnasinghe</td>
               <td>0778522736</td>
               <td>2021-03-17</td>

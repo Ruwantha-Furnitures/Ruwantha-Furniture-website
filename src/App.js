@@ -139,6 +139,11 @@ function App() {
           />
           <Route
             exact
+            path="/dashboard/assigndOrder/details"
+            component={OrderDetails}
+          />
+          <Route
+            exact
             path="/dashboard/completedOrders"
             component={CompletedOrders}
           />

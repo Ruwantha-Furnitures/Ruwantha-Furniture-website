@@ -5,6 +5,17 @@ import { Link } from "react-router-dom";
 function OrderDetailsForm() {
   const url = window.location.pathname.split("/");
   const orderLocation = url[2];
+  let navigate;
+  if (orderLocation === "purchaseOrders") {
+    navigate = "/dashboard/purchaseOrders";
+  }
+  if (orderLocation === "completedOrder") {
+    navigate = "/dashboard/completedOrders";
+  }
+  if (orderLocation === "assigndOrder") {
+    navigate = "/dashboard/assignListOrderDriver";
+  }
+
   console.log(url);
 
   return (
@@ -15,14 +26,7 @@ function OrderDetailsForm() {
         </h1>
         <div className={ProductViewFormStyle.backSection}>
           <div className={ProductViewFormStyle.back}>
-            <Link
-              to={
-                orderLocation === "purchaseOrders"
-                  ? "/dashboard/purchaseOrders"
-                  : "/dashboard/completedOrders"
-              }
-              className={ProductViewFormStyle.linkStyle}
-            >
+            <Link to={navigate} className={ProductViewFormStyle.linkStyle}>
               <div className={ProductViewFormStyle.backStyle}>
                 <span
                   className={
