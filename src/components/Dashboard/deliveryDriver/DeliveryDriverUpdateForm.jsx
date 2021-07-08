@@ -2,12 +2,12 @@ import React from "react";
 import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.css";
 import { Link } from "react-router-dom";
 
-function DeliveryDriverDetails() {
+function DeliveryDriverUpdateForm() {
   return (
     <React.Fragment>
       <div className={ProductViewFormStyle.titleHeader}>
         <h1 className={ProductViewFormStyle.tableTitleHeaderStyle}>
-          New Delivery Driver
+          Update Delivery Driver
         </h1>
         <div className={ProductViewFormStyle.backSection}>
           <div className={ProductViewFormStyle.back}>
@@ -144,8 +144,14 @@ function DeliveryDriverDetails() {
 
         <div className={ProductViewFormStyle.descButtonsAdd}>
           <div className={ProductViewFormStyle.descButtonAdd}>
-            <button className={ProductViewFormStyle.descButtonAddStyle}>
-              Add New
+            <button
+              className={
+                ProductViewFormStyle.buttonStyle +
+                " " +
+                ProductViewFormStyle.successButtonColor
+              }
+            >
+              Update
             </button>
           </div>
         </div>
@@ -154,4 +160,4 @@ function DeliveryDriverDetails() {
   );
 }
 
-export default DeliveryDriverDetails;
+export default DeliveryDriverUpdateForm;

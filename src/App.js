@@ -54,6 +54,7 @@ import ProductCategoryUpdate from "./components/Dashboard/ProductCategoryUpdate"
 import ProductTypeUpdate from "./components/Dashboard/ProductTypeUpdate";
 import ProductSellAmount from "./components/Dashboard/ProductSellAmount";
 import OrderDetails from "./components/Dashboard/OrderDetails";
+import DeliveryDriverUpdate from "./components/Dashboard/DeliveryDriverUpdate";
 
 function App() {
   return (
@@ -173,6 +174,11 @@ function App() {
             exact
             path="/dashboard/deliveryDriver/view"
             component={DeliveryDriverView}
+          />
+          <Route
+            exact
+            path="/dashboard/deliveryDriver/update"
+            component={DeliveryDriverUpdate}
           />
           <Route
             exact

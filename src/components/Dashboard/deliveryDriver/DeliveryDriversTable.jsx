@@ -66,49 +66,98 @@ function DeliveryDriversTable() {
           </thead>
           <tbody>
             <tr>
-              <td className={TableStyle.moreInfo}>Tharindu Gihan</td>
+              <td>
+                <Link
+                  to="/dashboard/deliveryDriver/view"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Tharindu Gihan
+                </Link>
+              </td>
               <td>wtgihan@gmail.com</td>
               <td>0778522736</td>
               <td>Rs.25000</td>
               <td>Galle</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Himasha Anjali</td>
+              <td>
+                <Link
+                  to="/dashboard/deliveryDriver/view"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Himasha Anjali
+                </Link>
+              </td>
               <td>anjali@gmail.com</td>
               <td>0778522436</td>
               <td>Rs.15000</td>
               <td>Mulleriayawa</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Sathira Dimuthu</td>
+              <td>
+                <Link
+                  to="/dashboard/deliveryDriver/view"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Sathira Dimuthu
+                </Link>
+              </td>
               <td>dimuthu@gmail.com</td>
               <td>0778222736</td>
               <td>Rs.35000</td>
               <td>Meepawala</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Anushka Tharindu</td>
+              <td>
+                <Link
+                  to="/dashboard/deliveryDriver/view"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Anushka Tharindu
+                </Link>
+              </td>
               <td>anushka@gmail.com</td>
               <td>0774536987</td>
               <td>Rs.45000</td>
               <td>Gonapura</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Himasha Anjali</td>
+              <td>
+                <Link
+                  to="/dashboard/deliveryDriver/view"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Himasha Anjali
+                </Link>
+              </td>
               <td>anjali@gmail.com</td>
               <td>0778522436</td>
               <td>Rs.15000</td>
               <td>Colombo</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Sathira Dimuthu</td>
+              <td>
+                <Link
+                  to="/dashboard/deliveryDriver/view"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Sathira Dimuthu
+                </Link>
+              </td>
               <td>dimuthu@gmail.com</td>
               <td>0778222736</td>
               <td>Rs.35000</td>
               <td>Beddegama</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Anushka Tharindu</td>
+              <td>
+                <Link
+                  to="/dashboard/deliveryDriver/view"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Anushka Tharindu
+                </Link>
+              </td>
               <td>anushka@gmail.com</td>
               <td>0774536987</td>
               <td>Rs.45000</td>
