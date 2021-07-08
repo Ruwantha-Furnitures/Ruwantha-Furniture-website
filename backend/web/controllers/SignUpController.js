@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const saltrounds = 10;
 
 const SignUpController = (req, res) => {
-    console.log(req.body.data)
+    //console.log(req.body.data)
     const { name, email, password, address, contactNo } = req.body.data;
     const userLevel = 1;
 

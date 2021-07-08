@@ -20,7 +20,7 @@ function CartDetails() {
                 <Form style={{padding: '20px'}}>
                     <Row sm={12} style={rowStyle}>
                         <Col sm={12}>
-                            <h2>Shopping Cart</h2><br />
+                            <h2 style={{textAlign:'center'}}>Shopping Cart</h2><br />
                             <Table responsive="sm">
                                 <thead>
                                     <tr>

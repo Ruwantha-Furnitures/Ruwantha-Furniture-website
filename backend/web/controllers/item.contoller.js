@@ -1,48 +1,16 @@
 const { Item } = require("../models");
 const mysql = require("mysql");
 
-exports.allItems = (req, res) => {
-    // find all Item information from 
-    try{
-        Item.findAll({attributes: ['itemid', 'name', 'typid', 'price', 'quantity', "details", "objectid"]})
-        .then(allItems => {
-            res.status(200).json(allItems);
-        })
-    }catch(error) {
-        // log on console
-        console.log(error);
-
-        res.status(500).json({
-            message: "Error!",
-            error: error
-        });
+//get all item list
+const ItemsController  = async (req, res) => {
+    console.log("All Product");
+    try {
+      const products = await Item.findAll(); // getting all the product
+      console.log(products);
+      res.json({ products }); // to send the response of data
+    } catch (error) {
+      console.log(error);
     }
 }
-
-// exports.createItem = (req, res) => {
-//     let item = {};
-
-//     try{
-//         // Building Customer object from upoading request's body
-//         item.itemid = req.body.itemid;
-//         item.name = req.body.name;
-//         item.typid = req.body.typid;
-//         item.price = req.body.price;
-//         item.quantity = req.body.quantity;
-//         item.details = req.body.details;
-//         item.objectid = req.body.objectid;
-    
-//         // Save to MySQL database
-//         Item.create(Item, 
-//                           {attributes: ['itemid', 'name', 'typid', 'price', 'quantity', "details", "objectid"]})
-//                     .then(result => {    
-//                       res.status(200).json(result);
-//                     });
-//     }catch(error){
-//         res.status(500).json({
-//             message: "Fail!",
-//             error: error.message
-//         });
-//     }
-// }
+module.exports = { ItemsController };
 

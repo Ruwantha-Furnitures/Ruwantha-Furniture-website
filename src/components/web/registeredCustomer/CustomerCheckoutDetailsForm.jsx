@@ -25,11 +25,12 @@ function CustomerCheckoutDeteailsForm() {
 
     const textboxStyle = {
         width: '100%',
-        border: 'solid 2px gray', 
+        backgroundColor: '#eeeff5',
+        border: 'none',
         height: '40px',
         borderRadius: '5px',
         padding: '5px',
-        margin: '5px'            
+        margin: '5px'             
     };
 
     function validateForm() {
@@ -46,11 +47,10 @@ function CustomerCheckoutDeteailsForm() {
             <Row sm={12}>
                 <Col sm={8}>
                     <Card style={{marginBottom: '20px'}}>                        
-                        <Form style={{padding: '20px'}}>
-                           <Row style={rowStyle}>                                
-                                    <center><img src={logo} alt={logo} width={50} height={50}></img></center>
-                                    <center><h3 style={title}>AR Magic</h3></center>
-                            </Row>
+                        <Form style={{padding: '20px'}}>                            
+                            {/* <center><img src={logo} alt={logo} width={50} height={50}></img></center> */}
+                            <h2 style={{textAlign: 'center', marginTop: '15px'}}>Shipping Details</h2>
+                            
                             <h5>Personal Information</h5>
                             <Row sm={12}>
                                 <Col sm={6}>

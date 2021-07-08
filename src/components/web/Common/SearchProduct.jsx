@@ -17,15 +17,15 @@ function SearchProduct() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    <NavDropdown title="Select Category" id="category-dropdown" style={{border:'solid 1px lightgray', fontWeight:'bold', borderRadius: '5px'}}>
+                    <NavDropdown title="Select Category" id="category-dropdown" style={{border:'solid 1px black', fontWeight:'bold', borderRadius: '5px'}}>
                         <NavDropdown.Item >Chair</NavDropdown.Item>
                         <NavDropdown.Item >Sofa</NavDropdown.Item>
                         <NavDropdown.Item >Bed</NavDropdown.Item>                    
                     </NavDropdown>
                 </Nav>
                 <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                    <Button variant="outline-success">Search</Button>                    
+                    <FormControl type="text" placeholder="Search" className="mr-sm-2" style={{border:'solid 1px black', width: '200px'}}/>
+                    {/* <Button variant="outline-success">Search</Button>                     */}
                 </Form>
             </Navbar.Collapse>
             </Navbar>                       
