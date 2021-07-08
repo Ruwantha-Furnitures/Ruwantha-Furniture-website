@@ -54,56 +54,112 @@ function PurchaseOrdersTable() {
           </thead>
           <tbody>
             <tr>
-              <td className={TableStyle.moreInfo}>Order 1</td>
+              <td>
+                <Link
+                  to="/dashboard/purchaseOrder/details"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Order 1
+                </Link>
+              </td>
               <td>Tharindu Gihan</td>
               <td>wtgihan@gmail.com</td>
               <td>10%</td>
               <td>Rs.100000</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Order 1</td>
+              <td>
+                <Link
+                  to="/dashboard/purchaseOrder/details"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Order 2
+                </Link>
+              </td>
               <td>Tharindu Gihan</td>
               <td>wtgihan@gmail.com</td>
               <td>10%</td>
               <td>Rs.100000</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Order 1</td>
+              <td>
+                <Link
+                  to="/dashboard/purchaseOrder/details"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Order 3
+                </Link>
+              </td>
               <td>Tharindu Gihan</td>
               <td>wtgihan@gmail.com</td>
               <td>10%</td>
               <td>Rs.100000</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Order 1</td>
+              <td>
+                <Link
+                  to="/dashboard/purchaseOrder/details"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Order 4
+                </Link>
+              </td>
               <td>Tharindu Gihan</td>
               <td>wtgihan@gmail.com</td>
               <td>10%</td>
               <td>Rs.100000</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Order 1</td>
+              <td>
+                <Link
+                  to="/dashboard/purchaseOrder/details"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Order 5
+                </Link>
+              </td>
               <td>Tharindu Gihan</td>
               <td>wtgihan@gmail.com</td>
               <td>10%</td>
               <td>Rs.100000</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Order 1</td>
+              <td>
+                <Link
+                  to="/dashboard/purchaseOrder/details"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Order 6
+                </Link>
+              </td>
               <td>Tharindu Gihan</td>
               <td>wtgihan@gmail.com</td>
               <td>10%</td>
               <td>Rs.100000</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Order 1</td>
+              <td>
+                <Link
+                  to="/dashboard/purchaseOrder/details"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Order 7
+                </Link>
+              </td>
               <td>Tharindu Gihan</td>
               <td>wtgihan@gmail.com</td>
               <td>10%</td>
               <td>Rs.100000</td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>Order 1</td>
+              <td>
+                <Link
+                  to="/dashboard/purchaseOrder/details"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Order 8
+                </Link>
+              </td>
               <td>Tharindu Gihan</td>
               <td>wtgihan@gmail.com</td>
               <td>10%</td>
