@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ProductViewFormStyle from "../../../css/dashboard/product/ProductViewForm.module.css";
+import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.css";
 import ProductImage from "../../../assets/dashboard/product/addPhotoNew2.png";
 import { Link } from "react-router-dom";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import ProductViewFormStyle from "../../../css/dashboard/product/ProductViewForm.module.css";
+import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.css";
 import { Link } from "react-router-dom";
 
 function DeliveryDriverDetails() {
@@ -7,7 +7,7 @@ function DeliveryDriverDetails() {
     <React.Fragment>
       <div className={ProductViewFormStyle.titleHeader}>
         <h1 className={ProductViewFormStyle.tableTitleHeaderStyle}>
-          Delivery Driver Profiles
+          New Delivery Driver
         </h1>
         <div className={ProductViewFormStyle.backSection}>
           <div className={ProductViewFormStyle.back}>

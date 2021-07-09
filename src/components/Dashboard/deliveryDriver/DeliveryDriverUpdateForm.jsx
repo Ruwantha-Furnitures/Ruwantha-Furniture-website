@@ -1,13 +1,40 @@
 import React from "react";
 import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.css";
+import { Link } from "react-router-dom";
 
-function DeliveryDriverAvalabilityForm() {
+function DeliveryDriverUpdateForm() {
+  const url = window.location.pathname.split("/");
+  const driverProfileSet = url[2];
+
   return (
     <React.Fragment>
-      <div>
-        <h1 className={ProductViewFormStyle.titleStyle}>
-          Delivery Driver Availability
+      <div className={ProductViewFormStyle.titleHeader}>
+        <h1 className={ProductViewFormStyle.tableTitleHeaderStyle}>
+          Update Delivery Driver
         </h1>
+        <div className={ProductViewFormStyle.backSection}>
+          <div className={ProductViewFormStyle.back}>
+            <Link
+              to={
+                driverProfileSet === "deliveryDriverProfile"
+                  ? "/dashboard/deliveryDriverProfile"
+                  : "/dashboard/deliveryDrivers"
+              }
+              className={ProductViewFormStyle.linkStyle}
+            >
+              <div className={ProductViewFormStyle.backStyle}>
+                <span
+                  className={
+                    "material-icons " + ProductViewFormStyle.backIconStyle
+                  }
+                >
+                  arrow_back_ios
+                </span>
+                <div className={ProductViewFormStyle.backButtonStyle}>Back</div>
+              </div>
+            </Link>
+          </div>
+        </div>
       </div>
       <form action="#" className={ProductViewFormStyle.formStyle}>
         <div className={ProductViewFormStyle.details}>
@@ -57,6 +84,19 @@ function DeliveryDriverAvalabilityForm() {
                 </div>
               </div>
               <div className={ProductViewFormStyle.formLine}>
+                <div className={ProductViewFormStyle.dataforLong}>
+                  <label className={ProductViewFormStyle.labelStyleforLong}>
+                    Address
+                  </label>
+                  <input
+                    type="text"
+                    value=""
+                    placeholder="Delivery Driver Address"
+                    className={ProductViewFormStyle.inputStyleforLong}
+                  />
+                </div>
+              </div>
+              <div className={ProductViewFormStyle.formLine}>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
                     Number
@@ -95,13 +135,14 @@ function DeliveryDriverAvalabilityForm() {
                 </div>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
-                    Availability
+                    Type
                   </label>
-                  {/* Drivers filter by area and according to avaliable status */}
-                  <select className={ProductViewFormStyle.inputFormSelectStyle}>
-                    <option value="Availabile">Availabile</option>
-                    <option value="Not Availabile">Not Availabile</option>
-                  </select>
+                  <input
+                    type="text"
+                    value=""
+                    placeholder="Vehicle Type"
+                    className={ProductViewFormStyle.inputStyle}
+                  />
                 </div>
               </div>
             </div>
@@ -110,8 +151,14 @@ function DeliveryDriverAvalabilityForm() {
 
         <div className={ProductViewFormStyle.descButtonsAdd}>
           <div className={ProductViewFormStyle.descButtonAdd}>
-            <button className={ProductViewFormStyle.descButtonAddStyle}>
-              Change Availabilty
+            <button
+              className={
+                ProductViewFormStyle.buttonStyle +
+                " " +
+                ProductViewFormStyle.successButtonColor
+              }
+            >
+              Update
             </button>
           </div>
         </div>
@@ -120,4 +167,4 @@ function DeliveryDriverAvalabilityForm() {
   );
 }
 
-export default DeliveryDriverAvalabilityForm;
+export default DeliveryDriverUpdateForm;

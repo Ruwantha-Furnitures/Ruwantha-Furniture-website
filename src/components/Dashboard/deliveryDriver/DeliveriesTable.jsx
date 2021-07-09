@@ -2,43 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 import TableStyle from "../../../css/dashboard/Table.module.css";
 
-function AssignDriverOrderList() {
+function DeliveriesTable() {
   return (
     <React.Fragment>
-      <div className={TableStyle.titleHeader}>
+      <div className={TableStyle.tabletitle}>
         <h1 className={TableStyle.tableTitleProductStyle}>
-          Assign Drivers For Orders
+          Driver Deliveries - Tharindu Gihan
         </h1>
-        <div className={TableStyle.searchSection}>
-          <form action="#">
-            <div className={TableStyle.search}>
-              <div className={TableStyle.searchicon}>
-                <span
-                  className={"material-icons " + TableStyle.searchIconStyle}
-                >
-                  search
-                </span>
-              </div>
-
-              <div className={TableStyle.searchText}>
-                <input
-                  type="search"
-                  placeholder="Search Here"
-                  value=""
-                  name="search"
-                  className={TableStyle.searchinput}
-                />
-              </div>
-            </div>
-          </form>
-        </div>
       </div>
       <div className={TableStyle.tablebody}>
         <table className={TableStyle.tableShow}>
           <thead>
             <tr>
               <th>
-                <div className={TableStyle.header}>Order Id</div>
+                <div className={TableStyle.header}>Delivery</div>
               </th>
               <th>
                 <div className={TableStyle.header}>Customer</div>
@@ -53,7 +30,7 @@ function AssignDriverOrderList() {
                 <div className={TableStyle.header}>Payment</div>
               </th>
               <th>
-                <div className={TableStyle.header}>Driver Status</div>
+                <div className={TableStyle.header}>Status</div>
               </th>
             </tr>
           </thead>
@@ -61,10 +38,10 @@ function AssignDriverOrderList() {
             <tr>
               <td>
                 <Link
-                  to="/dashboard/assigndOrder/details"
+                  to="/dashboard/deliveryDriver/details"
                   className={TableStyle.linkStyleAdd}
                 >
-                  Order 1
+                  No:1
                 </Link>
               </td>
               <td>Tharindu Gihan</td>
@@ -72,29 +49,24 @@ function AssignDriverOrderList() {
               <td>2021-03-17</td>
               <td>Rs.25000</td>
               <td>
-                <Link
-                  to="/dashboard/assignDriver"
-                  className={TableStyle.linkStyle}
+                <span
+                  className={
+                    TableStyle.statusStyle +
+                    " " +
+                    TableStyle.statusColorNotCompleted
+                  }
                 >
-                  <span
-                    className={
-                      TableStyle.statusStyle +
-                      " " +
-                      TableStyle.statusColorNotCompleted
-                    }
-                  >
-                    Not Assigned
-                  </span>
-                </Link>
+                  NotCompleted
+                </span>
               </td>
             </tr>
             <tr>
               <td>
                 <Link
-                  to="/dashboard/assigndOrder/details"
+                  to="/dashboard/deliveryDriver/details"
                   className={TableStyle.linkStyleAdd}
                 >
-                  Order 2
+                  No:2
                 </Link>
               </td>
               <td>Himasha Anjali</td>
@@ -102,29 +74,24 @@ function AssignDriverOrderList() {
               <td>2021-03-17</td>
               <td>Rs.25000</td>
               <td>
-                <Link
-                  to="/dashboard/assignDriver"
-                  className={TableStyle.linkStyle}
+                <span
+                  className={
+                    TableStyle.statusStyle +
+                    " " +
+                    TableStyle.statusColorNotCompleted
+                  }
                 >
-                  <span
-                    className={
-                      TableStyle.statusStyle +
-                      " " +
-                      TableStyle.statusColorNotCompleted
-                    }
-                  >
-                    Not Assigned
-                  </span>
-                </Link>
+                  NotCompleted
+                </span>
               </td>
             </tr>
             <tr>
               <td>
                 <Link
-                  to="/dashboard/assigndOrder/details"
+                  to="/dashboard/deliveryDriver/details"
                   className={TableStyle.linkStyleAdd}
                 >
-                  Order 3
+                  No:3
                 </Link>
               </td>
               <td>Sathira Dimuthu</td>
@@ -132,30 +99,24 @@ function AssignDriverOrderList() {
               <td>2021-03-17</td>
               <td>Rs.25000</td>
               <td>
-                <Link
-                  to="/dashboard/assignDriver"
-                  className={TableStyle.linkStyle}
+                <span
+                  className={
+                    TableStyle.statusStyle +
+                    " " +
+                    TableStyle.statusColorNotCompleted
+                  }
                 >
-                  <span
-                    className={
-                      TableStyle.statusStyle +
-                      " " +
-                      TableStyle.statusColorNotCompleted
-                    }
-                  >
-                    Not Assigned
-                    {/* should link for assign order page */}
-                  </span>
-                </Link>
+                  NotCompleted
+                </span>
               </td>
             </tr>
             <tr>
               <td>
                 <Link
-                  to="/dashboard/assigndOrder/details"
+                  to="/dashboard/deliveryDriver/details"
                   className={TableStyle.linkStyleAdd}
                 >
-                  Order 4
+                  No:4
                 </Link>
               </td>
               <td>Anushaka Tharindu</td>
@@ -170,17 +131,17 @@ function AssignDriverOrderList() {
                     TableStyle.statusColorCompleted
                   }
                 >
-                  Assigned
+                  Completed
                 </span>
               </td>
             </tr>
             <tr>
               <td>
                 <Link
-                  to="/dashboard/assigndOrder/details"
+                  to="/dashboard/deliveryDriver/details"
                   className={TableStyle.linkStyleAdd}
                 >
-                  Order 5
+                  No:5
                 </Link>
               </td>
               <td>Tharindu Gihan</td>
@@ -195,17 +156,17 @@ function AssignDriverOrderList() {
                     TableStyle.statusColorCompleted
                   }
                 >
-                  Assigned
+                  Completed
                 </span>
               </td>
             </tr>
             <tr>
               <td>
                 <Link
-                  to="/dashboard/assigndOrder/details"
+                  to="/dashboard/deliveryDriver/details"
                   className={TableStyle.linkStyleAdd}
                 >
-                  Order 6
+                  No:6
                 </Link>
               </td>
               <td>Thanuj Dasun</td>
@@ -220,17 +181,17 @@ function AssignDriverOrderList() {
                     TableStyle.statusColorCompleted
                   }
                 >
-                  Assigned
+                  Completed
                 </span>
               </td>
             </tr>
             <tr>
               <td>
                 <Link
-                  to="/dashboard/assigndOrder/details"
+                  to="/dashboard/deliveryDriver/details"
                   className={TableStyle.linkStyleAdd}
                 >
-                  Order 7
+                  No:7
                 </Link>
               </td>
               <td>Dimuthu Rathnasinghe</td>
@@ -245,7 +206,7 @@ function AssignDriverOrderList() {
                     TableStyle.statusColorCompleted
                   }
                 >
-                  Assigned
+                  Completed
                 </span>
               </td>
             </tr>
@@ -300,4 +261,4 @@ function AssignDriverOrderList() {
   );
 }
 
-export default AssignDriverOrderList;
+export default DeliveriesTable;

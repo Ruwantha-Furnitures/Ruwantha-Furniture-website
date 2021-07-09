@@ -52,6 +52,12 @@ import CustomerCheckout from "./components/web/registeredCustomer/CustomerChecko
 import ProductUpdate from "./components/Dashboard/ProductUpdate";
 import ProductCategoryUpdate from "./components/Dashboard/ProductCategoryUpdate";
 import ProductTypeUpdate from "./components/Dashboard/ProductTypeUpdate";
+import ProductSellAmount from "./components/Dashboard/ProductSellAmount";
+import OrderDetails from "./components/Dashboard/OrderDetails";
+import DeliveryDriverUpdate from "./components/Dashboard/DeliveryDriverUpdate";
+import CustomerMessages from "./components/Dashboard/CustomerMessages";
+import CustomerMessageView from "./components/Dashboard/CustomerMessageView";
+import DeliveryDriverNotifications from "./components/Dashboard/DeliveryDriverNotifications";
 
 function App() {
   return (
@@ -68,6 +74,11 @@ function App() {
             exact
             path="/dashboard/product/update"
             component={ProductUpdate}
+          />
+          <Route
+            exact
+            path="/dashboard/product/sell/amount"
+            component={ProductSellAmount}
           />
           <Route
             exact
@@ -118,6 +129,35 @@ function App() {
             path="/dashboard/purchaseOrders"
             component={PurchaseOrders}
           />
+
+          {/* For Navigations Purpose */}
+          <Route
+            exact
+            path="/dashboard/purchaseOrder/details"
+            component={OrderDetails}
+          />
+          <Route
+            exact
+            path="/dashboard/completedOrder/details"
+            component={OrderDetails}
+          />
+          <Route
+            exact
+            path="/dashboard/assigndOrder/details"
+            component={OrderDetails}
+          />
+          <Route
+            exact
+            path="/dashboard/deliveryDriver/details"
+            component={OrderDetails}
+          />
+          <Route
+            exact
+            path="/dashboard/deliveryDriverNotifications/details"
+            component={OrderDetails}
+          />
+          {/* End Navigations Purpose */}
+
           <Route
             exact
             path="/dashboard/completedOrders"
@@ -143,6 +183,16 @@ function App() {
 
           {/* Dashboard-Customer Section */}
           <Route exact path="/dashboard/customers" component={Customers} />
+          <Route
+            exact
+            path="/dashboard/customerMessages"
+            component={CustomerMessages}
+          />
+          <Route
+            exact
+            path="/dashboard/customerMessage/view"
+            component={CustomerMessageView}
+          />
 
           <Route
             exact
@@ -163,6 +213,27 @@ function App() {
           />
           <Route
             exact
+            path="/dashboard/deliveryDriver/viewOnly"
+            component={DeliveryDriverView}
+          />
+          <Route
+            exact
+            path="/dashboard/deliveryDriverProfile"
+            component={DeliveryDriverView}
+          />
+
+          <Route
+            exact
+            path="/dashboard/deliveryDriver/update"
+            component={DeliveryDriverUpdate}
+          />
+          <Route
+            exact
+            path="/dashboard/deliveryDriverProfile/update"
+            component={DeliveryDriverUpdate}
+          />
+          <Route
+            exact
             path="/dashboard/deliveryDriver/profile"
             component={DeliveryDriverProfile}
           />
@@ -170,6 +241,11 @@ function App() {
             exact
             path="/dashboard/deliveryDriver/deliveries"
             component={DeliveryDriverDeliveries}
+          />
+          <Route
+            exact
+            path="/dashboard/deliveryDriver/notifications"
+            component={DeliveryDriverNotifications}
           />
           <Route
             exact
