@@ -17,23 +17,21 @@ function Product() {
     }
     return (
         <div style={contactImg}>  
-        <Navigation></Navigation>  
-        <Container>
+        <Navigation></Navigation>          
         <Row sm={12} align="justify">
             <Col sm={12}>                
                 <Card>     
                     <Search></Search>               
                     <Card.Img variant="top" src={Coverimg} />                    
-                    <Card.Body>
-                        <Container fluid align="center">                             
+                    <Card.Body>  
+                        <center>
                             <ProductBox></ProductBox>
-                        </Container>                        
+                        </center>                                                 
                     </Card.Body>
                 </Card>  
                 <br />
             </Col> 
-        </Row> 
-        </Container>                                       
+        </Row>                                         
         <Footer></Footer>    
     </div>
     )
