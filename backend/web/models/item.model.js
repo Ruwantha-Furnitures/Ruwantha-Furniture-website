@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
           type: DataTypes.STRING,
           allowNull: false,
         },
-        objid: {
+        objectid: {
             type: DataTypes.INTEGER,
             allowNull: false,
           },

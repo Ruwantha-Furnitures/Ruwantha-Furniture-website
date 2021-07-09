@@ -36,76 +36,169 @@ function CompleteOrderList() {
           <thead>
             <tr>
               <th>
-                {" "}
                 <div className={TableStyle.header}>Order Id</div>
               </th>
               <th>
-                {" "}
                 <div className={TableStyle.header}>Customer</div>
               </th>
               <th>
-                {" "}
                 <div className={TableStyle.header}>Contact Number</div>
               </th>
               <th>
-                {" "}
                 <div className={TableStyle.header}>Date</div>
               </th>
               <th>
-                {" "}
                 <div className={TableStyle.header}>Driver</div>
               </th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td className={TableStyle.moreInfo}>No:1</td>
+              <td>
+                <Link
+                  to="/dashboard/completedOrder/details"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Order 1
+                </Link>
+              </td>
               <td>Tharindu Gihan</td>
               <td>0778522736</td>
               <td>2021-03-17</td>
-              <td className={TableStyle.moreInfo}>Gihan Withanchchi</td>
+              <td>
+                <Link
+                  to="/dashboard/deliveryDriver/viewOnly"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Gihan Withanchchi
+                </Link>
+              </td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>No:2</td>
+              <td>
+                <Link
+                  to="/dashboard/completedOrder/details"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Order 2
+                </Link>
+              </td>
               <td>Himasha Anjali</td>
               <td>0778522736</td>
               <td>2021-03-17</td>
-              <td className={TableStyle.moreInfo}>Himasha Anjali</td>
+              <td>
+                <Link
+                  to="/dashboard/deliveryDriver/viewOnly"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Himasha Anjali
+                </Link>
+              </td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>No:3</td>
+              <td>
+                <Link
+                  to="/dashboard/completedOrder/details"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Order 3
+                </Link>
+              </td>
               <td>Sathira Dimuthu</td>
               <td>0778522736</td>
               <td>2021-03-17</td>
-              <td className={TableStyle.moreInfo}>Sathira Dimuthu</td>
+              <td>
+                <Link
+                  to="/dashboard/deliveryDriver/viewOnly"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Sathira Dimuthu
+                </Link>
+              </td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>No:4</td>
+              <td>
+                <Link
+                  to="/dashboard/completedOrder/details"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Order 4
+                </Link>
+              </td>
               <td>Anushaka Tharindu</td>
               <td>0778522736</td>
               <td>2021-03-17</td>
-              <td className={TableStyle.moreInfo}>Anushka Tharindu</td>
+              <td>
+                <Link
+                  to="/dashboard/deliveryDriver/viewOnly"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Anushka Tharindu
+                </Link>
+              </td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>No:5</td>
+              <td>
+                <Link
+                  to="/dashboard/completedOrder/details"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Order 5
+                </Link>
+              </td>
               <td>Tharindu Gihan</td>
               <td>0778522736</td>
               <td>2021-03-17</td>
-              <td className={TableStyle.moreInfo}>Tharindu Gihan</td>
+              <td>
+                <Link
+                  to="/dashboard/deliveryDriver/viewOnly"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Tharindu Gihan
+                </Link>
+              </td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>No:6</td>
+              <td>
+                <Link
+                  to="/dashboard/completedOrder/details"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Order 6
+                </Link>
+              </td>
               <td>Thanuj Dasun</td>
               <td>0778522736</td>
               <td>2021-03-17</td>
-              <td className={TableStyle.moreInfo}>Dimuthu Ranthansinghe</td>
+              <td>
+                <Link
+                  to="/dashboard/deliveryDriver/viewOnly"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Dimuthu Ranthansinghe
+                </Link>
+              </td>
             </tr>
             <tr>
-              <td className={TableStyle.moreInfo}>No:7</td>
+              <td>
+                <Link
+                  to="/dashboard/completedOrder/details"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Order 7
+                </Link>
+              </td>
               <td>Dimuthu Rathnasinghe</td>
               <td>0778522736</td>
               <td>2021-03-17</td>
-              <td className={TableStyle.moreInfo}>Tharindu Gihan</td>
+              <td>
+                <Link
+                  to="/dashboard/deliveryDriver/viewOnly"
+                  className={TableStyle.linkStyleAdd}
+                >
+                  Tharindu Gihan
+                </Link>
+              </td>
             </tr>
           </tbody>
         </table>

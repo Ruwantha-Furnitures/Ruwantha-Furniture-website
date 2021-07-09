@@ -22,4 +22,5 @@ db.sequelize = sequelize;
 //Enter models
 db.Item = require('../models/item.model.js')(sequelize, Sequelize);
  
+
 module.exports = db;
