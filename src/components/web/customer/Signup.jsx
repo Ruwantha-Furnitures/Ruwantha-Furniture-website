@@ -28,7 +28,7 @@ const Signup = ({navigation}) => {
             width: '100%'    
           }}>
             <Navigation></Navigation>
-            <Container align="right"> 
+            <Container align="left"> 
               <SignForm navigation={navigation} signUpHandler={signUpHandler} ></SignForm>   
             </Container>                    
             <Footer></Footer>       
