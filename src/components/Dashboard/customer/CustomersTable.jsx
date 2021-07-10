@@ -57,7 +57,7 @@ function CustomersTable() {
               <td>
                 <Link
                   to="/dashboard/customer/detials"
-                  className={TableStyle.linkStyle}
+                  className={TableStyle.linkStyleAdd}
                 >
                   Tharindu Gihan
                 </Link>
@@ -87,7 +87,7 @@ function CustomersTable() {
               <td>
                 <Link
                   to="/dashboard/customer/detials"
-                  className={TableStyle.linkStyle}
+                  className={TableStyle.linkStyleAdd}
                 >
                   Himasha Anjali
                 </Link>
@@ -117,7 +117,7 @@ function CustomersTable() {
               <td className={TableStyle.moreInfo}>
                 <Link
                   to="/dashboard/customer/detials"
-                  className={TableStyle.linkStyle}
+                  className={TableStyle.linkStyleAdd}
                 >
                   Sathira Dimuthu
                 </Link>
@@ -147,7 +147,7 @@ function CustomersTable() {
               <td>
                 <Link
                   to="/dashboard/customer/detials"
-                  className={TableStyle.linkStyle}
+                  className={TableStyle.linkStyleAdd}
                 >
                   Anushka Tharindu
                 </Link>
@@ -177,7 +177,7 @@ function CustomersTable() {
               <td>
                 <Link
                   to="/dashboard/customer/detials"
-                  className={TableStyle.linkStyle}
+                  className={TableStyle.linkStyleAdd}
                 >
                   Himasha Anjali
                 </Link>
@@ -207,7 +207,7 @@ function CustomersTable() {
               <td>
                 <Link
                   to="/dashboard/customer/detials"
-                  className={TableStyle.linkStyle}
+                  className={TableStyle.linkStyleAdd}
                 >
                   Sathira Dimuthu
                 </Link>
@@ -237,7 +237,7 @@ function CustomersTable() {
               <td>
                 <Link
                   to="/dashboard/customer/detials"
-                  className={TableStyle.linkStyle}
+                  className={TableStyle.linkStyleAdd}
                 >
                   Anushka Tharindu
                 </Link>
