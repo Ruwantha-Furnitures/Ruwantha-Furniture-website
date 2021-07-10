@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Navigation from "../customer/Indexnav";
 import LoginForm from "./LoginForm";
 import Footer from "./Footer";
-import backcover from "../../../assets/login9.jpg";
+import backcover from "../../../assets/topimg30.jpg";
 import "../../../css/web/Login.css";
 
 function Login() {

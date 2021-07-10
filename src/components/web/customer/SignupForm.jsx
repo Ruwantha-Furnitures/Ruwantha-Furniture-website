@@ -15,7 +15,7 @@ const SignupForm= ({ signUpHandler }) =>  {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const submitHandler = (e) => { e.preventDefault()
+  const submitHandler = (e) => { //e.preventDefault()
     signUpHandler({ name, email, address, contactNo, password });
   };
 
@@ -29,7 +29,7 @@ const SignupForm= ({ signUpHandler }) =>  {
         <Card className={FormStyle.cardbox} style={{marginBottom: '20px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
             <Form style={{padding: '20px',margin: '10px'}} onSubmit={submitHandler}>          
             <center>        
-                <h2>SIGN UP</h2>
+                <h2>Sign Up</h2>
             </center>            
                            
             <input  style={{width: '260px'}} className={FormStyle.textBox}                   
