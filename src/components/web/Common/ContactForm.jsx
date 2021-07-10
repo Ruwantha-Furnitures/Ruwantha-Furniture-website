@@ -54,6 +54,7 @@ function ContactForm() {
         <div>                    
         {/*<Form className={FormStyle.innerbox}>*/}
         <Card className={FormStyle.cardbox} style={{marginBottom: '20px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
+            <center>
             <Form style={{padding: '15px'}}>
                     <Row style={rowStyle}>                                
                         <center><img src={Avatar} alt={Avatar} width={50} height={50}></img></center>
@@ -68,6 +69,7 @@ function ContactForm() {
                         <Button variant="success">Update</Button>{' '}                     
                     </div>                                                     
                 </Form>    
+                </center>
             </Card>
         </div>
     );

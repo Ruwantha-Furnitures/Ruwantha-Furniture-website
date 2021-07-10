@@ -34,12 +34,12 @@ function LoginForm() {
     }
 
     return (
-        <div>        
-          <Card className={FormStyle.cardbox} style={{marginBottom: '20px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
+        <div>                  
+          <Card className={FormStyle.cardbox} style={{marginTop:'30px', marginBottom: '30px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
             <Form style={{padding: '20px',margin: '10px'}}>  
-            {/* <center><img src={Avatar} style={avatar}/></center><br /> */}
+            <center><img src={Avatar} style={avatar}/></center><br />
             
-              <center><h2>Login</h2></center><br />
+              {/* <center><h2>Login</h2></center><br /> */}
                                                                
               <input  className={FormStyle.emailBox}
                 type='email'
@@ -53,8 +53,9 @@ function LoginForm() {
                 onChange={(e) => setPassword(e.target.value)}
               />
               <br /><br />
-            
-              <Button variant="success" type="submit">Signup</Button>{' '}
+              <div align="center">
+                <Button variant="success" type="submit" style={{width: '100%'}}>Login</Button>{' '}
+              </div> <br />
               <center><Link to="/signup" style={belowlinks}>Don't have an account?</Link></center>
               <center><Link to='/recoveryPassword' style={belowlinks}>Forgot Password</Link></center>
             </Form>
