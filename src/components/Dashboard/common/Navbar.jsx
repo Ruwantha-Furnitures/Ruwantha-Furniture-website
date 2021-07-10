@@ -17,13 +17,16 @@ function Navbar() {
         <div className={NavbarStyle.date}>
           <div className={NavbarStyle.dateicon}>
             <span className={"material-icons " + NavbarStyle.dateIconStyle}>
-              date_range
+              bookmark_border
             </span>
           </div>
           <div className={NavbarStyle.dateText}>
-            <h1 className={NavbarStyle.dateTitle}>
-              Today is 25th of Sunday in 2021
-            </h1>
+            <h1 className={NavbarStyle.dateTitle}>Welcome to Admin Portal</h1>
+          </div>
+          <div className={NavbarStyle.dateicon2}>
+            <span className={"material-icons " + NavbarStyle.dateIconStyle}>
+              bookmark_border
+            </span>
           </div>
         </div>
       </div>
