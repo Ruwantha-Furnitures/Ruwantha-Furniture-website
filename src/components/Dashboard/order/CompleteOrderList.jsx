@@ -63,8 +63,8 @@ function CompleteOrderList() {
                 </Link>
               </td>
               <td>Tharindu Gihan</td>
-              <td>0778522736</td>
-              <td>2021-03-17</td>
+              <td>0778511736</td>
+              <td>2021-04-17</td>
               <td>
                 <Link
                   to="/dashboard/deliveryDriver/viewOnly"
@@ -84,8 +84,8 @@ function CompleteOrderList() {
                 </Link>
               </td>
               <td>Himasha Anjali</td>
-              <td>0778522736</td>
-              <td>2021-03-17</td>
+              <td>0778522737</td>
+              <td>2021-03-18</td>
               <td>
                 <Link
                   to="/dashboard/deliveryDriver/viewOnly"
@@ -105,8 +105,8 @@ function CompleteOrderList() {
                 </Link>
               </td>
               <td>Sathira Dimuthu</td>
-              <td>0778522736</td>
-              <td>2021-03-17</td>
+              <td>0778522836</td>
+              <td>2021-02-17</td>
               <td>
                 <Link
                   to="/dashboard/deliveryDriver/viewOnly"
@@ -126,8 +126,8 @@ function CompleteOrderList() {
                 </Link>
               </td>
               <td>Anushaka Tharindu</td>
-              <td>0778522736</td>
-              <td>2021-03-17</td>
+              <td>0778522746</td>
+              <td>2021-01-17</td>
               <td>
                 <Link
                   to="/dashboard/deliveryDriver/viewOnly"
@@ -169,7 +169,7 @@ function CompleteOrderList() {
               </td>
               <td>Thanuj Dasun</td>
               <td>0778522736</td>
-              <td>2021-03-17</td>
+              <td>2021-05-17</td>
               <td>
                 <Link
                   to="/dashboard/deliveryDriver/viewOnly"

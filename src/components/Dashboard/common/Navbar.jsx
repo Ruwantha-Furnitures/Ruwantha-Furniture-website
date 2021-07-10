@@ -21,7 +21,7 @@ function Navbar() {
             </span>
           </div>
           <div className={NavbarStyle.dateText}>
-            <h1 className={NavbarStyle.dateTitle}>Welcome to Admin Portal</h1>
+            <h1 className={NavbarStyle.dateTitle}>Welcome to Owner Portal</h1>
           </div>
           <div className={NavbarStyle.dateicon2}>
             <span className={"material-icons " + NavbarStyle.dateIconStyle}>

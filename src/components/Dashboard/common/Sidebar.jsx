@@ -6,7 +6,7 @@ function Sidebar() {
   // Admin
   // Owner
   // DeliveryDriver
-  const user = "Admin";
+  const user = "Owner";
 
   return (
     <div className={SidebarStyle.sidebarBar}>
@@ -85,26 +85,29 @@ function Sidebar() {
                   </div>
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="/dashboard/deliveryDrivers"
+                  className={SidebarStyle.sidebarLink}
+                >
+                  <div className={SidebarStyle.lineSection}>
+                    <div className={SidebarStyle.lineIcon}>
+                      <span
+                        className={"material-icons " + SidebarStyle.iconWidth}
+                      >
+                        local_shipping
+                      </span>
+                    </div>
+                    <div className={SidebarStyle.lineText}>
+                      <h1 className={SidebarStyle.lineTextStyle}>Drivers</h1>
+                    </div>
+                  </div>
+                </Link>
+              </li>
             </>
           )}
           {/* Commone for all users */}
-          <li>
-            <Link
-              to="/dashboard/deliveryDrivers"
-              className={SidebarStyle.sidebarLink}
-            >
-              <div className={SidebarStyle.lineSection}>
-                <div className={SidebarStyle.lineIcon}>
-                  <span className={"material-icons " + SidebarStyle.iconWidth}>
-                    local_shipping
-                  </span>
-                </div>
-                <div className={SidebarStyle.lineText}>
-                  <h1 className={SidebarStyle.lineTextStyle}>Drivers</h1>
-                </div>
-              </div>
-            </Link>
-          </li>
+
           {user === "Admin" && (
             <>
               <li>
@@ -162,11 +165,11 @@ function Sidebar() {
                       <span
                         className={"material-icons " + SidebarStyle.iconWidth}
                       >
-                        supervisor_account
+                        reviews
                       </span>
                     </div>
                     <div className={SidebarStyle.lineText}>
-                      <h1 className={SidebarStyle.lineTextStyle}>Customers</h1>
+                      <h1 className={SidebarStyle.lineTextStyle}>Reviews</h1>
                     </div>
                   </div>
                 </Link>

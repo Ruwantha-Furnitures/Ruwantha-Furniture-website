@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./common/Navbar";
 import Sidebar from "./common/Sidebar";
-import AllProductsView from "./common/AllProductsView";
+import DriverDateView from "./common/DriverDateView";
 import MainStyle from "../../css/dashboard/Main.module.css";
 import ProductStyle from "../../css/dashboard/Products.module.css";
 import DeliveryDriverNotificationsTable from "./deliveryDriver/DeliveryDriverNotificationsTable";
@@ -26,7 +26,7 @@ function DeliveryDriverNotifications() {
             </div>
           </div>
           <div className={ProductStyle.productsViewSection}>
-            <AllProductsView />
+            <DriverDateView />
           </div>
         </div>
       </div>
