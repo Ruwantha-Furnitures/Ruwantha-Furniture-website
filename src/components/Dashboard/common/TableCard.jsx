@@ -20,39 +20,39 @@ function TableCard() {
           </thead>
           <tbody>
             <tr>
-              <td>Desk(Plastic)</td>
+              <td>Table</td>
               <td>Rs.25000</td>
               <td>Rs.250</td>
               <td>No.12</td>
               <td>Direct</td>
             </tr>
             <tr>
-              <td>Desk(Plastic)</td>
+              <td>Chair</td>
+              <td>Rs.25000</td>
+              <td>Rs.250</td>
+              <td>No.12</td>
+              <td>Online</td>
+            </tr>
+            <tr>
+              <td>Cupboard</td>
               <td>Rs.25000</td>
               <td>Rs.250</td>
               <td>No.12</td>
               <td>Direct</td>
             </tr>
             <tr>
-              <td>Desk(Plastic)</td>
+              <td>Desk</td>
               <td>Rs.25000</td>
               <td>Rs.250</td>
               <td>No.12</td>
               <td>Direct</td>
             </tr>
             <tr>
-              <td>Desk(Plastic)</td>
+              <td>Desk(High)</td>
               <td>Rs.25000</td>
               <td>Rs.250</td>
               <td>No.12</td>
-              <td>Direct</td>
-            </tr>
-            <tr>
-              <td>Desk(Plastic)</td>
-              <td>Rs.25000</td>
-              <td>Rs.250</td>
-              <td>No.12</td>
-              <td>Direct</td>
+              <td>Online</td>
             </tr>
           </tbody>
         </table>

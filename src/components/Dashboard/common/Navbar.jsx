@@ -17,7 +17,7 @@ function Navbar() {
         <div className={NavbarStyle.date}>
           <div className={NavbarStyle.dateicon}>
             <span className={"material-icons " + NavbarStyle.dateIconStyle}>
-              bookmark_border
+              drag_indicator
             </span>
           </div>
           <div className={NavbarStyle.dateText}>
@@ -25,7 +25,7 @@ function Navbar() {
           </div>
           <div className={NavbarStyle.dateicon2}>
             <span className={"material-icons " + NavbarStyle.dateIconStyle}>
-              bookmark_border
+              drag_indicator
             </span>
           </div>
         </div>

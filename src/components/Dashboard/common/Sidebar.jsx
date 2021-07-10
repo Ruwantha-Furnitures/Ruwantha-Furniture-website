@@ -6,7 +6,7 @@ function Sidebar() {
   // Admin
   // Owner
   // DeliveryDriver
-  const user = "DeliveryDriver";
+  const user = "Admin";
 
   return (
     <div className={SidebarStyle.sidebarBar}>

@@ -52,6 +52,7 @@ th {
 th a {
   text-decoration: none;
 }
+
 td {
   padding: 9px 11px;
   vertical-align: middle;
@@ -91,11 +92,12 @@ td {
 }
 
 .search {
-  background: #b89068;
+  /* background: #b89068; */
   border-radius: 22px;
   display: flex;
   align-items: center;
   height: 32px;
+  border: 1px solid #b89068;
 }
 
 .searchicon {
@@ -107,7 +109,7 @@ td {
 
 .searchIconStyle {
   font-size: 29px;
-  color: #f7f7f7;
+  color: #b89068;
 }
 
 .searchText {
@@ -119,13 +121,13 @@ td {
 .searchinput {
   width: 80%;
   height: 32px;
-  background: #b89068;
+  /* background: #b89068; */
   border: none;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
   line-height: 25px;
-  color: #f7f7f7;
+  color: #000000;
 }
 
 .searchText > ::placeholder {
@@ -133,7 +135,7 @@ td {
   font-weight: normal;
   font-size: 19px;
   line-height: 25px;
-  color: #f7f7f7;
+  color: #b89068;
 }
 
 .searchText > input:focus {
@@ -151,7 +153,7 @@ input[type="search"]:-webkit-autofill,
 input[type="search"]:-webkit-autofill:hover,
 input[type="search"]:-webkit-autofill:focus,
 input[type="search"]:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px #b89068 inset !important;
+  -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
 }
 
 .moreInfo {
@@ -202,12 +204,26 @@ input[type="search"]:-webkit-autofill:active {
   font-weight: 800;
 }
 
+.linkStyleAddHeader {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.86);
+  font-weight: 800;
+  align-items: center;
+  display: inline-flex;
+}
 .linkStyleAdd {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.86);
   font-weight: 800;
   align-items: center;
   display: inline-flex;
+}
+
+.linkStyleAdd:hover {
+  border: 2px solid #542b14;
+  border-radius: 22px;
+  padding-left: 6px;
+  padding-right: 6px;
 }
 
 .addIconStyle {
