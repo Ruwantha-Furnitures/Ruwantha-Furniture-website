@@ -1,8 +1,7 @@
 import React from 'react';
-//import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from 'styled-components'; //to add hover
 import { Container, Row, Col } from 'reactstrap';
-import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap';
+import { Navbar,Nav } from 'react-bootstrap';
 
 function Subnav() {
     require("bootstrap/dist/css/bootstrap.min.css");

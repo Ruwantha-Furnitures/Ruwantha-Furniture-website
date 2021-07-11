@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Navigation from "./UserNav";
 import Footer from "../Common/Footer";
-import { Container, Row, Col } from 'reactstrap';
+import { Container } from 'reactstrap';
 import ProfileForm from "../registeredCustomer/UpdateProfileForm";
 import Subnavigation from "./Subnav";
 import Topimg from '../../../assets/topimg29.jpg';
