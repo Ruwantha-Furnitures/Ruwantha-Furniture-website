@@ -10,6 +10,7 @@ import Card from 'react-bootstrap/Card';
 import Gallary from '../Common/ImageGallary';
 import "../../../css/web/Home.css";
 import "../../../css/web/common.module.css";
+import CommonFormStyle from "../../../css/web/common.module.css";
 
 function CustomerHome() {
   require("bootstrap/dist/css/bootstrap.min.css");
@@ -30,9 +31,9 @@ function CustomerHome() {
       <Container fluid><Gallary></Gallary></Container>      
       <div>
         <Card style={contactImg}>               
-          <Container align="left">
+          <div className={CommonFormStyle.formPageBox}  align="left">
             <ConForm></ConForm>  
-          </Container>          
+          </div>          
         </Card>        
       </div> 
       <Footer></Footer>

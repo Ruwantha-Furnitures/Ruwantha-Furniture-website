@@ -43,7 +43,7 @@ function UserNav() {
                                 </Link>
                             </Col>
                             <Col>
-                                <Link to="/login" ><button className={NavButtonStyle.btn} style={{marginTop:'-10px'}}>Logout</button></Link>
+                                <Link to="/login" ><button className={NavButtonStyle.btn} style={{marginTop:'-10px'}} onClick={()=>console.log("Logout")}>Logout</button></Link>
                             </Col>
                         </Row>                   
                     </Form>    
@@ -55,3 +55,5 @@ function UserNav() {
 }
 
 export default UserNav;
+
+// localStorage.removeItem('userlevel')

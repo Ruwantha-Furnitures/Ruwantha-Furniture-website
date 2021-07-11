@@ -13,18 +13,20 @@ const Login = ({navigation}) => {
     const [errorMessage, setErrorMessage] = useState("");
     const [isLoading, setIsLoading] = useState(false);         
 
-    useEffect(() => {
-      if(localStorage.getItem("userlevel") === null)
-      return () => {
-        setIsLoading(false)
-      }
-    }, [])
+    // useEffect(() => {
+    //   console.log('useEffect')
+    //   console.log(localStorage.getItem("userlevel"))
+    //   if(localStorage.getItem("userlevel") === null){      
+    //   setIsLoading(false)      
+    //   console.log('User Authentication failed')
+    //   }
+    // }, [errorMessage])
   
     const loginHandler = async (data) => {
       // console.log(data);
+    
       try {
         console.log('Asini');
-        setIsLoading(true);        
         let response = await axios.post("http://192.168.56.1:3002/api/customer/login",
           {
             data,
@@ -53,16 +55,20 @@ const Login = ({navigation}) => {
           localStorage.setItem("userlevel",3);
 
         } else {
+          console.log(localStorage.getItem("userlevel"))
           setIsLoading(false);
           let errorMessage = response.data.errorMessage;
           setErrorMessage(errorMessage);
-          console.log(errorMessage);
+          // console.log(errorMessage);
+          // console.log(isLoading)
         }
       } catch (error) {
         console.error(error);
       }
     };
   
+    const redirectHome=<Redirect to="/customer_home" />  ;
+    const redirectDashboard= <Redirect to="/dashboard" />
 
     return (
       // <div style={{              
@@ -74,22 +80,27 @@ const Login = ({navigation}) => {
       //   width: '100%',        
       // }}>    
       
+      
       <React.Fragment>
-      {((isLoading === true) ) ?    <Redirect to="/customer_home" /> : (<div style={{              
-        backgroundImage: `url(${backcover})`,        
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        objectFit:'cover',
-        height: '100%',
-        width: '100%',        
-      }}> 
-            <Navigation></Navigation>                    
-            <div className={CommonFormStyle.formPageBox} align="left">                  
-                <LoginForm navigation={navigation} loginHandler={loginHandler} ></LoginForm>               
-            </div>              
-            <Footer></Footer></div> )}
-      </React.Fragment>
-        
+
+      {isLoading === true && (localStorage.getItem("userlevel") === 1)}{
+        redirectHome
+      }
+      {isLoading === false && (<div style={{              
+          backgroundImage: `url(${backcover})`,        
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+          objectFit:'cover',
+          height: '100%',
+          width: '100%',        
+        }}> 
+        <Navigation></Navigation>                    
+        <div className={CommonFormStyle.formPageBox} align="left">                  
+            <LoginForm navigation={navigation} loginHandler={loginHandler} ></LoginForm>               
+        </div>              
+        <Footer></Footer></div>) } 
+     
+      </React.Fragment>                      
     );
 }
 
