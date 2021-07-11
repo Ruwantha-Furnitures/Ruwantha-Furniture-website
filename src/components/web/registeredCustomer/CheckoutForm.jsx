@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
-import { Container, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import "../../../css/web/Login.css";
-import NavButtonStyle from "../../../css/web/common.module.css";
 
 function CheckoutForm() {
     const rowStyle={

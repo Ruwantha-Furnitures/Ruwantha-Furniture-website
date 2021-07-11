@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import Form from "react-bootstrap/Form";
 import Card from 'react-bootstrap/Card';
-import { Container, Row, Col } from 'reactstrap';
+import { Row } from 'reactstrap';
 import Button from 'react-bootstrap/Button';
 import Avatar from "../../../assets/avatar.png";
 import "../../../css/web/Login.css";
-import NavButtonStyle from "../../../css/web/common.module.css";
 import FormStyle from "../../../css/web/Form.module.css";
 
 
