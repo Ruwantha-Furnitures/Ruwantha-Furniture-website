@@ -40,8 +40,7 @@ function ImageGallary() {
                             <center><img src={item4} style={{width: '300px', height: '300px'}} alt='item4'></img></center>
                         </Card>
                     </Col>                   
-                </Row>
-                <br />
+                </Row>                
                 <Row sm = {12}>
                     <Col sm={3}>
                         <Card style={cardimg}>

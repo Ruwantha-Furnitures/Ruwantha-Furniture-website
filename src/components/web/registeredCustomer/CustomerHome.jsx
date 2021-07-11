@@ -16,9 +16,9 @@ function CustomerHome() {
   require("bootstrap/dist/css/bootstrap.min.css");
   const contactImg = {
     backgroundImage: `url(${Topimg})` ,
-    repeat: 'none',
-    padding: '40px',    
-    MaxWidth: "100%",    
+    repeat: 'none',        
+    MaxWidth: "100%", 
+    padding: '10px'   
   };
 
   //console.log(localStorage.getItem("userlevel"))
@@ -26,15 +26,16 @@ function CustomerHome() {
   return (
     <div>
       <Navigation></Navigation>
-      <Slideshow></Slideshow>
-      <ProductBox></ProductBox>
+      <Slideshow></Slideshow><br />
+      <Container fluid><Card>
+          <br/><Card.Title><center><h2>Furniture Items</h2></center></Card.Title><br />
+          <ProductBox></ProductBox> 
+      </Card></Container><br />
       <Container fluid><Gallary></Gallary></Container>      
-      <div>
-        <Card style={contactImg}>               
-          <div className={CommonFormStyle.formPageBox}  align="left">
-            <ConForm></ConForm>  
-          </div>          
-        </Card>        
+      <div style={contactImg}>
+          <div className={CommonFormStyle.formPageBox} align="left">                         
+            <ConForm></ConForm>              
+          </div>        
       </div> 
       <Footer></Footer>
     </div>
