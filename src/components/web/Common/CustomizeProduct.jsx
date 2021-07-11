@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import {Row} from "reactstrap";
 import Button from "react-bootstrap/Button";
 import Card from 'react-bootstrap/Card';
-import Avatar from "../../../assets/avatar.png";
+import Avatar from "../../../assets/contact.png";
 import FormStyle from "../../../css/web/Form.module.css";
 
 
