@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import { Container} from 'reactstrap';
 import Navigation from "../customer/Indexnav";
 import LoginForm from "./LoginForm";
@@ -6,29 +6,34 @@ import Footer from "./Footer";
 import { Redirect } from "react-router-dom";
 import backcover from "../../../assets/topimg30.jpg";
 import "../../../css/web/Login.css";
+import CommonFormStyle from "../../../css/web/common.module.css";
 import axios from "axios";
 
 const Login = ({navigation}) => {
     const [errorMessage, setErrorMessage] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
-    const [isUserLevel, setUserLevel] = useState(-1);
+    const [isLoading, setIsLoading] = useState(false);         
+
+    useEffect(() => {
+      if(localStorage.getItem("userlevel") === null)
+      return () => {
+        setIsLoading(false)
+      }
+    }, [])
   
     const loginHandler = async (data) => {
       // console.log(data);
       try {
         console.log('Asini');
-        setIsLoading(true);
+        setIsLoading(true);        
         let response = await axios.post("http://192.168.56.1:3002/api/customer/login",
           {
             data,
           }          
         );
         if ((response.data.auth === true) && (response.data.userlevel === 1)) {
-          setIsLoading(true);
-          setUserLevel(1);
+          setIsLoading(true);          
           setErrorMessage("");
-          localStorage.setItem("userlevel",1);  
-          console.log(isUserLevel)        
+          localStorage.setItem("userlevel",1);               
           // console.log(localStorage.getItem("userlevel"))
           // console.log('running');
 
@@ -70,7 +75,7 @@ const Login = ({navigation}) => {
       // }}>    
       
       <React.Fragment>
-      {((isLoading === true) && (isUserLevel === 1)) ?    <Redirect to="/customer_home" /> : (<div style={{              
+      {((isLoading === true) ) ?    <Redirect to="/customer_home" /> : (<div style={{              
         backgroundImage: `url(${backcover})`,        
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
@@ -79,9 +84,9 @@ const Login = ({navigation}) => {
         width: '100%',        
       }}> 
             <Navigation></Navigation>                    
-            <Container align="left">                  
+            <div className={CommonFormStyle.formPageBox} align="left">                  
                 <LoginForm navigation={navigation} loginHandler={loginHandler} ></LoginForm>               
-            </Container>              
+            </div>              
             <Footer></Footer></div> )}
       </React.Fragment>
         
