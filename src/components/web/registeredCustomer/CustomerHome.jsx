@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "reactstrap";
-import ProductBox from "../registeredCustomer/CustomerProductCard";
+import ProductBox from "../registeredCustomer/CustomerAllProducts";
 import ConForm from "../Common/CustomizeProduct";
 import Topimg from '../../../assets/topimg19.jpg';
 import Navigation from "./UserNav";
@@ -10,15 +10,14 @@ import Card from 'react-bootstrap/Card';
 import Gallary from '../Common/ImageGallary';
 import "../../../css/web/Home.css";
 import "../../../css/web/common.module.css";
-import CommonFormStyle from "../../../css/web/common.module.css";
 
 function CustomerHome() {
   require("bootstrap/dist/css/bootstrap.min.css");
   const contactImg = {
     backgroundImage: `url(${Topimg})` ,
-    repeat: 'none',
-    padding: '40px',    
-    MaxWidth: "100%",    
+    repeat: 'none',        
+    MaxWidth: "100%", 
+        
   };
 
   //console.log(localStorage.getItem("userlevel"))
@@ -26,15 +25,18 @@ function CustomerHome() {
   return (
     <div>
       <Navigation></Navigation>
-      <Slideshow></Slideshow>
-      <ProductBox></ProductBox>
+      <Slideshow></Slideshow><br />
+      <Container fluid><Card>
+          <br/><Card.Title><center><h2>Furniture Items</h2></center></Card.Title><br />
+          <ProductBox></ProductBox> 
+      </Card></Container><br />
       <Container fluid><Gallary></Gallary></Container>      
-      <div>
-        <Card style={contactImg}>               
-          <div className={CommonFormStyle.formPageBox}  align="left">
-            <ConForm></ConForm>  
-          </div>          
-        </Card>        
+      <div style={contactImg}>
+          <br />
+          <Container align="left">                         
+            <ConForm></ConForm>              
+          </Container>   
+          <br />     
       </div> 
       <Footer></Footer>
     </div>

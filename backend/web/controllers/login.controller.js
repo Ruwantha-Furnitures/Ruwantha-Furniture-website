@@ -5,14 +5,16 @@ const bcrypt = require("bcrypt");
 //get all item list
 const LoginController  = async (req, res) => {
     console.log("I am in Login..");    
-    const { password, userEmail } = req.body.data;
+    const { password, email } = req.body.data;
     //console.log(password);
-    
-    const data = { email: userEmail };
+    console.log(email);    
+    const data = {email};
 
     try {
         console.log('backend running');
-        const account = await Account.findOne({ data });        
+        console.log(data)
+        const account = await Account.findOne({ where: {email:data.email}});
+        console.log(account)        
         if (account === null) {
           res.json({
             auth: false,                         
@@ -22,12 +24,8 @@ const LoginController  = async (req, res) => {
           const userLevel=account.userlevel
           bcrypt.compare(password, existingPassword, (error, result) => {
             if (result) {
-              // const accessToken = createTokens(account);
-              // res.cookie("access-token", accessToken, {
-              //   maxAge: 60 * 60 * 24 * 30 * 1000,
-              // });
               console.log(userLevel)
-              res.json({ auth: true, userlevel:userLevel });
+              res.json({ auth: true, userlevel:userLevel,email});
             } else {
               res.json({
                 auth: false,

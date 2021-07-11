@@ -6,7 +6,7 @@ import Navigation from "./UserNav";
 import Footer from "../Common/Footer";
 import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from 'reactstrap';
-
+import Avatar from '../../../assets/shipping.png';
 
 function CustomerCheckoutDeteailsForm() {
     require("bootstrap/dist/css/bootstrap.min.css");
@@ -15,14 +15,14 @@ function CustomerCheckoutDeteailsForm() {
     // const [telephone, setTelephone] = useState("");
     // const [description, setDescription] = useState("");        
 
-    // const title={
-    //     margin: '10px',
-    //     padding: '5px',
-    // };
+    const title={
+        margin: '0px',
+        padding: '3px',
+    };
 
-    // const rowStyle={
-    //     margin: '10px'
-    // };
+    const rowStyle={
+        margin: '10px'
+    };
 
     const textboxStyle = {
         width: '100%',
@@ -40,9 +40,12 @@ function CustomerCheckoutDeteailsForm() {
             <Container>
             <Row sm={12}>
                 <Col sm={8}>                    
-                    <Card style={{margin: '20px'}}>                        
+                    <Card style={{marginBottom: '20px'}}>                        
                         <Form style={{padding: '20px'}}>                                                       
-                            <h2 style={{textAlign:'center'}}>Shipping Details</h2>                            
+                            <Row style={rowStyle}>                                
+                                <center><img src={Avatar} alt={Avatar} width={50} height={50}></img></center>
+                                <center><h2 style={title}>Shipping Details</h2></center>
+                            </Row>                           
                             <h5>Personal Information</h5>
                             <Row sm={12}>
                                 <Col sm={6}>
@@ -63,7 +66,7 @@ function CustomerCheckoutDeteailsForm() {
                     </Card>
                 </Col>
                 <Col sm={4}>
-                    <Card style={{padding: '20px',margin: '20px'}}>                        
+                    <Card style={{padding: '20px'}}>                        
                         <center><h2>Your Order</h2></center><br/>
                         <Row sm={12}>
                             <Col sm={7}>

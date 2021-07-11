@@ -42,7 +42,7 @@ function Indexnav() {
                     <Nav className="mr-auto">
                         <Nav.Link href="/home">Home</Nav.Link>
                         <Nav.Link href="/product">Product</Nav.Link>                        
-                        <Nav.Link href="/contact-us">About Us</Nav.Link>
+                        <Nav.Link href="/contact-us">Contact Us</Nav.Link>
                     </Nav>
                     <Form inline>                
                         <Row>

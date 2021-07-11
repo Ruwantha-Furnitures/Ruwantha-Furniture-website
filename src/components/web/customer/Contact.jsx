@@ -10,8 +10,7 @@ function Contact() {
     
     const contactImg = {
         backgroundImage: `url(${Topimg})` ,
-        repeat: 'none',
-        padding: '35px',
+        repeat: 'none',        
         MaxWidth: "100%"
     }
     return (                            
@@ -19,10 +18,12 @@ function Contact() {
             <Navigation></Navigation> 
             <About></About>
             <div style={contactImg}>
-                <Container align="left">
-                    <ConForm></ConForm>
-                </Container>
-            </div>
+                <br />
+                <Container align="left">                         
+                    <ConForm></ConForm>              
+                </Container>   
+                <br />     
+            </div> 
             <Footer></Footer>            
         </div>                   
     );
