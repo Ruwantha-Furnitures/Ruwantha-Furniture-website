@@ -13,14 +13,6 @@ function CustomerCheckoutDeteailsForm() {
     // const [telephone, setTelephone] = useState("");
     // const [description, setDescription] = useState("");        
 
-    const title={
-        margin: '10px',
-        padding: '5px',
-    };
-
-    const rowStyle={
-        margin: '10px'
-    };
 
     const textboxStyle = {
         width: '100%',
@@ -32,14 +24,7 @@ function CustomerCheckoutDeteailsForm() {
         margin: '5px'             
     };
 
-    function validateForm() {
-        //Put the correct validation 
-    }
-      
-    function handleSubmit(event) {
-        event.preventDefault();
-    }
-    
+   
     return (                    
         <div>     
             <Container>

@@ -11,7 +11,7 @@ import "../../../css/web/Home.css";
 function CustomerProductCard() {
     require("bootstrap/dist/css/bootstrap.min.css");
 
-    const [itemCount, setItemCount] = React.useState(0);
+    //const [itemCount, setItemCount] = React.useState(0);
   
     const backcontainer = {
       marginTop: "20px",
@@ -35,12 +35,6 @@ function CustomerProductCard() {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-    };
-    const topimage = {
-      marginTop: "-50px",
-      width: "100%",
-      backgroundSize: "cover",
-      backgroundRepeat: "no-repeat",
     };
     return (
     <div>

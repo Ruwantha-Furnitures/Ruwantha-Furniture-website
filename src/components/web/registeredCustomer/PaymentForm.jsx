@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import "../../../css/web/Login.css";
 import Form from "react-bootstrap/Form";
 import PaymentModal from './PaymentButton';  
@@ -15,14 +15,14 @@ function CustomerCheckoutDeteailsForm() {
     // const [telephone, setTelephone] = useState("");
     // const [description, setDescription] = useState("");        
 
-    const title={
-        margin: '10px',
-        padding: '5px',
-    };
+    // const title={
+    //     margin: '10px',
+    //     padding: '5px',
+    // };
 
-    const rowStyle={
-        margin: '10px'
-    };
+    // const rowStyle={
+    //     margin: '10px'
+    // };
 
     const textboxStyle = {
         width: '100%',
@@ -34,14 +34,6 @@ function CustomerCheckoutDeteailsForm() {
         margin: '5px'            
     };
 
-    function validateForm() {
-        //Put the correct validation 
-    }
-      
-    function handleSubmit(event) {
-        event.preventDefault();
-    }
-    
     return (                    
         <div>    
             <Navigation></Navigation>             
