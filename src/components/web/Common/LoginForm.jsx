@@ -12,7 +12,7 @@ const LoginForm = ({ navigation, loginHandler }) => {
     const [password, setPassword] = useState("");
 
     const submitHandler = (e) => {
-      e.preventHandler();
+      e.preventDefault();
       loginHandler({ email, password });
     };
 
@@ -24,17 +24,7 @@ const LoginForm = ({ navigation, loginHandler }) => {
 
     const belowlinks = {
         color: "black",
-        paddig: "10px"
-    }
-
-    const loginform = {    
-        justifyContent: "left",
-        justifyItem: "left",
-        margin: "10px",
-        padding: "40px",          
-        backgroundColor: "rgb(1,1,1, 0.8)",            
-        borderRadius: "20px",                    
-        color: "#FFF"
+        paddig: "10px"    
     }
 
     return (
@@ -48,13 +38,17 @@ const LoginForm = ({ navigation, loginHandler }) => {
               <input  className={FormStyle.emailBox}
                 type='email'
                 placeholder='Email'
+                value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
               ></input><br />              
                          
               <input className={FormStyle.passwordBox}  
                 type="password"                
                 placeholder="Password"
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
               <br /><br />
               <div align="center">

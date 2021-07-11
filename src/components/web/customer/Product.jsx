@@ -4,6 +4,7 @@ import Navigation from "./Indexnav";
 import Footer from "../Common/Footer";
 import ProductBox from "./AllProductCards";
 import Search from "../Common/SearchProduct";
+import SliderProducts from "../Common/ProductSlider";
 import Card from 'react-bootstrap/Card';
 import Coverimg from '../../../assets/productbanner.png';
 
@@ -20,9 +21,11 @@ function Product() {
             <Col sm={12}>                
                 <Card>     
                     <Search></Search>               
-                    <Card.Img variant="top" src={Coverimg} />                    
+                                       
                     <Card.Body>  
                         <center>
+                            <br />
+                            <SliderProducts></SliderProducts>
                             <ProductBox></ProductBox>
                         </center>                                                 
                     </Card.Body>

@@ -20,6 +20,8 @@ function CustomerHome() {
     MaxWidth: "100%",    
   };
 
+  //console.log(localStorage.getItem("userlevel"))
+
   return (
     <div>
       <Navigation></Navigation>
