@@ -1,5 +1,4 @@
 import React from "react";
-import Badge from "@material-ui/core/Badge";
 import Person from '@material-ui/icons/Person';
 
 function PersonIcon() {

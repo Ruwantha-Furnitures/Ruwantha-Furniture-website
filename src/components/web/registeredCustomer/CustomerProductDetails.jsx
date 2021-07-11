@@ -2,7 +2,6 @@ import React from 'react';
 import { Container, Row, Col } from "reactstrap";
 import item4 from "../../../assets/items/14.jpg";
 import CommonStyle from "../../../css/web/common.module.css";
-import { Link } from "react-router-dom";
 
 function CustomerProductDetails() {
     require("bootstrap/dist/css/bootstrap.min.css");
@@ -30,7 +29,7 @@ function CustomerProductDetails() {
                 <Container style={innercontainer}>
                     <Row className="justify-content-md-center" xs={12}>
                         <Col sm={5}>
-                            <img src={item4} className={CommonStyle.Productimage}></img>
+                            <img src={item4} className={CommonStyle.Productimage} alt='product'></img>
                         </Col>
                         <br />
                         <Col sm={7}>

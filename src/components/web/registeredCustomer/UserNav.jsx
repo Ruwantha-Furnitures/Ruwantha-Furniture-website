@@ -1,14 +1,10 @@
 import React from "react";
-import styled from "styled-components"; //to add hover
-import { Container, Row, Col } from "reactstrap";
+import { Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import {
   Navbar,
   Nav,
-  NavDropdown,
   Form,
-  FormControl,
-  Button,
 } from "react-bootstrap";
 import logo from "../../../assets/nlogo.png";
 import ShoppingCart from "./Cart";

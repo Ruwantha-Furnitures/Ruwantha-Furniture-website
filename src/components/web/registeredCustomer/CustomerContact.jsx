@@ -3,7 +3,7 @@ import Navigation from "./UserNav";
 import Footer from "../Common/Footer";
 import About from "../Common/About";
 import ConForm from "../Common/ContactForm";
-import { Container, Row, Col } from 'reactstrap';
+import { Container} from 'reactstrap';
 import Topimg from '../../../assets/topimg10.jpg';
 
 function CustomerContact() {

@@ -5,12 +5,16 @@ import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import "../../../css/web/Login.css";
 import Avatar from "../../../assets/avatar.png";
-import NavButtonStyle from "../../../css/web/common.module.css";
 import FormStyle from "../../../css/web/Form.module.css";
 
-function LoginForm() {
+const LoginForm = ({ navigation, loginHandler }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const submitHandler = (e) => {
+      e.preventDefault();
+      loginHandler({ email, password });
+    };
 
     const avatar = {
         width: '40%',
@@ -20,37 +24,31 @@ function LoginForm() {
 
     const belowlinks = {
         color: "black",
-        paddig: "10px"
-    }
-
-    const loginform = {    
-        justifyContent: "left",
-        justifyItem: "left",
-        margin: "10px",
-        padding: "40px",          
-        backgroundColor: "rgb(1,1,1, 0.8)",            
-        borderRadius: "20px",                    
-        color: "#FFF"
+        paddig: "10px"    
     }
 
     return (
         <div>                  
           <Card className={FormStyle.cardbox} style={{marginTop:'30px', marginBottom: '30px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
-            <Form style={{padding: '20px',margin: '10px'}}>  
-            <center><img src={Avatar} style={avatar}/></center><br />
+            <Form style={{padding: '20px',margin: '10px'}} onSubmit={submitHandler}>  
+            <center><img src={Avatar} style={avatar} alt='avatar'/></center><br />
             
               {/* <center><h2>Login</h2></center><br /> */}
                                                                
               <input  className={FormStyle.emailBox}
                 type='email'
                 placeholder='Email'
+                value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
               ></input><br />              
                          
               <input className={FormStyle.passwordBox}  
                 type="password"                
                 placeholder="Password"
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
               <br /><br />
               <div align="center">

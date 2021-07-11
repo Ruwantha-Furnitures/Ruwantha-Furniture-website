@@ -2,7 +2,7 @@ import React from 'react';
 import Form from './ChangePasswordForm';
 import Navigation from "./UserNav";
 import Footer from "../Common/Footer";
-import { Container, Row, Col } from 'reactstrap';
+import { Container } from 'reactstrap';
 import Subnavigation from "./Subnav";
 import Topimg from '../../../assets/topimg2.jpg';
 

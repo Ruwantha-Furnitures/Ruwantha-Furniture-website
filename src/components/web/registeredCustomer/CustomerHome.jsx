@@ -1,7 +1,6 @@
 import React from "react";
-import { Container, Row, Col } from "reactstrap";
+import { Container } from "reactstrap";
 import ProductBox from "../registeredCustomer/CustomerProductCard";
-import Part2 from "../Common/LandingPagepart2";
 import ConForm from "../Common/CustomizeProduct";
 import Topimg from '../../../assets/topimg19.jpg';
 import Navigation from "./UserNav";
@@ -20,12 +19,9 @@ function CustomerHome() {
     padding: '40px',    
     MaxWidth: "100%",    
   };
-  const customize = {
-    backgroundImage: `url(${Part2})` ,
-    repeat: 'none',
-    padding: '40px',    
-    MaxWidth: "100%",    
-  };
+
+  //console.log(localStorage.getItem("userlevel"))
+
   return (
     <div>
       <Navigation></Navigation>

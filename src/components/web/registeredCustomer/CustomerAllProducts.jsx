@@ -1,24 +1,21 @@
 import React,{useEffect , useState} from 'react';
 import Card from 'react-bootstrap/Card';
-import { Container, Row, Col } from "reactstrap";
-// import imgfurni from '../../../../public/1.jpg
+import {Container, Row, Col} from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import Rating from "../Common/StartRating";
 import "../../../css/web/Home.css";
+import CommnStyles from "../../../css/web/common.module.css";
 import axios from "axios";
 
 const CustomerAllProducts = props => {    
     require("bootstrap/dist/css/bootstrap.min.css");    
-    const [itemCount, setItemCount] = React.useState(0);
+    // const [itemCount, setItemCount] = React.useState(0);
     const [products,setProducts]=useState([])
 
     // to load the product when the page is first rendered
     useEffect(() => {
         viewAllProducts();
     },[])
-
-    const BASE_URL='../../../assets/items/'
-    const type='.jpg'
 
     const viewAllProducts = async() => {
         try {
@@ -30,14 +27,7 @@ const CustomerAllProducts = props => {
             console.log(error);
         }
     }
-  
-    const innercontainer = {
-      backgroundColor: "transparent",
-      padding: "6px",
-      borderRadius: "20px",
-      display: "flex",      
-      alignItems: "center"           
-    };
+
     const funitureimg = {
       marginTop: "30px",      
       display: "flex",
@@ -45,62 +35,36 @@ const CustomerAllProducts = props => {
       alignItems: "center",
       borderRadius: '20px'
     };
-    const gridContainer = {
-        display: 'grid',
-        gridTemplateColumns: 'auto auto auto auto',
-        // backgroundColor: '#2196F3',
-        padding: '10px'
-      }
 
-    // const num = [3, 8, 11, 7, 5];
-
-    // const num2x = num.map((n) => n * 2);
-
-    // console.log(num2x); 
-
-    // return (
-    //     <div className="users">
-    //       {data.map((user) => (
-    //         <div className="user">{user}</div>
-    //       ))}
-    //     </div>
-    // );    
-
-    // const photo = require(`../../uploads/images/${obj.photo}`).default;
     return (
-        <div style={gridContainer}>
-            
-            {products.map((productList) =>(    
-                <center>                                             
-                <Card style={{width: '18rem'}}>                                        
-                    <center>      
-                    <img src={process.env.PUBLIC_URL + '/items/'+ productList.itemid +'.jpg'} alt='items' style={funitureimg} width={200} height={150}></img>                  
-                        {/* <img                               
-                                 //src={`../../../assets/items/${productList.itemid}.jpg`}                                     
-                            
-                                src = {`${BASE_URL}${productList.itemid.toString()}${type}`}
-                                alt = ''                              
-                                width={200}
-                                height={150}
-                                // style={funitureimg}
-                            /> */}
-
-                            {/* <p>../../../assets/items/${productList.itemid}.jpg</p> */}
+        <div className={CommnStyles.gridContainer}>
+            {products.map((productList) =>(  
+            <Container>
+                <Row sm={12}>
+                    <Col sm={3}>
+                        <center>
+                        <Card style={{width: '18rem'}}> 
+                            <center>      
+                                <img src={process.env.PUBLIC_URL + '/items/'+ productList.itemid +'.jpg'} alt='items' style={funitureimg} width={200} height={150}></img>                  
                             </center>
                             <center> {productList.name} </center>                                                   
-                                    <p class="textinbox">                        
-                                        Rs. {productList.price}<br />                                        
-                                    </p>
-                                    <center>    
-                                        <Rating></Rating>
-                                    </center>
-                                    <center>
-                                        <Link to="/viewProductDetail"><button class="addtocart">Read More</button></Link>
-                                    </center>                                                           
-                    </Card> 
-                    </center>                                           
-            ))}
-        </div>
+                                <p class="textinbox">                        
+                                    Rs. {productList.price}<br />                                        
+                                </p>
+                            <center>    
+                                <Rating></Rating>
+                            </center>
+                            <center>
+                                <Link to="/viewProductDetail"><button class="addtocart">Read More</button></Link>
+                            </center>                                                                                       
+                        </Card> 
+                        <br />   
+                        </center>                                   
+                    </Col>
+                </Row>
+                </Container>
+            ))}                    
+        </div>            
     )
 }
 

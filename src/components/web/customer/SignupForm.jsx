@@ -3,7 +3,6 @@ import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import FormStyle from "../../../css/web/Form.module.css";
-import NavButtonStyle from "../../../css/web/common.module.css";
 import "../../../css/web/Signup.css";
 
 const SignupForm= ({ signUpHandler }) =>  {
@@ -19,11 +18,6 @@ const SignupForm= ({ signUpHandler }) =>  {
     signUpHandler({ name, email, address, contactNo, password });
   };
 
-  const loginform = {
-    margin: "0px",
-    padding: "20px",    
-  };
-
   return (
       <div>      
         <Card className={FormStyle.cardbox} style={{marginBottom: '20px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
@@ -33,6 +27,7 @@ const SignupForm= ({ signUpHandler }) =>  {
             </center>            
                            
             <input  style={{width: '260px'}} className={FormStyle.textBox}                   
+                name = "name"
                 type="text"                    
                 placeholder="Name"
                 value= {name}
@@ -42,6 +37,7 @@ const SignupForm= ({ signUpHandler }) =>  {
             <br />
                                 
             <input style={{width: '260px'}} className={FormStyle.textBox} 
+                name = "address"
                 type="text"                    
                 placeholder="Address"
                 value= {address}
@@ -51,8 +47,10 @@ const SignupForm= ({ signUpHandler }) =>  {
             <br />
                                   
             <input style={{width: '260px'}} className={FormStyle.textBox} 
-                type="tele"                
-                placeholder="Telephone"
+                name = "telephone"
+                type="tele"       
+                pattern="[0-9]{10}"         
+                placeholder="Contact Number"
                 value ={contactNo}
                 onChange={(e) => setContactNo(e.target.value)}
                 required
@@ -60,6 +58,7 @@ const SignupForm= ({ signUpHandler }) =>  {
             <br />        
                    
             <input style={{width: '260px'}} className={FormStyle.emailBox} 
+                name = "email"
                 type="email"                
                 placeholder="Email"
                 value = {email}
@@ -69,6 +68,7 @@ const SignupForm= ({ signUpHandler }) =>  {
             <br />
                
             <input style={{width: '260px'}} className={FormStyle.passwordBox} 
+                name = "password"
                 type="password"                
                 placeholder="Password"
                 value = {password}
@@ -78,6 +78,7 @@ const SignupForm= ({ signUpHandler }) =>  {
             <br />
            
             <input style={{width: '260px'}} className={FormStyle.passwordBox} 
+                name = "confirmPassword"
                 type="password"  
                 value ={confirmPassword}              
                 placeholder="Confirm Password"
@@ -95,13 +96,14 @@ const SignupForm= ({ signUpHandler }) =>  {
                         name="group1"
                         type={type}
                         id={`inline-${type}-1`}
+                        required
                     />                    
                 </div>
                 ))}
             </center>
             <center>                    
                 {/*<button  type="submit" className={NavButtonStyle.btn}>Sign Up</button>*/}                
-                <Button variant="danger" type="reset">Cancel</Button>{' '}
+                <Button variant="danger" type="reset"> Cancel</Button>{' '}
                 <Button variant="success" type="submit">Signup</Button>{' '}
             </center>                           
         </Form> 

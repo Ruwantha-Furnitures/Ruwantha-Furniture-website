@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Navigation from "./Indexnav";
 import About from "../Common/About";
-import { Container, Row, Col } from 'reactstrap';
+import { Container} from 'reactstrap';
 import Topimg from '../../../assets/topimg10.jpg';
 import ConForm from "../Common/ContactForm";
 import Footer from "../Common/Footer";

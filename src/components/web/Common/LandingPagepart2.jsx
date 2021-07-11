@@ -1,8 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Custom from "../../../assets/customization.png";
-import Form from "./ContactForm";
-import webapp from "../../../assets/6.png";
 import { Container, Row, Col } from "reactstrap";
 
 function LandingPagepart2() {

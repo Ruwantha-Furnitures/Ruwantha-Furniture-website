@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import "../../../css/web/Login.css";
 import Avatar from "../../../assets/pwrecovery.png";
 import NavButtonStyle from "../../../css/web/common.module.css";
@@ -19,16 +18,6 @@ function PasswordRecoveryForm() {
         borderRadius: '50%'
     }
 
-    const belowlinks = {
-        color: "#FFF",
-        paddig: "10px"
-    }
-
-    const formlabel = {
-        color: "#FFF",
-        paddig: "20px"
-    }
-
     const loginform = {    
         justifyContent: "left",
         justifyItem: "left",
@@ -42,7 +31,7 @@ function PasswordRecoveryForm() {
     return (
         <div className="Login" >        
           <Form style={loginform} onSubmit={handleSubmit} align="left">
-            <center><img src={Avatar} style={avatar}/></center><br />
+            <center><img src={Avatar} style={avatar} alt='imgrecovery'/></center><br />
             <center><h6>Enter Your Email Address</h6></center><br />
             <Form.Group size="sm" controlId="email">                
               <Form.Control className={FormStyle.emailBox}               

@@ -1,31 +1,28 @@
-import React, {useState} from 'react';
+import React from 'react';
 import "../../../css/web/Login.css";
 import Form from "react-bootstrap/Form";
 import PaymentModal from './PaymentButton';  
 import Navigation from "./UserNav";
 import Footer from "../Common/Footer";
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from 'reactstrap';
-import { Link } from "react-router-dom";
-import Subnavigation from "./Subnav";
-import logo from "../../../assets/nlogo.png";
+
 
 function CustomerCheckoutDeteailsForm() {
     require("bootstrap/dist/css/bootstrap.min.css");
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [telephone, setTelephone] = useState("");
-    const [description, setDescription] = useState("");        
+    // const [name, setName] = useState("");
+    // const [email, setEmail] = useState("");
+    // const [telephone, setTelephone] = useState("");
+    // const [description, setDescription] = useState("");        
 
-    const title={
-        margin: '10px',
-        padding: '5px',
-    };
+    // const title={
+    //     margin: '10px',
+    //     padding: '5px',
+    // };
 
-    const rowStyle={
-        margin: '10px'
-    };
+    // const rowStyle={
+    //     margin: '10px'
+    // };
 
     const textboxStyle = {
         width: '100%',
@@ -37,14 +34,6 @@ function CustomerCheckoutDeteailsForm() {
         margin: '5px'            
     };
 
-    function validateForm() {
-        //Put the correct validation 
-    }
-      
-    function handleSubmit(event) {
-        event.preventDefault();
-    }
-    
     return (                    
         <div>    
             <Navigation></Navigation>             
