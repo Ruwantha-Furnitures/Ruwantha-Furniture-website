@@ -1,7 +1,7 @@
 import React from 'react';
-import Navigation from "./UserNav";
+import Navigation from "../UserNav";
 import Product from "./CustomerProductDetails";
-import Footer from "../Common/Footer";
+import Footer from "../../Common/Footer";
 
 function CustomerViewProductDetails() {
     return (

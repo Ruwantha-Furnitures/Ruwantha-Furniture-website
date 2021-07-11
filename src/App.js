@@ -36,14 +36,14 @@ import ContactUs from "./components/web/customer/Contact.jsx";
 import Login from "../src/components/web/Common/Login.jsx";
 import Signup from "./components/web/customer/Signup.jsx";
 
-import Customer_Home from "./components/web/registeredCustomer/home/CustomerHome.jsx";
-import Customer_Product from "./components/web/registeredCustomer/CustomerProduct.jsx";
+import Customer_Home from "./components/web/registeredCustomer/Home/CustomerHome.jsx";
+import Customer_Product from "./components/web/registeredCustomer/Product/CustomerProduct.jsx";
 import Customer_ContactUs from "./components/web/registeredCustomer/CustomerContact.jsx";
 import ViewProfile from "./components/web/registeredCustomer/ViewProfile.jsx";
 import Customer_Cart from "./components/web/registeredCustomer/ViewCart.jsx";
 
 import View_Product from "./components/web/customer/ViewProductDetails.jsx";
-import View_Product_Details from "./components/web/registeredCustomer/CustomerViewProductDetails";
+import View_Product_Details from "./components/web/registeredCustomer/Product/CustomerViewProductDetails";
 import CustomerUpdateProfile from "./components/web/registeredCustomer/UpdateProfile.jsx";
 import CustomerChangePassword from "./components/web/registeredCustomer/CustomerChangePassword.jsx";
 import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery.jsx";
