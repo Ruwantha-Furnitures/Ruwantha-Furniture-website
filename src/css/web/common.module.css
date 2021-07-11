@@ -55,9 +55,9 @@
     padding: 10px;
   }
 
-  .formPageBox{
+  /* .formPageBox{
     margin-left: 80px ;
-  }
+  } */
 
   @media screen and (max-width: 798px) {
     .btn {
@@ -99,8 +99,8 @@
       grid-template-columns: auto;    
       padding: 10px;
     }
-    .formPageBox{
+    /* .formPageBox{
       margin-left: 5px;      
-    }
+    } */
   }
   
