@@ -36,7 +36,7 @@ import ContactUs from "./components/web/customer/Contact.jsx";
 import Login from "../src/components/web/Common/Login.jsx";
 import Signup from "./components/web/customer/Signup.jsx";
 
-import Customer_Home from "./components/web/registeredCustomer/CustomerHome.jsx";
+import Customer_Home from "./components/web/registeredCustomer/home/CustomerHome.jsx";
 import Customer_Product from "./components/web/registeredCustomer/CustomerProduct.jsx";
 import Customer_ContactUs from "./components/web/registeredCustomer/CustomerContact.jsx";
 import ViewProfile from "./components/web/registeredCustomer/ViewProfile.jsx";
