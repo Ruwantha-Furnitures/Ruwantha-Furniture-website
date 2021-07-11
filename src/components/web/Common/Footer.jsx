@@ -14,7 +14,7 @@ return (
 	<Container align='center'>
 		<Row sm={12}>
 			<Col sm={3} style={{marginTop:"0px"}}>
-				<Heading  align='center'><img src={logo} style={{padding: '5px'}}/>
+				<Heading  align='center'><img src={logo} style={{padding: '5px'}} alt='logo'/>
 				AR Magic</Heading>
 			</Col>
 			<Col sm={2} style={{marginTop:"20px"}}>
@@ -32,7 +32,7 @@ return (
 				<FooterLink>madumalhasith@gmail.com</FooterLink><br />								
 			</Col>
 			<Col sm={1} style={{marginTop:"20px"}}>
-				<FooterLink href="#"><img src={Appicon} width={130}/></FooterLink>	
+				<FooterLink href="#"><img src={Appicon} width={130} alt='appimg'/></FooterLink>	
 			</Col>
 		</Row>
 	</Container>

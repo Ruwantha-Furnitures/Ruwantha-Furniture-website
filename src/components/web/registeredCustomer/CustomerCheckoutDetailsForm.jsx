@@ -1,27 +1,18 @@
-import React, {useState} from 'react';
+import React from 'react';
 import "../../../css/web/Login.css";
 import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from 'reactstrap';
 import { Link } from "react-router-dom";
-import logo from "../../../assets/nlogo.png";
 
 function CustomerCheckoutDeteailsForm() {
     require("bootstrap/dist/css/bootstrap.min.css");
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [telephone, setTelephone] = useState("");
-    const [description, setDescription] = useState("");        
+    // const [name, setName] = useState("");
+    // const [email, setEmail] = useState("");
+    // const [telephone, setTelephone] = useState("");
+    // const [description, setDescription] = useState("");        
 
-    const title={
-        margin: '10px',
-        padding: '5px',
-    };
-
-    const rowStyle={
-        margin: '10px'
-    };
 
     const textboxStyle = {
         width: '100%',
@@ -33,14 +24,7 @@ function CustomerCheckoutDeteailsForm() {
         margin: '5px'             
     };
 
-    function validateForm() {
-        //Put the correct validation 
-    }
-      
-    function handleSubmit(event) {
-        event.preventDefault();
-    }
-    
+   
     return (                    
         <div>     
             <Container>

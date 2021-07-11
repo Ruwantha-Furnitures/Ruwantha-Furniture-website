@@ -1,9 +1,8 @@
 import React from "react";
-import { Container, Row, Col } from "reactstrap";
-import Part2 from "../Common/LandingPagepart2";
+import { Container} from "reactstrap";
 import ConForm from "../Common/CustomizeProduct";
 import Topimg from '../../../assets/topimg19.jpg';
-import ProductBox from "./ProductCards";
+import ProductBox from "./AllProductCards"; /// Change this to /ProductCards
 import Navigation from "./Indexnav";
 import Slideshow from './Banner';
 import Footer from "../Common/Footer";
@@ -25,7 +24,12 @@ function Home() {
     <div>
       <Navigation></Navigation>
       <Slideshow></Slideshow>
-      <ProductBox></ProductBox>      
+      <br/>
+      <Container fluid><Card>
+          <br/><Card.Title><center><h2>Furniture Items</h2></center></Card.Title><br />
+          <ProductBox></ProductBox> 
+      </Card></Container> 
+      <br />        
       <Container fluid><Gallary></Gallary></Container>      
       <div>
         <Card style={contactImg}>               

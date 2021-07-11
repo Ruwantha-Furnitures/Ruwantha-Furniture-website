@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Form from "react-bootstrap/Form";
-import { Container, Row, Col } from 'reactstrap';
+import {Row} from 'reactstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
@@ -9,10 +9,10 @@ import Avatar from "../../../assets/avatar.png";
 
 function UpdateProfileForm() {
     require("bootstrap/dist/css/bootstrap.min.css");
-    const [name, setName] = useState("Asini");
-    const [address, setAddress] = useState("Ambalangoda");
-    const [telephone, setTelephone] = useState("0773153130");
-    const [email, setEmail] = useState("asinipathmila@gmail.com");
+    // const [name, setName] = useState("Asini");
+    // const [address, setAddress] = useState("Ambalangoda");
+    // const [telephone, setTelephone] = useState("0773153130");
+    // const [email, setEmail] = useState("asinipathmila@gmail.com");
 
     const title={
         margin: '10px',

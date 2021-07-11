@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import NavButtonStyle from "../../../css/web/common.module.css";
 
 const Payment = ({ orderId, name, amount }) => {
