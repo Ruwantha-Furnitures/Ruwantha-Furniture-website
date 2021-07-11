@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "reactstrap";
-import ProductBox from "../registeredCustomer/CustomerProductCard";
+import ProductBox from "../registeredCustomer/CustomerAllProducts";
 import ConForm from "../Common/CustomizeProduct";
 import Topimg from '../../../assets/topimg19.jpg';
 import Navigation from "./UserNav";
