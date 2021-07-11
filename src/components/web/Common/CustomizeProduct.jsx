@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-import { Container, Row, Col } from "reactstrap";
+import {Row} from "reactstrap";
 import Button from "react-bootstrap/Button";
 import Card from 'react-bootstrap/Card';
 import Avatar from "../../../assets/avatar.png";
-import NavButtonStyle from "../../../css/web/common.module.css";
 import FormStyle from "../../../css/web/Form.module.css";
 
 function CustomizeProduct() {
     require("bootstrap/dist/css/bootstrap.min.css");
 
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [telephone, setTelephone] = useState("");
-    const [description, setDescription] = useState("");   
+    // const [name, setName] = useState("");
+    // const [email, setEmail] = useState("");
+    // const [telephone, setTelephone] = useState("");
+    // const [description, setDescription] = useState("");   
     
     const title={   
         margin: '10px',     

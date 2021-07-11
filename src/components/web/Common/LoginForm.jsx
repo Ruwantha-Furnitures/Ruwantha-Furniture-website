@@ -5,12 +5,16 @@ import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import "../../../css/web/Login.css";
 import Avatar from "../../../assets/avatar.png";
-import NavButtonStyle from "../../../css/web/common.module.css";
 import FormStyle from "../../../css/web/Form.module.css";
 
-function LoginForm() {
+const LoginForm = ({ navigation, loginHandler }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const submitHandler = (e) => {
+      e.preventHandler();
+      loginHandler({ email, password });
+    };
 
     const avatar = {
         width: '40%',
@@ -36,7 +40,7 @@ function LoginForm() {
     return (
         <div>                  
           <Card className={FormStyle.cardbox} style={{marginTop:'30px', marginBottom: '30px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
-            <Form style={{padding: '20px',margin: '10px'}}>  
+            <Form style={{padding: '20px',margin: '10px'}} onSubmit={submitHandler}>  
             <center><img src={Avatar} style={avatar}/></center><br />
             
               {/* <center><h2>Login</h2></center><br /> */}
