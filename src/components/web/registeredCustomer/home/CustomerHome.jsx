@@ -1,15 +1,15 @@
 import React from "react";
 import { Container } from "reactstrap";
-import ProductBox from "../registeredCustomer/CustomerAllProducts";
-import ConForm from "../Common/CustomizeProduct";
-import Topimg from '../../../assets/topimg19.jpg';
-import Navigation from "./UserNav";
-import Slideshow from "../customer/Banner";
-import Footer from "../Common/Footer";
+import ProductBox from "../Product/CustomerAllProducts";
+import ConForm from "../../Common/CustomizeProduct";
+import Topimg from '../../../../assets/topimg19.jpg';
+import Navigation from "../UserNav";
+import Slideshow from "../../customer/Banner";
+import Footer from "../../Common/Footer";
 import Card from 'react-bootstrap/Card';
-import Gallary from '../Common/ImageGallary';
-import "../../../css/web/Home.css";
-import "../../../css/web/common.module.css";
+import Gallary from '../../Common/ImageGallary';
+import "../../../../css/web/Home.css";
+import "../../../../css/web/common.module.css";
 
 function CustomerHome() {
   require("bootstrap/dist/css/bootstrap.min.css");

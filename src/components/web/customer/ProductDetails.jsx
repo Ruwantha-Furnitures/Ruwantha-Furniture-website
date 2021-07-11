@@ -13,7 +13,7 @@ function ProductDetails() {
         <div>
             <Container>
             <br /><br />
-            <Card className={FormStyle.cardbox} style={{borderRadius: '20px', padding: '20px'}}>            
+            <Card className={FormStyle.cardbox} style={{marginBottom: '20px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
                 <Row className="justify-content-md-center" xs={12}>
                 <Col>                
                     <Row className="justify-content-md-center" xs={12}>

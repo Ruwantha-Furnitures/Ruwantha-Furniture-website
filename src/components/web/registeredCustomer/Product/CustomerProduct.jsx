@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import Navigation from "./UserNav";
-import Footer from "../Common/Footer";
+import Navigation from "../UserNav";
+import Footer from "../../Common/Footer";
 import ProductBox from "./CustomerAllProducts";
-import Search from "../Common/SearchProduct";
+import Search from "../../Common/SearchProduct";
 import Card from 'react-bootstrap/Card';
 import axios from "axios";
 
