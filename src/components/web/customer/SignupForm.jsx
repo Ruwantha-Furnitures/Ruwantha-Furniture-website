@@ -18,11 +18,6 @@ const SignupForm= ({ signUpHandler }) =>  {
     signUpHandler({ name, email, address, contactNo, password });
   };
 
-  const loginform = {
-    margin: "0px",
-    padding: "20px",    
-  };
-
   return (
       <div>      
         <Card className={FormStyle.cardbox} style={{marginBottom: '20px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      

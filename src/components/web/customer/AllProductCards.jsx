@@ -7,16 +7,13 @@ import axios from "axios";
 
 const AllProductCards = props => {    
     require("bootstrap/dist/css/bootstrap.min.css");    
-    const [itemCount, setItemCount] = React.useState(0);
+    //const [itemCount, setItemCount] = React.useState(0);
     const [products,setProducts]=useState([])
 
     // to load the product when the page is first rendered
     useEffect(() => {
         viewAllProducts();
     },[])
-
-    const BASE_URL='../../../assets/items/'
-    const type='.jpg'
 
     const viewAllProducts = async() => {
         try {
@@ -28,14 +25,7 @@ const AllProductCards = props => {
             console.log(error);
         }
     }
-  
-    const innercontainer = {
-      backgroundColor: "transparent",
-      padding: "6px",
-      borderRadius: "20px",
-      display: "flex",      
-      alignItems: "center"           
-    };
+
     const funitureimg = {
       marginTop: "30px",      
       display: "flex",

@@ -1,6 +1,5 @@
 import React from "react";
 import { Container} from "reactstrap";
-import Part2 from "../Common/LandingPagepart2";
 import ConForm from "../Common/CustomizeProduct";
 import Topimg from '../../../assets/topimg19.jpg';
 import ProductBox from "./AllProductCards"; /// Change this to /ProductCards
