@@ -14,12 +14,12 @@ function ViewProfile() {
         padding: '0',        
         MaxWidth: "100%"     
     }
-    const formStyle = {                       
-        padding: '20px',
-        margin: '20px',
-        marginLeft: '40px',
-        MaxWidth: "100%"     
-    }
+    // const formStyle = {                       
+    //     padding: '20px',
+    //     margin: '20px',
+    //     marginLeft: '40px',
+    //     MaxWidth: "100%"     
+    // }
     return (
         <div style={contactImg}>                                     
             <Navigation></Navigation> 
