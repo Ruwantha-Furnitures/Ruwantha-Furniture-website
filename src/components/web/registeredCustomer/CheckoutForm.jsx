@@ -7,9 +7,6 @@ import { Row, Col } from 'reactstrap';
 import "../../../css/web/Login.css";
 
 function CheckoutForm() {
-    const rowStyle={
-        margin: '10px'
-    };    
 
     return (
     <div>   

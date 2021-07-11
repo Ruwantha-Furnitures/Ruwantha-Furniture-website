@@ -9,15 +9,10 @@ import FormStyle from "../../../css/web/Form.module.css";
 
 
 function ChangePasswordForm() {
+    require("bootstrap/dist/css/bootstrap.min.css");
     const [password, setPassword] = useState("");
     const [newpassword, setNewPassword] = useState("");
-    const [confirmpassword, setConfirmPassword] = useState("");
-
-    require("bootstrap/dist/css/bootstrap.min.css");
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [telephone, setTelephone] = useState("");
-    const [description, setDescription] = useState("");       
+    const [confirmpassword, setConfirmPassword] = useState("");      
     
     const title={
         margin: '10px',
@@ -26,16 +21,6 @@ function ChangePasswordForm() {
 
     const rowStyle={
         margin: '10px'
-    };
-
-    const textboxStyle = {
-        width: '100%',
-        backgroundColor: '#eeeff5',
-        border: 'none',
-        height: '40px',
-        borderRadius: '5px',
-        padding: '5px',
-        margin: '5px'            
     };
 
     return (                    
@@ -50,20 +35,23 @@ function ChangePasswordForm() {
                             
                 <input  className={FormStyle.emailBox}
                     type='password'
+                    value={password}
                     placeholder='Enter your password'
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => setPassword(e.target.value)}
                 ></input><br />              
                             
                 <input className={FormStyle.passwordBox}  
-                    type="password"                
+                    type="password"    
+                    value={newpassword}            
                     placeholder="Enter your new password"
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => setNewPassword(e.target.value)}
                 />
 
                 <input className={FormStyle.passwordBox}  
-                    type="password"                
+                    type="password"        
+                    value={confirmpassword}        
                     placeholder="Confirm password"
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                 />
               
                 <br /><br />
