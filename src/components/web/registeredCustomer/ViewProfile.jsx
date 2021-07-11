@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Navigation from "./UserNav";
 import Footer from "../Common/Footer";
-import { Container, Row, Col, CardImg } from 'reactstrap';
+import { Container} from 'reactstrap';
 import ProfileForm from "../registeredCustomer/ViewProfileForm";
 import Subnavigation from "./Subnav";
 import Topimg from '../../../assets/topimg28.jpg';
-import Card from 'react-bootstrap/Card';
 
 function ViewProfile() {
     const contactImg = {

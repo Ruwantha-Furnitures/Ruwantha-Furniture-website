@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
-import { Container, Row, Col } from 'reactstrap';
+import {Row} from 'reactstrap';
 import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import Avatar from "../../../assets/avatar.png";
