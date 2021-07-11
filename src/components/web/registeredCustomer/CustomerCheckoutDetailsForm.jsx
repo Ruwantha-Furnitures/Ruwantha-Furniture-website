@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from 'reactstrap';
 import { Link } from "react-router-dom";
+import Avatar from '../../../assets/shipping.png';
 
 function CustomerCheckoutDeteailsForm() {
     require("bootstrap/dist/css/bootstrap.min.css");
@@ -13,6 +14,14 @@ function CustomerCheckoutDeteailsForm() {
     // const [telephone, setTelephone] = useState("");
     // const [description, setDescription] = useState("");        
 
+    const title={
+        margin: '0px',
+        padding: '3px',
+    };
+
+    const rowStyle={
+        margin: '10px'
+    };
 
     const textboxStyle = {
         width: '100%',
@@ -31,9 +40,11 @@ function CustomerCheckoutDeteailsForm() {
             <Row sm={12}>
                 <Col sm={8}>
                     <Card style={{marginBottom: '20px'}}>                        
-                        <Form style={{padding: '20px'}}>                            
-                            {/* <center><img src={logo} alt={logo} width={50} height={50}></img></center> */}
-                            <h2 style={{textAlign: 'center', marginTop: '15px'}}>Shipping Details</h2>
+                        <Form style={{padding: '20px'}}>   
+                            <Row style={rowStyle}>                                
+                                <center><img src={Avatar} alt={Avatar} width={50} height={50}></img></center>
+                                <center><h2 style={title}>Shipping Details</h2></center>
+                            </Row>                                                       
                             
                             <h5>Personal Information</h5>
                             <Row sm={12}>
