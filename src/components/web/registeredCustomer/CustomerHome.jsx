@@ -10,7 +10,6 @@ import Card from 'react-bootstrap/Card';
 import Gallary from '../Common/ImageGallary';
 import "../../../css/web/Home.css";
 import "../../../css/web/common.module.css";
-import CommonFormStyle from "../../../css/web/common.module.css";
 
 function CustomerHome() {
   require("bootstrap/dist/css/bootstrap.min.css");
@@ -18,7 +17,7 @@ function CustomerHome() {
     backgroundImage: `url(${Topimg})` ,
     repeat: 'none',        
     MaxWidth: "100%", 
-    padding: '10px'   
+        
   };
 
   //console.log(localStorage.getItem("userlevel"))
@@ -33,9 +32,11 @@ function CustomerHome() {
       </Card></Container><br />
       <Container fluid><Gallary></Gallary></Container>      
       <div style={contactImg}>
-          <div className={CommonFormStyle.formPageBox} align="left">                         
+          <br />
+          <Container align="left">                         
             <ConForm></ConForm>              
-          </div>        
+          </Container>   
+          <br />     
       </div> 
       <Footer></Footer>
     </div>
