@@ -41,7 +41,7 @@ const LoginForm = ({ navigation, loginHandler }) => {
         <div>                  
           <Card className={FormStyle.cardbox} style={{marginTop:'30px', marginBottom: '30px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
             <Form style={{padding: '20px',margin: '10px'}} onSubmit={submitHandler}>  
-            <center><img src={Avatar} style={avatar}/></center><br />
+            <center><img src={Avatar} style={avatar} alt='avatar'/></center><br />
             
               {/* <center><h2>Login</h2></center><br /> */}
                                                                
