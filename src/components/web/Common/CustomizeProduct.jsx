@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Form from "react-bootstrap/Form";
 import {Row} from "reactstrap";
 import Button from "react-bootstrap/Button";
@@ -43,13 +43,13 @@ function CustomizeProduct() {
     };
       
       
-    function validateForm() {
-        //Put the correct validation 
-    }
+    // function validateForm() {
+    //     //Put the correct validation 
+    // }
       
-    function handleSubmit(event) {
-        event.preventDefault();
-    }
+    // function handleSubmit(event) {
+    //     event.preventDefault();
+    // }
     
     return (                    
         <div>                    

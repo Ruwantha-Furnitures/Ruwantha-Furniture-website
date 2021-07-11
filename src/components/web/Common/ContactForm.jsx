@@ -40,14 +40,6 @@ function ContactForm() {
         padding: '5px',
         margin: '5px'            
     };
-      
-    function validateForm() {
-        //Put the correct validation 
-    }
-      
-    function handleSubmit(event) {
-        event.preventDefault();
-    }
     
     return (                    
         <div>                    
