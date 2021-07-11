@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "reactstrap";
+import { Container} from "reactstrap";
 import Part2 from "../Common/LandingPagepart2";
 import ConForm from "../Common/CustomizeProduct";
 import Topimg from '../../../assets/topimg19.jpg';

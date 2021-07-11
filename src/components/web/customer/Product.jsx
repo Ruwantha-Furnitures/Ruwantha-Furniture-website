@@ -1,13 +1,11 @@
 import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import Navigation from "./Indexnav";
 import Footer from "../Common/Footer";
 import ProductBox from "./AllProductCards";
 import Search from "../Common/SearchProduct";
 import Card from 'react-bootstrap/Card';
-import Topimg from '../../../assets/background.jpg';
 import Coverimg from '../../../assets/productbanner.png';
-import { CardImg } from 'react-bootstrap';
 
 function Product() {
     require("bootstrap/dist/css/bootstrap.min.css");

@@ -3,7 +3,6 @@ import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import FormStyle from "../../../css/web/Form.module.css";
-import NavButtonStyle from "../../../css/web/common.module.css";
 import "../../../css/web/Signup.css";
 
 const SignupForm= ({ signUpHandler }) =>  {
