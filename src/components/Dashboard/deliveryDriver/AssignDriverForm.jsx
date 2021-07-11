@@ -1,11 +1,37 @@
 import React from "react";
-import ProductViewFormStyle from "../../../css/dashboard/product/ProductViewForm.module.css";
+import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.css";
+import { Link } from "react-router-dom";
 
 function AssignDriverForm() {
   return (
     <React.Fragment>
       <div>
-        <h1 className={ProductViewFormStyle.titleStyle}>Assign Driver Page</h1>
+        <div className={ProductViewFormStyle.titleHeader}>
+          <h1 className={ProductViewFormStyle.tableTitleHeaderStyle}>
+            Assign Drivers Page
+          </h1>
+          <div className={ProductViewFormStyle.backSection}>
+            <div className={ProductViewFormStyle.back}>
+              <Link
+                to="/dashboard/assignListOrderDriver"
+                className={ProductViewFormStyle.linkStyle}
+              >
+                <div className={ProductViewFormStyle.backStyle}>
+                  <span
+                    className={
+                      "material-icons " + ProductViewFormStyle.backIconStyle
+                    }
+                  >
+                    arrow_back_ios
+                  </span>
+                  <div className={ProductViewFormStyle.backButtonStyle}>
+                    Back
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
       <form action="#" className={ProductViewFormStyle.formStyle}>
         <div className={ProductViewFormStyle.details}>
@@ -20,12 +46,12 @@ function AssignDriverForm() {
               >
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
-                    Product
+                    No. Product
                   </label>
                   <input
                     type="text"
                     value=""
-                    placeholder="Product Name"
+                    placeholder="Number of Products"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
@@ -36,7 +62,7 @@ function AssignDriverForm() {
                   <input
                     type="text"
                     value=""
-                    placeholder="Product Price"
+                    placeholder="Product(s) Price"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
@@ -44,23 +70,23 @@ function AssignDriverForm() {
               <div className={ProductViewFormStyle.formLine}>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
-                    Quantity
+                    Discount(s)
                   </label>
                   <input
                     type="text"
                     value=""
-                    placeholder="Product Qunatity"
+                    placeholder="Total Discount"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
-                    Discount
+                    Amount
                   </label>
                   <input
                     type="text"
                     value=""
-                    placeholder="Product Discount"
+                    placeholder="Total Amount"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>

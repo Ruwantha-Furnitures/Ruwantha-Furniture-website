@@ -1,12 +1,39 @@
 import React from "react";
 import ProductImage from "../../../assets/items/14.jpg";
-import ProductViewFormStyle from "../../../css/dashboard/product/ProductViewForm.module.css";
+import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.css";
+import { Link } from "react-router-dom";
 
 function ProductViewForm() {
+  const handleUpdate = () => {
+    console.log("Hello");
+    window.location = "/dashboard/product/update";
+  };
+
   return (
     <React.Fragment>
-      <div>
-        <h1 className={ProductViewFormStyle.titleStyle}>Product View</h1>
+      <div className={ProductViewFormStyle.titleHeader}>
+        <h1 className={ProductViewFormStyle.tableTitleHeaderStyle}>
+          Product View
+        </h1>
+        <div className={ProductViewFormStyle.backSection}>
+          <div className={ProductViewFormStyle.back}>
+            <Link
+              to="/dashboard/products"
+              className={ProductViewFormStyle.linkStyle}
+            >
+              <div className={ProductViewFormStyle.backStyle}>
+                <span
+                  className={
+                    "material-icons " + ProductViewFormStyle.backIconStyle
+                  }
+                >
+                  arrow_back_ios
+                </span>
+                <div className={ProductViewFormStyle.backButtonStyle}>Back</div>
+              </div>
+            </Link>
+          </div>
+        </div>
       </div>
       <div className={ProductViewFormStyle.details}>
         <div className={ProductViewFormStyle.imgDescPart}>
@@ -40,12 +67,25 @@ function ProductViewForm() {
                   ProductViewFormStyle.sidemargin
                 }
               >
-                <button className={ProductViewFormStyle.descButtonStyle}>
+                <button
+                  className={
+                    ProductViewFormStyle.descButtonStyle +
+                    " " +
+                    ProductViewFormStyle.successButtonColor
+                  }
+                  onClick={handleUpdate}
+                >
                   Update
                 </button>
               </div>
               <div className={ProductViewFormStyle.descButton}>
-                <button className={ProductViewFormStyle.descButtonStyle}>
+                <button
+                  className={
+                    ProductViewFormStyle.descButtonStyle +
+                    " " +
+                    ProductViewFormStyle.deleteButtonColor
+                  }
+                >
                   Delete
                 </button>
               </div>

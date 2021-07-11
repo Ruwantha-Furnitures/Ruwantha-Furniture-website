@@ -23,7 +23,7 @@ import AssignOrderDriver from "./components/Dashboard/AssignOrderDriver";
 import AssignDriver from "./components/Dashboard/AssignDriver";
 import CompletedOrders from "./components/Dashboard/CompletedOrders";
 import DeliveryDriverAvalability from "./components/Dashboard/DeliveryDriverAvalability";
-import ProductSellProductForm from "./components/Dashboard/product/ProductSellProductForm";
+// import ProductSellProductForm from "./components/Dashboard/product/ProductSellProductForm";
 import ProductSellCustomer from "./components/Dashboard/ProductSellCustomer";
 
 // import test from "./components/Dashboard/test/test";
@@ -49,6 +49,15 @@ import CustomerChangePassword from "./components/web/registeredCustomer/Customer
 import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery.jsx";
 import CustomerPayment from "./components/web/registeredCustomer/PaymentForm.jsx";
 import CustomerCheckout from "./components/web/registeredCustomer/CustomerCheckoutDeteails.jsx";
+import ProductUpdate from "./components/Dashboard/ProductUpdate";
+import ProductCategoryUpdate from "./components/Dashboard/ProductCategoryUpdate";
+import ProductTypeUpdate from "./components/Dashboard/ProductTypeUpdate";
+import ProductSellAmount from "./components/Dashboard/ProductSellAmount";
+import OrderDetails from "./components/Dashboard/OrderDetails";
+import DeliveryDriverUpdate from "./components/Dashboard/DeliveryDriverUpdate";
+import CustomerMessages from "./components/Dashboard/CustomerMessages";
+import CustomerMessageView from "./components/Dashboard/CustomerMessageView";
+import DeliveryDriverNotifications from "./components/Dashboard/DeliveryDriverNotifications";
 
 function App() {
   return (
@@ -61,6 +70,16 @@ function App() {
           <Route exact path="/dashboard/products" component={Products} />
           <Route exact path="/dashboard/product/view" component={ProductView} />
           <Route exact path="/dashboard/product/add" component={ProductAdd} />
+          <Route
+            exact
+            path="/dashboard/product/update"
+            component={ProductUpdate}
+          />
+          <Route
+            exact
+            path="/dashboard/product/sell/amount"
+            component={ProductSellAmount}
+          />
           <Route
             exact
             path="/dashboard/product/sell/product"
@@ -82,6 +101,11 @@ function App() {
             path="/dashboard/product/viewProductType"
             component={ProductTypeView}
           />
+          <Route
+            exact
+            path="/dashboard/product/updateProductType"
+            component={ProductTypeUpdate}
+          />
 
           <Route
             exact
@@ -94,12 +118,46 @@ function App() {
             path="/dashboard/product/viewProductCategory"
             component={ProductCategoryView}
           />
+          <Route
+            exact
+            path="/dashboard/product/updateProductCategory"
+            component={ProductCategoryUpdate}
+          />
 
           <Route
             exact
             path="/dashboard/purchaseOrders"
             component={PurchaseOrders}
           />
+
+          {/* For Navigations Purpose */}
+          <Route
+            exact
+            path="/dashboard/purchaseOrder/details"
+            component={OrderDetails}
+          />
+          <Route
+            exact
+            path="/dashboard/completedOrder/details"
+            component={OrderDetails}
+          />
+          <Route
+            exact
+            path="/dashboard/assigndOrder/details"
+            component={OrderDetails}
+          />
+          <Route
+            exact
+            path="/dashboard/deliveryDriver/details"
+            component={OrderDetails}
+          />
+          <Route
+            exact
+            path="/dashboard/deliveryDriverNotifications/details"
+            component={OrderDetails}
+          />
+          {/* End Navigations Purpose */}
+
           <Route
             exact
             path="/dashboard/completedOrders"
@@ -115,7 +173,6 @@ function App() {
             path="/dashboard/assignDriver"
             component={AssignDriver}
           />
-         
 
           {/* Dashboard-Profiles Section*/}
           <Route
@@ -126,6 +183,16 @@ function App() {
 
           {/* Dashboard-Customer Section */}
           <Route exact path="/dashboard/customers" component={Customers} />
+          <Route
+            exact
+            path="/dashboard/customerMessages"
+            component={CustomerMessages}
+          />
+          <Route
+            exact
+            path="/dashboard/customerMessage/view"
+            component={CustomerMessageView}
+          />
 
           <Route
             exact
@@ -139,10 +206,31 @@ function App() {
             path="/dashboard/deliveryDrivers"
             component={DeliveryDrivers}
           />
-           <Route
+          <Route
             exact
             path="/dashboard/deliveryDriver/view"
             component={DeliveryDriverView}
+          />
+          <Route
+            exact
+            path="/dashboard/deliveryDriver/viewOnly"
+            component={DeliveryDriverView}
+          />
+          <Route
+            exact
+            path="/dashboard/deliveryDriverProfile"
+            component={DeliveryDriverView}
+          />
+
+          <Route
+            exact
+            path="/dashboard/deliveryDriver/update"
+            component={DeliveryDriverUpdate}
+          />
+          <Route
+            exact
+            path="/dashboard/deliveryDriverProfile/update"
+            component={DeliveryDriverUpdate}
           />
           <Route
             exact
@@ -154,7 +242,12 @@ function App() {
             path="/dashboard/deliveryDriver/deliveries"
             component={DeliveryDriverDeliveries}
           />
-           <Route
+          <Route
+            exact
+            path="/dashboard/deliveryDriver/notifications"
+            component={DeliveryDriverNotifications}
+          />
+          <Route
             exact
             path="/dashboard/deliveryDriver/availablity"
             component={DeliveryDriverAvalability}
@@ -197,7 +290,7 @@ function App() {
           />
           <Route exact path="/recoveryPassword" component={RecoveryPassword} />
           <Route exact path="/customer_checkout" component={CustomerCheckout} />
-          
+
           <Route exact path="/payment" component={CustomerPayment} />
         </Switch>
       </div>
@@ -206,6 +299,3 @@ function App() {
 }
 
 export default App;
-
-
-

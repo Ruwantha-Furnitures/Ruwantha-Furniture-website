@@ -1,13 +1,37 @@
 import React from "react";
 import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.css";
+import { Link } from "react-router-dom";
 
-function DeliveryDriverAvalabilityForm() {
+function CustomerMessagesViewForm() {
   return (
     <React.Fragment>
       <div>
-        <h1 className={ProductViewFormStyle.titleStyle}>
-          Delivery Driver Availability
-        </h1>
+        <div className={ProductViewFormStyle.titleHeader}>
+          <h1 className={ProductViewFormStyle.tableTitleHeaderStyle}>
+            Customer Message
+          </h1>
+          <div className={ProductViewFormStyle.backSection}>
+            <div className={ProductViewFormStyle.back}>
+              <Link
+                to="/dashboard/customerMessages"
+                className={ProductViewFormStyle.linkStyle}
+              >
+                <div className={ProductViewFormStyle.backStyle}>
+                  <span
+                    className={
+                      "material-icons " + ProductViewFormStyle.backIconStyle
+                    }
+                  >
+                    arrow_back_ios
+                  </span>
+                  <div className={ProductViewFormStyle.backButtonStyle}>
+                    Back
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
       <form action="#" className={ProductViewFormStyle.formStyle}>
         <div className={ProductViewFormStyle.details}>
@@ -27,7 +51,7 @@ function DeliveryDriverAvalabilityForm() {
                   <input
                     type="text"
                     value=""
-                    placeholder="Driver First Name"
+                    placeholder="Tharindu"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
@@ -38,7 +62,7 @@ function DeliveryDriverAvalabilityForm() {
                   <input
                     type="text"
                     value=""
-                    placeholder="Driver Last Name"
+                    placeholder="Gihan"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
@@ -51,68 +75,49 @@ function DeliveryDriverAvalabilityForm() {
                   <input
                     type="text"
                     value=""
-                    placeholder="Delivery Driver Email"
+                    placeholder="wtgihan@gmail.com"
                     className={ProductViewFormStyle.inputStyleforLong}
                   />
                 </div>
               </div>
               <div className={ProductViewFormStyle.formLine}>
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Number
+                <div className={ProductViewFormStyle.dataforLong}>
+                  <label className={ProductViewFormStyle.labelStyleforLong}>
+                    Address
                   </label>
                   <input
                     type="text"
                     value=""
-                    placeholder="Driver Contact Number"
-                    className={ProductViewFormStyle.inputStyle}
-                  />
-                </div>
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Payment
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Basic Payment"
-                    className={ProductViewFormStyle.inputStyle}
+                    placeholder="Gonapura Poddala Galle"
+                    className={ProductViewFormStyle.inputStyleforLong}
                   />
                 </div>
               </div>
-
               <div className={ProductViewFormStyle.formLine}>
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Vehicle
+                <div
+                  className={
+                    ProductViewFormStyle.dataforLong +
+                    " " +
+                    ProductViewFormStyle.addInlineFlex
+                  }
+                >
+                  <label
+                    className={
+                      ProductViewFormStyle.labelStyleforLong +
+                      " " +
+                      ProductViewFormStyle.addMarginBottom
+                    }
+                  >
+                    Message
                   </label>
-                  <input
-                    type="text"
+                  <textarea
                     value=""
-                    placeholder="Vehicle Number"
-                    className={ProductViewFormStyle.inputStyle}
+                    placeholder="Customer Message..."
+                    className={ProductViewFormStyle.labelStyleforLongDesc}
                   />
-                </div>
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Availability
-                  </label>
-                  {/* Drivers filter by area and according to avaliable status */}
-                  <select className={ProductViewFormStyle.inputFormSelectStyle}>
-                    <option value="Availabile">Availabile</option>
-                    <option value="Not Availabile">Not Availabile</option>
-                  </select>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className={ProductViewFormStyle.descButtonsAdd}>
-          <div className={ProductViewFormStyle.descButtonAdd}>
-            <button className={ProductViewFormStyle.descButtonAddStyle}>
-              Change Availabilty
-            </button>
           </div>
         </div>
       </form>
@@ -120,4 +125,4 @@ function DeliveryDriverAvalabilityForm() {
   );
 }
 
-export default DeliveryDriverAvalabilityForm;
+export default CustomerMessagesViewForm;

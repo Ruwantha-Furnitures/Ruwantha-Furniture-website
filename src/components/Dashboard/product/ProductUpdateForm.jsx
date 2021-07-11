@@ -1,18 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.css";
+import ProductImage from "../../../assets/dashboard/product/addPhotoNew2.png";
 import { Link } from "react-router-dom";
 
-function DeliveryDriverDetails() {
+function ProductUpdateForm() {
+  const [imgData, setImgData] = useState(null);
+
+  const onChangePicture = (e) => {
+    if (e.target.files[0]) {
+      console.log("picture: ", e.target.files);
+      // setPicture(e.target.files[0]);
+      const reader = new FileReader();
+      reader.addEventListener("load", () => {
+        setImgData(reader.result);
+      });
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
   return (
     <React.Fragment>
       <div className={ProductViewFormStyle.titleHeader}>
         <h1 className={ProductViewFormStyle.tableTitleHeaderStyle}>
-          New Delivery Driver
+          Product Update
         </h1>
         <div className={ProductViewFormStyle.backSection}>
           <div className={ProductViewFormStyle.back}>
             <Link
-              to="/dashboard/deliveryDrivers"
+              to="/dashboard/products"
               className={ProductViewFormStyle.linkStyle}
             >
               <div className={ProductViewFormStyle.backStyle}>
@@ -29,8 +43,50 @@ function DeliveryDriverDetails() {
           </div>
         </div>
       </div>
-      <form action="#" className={ProductViewFormStyle.formStyle}>
+      <form action="#">
         <div className={ProductViewFormStyle.details}>
+          <div className={ProductViewFormStyle.imgDescPart}>
+            <div className={ProductViewFormStyle.Img}>
+              <input
+                type="file"
+                className={ProductViewFormStyle.productImageAddStyle}
+                onChange={onChangePicture}
+              />
+              <img
+                src={imgData !== null ? imgData : ProductImage}
+                alt="upload-img"
+                className={ProductViewFormStyle.productImagePreviewStyle}
+              />
+            </div>
+
+            <div className={ProductViewFormStyle.desc}>
+              <div className={ProductViewFormStyle.descTitle}>
+                <div className={ProductViewFormStyle.dataProductTitle}>
+                  <label className={ProductViewFormStyle.labelProductTitle}>
+                    Product Name
+                  </label>
+                  <input
+                    type="text"
+                    value=""
+                    placeholder="Product Name"
+                    className={ProductViewFormStyle.inputProductTitle}
+                  />
+                </div>
+              </div>
+              <div className={ProductViewFormStyle.descDetails}>
+                <div className={ProductViewFormStyle.dataTitle}>
+                  <label className={ProductViewFormStyle.labelStyleTitle}>
+                    Description
+                  </label>
+                  <textarea
+                    value=""
+                    placeholder="Product Description..."
+                    className={ProductViewFormStyle.inputStyleDesc}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
           <div className={ProductViewFormStyle.infoPart}>
             <div className={ProductViewFormStyle.form}>
               <div
@@ -42,98 +98,71 @@ function DeliveryDriverDetails() {
               >
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
-                    First Name
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Driver First Name"
-                    className={ProductViewFormStyle.inputStyle}
-                  />
-                </div>
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Last Name
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Driver Last Name"
-                    className={ProductViewFormStyle.inputStyle}
-                  />
-                </div>
-              </div>
-              <div className={ProductViewFormStyle.formLine}>
-                <div className={ProductViewFormStyle.dataforLong}>
-                  <label className={ProductViewFormStyle.labelStyleforLong}>
-                    Email
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Delivery Driver Email"
-                    className={ProductViewFormStyle.inputStyleforLong}
-                  />
-                </div>
-              </div>
-              <div className={ProductViewFormStyle.formLine}>
-                <div className={ProductViewFormStyle.dataforLong}>
-                  <label className={ProductViewFormStyle.labelStyleforLong}>
-                    Address
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Delivery Driver Address"
-                    className={ProductViewFormStyle.inputStyleforLong}
-                  />
-                </div>
-              </div>
-              <div className={ProductViewFormStyle.formLine}>
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Number
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Driver Contact Number"
-                    className={ProductViewFormStyle.inputStyle}
-                  />
-                </div>
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Payment
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Basic Payment"
-                    className={ProductViewFormStyle.inputStyle}
-                  />
-                </div>
-              </div>
-
-              <div className={ProductViewFormStyle.formLine}>
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Vehicle
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Vehicle Number"
-                    className={ProductViewFormStyle.inputStyle}
-                  />
-                </div>
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
                     Type
                   </label>
                   <input
                     type="text"
                     value=""
-                    placeholder="Vehicle Type"
+                    placeholder="Product Type"
+                    className={ProductViewFormStyle.inputStyle}
+                  />
+                </div>
+                <div className={ProductViewFormStyle.data}>
+                  <label className={ProductViewFormStyle.labelStyle}>
+                    Colour
+                  </label>
+                  <input
+                    type="text"
+                    value=""
+                    placeholder="Product Colour"
+                    className={ProductViewFormStyle.inputStyle}
+                  />
+                </div>
+              </div>
+              <div className={ProductViewFormStyle.formLine}>
+                <div className={ProductViewFormStyle.data}>
+                  <label className={ProductViewFormStyle.labelStyle}>
+                    Width
+                  </label>
+                  <input
+                    type="text"
+                    value=""
+                    placeholder="Product Width"
+                    className={ProductViewFormStyle.inputStyle}
+                  />
+                </div>
+                <div className={ProductViewFormStyle.data}>
+                  <label className={ProductViewFormStyle.labelStyle}>
+                    Height
+                  </label>
+                  <input
+                    type="text"
+                    value=""
+                    placeholder="Product Height"
+                    className={ProductViewFormStyle.inputStyle}
+                  />
+                </div>
+              </div>
+              <div className={ProductViewFormStyle.formLine}>
+                <div className={ProductViewFormStyle.data}>
+                  <label className={ProductViewFormStyle.labelStyle}>
+                    Price
+                  </label>
+                  <input
+                    type="text"
+                    value=""
+                    placeholder="Product Price"
+                    className={ProductViewFormStyle.inputStyle}
+                  />
+                </div>
+                <div className={ProductViewFormStyle.data}>
+                  <label className={ProductViewFormStyle.labelStyle}>
+                    Discount
+                  </label>
+                  <input
+                    type="text"
+                    value=""
+                    placeholder="Product Discount"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
@@ -141,11 +170,16 @@ function DeliveryDriverDetails() {
             </div>
           </div>
         </div>
-
         <div className={ProductViewFormStyle.descButtonsAdd}>
           <div className={ProductViewFormStyle.descButtonAdd}>
-            <button className={ProductViewFormStyle.descButtonAddStyle}>
-              Add New
+            <button
+              className={
+                ProductViewFormStyle.buttonStyle +
+                " " +
+                ProductViewFormStyle.successButtonColor
+              }
+            >
+              Update
             </button>
           </div>
         </div>
@@ -154,4 +188,4 @@ function DeliveryDriverDetails() {
   );
 }
 
-export default DeliveryDriverDetails;
+export default ProductUpdateForm;
