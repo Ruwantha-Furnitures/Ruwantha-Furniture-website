@@ -6,6 +6,7 @@ import Card from 'react-bootstrap/Card';
 import Avatar from "../../../assets/avatar.png";
 import FormStyle from "../../../css/web/Form.module.css";
 
+
 function CustomizeProduct() {
     require("bootstrap/dist/css/bootstrap.min.css");
 
@@ -15,7 +16,7 @@ function CustomizeProduct() {
     // const [description, setDescription] = useState("");   
     
     const title={   
-        margin: '10px',     
+        margin: '2px',     
         padding: '3px'        
     };
 
@@ -54,10 +55,10 @@ function CustomizeProduct() {
     return (                    
         <div>                    
         {/*<Form className={FormStyle.innerbox}>*/}
-        <Card className={FormStyle.cardbox} style={{marginBottom: '20px', width: '23rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
+        <Card className={FormStyle.cardbox} style={{marginBottom: '20px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
             <Form style={{padding: '15px'}}>
                     <Row style={rowStyle}>                                
-                        <center><img src={Avatar} alt={Avatar} width={50} height={50}></img></center>
+                        <center><img src={Avatar} alt={Avatar} width={30} height={30}></img></center>
                         <center><h4 style={title}>Customize Furniture</h4></center>
                     </Row>                                                         
                     <input type='text' style={textboxStyle} placeholder="Your Name"></input><br />                                           
