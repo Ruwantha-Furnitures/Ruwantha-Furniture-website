@@ -15,8 +15,7 @@ function Home() {
   require("bootstrap/dist/css/bootstrap.min.css");
   const contactImg = {
     backgroundImage: `url(${Topimg})` , 
-    repeat: 'none',
-    padding: '15px',
+    repeat: 'none',    
     MaxWidth: "100%"
   };
 
@@ -31,12 +30,12 @@ function Home() {
       </Card></Container> 
       <br />        
       <Container fluid><Gallary></Gallary></Container>      
-      <div>
-        <Card style={contactImg}>               
-          <div className={CommonFormStyle.formPageBox} align="left">
-            <ConForm></ConForm>  
-          </div>          
-        </Card>        
+      <div style={contactImg}>
+          <br />
+          <Container align="left">                         
+            <ConForm></ConForm>              
+          </Container>   
+          <br />     
       </div> 
       <Footer></Footer>
     </div>

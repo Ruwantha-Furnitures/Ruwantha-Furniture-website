@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import {Row} from "reactstrap";
 import Button from "react-bootstrap/Button";
 import Card from 'react-bootstrap/Card';
-import Avatar from "../../../assets/avatar.png";
+import Avatar from "../../../assets/contact.png";
 import FormStyle from "../../../css/web/Form.module.css";
 
 
@@ -55,7 +55,7 @@ function CustomizeProduct() {
     return (                    
         <div>                    
         {/*<Form className={FormStyle.innerbox}>*/}
-        <Card className={FormStyle.cardbox} style={{marginBottom: '20px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
+        <Card className={FormStyle.cardbox} style={{marginBottom: '20px', width: '21rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
             <Form style={{padding: '15px'}}>
                     <Row style={rowStyle}>                                
                         <center><img src={Avatar} alt={Avatar} width={30} height={30}></img></center>

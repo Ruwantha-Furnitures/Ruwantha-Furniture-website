@@ -1,10 +1,10 @@
 import React from 'react';
-import Form from './ChangePasswordForm';
+import Form from './CustomerChangePasswordForm';
 import Navigation from "./UserNav";
 import Footer from "../Common/Footer";
 import { Container } from 'reactstrap';
 import Subnavigation from "./Subnav";
-import Topimg from '../../../assets/topimg2.jpg';
+import Topimg from '../../../assets/topimg31.jpg';
 
 function CustomerChangePassword() {
     const contactImg = {
