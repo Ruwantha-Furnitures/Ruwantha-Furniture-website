@@ -1,7 +1,5 @@
 import React,{useEffect , useState} from 'react';
 import Card from 'react-bootstrap/Card';
-import { Container, Row, Col } from "reactstrap";
-// import imgfurni from '../../../../public/1.jpg
 import { Link } from "react-router-dom";
 import Rating from "../Common/StartRating";
 import "../../../css/web/Home.css";
@@ -16,9 +14,6 @@ const CustomerAllProducts = props => {
     useEffect(() => {
         viewAllProducts();
     },[])
-
-    const BASE_URL='../../../assets/items/'
-    const type='.jpg'
 
     const viewAllProducts = async() => {
         try {
