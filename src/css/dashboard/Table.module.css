@@ -211,6 +211,7 @@ input[type="search"]:-webkit-autofill:active {
   align-items: center;
   display: inline-flex;
 }
+
 .linkStyleAdd {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.86);

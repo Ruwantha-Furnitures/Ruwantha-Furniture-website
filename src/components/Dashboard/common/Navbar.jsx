@@ -5,6 +5,12 @@ import Auth from "../service/auth";
 
 function Navbar() {
   const user = Auth.getCurrentUser();
+
+  const handleLogout = () => {
+    localStorage.removeItem("userlevel");
+    window.location = "/home";
+  };
+
   return (
     <div className={NavbarStyle.navgation}>
       <div className={NavbarStyle.logoSection}>
@@ -45,7 +51,9 @@ function Navbar() {
             </Link>
           </div>
           <div className={NavbarStyle.logout}>
-            <button className={NavbarStyle.logoutButton}>Log Out</button>
+            <button className={NavbarStyle.logoutButton} onClick={handleLogout}>
+              Log Out
+            </button>
           </div>
         </div>
       </div>
