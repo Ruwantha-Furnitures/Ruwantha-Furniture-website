@@ -6,6 +6,7 @@ import NavButtonStyle from "../../../../css/web/common.module.css";
 import FormStyle from "../../../../css/web/Form.module.css";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import backcover from "../../../../assets/topimg34.jpg";
 
 function Pending() {
     return (
