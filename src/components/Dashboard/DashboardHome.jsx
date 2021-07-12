@@ -28,7 +28,7 @@ function Dashboard() {
                 detailCardMargin={true}
                 materialIconName={"price_change"}
                 cardText={"Today Sales"}
-                cardPrice={"Rs.1000"}
+                cardPrice={"Rs.10000"}
               />
               <DetailCard
                 detailCardMargin={true}
