@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
-import Slide9 from "../../../assets/topimg13.jpg";
-import Slide10 from "../../../assets/topimg17.jpg";
+import Slide9 from "../../../assets/topimg6.jpg";
+import Slide10 from "../../../assets/topimg8.jpg";
 
 function ProductSlider() {
     return (

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Navigation from "../customer/Indexnav";
+import Navigation from "../customer/Navigation/Indexnav";
 import LoginForm from "./LoginForm";
 import Footer from "./Footer";
 import { Redirect } from "react-router-dom";
