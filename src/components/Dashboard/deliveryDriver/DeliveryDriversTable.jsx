@@ -40,7 +40,7 @@ function DeliveryDriversTable() {
                   Delivery Driver
                   <Link
                     to="/dashboard/deliveryDriver/profile"
-                    className={TableStyle.linkStyleAdd}
+                    className={TableStyle.linkStyleAddHeader}
                   >
                     <span
                       className={"material-icons " + TableStyle.addIconStyle}

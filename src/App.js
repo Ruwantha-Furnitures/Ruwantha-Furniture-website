@@ -30,25 +30,28 @@ import ProductSellCustomer from "./components/Dashboard/ProductSellCustomer";
 import DeliveryDriverView from "./components/Dashboard/DeliveryDriverView";
 
 // Web Components
-import Home from "./components/web/customer/Home.jsx";
-import Product from "./components/web/customer/Product.jsx";
-import ContactUs from "./components/web/customer/Contact.jsx";
+import Home from "./components/web/customer/Home/Home.jsx";
+import Product from "./components/web/customer/Products/Product.jsx";
+import ContactUs from "./components/web/customer/ContactUs/Contact.jsx";
 import Login from "../src/components/web/Common/Login.jsx";
-import Signup from "./components/web/customer/Signup.jsx";
+import Signup from "./components/web/customer/SignUp/Signup.jsx";
 
-import Customer_Home from "./components/web/registeredCustomer/CustomerHome.jsx";
-import Customer_Product from "./components/web/registeredCustomer/CustomerProduct.jsx";
-import Customer_ContactUs from "./components/web/registeredCustomer/CustomerContact.jsx";
-import ViewProfile from "./components/web/registeredCustomer/ViewProfile.jsx";
-import Customer_Cart from "./components/web/registeredCustomer/ViewCart.jsx";
+import Customer_Home from "./components/web/registeredCustomer/Home/CustomerHome.jsx";
+import Customer_Product from "./components/web/registeredCustomer/Product/CustomerProduct.jsx";
+import Customer_ContactUs from "./components/web/registeredCustomer/ContactUs/CustomerContact.jsx";
+import ViewProfile from "./components/web/registeredCustomer/Profile/ViewProfile.jsx";
+import Customer_Cart from "./components/web/registeredCustomer/BeforePayment/ShippingDetailsPage.jsx";
 
-import View_Product from "./components/web/customer/ViewProductDetails.jsx";
-import View_Product_Details from "./components/web/registeredCustomer/CustomerViewProductDetails";
-import CustomerUpdateProfile from "./components/web/registeredCustomer/UpdateProfile.jsx";
-import CustomerChangePassword from "./components/web/registeredCustomer/CustomerChangePassword.jsx";
-import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery.jsx";
-import CustomerPayment from "./components/web/registeredCustomer/PaymentForm.jsx";
-import CustomerCheckout from "./components/web/registeredCustomer/CustomerCheckoutDeteails.jsx";
+import View_Product from "./components/web/customer/Products/ViewProductDetails.jsx";
+import View_Product_Details from "./components/web/registeredCustomer/Product/CustomerViewProductDetails";
+import CustomerUpdateProfile from "./components/web/registeredCustomer/Profile/UpdateProfile.jsx";
+import CustomerChangePassword from "./components/web/registeredCustomer/Profile/CustomerChangePassword.jsx";
+import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery/PasswordRecovery.jsx";
+import CustomerPayment from "./components/web/registeredCustomer/Payment/PaymentForm.jsx";
+import CustomerCheckout from "./components/web/registeredCustomer/Cart/ShippingDetailsPage.jsx";
+import CustomerReviews from "./components/web/registeredCustomer/Reviews/CustomerReviewsPage.jsx";
+import CustomerThankYou from "./components/web/registeredCustomer/Payment/ThankYouPage.jsx";
+
 import ProductUpdate from "./components/Dashboard/ProductUpdate";
 import ProductCategoryUpdate from "./components/Dashboard/ProductCategoryUpdate";
 import ProductTypeUpdate from "./components/Dashboard/ProductTypeUpdate";
@@ -292,6 +295,10 @@ function App() {
           <Route exact path="/customer_checkout" component={CustomerCheckout} />
 
           <Route exact path="/payment" component={CustomerPayment} />
+          <Route exact path="/customer_reviews" component={CustomerReviews} />     
+          <Route exact path="/customer_thankyou" component={CustomerThankYou} />     
+                      
+          
         </Switch>
       </div>
     </Router>

@@ -1,11 +1,10 @@
 import React from "react";
 import Navbar from "./common/Navbar";
 import Sidebar from "./common/Sidebar";
-import AllProductsView from "./common/AllProductsView";
+import DriverDateView from "./common/DriverDateView";
 import MainStyle from "../../css/dashboard/Main.module.css";
 import ProductStyle from "../../css/dashboard/Products.module.css";
 import DeliveryDriverViewForm from "./deliveryDriver/DeliveryDriverViewForm";
-
 
 function DeliveryDriverView() {
   return (
@@ -23,12 +22,12 @@ function DeliveryDriverView() {
           <div className={ProductStyle.detailsSection}>
             <div className={ProductStyle.detailCard}>
               {/* Delivery Driver View Profile */}
-              
-              <DeliveryDriverViewForm/>
+
+              <DeliveryDriverViewForm />
             </div>
           </div>
           <div className={ProductStyle.productsViewSection}>
-            <AllProductsView />
+            <DriverDateView />
           </div>
         </div>
       </div>
