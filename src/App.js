@@ -39,14 +39,14 @@ import Signup from "./components/web/customer/Signup.jsx";
 import Customer_Home from "./components/web/registeredCustomer/Home/CustomerHome.jsx";
 import Customer_Product from "./components/web/registeredCustomer/Product/CustomerProduct.jsx";
 import Customer_ContactUs from "./components/web/registeredCustomer/ContactUs/CustomerContact.jsx";
-import ViewProfile from "./components/web/registeredCustomer/ViewProfile.jsx";
+import ViewProfile from "./components/web/registeredCustomer/Profile/ViewProfile.jsx";
 import Customer_Cart from "./components/web/registeredCustomer/BeforePayment/ShippingDetailsPage.jsx";
 
 import View_Product from "./components/web/customer/ViewProductDetails.jsx";
 import View_Product_Details from "./components/web/registeredCustomer/Product/CustomerViewProductDetails";
-import CustomerUpdateProfile from "./components/web/registeredCustomer/UpdateProfile.jsx";
-import CustomerChangePassword from "./components/web/registeredCustomer/CustomerChangePassword.jsx";
-import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery.jsx";
+import CustomerUpdateProfile from "./components/web/registeredCustomer/Profile/UpdateProfile.jsx";
+import CustomerChangePassword from "./components/web/registeredCustomer/Profile/CustomerChangePassword.jsx";
+import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery/PasswordRecovery.jsx";
 import CustomerPayment from "./components/web/registeredCustomer/Payment/PaymentForm.jsx";
 import CustomerCheckout from "./components/web/registeredCustomer/Cart/ShippingDetailsPage.jsx";
 

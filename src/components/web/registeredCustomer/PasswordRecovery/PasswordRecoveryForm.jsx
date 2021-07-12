@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import Form from "react-bootstrap/Form";
-import "../../../css/web/Login.css";
-import Avatar from "../../../assets/pwrecovery.png";
-import NavButtonStyle from "../../../css/web/common.module.css";
-import FormStyle from "../../../css/web/Form.module.css";
+import "../../../../css/web/Login.css";
+import Avatar from "../../../../assets/pwrecovery.png";
+import NavButtonStyle from "../../../../css/web/common.module.css";
+import FormStyle from "../../../../css/web/Form.module.css";
 
 function PasswordRecoveryForm() {
     const [email, setEmail] = useState("");    

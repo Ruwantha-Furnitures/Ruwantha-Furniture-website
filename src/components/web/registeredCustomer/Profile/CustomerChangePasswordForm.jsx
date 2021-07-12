@@ -3,9 +3,9 @@ import Form from "react-bootstrap/Form";
 import Card from 'react-bootstrap/Card';
 import { Row } from 'reactstrap';
 import Button from 'react-bootstrap/Button';
-import Avatar from "../../../assets/pwchange.png";
-import "../../../css/web/Login.css";
-import FormStyle from "../../../css/web/Form.module.css";
+import Avatar from "../../../../assets/pwchange.png";
+import "../../../../css/web/Login.css";
+import FormStyle from "../../../../css/web/Form.module.css";
 
 
 function CustomerChangePasswordForm() {

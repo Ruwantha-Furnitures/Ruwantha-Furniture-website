@@ -115,7 +115,7 @@ function CustomerCheckoutDeteailsForm() {
                                 // Use a unique value for the orderId
                                 orderId={45896588}
                                 name="Canton Dining Suite"
-                                amount="72975"
+                                amount="69826.25"
                             />
                         </center>                                                    
                         
