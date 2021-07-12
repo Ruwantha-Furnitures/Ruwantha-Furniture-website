@@ -195,7 +195,7 @@ function Sidebar() {
               </li>
             </>
           )}
-          {user === "DeliveryDriver" && (
+          {user === "Delivery Driver" && (
             <>
               <li>
                 <Link

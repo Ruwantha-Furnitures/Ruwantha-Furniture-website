@@ -2,8 +2,10 @@ import React from "react";
 import ProductImage from "../../../assets/items/14.jpg";
 import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.css";
 import { Link } from "react-router-dom";
+import Auth from "../service/auth";
 
 function ProductViewForm() {
+  const user = Auth.getCurrentUser();
   const handleUpdate = () => {
     console.log("Hello");
     window.location = "/dashboard/product/update";
@@ -60,35 +62,39 @@ function ProductViewForm() {
               </p>
             </div>
             <div className={ProductViewFormStyle.descButtons}>
-              <div
-                className={
-                  ProductViewFormStyle.descButton +
-                  " " +
-                  ProductViewFormStyle.sidemargin
-                }
-              >
-                <button
-                  className={
-                    ProductViewFormStyle.descButtonStyle +
-                    " " +
-                    ProductViewFormStyle.successButtonColor
-                  }
-                  onClick={handleUpdate}
-                >
-                  Update
-                </button>
-              </div>
-              <div className={ProductViewFormStyle.descButton}>
-                <button
-                  className={
-                    ProductViewFormStyle.descButtonStyle +
-                    " " +
-                    ProductViewFormStyle.deleteButtonColor
-                  }
-                >
-                  Delete
-                </button>
-              </div>
+              {user === "Admin" && (
+                <>
+                  <div
+                    className={
+                      ProductViewFormStyle.descButton +
+                      " " +
+                      ProductViewFormStyle.sidemargin
+                    }
+                  >
+                    <button
+                      className={
+                        ProductViewFormStyle.descButtonStyle +
+                        " " +
+                        ProductViewFormStyle.successButtonColor
+                      }
+                      onClick={handleUpdate}
+                    >
+                      Update
+                    </button>
+                  </div>
+                  <div className={ProductViewFormStyle.descButton}>
+                    <button
+                      className={
+                        ProductViewFormStyle.descButtonStyle +
+                        " " +
+                        ProductViewFormStyle.deleteButtonColor
+                      }
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

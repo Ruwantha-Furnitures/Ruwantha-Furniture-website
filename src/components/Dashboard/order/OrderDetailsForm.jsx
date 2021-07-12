@@ -6,7 +6,7 @@ function OrderDetailsForm() {
   const url = window.location.pathname.split("/");
   const orderLocation = url[2];
   let navigate;
-  if (orderLocation === "purchaseOrders") {
+  if (orderLocation === "purchaseOrder") {
     navigate = "/dashboard/purchaseOrders";
   }
   if (orderLocation === "completedOrder") {
@@ -22,7 +22,9 @@ function OrderDetailsForm() {
     navigate = "/dashboard/deliveryDriver/notifications";
   }
 
-  console.log(url);
+  console.log(navigate);
+
+  // console.log(url);
 
   return (
     <React.Fragment>

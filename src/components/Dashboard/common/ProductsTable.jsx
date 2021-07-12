@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import TableStyle from "../../../css/dashboard/Table.module.css";
+import Auth from "../service/auth";
 
 function ProductsTable() {
+  const user = Auth.getCurrentUser();
   return (
     <React.Fragment>
       <div className={TableStyle.titleHeader}>
@@ -39,56 +41,56 @@ function ProductsTable() {
               <th>
                 <div className={TableStyle.header}>
                   Product
-                  <Link
-                    to="/dashboard/product/add"
-                    className={TableStyle.linkStyleAddHeader}
-                  >
-                    <span
-                      className={"material-icons " + TableStyle.addIconStyle}
+                  {user === "Admin" && (
+                    <Link
+                      to="/dashboard/product/add"
+                      className={TableStyle.linkStyleAddHeader}
                     >
-                      add_circle
-                    </span>
-                  </Link>
+                      <span
+                        className={"material-icons " + TableStyle.addIconStyle}
+                      >
+                        add_circle
+                      </span>
+                    </Link>
+                  )}
                 </div>
               </th>
               <th>
                 <div className={TableStyle.header}>
-                  <Link
-                    to="/dashboard/product/addProductType"
-                    className={TableStyle.linkStyleAddHeader}
-                  >
+                  <Link to="" className={TableStyle.linkStyleAddHeader}>
                     Type
                   </Link>
-                  <Link
-                    to="/dashboard/product/addProductType"
-                    className={TableStyle.linkStyleAddHeader}
-                  >
-                    <span
-                      className={"material-icons " + TableStyle.addIconStyle}
+                  {user === "Admin" && (
+                    <Link
+                      to="/dashboard/product/addProductType"
+                      className={TableStyle.linkStyleAddHeader}
                     >
-                      add_circle
-                    </span>
-                  </Link>
+                      <span
+                        className={"material-icons " + TableStyle.addIconStyle}
+                      >
+                        add_circle
+                      </span>
+                    </Link>
+                  )}
                 </div>
               </th>
               <th>
                 <div className={TableStyle.header}>
-                  <Link
-                    to="/dashboard/product/addProductType"
-                    className={TableStyle.linkStyleAdd}
-                  >
+                  <Link to="" className={TableStyle.linkStyleAddHeader}>
                     Category
                   </Link>
-                  <Link
-                    to="/dashboard/product/addProductCategory"
-                    className={TableStyle.linkStyleAdd}
-                  >
-                    <span
-                      className={"material-icons " + TableStyle.addIconStyle}
+                  {user === "Admin" && (
+                    <Link
+                      to="/dashboard/product/addProductCategory"
+                      className={TableStyle.linkStyleAddHeader}
                     >
-                      add_circle
-                    </span>
-                  </Link>
+                      <span
+                        className={"material-icons " + TableStyle.addIconStyle}
+                      >
+                        add_circle
+                      </span>
+                    </Link>
+                  )}
                 </div>
               </th>
 

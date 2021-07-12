@@ -8,7 +8,7 @@ export function getCurrentUser() {
     user = "Admin";
   }
   if (parseInt(userlevel) === 3) {
-    user = "DeliveryDriver";
+    user = "Delivery Driver";
   }
   return user;
 }
