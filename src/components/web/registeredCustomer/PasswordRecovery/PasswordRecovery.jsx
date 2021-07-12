@@ -5,6 +5,7 @@ import Footer from "../../Common/Footer";
 import backcover from "../../../../assets/login9.jpg";
 import "../../../../css/web/Login.css";
 import FormRecovery from './PasswordRecoveryForm';
+import CommonFormStyle from "../../../../css/web/common.module.css";
 
 function UpdateProfile() {
     return (
@@ -17,9 +18,9 @@ function UpdateProfile() {
             width: '100%',        
           }}>        
             <Navigation></Navigation>                    
-            <Container align="center">                  
+            <div className={CommonFormStyle.formPageBox} align="left">                 
                 <FormRecovery></FormRecovery>            
-            </Container>              
+            </div>              
             <Footer></Footer>            
         </div>
     )
