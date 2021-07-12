@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
-import Rating from "../Common/StartRating";
+import Rating from "../../Common/StartRating";
 import item1 from "../../../assets/items/10.jpg";
 import item2 from "../../../assets/items/9.jpg";
 import item3 from "../../../assets/items/11.jpg";

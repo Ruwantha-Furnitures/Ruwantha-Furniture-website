@@ -4,8 +4,8 @@ import {Row} from 'reactstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
-import FormStyle from "../../../css/web/Form.module.css";
-import Avatar from "../../../assets/avatar.png";
+import FormStyle from "../../../../css/web/Form.module.css";
+import Avatar from "../../../../assets/avatar.png";
 
 function UpdateProfileForm() {
     require("bootstrap/dist/css/bootstrap.min.css");

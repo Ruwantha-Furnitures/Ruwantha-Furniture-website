@@ -1,10 +1,10 @@
 import React from 'react';
-import Navigation from "./Navigation/UserNav";
-import Footer from "../Common/Footer";
+import Navigation from "../Navigation/UserNav";
+import Footer from "../../Common/Footer";
 import { Container} from 'reactstrap';
-import ProfileForm from "../registeredCustomer/ViewProfileForm";
-import Subnavigation from "./Navigation/Subnav";
-import Topimg from '../../../assets/topimg28.jpg';
+import ProfileForm from "./ViewProfileForm";
+import Subnavigation from "../Navigation/Subnav";
+import Topimg from '../../../../assets/topimg28.jpg';
 
 function ViewProfile() {
     const contactImg = {

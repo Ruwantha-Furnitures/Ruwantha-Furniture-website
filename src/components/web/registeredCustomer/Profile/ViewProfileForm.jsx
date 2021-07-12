@@ -4,8 +4,8 @@ import Button from 'react-bootstrap/Button';
 import {Row} from 'reactstrap';
 import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
-import Avatar from "../../../assets/avatar.png";
-import FormStyle from "../../../css/web/Form.module.css";
+import Avatar from "../../../../assets/avatar.png";
+import FormStyle from "../../../../css/web/Form.module.css";
 
 function ViewProfileForm() {
     require("bootstrap/dist/css/bootstrap.min.css");
