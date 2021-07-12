@@ -4,46 +4,57 @@ import "../../../../css/web/Login.css";
 import Avatar from "../../../../assets/pwrecovery.png";
 import NavButtonStyle from "../../../../css/web/common.module.css";
 import FormStyle from "../../../../css/web/Form.module.css";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
 
 function PasswordRecoveryForm() {
     const [email, setEmail] = useState("");    
+  
+    const title={
+        margin: '0px',
+        padding: '3px',
+    };
 
-    function handleSubmit(event) {
-        event.preventDefault();
-    }
+    const rowStyle={
+        margin: '10px'
+    };
+
+    const textboxStyle = {
+        width: '100%',
+        backgroundColor: '#eeeff5',
+        border: 'none',
+        height: '40px',
+        borderRadius: '5px',
+        padding: '5px',
+        margin: '5px',
+        border: 'solid 1px darkgray'        
+    };
 
     const avatar = {
         width: '40%',
         height: '40%',
         borderRadius: '50%'
     }
-
-    const loginform = {    
-        justifyContent: "left",
-        justifyItem: "left",
-        margin: "10px",
-        padding: "40px",          
-        backgroundColor: "rgb(1,1,1, 0.8)",            
-        borderRadius: "20px",                    
-        color: "#FFF"
-    }
-
     return (
-        <div className="Login" >        
-          <Form style={loginform} onSubmit={handleSubmit} align="left">
-            <center><img src={Avatar} style={avatar} alt='imgrecovery'/></center><br />
-            <center><h6>Enter Your Email Address</h6></center><br />
-            <Form.Group size="sm" controlId="email">                
-              <Form.Control className={FormStyle.emailBox}               
-                type="email"
-                value={email}
-                placeholder="Email"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </Form.Group>
-            <center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Submit</button></center><br />
-          </Form>
-        </div>
+        <Card className={FormStyle.cardbox} style={{marginTop:'30px', marginBottom: '30px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
+            <Form style={{padding: '20px'}}>  
+                <center><img src={Avatar} style={avatar} alt='avatar'/></center><br />
+                          
+                <input  className={FormStyle.emailBox}
+                  type='email'
+                  placeholder='Email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                ></input>              
+                                          
+                <br /><br />
+                <div align="center">
+                  <Button variant="success" type="submit" style={{width: '100%'}}>Login</Button>{' '}
+                </div> <br />     
+            </Form>
+        </Card>
     );
 }
 
