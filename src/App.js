@@ -294,7 +294,7 @@ function App() {
           <Route exact path="/customer_checkout" component={CustomerCheckout} />
 
           <Route exact path="/payment" component={CustomerPayment} />
-          <Route exact path="/customer_reviews" component={CustomerReviews} />
+          <Route exact path="/customer_reviews" component={CustomerReviews} />                 
           
         </Switch>
       </div>

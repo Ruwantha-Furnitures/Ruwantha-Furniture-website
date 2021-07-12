@@ -2,11 +2,15 @@ import React from 'react';
 import { Row, Col } from "reactstrap";
 import productImg from "../../../../assets/items/2.jpg";
 import Table from 'react-bootstrap/Table';
+import { Link } from 'react-router-dom';
 import GradeIcon from '@material-ui/icons/Grade';
 import Form from "react-bootstrap/Form";
 import Card from 'react-bootstrap/Card';
+import AddReviewPopup from './AddReviewPopup';
 
 function PurchasedHistoryTable() {
+    const [modalShow, setModalShow] = React.useState(false);
+
     const rowStyle={
         margin: '10px'
     };
@@ -38,7 +42,12 @@ function PurchasedHistoryTable() {
                                         <td>6875</td>
                                         <td>1</td>
                                         <td>6875</td>
-                                        <td><GradeIcon /></td>
+                                        <td><GradeIcon  onClick={() => setModalShow(true)}/>
+                                            <AddReviewPopup
+                                                show={modalShow}
+                                                onHide={() => setModalShow(false)}
+                                            />
+                                        </td>
                                     </tr>                                    
                                 </tbody>
                             </Table>
