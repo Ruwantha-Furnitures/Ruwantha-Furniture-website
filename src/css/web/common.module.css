@@ -5,8 +5,8 @@
     height: 50px;
   }  
   .Productimage{
-    width: 400px;    
-    border-radius: 20px;
+    width: 450px;    
+    border-radius: 20px;    
   }
 
   .btn {
@@ -49,6 +49,16 @@
     width: 100%;
   }
   
+  .gridContainer{
+    display: grid;
+    grid-template-columns: auto auto auto auto;    
+    padding: 10px;
+  }
+
+  /* .formPageBox{
+    margin-left: 80px ;
+  } */
+
   @media screen and (max-width: 798px) {
     .btn {
       display: block;
@@ -62,6 +72,11 @@
     }
     .Productimage{
       width: 300px;    
+    }
+    .gridContainer{
+      display: grid;
+      grid-template-columns: auto;    
+      padding: 10px;
     }
   }
   
@@ -79,5 +94,13 @@
     .Productimage{
       width: 300px;    
     }
+    .gridContainer{
+      display: grid;
+      grid-template-columns: auto;    
+      padding: 10px;
+    }
+    /* .formPageBox{
+      margin-left: 5px;      
+    } */
   }
   

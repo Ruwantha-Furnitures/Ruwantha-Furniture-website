@@ -5,10 +5,30 @@
 #Ruwantha Furniture
 
 AR Magic
+-------------------------------
+
+email 01
+--------
 
 email - ucscarmagic@gmail.com
 
 password - TYPucsc123
+
+username and passwords
+----------------------
+-------------------------------------------------- 
+Role        Username                    Password
+--------------------------------------------------
+Owner       ucscarmagic@gmail.com       owner
+--------------------------------------------------
+Admin       armagic24@outlook.com       admin
+--------------------------------------------------
+Customer    asinipathmila@gmail.com     TYPucsc123
+--------------------------------------------------
+Driver      driver@gmail.com            TYPucsc123  (tempory email)
+--------------------------------------------------
+
+---------------------------------
 
 **External Libraries**
 
@@ -66,7 +86,6 @@ npm install axios
 
 npm add react-photo-gallery (Create gallary) - Not used
 
-npm install --save mdbreact (Create gallary)
 
 
 

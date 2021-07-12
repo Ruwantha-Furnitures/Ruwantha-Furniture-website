@@ -5,13 +5,18 @@ const app = express();
 const cors = require("cors");
 const mysql = require("mysql");
 const db=require("./web/models")
+
 const { customerRouter } = require("./web/routes/customers.js");
+const { productRouter } = require("./web/routes/Product.js"); 
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/customer", customerRouter);
+app.use("/api/products", productRouter);
+
+
 connectDB();
 
 async function connectDB() {

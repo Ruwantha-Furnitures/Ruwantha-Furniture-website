@@ -67,11 +67,6 @@ td {
   border-bottom: 2px solid rgba(0, 0, 0, 0.06);
 }
 
-.titleHeader {
-  display: flex;
-  flex-direction: row;
-}
-
 .tableTitleProductStyle {
   font-style: normal;
   font-weight: 600;

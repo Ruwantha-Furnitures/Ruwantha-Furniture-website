@@ -1,7 +1,7 @@
 .innerbox {
   padding: 10px;
   background-color:rgb(255, 255, 255);
-  width: 35%;
+  /* width: 35%; */
   margin-bottom: 20px;
   border-radius: 5px;
   color: black;  
@@ -24,7 +24,8 @@ Form .textBox{
     border-radius: 5px;
     padding: 5px;
     margin: 5px;
-    width: 100%;      
+    width: 100%;     
+    border: solid 1px darkgray; 
 } 
 
 Form .emailBox{
@@ -36,6 +37,7 @@ Form .emailBox{
     padding: 5px;
     margin: 5px;
     width: 100%;
+    border: solid 1px darkgray;
 }
 
 Form .passwordBox{
@@ -46,8 +48,9 @@ Form .passwordBox{
     height: 40px;
     padding: 5px;
     margin: 5px;
-    color: #FFF;
+    color: black;
     width: 100%;
+    border: solid 1px darkgray;
 }
 
 Form .textareastyle{
@@ -58,6 +61,7 @@ Form .textareastyle{
     padding: 5px;   
     margin: 5px; 
     width: 100%;
+    border: solid 1px darkgray;
 }
 
 Form .dropBox{
