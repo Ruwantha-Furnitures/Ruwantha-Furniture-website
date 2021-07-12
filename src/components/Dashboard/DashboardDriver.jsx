@@ -2,11 +2,11 @@ import React from "react";
 import Navbar from "./common/Navbar";
 import Sidebar from "./common/Sidebar";
 import DetailCard from "./common/DetailCard";
-import TableCard from "./common/TableCard";
-import PieChartCard from "./common/PieChartCard";
 import MainStyle from "../../css/dashboard/Main.module.css";
 import DashboardStyle from "../../css/dashboard/Dashboard.module.css";
 import ChartDriver from "./common/ChartDriver";
+import PieChartCardDriver from "./common/PieChartCardDriver";
+import TableCardDriver from "./common/TableCardDriver";
 
 function DashboardDriver() {
   return (
@@ -18,7 +18,6 @@ function DashboardDriver() {
         {/* Body */}
         <div className={MainStyle.bodySection}>
           {/* Sidebar */}
-
           <div className={MainStyle.sidebarSection}>
             <Sidebar />
           </div>
@@ -26,7 +25,7 @@ function DashboardDriver() {
             <div className={DashboardStyle.detailsCardSection}>
               <DetailCard
                 detailCardMargin={true}
-                materialIconName={"price_change"}
+                materialIconName={"local_shipping"}
                 cardText={"Today Deliveries"}
                 cardPrice={"No.5"}
               />
@@ -55,11 +54,11 @@ function DashboardDriver() {
                   <ChartDriver />
                 </div>
                 <div className={DashboardStyle.tableSection}>
-                  <TableCard />
+                  <TableCardDriver />
                 </div>
               </div>
               <div className={DashboardStyle.circleGraphSection}>
-                <PieChartCard />
+                <PieChartCardDriver />
               </div>
             </div>
           </div>
