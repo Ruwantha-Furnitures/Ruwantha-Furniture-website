@@ -59,6 +59,7 @@ import DeliveryDriverUpdate from "./components/Dashboard/DeliveryDriverUpdate";
 import CustomerMessages from "./components/Dashboard/CustomerMessages";
 import CustomerMessageView from "./components/Dashboard/CustomerMessageView";
 import DeliveryDriverNotifications from "./components/Dashboard/DeliveryDriverNotifications";
+import DashboardDriver from "./components/Dashboard/DashboardDriver";
 
 function App() {
   return (
@@ -67,6 +68,7 @@ function App() {
         <Switch>
           {/* Dashboard */}
           <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/dashboardDriver" component={DashboardDriver} />
           {/* Dashboard-Product */}
           <Route exact path="/dashboard/products" component={Products} />
           <Route exact path="/dashboard/product/view" component={ProductView} />
