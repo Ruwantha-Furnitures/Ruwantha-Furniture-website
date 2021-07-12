@@ -2,13 +2,21 @@ import React from 'react';
 import Form from "react-bootstrap/Form";
 import "../../../../css/web/Login.css";
 import Avatar from "../../../../assets/pendingemail.png";
-import NavButtonStyle from "../../../../css/web/common.module.css";
 import FormStyle from "../../../../css/web/Form.module.css";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import backcover from "../../../../assets/topimg34.jpg";
+import Navigation from "../../customer/Navigation/Indexnav";
+import CommonFormStyle from "../../../../css/web/common.module.css";
+import Footer from "../../Common/Footer";
 
 function Pending() {
+    const avatar = {
+        width: '40%',
+        height: '40%',
+        borderRadius: '50%'
+    }
+
     return (
         <div style={{              
             backgroundImage: `url(${backcover})`,        
@@ -25,12 +33,9 @@ function Pending() {
                         <center><img src={Avatar} style={avatar} alt='avatar'/></center><br />
                         <center><h3>We sent an email to your account.</h3></center>
                         <center><h4>Please login into your email account and click on the link we sent to reset your password.</h4></center>
-                                
-                                    
-                                                
-                        <br /><br />
+                                                                                                                                            
                         <div align="center">
-                        <Button variant="success" type="submit" style={{width: '100%'}}>Submit</Button>{' '}
+                        
                         </div> <br />     
                     </Form>
                 </Card>        
