@@ -15,7 +15,7 @@ function ThankYouPage() {
         MaxWidth: "100%"     
     }
     const insidediv = {
-        backgroundColor: 'rgb(0,0,0,0.7)',
+        backgroundColor: 'rgb(0,0,0,0.8)',
         height: '100%',
         width: '100%',
         color: 'white',
@@ -27,7 +27,7 @@ function ThankYouPage() {
     return (
         <div style={contactImg}>                                     
             <Navigation></Navigation>             
-            <Container fluid align='left'>
+            <Container align='left'>
                 <Form style={insidediv}>
                     <p style={{fontSize: '8rem'}}>Thank You!</p>
                     <p style={{fontSize: '3rem'}}>Your Order ID: 45896588</p>
