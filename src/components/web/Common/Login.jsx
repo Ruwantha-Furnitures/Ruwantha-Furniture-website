@@ -33,6 +33,7 @@ const Login = ({ navigation }) => {
         setErrorMessage("");
         localStorage.setItem("userlevel", 1);
         localStorage.setItem("userEmail", response.data.email);
+        localStorage.setItem("userAccID",response.data.accountID)
         setUserLevel(1)
       } else if ((response.data.auth === true) && (response.data.userlevel === 0)) {
         setIsLoading(true);
