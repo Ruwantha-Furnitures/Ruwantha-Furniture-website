@@ -1,6 +1,8 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import Rating from './StarRating';
+import productImg from "../../../../assets/items/2.jpg";
 
 function AddReviewPopup(props) {
     // function AddReviewPopup(props) {
@@ -18,15 +20,14 @@ function AddReviewPopup(props) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h4>Pearl Wooden Dining Chair</h4>
-                    <p>
-                    Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                    dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                    consectetur ac, vestibulum at eros.
-                    </p>
+                    <center>
+                        <img src={productImg} style={{width:'100px', borderRadius: '20px'}} alt='imgitem'></img><br /><br />
+                        <h4>Pearl Wooden Dining Chair</h4>
+                        <Rating></Rating>
+                    </center>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={props.onHide}>Close</Button>
+                    <Button variant='success' type='submit' onClick={props.onHide}>Close</Button>                    
                 </Modal.Footer>
                 </Modal>
         </div>
