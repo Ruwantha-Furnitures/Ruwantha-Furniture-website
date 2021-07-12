@@ -5,6 +5,7 @@ import Footer from "../../Common/Footer";
 import ProductBox from "./CustomerAllProducts";
 import Search from "../../Common/SearchProduct";
 import Card from 'react-bootstrap/Card';
+import SliderProducts from "../../Common/ProductSlider";
 import axios from "axios";
 
 const CustomerProduct = ({navigation}) => {
@@ -36,7 +37,9 @@ const CustomerProduct = ({navigation}) => {
                     <Search></Search>               
                     {/* <Card.Img variant="top" src={Coverimg} />                     */}
                     <Card.Body>
-                        <Container fluid align="center">                             
+                        <Container fluid align="center"> 
+                            <br />
+                            <SliderProducts></SliderProducts>                                                     
                             <ProductBox navigation={ navigation } itemUpHandler={ itemUpHandler }></ProductBox>
                         </Container>                        
                     </Card.Body>
