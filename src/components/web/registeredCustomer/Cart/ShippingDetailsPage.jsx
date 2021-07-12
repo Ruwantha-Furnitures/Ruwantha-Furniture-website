@@ -1,7 +1,7 @@
 import React from 'react';
-import Navigation from "./UserNav";
-import Footer from "../Common/Footer";
-import Form from './CustomerCheckoutDetailsForm';
+import Navigation from "../Navigation/UserNav";
+import Footer from "../../Common/Footer";
+import Form from './ShippingDetailsForm';
 
 function CustomerCheckoutDeteails() {    
 
@@ -14,4 +14,4 @@ function CustomerCheckoutDeteails() {
     );
 }
 
-export default CustomerCheckoutDeteails
+export default CustomerCheckoutDeteails;

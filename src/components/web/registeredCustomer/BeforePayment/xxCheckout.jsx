@@ -1,7 +1,7 @@
 import React from 'react';
 import PaymentModal from './PaymentButton';
-import Navigation from "./UserNav";
-import Footer from "../Common/Footer";
+import Navigation from "../Navigation/UserNav";
+import Footer from "../../Common/Footer";
 
 function Checkout() {
     return (
