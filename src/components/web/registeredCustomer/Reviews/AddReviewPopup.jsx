@@ -16,7 +16,7 @@ function AddReviewPopup(props) {
                 >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        Add Rating 
+                        Add Rating Feedback
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -27,7 +27,7 @@ function AddReviewPopup(props) {
                     </center>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant='success' type='submit' onClick={props.onHide}>Close</Button>                    
+                    <Button variant='success' type='submit' onClick={props.onHide}>Submit</Button>                    
                 </Modal.Footer>
                 </Modal>
         </div>
