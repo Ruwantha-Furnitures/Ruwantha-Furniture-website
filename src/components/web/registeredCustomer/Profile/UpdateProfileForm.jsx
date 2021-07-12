@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Form from "react-bootstrap/Form";
 import {Row} from 'reactstrap';
 import Button from 'react-bootstrap/Button';
@@ -7,12 +7,17 @@ import { Link } from "react-router-dom";
 import FormStyle from "../../../../css/web/Form.module.css";
 import Avatar from "../../../../assets/avatar.png";
 
-function UpdateProfileForm() {
+function UpdateProfileForm({updateHandler}) {
     require("bootstrap/dist/css/bootstrap.min.css");
-    // const [name, setName] = useState("Asini");
-    // const [address, setAddress] = useState("Ambalangoda");
-    // const [telephone, setTelephone] = useState("0773153130");
-    // const [email, setEmail] = useState("asinipathmila@gmail.com");
+    const [name, setName] = useState("");
+    const [address, setAddress] = useState("");
+    const [telephone, setTelephone] = useState("");
+    const [email, setEmail] = useState("");
+
+    const submitHandler = () => {
+        const userDetails ={name,address, telephone,email}
+        updateHandler(userDetails)
+    }
 
     const title={
         margin: '10px',
@@ -42,16 +47,16 @@ function UpdateProfileForm() {
                         <center><h3 style={title}>Update Profile</h3></center>
                     </Row> 
                     <label style={{margin: '4px'}}><b>Name</b></label>                                     
-                    <input type='text' style={textboxStyle}></input><br />
+                    <input type='text' value={name} onChange={(e)=>setName(e.target.value)} style={textboxStyle}></input><br />
                     <label style={{margin: '4px'}}><b>Address</b></label><br />  
-                    <input type='text' style={textboxStyle}></input><br />
+                    <input type='text' value={address} onChange={(e)=>setAddress(e.target.value)} style={textboxStyle}></input><br />
                     <label style={{margin: '4px'}}><b>Contact No</b></label><br />    
-                    <input type='text' style={textboxStyle}></input><br />                  
+                    <input type='text' value={telephone} onChange={(e)=>setTelephone(e.target.value)} style={textboxStyle}></input><br />                  
                     <label style={{margin: '4px'}}><b>Email</b></label><br />                              
-                    <input type='text' style={textboxStyle}></input><br />                               
+                    <input type='text' value={email} onChange={(e)=>setEmail(e.target.value)} style={textboxStyle}></input><br />                               
                     <div align="right"><br />                                       
                         <Link to=''><Button variant="danger">Cancel</Button></Link>{' '}
-                        <Button variant="success">Update</Button>{' '}                     
+                        <Button variant="success" onClick={submitHandler}>Update</Button>{' '}                     
                     </div>                                                     
                 </Form>                                                          
             </Card>
