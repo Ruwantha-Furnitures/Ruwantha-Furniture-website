@@ -18,9 +18,11 @@ function CustomerReviewsPage() {
         <div>                                     
             <Navigation></Navigation> 
             <Subnavigation></Subnavigation> 
+            <br />
             <Container align='left'>
                 <HistortTable></HistortTable>
-            </Container>                                                                                    
+            </Container> 
+            <br /><br /><br /><br />                                                                                  
             <Footer></Footer>    
         </div>
     )

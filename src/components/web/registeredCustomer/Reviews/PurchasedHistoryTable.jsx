@@ -17,7 +17,7 @@ function PurchasedHistoryTable() {
 
     return (
         <div>
-            <Card style={{marginBottom: '20px'}}>
+            <Card style={{marginBottom: '20px', marginTop: '30px'}}>
                 <Form style={{padding: '20px'}}>
                     <Row sm={12} style={rowStyle}>
                         <Col sm={12}>
@@ -54,7 +54,7 @@ function PurchasedHistoryTable() {
                         </Col> 
                     </Row>
                 </Form>
-            </Card>
+            </Card>            
         </div>
     )
 }
