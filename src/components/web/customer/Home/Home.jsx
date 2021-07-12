@@ -3,7 +3,7 @@ import { Container} from "reactstrap";
 import ConForm from "../../Common/CustomizeProduct";
 import Topimg from '../../../../assets/topimg19.jpg';
 import ProductBox from "../Products/AllProductCards"; /// Change this to /ProductCards
-import Navigation from "../Indexnav";
+import Navigation from "../Navigation/Indexnav";
 import Slideshow from './Banner';
 import Footer from "../../Common/Footer";
 import Card from 'react-bootstrap/Card';

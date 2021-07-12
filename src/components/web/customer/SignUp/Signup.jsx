@@ -1,10 +1,10 @@
 import React from 'react';
 import { Container } from 'reactstrap';
-import Navigation from "./Indexnav";
-import Footer from "../Common/Footer";
+import Navigation from "../Navigation/Indexnav";
+import Footer from "../../Common/Footer";
 import SignForm from "./SignupForm";
-import backcover from "../../../assets/topimg27.jpg";
-import CommonFormStyle from "../../../css/web/common.module.css";
+import backcover from "../../../../assets/topimg27.jpg";
+import CommonFormStyle from "../../../../css/web/common.module.css";
 import axios from "axios";
 
 const Signup = ({navigation}) => {

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Container, Row, Col } from "reactstrap";
-import item4 from "../../../assets/items/14.jpg";
-import CommonStyle from "../../../css/web/common.module.css";
+import item4 from "../../../../assets/items/14.jpg";
+import CommonStyle from "../../../../css/web/common.module.css";
 import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
-import FormStyle from "../../../css/web/Form.module.css";
+import FormStyle from "../../../../css/web/Form.module.css";
 
 function ProductDetails() {
     require("bootstrap/dist/css/bootstrap.min.css");

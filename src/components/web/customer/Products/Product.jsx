@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
-import Navigation from "../Indexnav";
+import Navigation from "../Navigation/Indexnav";
 import Footer from "../../Common/Footer";
 import ProductBox from "./AllProductCards";
 import Search from "../../Common/SearchProduct";
