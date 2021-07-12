@@ -1,12 +1,11 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
-import Navigation from "./Indexnav";
-import Footer from "../Common/Footer";
+import Navigation from "../Indexnav";
+import Footer from "../../Common/Footer";
 import ProductBox from "./AllProductCards";
-import Search from "../Common/SearchProduct";
-import SliderProducts from "../Common/ProductSlider";
+import Search from "../../Common/SearchProduct";
+import SliderProducts from "../../Common/ProductSlider";
 import Card from 'react-bootstrap/Card';
-import Coverimg from '../../../assets/productbanner.png';
 
 function Product() {
     require("bootstrap/dist/css/bootstrap.min.css");

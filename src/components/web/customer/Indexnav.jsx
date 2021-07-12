@@ -62,4 +62,3 @@ function Indexnav() {
 }
 
 export default Indexnav;
-

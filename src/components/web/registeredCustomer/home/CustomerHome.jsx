@@ -4,7 +4,7 @@ import ProductBox from "../Product/CustomerAllProducts";
 import ConForm from "../../Common/CustomizeProduct";
 import Topimg from '../../../../assets/topimg19.jpg';
 import Navigation from "../Navigation/UserNav";
-import Slideshow from "../../customer/Banner";
+import Slideshow from "../../customer/Home/Banner";
 import Footer from "../../Common/Footer";
 import Card from 'react-bootstrap/Card';
 import Gallary from '../../Common/ImageGallary';

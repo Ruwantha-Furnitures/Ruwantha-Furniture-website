@@ -30,8 +30,8 @@ import ProductSellCustomer from "./components/Dashboard/ProductSellCustomer";
 import DeliveryDriverView from "./components/Dashboard/DeliveryDriverView";
 
 // Web Components
-import Home from "./components/web/customer/Home.jsx";
-import Product from "./components/web/customer/Product.jsx";
+import Home from "./components/web/customer/Home/Home.jsx";
+import Product from "./components/web/customer/Products/Product.jsx";
 import ContactUs from "./components/web/customer/Contact.jsx";
 import Login from "../src/components/web/Common/Login.jsx";
 import Signup from "./components/web/customer/Signup.jsx";
