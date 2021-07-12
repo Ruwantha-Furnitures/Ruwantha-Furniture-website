@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
 import {Row} from 'reactstrap';
@@ -7,8 +7,23 @@ import Card from 'react-bootstrap/Card';
 import Avatar from "../../../../assets/avatar.png";
 import FormStyle from "../../../../css/web/Form.module.css";
 
-function ViewProfileForm() {
+function ViewProfileForm({userDetails}) {
     require("bootstrap/dist/css/bootstrap.min.css");
+
+    const [name,setName]=useState("")
+    const [email,setEmail]=useState("")
+    const [address,setAddress]=useState("")
+    const [telephone,setTelephone]=useState("")
+
+    useEffect(() => {
+        if (userDetails) {
+          setEmail(() => userDetails.accountEmail);
+          setName(() => userDetails.name);
+          setAddress(() => userDetails.address);
+          setTelephone(() => userDetails.telephone);
+        }
+      }, [userDetails]);
+
     const title={
         margin: '10px',
         padding: '3px',
@@ -37,13 +52,13 @@ function ViewProfileForm() {
                         <center><h3 style={title}>Profile</h3></center>
                     </Row> 
                     <label style={{margin: '4px'}}><b>Name</b></label>
-                    <input type='text' style={textboxStyle}></input><br />
+                    <input type='text' value={name} style={textboxStyle}></input><br />
                     <label style={{margin: '4px'}}><b>Address</b></label><br />  
-                    <input type='text' style={textboxStyle}></input><br />
+                    <input type='text' value={address} style={textboxStyle}></input><br />
                     <label style={{margin: '4px'}}><b>Contact No</b></label><br />    
-                    <input type='text' style={textboxStyle}></input><br />                  
+                    <input type='text' value={telephone} style={textboxStyle}></input><br />                  
                     <label style={{margin: '4px'}}><b>Email</b></label><br />                              
-                    <input type='text' style={textboxStyle}></input><br />                               
+                    <input type='text' value={email} style={textboxStyle}></input><br />                               
                     <div align="right"><br />
                     <Link to='/updateProfile'>                        
                         <Button variant="success">Go to update page</Button>
