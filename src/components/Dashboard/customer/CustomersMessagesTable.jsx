@@ -57,7 +57,7 @@ function CustomersMessagesTable() {
               <td>
                 <Link
                   to="/dashboard/customerMessage/view"
-                  className={TableStyle.linkStyle}
+                  className={TableStyle.linkStyleAdd}
                 >
                   No:1
                 </Link>
@@ -71,7 +71,7 @@ function CustomersMessagesTable() {
               <td>
                 <Link
                   to="/dashboard/customerMessage/view"
-                  className={TableStyle.linkStyle}
+                  className={TableStyle.linkStyleAdd}
                 >
                   No:2
                 </Link>
@@ -85,7 +85,7 @@ function CustomersMessagesTable() {
               <td>
                 <Link
                   to="/dashboard/customerMessage/view"
-                  className={TableStyle.linkStyle}
+                  className={TableStyle.linkStyleAdd}
                 >
                   No:3
                 </Link>
@@ -99,7 +99,7 @@ function CustomersMessagesTable() {
               <td>
                 <Link
                   to="/dashboard/customerMessage/view"
-                  className={TableStyle.linkStyle}
+                  className={TableStyle.linkStyleAdd}
                 >
                   No:4
                 </Link>
@@ -113,7 +113,7 @@ function CustomersMessagesTable() {
               <td>
                 <Link
                   to="/dashboard/customerMessage/view"
-                  className={TableStyle.linkStyle}
+                  className={TableStyle.linkStyleAdd}
                 >
                   No:5
                 </Link>
@@ -127,7 +127,7 @@ function CustomersMessagesTable() {
               <td>
                 <Link
                   to="/dashboard/customerMessage/view"
-                  className={TableStyle.linkStyle}
+                  className={TableStyle.linkStyleAdd}
                 >
                   No:6
                 </Link>
@@ -141,7 +141,7 @@ function CustomersMessagesTable() {
               <td>
                 <Link
                   to="/dashboard/customerMessage/view"
-                  className={TableStyle.linkStyle}
+                  className={TableStyle.linkStyleAdd}
                 >
                   No:7
                 </Link>
