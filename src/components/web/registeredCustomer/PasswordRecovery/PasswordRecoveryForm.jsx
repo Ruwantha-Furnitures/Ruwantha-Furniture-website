@@ -52,7 +52,7 @@ function PasswordRecoveryForm() {
                                           
                 <br /><br />
                 <div align="center">
-                  <Button variant="success" type="submit" style={{width: '100%'}}>Login</Button>{' '}
+                  <Button variant="success" type="submit" style={{width: '100%'}}>Submit</Button>{' '}
                 </div> <br />     
             </Form>
         </Card>

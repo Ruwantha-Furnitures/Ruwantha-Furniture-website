@@ -2,7 +2,7 @@ import React from 'react';
 import { Container } from 'reactstrap';
 import Navigation from "../../customer/Navigation/Indexnav";
 import Footer from "../../Common/Footer";
-import backcover from "../../../../assets/login9.jpg";
+import backcover from "../../../../assets/topimg33.jpg";
 import "../../../../css/web/Login.css";
 import FormRecovery from './PasswordRecoveryForm';
 import CommonFormStyle from "../../../../css/web/common.module.css";
@@ -20,7 +20,8 @@ function UpdateProfile() {
             <Navigation></Navigation>                    
             <div className={CommonFormStyle.formPageBox} align="left">                 
                 <FormRecovery></FormRecovery>            
-            </div>              
+            </div>     
+            <br /><br />         
             <Footer></Footer>            
         </div>
     )
