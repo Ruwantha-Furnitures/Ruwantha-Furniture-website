@@ -38,9 +38,9 @@ import Signup from "./components/web/customer/Signup.jsx";
 
 import Customer_Home from "./components/web/registeredCustomer/Home/CustomerHome.jsx";
 import Customer_Product from "./components/web/registeredCustomer/Product/CustomerProduct.jsx";
-import Customer_ContactUs from "./components/web/registeredCustomer/CustomerContact.jsx";
+import Customer_ContactUs from "./components/web/registeredCustomer/ContactUs/CustomerContact.jsx";
 import ViewProfile from "./components/web/registeredCustomer/ViewProfile.jsx";
-import Customer_Cart from "./components/web/registeredCustomer/ShippingDetails/ShippingDetailsPage.jsx";
+import Customer_Cart from "./components/web/registeredCustomer/BeforePayment/ShippingDetailsPage.jsx";
 
 import View_Product from "./components/web/customer/ViewProductDetails.jsx";
 import View_Product_Details from "./components/web/registeredCustomer/Product/CustomerViewProductDetails";

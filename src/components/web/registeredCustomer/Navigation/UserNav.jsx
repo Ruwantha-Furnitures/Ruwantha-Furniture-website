@@ -6,11 +6,11 @@ import {
     Nav,
     Form,
 } from "react-bootstrap";
-import logo from "../../../assets/nlogo.png";
+import logo from "../../../../assets/nlogo.png";
 import ShoppingCart from "./Cart";
 import Person from "./PersonIcon";
-import NavButtonStyle from "../../../css/web/common.module.css";
-import "../../../css/web/cart.css";
+import NavButtonStyle from "../../../../css/web/common.module.css";
+import "../../../../css/web/cart.css";
 
 function UserNav() {
     require("bootstrap/dist/css/bootstrap.min.css");

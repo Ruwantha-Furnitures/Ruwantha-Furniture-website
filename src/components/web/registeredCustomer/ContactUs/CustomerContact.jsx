@@ -1,10 +1,10 @@
 import React from 'react';
-import Navigation from "./UserNav";
-import Footer from "../Common/Footer";
-import About from "../Common/About";
-import ConForm from "../Common/ContactForm";
+import Navigation from "../Navigation/UserNav";
+import Footer from "../../Common/Footer";
+import About from "../../Common/About";
+import ConForm from "../../Common/ContactForm";
 import { Container} from 'reactstrap';
-import Topimg from '../../../assets/topimg10.jpg';
+import Topimg from '../../../../assets/topimg10.jpg';
 
 function CustomerContact() {
     const contactImg = {

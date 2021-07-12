@@ -2,7 +2,7 @@ import React from 'react';
 import "../../../../css/web/Login.css";
 import Form from "react-bootstrap/Form";
 import PaymentModal from './PaymentButton';  
-import Navigation from "../UserNav";
+import Navigation from "../Navigation/UserNav";
 import Footer from "../../Common/Footer";
 import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from 'reactstrap';

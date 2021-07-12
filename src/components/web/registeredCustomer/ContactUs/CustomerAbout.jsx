@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card'
-import Navigation from "./UserNav";
-import Footer from "../Common/Footer";
+import Navigation from "../Navigation/UserNav";
+import Footer from "../../Common/Footer";
 import PropTypes from 'prop-types';
 
 CustomerAbout.propTypes = {

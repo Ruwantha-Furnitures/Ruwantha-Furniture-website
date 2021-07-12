@@ -1,6 +1,6 @@
 import React from 'react';
 import PaymentModal from './PaymentButton';
-import Navigation from "../UserNav";
+import Navigation from "../Navigation/UserNav";
 import Footer from "../../Common/Footer";
 
 function Checkout() {

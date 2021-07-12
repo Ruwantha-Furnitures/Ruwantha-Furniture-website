@@ -1,9 +1,9 @@
 import React from 'react';
-import Navigation from "./UserNav";
+import Navigation from "./Navigation/UserNav";
 import Footer from "../Common/Footer";
 import { Container } from 'reactstrap';
 import ProfileForm from "../registeredCustomer/UpdateProfileForm";
-import Subnavigation from "./Subnav";
+import Subnavigation from "./Navigation/Subnav";
 import Topimg from '../../../assets/topimg29.jpg';
 
 function UpdateProfile() {
