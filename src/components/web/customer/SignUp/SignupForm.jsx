@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import FormStyle from "../../../css/web/Form.module.css";
-import "../../../css/web/Signup.css";
+import FormStyle from "../../../../css/web/Form.module.css";
+import "../../../../css/web/Signup.css";
 
 const SignupForm= ({ signUpHandler }) =>  {
   require("bootstrap/dist/css/bootstrap.min.css");

@@ -1,10 +1,10 @@
 import React from 'react';
-import Navigation from "./Indexnav";
-import About from "../Common/About";
+import Navigation from "../Navigation/Indexnav";
+import About from "../../Common/About";
 import { Container} from 'reactstrap';
-import Topimg from '../../../assets/topimg10.jpg';
-import ConForm from "../Common/ContactForm";
-import Footer from "../Common/Footer";
+import Topimg from '../../../../assets/topimg10.jpg';
+import ConForm from "../../Common/ContactForm";
+import Footer from "../../Common/Footer";
 
 function Contact() {
     

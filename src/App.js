@@ -32,9 +32,9 @@ import DeliveryDriverView from "./components/Dashboard/DeliveryDriverView";
 // Web Components
 import Home from "./components/web/customer/Home/Home.jsx";
 import Product from "./components/web/customer/Products/Product.jsx";
-import ContactUs from "./components/web/customer/Contact.jsx";
+import ContactUs from "./components/web/customer/ContactUs/Contact.jsx";
 import Login from "../src/components/web/Common/Login.jsx";
-import Signup from "./components/web/customer/Signup.jsx";
+import Signup from "./components/web/customer/SignUp/Signup.jsx";
 
 import Customer_Home from "./components/web/registeredCustomer/Home/CustomerHome.jsx";
 import Customer_Product from "./components/web/registeredCustomer/Product/CustomerProduct.jsx";
@@ -42,7 +42,7 @@ import Customer_ContactUs from "./components/web/registeredCustomer/ContactUs/Cu
 import ViewProfile from "./components/web/registeredCustomer/Profile/ViewProfile.jsx";
 import Customer_Cart from "./components/web/registeredCustomer/BeforePayment/ShippingDetailsPage.jsx";
 
-import View_Product from "./components/web/customer/ViewProductDetails.jsx";
+import View_Product from "./components/web/customer/Products/ViewProductDetails.jsx";
 import View_Product_Details from "./components/web/registeredCustomer/Product/CustomerViewProductDetails";
 import CustomerUpdateProfile from "./components/web/registeredCustomer/Profile/UpdateProfile.jsx";
 import CustomerChangePassword from "./components/web/registeredCustomer/Profile/CustomerChangePassword.jsx";

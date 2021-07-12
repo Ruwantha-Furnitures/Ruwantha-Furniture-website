@@ -3,8 +3,8 @@ import React from 'react';
 import { Row, Col } from 'reactstrap';
 import { Link } from "react-router-dom";
 import { Navbar,Nav,Form} from 'react-bootstrap';
-import logo from "../../../assets/nlogo.png";
-import NavButtonStyle from "../../../css/web/common.module.css";
+import logo from "../../../../assets/nlogo.png";
+import NavButtonStyle from "../../../../css/web/common.module.css";
 
 function Indexnav() {
     require("bootstrap/dist/css/bootstrap.min.css");
