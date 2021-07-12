@@ -40,15 +40,16 @@ import Customer_Home from "./components/web/registeredCustomer/Home/CustomerHome
 import Customer_Product from "./components/web/registeredCustomer/Product/CustomerProduct.jsx";
 import Customer_ContactUs from "./components/web/registeredCustomer/CustomerContact.jsx";
 import ViewProfile from "./components/web/registeredCustomer/ViewProfile.jsx";
-import Customer_Cart from "./components/web/registeredCustomer/ViewCart.jsx";
+import Customer_Cart from "./components/web/registeredCustomer/ShippingDetails/ShippingDetailsPage.jsx";
 
 import View_Product from "./components/web/customer/ViewProductDetails.jsx";
 import View_Product_Details from "./components/web/registeredCustomer/Product/CustomerViewProductDetails";
 import CustomerUpdateProfile from "./components/web/registeredCustomer/UpdateProfile.jsx";
 import CustomerChangePassword from "./components/web/registeredCustomer/CustomerChangePassword.jsx";
 import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery.jsx";
-import CustomerPayment from "./components/web/registeredCustomer/PaymentForm.jsx";
-import CustomerCheckout from "./components/web/registeredCustomer/CustomerCheckoutDeteails.jsx";
+import CustomerPayment from "./components/web/registeredCustomer/Payment/PaymentForm.jsx";
+import CustomerCheckout from "./components/web/registeredCustomer/Cart/ShippingDetailsPage.jsx";
+
 import ProductUpdate from "./components/Dashboard/ProductUpdate";
 import ProductCategoryUpdate from "./components/Dashboard/ProductCategoryUpdate";
 import ProductTypeUpdate from "./components/Dashboard/ProductTypeUpdate";

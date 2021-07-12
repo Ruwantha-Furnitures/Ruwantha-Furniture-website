@@ -1,12 +1,12 @@
 import React from 'react';
-import "../../../css/web/Login.css";
+import "../../../../css/web/Login.css";
 import Form from "react-bootstrap/Form";
 import PaymentModal from './PaymentButton';  
-import Navigation from "./UserNav";
-import Footer from "../Common/Footer";
+import Navigation from "../UserNav";
+import Footer from "../../Common/Footer";
 import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from 'reactstrap';
-import Avatar from '../../../assets/shipping.png';
+import Avatar from '../../../../assets/shipping.png';
 
 function CustomerCheckoutDeteailsForm() {
     require("bootstrap/dist/css/bootstrap.min.css");
@@ -31,7 +31,8 @@ function CustomerCheckoutDeteailsForm() {
         height: '40px',
         borderRadius: '5px',
         padding: '5px',
-        margin: '5px'            
+        margin: '5px',
+        border: 'solid 1px darkgray'        
     };
 
     return (                    
@@ -69,27 +70,43 @@ function CustomerCheckoutDeteailsForm() {
                     <Card style={{padding: '20px'}}>                        
                         <center><h2>Your Order</h2></center><br/>
                         <Row sm={12}>
-                            <Col sm={7}>
+                            <Col sm={6}>
                                 <Form.Label>Total Purchase</Form.Label>  
                             </Col>
-                            <Col sm={5}>
-                                <Form.Label>Total</Form.Label> 
+                            <Col sm={6}>
+                                <Form.Label>72975</Form.Label> 
                             </Col>
-                        </Row> 
+                        </Row>                        
                         <Row sm={12}>
-                            <Col sm={7}>
+                            <Col sm={6}>
                                 <Form.Label>Discount</Form.Label>  
                             </Col>
-                            <Col sm={5}>
-                                <Form.Label>Discount</Form.Label> 
+                            <Col sm={6}>
+                                <Form.Label>5%</Form.Label> 
                             </Col>
                         </Row> 
                         <Row sm={12}>
-                            <Col sm={7}>
+                            <Col sm={6}>
+                                <Form.Label>After Discount</Form.Label>  
+                            </Col>
+                            <Col sm={6}>
+                                <Form.Label>69326.25</Form.Label> 
+                            </Col>
+                        </Row> 
+                        <Row sm={12}>
+                            <Col sm={6}>
+                                <Form.Label>Delivery Charge</Form.Label>  
+                            </Col>
+                            <Col sm={6}>
+                                <Form.Label>500</Form.Label> 
+                            </Col>
+                        </Row> 
+                        <Row sm={12}>
+                            <Col sm={6}>
                                 <Form.Label><b>Total</b></Form.Label>  
                             </Col>
-                            <Col sm={5}>
-                                <Form.Label><b style={{fontSize: '20px'}}>Rs. Total</b></Form.Label> 
+                            <Col sm={6}>
+                                <Form.Label><b style={{fontSize: '20px'}}>Rs. 69826.25</b></Form.Label> 
                             </Col>
                         </Row>  
                         <br />   

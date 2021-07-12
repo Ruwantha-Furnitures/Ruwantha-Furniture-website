@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 import { Row, Col } from 'reactstrap';
-import "../../../css/web/Login.css";
+import "../../../../css/web/Login.css";
 
 function CheckoutForm() {
 
@@ -14,27 +14,27 @@ function CheckoutForm() {
             <Form style={{padding: '20px',margin: '10px'}}>            
                 <center><h2>Your Order</h2></center><br />
                 <Row sm={12}>
-                    <Col sm={7}>
+                    <Col sm={6}>
                         <Form.Label>Total Purchase</Form.Label>  
                     </Col>
-                    <Col sm={5}>
-                        <Form.Label>Total</Form.Label> 
+                    <Col sm={6}>
+                        <Form.Label>72975</Form.Label> 
                     </Col>
                 </Row> 
                 <Row sm={12}>
-                    <Col sm={7}>
+                    <Col sm={6}>
                         <Form.Label>Discount</Form.Label>  
                     </Col>
-                    <Col sm={5}>
-                        <Form.Label>Discount</Form.Label> 
+                    <Col sm={6}>
+                        <Form.Label>5%</Form.Label> 
                     </Col>
                 </Row> 
                 <Row sm={12}>
-                    <Col sm={7}>
+                    <Col sm={6}>
                         <Form.Label><b>Total</b></Form.Label>  
                     </Col>
-                    <Col sm={5}>
-                        <Form.Label><b style={{fontSize: '20px'}}>Rs. Total</b></Form.Label> 
+                    <Col sm={6}>
+                        <Form.Label><b style={{fontSize: '20px'}}>Rs. 69326.25</b></Form.Label> 
                     </Col>
                 </Row>      
                 <br />                                                              

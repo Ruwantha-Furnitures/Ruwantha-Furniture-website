@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col } from "reactstrap";
-import productImg from "../../../assets/items/1.jpg";
+import productImg from "../../../../assets/items/1.jpg";
 import Table from 'react-bootstrap/Table';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import Form from "react-bootstrap/Form";

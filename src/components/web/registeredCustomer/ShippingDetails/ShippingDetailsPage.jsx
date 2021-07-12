@@ -1,9 +1,9 @@
 import React from 'react';
-import Navigation from "./UserNav";
-import Footer from "../Common/Footer";
+import Navigation from "../UserNav";
+import Footer from "../../Common/Footer";
 import { Container, Row, Col } from "reactstrap";
 import CustomerCheckoutForm from "./CheckoutForm";
-import CustomerCartDetails from "./CartDetails";
+import CustomerCartDetails from "../Cart/CartDetails";
 
 function ViewCart() {
     return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import NavButtonStyle from "../../../css/web/common.module.css";
+import NavButtonStyle from "../../../../css/web/common.module.css";
 
 const Payment = ({ orderId, name, amount }) => {
     
