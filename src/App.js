@@ -52,6 +52,7 @@ import CustomerCheckout from "./components/web/registeredCustomer/Cart/ShippingD
 import CustomerReviews from "./components/web/registeredCustomer/Reviews/CustomerReviewsPage.jsx";
 import CustomerThankYou from "./components/web/registeredCustomer/Payment/ThankYouPage.jsx";
 import PendingEmail from "./components/web/registeredCustomer/PasswordRecovery/Pending.jsx";
+import PayhereCheckout from "./components/web/registeredCustomer/Payment/Checkout.jsx";
 
 import ProductUpdate from "./components/Dashboard/ProductUpdate";
 import ProductCategoryUpdate from "./components/Dashboard/ProductCategoryUpdate";
@@ -300,6 +301,7 @@ function App() {
           <Route exact path="/payment" component={CustomerPayment} />
           <Route exact path="/customer_reviews" component={CustomerReviews} />     
           <Route exact path="/customer_thankyou" component={CustomerThankYou} />     
+          <Route exact path="/customer_paymentGateway" component={PayhereCheckout} />               
                       
           
         </Switch>

@@ -1,11 +1,12 @@
 import React from 'react';
 import "../../../../css/web/Login.css";
 import Form from "react-bootstrap/Form";
-import PaymentModal from './PaymentButton';  
+import PaymentModal from './Checkout';  
 import Navigation from "../Navigation/UserNav";
 import Footer from "../../Common/Footer";
 import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from 'reactstrap';
+import { Link } from "react-router-dom";
 import Avatar from '../../../../assets/shipping.png';
 
 function CustomerCheckoutDeteailsForm() {
@@ -111,12 +112,13 @@ function CustomerCheckoutDeteailsForm() {
                         </Row>  
                         <br />   
                         <center>                                                                                     
-                            <PaymentModal
+                            {/* <PaymentModal
                                 // Use a unique value for the orderId
-                                orderId={45896588}
-                                name="Canton Dining Suite"
-                                amount="69826.25"
-                            />
+                                // orderId={45896588}
+                                // name="Canton Dining Suite"
+                                // amount="69826.25"
+                            /> */}
+                            <Link  to="/customer_paymentGateway"><button>Checkout Demo</button></Link>
                         </center>                                                    
                         
                     </Card>
