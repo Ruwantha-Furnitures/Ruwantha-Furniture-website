@@ -15,8 +15,6 @@ import {Payhere, AccountCategory} from "payhere-js-sdk";
 // Sandbox 
 Payhere.init("1217736",AccountCategory.SANDBOX)
 
-//test sandbox
-
 const Checkout = () => {
     require("bootstrap/dist/css/bootstrap.min.css");
     function onPayhereCheckoutError(errorMsg) {
