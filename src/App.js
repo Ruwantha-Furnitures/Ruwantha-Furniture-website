@@ -259,6 +259,7 @@ function App() {
           />
 
           {/* Web */}
+          <Route exact path="/" component={Home} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/product" component={Product} />
           <Route exact path="/contact-us" component={ContactUs} />

@@ -5,6 +5,7 @@ import Topimg from '../../../../assets/topimg32.jpg';
 import Button from 'react-bootstrap/Button';
 import Form from "react-bootstrap/Form";
 import { Container } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 function ThankYouPage() {
     const contactImg = {
@@ -31,7 +32,7 @@ function ThankYouPage() {
                 <Form style={insidediv}>
                     <p style={{fontSize: '8rem'}}>Thank You!</p>
                     <p style={{fontSize: '3rem'}}>Your Order ID: 45896588</p>
-                    <Button variant="success">Go to Home Page</Button>{' '}    
+                    <Link to='/customer_home'><Button variant="success">Go to Home Page</Button></Link>{' '}    
                 </Form>
             </Container>  
             <br />                                                                                  

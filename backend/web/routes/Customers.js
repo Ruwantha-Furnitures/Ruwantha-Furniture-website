@@ -20,6 +20,6 @@ const {
 router.post("/signup", SignUpController);
 router.post("/login", LoginController);
 router.get("/viewprofile/:accID", ViewProfileController);
-router.put("/viewprofile/:accID", UpdateProfileController);
+router.put("/updateprofile/:accID", UpdateProfileController);
 
 module.exports = { customerRouter: router };
