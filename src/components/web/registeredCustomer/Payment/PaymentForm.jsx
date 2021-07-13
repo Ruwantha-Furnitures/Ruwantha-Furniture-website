@@ -1,7 +1,6 @@
 import React from 'react';
 import "../../../../css/web/Login.css";
 import Form from "react-bootstrap/Form";
-import PaymentModal from './Checkout';  
 import Navigation from "../Navigation/UserNav";
 import Footer from "../../Common/Footer";
 import Card from 'react-bootstrap/Card';
@@ -118,7 +117,8 @@ function CustomerCheckoutDeteailsForm() {
                                 // name="Canton Dining Suite"
                                 // amount="69826.25"
                             /> */}
-                            <Link  to="/customer_paymentGateway"><button>Checkout Demo</button></Link>
+                            {/* <Link  to="/customer_paymentGateway"><button>Checkout Demo</button></Link> */}
+                            
                         </center>                                                    
                         
                     </Card>
