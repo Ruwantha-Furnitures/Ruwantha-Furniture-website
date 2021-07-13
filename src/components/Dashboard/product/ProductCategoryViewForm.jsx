@@ -2,8 +2,10 @@ import React from "react";
 import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.css";
 import ProductCategoryList from "./ProductCategoryList";
 import { Link } from "react-router-dom";
+import Auth from "../service/auth";
 
 function ProductCategoryViewForm() {
+  const user = Auth.getCurrentUser();
   const handleUpdate = () => {
     window.location = "/dashboard/product/updateProductCategory";
   };
@@ -52,29 +54,31 @@ function ProductCategoryViewForm() {
                 />
               </div>
               <div className={ProductViewFormStyle.descButtonsAddType}>
-                <div className={ProductViewFormStyle.descButtonAdd}>
-                  <button
-                    className={
-                      ProductViewFormStyle.buttonStyle +
-                      " " +
-                      ProductViewFormStyle.successButtonColor +
-                      " " +
-                      ProductViewFormStyle.addRightMargin
-                    }
-                    onClick={handleUpdate}
-                  >
-                    Update
-                  </button>
-                  <button
-                    className={
-                      ProductViewFormStyle.buttonStyle +
-                      " " +
-                      ProductViewFormStyle.deleteButtonColor
-                    }
-                  >
-                    Delete
-                  </button>
-                </div>
+                {user === "Admin" && (
+                  <div className={ProductViewFormStyle.descButtonAdd}>
+                    <button
+                      className={
+                        ProductViewFormStyle.buttonStyle +
+                        " " +
+                        ProductViewFormStyle.successButtonColor +
+                        " " +
+                        ProductViewFormStyle.addRightMargin
+                      }
+                      onClick={handleUpdate}
+                    >
+                      Update
+                    </button>
+                    <button
+                      className={
+                        ProductViewFormStyle.buttonStyle +
+                        " " +
+                        ProductViewFormStyle.deleteButtonColor
+                      }
+                    >
+                      Delete
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>

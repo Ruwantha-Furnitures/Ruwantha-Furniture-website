@@ -36,7 +36,7 @@ import ContactUs from "./components/web/customer/ContactUs/Contact.jsx";
 import Login from "../src/components/web/Common/Login.jsx";
 import Signup from "./components/web/customer/SignUp/Signup.jsx";
 
-import Customer_Home from "./components/web/registeredCustomer/Home/CustomerHome.jsx";
+import Customer_Home from "./components/web/registeredCustomer/home/CustomerHome";
 import Customer_Product from "./components/web/registeredCustomer/Product/CustomerProduct.jsx";
 import Customer_ContactUs from "./components/web/registeredCustomer/ContactUs/CustomerContact.jsx";
 import ViewProfile from "./components/web/registeredCustomer/Profile/ViewProfile.jsx";
@@ -62,6 +62,7 @@ import DeliveryDriverUpdate from "./components/Dashboard/DeliveryDriverUpdate";
 import CustomerMessages from "./components/Dashboard/CustomerMessages";
 import CustomerMessageView from "./components/Dashboard/CustomerMessageView";
 import DeliveryDriverNotifications from "./components/Dashboard/DeliveryDriverNotifications";
+import DashboardDriver from "./components/Dashboard/DashboardDriver";
 
 function App() {
   return (
@@ -70,6 +71,7 @@ function App() {
         <Switch>
           {/* Dashboard */}
           <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/dashboardDriver" component={DashboardDriver} />
           {/* Dashboard-Product */}
           <Route exact path="/dashboard/products" component={Products} />
           <Route exact path="/dashboard/product/view" component={ProductView} />
