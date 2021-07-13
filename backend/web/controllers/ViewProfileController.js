@@ -6,6 +6,7 @@ const ViewProfileController = async (req, res) => {
   const accountID = req.params.accID;
   try {
     const result = await Customer.findOne({ where: { aid: accountID } });
+    console.log(result);
     const { name, address, telephone } = result;
     res.json({ auth: true, name, address, telephone });
   } catch (error) {
