@@ -9,6 +9,10 @@ const db = require("./web/models");
 const { customerRouter } = require("./web/routes/customers.js");
 const { productRouter } = require("./web/routes/Product.js");
 
+// var corsOptions = {
+//   origin: "http://localhost:3000",
+// };
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
