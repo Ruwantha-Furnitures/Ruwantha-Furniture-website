@@ -31,7 +31,7 @@ function ThankYouPage() {
                 <Form style={insidediv}>
                     <p style={{fontSize: '8rem'}}>Thank You!</p>
                     <p style={{fontSize: '3rem'}}>Your Order ID: 45896588</p>
-                    <Button variant="success">Go to Home Page</Button>{' '}    
+                    <link to='/customer_home'><Button variant="success">Go to Home Page</Button></link>{' '}    
                 </Form>
             </Container>  
             <br />                                                                                  

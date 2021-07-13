@@ -65,7 +65,7 @@ function CustomerCheckoutDeteailsForm() {
                             <br /><br />
                             <div align="right">
                                 <Button variant="danger" type='reset'>Cancel</Button>{' '}
-                                <Link to='/payment'><Button variant="success">Continue for payment</Button>{' '}</Link>
+                                <Link to='/customer_paymentGateway'><Button variant="success">Continue for payment</Button>{' '}</Link>
                             </div>                         
                         </Form>
                     </Card>
