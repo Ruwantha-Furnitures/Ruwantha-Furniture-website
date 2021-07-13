@@ -21,11 +21,12 @@ const LoginController  = async (req, res) => {
           });
         } else {
           const existingPassword = account.password;
-          const userLevel=account.userlevel
+          const userLevel=account.userlevel;
+          const accountID = account.aid;
           bcrypt.compare(password, existingPassword, (error, result) => {
             if (result) {
               console.log(userLevel)
-              res.json({ auth: true, userlevel:userLevel,email});
+              res.json({ auth: true, userlevel:userLevel,email,accountID});
             } else {
               res.json({
                 auth: false,
