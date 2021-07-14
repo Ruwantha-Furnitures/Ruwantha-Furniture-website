@@ -30,6 +30,7 @@
     color: #fff;
   }
 
+  /* Payment button style */
   .paybtn {
     background-color: #28a745 ;
     color: white;
@@ -43,6 +44,7 @@
     margin-left: 0px;     
   }
   
+  /* Payment button hover style */
   .paybtn:hover {
     background: #208f4e;
     transition: 0.5s;

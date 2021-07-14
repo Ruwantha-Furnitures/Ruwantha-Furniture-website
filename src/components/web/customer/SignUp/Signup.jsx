@@ -10,15 +10,14 @@ import axios from "axios";
 
 const Signup = () => {  
   const [isSubmit, setIsSubmit] = useState(false);    
-  const redirectHome = <Redirect to="/customer_home" />
-  
+    
   const signUpHandler =async (data) =>{
     //console.log(data);
     try{
         const respond = await axios.post("http://192.168.56.1:3002/api/customer/signup",{
         data,
       });
-      if(respond.data.auth(true)){
+      if(respond.data.auth === true){
         setIsSubmit(true);
       }else{
         setIsSubmit(false);
@@ -30,6 +29,8 @@ const Signup = () => {
       console.log(error);
     } 
   };
+
+  const redirectHome = <Redirect to="/login"></Redirect>
     return (
       <React.Fragment>
         {isSubmit === true && (redirectHome)}

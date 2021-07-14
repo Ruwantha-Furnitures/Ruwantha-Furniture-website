@@ -14,7 +14,8 @@ const SignupForm= ({ signUpHandler }) =>  {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const submitHandler = (e) => { //e.preventDefault()
+  const submitHandler = (e) => { 
+      e.preventDefault();
     signUpHandler({ name, email, address, contactNo, password });
   };
 
