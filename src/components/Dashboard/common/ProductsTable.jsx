@@ -1,8 +1,91 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TableStyle from "../../../css/dashboard/Table.module.css";
+import Auth from "../service/auth";
+
+const products = [
+  {
+    id: "1",
+    productName: "Table",
+    type: "Product Type 1",
+    category: "Category 1",
+    price: "Rs.25000",
+    quantity: "No.12",
+  },
+  {
+    id: "2",
+    productName: "Chair",
+    type: "Product Type 1",
+    category: "Category 1",
+    price: "Rs.25000",
+    quantity: "No.12",
+  },
+  {
+    id: "3",
+    productName: "Cupboard",
+    type: "Product Type 1",
+    category: "Category 1",
+    price: "Rs.25000",
+    quantity: "No.12",
+  },
+  {
+    id: "4",
+    productName: "Desk",
+    type: "Product Type 1",
+    category: "Category 1",
+    price: "Rs.25000",
+    quantity: "No.12",
+  },
+  {
+    id: "5",
+    productName: "Desk(High)",
+    type: "Product Type 1",
+    category: "Category 1",
+    price: "Rs.25000",
+    quantity: "No.12",
+  },
+  {
+    id: "6",
+    productName: "Cabinet",
+    type: "Product Type 1",
+    category: "Category 1",
+    price: "Rs.25000",
+    quantity: "No.12",
+  },
+  {
+    id: "7",
+    productName: "Cabient(High)",
+    type: "Product Type 1",
+    category: "Category 1",
+    price: "Rs.25000",
+    quantity: "No.12",
+  },
+  {
+    id: "8",
+    productName: "Gaming Chair",
+    type: "Product Type 1",
+    category: "Category 1",
+    price: "Rs.25000",
+    quantity: "No.12",
+  },
+];
 
 function ProductsTable() {
+  const user = Auth.getCurrentUser();
+
+  // const [products, setProducts] = useState({});
+  const [search, setSearch] = useState("");
+
+  // useEffect(() => {
+  //   setProducts(products);
+  // }, []);
+
+  const onInputChange = (e) => {
+    let search = e.target.value;
+    // setProducts(products.filter((product) => product.productName === search));
+    setSearch(search);
+  };
+
   return (
     <React.Fragment>
       <div className={TableStyle.titleHeader}>
@@ -17,14 +100,13 @@ function ProductsTable() {
                   search
                 </span>
               </div>
-
               <div className={TableStyle.searchText}>
                 <input
                   type="search"
-                  placeholder="Search Here"
-                  value=""
-                  id="search"
+                  placeholder="Search product here"
+                  value={search}
                   name="search"
+                  onChange={(e) => onInputChange(e)}
                   className={TableStyle.searchinput}
                 />
               </div>
@@ -39,56 +121,56 @@ function ProductsTable() {
               <th>
                 <div className={TableStyle.header}>
                   Product
-                  <Link
-                    to="/dashboard/product/add"
-                    className={TableStyle.linkStyleAddHeader}
-                  >
-                    <span
-                      className={"material-icons " + TableStyle.addIconStyle}
+                  {user === "Admin" && (
+                    <Link
+                      to="/dashboard/product/add"
+                      className={TableStyle.linkStyleAddHeader}
                     >
-                      add_circle
-                    </span>
-                  </Link>
+                      <span
+                        className={"material-icons " + TableStyle.addIconStyle}
+                      >
+                        add_circle
+                      </span>
+                    </Link>
+                  )}
                 </div>
               </th>
               <th>
                 <div className={TableStyle.header}>
-                  <Link
-                    to="/dashboard/product/addProductType"
-                    className={TableStyle.linkStyleAddHeader}
-                  >
+                  <Link to="" className={TableStyle.linkStyleAddHeader}>
                     Type
                   </Link>
-                  <Link
-                    to="/dashboard/product/addProductType"
-                    className={TableStyle.linkStyleAddHeader}
-                  >
-                    <span
-                      className={"material-icons " + TableStyle.addIconStyle}
+                  {user === "Admin" && (
+                    <Link
+                      to="/dashboard/product/addProductType"
+                      className={TableStyle.linkStyleAddHeader}
                     >
-                      add_circle
-                    </span>
-                  </Link>
+                      <span
+                        className={"material-icons " + TableStyle.addIconStyle}
+                      >
+                        add_circle
+                      </span>
+                    </Link>
+                  )}
                 </div>
               </th>
               <th>
                 <div className={TableStyle.header}>
-                  <Link
-                    to="/dashboard/product/addProductType"
-                    className={TableStyle.linkStyleAdd}
-                  >
+                  <Link to="" className={TableStyle.linkStyleAddHeader}>
                     Category
                   </Link>
-                  <Link
-                    to="/dashboard/product/addProductCategory"
-                    className={TableStyle.linkStyleAdd}
-                  >
-                    <span
-                      className={"material-icons " + TableStyle.addIconStyle}
+                  {user === "Admin" && (
+                    <Link
+                      to="/dashboard/product/addProductCategory"
+                      className={TableStyle.linkStyleAddHeader}
                     >
-                      add_circle
-                    </span>
-                  </Link>
+                      <span
+                        className={"material-icons " + TableStyle.addIconStyle}
+                      >
+                        add_circle
+                      </span>
+                    </Link>
+                  )}
                 </div>
               </th>
 
@@ -101,254 +183,36 @@ function ProductsTable() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/product/view"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Table
-                </Link>
-              </td>
-              <td>
-                <Link
-                  to="/dashboard/product/viewProductType"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Product Type 1
-                </Link>
-              </td>
-              <td>
-                <Link
-                  to="/dashboard/product/viewProductCategory"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Category 1
-                </Link>
-              </td>
-              <td>Rs.25000</td>
-              <td>No.12</td>
-            </tr>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/product/view"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Chair
-                </Link>
-              </td>
-              <td>
-                <Link
-                  to="/dashboard/product/viewProductType"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Product Type 1
-                </Link>
-              </td>
-              <td>
-                <Link
-                  to="/dashboard/product/viewProductCategory"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Category 1
-                </Link>
-              </td>
-              <td>Rs.25000</td>
-              <td>No.12</td>
-            </tr>
-            <tr>
-              <td>
-                {" "}
-                <Link
-                  to="/dashboard/product/view"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  {" "}
-                  Cupboard
-                </Link>
-              </td>
-              <td>
-                {" "}
-                <Link
-                  to="/dashboard/product/viewProductType"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Product Type 1
-                </Link>
-              </td>
-              <td>
-                {" "}
-                <Link
-                  to="/dashboard/product/viewProductCategory"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Category 1
-                </Link>
-              </td>
-              <td>Rs.25000</td>
-              <td>No.12</td>
-            </tr>
-            <tr>
-              <td>
-                {" "}
-                <Link
-                  to="/dashboard/product/view"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  {" "}
-                  Desk
-                </Link>
-              </td>
-              <td>
-                {" "}
-                <Link
-                  to="/dashboard/product/viewProductType"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Product Type 1
-                </Link>
-              </td>
-              <td>
-                {" "}
-                <Link
-                  to="/dashboard/product/viewProductCategory"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Category 1
-                </Link>
-              </td>
-              <td>Rs.25000</td>
-              <td>No.12</td>
-            </tr>
-            <tr>
-              <td>
-                {" "}
-                <Link
-                  to="/dashboard/product/view"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  {" "}
-                  Desk(High)
-                </Link>
-              </td>
-              <td>
-                {" "}
-                <Link
-                  to="/dashboard/product/viewProductType"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Product Type 1
-                </Link>
-              </td>
-              <td>
-                {" "}
-                <Link
-                  to="/dashboard/product/viewProductCategory"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Category 1
-                </Link>
-              </td>
-              <td>Rs.25000</td>
-              <td>No.12</td>
-            </tr>
-            <tr>
-              <td>
-                {" "}
-                <Link
-                  to="/dashboard/product/view"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  {" "}
-                  Cabinet
-                </Link>
-              </td>
-              <td>
-                {" "}
-                <Link
-                  to="/dashboard/product/viewProductType"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Product Type 1
-                </Link>
-              </td>
-              <td>
-                {" "}
-                <Link
-                  to="/dashboard/product/viewProductCategory"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Category 1
-                </Link>
-              </td>
-              <td>Rs.25000</td>
-              <td>No.12</td>
-            </tr>
-            <tr>
-              <td>
-                {" "}
-                <Link
-                  to="/dashboard/product/view"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  {" "}
-                  Cabient(High)
-                </Link>
-              </td>
-              <td>
-                {" "}
-                <Link
-                  to="/dashboard/product/viewProductType"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Product Type 1
-                </Link>
-              </td>
-              <td>
-                {" "}
-                <Link
-                  to="/dashboard/product/viewProductCategory"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Category 1
-                </Link>
-              </td>
-              <td>Rs.25000</td>
-              <td>No.12</td>
-            </tr>
-            <tr>
-              <td>
-                {" "}
-                <Link
-                  to="/dashboard/product/view"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  {" "}
-                  Gaming Chair
-                </Link>
-              </td>
-              <td>
-                {" "}
-                <Link
-                  to="/dashboard/product/viewProductType"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Product Type 1
-                </Link>
-              </td>
-              <td>
-                {" "}
-                <Link
-                  to="/dashboard/product/viewProductCategory"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Category 1
-                </Link>
-              </td>
-              <td>Rs.25000</td>
-              <td>No.12</td>
-            </tr>
+            {products.map((product, index) => (
+              <tr key={index + 1}>
+                <td>
+                  <Link
+                    to="/dashboard/product/view"
+                    className={TableStyle.linkStyleAdd}
+                  >
+                    {product.productName}
+                  </Link>
+                </td>
+                <td>
+                  <Link
+                    to="/dashboard/product/viewProductType"
+                    className={TableStyle.linkStyleAdd}
+                  >
+                    {product.type}
+                  </Link>
+                </td>
+                <td>
+                  <Link
+                    to="/dashboard/product/viewProductCategory"
+                    className={TableStyle.linkStyleAdd}
+                  >
+                    {product.category}
+                  </Link>
+                </td>
+                <td>{product.price}</td>
+                <td>{product.quantity}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

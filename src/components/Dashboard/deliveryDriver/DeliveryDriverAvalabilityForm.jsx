@@ -70,12 +70,12 @@ function DeliveryDriverAvalabilityForm() {
                 </div>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
-                    Payment
+                    Date
                   </label>
                   <input
                     type="text"
                     value=""
-                    placeholder="Basic Payment"
+                    placeholder="2021-03-17"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
@@ -84,12 +84,12 @@ function DeliveryDriverAvalabilityForm() {
               <div className={ProductViewFormStyle.formLine}>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
-                    Vehicle
+                    Payment
                   </label>
                   <input
                     type="text"
                     value=""
-                    placeholder="Vehicle Number"
+                    placeholder="Rs.4000"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>

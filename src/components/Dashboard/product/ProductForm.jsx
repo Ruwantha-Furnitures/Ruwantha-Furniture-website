@@ -18,6 +18,7 @@ function ProductForm() {
       reader.readAsDataURL(e.target.files[0]);
     }
   };
+
   return (
     <React.Fragment>
       <div className={ProductViewFormStyle.titleHeader}>

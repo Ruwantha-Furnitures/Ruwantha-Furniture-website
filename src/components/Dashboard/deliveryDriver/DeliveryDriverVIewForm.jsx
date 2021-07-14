@@ -1,8 +1,10 @@
 import React from "react";
 import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.css";
 import { Link } from "react-router-dom";
+import Auth from "../service/auth";
 
 function DeliveryDriverViewForm() {
+  const user = Auth.getCurrentUser();
   const url = window.location.pathname.split("/");
   const driverViewLocation = url[3];
   const driverProfileSet = url[2];
@@ -161,29 +163,31 @@ function DeliveryDriverViewForm() {
 
       {driverViewLocation === "view" && (
         <div className={ProductViewFormStyle.descButtonsAdd}>
-          <div className={ProductViewFormStyle.descButtonAdd}>
-            <button
-              className={
-                ProductViewFormStyle.buttonStyle +
-                " " +
-                ProductViewFormStyle.successButtonColor +
-                " " +
-                ProductViewFormStyle.addRightMargin
-              }
-              onClick={handleUpdate}
-            >
-              Update
-            </button>
-            <button
-              className={
-                ProductViewFormStyle.buttonStyle +
-                " " +
-                ProductViewFormStyle.deleteButtonColor
-              }
-            >
-              Delete
-            </button>
-          </div>
+          {user === "Owner" && (
+            <div className={ProductViewFormStyle.descButtonAdd}>
+              <button
+                className={
+                  ProductViewFormStyle.buttonStyle +
+                  " " +
+                  ProductViewFormStyle.successButtonColor +
+                  " " +
+                  ProductViewFormStyle.addRightMargin
+                }
+                onClick={handleUpdate}
+              >
+                Update
+              </button>
+              <button
+                className={
+                  ProductViewFormStyle.buttonStyle +
+                  " " +
+                  ProductViewFormStyle.deleteButtonColor
+                }
+              >
+                Delete
+              </button>
+            </div>
+          )}
         </div>
       )}
       {driverProfileSet === "deliveryDriverProfile" && (

@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import TableStyle from "../../../css/dashboard/Table.module.css";
+import Auth from "../service/auth";
 
 function DeliveryDriversTable() {
+  const user = Auth.getCurrentUser();
   return (
     <React.Fragment>
       <div className={TableStyle.titleHeader}>
@@ -38,16 +40,18 @@ function DeliveryDriversTable() {
               <th>
                 <div className={TableStyle.header}>
                   Delivery Driver
-                  <Link
-                    to="/dashboard/deliveryDriver/profile"
-                    className={TableStyle.linkStyleAddHeader}
-                  >
-                    <span
-                      className={"material-icons " + TableStyle.addIconStyle}
+                  {user === "Owner" && (
+                    <Link
+                      to="/dashboard/deliveryDriver/profile"
+                      className={TableStyle.linkStyleAddHeader}
                     >
-                      add_circle
-                    </span>
-                  </Link>
+                      <span
+                        className={"material-icons " + TableStyle.addIconStyle}
+                      >
+                        add_circle
+                      </span>
+                    </Link>
+                  )}
                 </div>
               </th>
               <th>
