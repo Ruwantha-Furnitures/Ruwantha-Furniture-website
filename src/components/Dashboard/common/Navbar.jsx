@@ -8,6 +8,7 @@ function Navbar() {
 
   const handleLogout = () => {
     localStorage.removeItem("userlevel");
+    localStorage.removeItem("userEmail");
     window.location = "/home";
   };
 
