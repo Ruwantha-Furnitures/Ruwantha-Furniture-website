@@ -7,7 +7,7 @@ const Payment = ({ orderId, name, amount }) => {
   var payment = {
     sandbox: true, // if the account is sandbox or real
     merchant_id: '1217736', // Replace your Merchant ID
-    return_url: 'http://sample.com/return',
+    return_url: 'http://localhost:3000/customer_thankyou',
     cancel_url: 'http://sample.com/cancel',
     notify_url: 'http://sample.com/notify',
     order_id: orderId,

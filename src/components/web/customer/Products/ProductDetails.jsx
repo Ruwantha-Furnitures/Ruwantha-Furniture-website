@@ -1,9 +1,10 @@
 import React from 'react';
 import { Container, Row, Col } from "reactstrap";
-import item4 from "../../../../assets/items/14.jpg";
+import item4 from "../../../../assets/items/1.jpg";
 import CommonStyle from "../../../../css/web/common.module.css";
 import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
+import Rating from "../../Common/StartRating";
 import FormStyle from "../../../../css/web/Form.module.css";
 
 function ProductDetails() {
@@ -12,32 +13,27 @@ function ProductDetails() {
     return (        
         <div>
             <Container>
-            <br /><br />
-            <Card className={FormStyle.cardbox} style={{marginBottom: '20px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
-                <Row className="justify-content-md-center" xs={12}>
-                <Col>                
+                <Card className={FormStyle.cardbox} style={{marginTop:'30px', marginBottom: '30px', padding:'30px', boxShadow:'0px 0px 5px #000'}}>                         
                     <Row className="justify-content-md-center" xs={12}>
-                        <Col sm={5}>
+                        <Col sm={6}>
                             <img src={item4} className={CommonStyle.Productimage} alt='product'></img>
                         </Col>
                         <br />
-                        <Col sm={7}>
+                        <Col sm={6}>
                             <Container>
                                 <center>
-                                    <h1>Canton Dining Suite</h1>
-                                    <h2>Rs. 72,975</h2><br />
-                                    <p align='justify'>Enjoy a nice dining experience with the 5 piece Canton dining suite. Distinctive table design with tempered glass overlay will lead to a clean finish. The appealing chair pattern, paired with the ample seating capacity, will enhance aesthetics and comfort.</p><br />
+                                    <h1>Serena Single Seater</h1>
+                                    <h2>Rs. 72975</h2><br />
+                                    <p align='justify'>A sophisticated bedroom chair with traditional flared arms. The two-tone finish and soft-to-the-touch fabric upholstery, along with the piping trim that elegantly outlines the edges, create an outstanding impression.</p><br />
+                                    <Rating></Rating>
                                     <Link to="/login"><button class="addtocart">Add to cart</button></Link>
                                 </center>
                             </Container>
-                        </Col>
-                    </Row>                
-                </Col>
-            </Row>
-            </Card>            
-            </Container>
-            <br /><br />
-            <br /><br />            
+                        </Col>                        
+                    </Row>                                                
+                </Card>
+                <br />
+            </Container>           
         </div>
     )
 }

@@ -49,6 +49,9 @@ import CustomerChangePassword from "./components/web/registeredCustomer/Profile/
 import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery/PasswordRecovery.jsx";
 import CustomerPayment from "./components/web/registeredCustomer/Payment/PaymentForm.jsx";
 import CustomerCheckout from "./components/web/registeredCustomer/Cart/ShippingDetailsPage.jsx";
+import CustomerReviews from "./components/web/registeredCustomer/Reviews/CustomerReviewsPage.jsx";
+import CustomerThankYou from "./components/web/registeredCustomer/Payment/ThankYouPage.jsx";
+import PendingEmail from "./components/web/registeredCustomer/PasswordRecovery/Pending.jsx";
 
 import ProductUpdate from "./components/Dashboard/ProductUpdate";
 import ProductCategoryUpdate from "./components/Dashboard/ProductCategoryUpdate";
@@ -292,9 +295,15 @@ function App() {
             component={CustomerUpdateProfile}
           />
           <Route exact path="/recoveryPassword" component={RecoveryPassword} />
+          <Route exact path="/PendingEmail" component={PendingEmail} />
+          
           <Route exact path="/customer_checkout" component={CustomerCheckout} />
 
           <Route exact path="/payment" component={CustomerPayment} />
+          <Route exact path="/customer_reviews" component={CustomerReviews} />     
+          <Route exact path="/customer_thankyou" component={CustomerThankYou} />     
+                      
+          
         </Switch>
       </div>
     </Router>
