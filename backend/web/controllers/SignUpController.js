@@ -30,6 +30,15 @@ const SignUpController = (req, res) => {
           };
   
           const CustomerDetails = await Customer.create(customerData);
+          if (CustomerDetails){
+            res.json({
+              auth: true,                         
+            });
+          }else{
+            res.json({
+              auth: false,                         
+            });
+          }
           console.log(CustomerDetails.name);
         } catch (error) {
           console.log(error);
