@@ -1,33 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SidebarStyle from "../../../css/dashboard/Sidebar.module.css";
+import Auth from "../service/auth";
 
 function Sidebar() {
-  // Admin
-  // Owner
-  // DeliveryDriver
-  const user = "Owner";
+  const user = Auth.getCurrentUser();
 
   return (
     <div className={SidebarStyle.sidebarBar}>
       <div className={SidebarStyle.sideList}>
         <ul>
-          <li>
-            <Link to="/dashboard" className={SidebarStyle.sidebarLink}>
-              <div className={SidebarStyle.lineSection}>
-                <div className={SidebarStyle.lineIcon}>
-                  <span className={"material-icons " + SidebarStyle.iconWidth}>
-                    home
-                  </span>
-                </div>
-                <div className={SidebarStyle.lineText}>
-                  <h1 className={SidebarStyle.lineTextStyle}>Dashboard</h1>
-                </div>
-              </div>
-            </Link>
-          </li>
           {(user === "Admin" || user === "Owner") && (
             <>
+              <li>
+                <Link to="/dashboard" className={SidebarStyle.sidebarLink}>
+                  <div className={SidebarStyle.lineSection}>
+                    <div className={SidebarStyle.lineIcon}>
+                      <span
+                        className={"material-icons " + SidebarStyle.iconWidth}
+                      >
+                        home
+                      </span>
+                    </div>
+                    <div className={SidebarStyle.lineText}>
+                      <h1 className={SidebarStyle.lineTextStyle}>Dashboard</h1>
+                    </div>
+                  </div>
+                </Link>
+              </li>
               <li>
                 <Link
                   to="/dashboard/products"
@@ -195,8 +195,27 @@ function Sidebar() {
               </li>
             </>
           )}
-          {user === "DeliveryDriver" && (
+          {user === "Delivery Driver" && (
             <>
+              <li>
+                <Link
+                  to="/dashboardDriver"
+                  className={SidebarStyle.sidebarLink}
+                >
+                  <div className={SidebarStyle.lineSection}>
+                    <div className={SidebarStyle.lineIcon}>
+                      <span
+                        className={"material-icons " + SidebarStyle.iconWidth}
+                      >
+                        home
+                      </span>
+                    </div>
+                    <div className={SidebarStyle.lineText}>
+                      <h1 className={SidebarStyle.lineTextStyle}>Dashboard</h1>
+                    </div>
+                  </div>
+                </Link>
+              </li>
               <li>
                 <Link
                   to="/dashboard/deliveryDriver/deliveries"

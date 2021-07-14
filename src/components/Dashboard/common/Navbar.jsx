@@ -1,8 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import NavbarStyle from "../../../css/dashboard/Navbar.module.css";
+import Auth from "../service/auth";
 
 function Navbar() {
+  const user = Auth.getCurrentUser();
+
+  const handleLogout = () => {
+    localStorage.removeItem("userlevel");
+    localStorage.removeItem("userEmail");
+    window.location = "/home";
+  };
+
   return (
     <div className={NavbarStyle.navgation}>
       <div className={NavbarStyle.logoSection}>
@@ -21,7 +30,7 @@ function Navbar() {
             </span>
           </div>
           <div className={NavbarStyle.dateText}>
-            <h1 className={NavbarStyle.dateTitle}>Welcome to Owner Portal</h1>
+            <h1 className={NavbarStyle.dateTitle}>Welcome to {user} Portal</h1>
           </div>
           <div className={NavbarStyle.dateicon2}>
             <span className={"material-icons " + NavbarStyle.dateIconStyle}>
@@ -43,7 +52,9 @@ function Navbar() {
             </Link>
           </div>
           <div className={NavbarStyle.logout}>
-            <button className={NavbarStyle.logoutButton}>Log Out</button>
+            <button className={NavbarStyle.logoutButton} onClick={handleLogout}>
+              Log Out
+            </button>
           </div>
         </div>
       </div>

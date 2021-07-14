@@ -4,10 +4,14 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mysql = require("mysql");
-const db=require("./web/models")
+const db = require("./web/models");
 
 const { customerRouter } = require("./web/routes/customers.js");
-const { productRouter } = require("./web/routes/Product.js"); 
+const { productRouter } = require("./web/routes/Product.js");
+
+// var corsOptions = {
+//   origin: "http://localhost:3000",
+// };
 
 app.use(cors());
 app.use(express.json());
@@ -15,7 +19,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/customer", customerRouter);
 app.use("/api/products", productRouter);
-
 
 connectDB();
 
@@ -25,7 +28,7 @@ async function connectDB() {
     app.listen(3002, () => {
       console.log("Application is running on the port 3002");
     });
-  }catch(error){
+  } catch (error) {
     console.log("error");
   }
 }
