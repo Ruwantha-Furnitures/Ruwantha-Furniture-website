@@ -1,7 +1,7 @@
 export function getCurrentUser() {
   const userlevel = localStorage.getItem("userlevel");
   var user;
-  if (parseInt(userlevel) === 1) {
+  if (parseInt(userlevel) === 0) {
     user = "Owner";
   }
   if (parseInt(userlevel) === 2) {

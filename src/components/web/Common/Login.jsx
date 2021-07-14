@@ -40,29 +40,27 @@ const Login = ({ navigation }) => {
         setErrorMessage("");
         localStorage.setItem("userlevel", 0);
         localStorage.setItem("userEmail", response.data.email);
-        setUserLevel(0)
-
-      } else if ((response.data.auth === true) && (response.data.userlevel === 2)) {
+        setUserLevel(0);
+        window.location = "/dashboard";
+      } else if (response.data.auth === true && response.data.userlevel === 2) {
         setIsLoading(true);
         setErrorMessage("");
         localStorage.setItem("userlevel", 2);
         localStorage.setItem("userEmail", response.data.email);
-        setUserLevel(2)
-
-      } else if ((response.data.auth === true) && (response.data.userlevel === 3)) {
+        setUserLevel(2);
+        window.location = "/dashboard";
+      } else if (response.data.auth === true && response.data.userlevel === 3) {
         setIsLoading(true);
         setErrorMessage("");
         localStorage.setItem("userlevel", 3);
         localStorage.setItem("userEmail", response.data.email);
-        setUserLevel(3)
-
+        setUserLevel(3);
+        window.location = "/dashboardDriver";
       } else {
-        console.log(localStorage.getItem("userlevel"))
+        console.log(localStorage.getItem("userlevel"));
         setIsLoading(false);
         let errorMessage = response.data.errorMessage;
         setErrorMessage(errorMessage);
-        // console.log(errorMessage);
-        // console.log(isLoading)
       }
     } catch (error) {
       console.error(error);
@@ -70,7 +68,7 @@ const Login = ({ navigation }) => {
   };
 
   const redirectHome = <Redirect to="/customer_home" />;
-  const redirectDashboard = <Redirect to="/dashboard" />
+  // const redirectDashboard = <Redirect to="/dashboard" />
 
   return (
     // <div style={{              
@@ -86,7 +84,7 @@ const Login = ({ navigation }) => {
     <React.Fragment>
 
       {isLoading === true && (userLevel === 1) && (redirectHome)}
-      {isLoading === true && (userLevel === 2 || userLevel === 0 || userLevel === 3) && (redirectDashboard)}
+      {/* {isLoading === true && (userLevel === 2 || userLevel === 0 || userLevel === 3) && (redirectDashboard)} */}
       {isLoading === false && (<div style={{
         backgroundImage: `url(${backcover})`,
         backgroundRepeat: 'no-repeat',

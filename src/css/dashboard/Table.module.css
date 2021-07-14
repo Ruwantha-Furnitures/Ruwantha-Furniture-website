@@ -284,11 +284,37 @@ input[type="search"]:-webkit-autofill:active {
   border-radius: 22px;
   height: 1px;
   padding: 3px 8px;
+  cursor: pointer;
 }
 
 .statusColorNotCompleted {
-  background-color: #be2e2e;
+  /* background-color: #be2e2e; */
+  border: 1px solid #be2e2e;
+  color: #000000;
+  font-weight: 400;
 }
+
+.statusColorNotCompleted:hover {
+  background-color: #be2e2e;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #ffffff;
+}
+
 .statusColorCompleted {
+  /* background-color: #2ebe72; */
+  border: 1px solid #2ebe72;
+  color: #000000;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.statusColorCompleted:hover {
   background-color: #2ebe72;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #ffffff;
 }
