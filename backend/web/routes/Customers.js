@@ -17,9 +17,14 @@ const {
   UpdateProfileController,
 } = require("../controllers/UpdateProfileController");
 
+const {
+  messageController,
+} = require("../controllers/messageController");
+
 router.post("/signup", SignUpController);
 router.post("/login", LoginController);
 router.get("/viewprofile/:accID", ViewProfileController);
 router.put("/updateprofile/:accID", UpdateProfileController);
+router.post("/contact",messageController);
 
 module.exports = { customerRouter: router };
