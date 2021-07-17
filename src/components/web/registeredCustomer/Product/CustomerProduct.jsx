@@ -39,7 +39,8 @@ const CustomerProduct = ({navigation}) => {
                     <Card.Body>
                         <Container fluid align="center"> 
                             <br />
-                            <SliderProducts></SliderProducts>                                                     
+                            <SliderProducts></SliderProducts>
+                            <br />
                             <ProductBox navigation={ navigation } itemUpHandler={ itemUpHandler }></ProductBox>
                         </Container>                        
                     </Card.Body>

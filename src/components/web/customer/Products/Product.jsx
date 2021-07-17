@@ -25,6 +25,7 @@ function Product() {
                         <center>
                             <br />
                             <SliderProducts></SliderProducts>
+                            <br />
                             <ProductBox></ProductBox>
                         </center>                                                 
                     </Card.Body>

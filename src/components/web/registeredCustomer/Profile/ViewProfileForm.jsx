@@ -52,13 +52,25 @@ function ViewProfileForm({userDetails}) {
                         <center><h3 style={title}>Profile</h3></center>
                     </Row> 
                     <label style={{margin: '4px'}}><b>Name</b></label>
-                    <input type='text' value={name} style={textboxStyle}></input><br />
+                    <input style={textboxStyle} 
+                        type='text' 
+                        value={name}                    
+                    ></input><br />
                     <label style={{margin: '4px'}}><b>Address</b></label><br />  
-                    <input type='text' value={address} style={textboxStyle}></input><br />
+                    <input style={textboxStyle}
+                        type='text' 
+                        value={address} 
+                    ></input><br />
                     <label style={{margin: '4px'}}><b>Contact No</b></label><br />    
-                    <input type='text' value={telephone} style={textboxStyle}></input><br />                  
+                    <input  style={textboxStyle}
+                        type='text' 
+                        value={telephone}
+                    ></input><br />                  
                     <label style={{margin: '4px'}}><b>Email</b></label><br />                              
-                    <input type='text' value={email} style={textboxStyle}></input><br />                               
+                    <input style={textboxStyle}
+                        type='text' 
+                        value={email}
+                    ></input><br />                               
                     <div align="right"><br />
                     <Link to='/updateProfile'>                        
                         <Button variant="success">Go to update page</Button>
