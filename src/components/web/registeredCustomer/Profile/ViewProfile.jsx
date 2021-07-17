@@ -9,7 +9,7 @@ import axios from 'axios';
 
 function ViewProfile() {
 
-    const [userDetails,setUserDetails] =useState()
+    const [userDetails,setUserDetails] =useState();
 
     useEffect(() => {
         let accountID=localStorage.getItem('userAccID');

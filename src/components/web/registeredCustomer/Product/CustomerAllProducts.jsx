@@ -17,6 +17,13 @@ const CustomerAllProducts = props => {
         viewAllProducts();
     },[])
 
+    //adding selected product Id to the localstorage
+    function sayHello(itemid) {
+        alert(`hello, ${itemid}`);
+        localStorage.setItem("productID", itemid);
+        console.log(localStorage.getItem("productID"));        
+    }
+
     const viewAllProducts = async() => {
         try {
            console.log('Requests send') // done
@@ -27,6 +34,7 @@ const CustomerAllProducts = props => {
             console.log(error);
         }
     }
+
 
     const funitureimg = {
       marginTop: "30px",      
@@ -55,7 +63,7 @@ const CustomerAllProducts = props => {
                                 <Rating></Rating>
                             </center>
                             <center>
-                                <Link to="/viewProductDetail"><button class="addtocart">Read More</button></Link>
+                                <Link to="/viewProductDetail"><button class="addtocart" onClick={() => sayHello(productList.itemid)}>Read More</button></Link>
                             </center>                                                                                       
                         </Card> 
                         <br />   

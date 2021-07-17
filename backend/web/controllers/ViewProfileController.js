@@ -1,4 +1,4 @@
-const { Customer, Account } = require("../models");
+const { Customer } = require("../models");
 const mysql = require("mysql");
 
 const ViewProfileController = async (req, res) => {
