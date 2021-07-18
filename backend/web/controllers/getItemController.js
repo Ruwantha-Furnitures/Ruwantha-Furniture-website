@@ -4,9 +4,10 @@ const mysql = require("mysql");
 //get all item list
 const getItemController  = async (req, res) => {
 
-    const itemID = req.params.productID;
+    const productID = req.params.itemID;
+
     try{
-      const selectedProduct = await Item.findOne({ where : { itemid: itemID}}) ;
+      const selectedProduct = await Item.findOne({ where : { itemid: productID}}) ;
       console.log(selectProduct);
       const {name,typeid,price,quantity,details,objectid} =selectedProduct;
       res.json ({auth: true, name,typeid,price,quantity,details,objectid})      

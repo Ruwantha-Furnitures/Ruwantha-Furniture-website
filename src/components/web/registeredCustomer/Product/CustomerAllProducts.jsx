@@ -19,7 +19,7 @@ const CustomerAllProducts = props => {
 
     //adding selected product Id to the localstorage
     function sayHello(itemid) {
-        alert(`hello, ${itemid}`);
+        //alert(`hello, ${itemid}`);
         localStorage.setItem("productID", itemid);
         console.log(localStorage.getItem("productID"));        
     }
