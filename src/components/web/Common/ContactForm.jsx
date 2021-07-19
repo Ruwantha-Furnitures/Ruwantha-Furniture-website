@@ -49,6 +49,7 @@ const ContactForm = ({contactUsHandler}) => {
                         type='tel' 
                         placeholder="Contact Number"
                         value={telephone}
+                        pattern="[0-9]{10}"  
                         onChange={(e)=> setTelephone(e.target.value)}
                         required
                     ></input><br />    

@@ -8,6 +8,8 @@ const db = require("./web/models");
 
 const { customerRouter } = require("./web/routes/customers.js");
 const { productRouter } = require("./web/routes/Product.js");
+const { contactusRouter } = require("./web/routes/contactus.js");
+
 
 // var corsOptions = {
 //   origin: "http://localhost:3000",
@@ -19,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/customer", customerRouter);
 app.use("/api/products", productRouter);
+app.use("/api/contactus", contactusRouter);
 
 connectDB();
 
