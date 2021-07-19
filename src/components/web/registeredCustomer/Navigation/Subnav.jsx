@@ -30,7 +30,7 @@ function Subnav() {
             <Navbar.Collapse id="basic-navbar-nav" >      
                 <Nav className="mr-auto">
                     <Nav.Link href="changepassword">Change Password</Nav.Link>
-                    <Nav.Link href="#features">Purchased History</Nav.Link>                    
+                    <Nav.Link href="customer_reviews">Purchased History</Nav.Link>                    
                 </Nav>
             </Navbar.Collapse>  
         </Navbar>                   

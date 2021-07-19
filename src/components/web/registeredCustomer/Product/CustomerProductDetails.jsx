@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useState , useEffect } from 'react';
 import { Container, Row, Col } from "reactstrap";
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
@@ -7,8 +7,25 @@ import FormStyle from "../../../../css/web/Form.module.css";
 import item4 from "../../../../assets/items/1.jpg";
 import CommonStyle from "../../../../css/web/common.module.css";
 
-function CustomerProductDetails() {
+function CustomerProductDetails({itemDetails}) {
     require("bootstrap/dist/css/bootstrap.min.css");    
+    const [itemId,setItemID]=useState("")
+    const [name,setName]=useState("")
+    const [price,setPrice]=useState("")
+    const [description,setDescription]=useState("")    
+    
+    console.log(itemDetails); //undefine
+    console.log("On the customer view product details");
+
+    useEffect(() => {                
+        if (itemDetails) {            
+            setItemID(() => itemDetails.itemId);
+            setName(() => itemDetails.name);
+            setPrice(() => itemDetails.price);
+            setDescription(() => itemDetails.details);
+            // console.log(itemDetails.name);
+        }
+    }, [itemDetails]);
 
     return (        
         <div>            
@@ -22,7 +39,12 @@ function CustomerProductDetails() {
                         <Col sm={6}>
                             <Container>
                                 <center>
-                                    <h1>Serena Single Seater</h1>
+                                    {/* <h1>Serena Single Seater</h1> */}
+                                    <input 
+                                        type='text' 
+                                        value = {name}
+                                        style = {{color : 'black'}}
+                                    />
                                     <h2>Rs. 72975</h2><br />
                                     <p align='justify'>A sophisticated bedroom chair with traditional flared arms. The two-tone finish and soft-to-the-touch fabric upholstery, along with the piping trim that elegantly outlines the edges, create an outstanding impression.</p><br />
                                     <Rating></Rating>

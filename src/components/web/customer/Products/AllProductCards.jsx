@@ -56,7 +56,7 @@ const AllProductCards = props => {
                                 <Rating></Rating>
                             </center>
                             <center>
-                                <Link to="/viewProductDetail"><button class="addtocart">Read More</button></Link>
+                                <Link to="/viewProduct"><button class="addtocart">Read More</button></Link>
                             </center>                                                                                       
                         </Card> 
                         <br />   

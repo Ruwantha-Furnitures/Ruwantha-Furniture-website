@@ -32,7 +32,7 @@ import ContactUs from "./components/web/customer/ContactUs/Contact.jsx";
 import Login from "../src/components/web/Common/Login.jsx";
 import Signup from "./components/web/customer/SignUp/Signup.jsx";
 
-import Customer_Home from "./components/web/registeredCustomer/home/CustomerHome";
+import Customer_Home from "./components/web/registeredCustomer/Home/CustomerHome";
 import Customer_Product from "./components/web/registeredCustomer/Product/CustomerProduct.jsx";
 import Customer_ContactUs from "./components/web/registeredCustomer/ContactUs/CustomerContact.jsx";
 import ViewProfile from "./components/web/registeredCustomer/Profile/ViewProfile.jsx";
@@ -45,6 +45,10 @@ import CustomerChangePassword from "./components/web/registeredCustomer/Profile/
 import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery/PasswordRecovery.jsx";
 import CustomerPayment from "./components/web/registeredCustomer/Payment/PaymentForm.jsx";
 import CustomerCheckout from "./components/web/registeredCustomer/Cart/ShippingDetailsPage.jsx";
+import CustomerReviews from "./components/web/registeredCustomer/Reviews/CustomerReviewsPage.jsx";
+import CustomerThankYou from "./components/web/registeredCustomer/Payment/ThankYouPage.jsx";
+import PendingEmail from "./components/web/registeredCustomer/PasswordRecovery/Pending.jsx";
+import PayhereCheckout from "./components/web/registeredCustomer/Payment/Checkout.jsx";
 
 import ProductUpdate from "./components/Dashboard/ProductUpdate";
 
@@ -264,6 +268,7 @@ function App() {
           />
 
           {/* Web */}
+          <Route exact path="/" component={Home} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/product" component={Product} />
           <Route exact path="/contact-us" component={ContactUs} />
@@ -299,9 +304,16 @@ function App() {
             component={CustomerUpdateProfile}
           />
           <Route exact path="/recoveryPassword" component={RecoveryPassword} />
+          <Route exact path="/PendingEmail" component={PendingEmail} />
+          
           <Route exact path="/customer_checkout" component={CustomerCheckout} />
 
           <Route exact path="/payment" component={CustomerPayment} />
+          <Route exact path="/customer_reviews" component={CustomerReviews} />     
+          <Route exact path="/customer_thankyou" component={CustomerThankYou} />     
+          <Route exact path="/customer_paymentGateway" component={PayhereCheckout} />               
+                      
+          
         </Switch>
       </div>
     </Router>

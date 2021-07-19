@@ -9,6 +9,10 @@
     border-radius: 20px;    
   }
 
+  .formPageBox{
+    margin-left: 50px;
+  }
+
   .btn {
     background-color: #cac1c1;
     justify-content: left;
@@ -26,6 +30,7 @@
     color: #fff;
   }
 
+  /* Payment button style */
   .paybtn {
     background-color: #28a745 ;
     color: white;
@@ -39,6 +44,7 @@
     margin-left: 0px;     
   }
   
+  /* Payment button hover style */
   .paybtn:hover {
     background: #208f4e;
     transition: 0.5s;
@@ -55,9 +61,9 @@
     padding: 10px;
   }
 
-  /* .formPageBox{
+  .formPageBox{
     margin-left: 80px ;
-  } */
+  }
 
   @media screen and (max-width: 798px) {
     .btn {
@@ -99,8 +105,8 @@
       grid-template-columns: auto;    
       padding: 10px;
     }
-    /* .formPageBox{
+    .formPageBox{
       margin-left: 5px;      
-    } */
+    }
   }
   

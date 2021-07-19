@@ -1,12 +1,40 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import Navigation from "../Navigation/UserNav";
 import Footer from "../../Common/Footer";
 import { Container} from 'reactstrap';
 import ProfileForm from "./ViewProfileForm";
 import Subnavigation from "../Navigation/Subnav";
 import Topimg from '../../../../assets/topimg28.jpg';
+import axios from 'axios';
 
 function ViewProfile() {
+
+    const [userDetails,setUserDetails] =useState();
+
+    useEffect(() => {
+        let accountID=localStorage.getItem('userAccID');
+        let accountEmail=localStorage.getItem('userEmail')
+        console.log(accountID);
+        const fecthData=async()=>{
+            try {                
+                let response=await axios.get(`http://192.168.56.1:3002/api/customer/viewprofile/${accountID}`)
+                const {name,address, telephone}=response.data
+                const userData={
+                    accountEmail,
+                    name,
+                    address,
+                    telephone,
+                }
+                setUserDetails(()=>userData)
+                console.log(response.data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fecthData()
+    },[])
+
+
     const contactImg = {
         backgroundImage: `url(${Topimg})` ,
         repeat: 'none',
@@ -25,7 +53,7 @@ function ViewProfile() {
             <Navigation></Navigation> 
             <Subnavigation></Subnavigation> 
             <Container align='left'>
-                <ProfileForm></ProfileForm> 
+                <ProfileForm userDetails={userDetails}></ProfileForm> 
             </Container>                                                                                    
             <Footer></Footer>    
         </div>
