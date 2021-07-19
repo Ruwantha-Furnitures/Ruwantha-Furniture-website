@@ -9,15 +9,11 @@ import ProductAdd from "./components/Dashboard/ProductAdd";
 import ProductSell from "./components/Dashboard/ProductSell";
 import ProfileChangePassword from "./components/Dashboard/ProfileChangePassword";
 import Customers from "./components/Dashboard/Customers";
-import ProductTypeAdd from "./components/Dashboard/ProductTypeAdd";
-import ProductCategoryAdd from "./components/Dashboard/ProductCategoryAdd";
 import CustomerProfile from "./components/Dashboard/CustomerProfile";
 import PurchaseOrders from "./components/Dashboard/PurchaseOrders";
 import DeliveryDrivers from "./components/Dashboard/DeliveryDrivers";
 import DeliveryDriverProfile from "./components/Dashboard/DeliveryDriverProfile";
 import DeliveryDriverDeliveries from "./components/Dashboard/DeliveryDriverDeliveries";
-import ProductTypeView from "./components/Dashboard/ProductTypeView";
-import ProductCategoryView from "./components/Dashboard/ProductCategoryView";
 
 import AssignOrderDriver from "./components/Dashboard/AssignOrderDriver";
 import AssignDriver from "./components/Dashboard/AssignDriver";
@@ -51,8 +47,7 @@ import CustomerPayment from "./components/web/registeredCustomer/Payment/Payment
 import CustomerCheckout from "./components/web/registeredCustomer/Cart/ShippingDetailsPage.jsx";
 
 import ProductUpdate from "./components/Dashboard/ProductUpdate";
-import ProductCategoryUpdate from "./components/Dashboard/ProductCategoryUpdate";
-import ProductTypeUpdate from "./components/Dashboard/ProductTypeUpdate";
+
 import ProductSellAmount from "./components/Dashboard/ProductSellAmount";
 import OrderDetails from "./components/Dashboard/OrderDetails";
 import DeliveryDriverUpdate from "./components/Dashboard/DeliveryDriverUpdate";
@@ -60,6 +55,18 @@ import CustomerMessages from "./components/Dashboard/CustomerMessages";
 import CustomerMessageView from "./components/Dashboard/CustomerMessageView";
 import DeliveryDriverNotifications from "./components/Dashboard/DeliveryDriverNotifications";
 import DashboardDriver from "./components/Dashboard/DashboardDriver";
+
+// products
+// categories
+import ProductCategoryAdd from "./components/Dashboard/product/product_categories/ProductCategoryAdd";
+import ProductCategoryUpdate from "./components/Dashboard/product/product_categories/ProductCategoryUpdate";
+import ProductCategoryView from "./components/Dashboard/product/product_categories/ProductCategoryView";
+// Types
+import ProductTypeView from "./components/Dashboard/product/product_types/ProductTypeView";
+import ProductTypeAdd from "./components/Dashboard/product/product_types/ProductTypeAdd";
+import ProductTypeUpdate from "./components/Dashboard/product/product_types/ProductTypeUpdate";
+
+// Types
 
 function App() {
   return (

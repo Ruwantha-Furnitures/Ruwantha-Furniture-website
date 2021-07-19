@@ -1,20 +1,20 @@
 import React from "react";
-import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.css";
-import ProductCategoryList from "./ProductCategoryList";
+import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
+import ProductTypeList from "./ProductTypeList";
 import { Link } from "react-router-dom";
-import Auth from "../service/auth";
+import Auth from "../../../service/auth";
 
-function ProductCategoryViewForm() {
+function ProductTypeViewForm() {
   const user = Auth.getCurrentUser();
   const handleUpdate = () => {
-    window.location = "/dashboard/product/updateProductCategory";
+    window.location = "/dashboard/product/updateProductType";
   };
 
   return (
     <React.Fragment>
       <div className={ProductViewFormStyle.titleHeader}>
         <h1 className={ProductViewFormStyle.tableTitleHeaderStyle}>
-          Product Category View
+          Product Type View
         </h1>
         <div className={ProductViewFormStyle.backSection}>
           <div className={ProductViewFormStyle.back}>
@@ -53,6 +53,18 @@ function ProductCategoryViewForm() {
                   readOnly
                 />
               </div>
+              <div className={ProductViewFormStyle.dataProductTitle}>
+                <label className={ProductViewFormStyle.labelProductTitle}>
+                  Type
+                </label>
+                <input
+                  type="text"
+                  value="Product Type 1"
+                  placeholder="Product Type 1"
+                  className={ProductViewFormStyle.inputProductTitle}
+                  readOnly
+                />
+              </div>
               <div className={ProductViewFormStyle.descButtonsAddType}>
                 {user === "Admin" && (
                   <div className={ProductViewFormStyle.descButtonAdd}>
@@ -83,8 +95,8 @@ function ProductCategoryViewForm() {
             </div>
           </div>
           <div className={ProductViewFormStyle.typesList}>
-            {/* Product Category List View */}
-            <ProductCategoryList />
+            {/* Product type List View */}
+            <ProductTypeList />
           </div>
         </div>
       </div>
@@ -93,4 +105,4 @@ function ProductCategoryViewForm() {
   );
 }
 
-export default ProductCategoryViewForm;
+export default ProductTypeViewForm;

@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "./common/Navbar";
 import Sidebar from "./common/Sidebar";
 import AllProductsView from "./common/AllProductsView";
-import ProductForm from "../Dashboard/product/ProductForm";
+import ProductForm from "./product/products/common/ProductForm";
 import MainStyle from "../../css/dashboard/Main.module.css";
 import ProductStyle from "../../css/dashboard/Products.module.css";
 

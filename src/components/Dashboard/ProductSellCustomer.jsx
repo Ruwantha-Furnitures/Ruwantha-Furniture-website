@@ -4,7 +4,7 @@ import Sidebar from "./common/Sidebar";
 import AllProductsView from "./common/AllProductsView";
 import MainStyle from "../../css/dashboard/Main.module.css";
 import ProductStyle from "../../css/dashboard/Products.module.css";
-import ProductSellForm from "./product/ProductSellForm";
+import ProductSellForm from "./product/product_sell/common/ProductSellForm";
 
 function ProductSellCustomer() {
   return (

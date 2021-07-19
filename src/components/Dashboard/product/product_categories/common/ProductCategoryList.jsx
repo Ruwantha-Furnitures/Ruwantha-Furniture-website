@@ -1,20 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.css";
+import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 
-function ProductTypeList() {
+function ProductCategoryList() {
   return (
     <React.Fragment>
-      <h1 className={ProductViewFormStyle.productTypeTitle}>Category 01</h1>
+      <h1 className={ProductViewFormStyle.productTypeTitle}>Categories</h1>
       <div className={ProductViewFormStyle.productType}>
         <span class={"material-icons " + ProductViewFormStyle.iconSize}>
           circle
         </span>
         <Link
-          to="/dashboard/product/viewProductType"
+          to="/dashboard/product/viewProductCategory"
           className={ProductViewFormStyle.linkStyle}
         >
-          <h1 className={ProductViewFormStyle.productTypeName}>Type 01</h1>
+          <h1 className={ProductViewFormStyle.productTypeName}>Category 01</h1>
         </Link>
       </div>
       <div className={ProductViewFormStyle.productType}>
@@ -22,10 +22,10 @@ function ProductTypeList() {
           circle
         </span>
         <Link
-          to="/dashboard/product/viewProductType"
+          to="/dashboard/product/viewProductCategory"
           className={ProductViewFormStyle.linkStyle}
         >
-          <h1 className={ProductViewFormStyle.productTypeName}>Type 02</h1>
+          <h1 className={ProductViewFormStyle.productTypeName}>Category 02</h1>
         </Link>
       </div>
       <div className={ProductViewFormStyle.productType}>
@@ -33,10 +33,10 @@ function ProductTypeList() {
           circle
         </span>
         <Link
-          to="/dashboard/product/viewProductType"
+          to="/dashboard/product/viewProductCategory"
           className={ProductViewFormStyle.linkStyle}
         >
-          <h1 className={ProductViewFormStyle.productTypeName}>Type 03</h1>
+          <h1 className={ProductViewFormStyle.productTypeName}>Category 03</h1>
         </Link>
       </div>
       <div className={ProductViewFormStyle.productType}>
@@ -44,14 +44,14 @@ function ProductTypeList() {
           circle
         </span>
         <Link
-          to="/dashboard/product/viewProductType"
+          to="/dashboard/product/viewProductCategory"
           className={ProductViewFormStyle.linkStyle}
         >
-          <h1 className={ProductViewFormStyle.productTypeName}>Type 04</h1>
+          <h1 className={ProductViewFormStyle.productTypeName}>Category 04</h1>
         </Link>
       </div>
     </React.Fragment>
   );
 }
 
-export default ProductTypeList;
+export default ProductCategoryList;

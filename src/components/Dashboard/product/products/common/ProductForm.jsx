@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.css";
-import ProductImage from "../../../assets/dashboard/product/addPhotoNew2.png";
+import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
+import ProductImage from "../../../../../assets/dashboard/product/addPhotoNew2.png";
 import { Link } from "react-router-dom";
 
-function ProductUpdateForm() {
+function ProductForm() {
+  // const [picture, setPicture] = useState(null);
   const [imgData, setImgData] = useState(null);
 
   const onChangePicture = (e) => {
@@ -17,11 +18,12 @@ function ProductUpdateForm() {
       reader.readAsDataURL(e.target.files[0]);
     }
   };
+
   return (
     <React.Fragment>
       <div className={ProductViewFormStyle.titleHeader}>
         <h1 className={ProductViewFormStyle.tableTitleHeaderStyle}>
-          Product Update
+          Product Add
         </h1>
         <div className={ProductViewFormStyle.backSection}>
           <div className={ProductViewFormStyle.back}>
@@ -172,14 +174,8 @@ function ProductUpdateForm() {
         </div>
         <div className={ProductViewFormStyle.descButtonsAdd}>
           <div className={ProductViewFormStyle.descButtonAdd}>
-            <button
-              className={
-                ProductViewFormStyle.buttonStyle +
-                " " +
-                ProductViewFormStyle.successButtonColor
-              }
-            >
-              Update
+            <button className={ProductViewFormStyle.descButtonAddStyle}>
+              Add Product
             </button>
           </div>
         </div>
@@ -188,4 +184,4 @@ function ProductUpdateForm() {
   );
 }
 
-export default ProductUpdateForm;
+export default ProductForm;
