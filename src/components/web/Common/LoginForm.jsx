@@ -7,7 +7,7 @@ import "../../../css/web/Login.css";
 import Avatar from "../../../assets/avatar.png";
 import FormStyle from "../../../css/web/Form.module.css";
 
-const LoginForm = ({ navigation, loginHandler }) => {
+const LoginForm = ({ loginHandler }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 

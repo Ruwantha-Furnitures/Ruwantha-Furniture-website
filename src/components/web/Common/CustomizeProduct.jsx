@@ -31,7 +31,8 @@ function CustomizeProduct() {
         height: '40px',
         borderRadius: '5px',
         padding: '5px',
-        margin: '5px'            
+        margin: '5px',
+        border: 'solid 1px darkgray'          
     };
 
     const textareaStyle = {
@@ -40,7 +41,8 @@ function CustomizeProduct() {
         border: 'none',        
         borderRadius: '5px',
         padding: '5px',
-        margin: '5px'            
+        margin: '5px',
+        border: 'solid 1px darkgray'           
     };
       
       
