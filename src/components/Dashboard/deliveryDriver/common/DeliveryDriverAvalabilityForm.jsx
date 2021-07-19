@@ -1,40 +1,13 @@
 import React from "react";
-import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.css";
-import { Link } from "react-router-dom";
+import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.module.css";
 
-function DeliveryDriverUpdateForm() {
-  const url = window.location.pathname.split("/");
-  const driverProfileSet = url[2];
-
+function DeliveryDriverAvalabilityForm() {
   return (
     <React.Fragment>
-      <div className={ProductViewFormStyle.titleHeader}>
-        <h1 className={ProductViewFormStyle.tableTitleHeaderStyle}>
-          Update Delivery Driver
+      <div>
+        <h1 className={ProductViewFormStyle.titleStyle}>
+          Delivery Driver Availability
         </h1>
-        <div className={ProductViewFormStyle.backSection}>
-          <div className={ProductViewFormStyle.back}>
-            <Link
-              to={
-                driverProfileSet === "deliveryDriverProfile"
-                  ? "/dashboard/deliveryDriverProfile"
-                  : "/dashboard/deliveryDrivers"
-              }
-              className={ProductViewFormStyle.linkStyle}
-            >
-              <div className={ProductViewFormStyle.backStyle}>
-                <span
-                  className={
-                    "material-icons " + ProductViewFormStyle.backIconStyle
-                  }
-                >
-                  arrow_back_ios
-                </span>
-                <div className={ProductViewFormStyle.backButtonStyle}>Back</div>
-              </div>
-            </Link>
-          </div>
-        </div>
       </div>
       <form action="#" className={ProductViewFormStyle.formStyle}>
         <div className={ProductViewFormStyle.details}>
@@ -84,19 +57,6 @@ function DeliveryDriverUpdateForm() {
                 </div>
               </div>
               <div className={ProductViewFormStyle.formLine}>
-                <div className={ProductViewFormStyle.dataforLong}>
-                  <label className={ProductViewFormStyle.labelStyleforLong}>
-                    Address
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Delivery Driver Address"
-                    className={ProductViewFormStyle.inputStyleforLong}
-                  />
-                </div>
-              </div>
-              <div className={ProductViewFormStyle.formLine}>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
                     Number
@@ -110,12 +70,12 @@ function DeliveryDriverUpdateForm() {
                 </div>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
-                    Payment
+                    Date
                   </label>
                   <input
                     type="text"
                     value=""
-                    placeholder="Basic Payment"
+                    placeholder="2021-03-17"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
@@ -124,25 +84,24 @@ function DeliveryDriverUpdateForm() {
               <div className={ProductViewFormStyle.formLine}>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
-                    Vehicle
+                    Payment
                   </label>
                   <input
                     type="text"
                     value=""
-                    placeholder="Vehicle Number"
+                    placeholder="Rs.4000"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
-                    Type
+                    Availability
                   </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Vehicle Type"
-                    className={ProductViewFormStyle.inputStyle}
-                  />
+                  {/* Drivers filter by area and according to avaliable status */}
+                  <select className={ProductViewFormStyle.inputFormSelectStyle}>
+                    <option value="Availabile">Availabile</option>
+                    <option value="Not Availabile">Not Availabile</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -151,14 +110,8 @@ function DeliveryDriverUpdateForm() {
 
         <div className={ProductViewFormStyle.descButtonsAdd}>
           <div className={ProductViewFormStyle.descButtonAdd}>
-            <button
-              className={
-                ProductViewFormStyle.buttonStyle +
-                " " +
-                ProductViewFormStyle.successButtonColor
-              }
-            >
-              Update
+            <button className={ProductViewFormStyle.descButtonAddStyle}>
+              Change Availabilty
             </button>
           </div>
         </div>
@@ -167,4 +120,4 @@ function DeliveryDriverUpdateForm() {
   );
 }
 
-export default DeliveryDriverUpdateForm;
+export default DeliveryDriverAvalabilityForm;

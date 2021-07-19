@@ -1,12 +1,12 @@
 import React from "react";
-import Navbar from "./common/Navbar";
-import Sidebar from "./common/Sidebar";
-import DriverDateView from "./common/DriverDateView";
-import MainStyle from "../../css/dashboard/Main.module.css";
-import ProductStyle from "../../css/dashboard/Products.module.css";
-import DeliveryDriverViewForm from "./deliveryDriver/DeliveryDriverViewForm";
+import Navbar from "../common/Navbar";
+import Sidebar from "../common/Sidebar";
+import AllProductsView from "../common/AllProductsView";
+import MainStyle from "../../../css/dashboard/Main.module.css";
+import ProductStyle from "../../../css/dashboard/Products.module.css";
+import DeliveryDriversTable from "./common/DeliveryDriversTable";
 
-function DeliveryDriverView() {
+function DeliveryDrivers() {
   return (
     <div className={MainStyle.bodycontainer}>
       <div className={MainStyle.navSection}>
@@ -21,13 +21,12 @@ function DeliveryDriverView() {
         <div className={ProductStyle.cardDataSection}>
           <div className={ProductStyle.detailsSection}>
             <div className={ProductStyle.detailCard}>
-              {/* Delivery Driver View Profile */}
-
-              <DeliveryDriverViewForm />
+              {/* Dilvery Drivers Table */}
+              <DeliveryDriversTable />
             </div>
           </div>
           <div className={ProductStyle.productsViewSection}>
-            <DriverDateView />
+            <AllProductsView />
           </div>
         </div>
       </div>
@@ -35,4 +34,4 @@ function DeliveryDriverView() {
   );
 }
 
-export default DeliveryDriverView;
+export default DeliveryDrivers;

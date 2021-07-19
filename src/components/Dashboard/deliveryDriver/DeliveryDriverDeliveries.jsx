@@ -1,12 +1,12 @@
 import React from "react";
-import Navbar from "./common/Navbar";
-import Sidebar from "./common/Sidebar";
-import DriverDateView from "./common/DriverDateView";
-import MainStyle from "../../css/dashboard/Main.module.css";
-import ProductStyle from "../../css/dashboard/Products.module.css";
-import DeliveryDriverNotificationsTable from "./deliveryDriver/DeliveryDriverNotificationsTable";
+import Navbar from "../common/Navbar";
+import Sidebar from "../common/Sidebar";
+import DriverDateView from "../common/DriverDateView";
+import MainStyle from "../../../css/dashboard/Main.module.css";
+import ProductStyle from "../../../css/dashboard/Products.module.css";
+import DeliveriesTable from "./common/DeliveriesTable";
 
-function DeliveryDriverNotifications() {
+function DeliveryDriverDeliveries() {
   return (
     <div className={MainStyle.bodycontainer}>
       <div className={MainStyle.navSection}>
@@ -22,7 +22,7 @@ function DeliveryDriverNotifications() {
           <div className={ProductStyle.detailsSection}>
             <div className={ProductStyle.detailCard}>
               {/* Dilvery Drivers Table */}
-              <DeliveryDriverNotificationsTable />
+              <DeliveriesTable />
             </div>
           </div>
           <div className={ProductStyle.productsViewSection}>
@@ -34,4 +34,4 @@ function DeliveryDriverNotifications() {
   );
 }
 
-export default DeliveryDriverNotifications;
+export default DeliveryDriverDeliveries;

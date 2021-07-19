@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import TableStyle from "../../../css/dashboard/Table.module.css";
+import TableStyle from "../../../../css/dashboard/Table.module.css";
 
-function DeliveryDriverNotificationsTable() {
+function DeliveriesTable() {
   return (
     <React.Fragment>
       <div className={TableStyle.tabletitle}>
         <h1 className={TableStyle.tableTitleProductStyle}>
-          Deliveries Notifications - Tharindu Gihan
+          Driver Deliveries - Tharindu Gihan
         </h1>
       </div>
       <div className={TableStyle.tablebody}>
@@ -21,16 +21,16 @@ function DeliveryDriverNotificationsTable() {
                 <div className={TableStyle.header}>Customer</div>
               </th>
               <th>
+                <div className={TableStyle.header}>Contact Number</div>
+              </th>
+              <th>
                 <div className={TableStyle.header}>Date</div>
               </th>
               <th>
                 <div className={TableStyle.header}>Payment</div>
               </th>
               <th>
-                <div className={TableStyle.header}>Accept</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Decline</div>
+                <div className={TableStyle.header}>Status</div>
               </th>
             </tr>
           </thead>
@@ -38,26 +38,16 @@ function DeliveryDriverNotificationsTable() {
             <tr>
               <td>
                 <Link
-                  to="/dashboard/deliveryDriverNotifications/details"
+                  to="/dashboard/deliveryDriver/details"
                   className={TableStyle.linkStyleAdd}
                 >
                   No:1
                 </Link>
               </td>
               <td>Tharindu Gihan</td>
+              <td>0778522736</td>
               <td>2021-03-17</td>
               <td>Rs.25000</td>
-              <td>
-                <span
-                  className={
-                    TableStyle.statusStyle +
-                    " " +
-                    TableStyle.statusColorCompleted
-                  }
-                >
-                  Accept
-                </span>
-              </td>
               <td>
                 <span
                   className={
@@ -66,33 +56,23 @@ function DeliveryDriverNotificationsTable() {
                     TableStyle.statusColorNotCompleted
                   }
                 >
-                  Decline
+                  NotCompleted
                 </span>
               </td>
             </tr>
             <tr>
               <td>
                 <Link
-                  to="/dashboard/deliveryDriverNotifications/details"
+                  to="/dashboard/deliveryDriver/details"
                   className={TableStyle.linkStyleAdd}
                 >
                   No:2
                 </Link>
               </td>
               <td>Himasha Anjali</td>
+              <td>0778522736</td>
               <td>2021-03-17</td>
               <td>Rs.25000</td>
-              <td>
-                <span
-                  className={
-                    TableStyle.statusStyle +
-                    " " +
-                    TableStyle.statusColorCompleted
-                  }
-                >
-                  Accept
-                </span>
-              </td>
               <td>
                 <span
                   className={
@@ -101,33 +81,23 @@ function DeliveryDriverNotificationsTable() {
                     TableStyle.statusColorNotCompleted
                   }
                 >
-                  Decline
+                  NotCompleted
                 </span>
               </td>
             </tr>
             <tr>
               <td>
                 <Link
-                  to="/dashboard/deliveryDriverNotifications/details"
+                  to="/dashboard/deliveryDriver/details"
                   className={TableStyle.linkStyleAdd}
                 >
                   No:3
                 </Link>
               </td>
               <td>Sathira Dimuthu</td>
+              <td>0778522736</td>
               <td>2021-03-17</td>
               <td>Rs.25000</td>
-              <td>
-                <span
-                  className={
-                    TableStyle.statusStyle +
-                    " " +
-                    TableStyle.statusColorCompleted
-                  }
-                >
-                  Accept
-                </span>
-              </td>
               <td>
                 <span
                   className={
@@ -136,20 +106,21 @@ function DeliveryDriverNotificationsTable() {
                     TableStyle.statusColorNotCompleted
                   }
                 >
-                  Decline
+                  NotCompleted
                 </span>
               </td>
             </tr>
             <tr>
               <td>
                 <Link
-                  to="/dashboard/deliveryDriverNotifications/details"
+                  to="/dashboard/deliveryDriver/details"
                   className={TableStyle.linkStyleAdd}
                 >
                   No:4
                 </Link>
               </td>
               <td>Anushaka Tharindu</td>
+              <td>0778522736</td>
               <td>2021-03-17</td>
               <td>Rs.25000</td>
               <td>
@@ -160,31 +131,21 @@ function DeliveryDriverNotificationsTable() {
                     TableStyle.statusColorCompleted
                   }
                 >
-                  Accept
-                </span>
-              </td>
-              <td>
-                <span
-                  className={
-                    TableStyle.statusStyle +
-                    " " +
-                    TableStyle.statusColorNotCompleted
-                  }
-                >
-                  Decline
+                  Completed
                 </span>
               </td>
             </tr>
             <tr>
               <td>
                 <Link
-                  to="/dashboard/deliveryDriverNotifications/details"
+                  to="/dashboard/deliveryDriver/details"
                   className={TableStyle.linkStyleAdd}
                 >
                   No:5
                 </Link>
               </td>
               <td>Tharindu Gihan</td>
+              <td>0778522736</td>
               <td>2021-03-17</td>
               <td>Rs.25000</td>
               <td>
@@ -195,31 +156,21 @@ function DeliveryDriverNotificationsTable() {
                     TableStyle.statusColorCompleted
                   }
                 >
-                  Accept
-                </span>
-              </td>
-              <td>
-                <span
-                  className={
-                    TableStyle.statusStyle +
-                    " " +
-                    TableStyle.statusColorNotCompleted
-                  }
-                >
-                  Decline
+                  Completed
                 </span>
               </td>
             </tr>
             <tr>
               <td>
                 <Link
-                  to="/dashboard/deliveryDriverNotifications/details"
+                  to="/dashboard/deliveryDriver/details"
                   className={TableStyle.linkStyleAdd}
                 >
                   No:6
                 </Link>
               </td>
               <td>Thanuj Dasun</td>
+              <td>0778522736</td>
               <td>2021-03-17</td>
               <td>Rs.25000</td>
               <td>
@@ -230,31 +181,21 @@ function DeliveryDriverNotificationsTable() {
                     TableStyle.statusColorCompleted
                   }
                 >
-                  Accept
-                </span>
-              </td>
-              <td>
-                <span
-                  className={
-                    TableStyle.statusStyle +
-                    " " +
-                    TableStyle.statusColorNotCompleted
-                  }
-                >
-                  Decline
+                  Completed
                 </span>
               </td>
             </tr>
             <tr>
               <td>
                 <Link
-                  to="/dashboard/deliveryDriverNotifications/details"
+                  to="/dashboard/deliveryDriver/details"
                   className={TableStyle.linkStyleAdd}
                 >
                   No:7
                 </Link>
               </td>
               <td>Dimuthu Rathnasinghe</td>
+              <td>0778522736</td>
               <td>2021-03-17</td>
               <td>Rs.25000</td>
               <td>
@@ -265,18 +206,7 @@ function DeliveryDriverNotificationsTable() {
                     TableStyle.statusColorCompleted
                   }
                 >
-                  Accept
-                </span>
-              </td>
-              <td>
-                <span
-                  className={
-                    TableStyle.statusStyle +
-                    " " +
-                    TableStyle.statusColorNotCompleted
-                  }
-                >
-                  Decline
+                  Completed
                 </span>
               </td>
             </tr>
@@ -331,4 +261,4 @@ function DeliveryDriverNotificationsTable() {
   );
 }
 
-export default DeliveryDriverNotificationsTable;
+export default DeliveriesTable;

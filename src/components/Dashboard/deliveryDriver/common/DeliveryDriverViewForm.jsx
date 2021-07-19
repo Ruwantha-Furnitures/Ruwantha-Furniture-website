@@ -1,7 +1,7 @@
 import React from "react";
-import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.css";
+import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.module.css";
 import { Link } from "react-router-dom";
-import Auth from "../service/auth";
+import Auth from "../../service/auth";
 
 function DeliveryDriverViewForm() {
   const user = Auth.getCurrentUser();

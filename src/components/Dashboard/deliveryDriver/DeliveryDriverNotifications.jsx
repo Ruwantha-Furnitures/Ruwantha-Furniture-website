@@ -1,12 +1,12 @@
 import React from "react";
-import Navbar from "./common/Navbar";
-import Sidebar from "./common/Sidebar";
-import AllProductsView from "./common/AllProductsView";
-import MainStyle from "../../css/dashboard/Main.module.css";
-import ProductStyle from "../../css/dashboard/Products.module.css";
-import DeliveryDriverDetails from "./deliveryDriver/DeliveryDriverDetails";
+import Navbar from "../common/Navbar";
+import Sidebar from "../common/Sidebar";
+import DriverDateView from "../common/DriverDateView";
+import MainStyle from "../../../css/dashboard/Main.module.css";
+import ProductStyle from "../../../css/dashboard/Products.module.css";
+import DeliveryDriverNotificationsTable from "./common/DeliveryDriverNotificationsTable";
 
-function DeliveryDriverProfile() {
+function DeliveryDriverNotifications() {
   return (
     <div className={MainStyle.bodycontainer}>
       <div className={MainStyle.navSection}>
@@ -21,12 +21,12 @@ function DeliveryDriverProfile() {
         <div className={ProductStyle.cardDataSection}>
           <div className={ProductStyle.detailsSection}>
             <div className={ProductStyle.detailCard}>
-              {/* Delivery Driver View Profile */}
-              <DeliveryDriverDetails />
+              {/* Dilvery Drivers Table */}
+              <DeliveryDriverNotificationsTable />
             </div>
           </div>
           <div className={ProductStyle.productsViewSection}>
-            <AllProductsView />
+            <DriverDateView />
           </div>
         </div>
       </div>
@@ -34,4 +34,4 @@ function DeliveryDriverProfile() {
   );
 }
 
-export default DeliveryDriverProfile;
+export default DeliveryDriverNotifications;

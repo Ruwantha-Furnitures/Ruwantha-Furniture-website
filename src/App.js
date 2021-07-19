@@ -29,20 +29,20 @@ import CustomerProfile from "./components/Dashboard/customer/CustomerProfile";
 import Customers from "./components/Dashboard/customer/Customers";
 
 // deliveryDriver
-import DeliveryDrivers from "./components/Dashboard/DeliveryDrivers";
-import DeliveryDriverProfile from "./components/Dashboard/DeliveryDriverProfile";
-import DeliveryDriverDeliveries from "./components/Dashboard/DeliveryDriverDeliveries";
-import DeliveryDriverAvalability from "./components/Dashboard/DeliveryDriverAvalability";
-import DeliveryDriverView from "./components/Dashboard/DeliveryDriverView";
-import DeliveryDriverUpdate from "./components/Dashboard/DeliveryDriverUpdate";
-import DeliveryDriverNotifications from "./components/Dashboard/DeliveryDriverNotifications";
+import DeliveryDrivers from "./components/Dashboard/deliveryDriver/DeliveryDrivers";
+import DeliveryDriverProfile from "./components/Dashboard/deliveryDriver/DeliveryDriverProfile";
+import DeliveryDriverDeliveries from "./components/Dashboard/deliveryDriver/DeliveryDriverDeliveries";
+import DeliveryDriverAvalability from "./components/Dashboard/deliveryDriver/DeliveryDriverAvalability";
+import DeliveryDriverView from "./components/Dashboard/deliveryDriver/DeliveryDriverView";
+import DeliveryDriverUpdate from "./components/Dashboard/deliveryDriver/DeliveryDriverUpdate";
+import DeliveryDriverNotifications from "./components/Dashboard/deliveryDriver/DeliveryDriverNotifications";
 
 import ProfileChangePassword from "./components/Dashboard/ProfileChangePassword";
 
 import PurchaseOrders from "./components/Dashboard/PurchaseOrders";
 
-import AssignOrderDriver from "./components/Dashboard/AssignOrderDriver";
-import AssignDriver from "./components/Dashboard/AssignDriver";
+import AssignOrderDriver from "./components/Dashboard/deliveryDriver/AssignOrderDriver";
+import AssignDriver from "./components/Dashboard/deliveryDriver/AssignDriver";
 import CompletedOrders from "./components/Dashboard/CompletedOrders";
 
 // import ProductSellProductForm from "./components/Dashboard/product/ProductSellProductForm";

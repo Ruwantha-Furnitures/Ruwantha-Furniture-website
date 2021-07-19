@@ -1,12 +1,12 @@
 import React from "react";
-import Navbar from "./common/Navbar";
-import Sidebar from "./common/Sidebar";
-import AllProductsView from "./common/AllProductsView";
-import MainStyle from "../../css/dashboard/Main.module.css";
-import ProductStyle from "../../css/dashboard/Products.module.css";
-import AssignDriverOrderList from "./deliveryDriver/AssignDriverOrderList";
+import Navbar from "../common/Navbar";
+import Sidebar from "../common/Sidebar";
+import DriverDateView from "../common/DriverDateView";
+import MainStyle from "../../../css/dashboard/Main.module.css";
+import ProductStyle from "../../../css/dashboard/Products.module.css";
+import DeliveryDriverViewForm from "./common/DeliveryDriverViewForm";
 
-function AssignOrderDriver() {
+function DeliveryDriverView() {
   return (
     <div className={MainStyle.bodycontainer}>
       <div className={MainStyle.navSection}>
@@ -21,13 +21,13 @@ function AssignOrderDriver() {
         <div className={ProductStyle.cardDataSection}>
           <div className={ProductStyle.detailsSection}>
             <div className={ProductStyle.detailCard}>
-              {/* Dilvery Drivers with Order Table */}
-              <AssignDriverOrderList />
-              {/* Why this type of list because online orders have to assign orders */}
+              {/* Delivery Driver View Profile */}
+
+              <DeliveryDriverViewForm />
             </div>
           </div>
           <div className={ProductStyle.productsViewSection}>
-            <AllProductsView />
+            <DriverDateView />
           </div>
         </div>
       </div>
@@ -35,4 +35,4 @@ function AssignOrderDriver() {
   );
 }
 
-export default AssignOrderDriver;
+export default DeliveryDriverView;
