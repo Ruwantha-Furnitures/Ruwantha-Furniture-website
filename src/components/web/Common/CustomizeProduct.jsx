@@ -13,11 +13,11 @@ const CustomizeProduct = ({contactUsHandler}) =>{
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [telephone, setTelephone] = useState("");
-    const [description, setDescription] = useState("");   
+    const [description, setDescription] = useState("");
 
     const submithandler = () => {
-        const contactData =  { name, telephone, email, description };        
-        contactUsHandler(contactData);
+        const data =  { name, telephone, email, description };        
+        contactUsHandler(data);
     }
     
     const title={   
@@ -49,19 +49,9 @@ const CustomizeProduct = ({contactUsHandler}) =>{
         margin: '5px',
         border: 'solid 1px darkgray'           
     };
-      
-      
-    // function validateForm() {
-    //     //Put the correct validation 
-    // }
-      
-    // function handleSubmit(event) {
-    //     event.preventDefault();
-    // }
-    
+          
     return (                    
-        <div>                    
-        {/*<Form className={FormStyle.innerbox}>*/}
+        <div>                            
         <Card className={FormStyle.cardbox} style={{marginBottom: '20px', width: '21rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
             <Form style={{padding: '15px'}} onSubmit={submithandler}>
                     <Row style={rowStyle}>                                

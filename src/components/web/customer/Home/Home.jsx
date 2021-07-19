@@ -13,23 +13,24 @@ import axios from "axios";
 import  { Redirect } from 'react-router-dom';
 
 const Home = () => {
-    require("bootstrap/dist/css/bootstrap.min.css");
-    const [isContactSubmit, setIsContactSubmit] = useState(false);
+    require("bootstrap/dist/css/bootstrap.min.css");    
+    const [isSubmit, setIsSubmit] = useState(false);
     
-    const customizeHandler = async(data) =>{
-        try{
-            const response = await axios.post("http://192.168.56.1:3002/api/contactus/contact",
-                {data}
+    const contactUsHandler =async (data) =>{
+        try{            
+            const respond = await axios.post("http://192.168.56.1:3002/api/contactus/contact",
+                { data }
             );
-            if(response.data.auth == true){
-                setIsContactSubmit(true);
+            console.log("asini in home")
+            if(respond.data.auth === true){
+                setIsSubmit(true);
             }else{
-                setIsContactSubmit(false);
-            }
+                setIsSubmit(false);
+            }            
         }catch(error){
             console.log(error);
         }
-    }
+    };
 
     const contactImg = {
         backgroundImage: `url(${Topimg})` , 
@@ -40,8 +41,8 @@ const Home = () => {
     const redirectHome = <Redirect to="/home" /> 
     return (
         <React.Fragment>
-            {(isContactSubmit === true) && (redirectHome)}
-            {(isContactSubmit === false) && (
+            {(isSubmit === true) && (redirectHome)}
+            {(isSubmit === false) && (
                 <div>
                     <Navigation></Navigation>
                     <Slideshow></Slideshow>
@@ -55,7 +56,7 @@ const Home = () => {
                     <div style={contactImg}>
                         <br />
                         <Container align="left">                         
-                          <ConForm customizeHandler={customizeHandler}></ConForm>              
+                          <ConForm contactUsHandler={contactUsHandler}></ConForm>              
                         </Container>   
                         <br />     
                     </div> 
