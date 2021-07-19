@@ -3,23 +3,51 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // Dashboard Components
 import Dashboard from "./components/Dashboard/DashboardHome";
+// products
+// categories
+import ProductCategoryAdd from "./components/Dashboard/product/product_categories/ProductCategoryAdd";
+import ProductCategoryUpdate from "./components/Dashboard/product/product_categories/ProductCategoryUpdate";
+import ProductCategoryView from "./components/Dashboard/product/product_categories/ProductCategoryView";
+// Types
+import ProductTypeView from "./components/Dashboard/product/product_types/ProductTypeView";
+import ProductTypeAdd from "./components/Dashboard/product/product_types/ProductTypeAdd";
+import ProductTypeUpdate from "./components/Dashboard/product/product_types/ProductTypeUpdate";
+// product
+import Products from "./components/Dashboard/product/products/Products";
+import ProductAdd from "./components/Dashboard/product/products/ProductAdd";
+import ProductUpdate from "./components/Dashboard/product/products/ProductUpdate";
+import ProductView from "./components/Dashboard/product/products/ProductView";
+// product Sell
+import ProductSell from "./components/Dashboard/product/product_sell/ProductSell";
+import ProductSellAmount from "./components/Dashboard/product/product_sell/ProductSellAmount";
+import ProductSellCustomer from "./components/Dashboard/product/product_sell/ProductSellCustomer";
 
-import ProfileChangePassword from "./components/Dashboard/ProfileChangePassword";
-import Customers from "./components/Dashboard/Customers";
-import CustomerProfile from "./components/Dashboard/CustomerProfile";
-import PurchaseOrders from "./components/Dashboard/PurchaseOrders";
+// customer
+import CustomerMessages from "./components/Dashboard/customer/CustomerMessages";
+import CustomerMessageView from "./components/Dashboard/customer/CustomerMessageView";
+import CustomerProfile from "./components/Dashboard/customer/CustomerProfile";
+import Customers from "./components/Dashboard/customer/Customers";
+
+// deliveryDriver
 import DeliveryDrivers from "./components/Dashboard/DeliveryDrivers";
 import DeliveryDriverProfile from "./components/Dashboard/DeliveryDriverProfile";
 import DeliveryDriverDeliveries from "./components/Dashboard/DeliveryDriverDeliveries";
+import DeliveryDriverAvalability from "./components/Dashboard/DeliveryDriverAvalability";
+import DeliveryDriverView from "./components/Dashboard/DeliveryDriverView";
+import DeliveryDriverUpdate from "./components/Dashboard/DeliveryDriverUpdate";
+import DeliveryDriverNotifications from "./components/Dashboard/DeliveryDriverNotifications";
+
+import ProfileChangePassword from "./components/Dashboard/ProfileChangePassword";
+
+import PurchaseOrders from "./components/Dashboard/PurchaseOrders";
 
 import AssignOrderDriver from "./components/Dashboard/AssignOrderDriver";
 import AssignDriver from "./components/Dashboard/AssignDriver";
 import CompletedOrders from "./components/Dashboard/CompletedOrders";
-import DeliveryDriverAvalability from "./components/Dashboard/DeliveryDriverAvalability";
+
 // import ProductSellProductForm from "./components/Dashboard/product/ProductSellProductForm";
 
 // import test from "./components/Dashboard/test/test";
-import DeliveryDriverView from "./components/Dashboard/DeliveryDriverView";
 
 // Web Components
 import Home from "./components/web/customer/Home/Home.jsx";
@@ -47,30 +75,7 @@ import PendingEmail from "./components/web/registeredCustomer/PasswordRecovery/P
 import PayhereCheckout from "./components/web/registeredCustomer/Payment/Checkout.jsx";
 
 import OrderDetails from "./components/Dashboard/OrderDetails";
-import DeliveryDriverUpdate from "./components/Dashboard/DeliveryDriverUpdate";
-import CustomerMessages from "./components/Dashboard/CustomerMessages";
-import CustomerMessageView from "./components/Dashboard/CustomerMessageView";
-import DeliveryDriverNotifications from "./components/Dashboard/DeliveryDriverNotifications";
 import DashboardDriver from "./components/Dashboard/DashboardDriver";
-
-// products
-// categories
-import ProductCategoryAdd from "./components/Dashboard/product/product_categories/ProductCategoryAdd";
-import ProductCategoryUpdate from "./components/Dashboard/product/product_categories/ProductCategoryUpdate";
-import ProductCategoryView from "./components/Dashboard/product/product_categories/ProductCategoryView";
-// Types
-import ProductTypeView from "./components/Dashboard/product/product_types/ProductTypeView";
-import ProductTypeAdd from "./components/Dashboard/product/product_types/ProductTypeAdd";
-import ProductTypeUpdate from "./components/Dashboard/product/product_types/ProductTypeUpdate";
-// product
-import Products from "./components/Dashboard/product/products/Products";
-import ProductView from "./components/Dashboard/product/products/ProductView";
-import ProductAdd from "./components/Dashboard/product/products/ProductAdd";
-import ProductUpdate from "./components/Dashboard/product/products/ProductUpdate";
-// product Sell
-import ProductSell from "./components/Dashboard/product/product_sell/ProductSell";
-import ProductSellAmount from "./components/Dashboard/product/product_sell/ProductSellAmount";
-import ProductSellCustomer from "./components/Dashboard/product/product_sell/ProductSellCustomer";
 
 function App() {
   return (

@@ -1,21 +1,21 @@
 import React from "react";
+import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import ProductImage from "../../../../../assets/items/14.jpg";
-import ProductViewFormStyle from "../../../../../css/dashboard/product/ProductViewForm.module.css";
 import { Link } from "react-router-dom";
+
 import Auth from "../../../service/auth";
 
 function ProductViewForm() {
   const user = Auth.getCurrentUser();
   const handleUpdate = () => {
-    console.log("Hello");
     window.location = "/dashboard/product/update";
   };
 
   return (
-    <React.Fragment>
+    <>
       <div className={ProductViewFormStyle.titleHeader}>
         <h1 className={ProductViewFormStyle.tableTitleHeaderStyle}>
-          Product View
+          Product Views
         </h1>
         <div className={ProductViewFormStyle.backSection}>
           <div className={ProductViewFormStyle.back}>
@@ -175,7 +175,7 @@ function ProductViewForm() {
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </>
   );
 }
 
