@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "./common/Navbar";
-import Sidebar from "./common/Sidebar";
-import AllProductsView from "./common/AllProductsView";
-import MainStyle from "../../css/dashboard/Main.module.css";
-import ProductStyle from "../../css/dashboard/Products.module.css";
-import ProductSellProductForm from "./product/product_sell/common/ProductSellProductForm";
+import Navbar from "../../common/Navbar";
+import Sidebar from "../../common/Sidebar";
+import AllProductsView from "../../common/AllProductsView";
+import MainStyle from "../../../../css/dashboard/Main.module.css";
+import ProductStyle from "../../../../css/dashboard/Products.module.css";
+import ProductSellProductForm from "./common/ProductSellProductForm";
 
 function ProductSell() {
   return (

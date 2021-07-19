@@ -1,12 +1,12 @@
 import React from "react";
-import Navbar from "./common/Navbar";
-import Sidebar from "./common/Sidebar";
-import AllProductsView from "./common/AllProductsView";
-import MainStyle from "../../css/dashboard/Main.module.css";
-import ProductStyle from "../../css/dashboard/Products.module.css";
-import ProductsTable from "./common/ProductsTable";
+import Navbar from "../../common/Navbar";
+import Sidebar from "../../common/Sidebar";
+import ProductViewForm from "./common/ProductViewForm";
+import AllProductsView from "../../common/AllProductsView";
+import MainStyle from "../../../../css/dashboard/Main.module.css";
+import ProductStyle from "../../../../css/dashboard/Products.module.css";
 
-function Products() {
+function ProductView() {
   return (
     <div className={MainStyle.bodycontainer}>
       <div className={MainStyle.navSection}>
@@ -21,7 +21,8 @@ function Products() {
         <div className={ProductStyle.cardDataSection}>
           <div className={ProductStyle.detailsSection}>
             <div className={ProductStyle.detailCard}>
-              <ProductsTable />
+              {/* Product View Part */}
+              <ProductViewForm />
             </div>
           </div>
           <div className={ProductStyle.productsViewSection}>
@@ -33,4 +34,4 @@ function Products() {
   );
 }
 
-export default Products;
+export default ProductView;

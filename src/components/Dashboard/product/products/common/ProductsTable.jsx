@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import TableStyle from "../../../css/dashboard/Table.module.css";
-import Auth from "../service/auth";
+import TableStyle from "../../../../../css/dashboard/Table.module.css";
+import Auth from "../../../service/auth";
 
 const products = [
   {

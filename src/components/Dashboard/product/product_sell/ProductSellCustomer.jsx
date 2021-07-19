@@ -1,12 +1,12 @@
 import React from "react";
-import Navbar from "./common/Navbar";
-import Sidebar from "./common/Sidebar";
-import AllProductsView from "./common/AllProductsView";
-import MainStyle from "../../css/dashboard/Main.module.css";
-import ProductStyle from "../../css/dashboard/Products.module.css";
-import ProductUpdateForm from "./product/products/common/ProductUpdateForm";
+import Navbar from "../../common/Navbar";
+import Sidebar from "../../common/Sidebar";
+import AllProductsView from "../../common/AllProductsView";
+import MainStyle from "../../../../css/dashboard/Main.module.css";
+import ProductStyle from "../../../../css/dashboard/Products.module.css";
+import ProductSellForm from "./common/ProductSellForm";
 
-function ProductUpdate() {
+function ProductSellCustomer() {
   return (
     <div className={MainStyle.bodycontainer}>
       <div className={MainStyle.navSection}>
@@ -21,8 +21,8 @@ function ProductUpdate() {
         <div className={ProductStyle.cardDataSection}>
           <div className={ProductStyle.detailsSection}>
             <div className={ProductStyle.detailCard}>
-              {/* Product Add Form Part */}
-              <ProductUpdateForm />
+              {/* Product Sell Form Part */}
+              <ProductSellForm />
             </div>
           </div>
           <div className={ProductStyle.productsViewSection}>
@@ -34,4 +34,4 @@ function ProductUpdate() {
   );
 }
 
-export default ProductUpdate;
+export default ProductSellCustomer;

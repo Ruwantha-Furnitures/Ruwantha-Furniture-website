@@ -3,10 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // Dashboard Components
 import Dashboard from "./components/Dashboard/DashboardHome";
-import Products from "./components/Dashboard/Products";
-import ProductView from "./components/Dashboard/ProductView";
-import ProductAdd from "./components/Dashboard/ProductAdd";
-import ProductSell from "./components/Dashboard/ProductSell";
+
 import ProfileChangePassword from "./components/Dashboard/ProfileChangePassword";
 import Customers from "./components/Dashboard/Customers";
 import CustomerProfile from "./components/Dashboard/CustomerProfile";
@@ -20,7 +17,6 @@ import AssignDriver from "./components/Dashboard/AssignDriver";
 import CompletedOrders from "./components/Dashboard/CompletedOrders";
 import DeliveryDriverAvalability from "./components/Dashboard/DeliveryDriverAvalability";
 // import ProductSellProductForm from "./components/Dashboard/product/ProductSellProductForm";
-import ProductSellCustomer from "./components/Dashboard/ProductSellCustomer";
 
 // import test from "./components/Dashboard/test/test";
 import DeliveryDriverView from "./components/Dashboard/DeliveryDriverView";
@@ -32,7 +28,7 @@ import ContactUs from "./components/web/customer/ContactUs/Contact.jsx";
 import Login from "../src/components/web/Common/Login.jsx";
 import Signup from "./components/web/customer/SignUp/Signup.jsx";
 
-import Customer_Home from "./components/web/registeredCustomer/Home/CustomerHome";
+import Customer_Home from "./components/web/registeredCustomer/home/CustomerHome";
 import Customer_Product from "./components/web/registeredCustomer/Product/CustomerProduct.jsx";
 import Customer_ContactUs from "./components/web/registeredCustomer/ContactUs/CustomerContact.jsx";
 import ViewProfile from "./components/web/registeredCustomer/Profile/ViewProfile.jsx";
@@ -50,9 +46,6 @@ import CustomerThankYou from "./components/web/registeredCustomer/Payment/ThankY
 import PendingEmail from "./components/web/registeredCustomer/PasswordRecovery/Pending.jsx";
 import PayhereCheckout from "./components/web/registeredCustomer/Payment/Checkout.jsx";
 
-import ProductUpdate from "./components/Dashboard/ProductUpdate";
-
-import ProductSellAmount from "./components/Dashboard/ProductSellAmount";
 import OrderDetails from "./components/Dashboard/OrderDetails";
 import DeliveryDriverUpdate from "./components/Dashboard/DeliveryDriverUpdate";
 import CustomerMessages from "./components/Dashboard/CustomerMessages";
@@ -69,8 +62,15 @@ import ProductCategoryView from "./components/Dashboard/product/product_categori
 import ProductTypeView from "./components/Dashboard/product/product_types/ProductTypeView";
 import ProductTypeAdd from "./components/Dashboard/product/product_types/ProductTypeAdd";
 import ProductTypeUpdate from "./components/Dashboard/product/product_types/ProductTypeUpdate";
-
-// Types
+// product
+import Products from "./components/Dashboard/product/products/Products";
+import ProductView from "./components/Dashboard/product/products/ProductView";
+import ProductAdd from "./components/Dashboard/product/products/ProductAdd";
+import ProductUpdate from "./components/Dashboard/product/products/ProductUpdate";
+// product Sell
+import ProductSell from "./components/Dashboard/product/product_sell/ProductSell";
+import ProductSellAmount from "./components/Dashboard/product/product_sell/ProductSellAmount";
+import ProductSellCustomer from "./components/Dashboard/product/product_sell/ProductSellCustomer";
 
 function App() {
   return (
@@ -305,15 +305,17 @@ function App() {
           />
           <Route exact path="/recoveryPassword" component={RecoveryPassword} />
           <Route exact path="/PendingEmail" component={PendingEmail} />
-          
+
           <Route exact path="/customer_checkout" component={CustomerCheckout} />
 
           <Route exact path="/payment" component={CustomerPayment} />
-          <Route exact path="/customer_reviews" component={CustomerReviews} />     
-          <Route exact path="/customer_thankyou" component={CustomerThankYou} />     
-          <Route exact path="/customer_paymentGateway" component={PayhereCheckout} />               
-                      
-          
+          <Route exact path="/customer_reviews" component={CustomerReviews} />
+          <Route exact path="/customer_thankyou" component={CustomerThankYou} />
+          <Route
+            exact
+            path="/customer_paymentGateway"
+            component={PayhereCheckout}
+          />
         </Switch>
       </div>
     </Router>
