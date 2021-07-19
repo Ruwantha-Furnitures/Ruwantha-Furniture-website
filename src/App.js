@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // Dashboard Components
 import Dashboard from "./components/Dashboard/DashboardHome";
+import ProfileChangePassword from "./components/Dashboard/ProfileChangePassword";
+import DashboardDriver from "./components/Dashboard/DashboardDriver";
 // products
 // categories
 import ProductCategoryAdd from "./components/Dashboard/product/product_categories/ProductCategoryAdd";
@@ -36,18 +38,16 @@ import DeliveryDriverAvalability from "./components/Dashboard/deliveryDriver/Del
 import DeliveryDriverView from "./components/Dashboard/deliveryDriver/DeliveryDriverView";
 import DeliveryDriverUpdate from "./components/Dashboard/deliveryDriver/DeliveryDriverUpdate";
 import DeliveryDriverNotifications from "./components/Dashboard/deliveryDriver/DeliveryDriverNotifications";
-
-import ProfileChangePassword from "./components/Dashboard/ProfileChangePassword";
-
-import PurchaseOrders from "./components/Dashboard/PurchaseOrders";
-
 import AssignOrderDriver from "./components/Dashboard/deliveryDriver/AssignOrderDriver";
 import AssignDriver from "./components/Dashboard/deliveryDriver/AssignDriver";
-import CompletedOrders from "./components/Dashboard/CompletedOrders";
 
-// import ProductSellProductForm from "./components/Dashboard/product/ProductSellProductForm";
-
+// orders
+import CompletedOrders from "./components/Dashboard/order/CompletedOrders";
+import OrderDetails from "./components/Dashboard/order/OrderDetails";
+import PurchaseOrders from "./components/Dashboard/order/PurchaseOrders";
 // import test from "./components/Dashboard/test/test";
+
+// End of Dashboard components
 
 // Web Components
 import Home from "./components/web/customer/Home/Home.jsx";
@@ -73,9 +73,6 @@ import CustomerReviews from "./components/web/registeredCustomer/Reviews/Custome
 import CustomerThankYou from "./components/web/registeredCustomer/Payment/ThankYouPage.jsx";
 import PendingEmail from "./components/web/registeredCustomer/PasswordRecovery/Pending.jsx";
 import PayhereCheckout from "./components/web/registeredCustomer/Payment/Checkout.jsx";
-
-import OrderDetails from "./components/Dashboard/OrderDetails";
-import DashboardDriver from "./components/Dashboard/DashboardDriver";
 
 function App() {
   return (
