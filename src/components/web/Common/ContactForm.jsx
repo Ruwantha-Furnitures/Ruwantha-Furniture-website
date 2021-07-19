@@ -6,17 +6,18 @@ import Card from 'react-bootstrap/Card';
 import Avatar from "../../../assets/contact.png";
 import FormStyle from "../../../css/web/Form.module.css";
 
-const ContactForm = ({messageHandler}) => {
+const ContactForm = ({contactUsHandler}) => {
     require("bootstrap/dist/css/bootstrap.min.css");
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [telephone, setTelephone] = useState("");
     const [description, setDescription] = useState("");       
 
-    const submitHandler = (e) =>{
-        e.preventDefault();
-        messageHandler({name,email,telephone,description});
-    }
+    const submitHandler = () => {        
+        const data = { name, email, telephone, description };
+        // console.log(data);
+        contactUsHandler(data);
+      };
     
     const title={
         margin: '10px',
@@ -25,29 +26,8 @@ const ContactForm = ({messageHandler}) => {
 
     const rowStyle={
         margin: '10px'
-    };
+    }; 
 
-    const textboxStyle = {
-        width: '100%',
-        backgroundColor: '#eeeff5',
-        border: 'none',
-        height: '40px',
-        borderRadius: '5px',
-        padding: '5px',
-        margin: '5px',
-        border: 'solid 1px darkgray'         
-    };
-
-    const textareaStyle = {
-        width: '100%',
-        backgroundColor: '#eeeff5',
-        border: 'none',        
-        borderRadius: '5px',
-        padding: '5px',
-        margin: '5px',
-        border: 'solid 1px darkgray'            
-    };
-    
     return (                    
         <div>                    
         {/*<Form className={FormStyle.innerbox}>*/}
@@ -57,38 +37,42 @@ const ContactForm = ({messageHandler}) => {
                         <center><img src={Avatar} alt={Avatar} width={50} height={50}></img></center>
                         <center><h4 style={title}>Contact Us</h4></center>
                     </Row>                                                         
-                    <input style={textboxStyle} 
+                    <input className={FormStyle.textBox} 
                         type='text'
                         placeholder="Your Name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
-                    ></input><br />                                           
-                    <input style={textboxStyle} 
+                    ></input><br />  
+
+                    <input className={FormStyle.textBox}
                         type='tel' 
                         placeholder="Contact Number"
                         value={telephone}
                         onChange={(e)=> setTelephone(e.target.value)}
                         required
-                    ></input><br />                                                                  
-                    <input style={textboxStyle} 
+                    ></input><br />    
+
+                    <input className={FormStyle.emailBox} 
                         type='email' 
                         placeholder='Email'
                         value={email}
                         onChange={(e)=>setEmail(e.target.value)}
                         required
-                    ></input><br />                           
-                    <textarea style={textareaStyle} 
+                    ></input><br />       
+
+                    <textarea className={FormStyle.textareastyle} 
                         rows={5} 
                         cols={5} 
                         placeholder='Message'
                         value={description}    
                         onChange={(e)=>setDescription(e.target.value)}
                         required
-                    ></textarea><br />                          
+                    ></textarea><br />       
+                                       
                     <div align="right"><br />                                       
                         <Button variant="danger" type='reset'>Cancel</Button>{' '}
-                        <Button variant="success">Submit</Button>{' '}                     
+                        <Button variant="success" type='submit'>Submit</Button>{' '}                     
                     </div>                                                     
                 </Form>    
             </Card>

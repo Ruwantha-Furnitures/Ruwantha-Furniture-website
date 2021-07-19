@@ -10,12 +10,13 @@ import { Redirect } from 'react-router-dom';
 
 const Contact = () => {
     const [isSubmit, setIsSubmit] = useState(false);
-
-    const messageHandler =async (data) =>{
+    console.log("test")
+    const contactUsHandler =async (data) =>{
         try{            
-            const respond = await axios.post("http://192.168.56.1:3002/api/customer/contact",{
-                data,
-            })
+            const respond = await axios.post("http://192.168.56.1:3002/api/customer/contact",
+                { data }
+            );
+            console.log("asini")
             if(respond.data.auth === true){
                 setIsSubmit(true);
             }else{
@@ -43,7 +44,7 @@ const Contact = () => {
                 <div style={contactImg}>
                     <br />
                     <Container align="left">                         
-                        <ConForm messageHandler={messageHandler}></ConForm>              
+                        <ConForm contactUsHandler={contactUsHandler}></ConForm>              
                     </Container>   
                     <br />     
                 </div> 

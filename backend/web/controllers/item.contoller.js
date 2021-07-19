@@ -10,7 +10,7 @@ const ItemsController  = async (req, res) => {
       res.json({ products }); // to send the response of data
     } catch (error) {
       console.log(error);
-    }
+    }    
 
     // const itemID = req.params.productID;
     // try{
