@@ -14,19 +14,19 @@ function CustomerProductDetails({itemDetails}) {
     const [price,setPrice]=useState("")
     const [description,setDescription]=useState("")    
     
-    console.log(itemDetails); //undefine
-    console.log("On the customer view product details");
-
+    // console.log(itemDetails); //undefine
+      
     useEffect(() => {                
         if (itemDetails) {            
             setItemID(() => itemDetails.itemId);
             setName(() => itemDetails.name);
             setPrice(() => itemDetails.price);
-            setDescription(() => itemDetails.details);
-            // console.log(itemDetails.name);
+            setDescription(() => itemDetails.details);            
         }
     }, [itemDetails]);
 
+    console.log(name);
+    console.log("On the customer view product details");  
     return (        
         <div>            
             <Container>
