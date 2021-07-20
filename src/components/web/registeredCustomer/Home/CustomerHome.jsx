@@ -16,7 +16,7 @@ import  { Redirect } from 'react-router-dom';
 const CustomerHome = () => {
     require("bootstrap/dist/css/bootstrap.min.css");
 
-    //connecting to the backend
+    //connecting to the backend (send message details)
     const [isSubmit, setIsSubmit] = useState(false);
     
     const contactUsHandler =async (data) =>{
