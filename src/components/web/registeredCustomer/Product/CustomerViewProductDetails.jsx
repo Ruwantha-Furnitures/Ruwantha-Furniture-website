@@ -11,11 +11,11 @@ function CustomerViewProductDetails() {
 
         const getProductData=async(data)=>{
             let itemID=localStorage.getItem('productID');
+            console.log(localStorage.getItem('productID'));
             console.log("on the get Product data function");
             
             try {                
-                let response=await axios.get(`http://192.168.56.1:3002/api/product/viewProduct/${itemID}`,{data}) //add product api
-                // console.log(response.data);
+                let response=await axios.get(`http://192.168.56.1:3002/api/product/viewProduct/${itemID}`) //add product api                
                 const {itemId, name,price, details}=response.data
                 const itemData={
                     itemId,
@@ -35,7 +35,7 @@ function CustomerViewProductDetails() {
     return (
         <div>
             <Navigation></Navigation> 
-            <Product getProductData={getProductData}></Product>
+            <Product itemDetails={itemDetails}></Product>
             <Footer></Footer>
         </div>
     )
