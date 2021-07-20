@@ -8,7 +8,7 @@ import Topimg from '../../../../assets/topimg10.jpg';
 import axios from "axios";
 import { Redirect } from 'react-router-dom';
 
-function CustomerContact() {
+const CustomerContact = () => {
     const [isSubmit, setIsSubmit] = useState(false);
     //console.log("test")
     const contactUsHandler =async (data) =>{
