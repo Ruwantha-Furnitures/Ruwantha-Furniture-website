@@ -11,6 +11,7 @@ const CustomerAllProducts = props => {
     require("bootstrap/dist/css/bootstrap.min.css");    
     // const [itemCount, setItemCount] = React.useState(0);
     const [products,setProducts]=useState([])
+    const [itemCount, setItemCount] = React.useState(0);
 
     // to load the product when the page is first rendered
     useEffect(() => {
@@ -19,9 +20,11 @@ const CustomerAllProducts = props => {
 
     //adding selected product Id to the localstorage
     function sayHello(itemid) {
-        alert(`hello, ${itemid}`);
+        //alert(`hello, ${itemid}`);
         localStorage.setItem("productID", itemid);
-        console.log(localStorage.getItem("productID"));        
+        console.log(localStorage.getItem("productID"));  
+        
+        //cart label number
     }
 
     const viewAllProducts = async() => {

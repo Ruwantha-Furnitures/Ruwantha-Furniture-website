@@ -10,7 +10,6 @@ import axios from "axios";
 
 const AllProductCards = props => {    
     require("bootstrap/dist/css/bootstrap.min.css");    
-    //const [itemCount, setItemCount] = React.useState(0);
     const [products,setProducts]=useState([])
 
     // to load the product when the page is first rendered
