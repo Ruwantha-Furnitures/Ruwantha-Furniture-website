@@ -55,6 +55,7 @@ const CustomerAllProducts = props => {
                             <center>      
                                 <img src={process.env.PUBLIC_URL + '/items/'+ productList.itemid +'.jpg'} alt='items' style={funitureimg} width={200} height={150}></img>                  
                             </center>
+                            <br />
                             <center> {productList.name} </center>                                                   
                                 <p class="textinbox">                        
                                     Rs. {productList.price}<br />                                        

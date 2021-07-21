@@ -10,6 +10,8 @@ import axios from 'axios';
 function ViewProfile() {
 
     const [userDetails,setUserDetails] =useState();
+    // require('dotenv').config();
+    // let URI = { process.env.IP_ADDRESS };
 
     useEffect(() => {
         let accountID=localStorage.getItem('userAccID');
@@ -18,6 +20,7 @@ function ViewProfile() {
         const fecthData=async()=>{
             try {                
                 let response=await axios.get(`http://192.168.56.1:3002/api/customer/viewprofile/${accountID}`)
+                // let response=await axios.get(`${URI}:3002/api/customer/viewprofile/${accountID}`)
                 const {name,address, telephone}=response.data
                 const userData={
                     accountEmail,
