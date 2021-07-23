@@ -10,14 +10,46 @@ import axios from "axios";
 function CustomerProductDetails() {
     require("bootstrap/dist/css/bootstrap.min.css");    
     const [productDetails,setProductDetails]=useState({}) //at initial state contains a empty object, while when the response received that would set the product details to setProductDetails
-    const [itemCount, setItemCount] = React.useState(0);//have to get the no of the products from cart table
+    // const [itemCount, setItemCount] = React.useState(0);//have to get the no of the products from cart table
+    const [isSubmit, setIsSubmit] = useState(false);
 
     //adding selected product Id to the localstorage
-    function setCartValue(itemCount) {
+    const setCartValue = async (itemid) => {
         //cart label number
-        alert(`hello cart value, ${itemCount}`);
-        localStorage.setItem("CartCount", itemCount);
-        setItemCount(itemCount);
+        alert(`hello cart value, ${itemid}`);
+        // localStorage.setItem("CartCount", itemCount);
+        // setItemCount(itemCount);
+            let accountID=localStorage.getItem('userAccID');
+            try{            
+                const respond = await axios.post("http://192.168.56.1:3002/api/cart/addcart",
+                    { data: itemid , accountID }
+                );
+                // console.log("asini")
+                if(respond.data.auth === true){
+                    setIsSubmit(true);
+                }else{
+                    setIsSubmit(false);
+                }            
+            }catch(error){
+                console.log(error);
+            }
+
+        // const contactUsHandler =async (data) =>{            
+        //     try{            
+        //         const respond = await axios.post("http://192.168.56.1:3002/api/contactus/contact",
+        //             { data }
+        //         );
+        //         // console.log("asini")
+        //         if(respond.data.auth === true){
+        //             setIsSubmit(true);
+        //         }else{
+        //             setIsSubmit(false);
+        //         }            
+        //     }catch(error){
+        //         console.log(error);
+        //     }
+        // };
+
     }
     
     useEffect(() => {   
@@ -59,7 +91,7 @@ function CustomerProductDetails() {
                                     <p align='justify'>{productDetails.details}</p><br />
                                     <Rating></Rating>
                                     {/* <Link to="/cart"><button onClick={() => setCartValue(itemCount + 1)} class="addtocart">Add to cart </button></Link> */}
-                                    <button onClick={() => setCartValue(itemCount + 1)} class="addtocart">Add to cart </button>
+                                    <button onClick={() => setCartValue( productDetails.itemid )} class="addtocart">Add to cart </button>
                                 </center>
                             </Container>
                         </Col>                        

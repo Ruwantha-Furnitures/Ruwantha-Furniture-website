@@ -9,7 +9,7 @@ return (
 	<div style={{ display: "block", padding: 0 }}>
 	
 	<div>
-		<Badge color="secondary" badgeContent={itemCount}>
+		<Badge color="secondary" badgeContent={0}>
 		<ShoppingCartIcon  style={{color: '#fc7a30'}}/>{" "}
 		</Badge>		
 	</div>

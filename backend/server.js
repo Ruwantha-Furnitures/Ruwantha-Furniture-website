@@ -9,6 +9,7 @@ const db = require("./web/models");
 const { customerRouter } = require("./web/routes/customers.js");
 const { productRouter } = require("./web/routes/Product.js");
 const { contactusRouter } = require("./web/routes/contactus.js");
+const { cartRouter } = require("./web/routes/cart.js");
 
 
 // var corsOptions = {
@@ -22,6 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/customer", customerRouter);
 app.use("/api/products", productRouter);
 app.use("/api/contactus", contactusRouter);
+app.use("/api/cart", cartRouter);
 
 connectDB();
 
