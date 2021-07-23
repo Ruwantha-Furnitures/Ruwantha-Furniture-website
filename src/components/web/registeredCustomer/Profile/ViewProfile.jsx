@@ -41,8 +41,7 @@ function ViewProfile() {
     const contactImg = {
         backgroundImage: `url(${Topimg})` ,
         repeat: 'none',
-        backgroundSize: 'cover',
-        padding: '0',        
+        backgroundSize: 'cover',            
         MaxWidth: "100%"     
     }
     // const formStyle = {                       

@@ -14,7 +14,7 @@ const CustomizeProduct = ({contactUsHandler}) =>{
     const [email, setEmail] = useState("");
     const [telephone, setTelephone] = useState("");
     const [description, setDescription] = useState("");
-
+    
     const submithandler = () => {
         const data =  { name, telephone, email, description };        
         contactUsHandler(data);

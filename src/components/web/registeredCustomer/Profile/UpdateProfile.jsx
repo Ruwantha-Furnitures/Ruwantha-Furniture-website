@@ -51,6 +51,7 @@ function UpdateProfile() {
 
     const contactImg = {
       backgroundImage: `url(${Topimg})` ,
+    //   backgroundSize: 'cover',  
       repeat: 'none',
       padding: '0',
       MaxWidth: "100%"     

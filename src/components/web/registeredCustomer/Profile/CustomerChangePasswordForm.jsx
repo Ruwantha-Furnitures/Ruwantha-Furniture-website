@@ -25,11 +25,11 @@ function CustomerChangePasswordForm() {
     return (                    
         <div>   
         <br />                 
-        <Card className={FormStyle.cardbox} style={{marginBottom: '30px', marginTop: '30px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
+        <Card className={FormStyle.cardbox} style={{marginBottom: '30px', marginTop: '30px', width: '21rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
             <Form style={{padding: '15px'}}>                
                 <Row style={rowStyle}>                                
                     <center><img src={Avatar} alt={Avatar} width={40} height={40}></img></center>
-                    <center><h3 style={title}>Change Password</h3></center>
+                    <center><h4 style={title}>Change Password</h4></center>
                 </Row>                 
                             
                 <input  className={FormStyle.emailBox}
