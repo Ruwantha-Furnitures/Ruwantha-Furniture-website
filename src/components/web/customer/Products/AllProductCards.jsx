@@ -17,6 +17,15 @@ const AllProductCards = props => {
         viewAllProducts();
     },[])
 
+    //adding selected product Id to the localstorage
+    function sayHello(itemid) {
+        alert(`hello, ${itemid}`);
+        localStorage.setItem("productID", itemid);
+        console.log(localStorage.getItem("productID"));  
+        
+        //cart label number
+    }
+
     const viewAllProducts = async() => {
         try {
            console.log('Requests send') // done
@@ -56,7 +65,7 @@ const AllProductCards = props => {
                                 <Rating></Rating>
                             </center>
                             <center>
-                                <Link to="/viewProduct"><button class="addtocart">Read More</button></Link>
+                                <Link to="/viewProduct"><button class="addtocart" onClick={() => sayHello(productList.itemid)}>Read More</button></Link>
                             </center>                                                                                       
                         </Card> 
                         <br />   
