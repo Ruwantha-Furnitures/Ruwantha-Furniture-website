@@ -13,10 +13,12 @@ db.sequelize = sequelize;
 db.category = require("./category.model")(sequelize, Sequelize);
 db.type = require("./type.model")(sequelize, Sequelize);
 
-db.category.hasMany(db.type);
+db.category.hasMany(db.type, {
+  foreignKey: "categoryId",
+});
 db.type.belongsTo(db.category, {
-  foreignKey: "category_id",
-  as: "product_categories",
+  foreignKey: "categoryId",
+  as: "category",
 });
 
 module.exports = db;
