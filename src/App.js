@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Dashboard from "./components/Dashboard/DashboardHome";
 import ProfileChangePassword from "./components/Dashboard/ProfileChangePassword";
 import DashboardDriver from "./components/Dashboard/DashboardDriver";
+
 // products
 // categories
 import ProductCategoryAdd from "./components/Dashboard/product/product_categories/ProductCategoryAdd";
@@ -14,11 +15,13 @@ import ProductCategoryView from "./components/Dashboard/product/product_categori
 import ProductTypeView from "./components/Dashboard/product/product_types/ProductTypeView";
 import ProductTypeAdd from "./components/Dashboard/product/product_types/ProductTypeAdd";
 import ProductTypeUpdate from "./components/Dashboard/product/product_types/ProductTypeUpdate";
+
 // product
 import Products from "./components/Dashboard/product/products/Products";
 import ProductAdd from "./components/Dashboard/product/products/ProductAdd";
 import ProductUpdate from "./components/Dashboard/product/products/ProductUpdate";
 import ProductView from "./components/Dashboard/product/products/ProductView";
+
 // product Sell
 import ProductSell from "./components/Dashboard/product/product_sell/ProductSell";
 import ProductSellAmount from "./components/Dashboard/product/product_sell/ProductSellAmount";
