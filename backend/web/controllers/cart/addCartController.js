@@ -1,14 +1,14 @@
 const { Cart } = require('../../models');
 const mysql = require("mysql");
 
-const AddCartController  = async (req,res) => {
-    // const { name, telephone, email, description } = req.body.data;
-    const  { itemid , accountID } = req.body.data;
-    const messageData = { custid: accountID, itemid};
+const AddCartController  = async (req,res) => {    
+    const  { itemid , accountID } = req.body;
+    const cartData = { custid: accountID, itemid};
+    console.log("Print");
 
     try{        
-        const CartSubmit = await Cart.create(messageData);        
-        console.log("create the table row");
+        const CartSubmit = await Cart.create(cartData);        
+        console.log("create the cart table row");
         if(CartSubmit){
             res.json({
                 auth:true,
