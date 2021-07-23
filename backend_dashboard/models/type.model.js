@@ -5,6 +5,7 @@ module.exports = (sequelize, Sequelize) => {
     },
     is_deleted: {
       type: Sequelize.INTEGER,
+      defaultValue: 0,
     },
   });
 
