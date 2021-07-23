@@ -16,6 +16,7 @@ db.type = require("./type.model")(sequelize, Sequelize);
 db.category.hasMany(db.type, {
   foreignKey: "categoryId",
 });
+
 db.type.belongsTo(db.category, {
   foreignKey: "categoryId",
   as: "category",

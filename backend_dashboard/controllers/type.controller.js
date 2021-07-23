@@ -43,13 +43,59 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Type.findByPk(id)
+  Type.findOne({ where: { id: id, is_deleted: 0 } })
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
         message: "Error retrieving Type with id = " + id + " " + err,
+      });
+    });
+};
+
+// update the object
+exports.update = (req, res) => {
+  const id = req.params.id;
+
+  Type.update(req.body, {
+    where: { id: id, is_deleted: 0 },
+  })
+    .then((num) => {
+      if (num == 1) {
+        res.send({
+          message: "Type was updated successfully",
+        });
+      } else {
+        res.send({ message: `Cannot update Type with id=${id}` });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error updating Type with id = " + id,
+      });
+    });
+};
+
+// delete an object
+
+exports.delete = (req, res) => {
+  const id = req.params.id;
+  Type.update(req.body, {
+    where: { id: id, is_deleted: 0 },
+  })
+    .then((num) => {
+      if (num == 1) {
+        res.send({
+          message: "Type was updated successfully",
+        });
+      } else {
+        res.send({ message: `Cannot update Type with id=${id}` });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error updating Type with id = " + id,
       });
     });
 };
