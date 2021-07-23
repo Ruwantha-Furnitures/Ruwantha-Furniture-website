@@ -9,47 +9,29 @@ import axios from "axios";
 
 function CustomerProductDetails() {
     require("bootstrap/dist/css/bootstrap.min.css");    
-    const [productDetails,setProductDetails]=useState({}) //at initial state contains a empty object, while when the response received that would set the product details to setProductDetails
-    // const [itemCount, setItemCount] = React.useState(0);//have to get the no of the products from cart table
+    const [productDetails,setProductDetails]=useState({}) //at initial state contains a empty object, while when the response received that would set the product details to setProductDetails    
     const [isSubmit, setIsSubmit] = useState(false);
 
-    //adding selected product Id to the localstorage
+    //adding selected product Id , account id in to the cart
     const setCartValue = async (itemid) => {
-        //cart label number
-        alert(`hello cart value, ${itemid}`);
-        // localStorage.setItem("CartCount", itemCount);
-        // setItemCount(itemCount);
-            let accountID=localStorage.getItem('userAccID');
-            try{            
-                const respond = await axios.post("http://192.168.56.1:3002/api/cart/addcart",
-                    { data: itemid , accountID }
-                );
-                // console.log("asini")
-                if(respond.data.auth === true){
-                    setIsSubmit(true);
-                }else{
-                    setIsSubmit(false);
-                }            
-            }catch(error){
-                console.log(error);
-            }
+        
+        alert(`hello item value, ${itemid}`);
 
-        // const contactUsHandler =async (data) =>{            
-        //     try{            
-        //         const respond = await axios.post("http://192.168.56.1:3002/api/contactus/contact",
-        //             { data }
-        //         );
-        //         // console.log("asini")
-        //         if(respond.data.auth === true){
-        //             setIsSubmit(true);
-        //         }else{
-        //             setIsSubmit(false);
-        //         }            
-        //     }catch(error){
-        //         console.log(error);
-        //     }
-        // };
-
+        let accountID=localStorage.getItem('userAccID');
+        console.log(accountID);
+        try{            
+            const respond = await axios.post("http://192.168.56.1:3002/api/cart/addcart/",
+                { data: itemid , accountID }
+            );
+            console.log("asini");
+            if(respond.data.auth === true){
+                setIsSubmit(true);
+            }else{
+                setIsSubmit(false);
+            }            
+        }catch(error){
+            console.log(error);
+        }
     }
     
     useEffect(() => {   
@@ -82,11 +64,6 @@ function CustomerProductDetails() {
                             <Container>
                                 <center>
                                     <h2>{productDetails.name}</h2>
-                                    {/* <input 
-                                        type='text' 
-                                        style = {{color : 'black'}}
-                                        value ={productDetails.name}
-                                    /> */}
                                     <h4>{`Rs. ${productDetails.price}.00 /=`}</h4><br />
                                     <p align='justify'>{productDetails.details}</p><br />
                                     <Rating></Rating>
