@@ -35,13 +35,12 @@ const CustomerProduct = () => {
                 <Card>     
                     <Search></Search>               
                     {/* <Card.Img variant="top" src={Coverimg} />                     */}
-                    <Card.Body>
-                        <Container fluid align="center"> 
-                            <br />
-                            <SliderProducts></SliderProducts>
-                            <br />
-                            <ProductBox itemUpHandler={ itemUpHandler }></ProductBox>
-                        </Container>                        
+                    <Card.Body>                        
+                        <br />
+                        <SliderProducts></SliderProducts>
+                        <br />
+                        <center><ProductBox itemUpHandler={ itemUpHandler }></ProductBox></center>
+                                              
                     </Card.Body>
                 </Card>  
                 <br />

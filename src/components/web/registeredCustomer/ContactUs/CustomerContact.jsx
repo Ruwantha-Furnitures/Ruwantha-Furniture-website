@@ -29,8 +29,7 @@ const CustomerContact = () => {
 
     const contactImg = {
         backgroundImage: `url(${Topimg})` ,
-        repeat: 'none',
-        padding: '35px',
+        repeat: 'none',        
         MaxWidth: "100%"
     }
 
@@ -44,7 +43,9 @@ const CustomerContact = () => {
                     <About></About>
                     <div style={contactImg}>
                         <Container align="left">
+                            <br />
                             <ConForm contactUsHandler={contactUsHandler}></ConForm>
+                            <br />
                         </Container>
                     </div>            
                     <Footer></Footer>            

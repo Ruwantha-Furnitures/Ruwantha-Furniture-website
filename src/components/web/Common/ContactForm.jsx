@@ -19,14 +19,35 @@ const ContactForm = ({contactUsHandler}) => {
         contactUsHandler(data);
       };
     
-    const title={
-        margin: '10px',
-        padding: '3px',
+      const title={   
+        margin: '2px',     
+        padding: '3px'        
     };
 
     const rowStyle={
         margin: '10px'
-    }; 
+    };
+
+    const textboxStyle = {
+        width: '100%',
+        backgroundColor: '#eeeff5',
+        border: 'none',
+        height: '40px',
+        borderRadius: '5px',
+        padding: '5px',
+        margin: '5px',
+        border: 'solid 1px darkgray'          
+    };
+
+    const textareaStyle = {
+        width: '100%',
+        backgroundColor: '#eeeff5',
+        border: 'none',        
+        borderRadius: '5px',
+        padding: '5px',
+        margin: '5px',
+        border: 'solid 1px darkgray'           
+    };
 
     return (                    
         <div>                    
@@ -37,7 +58,7 @@ const ContactForm = ({contactUsHandler}) => {
                         <center><img src={Avatar} alt={Avatar} width={50} height={50}></img></center>
                         <center><h4 style={title}>Contact Us</h4></center>
                     </Row>                                                         
-                    <input className={FormStyle.textBox} 
+                    <input style={textboxStyle} 
                         type='text'
                         placeholder="Your Name"
                         value={name}
@@ -45,7 +66,7 @@ const ContactForm = ({contactUsHandler}) => {
                         required
                     ></input><br />  
 
-                    <input className={FormStyle.textBox}
+                    <input style={textboxStyle} 
                         type='tel' 
                         placeholder="Contact Number"
                         value={telephone}
@@ -54,7 +75,7 @@ const ContactForm = ({contactUsHandler}) => {
                         required
                     ></input><br />    
 
-                    <input className={FormStyle.emailBox} 
+                    <input style={textboxStyle}  
                         type='email' 
                         placeholder='Email'
                         value={email}
@@ -62,7 +83,7 @@ const ContactForm = ({contactUsHandler}) => {
                         required
                     ></input><br />       
 
-                    <textarea className={FormStyle.textareastyle} 
+                    <textarea style={textareaStyle} 
                         rows={5} 
                         cols={5} 
                         placeholder='Message'
