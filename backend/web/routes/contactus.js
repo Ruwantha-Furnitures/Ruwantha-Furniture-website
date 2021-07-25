@@ -5,7 +5,7 @@ const router = express.Router();
 
 const {
   messageController,
-} = require("../controllers/messageController");
+} = require("../controllers/contactus/messageController");
 
 router.post("/contact",messageController);
 

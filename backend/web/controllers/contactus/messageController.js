@@ -1,4 +1,4 @@
-const { Message } = require('../models');
+const { Message } = require('../../models');
 const mysql = require("mysql");
 
 const messageController  = async (req,res) => {

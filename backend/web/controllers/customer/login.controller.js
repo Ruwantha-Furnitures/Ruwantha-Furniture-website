@@ -1,4 +1,4 @@
-const { Account } = require("../models");
+const { Account } = require("../../models");
 const mysql = require("mysql");
 const bcrypt = require("bcrypt");
 
