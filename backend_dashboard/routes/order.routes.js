@@ -7,16 +7,16 @@ module.exports = (app) => {
   router.post("/", order.create);
 
   //   Retrieve all types
-  // router.get("/", product.findAll);
+  router.get("/", order.findAll);
 
   // //   get single type
-  // router.get("/:id", product.findOne);
+  router.get("/:id", order.findOne);
 
   // //   update the type
-  // router.put("/:id", product.update);
+  router.put("/:id", order.update);
 
   // //   delete type
-  // router.delete("/:id", product.delete);
+  router.delete("/:id", order.delete);
 
   app.use("/api/order", router);
 };

@@ -50,7 +50,7 @@ db.customer.hasMany(db.order, {
   foreignKey: "customer_id",
 });
 
-db.product.belongsTo(db.type, {
+db.order.belongsTo(db.customer, {
   foreignKey: "customer_id",
   as: "customer",
 });
