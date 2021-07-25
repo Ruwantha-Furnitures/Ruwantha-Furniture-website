@@ -19,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 require("./routes/category.routes")(app);
 require("./routes/type.routes")(app);
+require("./routes/product.routes")(app);
 
 // set port
 const PORT = process.env.PORT || 8080;

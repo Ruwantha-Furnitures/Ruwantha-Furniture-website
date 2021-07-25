@@ -12,6 +12,7 @@ db.sequelize = sequelize;
 
 db.category = require("./category.model")(sequelize, Sequelize);
 db.type = require("./type.model")(sequelize, Sequelize);
+db.product = require("./product.model")(sequelize, Sequelize);
 
 db.category.hasMany(db.type, {
   foreignKey: "categoryId",
@@ -20,6 +21,15 @@ db.category.hasMany(db.type, {
 db.type.belongsTo(db.category, {
   foreignKey: "categoryId",
   as: "category",
+});
+
+db.type.hasOne(db.product, {
+  foreignKey: "type_id",
+});
+
+db.product.belongsTo(db.type, {
+  foreignKey: "type_id",
+  as: "type",
 });
 
 module.exports = db;
