@@ -13,7 +13,9 @@ db.sequelize = sequelize;
 db.category = require("./category.model")(sequelize, Sequelize);
 db.type = require("./type.model")(sequelize, Sequelize);
 db.product = require("./product.model")(sequelize, Sequelize);
+db.customer = require("./customer.model")(sequelize, Sequelize);
 
+// Foreign key for types
 db.category.hasMany(db.type, {
   foreignKey: "categoryId",
 });
@@ -23,6 +25,7 @@ db.type.belongsTo(db.category, {
   as: "category",
 });
 
+// Foreign key for product
 db.type.hasOne(db.product, {
   foreignKey: "type_id",
 });
