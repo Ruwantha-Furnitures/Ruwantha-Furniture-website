@@ -8,7 +8,7 @@ import Card from 'react-bootstrap/Card';
 import SliderProducts from "../../Common/ProductSlider";
 import axios from "axios";
 
-const CustomerProduct = ({navigation}) => {
+const CustomerProduct = () => {
     const itemUpHandler = async (data) => {
       //console.log(data);
       try{
@@ -29,26 +29,23 @@ const CustomerProduct = ({navigation}) => {
     }
     return (
         <div style={contactImg}>  
-        <Navigation></Navigation>  
-        <Container fluid>
+        <Navigation></Navigation>          
         <Row sm={12} align="justify">
             <Col sm={12}>                
                 <Card>     
                     <Search></Search>               
                     {/* <Card.Img variant="top" src={Coverimg} />                     */}
-                    <Card.Body>
-                        <Container fluid align="center"> 
-                            <br />
-                            <SliderProducts></SliderProducts>
-                            <br />
-                            <ProductBox navigation={ navigation } itemUpHandler={ itemUpHandler }></ProductBox>
-                        </Container>                        
+                    <Card.Body>                        
+                        <br />
+                        <SliderProducts></SliderProducts>
+                        <br />
+                        <center><ProductBox itemUpHandler={ itemUpHandler }></ProductBox></center>
+                                              
                     </Card.Body>
                 </Card>  
                 <br />
             </Col> 
-        </Row> 
-        </Container>                                       
+        </Row>                                              
         <Footer></Footer>    
     </div>
     )

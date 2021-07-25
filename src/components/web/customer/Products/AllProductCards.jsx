@@ -10,13 +10,21 @@ import axios from "axios";
 
 const AllProductCards = props => {    
     require("bootstrap/dist/css/bootstrap.min.css");    
-    //const [itemCount, setItemCount] = React.useState(0);
     const [products,setProducts]=useState([])
 
     // to load the product when the page is first rendered
     useEffect(() => {
         viewAllProducts();
     },[])
+
+    //adding selected product Id to the localstorage
+    function sayHello(itemid) {
+        // alert(`hello, ${itemid}`);
+        localStorage.setItem("productID", itemid);
+        console.log(localStorage.getItem("productID"));  
+        
+        //cart label number
+    }
 
     const viewAllProducts = async() => {
         try {
@@ -48,6 +56,7 @@ const AllProductCards = props => {
                             <center>      
                                 <img src={process.env.PUBLIC_URL + '/items/'+ productList.itemid +'.jpg'} alt='items' style={funitureimg} width={200} height={150}></img>                  
                             </center>
+                            <br />
                             <center> {productList.name} </center>                                                   
                                 <p class="textinbox">                        
                                     Rs. {productList.price}<br />                                        
@@ -56,7 +65,7 @@ const AllProductCards = props => {
                                 <Rating></Rating>
                             </center>
                             <center>
-                                <Link to="/viewProduct"><button class="addtocart">Read More</button></Link>
+                                <Link to="/viewProduct"><button class="addtocart" onClick={() => sayHello(productList.itemid)}>Read More</button></Link>
                             </center>                                                                                       
                         </Card> 
                         <br />   

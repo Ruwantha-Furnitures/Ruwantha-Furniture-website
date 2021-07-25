@@ -9,6 +9,7 @@ import Topimg from '../../../../assets/topimg31.jpg';
 function CustomerChangePassword() {
     const contactImg = {
         backgroundImage: `url(${Topimg})` ,
+        backgroundSize: 'cover',  
         repeat: 'none',
         padding: '0',
         MaxWidth: "100%"

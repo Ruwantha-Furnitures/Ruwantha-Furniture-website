@@ -6,21 +6,22 @@ import Card from 'react-bootstrap/Card';
 import Avatar from "../../../assets/contact.png";
 import FormStyle from "../../../css/web/Form.module.css";
 
-const ContactForm = ({messageHandler}) => {
+const ContactForm = ({contactUsHandler}) => {
     require("bootstrap/dist/css/bootstrap.min.css");
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [telephone, setTelephone] = useState("");
     const [description, setDescription] = useState("");       
 
-    const submitHandler = (e) =>{
-        e.preventDefault();
-        messageHandler({name,email,telephone,description});
-    }
+    const submitHandler = () => {        
+        const data = { name, email, telephone, description };
+        // console.log(data);
+        contactUsHandler(data);
+      };
     
-    const title={
-        margin: '10px',
-        padding: '3px',
+      const title={   
+        margin: '2px',     
+        padding: '3px'        
     };
 
     const rowStyle={
@@ -35,7 +36,7 @@ const ContactForm = ({messageHandler}) => {
         borderRadius: '5px',
         padding: '5px',
         margin: '5px',
-        border: 'solid 1px darkgray'         
+        border: 'solid 1px darkgray'          
     };
 
     const textareaStyle = {
@@ -45,9 +46,9 @@ const ContactForm = ({messageHandler}) => {
         borderRadius: '5px',
         padding: '5px',
         margin: '5px',
-        border: 'solid 1px darkgray'            
+        border: 'solid 1px darkgray'           
     };
-    
+
     return (                    
         <div>                    
         {/*<Form className={FormStyle.innerbox}>*/}
@@ -63,21 +64,25 @@ const ContactForm = ({messageHandler}) => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
-                    ></input><br />                                           
+                    ></input><br />  
+
                     <input style={textboxStyle} 
                         type='tel' 
                         placeholder="Contact Number"
                         value={telephone}
+                        pattern="[0-9]{10}"  
                         onChange={(e)=> setTelephone(e.target.value)}
                         required
-                    ></input><br />                                                                  
-                    <input style={textboxStyle} 
+                    ></input><br />    
+
+                    <input style={textboxStyle}  
                         type='email' 
                         placeholder='Email'
                         value={email}
                         onChange={(e)=>setEmail(e.target.value)}
                         required
-                    ></input><br />                           
+                    ></input><br />       
+
                     <textarea style={textareaStyle} 
                         rows={5} 
                         cols={5} 
@@ -85,10 +90,11 @@ const ContactForm = ({messageHandler}) => {
                         value={description}    
                         onChange={(e)=>setDescription(e.target.value)}
                         required
-                    ></textarea><br />                          
+                    ></textarea><br />       
+                                       
                     <div align="right"><br />                                       
                         <Button variant="danger" type='reset'>Cancel</Button>{' '}
-                        <Button variant="success">Submit</Button>{' '}                     
+                        <Button variant="success" type='submit'>Submit</Button>{' '}                     
                     </div>                                                     
                 </Form>    
             </Card>

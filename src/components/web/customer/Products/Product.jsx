@@ -6,8 +6,21 @@ import ProductBox from "./AllProductCards";
 import Search from "../../Common/SearchProduct";
 import SliderProducts from "../../Common/ProductSlider";
 import Card from 'react-bootstrap/Card';
+import axios from "axios";
 
-function Product() {
+const Product = () => {
+    const itemUpHandler = async (data) => {
+        //console.log(data);
+        try{
+            await axios.get("http://192.168.56.1:3002/api/customer/item",{
+            data,
+          });
+          console.log("Request successful");
+        }catch (error){
+          console.log(error);
+        } 
+      };
+
     require("bootstrap/dist/css/bootstrap.min.css");
     const contactImg = {  
         //backgroundImage: `url(${Coverimg})` ,              
@@ -26,7 +39,7 @@ function Product() {
                             <br />
                             <SliderProducts></SliderProducts>
                             <br />
-                            <ProductBox></ProductBox>
+                            <ProductBox itemUpHandler={ itemUpHandler }></ProductBox>
                         </center>                                                 
                     </Card.Body>
                 </Card>  

@@ -45,7 +45,7 @@ function ViewProfileForm({userDetails}) {
 
     return (                    
         <div>
-            <Card className={FormStyle.cardbox} style={{marginBottom: '20px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
+            <Card className={FormStyle.cardbox} style={{marginBottom: '20px', width: '21rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
                 <Form style={{padding: '15px'}}>
                     <Row style={rowStyle}>                                
                         <center><img src={Avatar} alt={Avatar} width={50} height={50}></img></center>
