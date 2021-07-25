@@ -16,7 +16,7 @@ function CustomerProductDetails() {
     //adding selected product Id , account id in to the cart
     const setCartValue = async (itemid) => {
         
-        alert(`hello item value, ${itemid}`);
+        // alert(`hello item value, ${itemid}`);
 
         let accountID=localStorage.getItem('userAccID');
         console.log(accountID);

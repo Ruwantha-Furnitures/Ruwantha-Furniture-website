@@ -24,21 +24,25 @@ function ImageGallary() {
                         <Card style={cardimg}>
                             <center><img src={item1} style={{width: '300px', height: '300px'}} alt='item1'></img></center>
                         </Card>
+                        <br />
                     </Col>
                     <Col sm={3}>
                         <Card>
                             <center><img src={item2} style={{width: '300px', height: '300px'}} alt='item2'></img></center>
                         </Card>
+                        <br />
                     </Col>
                     <Col sm={3}>
                         <Card>
                             <center><img src={item3} style={{width: '300px', height: '300px'}} alt='item3'></img></center>
                         </Card>
+                        <br />
                     </Col>
                     <Col sm={3}>
                         <Card>
                             <center><img src={item4} style={{width: '300px', height: '300px'}} alt='item4'></img></center>
                         </Card>
+                        <br />
                     </Col>                   
                 </Row>                
                 <Row sm = {12}>
@@ -46,6 +50,7 @@ function ImageGallary() {
                         <Card style={cardimg}>
                             <center><img src={item5} style={{width: '300px', height: '300px'}} alt='item5'></img></center>
                         </Card>
+                        <br />
                     </Col>
                     <Col sm={3}>
                         <Card>
@@ -56,11 +61,13 @@ function ImageGallary() {
                         <Card>
                             <center><img src={item7} style={{width: '300px', height: '300px'}} alt='item7'></img></center>
                         </Card>
+                        <br />
                     </Col>
                     <Col sm={3}>
                         <Card>
                             <center><img src={item8} style={{width: '300px', height: '300px'}} alt='item8'></img></center>
                         </Card>
+                        <br />
                     </Col>                   
                 </Row>
                 </Card.Body>
