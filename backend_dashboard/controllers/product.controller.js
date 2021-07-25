@@ -32,3 +32,77 @@ exports.create = async (req, res) => {
       });
     });
 };
+
+// retrieve the data
+exports.findAll = (req, res) => {
+  Product.findAll({ where: { is_deleted: 0 }, include: ["type"] })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occured while retrieving Categories",
+      });
+    });
+};
+
+// retreive single object
+exports.findOne = (req, res) => {
+  const id = req.params.id;
+  Product.findOne({ where: { id: id, is_deleted: 0 }, include: ["type"] })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error retrieving Product with id = " + id,
+      });
+    });
+};
+
+// update the object
+exports.update = (req, res) => {
+  const id = req.params.id;
+
+  Product.update(req.body, {
+    where: { id: id, is_deleted: 0 },
+  })
+    .then((num) => {
+      if (num == 1) {
+        res.send({
+          message: "Product was updated successfully",
+        });
+      } else {
+        res.send({ message: `Cannot update Product with id=${id}` });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error updating Product with id = " + id,
+      });
+    });
+};
+
+// delete an object
+
+exports.delete = (req, res) => {
+  const id = req.params.id;
+  Product.update(req.body, {
+    where: { id: id },
+  })
+    .then((num) => {
+      if (num == 1) {
+        res.send({
+          message: "Product was deleted successfully",
+        });
+      } else {
+        res.send({ message: `Cannot delete Product with id=${id}` });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error deleting Product with id = " + id,
+      });
+    });
+};

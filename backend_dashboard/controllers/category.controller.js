@@ -88,15 +88,15 @@ exports.delete = (req, res) => {
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Category was updated successfully",
+          message: "Category was deleted successfully",
         });
       } else {
-        res.send({ message: `Cannot update Category with id=${id}` });
+        res.send({ message: `Cannot delete Category with id=${id}` });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error updating Category with id = " + id,
+        message: "Error delete Category with id = " + id,
       });
     });
 };
