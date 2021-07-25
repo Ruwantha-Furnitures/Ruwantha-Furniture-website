@@ -7,6 +7,11 @@ const {
     AddCartController,
 } = require("../controllers/cart/addCartController");
 
+const {
+    viewCartController,
+} = require("../controllers/cart/viewCartController");
+
 router.post("/addcart",AddCartController);
+router.get("/viewcart/:accID",viewCartController)
 
 module.exports = { cartRouter: router };

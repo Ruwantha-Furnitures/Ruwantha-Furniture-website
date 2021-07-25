@@ -1,4 +1,4 @@
-const { Customer, Account } = require("../models");
+const { Customer, Account } = require("../../models");
 const bcrypt = require("bcrypt");
 const saltrounds = 10;
 

@@ -1,20 +1,49 @@
-import React from 'react';
+import React , { useEffect , useState } from 'react';
 import { Row, Col } from "reactstrap";
 import productImg from "../../../../assets/items/1.jpg";
 import Table from 'react-bootstrap/Table';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import Form from "react-bootstrap/Form";
 import Card from 'react-bootstrap/Card';
+import axios from 'axios';
 
 function CartDetails() {
-    // const [itemCount, setItemCount] = React.useState(1);
+    const [products,setProducts]=useState([]);
+    const [cartData,setCartDetails]=useState([]);
 
     const rowStyle={
         margin: '10px'
     };
 
+    // to load the cart product 
+    useEffect(() => {
+        let accountID=localStorage.getItem('userAccID');        
+        console.log(accountID);
+        const fecthData=async()=>{
+            try {                
+                let res=await axios.get(`http://192.168.56.1:3002/api/cart/viewcart/${accountID}`)                
+                const {cartid, custid, itemid }=res.data
+
+                const CartData={
+                    cartid,
+                    custid,
+                    itemid
+                }
+                setCartDetails(()=>CartData)
+
+                console.log(cartData.itemid) // undefined
+                const res2=await axios.get(`http://192.168.56.1:3002/api/products/viewProduct/${cartData.itemid}`); // wil receive the response
+                setProducts(res2.data)     
+                
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fecthData()
+    },[])
+
     return (
-        <div>
+        <div>            
             <Card style={{marginBottom: '20px'}}>
                 <Form style={{padding: '20px'}}>
                     <Row sm={12} style={rowStyle}>
@@ -33,21 +62,23 @@ function CartDetails() {
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {products.map((productList) =>(                                                                                  
                                     <tr>                                        
-                                        <td>1</td>
+                                        <td>{productList.itemid}</td>
                                         <td><img src={productImg} style={{width:'100px', borderRadius: '20px'}} alt='imgitem'></img></td>
-                                        <td>Serena Single Seater</td>
+                                        <td>product name</td>
                                         <td>72975</td>
                                         <td>1</td>
                                         <td>72975</td>
                                         <td><DeleteForeverIcon /></td>
-                                    </tr>                                    
+                                    </tr>   
+                                    ))};                                 
                                 </tbody>
                             </Table>
                         </Col> 
                     </Row>
                 </Form>
-            </Card>
+            </Card>            
         </div>
     )
 }
