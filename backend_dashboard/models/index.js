@@ -74,7 +74,7 @@ db.deliveryDriver.hasMany(db.assignOrderDetails, {
   foreignKey: "delivery_driver_id",
 });
 
-db.assignOrderDetails.belongsTo(db.customer, {
+db.assignOrderDetails.belongsTo(db.deliveryDriver, {
   foreignKey: "delivery_driver_id",
   as: "deliveryDriver",
 });

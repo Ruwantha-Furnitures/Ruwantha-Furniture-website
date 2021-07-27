@@ -7,16 +7,16 @@ module.exports = (app) => {
   router.post("/", assignOrderDetails.create);
 
   //   Retrieve all Tutorials
-  // router.get("/", assignOrderDetails.findAll);
+  router.get("/", assignOrderDetails.findAll);
 
-  // //   Retrieve a single Tutorial with id
-  // router.get("/:id", assignOrderDetails.findOne);
+  //   Retrieve a single Tutorial with id
+  router.get("/:id", assignOrderDetails.findOne);
 
-  // //   update the tutorial
-  // router.put("/:id", assignOrderDetails.update);
+  //   update the tutorial
+  router.put("/:id", assignOrderDetails.update);
 
   // //   delete tutorial
-  // router.delete("/:id", assignOrderDetails.delete);
+  router.delete("/:id", assignOrderDetails.delete);
 
   app.use("/api/assignOrderDetail", router);
 };
