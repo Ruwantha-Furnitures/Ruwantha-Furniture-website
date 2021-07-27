@@ -15,6 +15,7 @@ db.type = require("./type.model")(sequelize, Sequelize);
 db.product = require("./product.model")(sequelize, Sequelize);
 db.customer = require("./customer.model")(sequelize, Sequelize);
 db.order = require("./order.model")(sequelize, Sequelize);
+db.deliveryDriver = require("./deliveryDriver.model")(sequelize, Sequelize);
 
 // Foreign key for types
 db.category.hasMany(db.type, {

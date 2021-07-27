@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const Customer = sequelize.define("customers", {
+  const DeliverDriver = sequelize.define("delivery_drivers", {
     first_name: {
       type: Sequelize.STRING,
     },
@@ -19,8 +19,15 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
       unique: true,
     },
-    payment_method: {
+    payment: {
+      type: Sequelize.INTEGER,
+    },
+    area: {
       type: Sequelize.STRING,
+    },
+    availability: {
+      type: Sequelize.INTEGER,
+      defaultValue: 1,
     },
     is_deleted: {
       type: Sequelize.INTEGER,
@@ -28,5 +35,5 @@ module.exports = (sequelize, Sequelize) => {
     },
   });
 
-  return Customer;
+  return DeliverDriver;
 };
