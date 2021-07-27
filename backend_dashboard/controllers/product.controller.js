@@ -1,35 +1,41 @@
 const db = require("../models");
-const Category = db.category;
+const Product = db.product;
 
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
   // validate request
   if (!req.body.name) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
 
-  //  Create a Category
-  const category = {
+  //  Create a Product
+  const product = {
     name: req.body.name,
+    type_id: req.body.type_id,
+    price: req.body.price,
+    description: req.body.description,
+    color: req.body.color,
+    width: req.body.width,
+    height: req.body.height,
+    discount: req.body.discount,
+    img_location: req.body.img_location,
   };
 
-  //   Save Category in the database
-  Category.create(category)
+  //   Save Product in the database
+  await Product.create(product)
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message:
-          err.message || "Some error occured while creating the Category",
+        message: err.message || "Some error occured while creating the Product",
       });
     });
 };
 
 // retrieve the data
-
 exports.findAll = (req, res) => {
-  Category.findAll({ where: { is_deleted: 0 } })
+  Product.findAll({ where: { is_deleted: 0 }, include: ["type"] })
     .then((data) => {
       res.send(data);
     })
@@ -44,13 +50,13 @@ exports.findAll = (req, res) => {
 // retreive single object
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  Category.findOne({ where: { id: id, is_deleted: 0 } })
+  Product.findOne({ where: { id: id, is_deleted: 0 }, include: ["type"] })
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error retrieving Category with id = " + id,
+        message: "Error retrieving Product with id = " + id,
       });
     });
 };
@@ -59,21 +65,21 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  Category.update(req.body, {
+  Product.update(req.body, {
     where: { id: id, is_deleted: 0 },
   })
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Category was updated successfully",
+          message: "Product was updated successfully",
         });
       } else {
-        res.send({ message: `Cannot update Category with id=${id}` });
+        res.send({ message: `Cannot update Product with id=${id}` });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error updating Category with id = " + id,
+        message: "Error updating Product with id = " + id,
       });
     });
 };
@@ -82,21 +88,21 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const id = req.params.id;
-  Category.update(req.body, {
+  Product.update(req.body, {
     where: { id: id },
   })
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Category was deleted successfully",
+          message: "Product was deleted successfully",
         });
       } else {
-        res.send({ message: `Cannot delete Category with id=${id}` });
+        res.send({ message: `Cannot delete Product with id=${id}` });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error delete Category with id = " + id,
+        message: "Error deleting Product with id = " + id,
       });
     });
 };
