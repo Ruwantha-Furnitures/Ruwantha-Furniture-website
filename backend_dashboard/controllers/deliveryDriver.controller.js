@@ -45,3 +45,65 @@ exports.findAll = (req, res) => {
       });
     });
 };
+
+// retreive single object
+exports.findOne = (req, res) => {
+  const id = req.params.id;
+  DeliveryDriver.findOne({
+    where: { id: id, is_deleted: 0 },
+  })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error retrieving Delivery Driver with id = " + id,
+      });
+    });
+};
+
+// update the object
+exports.update = (req, res) => {
+  const id = req.params.id;
+
+  DeliveryDriver.update(req.body, {
+    where: { id: id, is_deleted: 0 },
+  })
+    .then((num) => {
+      if (num == 1) {
+        res.send({
+          message: "Delivery Driver was updated successfully",
+        });
+      } else {
+        res.send({ message: `Cannot update Delivery Driver with id=${id}` });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error updating Delivery Driver with id = " + id,
+      });
+    });
+};
+
+// delete an object
+
+exports.delete = (req, res) => {
+  const id = req.params.id;
+  DeliveryDriver.update(req.body, {
+    where: { id: id },
+  })
+    .then((num) => {
+      if (num == 1) {
+        res.send({
+          message: "Delivery Driver was deleted successfully",
+        });
+      } else {
+        res.send({ message: `Cannot delete Delivery Driver with id=${id}` });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error deleting Delivery Driver with id = " + id,
+      });
+    });
+};
