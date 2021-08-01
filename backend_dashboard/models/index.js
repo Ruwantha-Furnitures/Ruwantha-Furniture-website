@@ -15,6 +15,11 @@ db.type = require("./type.model")(sequelize, Sequelize);
 db.product = require("./product.model")(sequelize, Sequelize);
 db.customer = require("./customer.model")(sequelize, Sequelize);
 db.order = require("./order.model")(sequelize, Sequelize);
+db.deliveryDriver = require("./deliveryDriver.model")(sequelize, Sequelize);
+db.assignOrderDetails = require("./assignOrderDetails.model")(
+  sequelize,
+  Sequelize
+);
 
 // Foreign key for types
 db.category.hasMany(db.type, {
@@ -53,6 +58,25 @@ db.customer.hasMany(db.order, {
 db.order.belongsTo(db.customer, {
   foreignKey: "customer_id",
   as: "customer",
+});
+
+// Foreign key for assignOrderDetails
+db.customer.hasMany(db.assignOrderDetails, {
+  foreignKey: "customer_id",
+});
+
+db.assignOrderDetails.belongsTo(db.customer, {
+  foreignKey: "customer_id",
+  as: "customer",
+});
+
+db.deliveryDriver.hasMany(db.assignOrderDetails, {
+  foreignKey: "delivery_driver_id",
+});
+
+db.assignOrderDetails.belongsTo(db.deliveryDriver, {
+  foreignKey: "delivery_driver_id",
+  as: "deliveryDriver",
 });
 
 module.exports = db;
