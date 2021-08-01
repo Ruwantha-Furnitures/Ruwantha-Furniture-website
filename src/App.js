@@ -73,6 +73,7 @@ import CustomerReviews from "./components/web/registeredCustomer/Reviews/Custome
 import CustomerThankYou from "./components/web/registeredCustomer/Payment/ThankYouPage.jsx";
 import PendingEmail from "./components/web/registeredCustomer/PasswordRecovery/Pending.jsx";
 import PayhereCheckout from "./components/web/registeredCustomer/Payment/Checkout.jsx";
+import CustomerChekoutFromViewProduct from "./components/web/registeredCustomer/Product/CustomerCheckout.jsx";
 
 function App() {
   return (
@@ -318,6 +319,7 @@ function App() {
             path="/customer_paymentGateway"
             component={PayhereCheckout}
           />
+          <Route exact path="/customer_productDetails_checkout" component={CustomerChekoutFromViewProduct}></Route>
         </Switch>
       </div>
     </Router>
