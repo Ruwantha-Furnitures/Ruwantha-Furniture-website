@@ -10,6 +10,7 @@ const { customerRouter } = require("./web/routes/customers.js");
 const { productRouter } = require("./web/routes/Product.js");
 const { contactusRouter } = require("./web/routes/contactus.js");
 const { cartRouter } = require("./web/routes/cart.js");
+const { PaymentRouter } = require("./web/routes/payment.js");
 
 
 // var corsOptions = {
@@ -24,6 +25,7 @@ app.use("/api/customer", customerRouter);
 app.use("/api/products", productRouter);
 app.use("/api/contactus", contactusRouter);
 app.use("/api/cart", cartRouter);
+app.use("/api/payment", PaymentRouter);
 
 connectDB();
 
