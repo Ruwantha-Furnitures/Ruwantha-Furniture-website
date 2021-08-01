@@ -61,9 +61,10 @@ const Login = ({ navigation }) => {
         setIsLoading(false);
         let errorMessage = response.data.errorMessage;
         setErrorMessage(errorMessage);
+        alert("Invalid email or password");
       }
     } catch (error) {
-      console.error(error);
+      console.error(error);      
     }
   };
 

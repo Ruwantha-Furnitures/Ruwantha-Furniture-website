@@ -18,29 +18,31 @@ function CartDetails() {
     // to load the cart product 
     useEffect(() => {
         let accountID=localStorage.getItem('userAccID');        
-        console.log(accountID);
+        console.log(accountID); //done
         const fecthData=async()=>{
             try {                
-                let res=await axios.get(`http://192.168.56.1:3002/api/cart/viewcart/${accountID}`)                
-                const {cartid, custid, itemid }=res.data
-
-                const CartData={
-                    cartid,
-                    custid,
-                    itemid
-                }
-                setCartDetails(()=>CartData)
-
-                console.log(cartData.itemid) // undefined
-                const res2=await axios.get(`http://192.168.56.1:3002/api/products/viewProduct/${cartData.itemid}`); // wil receive the response
-                setProducts(res2.data)     
+                let res=await axios.get(`http://192.168.56.1:3002/api/cart/viewcart/${accountID}`);    
+                setCartDetails(res.data.cartItems)      
+                console.log(res.data.cartItems)         
                 
+                //Add a loop for cartItems's item ids
+                
+                    //console.log("Item-ID")
+                    // console.log(ItemList.itemid) // undefined
+                    
+                    // const res2=await axios.get(`http://192.168.56.1:3002/api/products/viewProduct/${cartData.itemid}`) // wil receive the response
+                    // setProducts(res2.body.data)                 
+
+                
+
             } catch (error) {
                 console.log(error)
             }
         }
         fecthData()
     },[])
+
+
 
     return (
         <div>            
