@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import "../../../../css/web/Login.css";
 import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
@@ -6,13 +6,32 @@ import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from 'reactstrap';
 import { Link } from "react-router-dom";
 import Avatar from '../../../../assets/shipping.png';
+import axios from 'axios';
 
 function CustomerCheckoutDeteailsForm() {
     require("bootstrap/dist/css/bootstrap.min.css");
-    // const [name, setName] = useState("");
-    // const [email, setEmail] = useState("");
-    // const [telephone, setTelephone] = useState("");
-    // const [description, setDescription] = useState("");        
+    const [district,setDistrict]=useState([])    
+
+    const [fname, setFName] = useState("");
+    const [lname, setLName] = useState("");    
+    const [telephone, setTelephone] = useState("");       
+    const [address, setAddress] = useState("");       
+
+    // to load the district when the page is first rendered
+    useEffect(() => {
+        getAllDistricts();
+    },[])
+
+    const getAllDistricts = async() => {
+        try {
+           console.log('Requests send in delivery charge') // done
+           let res =await axios.get('http://192.168.56.1:3002/api/payment/deliverycharge/')
+           console.log(res.data.deliveryCharge); // received deliveryCharge from the backend API
+           setDistrict(res.data.deliveryCharge);// set the received deliveryCharge into the district state array
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     const title={
         margin: '0px',
@@ -50,18 +69,48 @@ function CustomerCheckoutDeteailsForm() {
                             <h5>Personal Information</h5>
                             <Row sm={12}>
                                 <Col sm={6}>
-                                    <input type='text' placeholder='Enter your first name' style={textboxStyle}></input>
+                                    <input style={textboxStyle}
+                                        type='text' 
+                                        placeholder='Enter your first name'
+                                        value={fname}
+                                        onChange={(e)=>setFName(e.target.value)}
+                                        required
+                                    />
                                 </Col>
                                 <Col sm={6}>
-                                    <input type='tel' placeholder='Enter your last name' style={textboxStyle}></input>
+                                    <input style={textboxStyle}
+                                        type='tel' 
+                                        placeholder='Enter your last name'
+                                        value={lname}
+                                        onChange={(e)=>setLName(e.target.value)}
+                                        required
+                                    />
                                 </Col>                                
                             </Row>    
-                            <input type='tel' placeholder='Enter your telephone number' style={textboxStyle}></input>                        
+                            <input style={textboxStyle}
+                                type='tel' 
+                                placeholder='Enter your telephone number'
+                                value={telephone}
+                                onChange={(e)=>setTelephone(e.target.value)}
+                                required
+                            ></input>                        
                             <br /><br />
                             <h5>Shipping Address</h5>
-                            <input type='text' placeholder='Enter your address' style={textboxStyle}></input>     
-                            <input type='text' placeholder='Enter your city' style={textboxStyle}></input> 
-                            <input type='text' placeholder='Enter your postal code' style={textboxStyle}></input> 
+                            <input style={textboxStyle}
+                                type='text' 
+                                placeholder='Enter your address' 
+                                value={address}
+                                onChange={(e)=>setAddress(e.target.value)}
+                                required
+                            ></input>     
+                            {/* <input type='text' placeholder='Enter your city' style={textboxStyle}></input>                              */}
+                            <select style={textboxStyle} required>
+                                <option style={{color:'red'}} value="" disabled selected hidden >Select your district</option>
+                                {district.map((districtList) =>(  
+                                    <option value={districtList.area} name='district'>{districtList.area}</option>
+                                ))}
+                            </select>
+
                             <br /><br />
                             <div align="right">
                                 <Button variant="danger" type='reset'>Cancel</Button>{' '}
