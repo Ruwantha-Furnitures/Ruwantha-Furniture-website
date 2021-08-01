@@ -21,9 +21,8 @@ function CartDetails() {
         console.log(accountID);
         const fecthData=async()=>{
             try {                
-                let res=await axios.get(`http://192.168.56.1:3002/api/cart/viewcart/${accountID}`)                
-                const {cartid, custid, itemid }=res.data
-
+                let res=await axios.get(`http://192.168.56.1:3002/api/cart/viewcart/${accountID}`);              
+                const {cartid, custid, itemid }=res.data                
                 const CartData={
                     cartid,
                     custid,
@@ -31,9 +30,9 @@ function CartDetails() {
                 }
                 setCartDetails(()=>CartData)
 
-                console.log(cartData.itemid) // undefined
+                console.log(CartData.itemid) // undefined
                 const res2=await axios.get(`http://192.168.56.1:3002/api/products/viewProduct/${cartData.itemid}`); // wil receive the response
-                setProducts(res2.data)     
+                setProducts(res2.body.data)     
                 
             } catch (error) {
                 console.log(error)
