@@ -11,6 +11,7 @@ import axios from 'axios';
 function CustomerCheckoutDeteailsForm() {
     require("bootstrap/dist/css/bootstrap.min.css");
     const [district,setDistrict]=useState([])    
+    const [productDetails,setProductDetails]=useState({})
 
     const [fname, setFName] = useState("");
     const [lname, setLName] = useState("");    
@@ -19,7 +20,9 @@ function CustomerCheckoutDeteailsForm() {
 
     // to load the district when the page is first rendered
     useEffect(() => {
+        const itemID=localStorage.getItem('productID')
         getAllDistricts();
+        getProductData(itemID)
     },[])
 
     const getAllDistricts = async() => {
@@ -31,6 +34,16 @@ function CustomerCheckoutDeteailsForm() {
         } catch (error) {
             console.log(error);
         }
+    }
+
+    const getProductData =async(itemID) =>{
+        try{
+            const res=await axios.get(`http://192.168.56.1:3002/api/products/viewProduct/${itemID}`); // wil receive the response
+            //console.log(res.data) //view the response object data
+            setProductDetails(res.data) // set the response data to the state of productDetails object
+        }catch (error){
+          console.log(error);
+        } 
     }
 
     const title={
@@ -128,7 +141,7 @@ function CustomerCheckoutDeteailsForm() {
                                     <Form.Label>Total Purchase</Form.Label>  
                                 </Col>
                                 <Col sm={6}>
-                                    <Form.Label>72975</Form.Label> 
+                                    <Form.Label>{productDetails.price}</Form.Label> 
                                 </Col>
                             </Row> 
                             <Row sm={12}>
@@ -136,7 +149,7 @@ function CustomerCheckoutDeteailsForm() {
                                     <Form.Label>Discount</Form.Label>  
                                 </Col>
                                 <Col sm={6}>
-                                    <Form.Label>5%</Form.Label> 
+                                    <Form.Label>{productDetails.discount}</Form.Label> 
                                 </Col>
                             </Row> 
                             <Row sm={12}>

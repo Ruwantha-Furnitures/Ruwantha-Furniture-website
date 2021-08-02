@@ -31,7 +31,11 @@ module.exports = (sequelize, DataTypes) => {
         objectid: {
             type: DataTypes.INTEGER,
             allowNull: false,
-          },
+        },
+        discount: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
       },
       {
         freezeTableName: true,
