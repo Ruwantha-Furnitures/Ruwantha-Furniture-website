@@ -16,13 +16,26 @@ function CustomerCheckoutDeteailsForm() {
     const [fname, setFName] = useState("");
     const [lname, setLName] = useState("");    
     const [telephone, setTelephone] = useState("");       
-    const [address, setAddress] = useState("");       
+    const [address, setAddress] = useState(""); 
+    const [area, setArea] = useState("");           
+    
+    //form submit handler
+    const submitHandler = () => {        
+        const data = { fname, lname, telephone, address,area };
+        // console.log(data);
+        localStorage.setItem("CustomerFName",fname);
+        localStorage.setItem("CustomerLName",lname);
+        localStorage.setItem("CustomerTelephone",telephone);
+        localStorage.setItem("CustomerAddress",address);
+        localStorage.setItem("CustomerArea",area);
+      };
 
     // to load the district when the page is first rendered
     useEffect(() => {
         const itemID=localStorage.getItem('productID')
         getAllDistricts();
         getProductData(itemID)
+        getTotal();
     },[])
 
     const getAllDistricts = async() => {
@@ -45,6 +58,14 @@ function CustomerCheckoutDeteailsForm() {
           console.log(error);
         } 
     }
+
+    function getTotal(price,discount){
+        let total = price - (price*discount/100);
+        localStorage.setItem("productPrice",price);
+        localStorage.setItem("productDiscount",discount);
+        localStorage.setItem("totalAfterDiscount",total);
+        return total;
+    }    
 
     const title={
         margin: '0px',
@@ -73,7 +94,7 @@ function CustomerCheckoutDeteailsForm() {
             <Row sm={12}>
                 <Col sm={8}>
                     <Card style={{marginBottom: '20px'}}>                        
-                        <Form style={{padding: '20px'}}>   
+                        <Form style={{padding: '20px'}} onSubmit={submitHandler}>   
                             <Row style={rowStyle}>                                
                                 <center><img src={Avatar} alt={Avatar} width={50} height={50}></img></center>
                                 <center><h2 style={title}>Shipping Details</h2></center>
@@ -120,14 +141,14 @@ function CustomerCheckoutDeteailsForm() {
                             <select style={textboxStyle} required>
                                 <option style={{color:'red'}} value="" disabled selected hidden >Select your district</option>
                                 {district.map((districtList) =>(  
-                                    <option value={districtList.area} name='district'>{districtList.area}</option>
+                                    <option value={area}  onChange={(e)=>setArea(e.target.value)} name='district'>{districtList.area}</option>
                                 ))}
                             </select>
 
                             <br /><br />
                             <div align="right">
                                 <Button variant="danger" type='reset'>Cancel</Button>{' '}
-                                <Link to='/customer_paymentGateway'><Button variant="success">Continue for payment</Button>{' '}</Link>
+                                <Link to='/customer_paymentGateway'><Button variant="success" type='submit'>Continue for payment</Button>{' '}</Link>
                             </div>                         
                         </Form>
                     </Card>
@@ -149,16 +170,21 @@ function CustomerCheckoutDeteailsForm() {
                                     <Form.Label>Discount</Form.Label>  
                                 </Col>
                                 <Col sm={6}>
-                                    <Form.Label>{productDetails.discount}</Form.Label> 
+                                    <Form.Label>{productDetails.discount}%</Form.Label> 
                                 </Col>
                             </Row> 
                             <Row sm={12}>
                                 <Col sm={6}>
-                                    <Form.Label><b>Total</b></Form.Label>  
+                                    <Form.Label><b style={{fontSize: '20px'}}>Total</b></Form.Label>  
                                 </Col>
                                 <Col sm={6}>
-                                    <Form.Label><b style={{fontSize: '20px'}}>Rs. 69326.25</b></Form.Label> 
+                                    <Form.Label><b style={{fontSize: '20px'}}>{getTotal(productDetails.price,productDetails.discount)}</b></Form.Label> 
                                 </Col>
+                            </Row> 
+                            <Row sm={12}>
+                                <Col>
+                                    <Form.Label><i style={{fontSize:'9px'}}>**Delivery charged will be added. Click on Continue for payment</i></Form.Label>  
+                                </Col>                                
                             </Row> 
                         </Form>
                     </Card>
