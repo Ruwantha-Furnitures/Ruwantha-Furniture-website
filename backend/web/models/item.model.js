@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
           allowNull: false,
         },
         price: {
-          type: DataTypes.INTEGER,
+          type: DataTypes.DECIMAL,
           allowNull: false,
         },
         quantity: {
@@ -31,7 +31,11 @@ module.exports = (sequelize, DataTypes) => {
         objectid: {
             type: DataTypes.INTEGER,
             allowNull: false,
-          },
+        },
+        discount: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
       },
       {
         freezeTableName: true,

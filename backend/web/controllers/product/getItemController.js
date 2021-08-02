@@ -9,7 +9,7 @@ const getItemController = async (req, res) => {
           where: { itemid: productID },
       });
       console.log(selectedProduct);
-      const { name, typeid, price, quantity, details, objectid } =
+      const { name, typeid, price, quantity, details, objectid,discount } =
           selectedProduct;
       res.json({
           state: "success",
@@ -19,6 +19,7 @@ const getItemController = async (req, res) => {
           quantity,
           details,
           objectid,
+          discount,
           itemid: productID,
       });
   } catch (error) {
