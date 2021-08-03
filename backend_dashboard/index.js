@@ -40,9 +40,11 @@ require("./routes/type.routes")(app);
 require("./routes/product.routes")(app);
 require("./routes/customer.routes")(app);
 require("./routes/order.routes")(app);
+
 require("./routes/deliveryDriver.routes")(app);
 require("./routes/assignOrderDetails.routes")(app);
 require("./routes/imageUpload.routes")(app);
+
 
 // set port
 const PORT = process.env.PORT || 8080;

@@ -61,9 +61,10 @@ const Login = ({ navigation }) => {
         setIsLoading(false);
         let errorMessage = response.data.errorMessage;
         setErrorMessage(errorMessage);
+        alert("Invalid email or password");
       }
     } catch (error) {
-      console.error(error);
+      console.error(error);      
     }
   };
 
@@ -71,16 +72,6 @@ const Login = ({ navigation }) => {
   // const redirectDashboard = <Redirect to="/dashboard" />
 
   return (
-    // <div style={{              
-    //   backgroundImage: `url(${backcover})`,        
-    //   backgroundRepeat: 'no-repeat',
-    //   backgroundSize: 'cover',
-    //   objectFit:'cover',
-    //   height: '100%',
-    //   width: '100%',        
-    // }}>    
-
-
     <React.Fragment>
 
       {isLoading === true && (userLevel === 1) && (redirectHome)}

@@ -56,30 +56,31 @@ function CustomerProductDetails() {
         <React.Fragment>
             { (isSubmit === true) && (redirecCart) }
             { (isSubmit === false) && (
-                 <div>            
-                 <Container>
-                     <Card className={FormStyle.cardbox} style={{marginTop:'30px', marginBottom: '30px', padding:'30px', boxShadow:'0px 0px 5px #000'}}>                         
-                         <Row className="justify-content-md-center" xs={12}>
-                             <Col sm={6}>
-                                 <img src={process.env.PUBLIC_URL + '/items/'+ productDetails.itemid +'.jpg'} className={CommonStyle.Productimage} alt='items'></img>                  
-                             </Col>
-                             <br />
-                             <Col sm={6}>
-                                 <Container>
-                                     <center>
-                                         <h2>{productDetails.name}</h2>
-                                         <h4>{`Rs. ${productDetails.price}.00 /=`}</h4><br />
-                                         <p align='justify'>{productDetails.details}</p><br />
-                                         <Rating></Rating>
-                                         {/* <Link to="/cart"><button onClick={() => setCartValue(itemCount + 1)} class="addtocart">Add to cart </button></Link> */}
-                                         <button onClick={() => setCartValue( productDetails.itemid )} class="addtocart">Add to cart </button>
-                                     </center>
-                                 </Container>
-                             </Col>                        
-                         </Row>                                                
-                     </Card>
-                     <br />
-                 </Container>    
+                <div>            
+                <Container>
+                    <Card className={FormStyle.cardbox} style={{marginTop:'30px', marginBottom: '30px', padding:'30px', boxShadow:'0px 0px 5px #000'}}>                         
+                        <Row className="justify-content-md-center" xs={12}>
+                            <Col sm={6}>
+                                <img src={process.env.PUBLIC_URL + '/items/'+ productDetails.itemid +'.jpg'} className={CommonStyle.Productimage} alt='items'></img>                  
+                            </Col>
+                            <br />
+                            <Col sm={6}>
+                                <Container>
+                                    <center>
+                                        <h2>{productDetails.name}</h2>
+                                        <h4>{`Rs. ${productDetails.price}`}</h4><br />
+                                        <p align='justify'>{productDetails.details}</p><br />
+                                        <Rating></Rating>
+                                        {/* <Link to="/cart"><button onClick={() => setCartValue(itemCount + 1)} class="addtocart">Add to cart </button></Link> */}
+                                        <button onClick={() => setCartValue( productDetails.itemid )} class="addtocart">Add to cart </button> {' '}
+                                        <Link to='/customer_productDetails_checkout'><button class="addtocart">Check out</button></Link>
+                                    </center>
+                                </Container>
+                            </Col>                        
+                        </Row>                                                
+                    </Card>
+                    <br />
+                </Container>    
                 </div>
             )}
         </React.Fragment>        

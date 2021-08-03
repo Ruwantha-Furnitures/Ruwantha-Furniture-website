@@ -39,7 +39,7 @@ function ProductDetails() {
                             <Container>
                                 <center>
                                     <h2>{productDetails.name}</h2>
-                                    <h4>{`Rs. ${productDetails.price}.00 /=`}</h4><br />
+                                    <h4>{`Rs. ${productDetails.price}`}</h4><br />
                                     <p align='justify'>{productDetails.details}</p><br />
                                     <Rating></Rating>
                                     <Link to="/login"><button class="addtocart">Add to cart</button></Link>
