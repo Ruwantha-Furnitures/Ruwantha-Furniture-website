@@ -52,7 +52,7 @@ import PurchaseOrders from "./components/Dashboard/order/PurchaseOrders";
 
 // End of Dashboard components
 
-// Web Components
+// Web Component
 import Home from "./components/web/customer/Home/Home.jsx";
 import Product from "./components/web/customer/Products/Product.jsx";
 import ContactUs from "./components/web/customer/ContactUs/Contact.jsx";

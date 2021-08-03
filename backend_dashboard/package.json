@@ -5,13 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "dev": "concurrently \"npm run server\" \"cd ../ && npm start\""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^6.2.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
     "joi": "^17.4.1",
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.12",

@@ -1,16 +1,60 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import ProductImage from "../../../../../assets/dashboard/product/addPhotoNew2.png";
 import { Link } from "react-router-dom";
+import { getProductTypes } from "./../../../service/productType";
+import axios from "axios";
 
 function ProductForm() {
-  // const [picture, setPicture] = useState(null);
+  const [file, setFile] = useState("");
+  const [filename, setFilename] = useState("Choose File");
+  const [uploadFile, setUploadFile] = useState({});
+
+  const [product, setProduct] = useState({
+    name: "",
+    type_id: 0,
+    price: "",
+    description: "",
+    color: "",
+    width: "",
+    height: "",
+    discount: "",
+    img_location: "",
+  });
+
+  const [productTypes, setProductTypes] = useState({
+    id: 0,
+    name: "",
+    categoryId: "",
+  });
+
+  useEffect(() => {
+    loadProductTypes();
+  }, []);
+
+  const loadProductTypes = async () => {
+    try {
+      const result = await getProductTypes();
+      setProductTypes(result.data);
+    } catch (err) {
+      console.log("Error", err.message);
+    }
+  };
+
+  const [picture, setPicture] = useState(null);
   const [imgData, setImgData] = useState(null);
+
+  const onInputChange = (e) => {
+    setProduct({ ...product, [e.target.name]: e.target.value });
+  };
 
   const onChangePicture = (e) => {
     if (e.target.files[0]) {
-      console.log("picture: ", e.target.files);
-      // setPicture(e.target.files[0]);
+      console.log(e.target.files[0]);
+      setPicture(e.target.files[0]);
+      setFile(e.target.files[0]);
+      setFilename(e.target.files[0].name);
+
       const reader = new FileReader();
       reader.addEventListener("load", () => {
         setImgData(reader.result);
@@ -18,6 +62,38 @@ function ProductForm() {
       reader.readAsDataURL(e.target.files[0]);
     }
   };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    console.log(product);
+    console.log(picture);
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const res = await axios.post(
+        "http://localhost:8080/api/image",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      const { fileName, filePath } = res.data;
+
+      setUploadFile({ fileName, filePath });
+    } catch (error) {
+      if (error.response.status === 500) {
+        console.log("There was a problem with the server: ", error);
+      } else {
+        console.log(error.response.data.msg);
+      }
+    }
+  };
+
+  // console.log(productTypes);
 
   return (
     <React.Fragment>
@@ -45,7 +121,7 @@ function ProductForm() {
           </div>
         </div>
       </div>
-      <form action="#">
+      <form onSubmit={(e) => onSubmit(e)}>
         <div className={ProductViewFormStyle.details}>
           <div className={ProductViewFormStyle.imgDescPart}>
             <div className={ProductViewFormStyle.Img}>
@@ -69,8 +145,10 @@ function ProductForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
                     placeholder="Product Name"
+                    name="name"
+                    value={product.name}
+                    onChange={(e) => onInputChange(e)}
                     className={ProductViewFormStyle.inputProductTitle}
                   />
                 </div>
@@ -81,7 +159,9 @@ function ProductForm() {
                     Description
                   </label>
                   <textarea
-                    value=""
+                    name="description"
+                    value={product.description}
+                    onChange={(e) => onInputChange(e)}
                     placeholder="Product Description..."
                     className={ProductViewFormStyle.inputStyleDesc}
                   />
@@ -102,12 +182,23 @@ function ProductForm() {
                   <label className={ProductViewFormStyle.labelStyle}>
                     Type
                   </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Product Type"
-                    className={ProductViewFormStyle.inputStyle}
-                  />
+                  <select
+                    className={ProductViewFormStyle.inputFormSelectStyle}
+                    name="type_id"
+                    onChange={(e) => onInputChange(e)}
+                    required
+                  >
+                    <option value="">Select Type</option>
+                    {Array.isArray(productTypes) === true && (
+                      <React.Fragment>
+                        {productTypes.map((type, index) => (
+                          <option key={index} value={type.id}>
+                            {type.name}
+                          </option>
+                        ))}
+                      </React.Fragment>
+                    )}
+                  </select>
                 </div>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
@@ -115,7 +206,9 @@ function ProductForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    name="color"
+                    value={product.color}
+                    onChange={(e) => onInputChange(e)}
                     placeholder="Product Colour"
                     className={ProductViewFormStyle.inputStyle}
                   />
@@ -128,7 +221,9 @@ function ProductForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    name="width"
+                    value={product.width}
+                    onChange={(e) => onInputChange(e)}
                     placeholder="Product Width"
                     className={ProductViewFormStyle.inputStyle}
                   />
@@ -139,7 +234,9 @@ function ProductForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    name="height"
+                    value={product.height}
+                    onChange={(e) => onInputChange(e)}
                     placeholder="Product Height"
                     className={ProductViewFormStyle.inputStyle}
                   />
@@ -152,7 +249,9 @@ function ProductForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    name="price"
+                    value={product.price}
+                    onChange={(e) => onInputChange(e)}
                     placeholder="Product Price"
                     className={ProductViewFormStyle.inputStyle}
                   />
@@ -163,7 +262,9 @@ function ProductForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    name="discount"
+                    value={product.discount}
+                    onChange={(e) => onInputChange(e)}
                     placeholder="Product Discount"
                     className={ProductViewFormStyle.inputStyle}
                   />
