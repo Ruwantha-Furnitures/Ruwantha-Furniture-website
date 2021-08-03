@@ -507,6 +507,10 @@
 input[type="text"]:focus {
   outline: none;
 }
+
+input[type="number"]:focus {
+  outline: none;
+}
 /* input[type="textarea"]:focus {
   outline: none;
 } */

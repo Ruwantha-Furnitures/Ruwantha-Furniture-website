@@ -4,11 +4,12 @@ import ProductImage from "../../../../../assets/dashboard/product/addPhotoNew2.p
 import { Link } from "react-router-dom";
 import { getProductTypes } from "./../../../service/productType";
 import axios from "axios";
+import { uploadPhoto } from "./../../../service/image";
 
 function ProductForm() {
   const [file, setFile] = useState("");
   const [filename, setFilename] = useState("Choose File");
-  const [uploadFile, setUploadFile] = useState({});
+  // const [uploadFile, setUploadFile] = useState({});
 
   const [product, setProduct] = useState({
     name: "",
@@ -72,18 +73,19 @@ function ProductForm() {
     formData.append("file", file);
 
     try {
-      const res = await axios.post(
-        "http://localhost:8080/api/image",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      const { fileName, filePath } = res.data;
+      const res = await uploadPhoto(formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
-      setUploadFile({ fileName, filePath });
+      const { filePath } = res.data;
+      console.log(filePath);
+      const name = "img_location";
+      const newProduct = { ...product, [name]: filePath };
+      console.log(newProduct);
+
+      // Product submit process
     } catch (error) {
       if (error.response.status === 500) {
         console.log("There was a problem with the server: ", error);
@@ -92,8 +94,6 @@ function ProductForm() {
       }
     }
   };
-
-  // console.log(productTypes);
 
   return (
     <React.Fragment>
@@ -220,11 +220,11 @@ function ProductForm() {
                     Width
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     name="width"
                     value={product.width}
                     onChange={(e) => onInputChange(e)}
-                    placeholder="Product Width"
+                    placeholder="Product Width in CM"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
@@ -233,11 +233,11 @@ function ProductForm() {
                     Height
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     name="height"
                     value={product.height}
                     onChange={(e) => onInputChange(e)}
-                    placeholder="Product Height"
+                    placeholder="Product Height in CM"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
@@ -248,11 +248,11 @@ function ProductForm() {
                     Price
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     name="price"
                     value={product.price}
                     onChange={(e) => onInputChange(e)}
-                    placeholder="Product Price"
+                    placeholder="Product Price in RS"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
@@ -261,11 +261,11 @@ function ProductForm() {
                     Discount
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     name="discount"
                     value={product.discount}
                     onChange={(e) => onInputChange(e)}
-                    placeholder="Product Discount"
+                    placeholder="Product Discount in PR"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
