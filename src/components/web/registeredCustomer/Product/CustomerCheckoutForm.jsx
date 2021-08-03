@@ -141,16 +141,11 @@ function CustomerCheckoutDeteailsForm() {
                                     value={address}
                                     onChange={(e)=>setAddress(e.target.value)}
                                     required
-                                ></input>     
-                                {/* <input type='text' placeholder='Enter your city' style={textboxStyle}></input>                              */}
-                                <select style={textboxStyle} required>
+                                ></input>                                     
+                                <select style={textboxStyle} onChange={(e)=>setArea(e.target.value)} required>
                                     <option style={{color:'red'}} value="" disabled selected hidden >Select your district</option>
-                                    {district.map((districtList) =>(  
-                                        // <option value={area}  onChange={(e)=>setArea(e.target.value)} name='district'>{districtList.area}</option>
-                                        
-                                        //not comming to the localStorage
-                                        
-                                        <option value={districtList.area}  onChange={(e)=>setArea(e.target.value)}>{districtList.area}</option>
+                                    {district.map((districtList) =>(                                          
+                                        <option value={districtList.area}>{districtList.area}</option>
                                     ))}
                                 </select>
     

@@ -8,7 +8,8 @@ function CustomerPayment() {
     return (
         <div>                                     
             <Navigation></Navigation>                    
-            <Form></Form>            
+            <Form></Form>    
+            <br /><br />      
             <Footer></Footer>    
         </div>
     );

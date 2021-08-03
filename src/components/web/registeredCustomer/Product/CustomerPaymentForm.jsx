@@ -1,14 +1,11 @@
 import React , { useEffect, useState } from 'react';
 import "../../../../css/web/Login.css";
 import Form from "react-bootstrap/Form";
-import Navigation from "../Navigation/UserNav";
-import Footer from "../../Common/Footer";
 import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from 'reactstrap';
-import { Link } from "react-router-dom";
 import Avatar from '../../../../assets/shipping.png';
 import CommonStyle from '../../../../css/web/common.module.css';
-
+import axios from 'axios';
 import {Customer, CurrencyType,PayhereCheckout, CheckoutParams} from 'payhere-js-sdk';
 import {Payhere, AccountCategory} from "payhere-js-sdk";
 
@@ -18,6 +15,8 @@ Payhere.init("1217736",AccountCategory.SANDBOX)
 const CustomerPaymentForm = () => {
     require("bootstrap/dist/css/bootstrap.min.css");
     const [isSubmit, setIsSubmit] = useState(false);
+    const [deliveryChargeData, setDeliveryChargeData] = useState("");
+    
     
     const [fname, setFName] = useState("");
     const [lname, setLName] = useState("");    
@@ -35,15 +34,25 @@ const CustomerPaymentForm = () => {
         setLName(localStorage.getItem('CustomerLName'))
         setTelephone(localStorage.getItem('CustomerTelephone'))
         setAddress(localStorage.getItem('CustomerAddress'))
-        setArea(localStorage.getItem('CustomerArea'))
-
-        // alert(area) //Null ----------------->
+        setArea(localStorage.getItem('CustomerArea'))        
 
         setPrice(localStorage.getItem('productPrice'))
         setDiscount(localStorage.getItem('productDiscount'))
         setAfterDiscount(localStorage.getItem('totalAfterDiscount'))
+        
+        getDeliveryCharge();
     },[])
 
+    const getDeliveryCharge =async() =>{
+        const area = localStorage.getItem('CustomerArea')
+        try{
+            const res=await axios.get(`http://192.168.56.1:3002/api/payment/deliverychargefordistrict/${area}`); // wil receive the response
+            console.log(res.data) //view the response object data
+            setDeliveryChargeData(res.data) // set the response data to the state of productDetails object
+        }catch (error){
+          console.log(error);
+        } 
+    }
 
     function onPayhereCheckoutError(errorMsg) {
         alert(errorMsg)
@@ -160,7 +169,7 @@ const CustomerPaymentForm = () => {
                                 <Form.Label>Delivery Charge</Form.Label>  
                             </Col>
                             <Col sm={6}>
-                                <Form.Label>500</Form.Label> 
+                                <Form.Label>{deliveryChargeData.amount}</Form.Label> 
                             </Col>
                         </Row> 
                         <Row sm={12}>
