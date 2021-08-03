@@ -28,6 +28,9 @@ const CustomerPaymentForm = () => {
     const [discount, setDiscount] = useState("");   
     const [afterDiscount, setAfterDiscount] = useState("");   
 
+    const [deliveryCharge, setDeliveryCharge] = useState("");
+    const [totalAmount, setTotalAmount] = useState("");
+
     // to load the district when the page is first rendered
     useEffect(() => {
         setFName(localStorage.getItem('CustomerFName'))
@@ -41,6 +44,9 @@ const CustomerPaymentForm = () => {
         setAfterDiscount(localStorage.getItem('totalAfterDiscount'))
         
         getDeliveryCharge();
+
+        setDeliveryCharge(deliveryChargeData.amount);
+        
     },[])
 
     const getDeliveryCharge =async() =>{
@@ -48,10 +54,16 @@ const CustomerPaymentForm = () => {
         try{
             const res=await axios.get(`http://192.168.56.1:3002/api/payment/deliverychargefordistrict/${area}`); // wil receive the response
             console.log(res.data) //view the response object data
-            setDeliveryChargeData(res.data) // set the response data to the state of productDetails object
+            setDeliveryChargeData(res.data) // set the response data to the state of productDetails object            
         }catch (error){
           console.log(error);
         } 
+    }
+
+    function calculateToatalAmount(afterDiscount,deliveryCharge){
+        const totalAmount = Number(afterDiscount) + Number(deliveryCharge);
+        localStorage.setItem("totalAmount",totalAmount);
+        return totalAmount
     }
 
     function onPayhereCheckoutError(errorMsg) {
@@ -177,7 +189,7 @@ const CustomerPaymentForm = () => {
                                 <Form.Label><b>Total</b></Form.Label>  
                             </Col>
                             <Col sm={6}>
-                                <Form.Label><b style={{fontSize: '20px'}}>Rs. 69826.25</b></Form.Label> 
+                                <Form.Label><b style={{fontSize: '20px'}}>Rs.{ calculateToatalAmount(afterDiscount,deliveryChargeData.amount) }</b></Form.Label> 
                             </Col>
                         </Row>  
                         <br />   
