@@ -47,7 +47,7 @@ function CustomerProductDetails() {
             } 
         }
         fetchData()
-       
+        localStorage.setItem("productName",productDetails.name);
     }, []);
 
     const redirecCart = < Redirect to="/cart" />;

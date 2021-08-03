@@ -28,8 +28,7 @@ const CustomerPaymentForm = () => {
     const [discount, setDiscount] = useState("");   
     const [afterDiscount, setAfterDiscount] = useState("");   
 
-    const [deliveryCharge, setDeliveryCharge] = useState("");
-    const [totalAmount, setTotalAmount] = useState("");
+    const [deliveryCharge, setDeliveryCharge] = useState("");    
 
     // to load the district when the page is first rendered
     useEffect(() => {
@@ -94,12 +93,12 @@ const CustomerPaymentForm = () => {
             // using async await
             try {
               const customer = new Customer({
-                first_name: "Pavindu",
-                last_name: "Lakshan",
-                phone: "+94771234567",
-                email: "plumberhl@gmail.com",
-                address: "No. 50, Highlevel Road",
-                city: "Panadura",
+                first_name: { fname },
+                last_name: { lname },
+                phone: { telephone },
+                // email: "plumberhl@gmail.com",
+                address: {address},
+                city: {area},
                 country: "Sri Lanka",
               })
               const checkoutData = new CheckoutParams({
@@ -189,7 +188,7 @@ const CustomerPaymentForm = () => {
                                 <Form.Label><b>Total</b></Form.Label>  
                             </Col>
                             <Col sm={6}>
-                                <Form.Label><b style={{fontSize: '20px'}}>Rs.{ calculateToatalAmount(afterDiscount,deliveryChargeData.amount) }</b></Form.Label> 
+                                <Form.Label><b style={{fontSize: '20px'}}>Rs.{' '}{ calculateToatalAmount(afterDiscount,deliveryChargeData.amount) }</b></Form.Label> 
                             </Col>
                         </Row>  
                         <br />   

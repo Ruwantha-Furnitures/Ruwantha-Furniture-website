@@ -7,6 +7,7 @@ import { Container, Row, Col } from 'reactstrap';
 import { Redirect } from "react-router-dom";
 import Avatar from '../../../../assets/shipping.png';
 import axios from 'axios';
+import { FormatListNumberedRtlTwoTone } from '@material-ui/icons';
 
 function CustomerCheckoutDeteailsForm() {
     require("bootstrap/dist/css/bootstrap.min.css");
@@ -62,7 +63,7 @@ function CustomerCheckoutDeteailsForm() {
     }
 
     function getTotal(price,discount){
-        let total = price - (price*discount/100);
+        const total = (Number)(price - (price*discount/100))
         localStorage.setItem("productPrice",price);
         localStorage.setItem("productDiscount",discount);
         localStorage.setItem("totalAfterDiscount",total);
@@ -183,7 +184,7 @@ function CustomerCheckoutDeteailsForm() {
                                         <Form.Label><b style={{fontSize: '20px'}}>Total</b></Form.Label>  
                                     </Col>
                                     <Col sm={6}>
-                                        <Form.Label><b style={{fontSize: '20px'}}>{getTotal(productDetails.price,productDetails.discount)}</b></Form.Label> 
+                                        <Form.Label><b style={{fontSize: '20px'}}>Rs.{' '}{getTotal(productDetails.price,productDetails.discount)}</b></Form.Label> 
                                     </Col>
                                 </Row> 
                                 <Row sm={12}>
