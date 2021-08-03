@@ -89,7 +89,7 @@ function CustomerCheckoutDeteailsForm() {
         border: 'solid 1px darkgray'               
     };
 
-    const redirectPaymentPage = <Redirect to="/customer_paymentGateway" />;
+    const redirectPaymentPage = <Redirect to="/customer_productDetails_payment" />;
     return (          
         <React.Fragment>
             {isSubmit === true && redirectPaymentPage}
@@ -146,7 +146,11 @@ function CustomerCheckoutDeteailsForm() {
                                 <select style={textboxStyle} required>
                                     <option style={{color:'red'}} value="" disabled selected hidden >Select your district</option>
                                     {district.map((districtList) =>(  
-                                        <option value={area}  onChange={(e)=>setArea(e.target.value)} name='district'>{districtList.area}</option>
+                                        // <option value={area}  onChange={(e)=>setArea(e.target.value)} name='district'>{districtList.area}</option>
+                                        
+                                        //not comming to the localStorage
+                                        
+                                        <option value={districtList.area}  onChange={(e)=>setArea(e.target.value)}>{districtList.area}</option>
                                     ))}
                                 </select>
     
