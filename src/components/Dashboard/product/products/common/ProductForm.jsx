@@ -3,13 +3,12 @@ import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.m
 import ProductImage from "../../../../../assets/dashboard/product/addPhotoNew2.png";
 import { Link } from "react-router-dom";
 import { getProductTypes } from "./../../../service/productType";
-import axios from "axios";
 import { uploadPhoto } from "./../../../service/image";
+import { addProduct } from "./../../../service/product";
 
 function ProductForm() {
   const [file, setFile] = useState("");
   const [filename, setFilename] = useState("Choose File");
-  // const [uploadFile, setUploadFile] = useState({});
 
   const [product, setProduct] = useState({
     name: "",
@@ -84,6 +83,10 @@ function ProductForm() {
       const name = "img_location";
       const newProduct = { ...product, [name]: filePath };
       console.log(newProduct);
+
+      const response = await addProduct(newProduct);
+      // handle response process
+      window.location = "/dashboard/product/add";
 
       // Product submit process
     } catch (error) {
