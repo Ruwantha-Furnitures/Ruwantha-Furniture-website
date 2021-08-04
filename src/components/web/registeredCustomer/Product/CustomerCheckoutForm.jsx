@@ -132,6 +132,7 @@ function CustomerCheckoutDeteailsForm() {
                                 </Row>    
                                 <input style={textboxStyle}
                                     type='tel' 
+                                    pattern="[0-9]{10}"     
                                     placeholder='Enter your telephone number'
                                     value={telephone}
                                     onChange={(e)=>setTelephone(e.target.value)}
