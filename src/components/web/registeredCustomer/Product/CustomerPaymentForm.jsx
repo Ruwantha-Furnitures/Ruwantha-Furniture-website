@@ -61,8 +61,9 @@ const CustomerPaymentForm = () => {
 
     function calculateToatalAmount(afterDiscount,deliveryCharge){
         const totalAmount = Number(afterDiscount) + Number(deliveryCharge);
-        localStorage.setItem("totalAmount",totalAmount);
-        return totalAmount
+        var totalTwoDecimalPlaces=parseFloat(totalAmount).toFixed(2); 
+        localStorage.setItem("totalAmount",totalTwoDecimalPlaces);        
+        return totalTwoDecimalPlaces
     }
 
     function onPayhereCheckoutError(errorMsg) {
@@ -96,7 +97,7 @@ const CustomerPaymentForm = () => {
                 first_name: { fname },
                 last_name: { lname },
                 phone: { telephone },
-                // email: "plumberhl@gmail.com",
+                email: "plumberhl@gmail.com",
                 address: {address},
                 city: {area},
                 country: "Sri Lanka",
@@ -185,7 +186,7 @@ const CustomerPaymentForm = () => {
                         </Row> 
                         <Row sm={12}>
                             <Col sm={6}>
-                                <Form.Label><b>Total</b></Form.Label>  
+                                <Form.Label><b style={{fontSize: '20px'}}>Total</b></Form.Label>  
                             </Col>
                             <Col sm={6}>
                                 <Form.Label><b style={{fontSize: '20px'}}>Rs.{' '}{ calculateToatalAmount(afterDiscount,deliveryChargeData.amount) }</b></Form.Label> 
