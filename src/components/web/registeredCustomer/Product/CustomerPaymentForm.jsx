@@ -50,6 +50,8 @@ const CustomerPaymentForm = () => {
         getDeliveryCharge();
 
         setDeliveryCharge(deliveryChargeData.amount);
+
+        getOrderId();
         
     },[])
 
@@ -73,6 +75,16 @@ const CustomerPaymentForm = () => {
 
     function onPayhereCheckoutError(errorMsg) {
         alert(errorMsg)
+    }
+
+    const getOrderId =async() =>{
+        try{
+            const res=await axios.get(`http://192.168.56.1:3002/api/purchseorders/getnofpurchaseorders/`); // wil receive the response
+            console.log(res.data) //view the response object data
+            setDeliveryChargeData(res.data) // set the response data to the state of productDetails object            
+        }catch (error){
+          console.log(error);
+        } 
     }
 
     const title={
