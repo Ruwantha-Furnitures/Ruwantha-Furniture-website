@@ -13,8 +13,7 @@ import {Payhere, AccountCategory} from "payhere-js-sdk";
 Payhere.init("1217736",AccountCategory.SANDBOX)
 
 const CustomerPaymentForm = () => {
-    require("bootstrap/dist/css/bootstrap.min.css");
-    const [isSubmit, setIsSubmit] = useState(false);
+    require("bootstrap/dist/css/bootstrap.min.css");    
     const [deliveryChargeData, setDeliveryChargeData] = useState("");
     
     
@@ -24,9 +23,12 @@ const CustomerPaymentForm = () => {
     const [address, setAddress] = useState(""); 
     const [area, setArea] = useState("");   
 
+    const [email, setCustomerEmail] = useState("");
+    const [productName, setProductName] = useState("");    
+
     const [price, setPrice] = useState("");   
     const [discount, setDiscount] = useState("");   
-    const [afterDiscount, setAfterDiscount] = useState("");   
+    const [afterDiscount, setAfterDiscount] = useState("");       
 
     const [deliveryCharge, setDeliveryCharge] = useState("");    
 
@@ -36,11 +38,14 @@ const CustomerPaymentForm = () => {
         setLName(localStorage.getItem('CustomerLName'))
         setTelephone(localStorage.getItem('CustomerTelephone'))
         setAddress(localStorage.getItem('CustomerAddress'))
-        setArea(localStorage.getItem('CustomerArea'))        
+        setArea(localStorage.getItem('CustomerArea'))       
+
+        setCustomerEmail(localStorage.getItem('CustomerEmail')) 
+        setProductName(localStorage.getItem('productName'))
 
         setPrice(localStorage.getItem('productPrice'))
         setDiscount(localStorage.getItem('productDiscount'))
-        setAfterDiscount(localStorage.getItem('totalAfterDiscount'))
+        setAfterDiscount(localStorage.getItem('totalAfterDiscount'))        
         
         getDeliveryCharge();
 
@@ -61,8 +66,8 @@ const CustomerPaymentForm = () => {
 
     function calculateToatalAmount(afterDiscount,deliveryCharge){
         const totalAmount = Number(afterDiscount) + Number(deliveryCharge);
-        var totalTwoDecimalPlaces=parseFloat(totalAmount).toFixed(2); 
-        localStorage.setItem("totalAmount",totalTwoDecimalPlaces);        
+        const totalTwoDecimalPlaces=parseFloat(totalAmount).toFixed(2);         
+        localStorage.setItem("finalTotalAmount",totalTwoDecimalPlaces);              
         return totalTwoDecimalPlaces
     }
 
@@ -97,7 +102,7 @@ const CustomerPaymentForm = () => {
                 first_name: { fname },
                 last_name: { lname },
                 phone: { telephone },
-                email: "plumberhl@gmail.com",
+                email: { email },
                 address: {address},
                 city: {area},
                 country: "Sri Lanka",
@@ -107,9 +112,9 @@ const CustomerPaymentForm = () => {
                 cancelUrl: 'http://localhost:3000/cancel',
                 notifyUrl: 'http://localhost:8080/notify',
                 order_id: '45896588',
-                itemTitle: 'Canton Dining Suite',
+                itemTitle: `${ localStorage.getItem('productName') }`,
                 currency: CurrencyType.LKR,
-                amount: 69826.25
+                amount: `${ localStorage.getItem('finalTotalAmount') }`,
               })
             
               const checkout = new PayhereCheckout(customer,checkoutData,onPayhereCheckoutError)
