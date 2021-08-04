@@ -64,10 +64,13 @@ function CustomerCheckoutDeteailsForm() {
 
     function getTotal(price,discount){
         const total = (Number)(price - (price*discount/100))
+        // var myNumberWithTwoDecimalPlaces=parseFloat(myNumber).toFixed(2); 
+        var totalTwoDecimalPlaces=parseFloat(total).toFixed(2); 
+
         localStorage.setItem("productPrice",price);
         localStorage.setItem("productDiscount",discount);
-        localStorage.setItem("totalAfterDiscount",total);
-        return total;
+        localStorage.setItem("totalAfterDiscount",totalTwoDecimalPlaces);
+        return totalTwoDecimalPlaces;
     }    
 
     const title={
