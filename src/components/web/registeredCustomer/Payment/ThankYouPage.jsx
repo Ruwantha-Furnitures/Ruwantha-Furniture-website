@@ -22,10 +22,43 @@ function ThankYouPage() {
     const date = new Date().toLocaleString()
     // alert(new Date().toLocaleString())
 
+    const [isPaymentSubmit, setIsPaymentSubmit] = useState(false);   
+    const [isPurchaseOrderSubmit, setIsPurchaseOrderSubmit] = useState(false); 
+
     useEffect(() => {
-        
+        addPayment(orderid,price,date);
+        addPurchaseOrder(orderid,itemid,custid,fname,lname,address,city,telephone,chargeid)
     },[])
 
+    const addPayment =async (Orderid,Price,Date) =>{        
+        try{
+            const res = await axios.post("http://192.168.56.1:3002/api/payment/addpayment",{
+                Orderid,Price,Date,
+            });
+            if(res.data.auth === true){
+                setIsPaymentSubmit(true);
+            }else{
+                setIsPaymentSubmit(false);
+            }
+        }catch (error){
+            console.log(error);
+        } 
+    };
+
+    const addPurchaseOrder =async (Orderid,Itemid,Custid,Fname,Lname,Address,City,Telephone,Chargeid) =>{        
+        try{
+            const res = await axios.post("http://192.168.56.1:3002/api/payment/addpayment",{
+                Orderid,Itemid,Custid,Fname,Lname,Address,City,Telephone,Chargeid,
+            });
+            if(res.data.auth === true){
+                setIsPurchaseOrderSubmit(true);
+            }else{
+                setIsPurchaseOrderSubmit(false);
+            }
+        }catch (error){
+            console.log(error);
+        } 
+    };
 
 
     const contactImg = {

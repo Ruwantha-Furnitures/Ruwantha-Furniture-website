@@ -15,8 +15,7 @@ Payhere.init("1217736",AccountCategory.SANDBOX)
 const CustomerPaymentForm = () => {
     require("bootstrap/dist/css/bootstrap.min.css");    
     const [deliveryChargeData, setDeliveryChargeData] = useState("");
-    
-    
+        
     const [fname, setFName] = useState("");
     const [lname, setLName] = useState("");    
     const [telephone, setTelephone] = useState("");       
