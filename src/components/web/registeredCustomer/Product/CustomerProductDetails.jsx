@@ -42,7 +42,7 @@ function CustomerProductDetails() {
                 const res=await axios.get(`http://192.168.56.1:3002/api/products/viewProduct/${itemID}`); // wil receive the response
                 //console.log(res.data) //view the response object data
                 setProductDetails(res.data) // set the response data to the state of productDetails object   
-                localStorage.setItem("productName",productDetails.name);              
+                localStorage.setItem("productName",res.data.name);              
                 //localStorage.setItem("productName","Product name");              
             }catch (error){
               console.log(error);

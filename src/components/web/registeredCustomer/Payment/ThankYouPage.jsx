@@ -1,4 +1,4 @@
-import React , {useEffect} from 'react';
+import React , {useEffect,useState} from 'react';
 import Navigation from "../Navigation/UserNav";
 import Footer from "../../Common/Footer";
 import Topimg from '../../../../assets/topimg32.jpg';
@@ -22,10 +22,46 @@ function ThankYouPage() {
     const date = new Date().toLocaleString()
     // alert(new Date().toLocaleString())
 
+    const [isPaymentSubmit, setIsPaymentSubmit] = useState(false);   
+    const [isPurchaseOrderSubmit, setIsPurchaseOrderSubmit] = useState(false); 
+
+    const payment = { orderid,price,date }
+    const order = { orderid,itemid,custid,fname,lname,address,city,telephone,chargeid }
+
     useEffect(() => {
-        
+        addPayment(payment);
+        addPurchaseOrder(order)
     },[])
 
+    const addPayment =async (data) =>{        
+        try{
+            const res = await axios.post("http://192.168.56.1:3002/api/payment/addpayment",{
+                data,
+            });
+            if(res.data.auth === true){
+                setIsPaymentSubmit(true);
+            }else{
+                setIsPaymentSubmit(false);
+            }
+        }catch (error){
+            console.log(error);
+        } 
+    };
+
+    const addPurchaseOrder =async (data) =>{        
+        try{
+            const res = await axios.post("http://192.168.56.1:3002/api/payment/addpurchaseorder",{
+                data,
+            });
+            if(res.data.auth === true){
+                setIsPurchaseOrderSubmit(true);
+            }else{
+                setIsPurchaseOrderSubmit(false);
+            }
+        }catch (error){
+            console.log(error);
+        } 
+    };
 
 
     const contactImg = {

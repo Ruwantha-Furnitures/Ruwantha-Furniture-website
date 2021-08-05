@@ -15,8 +15,7 @@ Payhere.init("1217736",AccountCategory.SANDBOX)
 const CustomerPaymentForm = () => {
     require("bootstrap/dist/css/bootstrap.min.css");    
     const [deliveryChargeData, setDeliveryChargeData] = useState("");
-    
-    
+        
     const [fname, setFName] = useState("");
     const [lname, setLName] = useState("");    
     const [telephone, setTelephone] = useState("");       
@@ -59,19 +58,13 @@ const CustomerPaymentForm = () => {
         
     },[])
 
-    function setChargeID(deliveryChargeID){        
-        // alert(deliveryChargeID)
-        localStorage.setItem('DeliveryChargeID',deliveryChargeID);
-        // alert(new Date().toLocaleString())
-    }
-
     const getDeliveryCharge =async() =>{
         const area = localStorage.getItem('CustomerArea')
         try{
             const res=await axios.get(`http://192.168.56.1:3002/api/payment/deliverychargefordistrict/${area}`); // wil receive the response
             console.log(res.data) //view the response object data
-            setDeliveryChargeData(res.data) // set the response data to the state of productDetails object            
-            setChargeID(res.data.chargeid); 
+            setDeliveryChargeData(res.data) // set the response data to the state of productDetails object                        
+            localStorage.setItem('DeliveryChargeID',res.data.chargeid);
         }catch (error){
           console.log(error);
         } 
