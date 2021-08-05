@@ -2,10 +2,9 @@ const { Payment } = require('../../models');
 const mysql = require("mysql");
 
 const AddPaymentController  = async (req,res) => {    
-    const  {Orderid,Price,Date} = req.body;
-    const payment = { orderid:Orderid, price:Price, date:Date};
-    console.log("Print");
-
+    const  {orderid,price,date} = req.body.data;
+    const payment = {orderid,price,date};    
+    console.log(orderid)
     try{        
         const PaymentData = await Payment.create(payment);                
         if(PaymentData){

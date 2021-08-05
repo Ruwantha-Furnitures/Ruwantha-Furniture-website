@@ -1,4 +1,4 @@
-import React , {useEffect} from 'react';
+import React , {useEffect,useState} from 'react';
 import Navigation from "../Navigation/UserNav";
 import Footer from "../../Common/Footer";
 import Topimg from '../../../../assets/topimg32.jpg';
@@ -25,15 +25,18 @@ function ThankYouPage() {
     const [isPaymentSubmit, setIsPaymentSubmit] = useState(false);   
     const [isPurchaseOrderSubmit, setIsPurchaseOrderSubmit] = useState(false); 
 
+    const payment = { orderid,price,date }
+    const order = { orderid,itemid,custid,fname,lname,address,city,telephone,chargeid }
+
     useEffect(() => {
-        addPayment(orderid,price,date);
-        addPurchaseOrder(orderid,itemid,custid,fname,lname,address,city,telephone,chargeid)
+        addPayment(payment);
+        addPurchaseOrder(order)
     },[])
 
-    const addPayment =async (Orderid,Price,Date) =>{        
+    const addPayment =async (data) =>{        
         try{
             const res = await axios.post("http://192.168.56.1:3002/api/payment/addpayment",{
-                Orderid,Price,Date,
+                data,
             });
             if(res.data.auth === true){
                 setIsPaymentSubmit(true);
@@ -45,10 +48,10 @@ function ThankYouPage() {
         } 
     };
 
-    const addPurchaseOrder =async (Orderid,Itemid,Custid,Fname,Lname,Address,City,Telephone,Chargeid) =>{        
+    const addPurchaseOrder =async (data) =>{        
         try{
-            const res = await axios.post("http://192.168.56.1:3002/api/payment/addpayment",{
-                Orderid,Itemid,Custid,Fname,Lname,Address,City,Telephone,Chargeid,
+            const res = await axios.post("http://192.168.56.1:3002/api/payment/addpurchaseorder",{
+                data,
             });
             if(res.data.auth === true){
                 setIsPurchaseOrderSubmit(true);

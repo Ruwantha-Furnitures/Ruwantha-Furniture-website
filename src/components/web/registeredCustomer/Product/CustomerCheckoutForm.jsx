@@ -47,6 +47,7 @@ function CustomerCheckoutDeteailsForm() {
            let res =await axios.get('http://192.168.56.1:3002/api/payment/deliverycharge/')
            console.log(res.data.deliveryCharge); // received deliveryCharge from the backend API
            setDistrict(res.data.deliveryCharge);// set the received deliveryCharge into the district state array
+           
         } catch (error) {
             console.log(error);
         }
