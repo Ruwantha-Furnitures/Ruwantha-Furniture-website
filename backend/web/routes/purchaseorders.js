@@ -3,6 +3,6 @@ const router = express.Router();
 
 const { getNoOfOrdersController } = require("../controllers/PurchaseOrders/getNoOfOrdersController");
 
-router.get("/getnofpurchaseorders/", getNoOfOrdersController);
+router.get("/getpurchaseorders/", getNoOfOrdersController);
 
 module.exports = { purchaseordersRouter: router };

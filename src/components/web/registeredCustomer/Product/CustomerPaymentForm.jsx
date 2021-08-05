@@ -31,6 +31,9 @@ const CustomerPaymentForm = () => {
     const [afterDiscount, setAfterDiscount] = useState("");       
 
     const [deliveryCharge, setDeliveryCharge] = useState("");    
+    const [deliveryChargeID, setDeliveryChargeID] = useState(""); 
+    const [currentOrderId, setCurrentOrderId] = useState("");      
+    
 
     // to load the district when the page is first rendered
     useEffect(() => {
@@ -49,11 +52,18 @@ const CustomerPaymentForm = () => {
         
         getDeliveryCharge();
 
-        setDeliveryCharge(deliveryChargeData.amount);
-
+        setDeliveryCharge(deliveryChargeData.amount); 
+        setDeliveryChargeID(deliveryChargeData.chargeid);
+                                 
         getOrderId();
         
     },[])
+
+    function setChargeID(deliveryChargeID){        
+        // alert(deliveryChargeID)
+        localStorage.setItem('DeliveryChargeID',deliveryChargeID);
+        // alert(new Date().toLocaleString())
+    }
 
     const getDeliveryCharge =async() =>{
         const area = localStorage.getItem('CustomerArea')
@@ -61,6 +71,7 @@ const CustomerPaymentForm = () => {
             const res=await axios.get(`http://192.168.56.1:3002/api/payment/deliverychargefordistrict/${area}`); // wil receive the response
             console.log(res.data) //view the response object data
             setDeliveryChargeData(res.data) // set the response data to the state of productDetails object            
+            setChargeID(res.data.chargeid); 
         }catch (error){
           console.log(error);
         } 
@@ -79,9 +90,13 @@ const CustomerPaymentForm = () => {
 
     const getOrderId =async() =>{
         try{
-            const res=await axios.get(`http://192.168.56.1:3002/api/purchseorders/getnofpurchaseorders/`); // wil receive the response
-            console.log(res.data) //view the response object data
-            setDeliveryChargeData(res.data) // set the response data to the state of productDetails object            
+            // alert("in orderId")       
+            const res=await axios.get(`http://192.168.56.1:3002/api/purchseorders/getpurchaseorders/`); // wil receive the response
+            console.log(res.data.count) //view the response object data
+            setCurrentOrderId(res.data.count) // set the response data to the state of productDetails object     
+            // alert(res.data.count)  
+            const newOrder =   (Number)(currentOrderId + 1 );            
+            localStorage.setItem("NewOrderID",newOrder);                   
         }catch (error){
           console.log(error);
         } 
@@ -123,7 +138,7 @@ const CustomerPaymentForm = () => {
                 returnUrl: 'http://localhost:3000/customer_thankyou',
                 cancelUrl: 'http://localhost:3000/cancel',
                 notifyUrl: 'http://localhost:8080/notify',
-                order_id: '45896588',
+                order_id: `${ localStorage.getItem('NewOrderID') }`,
                 itemTitle: `${ localStorage.getItem('productName') }`,
                 currency: CurrencyType.LKR,
                 amount: `${ localStorage.getItem('finalTotalAmount') }`,
