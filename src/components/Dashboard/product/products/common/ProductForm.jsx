@@ -36,8 +36,8 @@ function ProductForm() {
     try {
       const result = await getProductTypes();
       setProductTypes(result.data);
-    } catch (err) {
-      console.log("Error", err.message);
+    } catch (error) {
+      console.log("Error", error.message);
     }
   };
 

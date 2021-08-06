@@ -27,7 +27,7 @@ exports.create = async (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-  Type.findAll({ where: { is_deleted: 0 } })
+  Type.findAll({ where: { is_deleted: 0 }, include: ["category"] })
     .then((data) => {
       res.send(data);
     })

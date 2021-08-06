@@ -2,89 +2,57 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TableStyle from "../../../../../css/dashboard/Table.module.css";
 import Auth from "../../../service/auth";
-
-const products = [
-  {
-    id: "1",
-    productName: "Table",
-    type: "Product Type 1",
-    category: "Category 1",
-    price: "Rs.25000",
-    quantity: "No.12",
-  },
-  {
-    id: "2",
-    productName: "Chair",
-    type: "Product Type 1",
-    category: "Category 1",
-    price: "Rs.25000",
-    quantity: "No.12",
-  },
-  {
-    id: "3",
-    productName: "Cupboard",
-    type: "Product Type 1",
-    category: "Category 1",
-    price: "Rs.25000",
-    quantity: "No.12",
-  },
-  {
-    id: "4",
-    productName: "Desk",
-    type: "Product Type 1",
-    category: "Category 1",
-    price: "Rs.25000",
-    quantity: "No.12",
-  },
-  {
-    id: "5",
-    productName: "Desk(High)",
-    type: "Product Type 1",
-    category: "Category 1",
-    price: "Rs.25000",
-    quantity: "No.12",
-  },
-  {
-    id: "6",
-    productName: "Cabinet",
-    type: "Product Type 1",
-    category: "Category 1",
-    price: "Rs.25000",
-    quantity: "No.12",
-  },
-  {
-    id: "7",
-    productName: "Cabient(High)",
-    type: "Product Type 1",
-    category: "Category 1",
-    price: "Rs.25000",
-    quantity: "No.12",
-  },
-  {
-    id: "8",
-    productName: "Gaming Chair",
-    type: "Product Type 1",
-    category: "Category 1",
-    price: "Rs.25000",
-    quantity: "No.12",
-  },
-];
+import { getProducts } from "./../../../service/product";
 
 function ProductsTable() {
   const user = Auth.getCurrentUser();
 
-  // const [products, setProducts] = useState({});
-  const [search, setSearch] = useState("");
+  const [products, setProducts] = useState({
+    name: "",
+    type_id: 0,
+    type: {},
+    price: "",
+    description: "",
+    color: "",
+    width: "",
+    height: "",
+    discount: "",
+    img_location: "",
+  });
 
-  // useEffect(() => {
-  //   setProducts(products);
-  // }, []);
+  const [search, setSearch] = useState("");
+  const [filterProducts, setFilterProducts] = useState({});
+
+  useEffect(() => {
+    loadProducts();
+  }, []);
+
+  const loadProducts = async () => {
+    try {
+      const result = await getProducts();
+      setProducts(result.data);
+      setFilterProducts(result.data);
+    } catch (error) {
+      console.log("Error", error.message);
+    }
+  };
 
   const onInputChange = (e) => {
     let search = e.target.value;
-    // setProducts(products.filter((product) => product.productName === search));
+    if (search === "") {
+      setFilterProducts(products);
+    } else {
+      setFilterProducts(
+        products.filter((product) =>
+          product.name.toLowerCase().includes(search.toLowerCase())
+        )
+      );
+    }
+
     setSearch(search);
   };
+
+  console.log(products);
 
   return (
     <React.Fragment>
@@ -157,20 +125,8 @@ function ProductsTable() {
               <th>
                 <div className={TableStyle.header}>
                   <Link to="" className={TableStyle.linkStyleAddHeader}>
-                    Category
+                    Colour
                   </Link>
-                  {user === "Admin" && (
-                    <Link
-                      to="/dashboard/product/addProductCategory"
-                      className={TableStyle.linkStyleAddHeader}
-                    >
-                      <span
-                        className={"material-icons " + TableStyle.addIconStyle}
-                      >
-                        add_circle
-                      </span>
-                    </Link>
-                  )}
                 </div>
               </th>
 
@@ -178,41 +134,45 @@ function ProductsTable() {
                 <div className={TableStyle.header}>Price</div>
               </th>
               <th>
-                <div className={TableStyle.header}>Qunatity</div>
+                <div className={TableStyle.header}>Discount</div>
               </th>
             </tr>
           </thead>
           <tbody>
-            {products.map((product, index) => (
-              <tr key={index + 1}>
-                <td>
-                  <Link
-                    to="/dashboard/product/view"
-                    className={TableStyle.linkStyleAdd}
-                  >
-                    {product.productName}
-                  </Link>
-                </td>
-                <td>
-                  <Link
-                    to="/dashboard/product/viewProductType"
-                    className={TableStyle.linkStyleAdd}
-                  >
-                    {product.type}
-                  </Link>
-                </td>
-                <td>
-                  <Link
-                    to="/dashboard/product/viewProductCategory"
-                    className={TableStyle.linkStyleAdd}
-                  >
-                    {product.category}
-                  </Link>
-                </td>
-                <td>{product.price}</td>
-                <td>{product.quantity}</td>
-              </tr>
-            ))}
+            {Array.isArray(filterProducts) === true && (
+              <React.Fragment>
+                {filterProducts.map((product, index) => (
+                  <tr key={index + 1}>
+                    <td>
+                      <Link
+                        to="/dashboard/product/view"
+                        className={TableStyle.linkStyleAdd}
+                      >
+                        {product.name}
+                      </Link>
+                    </td>
+                    <td>
+                      <Link
+                        to="/dashboard/product/viewProductType"
+                        className={TableStyle.linkStyleAdd}
+                      >
+                        {product.type.name}
+                      </Link>
+                    </td>
+                    <td>
+                      <Link
+                        to="/dashboard/product/viewProductCategory"
+                        className={TableStyle.linkStyleAdd}
+                      >
+                        {product.color}
+                      </Link>
+                    </td>
+                    <td>Rs.{product.price}</td>
+                    <td>{product.discount}%</td>
+                  </tr>
+                ))}
+              </React.Fragment>
+            )}
           </tbody>
         </table>
       </div>
