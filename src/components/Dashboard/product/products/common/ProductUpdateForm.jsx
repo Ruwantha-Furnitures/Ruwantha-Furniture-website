@@ -109,7 +109,7 @@ function ProductUpdateForm() {
           // Normal updated here
           console.log("Hello");
           const response = await editProductDetails(id, product);
-
+          console.log(response);
           // handle response process
           window.location = `/dashboard/product/view/${id}`;
         }

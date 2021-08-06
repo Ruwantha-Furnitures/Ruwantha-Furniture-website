@@ -50,24 +50,24 @@ exports.upload = (req, res) => {
   });
 };
 
-// not working properly
-exports.deleteUpload = (req, res) => {
-  if (req.files === null) {
-    return res.status(400).json({ msg: "No file uploaded" });
-  }
-  // const file = req.files.file;
-  console.log("deleteUpload");
-  // delete file named 'sample.txt'
-  try {
-    fs.unlink(`../public/${req.params.path}`);
-    console.log("hello");
-    return res.status(200).json({ msg: "file deleted" });
+// // not working properly
+// exports.deleteUpload = (req, res) => {
+//   if (req.files === null) {
+//     return res.status(400).json({ msg: "No file uploaded" });
+//   }
+//   // const file = req.files.file;
+//   console.log("deleteUpload");
+//   // delete file named 'sample.txt'
+//   try {
+//     fs.unlink(`../public/${req.params.path}`);
+//     console.log("hello");
+//     return res.status(200).json({ msg: "file deleted" });
 
-    //file removed
-  } catch (err) {
-    console.error(err);
-  }
-};
+//     //file removed
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
 
 // retrieve the data
 exports.findAll = (req, res) => {
@@ -105,9 +105,9 @@ exports.update = (req, res) => {
     where: { id: id, is_deleted: 0 },
   })
     .then((num) => {
-      if (num === 1) {
+      if (num == 1) {
         res.send({
-          message: "Product was updated successfully",
+          message: `Product was updated successfully ${req.body}`,
         });
       } else {
         res.send({ message: `Cannot update Product with id=${id}` });
@@ -124,16 +124,23 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const id = req.params.id;
-  Product.update(req.body, {
-    where: { id: id },
-  })
+  Product.update(
+    {
+      is_deleted: true,
+    },
+    {
+      where: { id: id },
+    }
+  )
     .then((num) => {
-      if (num === 1) {
+      if (num == 1) {
         res.send({
           message: "Product was deleted successfully",
         });
       } else {
-        res.send({ message: `Cannot delete Product with id=${id}` });
+        res.send({
+          message: `Cannot delete Product with id = ${id} Num value is ${num} and ${req.body.is_deleted}`,
+        });
       }
     })
     .catch((err) => {

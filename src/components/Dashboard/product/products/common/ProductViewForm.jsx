@@ -4,7 +4,7 @@ import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.m
 import { Link } from "react-router-dom";
 
 import Auth from "../../../service/auth";
-import { getProductDetails } from "./../../../service/product";
+import { getProductDetails, deleteProduct } from "./../../../service/product";
 
 function ProductViewForm() {
   const { id } = useParams();
@@ -21,6 +21,7 @@ function ProductViewForm() {
     height: "",
     discount: "",
     img_location: "",
+    is_deleted: false,
   });
 
   useEffect(() => {
@@ -37,8 +38,19 @@ function ProductViewForm() {
   };
 
   const user = Auth.getCurrentUser();
+
   const handleUpdate = () => {
     window.location = `/dashboard/product/update/${id}`;
+  };
+
+  const handleDelete = async () => {
+    try {
+      const res = await deleteProduct(id);
+      console.log(res);
+      window.location = "/dashboard/products";
+    } catch (error) {
+      console.log("There was a problem with the server: ", error);
+    }
   };
 
   return (
@@ -115,6 +127,7 @@ function ProductViewForm() {
                         " " +
                         ProductViewFormStyle.deleteButtonColor
                       }
+                      onClick={handleDelete}
                     >
                       Delete
                     </button>

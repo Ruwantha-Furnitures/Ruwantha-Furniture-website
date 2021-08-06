@@ -7,7 +7,7 @@ module.exports = (app) => {
   router.post("/", product.upload);
 
   //  delete a upload
-  router.delete("/:path", product.deleteUpload);
+  // router.delete("/:path", product.deleteUpload);
 
   app.use("/api/image", router);
 };

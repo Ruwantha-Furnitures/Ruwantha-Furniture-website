@@ -18,6 +18,6 @@ export function editProductDetails(id, product) {
   return axios.put(apiProductUrl + "/" + id, product);
 }
 
-// export function deleteStudent(id) {
-//   return axios.delete(apiStudentUrl + "/" + id);
-// }
+export function deleteProduct(id) {
+  return axios.delete(apiProductUrl + "/" + id);
+}
