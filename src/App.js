@@ -88,7 +88,11 @@ function App() {
           <Route exact path="/dashboardDriver" component={DashboardDriver} />
           {/* Dashboard-Product */}
           <Route exact path="/dashboard/products" component={Products} />
-          <Route exact path="/dashboard/product/view" component={ProductView} />
+          <Route
+            exact
+            path="/dashboard/product/view/:id"
+            component={ProductView}
+          />
           <Route exact path="/dashboard/product/add" component={ProductAdd} />
           <Route
             exact
@@ -322,7 +326,11 @@ function App() {
             path="/customer_paymentGateway"
             component={PayhereCheckout}
           />
-          <Route exact path="/customer_productDetails_checkout" component={CustomerChekoutFromViewProduct}></Route>
+          <Route
+            exact
+            path="/customer_productDetails_checkout"
+            component={CustomerChekoutFromViewProduct}
+          ></Route>
         </Switch>
       </div>
     </Router>

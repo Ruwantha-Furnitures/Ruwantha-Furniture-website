@@ -145,7 +145,7 @@ function ProductsTable() {
                   <tr key={index + 1}>
                     <td>
                       <Link
-                        to="/dashboard/product/view"
+                        to={`/dashboard/product/view/${product.id}`}
                         className={TableStyle.linkStyleAdd}
                       >
                         {product.name}
@@ -153,7 +153,7 @@ function ProductsTable() {
                     </td>
                     <td>
                       <Link
-                        to="/dashboard/product/viewProductType"
+                        to={`/dashboard/product/viewProductType/${product.type.id}`}
                         className={TableStyle.linkStyleAdd}
                       >
                         {product.type.name}

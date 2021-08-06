@@ -1,11 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import ProductImage from "../../../../../assets/items/14.jpg";
 import { Link } from "react-router-dom";
 
 import Auth from "../../../service/auth";
+import { getProductDetails } from "./../../../service/product";
 
 function ProductViewForm() {
+  const { id } = useParams();
+
+  const [product, setProduct] = useState({
+    name: "",
+    type: {},
+    price: "",
+    description: "",
+    color: "",
+    width: "",
+    height: "",
+    discount: "",
+    img_location: "",
+  });
+
+  useEffect(() => {
+    loadProduct();
+  }, []);
+
+  const loadProduct = async () => {
+    try {
+      const result = await getProductDetails(id);
+      setProduct(result.data);
+    } catch (error) {
+      console.log("Error", error.message);
+    }
+  };
+
   const user = Auth.getCurrentUser();
   const handleUpdate = () => {
     window.location = "/dashboard/product/update";
@@ -41,7 +70,7 @@ function ProductViewForm() {
         <div className={ProductViewFormStyle.imgDescPart}>
           <div className={ProductViewFormStyle.Img}>
             <img
-              src={ProductImage}
+              src={product.img_location}
               alt=""
               className={ProductViewFormStyle.productImageStyle}
             />
@@ -49,16 +78,12 @@ function ProductViewForm() {
           <div className={ProductViewFormStyle.desc}>
             <div className={ProductViewFormStyle.descTitle}>
               <h2 className={ProductViewFormStyle.descTitleStyle}>
-                Canton Dining Suite
+                {product.name}
               </h2>
             </div>
             <div className={ProductViewFormStyle.descDetails}>
               <p className={ProductViewFormStyle.descDetailsStyle}>
-                Enjoy a fine dining experience with the 5 piece Canton dining
-                suite. Distinctive table design with tempered glass overlay will
-                lead to a clean finish. The appealing chair pattern with
-                spacious seating capacity will enrich aesthetics combined with
-                comfort
+                {product.description}
               </p>
             </div>
             <div className={ProductViewFormStyle.descButtons}>
@@ -111,7 +136,7 @@ function ProductViewForm() {
                 <label className={ProductViewFormStyle.labelStyle}>Type</label>
                 <input
                   type="text"
-                  value="Dining Suite"
+                  value={product.type.name}
                   className={ProductViewFormStyle.inputStyle}
                   readOnly
                 />
@@ -122,7 +147,7 @@ function ProductViewForm() {
                 </label>
                 <input
                   type="text"
-                  value="Brown"
+                  value={product.color}
                   className={ProductViewFormStyle.inputStyle}
                   readOnly
                 />
@@ -133,7 +158,7 @@ function ProductViewForm() {
                 <label className={ProductViewFormStyle.labelStyle}>Width</label>
                 <input
                   type="text"
-                  value="172cm"
+                  value={product.width + " cm"}
                   className={ProductViewFormStyle.inputStyle}
                   readOnly
                 />
@@ -144,7 +169,7 @@ function ProductViewForm() {
                 </label>
                 <input
                   type="text"
-                  value="185cm"
+                  value={product.height + " cm"}
                   className={ProductViewFormStyle.inputStyle}
                   readOnly
                 />
@@ -155,7 +180,7 @@ function ProductViewForm() {
                 <label className={ProductViewFormStyle.labelStyle}>Price</label>
                 <input
                   type="text"
-                  value="Rs.50 000"
+                  value={"Rs." + product.price}
                   className={ProductViewFormStyle.inputStyle}
                   readOnly
                 />
@@ -166,7 +191,7 @@ function ProductViewForm() {
                 </label>
                 <input
                   type="text"
-                  value="10%"
+                  value={product.discount + "%"}
                   className={ProductViewFormStyle.inputStyle}
                   readOnly
                 />

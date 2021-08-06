@@ -10,9 +10,9 @@ export function addProduct(product) {
   return axios.post(apiProductUrl, product);
 }
 
-// export function getStudentDetails(id) {
-//   return axios.get(apiStudentUrl + "/" + id);
-// }
+export function getProductDetails(id) {
+  return axios.get(apiProductUrl + "/" + id);
+}
 
 // export function editStudentDetails(id, student) {
 //   return axios.put(apiStudentUrl + "/" + id, student);

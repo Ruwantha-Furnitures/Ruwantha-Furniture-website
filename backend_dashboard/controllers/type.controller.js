@@ -62,7 +62,7 @@ exports.update = (req, res) => {
     where: { id: id, is_deleted: 0 },
   })
     .then((num) => {
-      if (num == 1) {
+      if (num === 1) {
         res.send({
           message: "Type was updated successfully",
         });
@@ -85,7 +85,7 @@ exports.delete = (req, res) => {
     where: { id: id, is_deleted: 0 },
   })
     .then((num) => {
-      if (num == 1) {
+      if (num === 1) {
         res.send({
           message: "Type was updated successfully",
         });
