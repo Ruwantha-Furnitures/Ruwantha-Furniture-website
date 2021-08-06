@@ -96,7 +96,7 @@ function App() {
           <Route exact path="/dashboard/product/add" component={ProductAdd} />
           <Route
             exact
-            path="/dashboard/product/update"
+            path="/dashboard/product/update/:id"
             component={ProductUpdate}
           />
           <Route

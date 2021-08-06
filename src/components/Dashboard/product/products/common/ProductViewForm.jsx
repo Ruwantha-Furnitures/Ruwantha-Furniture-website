@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
-import ProductImage from "../../../../../assets/items/14.jpg";
 import { Link } from "react-router-dom";
 
 import Auth from "../../../service/auth";
@@ -12,7 +11,9 @@ function ProductViewForm() {
 
   const [product, setProduct] = useState({
     name: "",
-    type: {},
+    type: {
+      name: "",
+    },
     price: "",
     description: "",
     color: "",
@@ -37,7 +38,7 @@ function ProductViewForm() {
 
   const user = Auth.getCurrentUser();
   const handleUpdate = () => {
-    window.location = "/dashboard/product/update";
+    window.location = `/dashboard/product/update/${id}`;
   };
 
   return (

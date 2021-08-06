@@ -9,6 +9,8 @@ import { addProduct } from "./../../../service/product";
 function ProductForm() {
   const [file, setFile] = useState("");
   const [filename, setFilename] = useState("Choose File");
+  const [picture, setPicture] = useState(null);
+  const [imgData, setImgData] = useState(null);
 
   const [product, setProduct] = useState({
     name: "",
@@ -40,9 +42,6 @@ function ProductForm() {
       console.log("Error", error.message);
     }
   };
-
-  const [picture, setPicture] = useState(null);
-  const [imgData, setImgData] = useState(null);
 
   const onInputChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });

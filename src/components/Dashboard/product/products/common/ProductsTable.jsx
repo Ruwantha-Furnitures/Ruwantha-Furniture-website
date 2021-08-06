@@ -146,27 +146,24 @@ function ProductsTable() {
                     <td>
                       <Link
                         to={`/dashboard/product/view/${product.id}`}
-                        className={TableStyle.linkStyleAdd}
+                        className={TableStyle.linkStyle}
                       >
-                        {product.name}
+                        <span className={TableStyle.statusStyleLink}>
+                          {product.name}
+                        </span>
                       </Link>
                     </td>
                     <td>
                       <Link
                         to={`/dashboard/product/viewProductType/${product.type.id}`}
-                        className={TableStyle.linkStyleAdd}
+                        className={TableStyle.linkStyle}
                       >
-                        {product.type.name}
+                        <span className={TableStyle.statusStyleLink}>
+                          {product.type.name}
+                        </span>
                       </Link>
                     </td>
-                    <td>
-                      <Link
-                        to="/dashboard/product/viewProductCategory"
-                        className={TableStyle.linkStyleAdd}
-                      >
-                        {product.color}
-                      </Link>
-                    </td>
+                    <td>{product.color}</td>
                     <td>Rs.{product.price}</td>
                     <td>{product.discount}%</td>
                   </tr>
