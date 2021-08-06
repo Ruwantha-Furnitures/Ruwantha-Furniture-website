@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
-import ProductImage from "../../../../../assets/dashboard/product/addPhotoNew2.png";
 import { Link, useParams } from "react-router-dom";
-import { getProductDetails } from "./../../../service/product";
+import {
+  editProductDetails,
+  getProductDetails,
+} from "./../../../service/product";
 import { getProductTypes } from "./../../../service/productType";
+import { uploadPhoto, deletePhoto } from "./../../../service/image";
 
 function ProductUpdateForm() {
   const { id } = useParams();
+  const [file, setFile] = useState("");
+  // const [filename, setFilename] = useState("Choose File");
+  // const [picture, setPicture] = useState(null);
+  const [imgData, setImgData] = useState(null);
 
   const [product, setProduct] = useState({
     name: "",
@@ -30,6 +37,8 @@ function ProductUpdateForm() {
     categoryId: "",
   });
 
+  const [imageLocation, setImageLocation] = useState("");
+
   useEffect(() => {
     loadProduct();
     loadProductTypes();
@@ -39,6 +48,7 @@ function ProductUpdateForm() {
     try {
       const result = await getProductDetails(id);
       setProduct(result.data);
+      setImageLocation(result.data.img_location);
     } catch (error) {
       console.log("Error", error.message);
     }
@@ -53,12 +63,9 @@ function ProductUpdateForm() {
     }
   };
 
-  const [imgData, setImgData] = useState(null);
-
   const onChangePicture = (e) => {
     if (e.target.files[0]) {
-      console.log("picture: ", e.target.files);
-      // setPicture(e.target.files[0]);
+      setFile(e.target.files[0]);
       const reader = new FileReader();
       reader.addEventListener("load", () => {
         setImgData(reader.result);
@@ -70,6 +77,47 @@ function ProductUpdateForm() {
   const onInputChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
   };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const res = await uploadPhoto(formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      const { filePath } = res.data;
+      console.log(filePath);
+      const name = "img_location";
+      const newProduct = { ...product, [name]: filePath };
+
+      const response = await editProductDetails(id, newProduct);
+
+      // handle response process
+      window.location = `/dashboard/product/view/${id}`;
+    } catch (error) {
+      if (error.response.status === 500) {
+        console.log("There was a problem with the server: ", error);
+      } else {
+        console.log(error.response.data.msg);
+        if (error.response.data.msg === "No file uploaded") {
+          // Normal updated here
+          console.log("Hello");
+          const response = await editProductDetails(id, product);
+
+          // handle response process
+          window.location = `/dashboard/product/view/${id}`;
+        }
+        // otherwise another error
+      }
+    }
+  };
+
   return (
     <React.Fragment>
       <div className={ProductViewFormStyle.titleHeader}>
@@ -96,7 +144,7 @@ function ProductUpdateForm() {
           </div>
         </div>
       </div>
-      <form action="#">
+      <form onSubmit={(e) => onSubmit(e)}>
         <div className={ProductViewFormStyle.details}>
           <div className={ProductViewFormStyle.imgDescPart}>
             <div className={ProductViewFormStyle.Img}>

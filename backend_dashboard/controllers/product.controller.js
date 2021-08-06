@@ -1,5 +1,6 @@
 const db = require("../models");
 const Product = db.product;
+var fs = require("fs");
 
 exports.create = async (req, res) => {
   // validate request
@@ -47,6 +48,25 @@ exports.upload = (req, res) => {
 
     res.json({ fileName: file.name, filePath: `/uploads/${file.name}` });
   });
+};
+
+// not working properly
+exports.deleteUpload = (req, res) => {
+  if (req.files === null) {
+    return res.status(400).json({ msg: "No file uploaded" });
+  }
+  // const file = req.files.file;
+  console.log("deleteUpload");
+  // delete file named 'sample.txt'
+  try {
+    fs.unlink(`../public/${req.params.path}`);
+    console.log("hello");
+    return res.status(200).json({ msg: "file deleted" });
+
+    //file removed
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 // retrieve the data

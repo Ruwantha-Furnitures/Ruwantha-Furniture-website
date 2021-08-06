@@ -14,9 +14,9 @@ export function getProductDetails(id) {
   return axios.get(apiProductUrl + "/" + id);
 }
 
-// export function editStudentDetails(id, student) {
-//   return axios.put(apiStudentUrl + "/" + id, student);
-// }
+export function editProductDetails(id, product) {
+  return axios.put(apiProductUrl + "/" + id, product);
+}
 
 // export function deleteStudent(id) {
 //   return axios.delete(apiStudentUrl + "/" + id);
