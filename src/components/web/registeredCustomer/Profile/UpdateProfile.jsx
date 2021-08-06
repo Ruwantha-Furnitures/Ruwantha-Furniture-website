@@ -12,35 +12,15 @@ function UpdateProfile() {
 
     const [userDetails,setUserDetails] =useState()
 
-    // useEffect(() => {
-    //     let accountID=localStorage.getItem('userAccID');
-    //     let accountEmail=localStorage.getItem('userEmail')
-    //     console.log(accountID);
-    //     const fecthData=async()=>{
-    //         try {                
-    //             let response=await axios.get(`http://192.168.8.210:3002/api/customer/viewprofile/${accountID}`)
-    //             const {name,address, telephone}=response.data
-    //             const userData={
-    //                 accountEmail,
-    //                 name,
-    //                 address,
-    //                 telephone,
-    //             }
-    //             setUserDetails(()=>userData)
-    //             console.log(response.data)
-    //         } catch (error) {
-    //             console.log(error)
-    //         }
-    //     }
-    //     fecthData()
-    // },[])
-
     const updateHandler=(data)=>{
 
         const updateData=async()=>{
             let accountID=localStorage.getItem('userAccID');
             try {                
                 let response=await axios.put(`http://192.168.56.1:3002/api/customer/updateprofile/${accountID}`,{data})
+                if(response){
+                    alert("Your profile has been successfully updated.")
+                }
             } catch (error) {
                 
             }

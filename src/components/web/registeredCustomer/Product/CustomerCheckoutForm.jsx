@@ -126,6 +126,7 @@ function CustomerCheckoutDeteailsForm() {
                                             type='tel' 
                                             placeholder='Enter your last name'
                                             value={lname}
+                                            pattern="[0-9]{10}"
                                             onChange={(e)=>setLName(e.target.value)}
                                             required
                                         />
