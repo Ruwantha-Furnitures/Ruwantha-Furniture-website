@@ -42,7 +42,8 @@ function ProductDetails() {
                                     <h4>{`Rs. ${productDetails.price}`}</h4><br />
                                     <p align='justify'>{productDetails.details}</p><br />
                                     <Rating></Rating>
-                                    <Link to="/login"><button class="addtocart">Add to cart</button></Link>
+                                    <Link to="/login"><button class="addtocart">Add to cart</button></Link>{' '}
+                                    <Link to='/login'><button class="addtocart">Check out</button></Link>
                                 </center>
                             </Container>
                         </Col>                        

@@ -54,7 +54,7 @@ const CustomerPaymentForm = () => {
         setDeliveryCharge(deliveryChargeData.amount); 
         setDeliveryChargeID(deliveryChargeData.chargeid);
                                  
-        getOrderId();
+        // getOrderId();
         
     },[])
 
@@ -64,21 +64,10 @@ const CustomerPaymentForm = () => {
             const res=await axios.get(`http://192.168.56.1:3002/api/payment/deliverychargefordistrict/${area}`); // wil receive the response
             console.log(res.data) //view the response object data
             setDeliveryChargeData(res.data) // set the response data to the state of productDetails object                        
-            localStorage.setItem('DeliveryChargeID',res.data.chargeid);
+            localStorage.setItem('DeliveryChargeID',res.data.chargeid);            
         }catch (error){
           console.log(error);
         } 
-    }
-
-    function calculateToatalAmount(afterDiscount,deliveryCharge){
-        const totalAmount = Number(afterDiscount) + Number(deliveryCharge);
-        const totalTwoDecimalPlaces=parseFloat(totalAmount).toFixed(2);         
-        localStorage.setItem("finalTotalAmount",totalTwoDecimalPlaces);              
-        return totalTwoDecimalPlaces
-    }
-
-    function onPayhereCheckoutError(errorMsg) {
-        alert(errorMsg)
     }
 
     const getOrderId =async() =>{
@@ -87,12 +76,24 @@ const CustomerPaymentForm = () => {
             const res=await axios.get(`http://192.168.56.1:3002/api/purchseorders/getpurchaseorders/`); // wil receive the response
             console.log(res.data.count) //view the response object data
             setCurrentOrderId(res.data.count) // set the response data to the state of productDetails object     
-            // alert(res.data.count)  
-            const newOrder =   (Number)(currentOrderId + 1 );            
+            // alert(res.data.count)                          
+            const newOrder =   (Number)(currentOrderId + 1);                   
             localStorage.setItem("NewOrderID",newOrder);                   
         }catch (error){
           console.log(error);
         } 
+    }
+
+    function calculateToatalAmount(afterDiscount,deliveryCharge){
+        getOrderId();
+        const totalAmount = Number(afterDiscount) + Number(deliveryCharge);
+        const totalTwoDecimalPlaces=parseFloat(totalAmount).toFixed(2);         
+        localStorage.setItem("finalTotalAmount",totalTwoDecimalPlaces);              
+        return totalTwoDecimalPlaces
+    }
+
+    function onPayhereCheckoutError(errorMsg) {
+        alert(errorMsg)
     }
 
     const title={
