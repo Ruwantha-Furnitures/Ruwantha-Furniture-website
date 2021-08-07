@@ -82,9 +82,14 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const id = req.params.id;
-  Category.update(req.body, {
-    where: { id: id },
-  })
+  Category.update(
+    {
+      is_deleted: true,
+    },
+    {
+      where: { id: id },
+    }
+  )
     .then((num) => {
       if (num == 1) {
         res.send({

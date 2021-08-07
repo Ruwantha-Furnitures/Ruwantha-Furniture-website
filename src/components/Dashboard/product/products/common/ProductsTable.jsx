@@ -47,7 +47,7 @@ function ProductsTable() {
           (category) => category.id === product.type.categoryId
         );
         product.type.category = category[0];
-        console.log(category);
+        // console.log(category);
       });
 
       setProducts(products);
@@ -149,7 +149,7 @@ function ProductsTable() {
                   </Link>
                   {user === "Admin" && (
                     <Link
-                      to="/dashboard/product/addProductType"
+                      to="/dashboard/product/addProductCategory"
                       className={TableStyle.linkStyleAddHeader}
                     >
                       <span
@@ -161,14 +161,6 @@ function ProductsTable() {
                   )}
                 </div>
               </th>
-              {/* <th>
-                <div className={TableStyle.header}>
-                  <Link to="" className={TableStyle.linkStyleAddHeader}>
-                    Colour
-                  </Link>
-                </div>
-              </th> */}
-
               <th>
                 <div className={TableStyle.header}>Price</div>
               </th>
@@ -204,7 +196,7 @@ function ProductsTable() {
                     </td>
                     <td>
                       <Link
-                        to={`/dashboard/product/viewProductType/${product.type.id}`}
+                        to={`/dashboard/product/viewProductCategory/${product.type.categoryId}`}
                         className={TableStyle.linkStyle}
                       >
                         <span className={TableStyle.statusStyleLink}>
@@ -212,7 +204,6 @@ function ProductsTable() {
                         </span>
                       </Link>
                     </td>
-                    {/* <td>{product.color}</td> */}
                     <td>Rs.{product.price}</td>
                     <td>{product.discount}%</td>
                   </tr>

@@ -1,9 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import ProductTypeList from "./ProductTypeList";
 import { Link } from "react-router-dom";
+import { getProductCategories } from "./../../../service/productCategory";
 
 function ProductTypeAddForm() {
+  const [type, setType] = useState({
+    name: "",
+    categoryId: 0,
+  });
+
+  const [categories, setCategories] = useState({
+    id: 0,
+    name: "",
+  });
+
+  useEffect(() => {
+    loadCategories();
+  }, []);
+
+  const loadCategories = async () => {
+    try {
+      const result = await getProductCategories();
+      setCategories(result.data);
+    } catch (error) {
+      console.log("Error", error.message);
+    }
+  };
+
+  const onInputChange = (e) => {
+    setType({ ...type, [e.target.name]: e.target.value });
+  };
+
   return (
     <React.Fragment>
       <div className={ProductViewFormStyle.titleHeader}>
@@ -39,12 +67,22 @@ function ProductTypeAddForm() {
                   <label className={ProductViewFormStyle.labelProductTitle}>
                     Category
                   </label>
-                  <select className={ProductViewFormStyle.inputProductTitle}>
-                    <option value="">Select Category</option>
-                    <option value="category1">Category 1</option>
-                    <option value="category2">Category 2</option>
-                    <option value="category3">Category 3</option>
-                    <option value="category4">Category 4</option>
+                  <select
+                    className={ProductViewFormStyle.inputProductTitle}
+                    name="categoryId"
+                    onChange={(e) => onInputChange(e)}
+                    required
+                  >
+                    <option value="#">Select Category</option>
+                    {Array.isArray(categories) === true && (
+                      <React.Fragment>
+                        {categories.map((category, index) => (
+                          <option key={index} value={category.id}>
+                            {category.name}
+                          </option>
+                        ))}
+                      </React.Fragment>
+                    )}
                   </select>
                 </div>
                 <div className={ProductViewFormStyle.dataProductTitle}>
@@ -53,7 +91,9 @@ function ProductTypeAddForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    name="name"
+                    value={type.name}
+                    onChange={(e) => onInputChange(e)}
                     placeholder="New Product Type"
                     className={ProductViewFormStyle.inputProductTitle}
                   />
@@ -68,7 +108,7 @@ function ProductTypeAddForm() {
               </div>
             </div>
             <div className={ProductViewFormStyle.typesList}>
-              <ProductTypeList />
+              <ProductTypeList categoryId={type.categoryId} />
             </div>
           </div>
         </div>
