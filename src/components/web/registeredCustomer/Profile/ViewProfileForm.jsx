@@ -64,7 +64,7 @@ function ViewProfileForm({userDetails}) {
                     <label style={{margin: '4px'}}><b>Contact No</b></label><br />    
                     <input  style={textboxStyle}
                         type='text' 
-                        value={telephone}
+                        value={`0${telephone}`}
                     ></input><br />                  
                     <label style={{margin: '4px'}}><b>Email</b></label><br />                              
                     <input style={textboxStyle}
