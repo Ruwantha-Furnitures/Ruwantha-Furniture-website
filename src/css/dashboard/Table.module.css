@@ -276,6 +276,23 @@ input[type="search"]:-webkit-autofill:active {
   border-color: #be622e transparent transparent transparent;
 }
 
+.statusStyleLink {
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.86);
+  border-radius: 22px;
+  height: 1px;
+  padding: 0px 8px;
+  border: 0.5px solid #542b14;
+  cursor: pointer;
+}
+
+.statusStyleLink:hover {
+  font-weight: 400;
+  /* border: 2px solid #542b14; */
+  color: #ffffff;
+  background-color: #542b14;
+}
+
 .statusStyle {
   font-weight: 400;
   font-size: 14px;

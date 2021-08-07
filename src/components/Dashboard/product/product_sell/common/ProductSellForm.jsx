@@ -1,10 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
+import { addCustomer } from "../../../service/customer";
 
 function ProductSellForm() {
+  const [customer, setCustomer] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    address: "",
+    contact_number: "",
+    payment_method: "CASH",
+  });
+
   const handleSellProduct = (e) => {
     e.preventDefault();
     window.location = "/dashboard/product/sell/product";
+  };
+
+  const onInputChange = (e) => {
+    setCustomer({ ...customer, [e.target.name]: e.target.value });
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await addCustomer(customer);
+      const id = response.data.id;
+      window.location = `/dashboard/product/sell/product/${id}`;
+      console.log(response);
+    } catch (error) {
+      if (error.response.status === 500) {
+        console.log("There was a problem with the server: ", error);
+      } else {
+        console.log(error.response.data.msg);
+      }
+    }
   };
 
   return (
@@ -15,9 +46,8 @@ function ProductSellForm() {
         </h1>
       </div>
       <form
-        action="#"
         className={ProductViewFormStyle.formStyle}
-        onSubmit={(e) => handleSellProduct(e)}
+        onSubmit={(e) => onSubmit(e)}
       >
         <div className={ProductViewFormStyle.details}>
           <div className={ProductViewFormStyle.infoPart}>
@@ -35,7 +65,9 @@ function ProductSellForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    name="first_name"
+                    value={customer.first_name}
+                    onChange={(e) => onInputChange(e)}
                     placeholder="Customer First Name"
                     className={ProductViewFormStyle.inputStyle}
                   />
@@ -46,7 +78,9 @@ function ProductSellForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    name="last_name"
+                    value={customer.last_name}
+                    onChange={(e) => onInputChange(e)}
                     placeholder="Customer Last Name"
                     className={ProductViewFormStyle.inputStyle}
                   />
@@ -59,7 +93,9 @@ function ProductSellForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    name="email"
+                    value={customer.email}
+                    onChange={(e) => onInputChange(e)}
                     placeholder="Customer Email Address"
                     className={ProductViewFormStyle.inputStyleforLong}
                   />
@@ -72,7 +108,9 @@ function ProductSellForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    name="address"
+                    value={customer.address}
+                    onChange={(e) => onInputChange(e)}
                     placeholder="Customer Dilever Address"
                     className={ProductViewFormStyle.inputStyleforLong}
                   />
@@ -84,8 +122,10 @@ function ProductSellForm() {
                     Number
                   </label>
                   <input
-                    type="text"
-                    value=""
+                    type="number"
+                    name="contact_number"
+                    value={customer.contact_number}
+                    onChange={(e) => onInputChange(e)}
                     placeholder="Customer Number"
                     className={ProductViewFormStyle.inputStyle}
                   />
@@ -96,9 +136,11 @@ function ProductSellForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    name="payment_method"
+                    value={customer.payment_method}
                     placeholder="Payment Method"
                     className={ProductViewFormStyle.inputStyle}
+                    readOnly
                   />
                 </div>
               </div>

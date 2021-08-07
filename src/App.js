@@ -90,11 +90,15 @@ function App() {
           <Route exact path="/dashboardDriver" component={DashboardDriver} />
           {/* Dashboard-Product */}
           <Route exact path="/dashboard/products" component={Products} />
-          <Route exact path="/dashboard/product/view" component={ProductView} />
+          <Route
+            exact
+            path="/dashboard/product/view/:id"
+            component={ProductView}
+          />
           <Route exact path="/dashboard/product/add" component={ProductAdd} />
           <Route
             exact
-            path="/dashboard/product/update"
+            path="/dashboard/product/update/:id"
             component={ProductUpdate}
           />
           <Route
@@ -104,7 +108,7 @@ function App() {
           />
           <Route
             exact
-            path="/dashboard/product/sell/product"
+            path="/dashboard/product/sell/product/:id"
             component={ProductSell}
           />
           <Route
@@ -120,12 +124,12 @@ function App() {
 
           <Route
             exact
-            path="/dashboard/product/viewProductType"
+            path="/dashboard/product/viewProductType/:id"
             component={ProductTypeView}
           />
           <Route
             exact
-            path="/dashboard/product/updateProductType"
+            path="/dashboard/product/updateProductType/:id"
             component={ProductTypeUpdate}
           />
 
@@ -137,12 +141,12 @@ function App() {
 
           <Route
             exact
-            path="/dashboard/product/viewProductCategory"
+            path="/dashboard/product/viewProductCategory/:id"
             component={ProductCategoryView}
           />
           <Route
             exact
-            path="/dashboard/product/updateProductCategory"
+            path="/dashboard/product/updateProductCategory/:id"
             component={ProductCategoryUpdate}
           />
 
@@ -324,6 +328,16 @@ function App() {
             path="/customer_paymentGateway"
             component={PayhereCheckout}
           />
+          <Route
+            exact
+            path="/customer_productDetails_checkout"
+            component={CustomerChekoutFromViewProduct}
+          ></Route>
+          <Route
+            exact
+            path="/customer_productDetails_payment"
+            component={CustomerPaymentFromViewProduct}
+          ></Route>
           <Route exact path="/customer_productDetails_checkout" component={CustomerChekoutFromViewProduct}></Route>
           <Route exact path="/customer_productDetails_payment" component={CustomerPaymentFromViewProduct}></Route>
           <Route exact path="/customer_deleteProfile" component={CustomerDeleteProfile}></Route>

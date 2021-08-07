@@ -1,15 +1,71 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
-import ProductImage from "../../../../../assets/dashboard/product/addPhotoNew2.png";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import {
+  editProductDetails,
+  getProductDetails,
+} from "./../../../service/product";
+import { getProductTypes } from "./../../../service/productType";
+import { uploadPhoto, deletePhoto } from "./../../../service/image";
 
 function ProductUpdateForm() {
+  const { id } = useParams();
+  const [file, setFile] = useState("");
+  // const [filename, setFilename] = useState("Choose File");
+  // const [picture, setPicture] = useState(null);
   const [imgData, setImgData] = useState(null);
+
+  const [product, setProduct] = useState({
+    name: "",
+    type: {
+      name: "",
+      id: "",
+    },
+    type_id: "",
+    price: "",
+    description: "",
+    color: "",
+    width: "",
+    height: "",
+    discount: "",
+    img_location: "",
+  });
+
+  const [productTypes, setProductTypes] = useState({
+    id: 0,
+    name: "",
+    categoryId: "",
+  });
+
+  const [imageLocation, setImageLocation] = useState("");
+
+  useEffect(() => {
+    loadProduct();
+    loadProductTypes();
+  }, []);
+
+  const loadProduct = async () => {
+    try {
+      const result = await getProductDetails(id);
+      setProduct(result.data);
+      setImageLocation(result.data.img_location);
+    } catch (error) {
+      console.log("Error", error.message);
+    }
+  };
+
+  const loadProductTypes = async () => {
+    try {
+      const result = await getProductTypes();
+      setProductTypes(result.data);
+    } catch (error) {
+      console.log("Error", error.message);
+    }
+  };
 
   const onChangePicture = (e) => {
     if (e.target.files[0]) {
-      console.log("picture: ", e.target.files);
-      // setPicture(e.target.files[0]);
+      setFile(e.target.files[0]);
       const reader = new FileReader();
       reader.addEventListener("load", () => {
         setImgData(reader.result);
@@ -17,6 +73,51 @@ function ProductUpdateForm() {
       reader.readAsDataURL(e.target.files[0]);
     }
   };
+
+  const onInputChange = (e) => {
+    setProduct({ ...product, [e.target.name]: e.target.value });
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const res = await uploadPhoto(formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      const { filePath } = res.data;
+      console.log(filePath);
+      const name = "img_location";
+      const newProduct = { ...product, [name]: filePath };
+
+      const response = await editProductDetails(id, newProduct);
+
+      // handle response process
+      window.location = `/dashboard/product/view/${id}`;
+    } catch (error) {
+      if (error.response.status === 500) {
+        console.log("There was a problem with the server: ", error);
+      } else {
+        console.log(error.response.data.msg);
+        if (error.response.data.msg === "No file uploaded") {
+          // Normal updated here
+          console.log("Hello");
+          const response = await editProductDetails(id, product);
+          console.log(response);
+          // handle response process
+          window.location = `/dashboard/product/view/${id}`;
+        }
+        // otherwise another error
+      }
+    }
+  };
+
   return (
     <React.Fragment>
       <div className={ProductViewFormStyle.titleHeader}>
@@ -43,7 +144,7 @@ function ProductUpdateForm() {
           </div>
         </div>
       </div>
-      <form action="#">
+      <form onSubmit={(e) => onSubmit(e)}>
         <div className={ProductViewFormStyle.details}>
           <div className={ProductViewFormStyle.imgDescPart}>
             <div className={ProductViewFormStyle.Img}>
@@ -53,7 +154,7 @@ function ProductUpdateForm() {
                 onChange={onChangePicture}
               />
               <img
-                src={imgData !== null ? imgData : ProductImage}
+                src={imgData !== null ? imgData : product.img_location}
                 alt="upload-img"
                 className={ProductViewFormStyle.productImagePreviewStyle}
               />
@@ -67,8 +168,10 @@ function ProductUpdateForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
                     placeholder="Product Name"
+                    name="name"
+                    value={product.name}
+                    onChange={(e) => onInputChange(e)}
                     className={ProductViewFormStyle.inputProductTitle}
                   />
                 </div>
@@ -79,7 +182,9 @@ function ProductUpdateForm() {
                     Description
                   </label>
                   <textarea
-                    value=""
+                    name="description"
+                    value={product.description}
+                    onChange={(e) => onInputChange(e)}
                     placeholder="Product Description..."
                     className={ProductViewFormStyle.inputStyleDesc}
                   />
@@ -100,12 +205,29 @@ function ProductUpdateForm() {
                   <label className={ProductViewFormStyle.labelStyle}>
                     Type
                   </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Product Type"
-                    className={ProductViewFormStyle.inputStyle}
-                  />
+                  <select
+                    className={ProductViewFormStyle.inputFormSelectStyle}
+                    name="type_id"
+                    onChange={(e) => onInputChange(e)}
+                    required
+                  >
+                    {product.type.id !== null ? (
+                      <option value={product.type.id}>
+                        {product.type.name}
+                      </option>
+                    ) : (
+                      <option value="">Select Type</option>
+                    )}
+                    {Array.isArray(productTypes) === true && (
+                      <React.Fragment>
+                        {productTypes.map((type, index) => (
+                          <option key={index} value={type.id}>
+                            {type.name}
+                          </option>
+                        ))}
+                      </React.Fragment>
+                    )}
+                  </select>
                 </div>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
@@ -113,7 +235,9 @@ function ProductUpdateForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    name="color"
+                    value={product.color}
+                    onChange={(e) => onInputChange(e)}
                     placeholder="Product Colour"
                     className={ProductViewFormStyle.inputStyle}
                   />
@@ -125,9 +249,11 @@ function ProductUpdateForm() {
                     Width
                   </label>
                   <input
-                    type="text"
-                    value=""
-                    placeholder="Product Width"
+                    type="number"
+                    name="width"
+                    value={product.width}
+                    onChange={(e) => onInputChange(e)}
+                    placeholder="Product Width in CM"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
@@ -136,9 +262,11 @@ function ProductUpdateForm() {
                     Height
                   </label>
                   <input
-                    type="text"
-                    value=""
-                    placeholder="Product Height"
+                    type="number"
+                    name="height"
+                    value={product.height}
+                    onChange={(e) => onInputChange(e)}
+                    placeholder="Product Height in CM"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
@@ -149,9 +277,11 @@ function ProductUpdateForm() {
                     Price
                   </label>
                   <input
-                    type="text"
-                    value=""
-                    placeholder="Product Price"
+                    type="number"
+                    name="price"
+                    value={product.price}
+                    onChange={(e) => onInputChange(e)}
+                    placeholder="Product Price in RS"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
@@ -160,9 +290,11 @@ function ProductUpdateForm() {
                     Discount
                   </label>
                   <input
-                    type="text"
-                    value=""
-                    placeholder="Product Discount"
+                    type="number"
+                    name="discount"
+                    value={product.discount}
+                    onChange={(e) => onInputChange(e)}
+                    placeholder="Product Discount in PR"
                     className={ProductViewFormStyle.inputStyle}
                   />
                 </div>
