@@ -7,6 +7,7 @@ import { Container, Row, Col } from 'reactstrap';
 import { Redirect } from "react-router-dom";
 import Avatar from '../../../../assets/shipping.png';
 import axios from 'axios';
+import { FormatListNumberedRtlTwoTone } from '@material-ui/icons';
 
 function CustomerCheckoutDeteailsForm() {
     require("bootstrap/dist/css/bootstrap.min.css");
@@ -46,6 +47,7 @@ function CustomerCheckoutDeteailsForm() {
            let res =await axios.get('http://192.168.56.1:3002/api/payment/deliverycharge/')
            console.log(res.data.deliveryCharge); // received deliveryCharge from the backend API
            setDistrict(res.data.deliveryCharge);// set the received deliveryCharge into the district state array
+           
         } catch (error) {
             console.log(error);
         }
@@ -62,11 +64,14 @@ function CustomerCheckoutDeteailsForm() {
     }
 
     function getTotal(price,discount){
-        let total = price - (price*discount/100);
+        const total = (Number)(price - (price*discount/100))
+        // var myNumberWithTwoDecimalPlaces=parseFloat(myNumber).toFixed(2); 
+        var totalTwoDecimalPlaces=parseFloat(total).toFixed(2); 
+
         localStorage.setItem("productPrice",price);
         localStorage.setItem("productDiscount",discount);
-        localStorage.setItem("totalAfterDiscount",total);
-        return total;
+        localStorage.setItem("totalAfterDiscount",totalTwoDecimalPlaces);
+        return totalTwoDecimalPlaces;
     }    
 
     const title={
@@ -89,7 +94,7 @@ function CustomerCheckoutDeteailsForm() {
         border: 'solid 1px darkgray'               
     };
 
-    const redirectPaymentPage = <Redirect to="/customer_paymentGateway" />;
+    const redirectPaymentPage = <Redirect to="/customer_productDetails_payment" />;
     return (          
         <React.Fragment>
             {isSubmit === true && redirectPaymentPage}
@@ -121,6 +126,7 @@ function CustomerCheckoutDeteailsForm() {
                                             type='tel' 
                                             placeholder='Enter your last name'
                                             value={lname}
+                                            pattern="[0-9]{10}"
                                             onChange={(e)=>setLName(e.target.value)}
                                             required
                                         />
@@ -128,6 +134,7 @@ function CustomerCheckoutDeteailsForm() {
                                 </Row>    
                                 <input style={textboxStyle}
                                     type='tel' 
+                                    pattern="[0-9]{10}"     
                                     placeholder='Enter your telephone number'
                                     value={telephone}
                                     onChange={(e)=>setTelephone(e.target.value)}
@@ -141,12 +148,11 @@ function CustomerCheckoutDeteailsForm() {
                                     value={address}
                                     onChange={(e)=>setAddress(e.target.value)}
                                     required
-                                ></input>     
-                                {/* <input type='text' placeholder='Enter your city' style={textboxStyle}></input>                              */}
-                                <select style={textboxStyle} required>
+                                ></input>                                     
+                                <select style={textboxStyle} onChange={(e)=>setArea(e.target.value)} required>
                                     <option style={{color:'red'}} value="" disabled selected hidden >Select your district</option>
-                                    {district.map((districtList) =>(  
-                                        <option value={area}  onChange={(e)=>setArea(e.target.value)} name='district'>{districtList.area}</option>
+                                    {district.map((districtList) =>(                                          
+                                        <option value={districtList.area}>{districtList.area}</option>
                                     ))}
                                 </select>
     
@@ -184,7 +190,7 @@ function CustomerCheckoutDeteailsForm() {
                                         <Form.Label><b style={{fontSize: '20px'}}>Total</b></Form.Label>  
                                     </Col>
                                     <Col sm={6}>
-                                        <Form.Label><b style={{fontSize: '20px'}}>{getTotal(productDetails.price,productDetails.discount)}</b></Form.Label> 
+                                        <Form.Label><b style={{fontSize: '20px'}}>Rs.{' '}{getTotal(productDetails.price,productDetails.discount)}</b></Form.Label> 
                                     </Col>
                                 </Row> 
                                 <Row sm={12}>

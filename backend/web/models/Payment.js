@@ -1,28 +1,32 @@
 module.exports = (sequelize, DataTypes) => {
-    const DeliveryCharge = sequelize.define(
-      "DeliveryCharge",
+    const Payment = sequelize.define(
+      "Payment",
       {
-        chargeid: {
+        payid: {
           type: DataTypes.INTEGER,
           allowNull: false,
           autoIncrement: true,
           primaryKey: true,
         },
-        area: {
-          type: DataTypes.STRING,
+        orderid: {
+          type: DataTypes.INTEGER,
           allowNull: false,
         },
-        amount: {
+        price: {
           type: DataTypes.DECIMAL,
+          allowNull: false,
+        },
+        date: {
+          type: DataTypes.DATE,
           allowNull: false,
         },       
       },
       {
         freezeTableName: true,
-        tableName: "DeliveryCharge",
+        tableName: "payment",
       }
     );
   
-    return DeliveryCharge;
+    return Payment;
   };
   

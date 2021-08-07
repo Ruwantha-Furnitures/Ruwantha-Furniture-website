@@ -13,6 +13,7 @@ const LoginForm = ({ loginHandler }) => {
 
     const submitHandler = (e) => {
       e.preventDefault();
+      localStorage.setItem("CustomerEmail",email);
       loginHandler({ email, password });
     };
 

@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import Form from "react-bootstrap/Form";
 import {Row} from 'reactstrap';
 import Button from 'react-bootstrap/Button';
@@ -6,18 +6,47 @@ import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 import FormStyle from "../../../../css/web/Form.module.css";
 import Avatar from "../../../../assets/avatar.png";
+import axios from 'axios';
 
 function UpdateProfileForm({updateHandler}) {
     require("bootstrap/dist/css/bootstrap.min.css");
+    const [userDetails,setUserDetails] =useState();
     const [name, setName] = useState("");
     const [address, setAddress] = useState("");
     const [telephone, setTelephone] = useState("");
     const [email, setEmail] = useState("");
 
     const submitHandler = () => {
-        const userDetails ={name,address, telephone,email}
+        const userDetails ={name,address,telephone,email}
         updateHandler(userDetails)
     }
+                
+    const fecthData=async()=>{
+        const accountID =localStorage.getItem('userAccID');
+        const accountEmail=localStorage.getItem('userEmail')
+        try {                
+            let response=await axios.get(`http://192.168.56.1:3002/api/customer/viewprofile/${accountID}`)
+            // let response=await axios.get(`${URI}:3002/api/customer/viewprofile/${accountID}`)
+            const {name,address, telephone}=response.data
+            const userData={
+                accountEmail,
+                name,
+                address,
+                telephone,
+            }
+            setUserDetails(()=>userData)  
+            setEmail(userDetails.accountEmail);
+            setName(userDetails.name);
+            setAddress(userDetails.address);
+            setTelephone(userDetails.telephone);              
+        } catch (error) {
+            console.log(error)
+        }
+    }
+        
+    useEffect(() => {
+        fecthData()                        
+    },[]);
 
     const title={
         margin: '10px',
@@ -47,13 +76,13 @@ function UpdateProfileForm({updateHandler}) {
                         <center><h3 style={title}>Update Profile</h3></center>
                     </Row> 
                     <label style={{margin: '4px'}}><b>Name</b></label>                                     
-                    <input type='text' value={name} onChange={(e)=>setName(e.target.value)} style={textboxStyle}></input><br />
+                    <input type='text' value={name} onChange={(e)=>setName(e.target.value)} style={textboxStyle} required></input><br />
                     <label style={{margin: '4px'}}><b>Address</b></label><br />  
-                    <input type='text' value={address} onChange={(e)=>setAddress(e.target.value)} style={textboxStyle}></input><br />
-                    <label style={{margin: '4px'}}><b>Contact No</b></label><br />    
-                    <input type='text' value={telephone} onChange={(e)=>setTelephone(e.target.value)} style={textboxStyle}></input><br />                  
-                    <label style={{margin: '4px'}}><b>Email</b></label><br />                              
-                    <input type='text' value={email} onChange={(e)=>setEmail(e.target.value)} style={textboxStyle}></input><br />                               
+                    <input type='text' value={address} onChange={(e)=>setAddress(e.target.value)} style={textboxStyle} required></input><br />
+                    <label style={{margin: '4px'}}><b>Contact No (+94)</b></label><br />    
+                    <input type='text' value= {telephone} pattern="[0-9]{9}" onChange={(e)=>setTelephone(e.target.value)} style={textboxStyle} required></input><br />                  
+                    {/* <label style={{margin: '4px'}}><b>Email</b></label><br />                               */}
+                    {/* <input type='text' value={email} onChange={(e)=>setEmail(e.target.value)} style={textboxStyle} required></input><br />                                */}
                     <div align="right"><br />                                       
                         <Link to=''><Button variant="danger">Cancel</Button></Link>{' '}
                         <Button variant="success" onClick={submitHandler}>Update</Button>{' '}                     

@@ -8,7 +8,7 @@ const UpdateProfileController = async (req, res) => {
   const data = { name, address, telephone };
   try {
     const update = await Customer.update(
-      { name, address, telephone },
+      data,
       { where: { aid: accountID } }
     );
     // res.json({});
