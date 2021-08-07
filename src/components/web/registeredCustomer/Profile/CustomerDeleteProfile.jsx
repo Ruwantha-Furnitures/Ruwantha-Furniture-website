@@ -8,6 +8,26 @@ import Topimg from '../../../../assets/topimg29.jpg';
 import axios from 'axios';
 
 function CustomerDeleteProfile() {
+    const [isSubmit, setIsSubmit] = useState(false);
+
+
+    const submitHandler =async (data) =>{
+        let accountID=localStorage.getItem('userAccID');
+        try{            
+            const res = await axios.delete(`http://192.168.56.1:3002/api/customer/delete/${accountID}`,            
+                { data }
+            );
+        
+            if(res.data.auth === true){
+                setIsSubmit(true);
+            }else{
+                setIsSubmit(false);
+            }            
+        }catch(error){
+            console.log(error);
+        }
+    };
+
     const contactImg = {
         backgroundImage: `url(${Topimg})` ,
       //   backgroundSize: 'cover',  
@@ -22,7 +42,7 @@ function CustomerDeleteProfile() {
             <Subnavigation></Subnavigation>
             <br />
             <Container align="left"> 
-                <DeleteForm></DeleteForm>
+                <DeleteForm submitHandler={submitHandler}></DeleteForm>
             </Container>
             <br /><br />
             <Footer></Footer>    
