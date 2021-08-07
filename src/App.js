@@ -78,6 +78,7 @@ import PendingEmail from "./components/web/registeredCustomer/PasswordRecovery/P
 import PayhereCheckout from "./components/web/registeredCustomer/Payment/Checkout.jsx";
 import CustomerChekoutFromViewProduct from "./components/web/registeredCustomer/Product/CustomerCheckout.jsx";
 import CustomerPaymentFromViewProduct from "./components/web/registeredCustomer/Product/CustomerPayment.jsx";
+import CustomerDeleteProfile from "./components/web/registeredCustomer/Profile/CustomerDeleteProfile.jsx";
 
 function App() {
   return (
@@ -337,6 +338,10 @@ function App() {
             path="/customer_productDetails_payment"
             component={CustomerPaymentFromViewProduct}
           ></Route>
+          <Route exact path="/customer_productDetails_checkout" component={CustomerChekoutFromViewProduct}></Route>
+          <Route exact path="/customer_productDetails_payment" component={CustomerPaymentFromViewProduct}></Route>
+          <Route exact path="/customer_deleteProfile" component={CustomerDeleteProfile}></Route>
+
         </Switch>
       </div>
     </Router>

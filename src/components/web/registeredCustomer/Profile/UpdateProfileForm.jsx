@@ -13,41 +13,45 @@ function UpdateProfileForm({updateHandler}) {
     const [userDetails,setUserDetails] =useState();
     const [name, setName] = useState("");
     const [address, setAddress] = useState("");
-    const [telephone, setTelephone] = useState("");
-    const [email, setEmail] = useState("");
+    const [telephone, setTelephone] = useState("");    
 
     const submitHandler = () => {
-        const userDetails ={name,address,telephone,email}
+        const userDetails ={name,address,telephone}
         updateHandler(userDetails)
     }
-                
-    const fecthData=async()=>{
-        const accountID =localStorage.getItem('userAccID');
-        const accountEmail=localStorage.getItem('userEmail')
-        try {                
-            let response=await axios.get(`http://192.168.56.1:3002/api/customer/viewprofile/${accountID}`)
-            // let response=await axios.get(`${URI}:3002/api/customer/viewprofile/${accountID}`)
-            const {name,address, telephone}=response.data
-            const userData={
-                accountEmail,
-                name,
-                address,
-                telephone,
-            }
-            setUserDetails(()=>userData)  
-            setEmail(userDetails.accountEmail);
-            setName(userDetails.name);
-            setAddress(userDetails.address);
-            setTelephone(userDetails.telephone);              
-        } catch (error) {
-            console.log(error)
-        }
-    }
-        
+    
     useEffect(() => {
-        fecthData()                        
-    },[]);
+        let accountID=localStorage.getItem('userAccID');
+        let accountEmail=localStorage.getItem('userEmail')
+        console.log(accountID);
+        const fecthData=async()=>{
+            try {                
+                let response=await axios.get(`http://192.168.56.1:3002/api/customer/viewprofile/${accountID}`)
+                // let response=await axios.get(`${URI}:3002/api/customer/viewprofile/${accountID}`)
+                const {name,address, telephone}=response.data
+                const userData={
+                    accountEmail,
+                    name,
+                    address,
+                    telephone,
+                }
+                setUserDetails(()=>userData)
+                console.log(response.data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fecthData()
+    },[])
 
+    useEffect(() => {
+        if (userDetails) {          
+          setName(() => userDetails.name);
+          setAddress(() => userDetails.address);
+          setTelephone(() => userDetails.telephone);
+        }
+      }, [userDetails]);
+                
     const title={
         margin: '10px',
         padding: '3px',
@@ -64,7 +68,8 @@ function UpdateProfileForm({updateHandler}) {
         height: '40px',
         borderRadius: '5px',
         padding: '5px',
-        margin: '5px'            
+        margin: '5px',
+        border: 'solid 1px darkgray'               
     };
     
     return (            
@@ -84,7 +89,7 @@ function UpdateProfileForm({updateHandler}) {
                     {/* <label style={{margin: '4px'}}><b>Email</b></label><br />                               */}
                     {/* <input type='text' value={email} onChange={(e)=>setEmail(e.target.value)} style={textboxStyle} required></input><br />                                */}
                     <div align="right"><br />                                       
-                        <Link to=''><Button variant="danger">Cancel</Button></Link>{' '}
+                        <Link to='/customer_deleteProfile'><Button variant="danger">Delete Profile</Button></Link>{' '}
                         <Button variant="success" onClick={submitHandler}>Update</Button>{' '}                     
                     </div>                                                     
                 </Form>                                                          

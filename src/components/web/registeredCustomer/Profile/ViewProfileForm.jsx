@@ -40,7 +40,8 @@ function ViewProfileForm({userDetails}) {
         height: '40px',
         borderRadius: '5px',
         padding: '5px',
-        margin: '5px'            
+        margin: '5px',
+        border: 'solid 1px darkgray'               
     };
 
     return (                    

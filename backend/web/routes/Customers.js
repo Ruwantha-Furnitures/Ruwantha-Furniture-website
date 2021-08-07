@@ -17,14 +17,14 @@ const {
   UpdateProfileController,
 } = require("../controllers/customer/UpdateProfileController");
 
-// const {
-//   messageController,
-// } = require("../controllers/contactus/messageController");
+const {
+  DeleteProfileController,
+} = require("../controllers/customer/DeleteProfile");
 
 router.post("/signup", SignUpController);
 router.post("/login", LoginController);
 router.get("/viewprofile/:accID", ViewProfileController);
 router.put("/updateprofile/:accID", UpdateProfileController);
-// router.post("/contact",messageController);
+router.delete("/delete/:accID",DeleteProfileController);
 
 module.exports = { customerRouter: router };
