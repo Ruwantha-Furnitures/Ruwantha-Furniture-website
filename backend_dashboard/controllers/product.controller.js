@@ -71,7 +71,10 @@ exports.upload = (req, res) => {
 
 // retrieve the data
 exports.findAll = (req, res) => {
-  Product.findAll({ where: { is_deleted: 0 }, include: ["type"] })
+  Product.findAll({
+    where: { is_deleted: 0 },
+    include: ["type"],
+  })
     .then((data) => {
       res.send(data);
     })
@@ -86,7 +89,10 @@ exports.findAll = (req, res) => {
 // retreive single object
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  Product.findOne({ where: { id: id, is_deleted: 0 }, include: ["type"] })
+  Product.findOne({
+    where: { id: id, is_deleted: 0 },
+    include: ["type"],
+  })
     .then((data) => {
       res.send(data);
     })

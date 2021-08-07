@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import TableStyle from "../../../../../css/dashboard/Table.module.css";
 import Auth from "../../../service/auth";
 import { getProducts } from "./../../../service/product";
+import { getProductCategories } from "./../../../service/productCategory";
 
 function ProductsTable() {
   const user = Auth.getCurrentUser();
@@ -10,7 +11,11 @@ function ProductsTable() {
   const [products, setProducts] = useState({
     name: "",
     type_id: 0,
-    type: {},
+    type: {
+      name: "",
+      categoryId: 0,
+      category: "",
+    },
     price: "",
     description: "",
     color: "",
@@ -30,8 +35,23 @@ function ProductsTable() {
   const loadProducts = async () => {
     try {
       const result = await getProducts();
-      setProducts(result.data);
-      setFilterProducts(result.data);
+      const resultCategories = await getProductCategories();
+
+      // console.log(resultCategories.data);
+      const products = result.data;
+      const categories = resultCategories.data;
+
+      products.forEach((product) => {
+        console.log(product.type.categoryId);
+        var category = categories.filter(
+          (category) => category.id === product.type.categoryId
+        );
+        product.type.category = category[0];
+        console.log(category);
+      });
+
+      setProducts(products);
+      setFilterProducts(products);
     } catch (error) {
       console.log("Error", error.message);
     }
@@ -125,10 +145,29 @@ function ProductsTable() {
               <th>
                 <div className={TableStyle.header}>
                   <Link to="" className={TableStyle.linkStyleAddHeader}>
+                    Category
+                  </Link>
+                  {user === "Admin" && (
+                    <Link
+                      to="/dashboard/product/addProductType"
+                      className={TableStyle.linkStyleAddHeader}
+                    >
+                      <span
+                        className={"material-icons " + TableStyle.addIconStyle}
+                      >
+                        add_circle
+                      </span>
+                    </Link>
+                  )}
+                </div>
+              </th>
+              {/* <th>
+                <div className={TableStyle.header}>
+                  <Link to="" className={TableStyle.linkStyleAddHeader}>
                     Colour
                   </Link>
                 </div>
-              </th>
+              </th> */}
 
               <th>
                 <div className={TableStyle.header}>Price</div>
@@ -163,7 +202,17 @@ function ProductsTable() {
                         </span>
                       </Link>
                     </td>
-                    <td>{product.color}</td>
+                    <td>
+                      <Link
+                        to={`/dashboard/product/viewProductType/${product.type.id}`}
+                        className={TableStyle.linkStyle}
+                      >
+                        <span className={TableStyle.statusStyleLink}>
+                          {product.type.category.name}
+                        </span>
+                      </Link>
+                    </td>
+                    {/* <td>{product.color}</td> */}
                     <td>Rs.{product.price}</td>
                     <td>{product.discount}%</td>
                   </tr>

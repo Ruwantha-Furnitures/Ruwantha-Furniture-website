@@ -43,7 +43,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Type.findOne({ where: { id: id, is_deleted: 0 } })
+  Type.findOne({ where: { id: id, is_deleted: 0 }, include: ["category"] })
     .then((data) => {
       res.send(data);
     })
