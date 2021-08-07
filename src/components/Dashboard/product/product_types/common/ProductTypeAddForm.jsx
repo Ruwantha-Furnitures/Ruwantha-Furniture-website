@@ -3,6 +3,7 @@ import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.m
 import ProductTypeList from "./ProductTypeList";
 import { Link } from "react-router-dom";
 import { getProductCategories } from "./../../../service/productCategory";
+import { addProductType } from "../../../service/productType";
 
 function ProductTypeAddForm() {
   const [type, setType] = useState({
@@ -32,6 +33,20 @@ function ProductTypeAddForm() {
     setType({ ...type, [e.target.name]: e.target.value });
   };
 
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await addProductType(type);
+      window.location = "/dashboard/product/addProductType";
+    } catch (error) {
+      if (error.response.status === 500) {
+        console.log("There was a problem with the server: ", error);
+      } else {
+        console.log(error.response.data.msg);
+      }
+    }
+  };
+
   return (
     <React.Fragment>
       <div className={ProductViewFormStyle.titleHeader}>
@@ -58,7 +73,7 @@ function ProductTypeAddForm() {
           </div>
         </div>
       </div>
-      <form action="#">
+      <form onSubmit={(e) => onSubmit(e)}>
         <div className={ProductViewFormStyle.details}>
           <div className={ProductViewFormStyle.imgDescPart}>
             <div className={ProductViewFormStyle.typeForm}>
@@ -96,6 +111,7 @@ function ProductTypeAddForm() {
                     onChange={(e) => onInputChange(e)}
                     placeholder="New Product Type"
                     className={ProductViewFormStyle.inputProductTitle}
+                    required
                   />
                 </div>
                 <div className={ProductViewFormStyle.descButtonsAddType}>

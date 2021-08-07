@@ -6,18 +6,18 @@ export function getProductTypes() {
   return axios.get(apiProductTypeUrl);
 }
 
-// export function addProductCategories(category) {
-//   return axios.post(apiProductCategoryUrl, category);
-// }
+export function addProductType(type) {
+  return axios.post(apiProductTypeUrl, type);
+}
 
 // export function getProductCategoriesDetails(id) {
-//   return axios.get(apiProductCategoryUrl + "/" + id);
+//   return axios.get(apiProductTypeUrl + "/" + id);
 // }
 
 // export function editProductCategoriesDetails(id, category) {
-//   return axios.put(apiProductCategoryUrl + "/" + id, category);
+//   return axios.put(apiProductTypeUrl + "/" + id, category);
 // }
 
 // export function deleteProductCategoriesDetails(id) {
-//   return axios.delete(apiProductCategoryUrl + "/" + id);
+//   return axios.delete(apiProductTypeUrl + "/" + id);
 // }

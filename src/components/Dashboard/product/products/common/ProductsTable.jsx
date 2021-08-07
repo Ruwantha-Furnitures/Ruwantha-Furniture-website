@@ -42,12 +42,10 @@ function ProductsTable() {
       const categories = resultCategories.data;
 
       products.forEach((product) => {
-        console.log(product.type.categoryId);
         var category = categories.filter(
           (category) => category.id === product.type.categoryId
         );
         product.type.category = category[0];
-        // console.log(category);
       });
 
       setProducts(products);
@@ -72,7 +70,7 @@ function ProductsTable() {
     setSearch(search);
   };
 
-  console.log(products);
+  // console.log(products);
 
   return (
     <React.Fragment>
