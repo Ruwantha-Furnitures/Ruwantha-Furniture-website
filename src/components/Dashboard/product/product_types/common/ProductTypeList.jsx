@@ -20,7 +20,6 @@ function ProductTypeList({ categoryId }) {
   }, [categoryId]);
 
   const loadTypes = async () => {
-    // console.log(categories);
     try {
       const result = await getProductTypes();
       const resultCategories = await getProductCategories();
@@ -58,7 +57,7 @@ function ProductTypeList({ categoryId }) {
                 circle
               </span>
               <Link
-                to="/dashboard/product/viewProductType"
+                to={`/dashboard/product/viewProductType/${type.id}`}
                 className={ProductViewFormStyle.linkStyle}
               >
                 <h1 className={ProductViewFormStyle.productTypeName}>

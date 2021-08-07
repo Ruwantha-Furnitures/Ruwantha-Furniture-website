@@ -122,12 +122,12 @@ function App() {
 
           <Route
             exact
-            path="/dashboard/product/viewProductType"
+            path="/dashboard/product/viewProductType/:id"
             component={ProductTypeView}
           />
           <Route
             exact
-            path="/dashboard/product/updateProductType"
+            path="/dashboard/product/updateProductType/:id"
             component={ProductTypeUpdate}
           />
 

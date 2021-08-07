@@ -81,9 +81,14 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const id = req.params.id;
-  Type.update(req.body, {
-    where: { id: id, is_deleted: 0 },
-  })
+  Type.update(
+    {
+      is_deleted: true,
+    },
+    {
+      where: { id: id, is_deleted: 0 },
+    }
+  )
     .then((num) => {
       if (num === 1) {
         res.send({

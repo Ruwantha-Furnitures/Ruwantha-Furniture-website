@@ -10,14 +10,14 @@ export function addProductType(type) {
   return axios.post(apiProductTypeUrl, type);
 }
 
-// export function getProductCategoriesDetails(id) {
-//   return axios.get(apiProductTypeUrl + "/" + id);
-// }
+export function getProductTypeDetails(id) {
+  return axios.get(apiProductTypeUrl + "/" + id);
+}
 
-// export function editProductCategoriesDetails(id, category) {
-//   return axios.put(apiProductTypeUrl + "/" + id, category);
-// }
+export function editProductTypeDetails(id, type) {
+  return axios.put(apiProductTypeUrl + "/" + id, type);
+}
 
-// export function deleteProductCategoriesDetails(id) {
-//   return axios.delete(apiProductTypeUrl + "/" + id);
-// }
+export function deleteProductTypeDetails(id) {
+  return axios.delete(apiProductTypeUrl + "/" + id);
+}
