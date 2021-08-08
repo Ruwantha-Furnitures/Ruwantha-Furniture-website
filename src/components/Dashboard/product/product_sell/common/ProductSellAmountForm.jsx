@@ -28,6 +28,9 @@ function ProductSellAmountForm() {
       contact_number: "",
       payment_method: "",
     },
+    no_of_products: 0,
+    products_price: 0,
+    total_discounts: 0,
   });
 
   useEffect(() => {
@@ -39,7 +42,6 @@ function ProductSellAmountForm() {
       // get invoice data
       const resultInvoice = await getInvoiceDetails(id);
       setInvoice(resultInvoice.data);
-      console.log(resultInvoice.data);
       // get order data according to invoice
       const resultOrders = await getOrders();
       const ordersData = resultOrders.data.filter(
@@ -66,16 +68,6 @@ function ProductSellAmountForm() {
 
       var discountofOrders = totalDiscount.toFixed(2);
 
-      console.log(
-        numOfProducts +
-          " " +
-          totalPriceOfProducts +
-          " " +
-          totalAmountOfProducts +
-          " " +
-          discountofOrders
-      );
-
       setBill({
         ...bill,
         no_of_products: numOfProducts,
@@ -90,13 +82,20 @@ function ProductSellAmountForm() {
 
   const handlePaymentProcess = async (e) => {
     e.preventDefault();
-    const newInvoice = { ...invoice, total_amount: bill.total_amount };
+    const numOfProducts = bill.no_of_products;
+    const products_price = bill.products_price;
+    const total_discounts = bill.total_discounts;
+    const total_amount = bill.total_amount;
+    const newInvoice = {
+      ...invoice,
+      total_amount: total_amount,
+      no_of_products: numOfProducts,
+      products_price: products_price,
+      total_discounts: total_discounts,
+    };
 
-    console.log(newInvoice);
     const response = await editInvoiceDetails(id, newInvoice);
-    console.log(response.data);
     window.location = "/dashboard/purchaseOrders";
-    console.log("PayNow");
   };
 
   return (
