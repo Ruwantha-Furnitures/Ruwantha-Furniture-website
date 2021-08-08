@@ -41,7 +41,7 @@ function Pending() {
                 </Card>
             </Container>        
             </div>     
-            <br /><br />         
+            <br /><br /><br />       
             <Footer></Footer>            
         </div>                    
     )
