@@ -6,6 +6,9 @@ module.exports = (sequelize, Sequelize) => {
     quantity: {
       type: Sequelize.INTEGER,
     },
+    discount: {
+      type: Sequelize.INTEGER,
+    },
     is_deleted: {
       type: Sequelize.INTEGER,
       defaultValue: 0,

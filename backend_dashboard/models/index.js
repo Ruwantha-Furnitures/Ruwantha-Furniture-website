@@ -20,6 +20,7 @@ db.assignOrderDetails = require("./assignOrderDetails.model")(
   sequelize,
   Sequelize
 );
+db.invoice = require("./invoice.model")(sequelize, Sequelize);
 
 // Foreign key for types
 db.category.hasMany(db.type, {
@@ -51,11 +52,21 @@ db.order.belongsTo(db.product, {
   as: "product",
 });
 
-db.customer.hasMany(db.order, {
+db.invoice.hasMany(db.order, {
+  foreignKey: "invoice_id",
+});
+
+db.order.belongsTo(db.invoice, {
+  foreignKey: "invoice_id",
+  as: "invoice",
+});
+
+// Foreign key for invoice
+db.customer.hasMany(db.invoice, {
   foreignKey: "customer_id",
 });
 
-db.order.belongsTo(db.customer, {
+db.invoice.belongsTo(db.customer, {
   foreignKey: "customer_id",
   as: "customer",
 });

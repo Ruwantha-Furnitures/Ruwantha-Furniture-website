@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getProducts } from "./../../../service/product";
+import { addOrder, getOrders } from "../../../service/order";
+import { getOrderDetails } from "./../../../service/order";
 
 function ProductSellProductForm() {
   // get customer id from params
+  const { id } = useParams();
+
+  console.log(id);
 
   const [products, setProducts] = useState({
     id: 0,
@@ -17,22 +22,47 @@ function ProductSellProductForm() {
     product_id: 0,
     price: 0,
     quantity: 1,
-    customer_id: 0,
+    invoice_id: id,
     discount: 0,
-    totalPrice: 0,
   });
+
+  const [numOfForms, setNumOfForms] = useState(0);
+  const [totalOrders, setTotalOrders] = useState([]);
+  const [isSubmit, setIsSubmit] = useState(false);
 
   // const [orders, setOrders] =
   // create variable object array and add
 
   useEffect(() => {
+    loadOrders();
     loadProducts();
   }, []);
 
   const loadProducts = async () => {
     try {
       const result = await getProducts();
-      setProducts(result.data);
+      var productItems = result.data;
+      // console.log(totalOrders);
+      totalOrders.forEach((orderItem) => {
+        productItems = productItems.filter(
+          (item) => item.id !== orderItem.product_id
+        );
+      });
+      // console.log(productItems);
+      setProducts(productItems);
+    } catch (error) {
+      console.log("Error", error.message);
+    }
+  };
+
+  const loadOrders = async () => {
+    try {
+      const result = await getOrders();
+      console.log(result.data);
+
+      setTotalOrders(
+        result.data.filter((orderItem) => orderItem.invoice_id == id)
+      );
     } catch (error) {
       console.log("Error", error.message);
     }
@@ -69,10 +99,71 @@ function ProductSellProductForm() {
     }
   };
 
-  const handleSellProduct = (e) => {
+  // const handleSellProduct = (e) => {
+  //   e.preventDefault();
+  //   window.location = "/dashboard/product/sell/amount";
+  // };
+
+  // const onSubmit = async (e) => {
+  //   e.preventDefault();
+  //   // console.log(order);
+  //   try {
+  //     // const response = await addOrder(order);
+  //     // const newOrder = response.data;
+  //     // console.log(response.data);
+  //   } catch (error) {
+  //     if (error.response.status === 500) {
+  //       console.log("There was a problem with the server: ", error);
+  //     } else {
+  //       console.log(error.response.data.msg);
+  //     }
+  //   }
+  // };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    window.location = "/dashboard/product/sell/amount";
+    try {
+      const response = await addOrder(order);
+      var product_id = response.data.id;
+
+      const result = await getOrderDetails(product_id);
+      console.log(result.data);
+      setProducts(
+        products.filter((product) => product.id !== result.data.product.id)
+      );
+      setTotalOrders([...totalOrders, result.data]);
+      const resetOrder = {
+        product_id: 0,
+        price: 0,
+        quantity: 1,
+        customer_id: id,
+        discount: 0,
+      };
+      setOrder(resetOrder);
+      // console.log(response.data);
+    } catch (error) {
+      if (error.response.status === 500) {
+        console.log("There was a problem with the server: ", error);
+      } else {
+        console.log(error.response.data.msg);
+      }
+    }
   };
+
+  const handleFinalProcess = (e) => {
+    e.preventDefault();
+    console.log("handleContinueProcess");
+    // send paramter value as customer id and date
+  };
+
+  const handleCancelOrder = (e, id) => {
+    e.preventDefault();
+    console.log(id);
+    // cancel order process
+  };
+
+  // console.log(totalOrders);
+
   return (
     <React.Fragment>
       <div className={ProductViewFormStyle.titleHeader}>
@@ -99,10 +190,10 @@ function ProductSellProductForm() {
           </div>
         </div>
       </div>
+
       <form
-        action="#"
+        // onSubmit={(e) => onSubmit(e)}
         className={ProductViewFormStyle.formStyle}
-        onSubmit={(e) => handleSellProduct(e)}
       >
         <div className={ProductViewFormStyle.details}>
           <div className={ProductViewFormStyle.infoPart}>
@@ -124,7 +215,7 @@ function ProductSellProductForm() {
                     onChange={(e) => onInputChange(e)}
                     required
                   >
-                    <option value="">Select Product</option>
+                    <option value="0">Select Product</option>
                     {Array.isArray(products) === true && (
                       <React.Fragment>
                         {products.map((product, index) => (
@@ -194,15 +285,112 @@ function ProductSellProductForm() {
                 " " +
                 ProductViewFormStyle.addRightMargin
               }
+              onClick={(e) => handleSubmit(e)}
             >
-              Add Product
-            </button>
-            <button className={ProductViewFormStyle.descButtonAddStyle}>
               Sell Product
             </button>
+            {totalOrders.length > 0 && (
+              <button
+                className={ProductViewFormStyle.descButtonAddStyle}
+                onClick={(e) => handleFinalProcess(e)}
+              >
+                Finish Sell
+              </button>
+            )}
           </div>
         </div>
       </form>
+
+      {Array.isArray(totalOrders) === true && (
+        <React.Fragment>
+          {totalOrders.map((order, index) => (
+            <form key={index + 1} className={ProductViewFormStyle.formStyle}>
+              <div className={ProductViewFormStyle.details}>
+                <div className={ProductViewFormStyle.infoPart}>
+                  <div className={ProductViewFormStyle.form}>
+                    <div
+                      className={
+                        ProductViewFormStyle.formLine +
+                        " " +
+                        ProductViewFormStyle.setMarginTop
+                      }
+                    >
+                      <div className={ProductViewFormStyle.data}>
+                        <label className={ProductViewFormStyle.labelStyle}>
+                          Product
+                        </label>
+                        <input
+                          type="text"
+                          value={order.product.name}
+                          readOnly
+                          placeholder="Product Qunatity"
+                          className={ProductViewFormStyle.inputStyle}
+                        />
+                      </div>
+                      <div className={ProductViewFormStyle.data}>
+                        <label className={ProductViewFormStyle.labelStyle}>
+                          Quantity
+                        </label>
+                        <input
+                          type="number"
+                          value={order.quantity}
+                          readOnly
+                          placeholder="Product Qunatity"
+                          className={ProductViewFormStyle.inputStyle}
+                        />
+                      </div>
+                    </div>
+                    <div className={ProductViewFormStyle.formLine}>
+                      <div className={ProductViewFormStyle.data}>
+                        <label className={ProductViewFormStyle.labelStyle}>
+                          Discount
+                        </label>
+                        <input
+                          type="text"
+                          value={order.discount + "%"}
+                          placeholder="Product Price"
+                          className={ProductViewFormStyle.inputStyle}
+                          readOnly
+                        />
+                      </div>
+                      <div className={ProductViewFormStyle.data}>
+                        <label className={ProductViewFormStyle.labelStyle}>
+                          Price
+                        </label>
+                        <input
+                          type="text"
+                          name="price"
+                          value={"Rs." + order.price}
+                          placeholder="Product Price"
+                          className={ProductViewFormStyle.inputStyle}
+                          readOnly
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className={ProductViewFormStyle.descButtonsAdd}>
+                <div className={ProductViewFormStyle.descButtonAdd}>
+                  <button
+                    className={
+                      ProductViewFormStyle.descButtonAddStyle +
+                      " " +
+                      ProductViewFormStyle.descButtonAddStyleColor +
+                      " " +
+                      ProductViewFormStyle.addRightMargin
+                    }
+                    onClick={(e) => handleCancelOrder(e, order.id)}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </form>
+          ))}
+        </React.Fragment>
+      )}
     </React.Fragment>
   );
 }

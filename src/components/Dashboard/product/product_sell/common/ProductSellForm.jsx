@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import { addCustomer } from "../../../service/customer";
+import { addInvoice } from "../../../service/invoice";
 
 function ProductSellForm() {
   const [customer, setCustomer] = useState({
@@ -12,11 +13,6 @@ function ProductSellForm() {
     payment_method: "CASH",
   });
 
-  const handleSellProduct = (e) => {
-    e.preventDefault();
-    window.location = "/dashboard/product/sell/product";
-  };
-
   const onInputChange = (e) => {
     setCustomer({ ...customer, [e.target.name]: e.target.value });
   };
@@ -26,7 +22,12 @@ function ProductSellForm() {
 
     try {
       const response = await addCustomer(customer);
-      const id = response.data.id;
+      const customerId = response.data.id;
+      const invoice = {
+        customer_id: customerId,
+      };
+      const responseInvoice = await addInvoice(invoice);
+      const id = responseInvoice.data.id;
       window.location = `/dashboard/product/sell/product/${id}`;
       console.log(response);
     } catch (error) {

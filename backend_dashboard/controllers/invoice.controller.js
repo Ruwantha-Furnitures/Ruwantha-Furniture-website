@@ -1,44 +1,39 @@
 const db = require("../models");
-const Order = db.order;
+const Invoice = db.invoice;
 
 exports.create = async (req, res) => {
   // validate request
-  if (!req.body.price) {
+  if (!req.body.customer_id) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
 
-  //  Create a Order
-  const order = {
-    product_id: req.body.product_id,
-    price: req.body.price,
-    quantity: req.body.quantity,
-    discount: req.body.discount,
-    invoice_id: req.body.invoice_id,
+  //  Create a Invoice
+  const invoice = {
+    customer_id: req.body.customer_id,
   };
 
-  //   Save order in the database
-  await Order.create(order)
+  //   Save invoice in the database
+  await Invoice.create(invoice)
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occured while creating the Order",
+        message: err.message || "Some error occured while creating the Invoice",
       });
     });
 };
 
 // retrieve the data
 exports.findAll = (req, res) => {
-  Order.findAll({ where: { is_deleted: 0 }, include: ["product", "invoice"] })
+  Invoice.findAll({ where: { is_deleted: 0 }, include: ["customer"] })
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message:
-          err.message || "Some error occured while retrieving Categories",
+        message: err.message || "Some error occured while retrieving Invoice",
       });
     });
 };
@@ -46,16 +41,13 @@ exports.findAll = (req, res) => {
 // retreive single object
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  Order.findOne({
-    where: { id: id, is_deleted: 0 },
-    include: ["product", "invoice"],
-  })
+  Invoice.findOne({ where: { id: id, is_deleted: 0 }, include: ["customer"] })
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error retrieving Order with id = " + id,
+        message: "Error retrieving Invoice with id = " + id,
       });
     });
 };
@@ -64,21 +56,21 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  Order.update(req.body, {
+  Invoice.update(req.body, {
     where: { id: id, is_deleted: 0 },
   })
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Order was updated successfully",
+          message: "Invoice was updated successfully",
         });
       } else {
-        res.send({ message: `Cannot update Order with id=${id}` });
+        res.send({ message: `Cannot update Invoice with id=${id}` });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error updating Order with id = " + id,
+        message: "Error updating Invoice with id = " + id,
       });
     });
 };
@@ -87,21 +79,26 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const id = req.params.id;
-  Order.update(req.body, {
-    where: { id: id },
-  })
+  Invoice.update(
+    {
+      is_deleted: true,
+    },
+    {
+      where: { id: id },
+    }
+  )
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Order was deleted successfully",
+          message: "Invoice was deleted successfully",
         });
       } else {
-        res.send({ message: `Cannot delete Order with id=${id}` });
+        res.send({ message: `Cannot delete Invoice with id=${id}` });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error deleting Order with id = " + id,
+        message: "Error deleting Invoice with id = " + id,
       });
     });
 };
