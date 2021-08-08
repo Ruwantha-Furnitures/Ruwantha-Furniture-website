@@ -30,7 +30,7 @@ const LoginForm = ({ loginHandler }) => {
 
     return (
         <div>                  
-          <Card className={FormStyle.cardbox} style={{marginTop:'30px', marginBottom: '30px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
+          <Card className={FormStyle.cardbox} style={{marginTop:'30px', marginBottom: '30px', width: '21rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
             <Form style={{padding: '20px'}} onSubmit={submitHandler}>  
             <center><img src={Avatar} style={avatar} alt='avatar'/></center><br />
             
