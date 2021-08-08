@@ -4,7 +4,7 @@ import Footer from "../../Common/Footer";
 import { Container } from 'reactstrap';
 import DeleteForm from './CustomerDeleteProfileForm';
 import Subnavigation from "../Navigation/Subnav";
-import Topimg from '../../../../assets/topimg29.jpg';
+import Topimg from '../../../../assets/topimg35.jpg';
 import axios from 'axios';
 
 function CustomerDeleteProfile() {

@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import Form from "react-bootstrap/Form";
 import {Row} from 'reactstrap';
+import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import FormStyle from "../../../../css/web/Form.module.css";
@@ -11,7 +12,7 @@ function CustomerDeleteProfileForm() {
 
     const submitHandler = () => {        
         const data = {password };
-      };
+    };
 
       
     const title={
@@ -51,7 +52,7 @@ function CustomerDeleteProfileForm() {
                         required                     
                     ></input><br />                    
                     <div align="right"><br />                                       
-                        <link to='/customer_deleteProfile'><Button variant="danger">Cancel</Button></link>{' '}
+                        <Link to='/customer_deleteProfile'><Button variant="danger">Cancel</Button></Link>{' '}
                         <Button variant="success" type='submit'>Delete</Button>{' '}                     
                     </div>                                                     
                 </Form>                                                          
