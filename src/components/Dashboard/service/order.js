@@ -14,10 +14,10 @@ export function getOrderDetails(id) {
   return axios.get(apiOrderUrl + "/" + id);
 }
 
-// export function editProductDetails(id, product) {
-//   return axios.put(apiOrderUrl + "/" + id, product);
-// }
+export function editOrderDetails(id, order) {
+  return axios.put(apiOrderUrl + "/" + id, order);
+}
 
-// export function deleteProduct(id) {
-//   return axios.delete(apiOrderUrl + "/" + id);
-// }
+export function deleteOrder(id) {
+  return axios.delete(apiOrderUrl + "/" + id);
+}

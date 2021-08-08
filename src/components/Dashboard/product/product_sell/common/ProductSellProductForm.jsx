@@ -2,14 +2,11 @@ import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import { Link, useParams } from "react-router-dom";
 import { getProducts } from "./../../../service/product";
-import { addOrder, getOrders } from "../../../service/order";
+import { addOrder, getOrders, deleteOrder } from "../../../service/order";
 import { getOrderDetails } from "./../../../service/order";
 
 function ProductSellProductForm() {
-  // get customer id from params
   const { id } = useParams();
-
-  console.log(id);
 
   const [products, setProducts] = useState({
     id: 0,
@@ -26,50 +23,36 @@ function ProductSellProductForm() {
     discount: 0,
   });
 
-  const [numOfForms, setNumOfForms] = useState(0);
   const [totalOrders, setTotalOrders] = useState([]);
-  const [isSubmit, setIsSubmit] = useState(false);
-
-  // const [orders, setOrders] =
-  // create variable object array and add
 
   useEffect(() => {
-    loadOrders();
-    loadProducts();
+    loadOrdersAndProducts();
   }, []);
 
-  const loadProducts = async () => {
+  const loadOrdersAndProducts = async () => {
     try {
-      const result = await getProducts();
-      var productItems = result.data;
+      const result = await getOrders();
+      // console.log(result.data);
+      const resultOrders = result.data.filter(
+        (orderItem) => orderItem.invoice_id == id
+      );
+      const resultProducts = await getProducts();
+      var productItems = resultProducts.data;
       // console.log(totalOrders);
-      totalOrders.forEach((orderItem) => {
+      resultOrders.forEach((orderItem) => {
         productItems = productItems.filter(
           (item) => item.id !== orderItem.product_id
         );
       });
       // console.log(productItems);
       setProducts(productItems);
-    } catch (error) {
-      console.log("Error", error.message);
-    }
-  };
-
-  const loadOrders = async () => {
-    try {
-      const result = await getOrders();
-      console.log(result.data);
-
-      setTotalOrders(
-        result.data.filter((orderItem) => orderItem.invoice_id == id)
-      );
+      setTotalOrders(resultOrders);
     } catch (error) {
       console.log("Error", error.message);
     }
   };
 
   const onInputChange = (e) => {
-    // setOrder({ ...order, [e.target.name]: e.target.value });
     if (e.target.name === "product_id") {
       const product_id = e.target.value;
       const filterProduct = products.filter(
@@ -87,7 +70,7 @@ function ProductSellProductForm() {
         productPrice: price,
       });
 
-      console.log(filterProduct);
+      // console.log(filterProduct);
     } else if (e.target.name === "quantity") {
       const quantity = e.target.value;
       const priceTotal = order.productPrice * quantity;
@@ -98,27 +81,6 @@ function ProductSellProductForm() {
       });
     }
   };
-
-  // const handleSellProduct = (e) => {
-  //   e.preventDefault();
-  //   window.location = "/dashboard/product/sell/amount";
-  // };
-
-  // const onSubmit = async (e) => {
-  //   e.preventDefault();
-  //   // console.log(order);
-  //   try {
-  //     // const response = await addOrder(order);
-  //     // const newOrder = response.data;
-  //     // console.log(response.data);
-  //   } catch (error) {
-  //     if (error.response.status === 500) {
-  //       console.log("There was a problem with the server: ", error);
-  //     } else {
-  //       console.log(error.response.data.msg);
-  //     }
-  //   }
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -152,12 +114,19 @@ function ProductSellProductForm() {
 
   const handleFinalProcess = (e) => {
     e.preventDefault();
+    window.location = `/dashboard/product/sell/amount/${id}`;
     console.log("handleContinueProcess");
     // send paramter value as customer id and date
   };
 
-  const handleCancelOrder = (e, id) => {
+  const handleCancelOrder = async (e, order_id) => {
     e.preventDefault();
+    try {
+      const response = await deleteOrder(order_id);
+      window.location = `/dashboard/product/sell/product/${id}`;
+    } catch (error) {
+      console.log("Error", error.message);
+    }
     console.log(id);
     // cancel order process
   };

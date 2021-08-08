@@ -103,7 +103,7 @@ function App() {
           />
           <Route
             exact
-            path="/dashboard/product/sell/amount"
+            path="/dashboard/product/sell/amount/:id"
             component={ProductSellAmount}
           />
           <Route
@@ -338,10 +338,21 @@ function App() {
             path="/customer_productDetails_payment"
             component={CustomerPaymentFromViewProduct}
           ></Route>
-          <Route exact path="/customer_productDetails_checkout" component={CustomerChekoutFromViewProduct}></Route>
-          <Route exact path="/customer_productDetails_payment" component={CustomerPaymentFromViewProduct}></Route>
-          <Route exact path="/customer_deleteProfile" component={CustomerDeleteProfile}></Route>
-
+          <Route
+            exact
+            path="/customer_productDetails_checkout"
+            component={CustomerChekoutFromViewProduct}
+          ></Route>
+          <Route
+            exact
+            path="/customer_productDetails_payment"
+            component={CustomerPaymentFromViewProduct}
+          ></Route>
+          <Route
+            exact
+            path="/customer_deleteProfile"
+            component={CustomerDeleteProfile}
+          ></Route>
         </Switch>
       </div>
     </Router>
