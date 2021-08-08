@@ -1,8 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.module.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { getInvoiceDetails } from "./../../service/invoice";
+import { getOrders } from "./../../service/order";
 
 function OrderDetailsForm() {
+  const { id } = useParams();
+
+  const [orders, setOrders] = useState([]);
+  const [invoice, setInvoice] = useState({
+    total_amount: 0,
+    customer: {
+      first_name: "",
+      last_name: "",
+      email: "",
+      address: "",
+      contact_number: "",
+      payment_method: "",
+    },
+    no_of_products: 0,
+    products_price: 0,
+    total_discounts: 0,
+  });
+
+  useEffect(() => {
+    loadPageData();
+  }, []);
+
   const url = window.location.pathname.split("/");
   const orderLocation = url[2];
   let navigate;
@@ -24,7 +48,21 @@ function OrderDetailsForm() {
 
   console.log(navigate);
 
-  // console.log(url);
+  const loadPageData = async () => {
+    try {
+      // get invoice data
+      const resultInvoice = await getInvoiceDetails(id);
+      setInvoice(resultInvoice.data);
+      // get order data according to invoice
+      const resultOrders = await getOrders();
+      const ordersData = resultOrders.data.filter(
+        (orderItem) => orderItem.invoice_id == id
+      );
+      setOrders(ordersData);
+    } catch (error) {
+      console.log("Error", error.message);
+    }
+  };
 
   return (
     <React.Fragment>
@@ -65,18 +103,20 @@ function OrderDetailsForm() {
                 </label>
                 <input
                   type="text"
-                  value=""
+                  value={invoice.no_of_products}
                   placeholder="Number of Products"
                   className={ProductViewFormStyle.inputStyle}
+                  readOnly
                 />
               </div>
               <div className={ProductViewFormStyle.data}>
                 <label className={ProductViewFormStyle.labelStyle}>Price</label>
                 <input
                   type="text"
-                  value=""
+                  value={"Rs." + invoice.products_price}
                   placeholder="Product(s) Price"
                   className={ProductViewFormStyle.inputStyle}
+                  readOnly
                 />
               </div>
             </div>
@@ -87,9 +127,10 @@ function OrderDetailsForm() {
                 </label>
                 <input
                   type="text"
-                  value=""
+                  value={invoice.total_discounts + "%"}
                   placeholder="Total Discount"
                   className={ProductViewFormStyle.inputStyle}
+                  readOnly
                 />
               </div>
               <div className={ProductViewFormStyle.data}>
@@ -98,9 +139,10 @@ function OrderDetailsForm() {
                 </label>
                 <input
                   type="text"
-                  value=""
+                  value={"Rs." + invoice.total_amount}
                   placeholder="Total Amount"
                   className={ProductViewFormStyle.inputStyle}
+                  readOnly
                 />
               </div>
             </div>
@@ -125,9 +167,10 @@ function OrderDetailsForm() {
                 </label>
                 <input
                   type="text"
-                  value=""
+                  value={invoice.customer.first_name}
                   placeholder="Customer First Name"
                   className={ProductViewFormStyle.inputStyle}
+                  readOnly
                 />
               </div>
               <div className={ProductViewFormStyle.data}>
@@ -136,9 +179,10 @@ function OrderDetailsForm() {
                 </label>
                 <input
                   type="text"
-                  value=""
+                  value={invoice.customer.last_name}
                   placeholder="Customer Last Name"
                   className={ProductViewFormStyle.inputStyle}
+                  readOnly
                 />
               </div>
             </div>
@@ -149,9 +193,10 @@ function OrderDetailsForm() {
                 </label>
                 <input
                   type="text"
-                  value=""
+                  value={invoice.customer.email}
                   placeholder="Customer Email Address"
                   className={ProductViewFormStyle.inputStyleforLong}
+                  readOnly
                 />
               </div>
             </div>
@@ -162,9 +207,10 @@ function OrderDetailsForm() {
                 </label>
                 <input
                   type="text"
-                  value=""
+                  value={invoice.customer.address}
                   placeholder="Customer Dilever Address"
                   className={ProductViewFormStyle.inputStyleforLong}
+                  readOnly
                 />
               </div>
             </div>
@@ -175,9 +221,10 @@ function OrderDetailsForm() {
                 </label>
                 <input
                   type="text"
-                  value=""
+                  value={invoice.customer.contact_number}
                   placeholder="Customer Number"
                   className={ProductViewFormStyle.inputStyle}
+                  readOnly
                 />
               </div>
               <div className={ProductViewFormStyle.data}>
@@ -186,9 +233,10 @@ function OrderDetailsForm() {
                 </label>
                 <input
                   type="text"
-                  value=""
+                  value={invoice.customer.payment_method}
                   placeholder="Payment Method"
                   className={ProductViewFormStyle.inputStyle}
+                  readOnly
                 />
               </div>
             </div>
@@ -196,123 +244,77 @@ function OrderDetailsForm() {
         </div>
       </div>
 
-      <div className={ProductViewFormStyle.details}>
-        <div className={ProductViewFormStyle.infoPart}>
-          <div className={ProductViewFormStyle.form}>
-            <div
-              className={
-                ProductViewFormStyle.formLine +
-                " " +
-                ProductViewFormStyle.setMarginTop
-              }
-            >
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>
-                  Product
-                </label>
-                <input
-                  type="text"
-                  value=""
-                  placeholder="Product Name"
-                  className={ProductViewFormStyle.inputStyle}
-                />
-              </div>
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>Price</label>
-                <input
-                  type="text"
-                  value=""
-                  placeholder="Product Price"
-                  className={ProductViewFormStyle.inputStyle}
-                />
+      {Array.isArray(orders) === true && (
+        <React.Fragment>
+          {orders.map((order, index) => (
+            <div key={index + 1} className={ProductViewFormStyle.details}>
+              <div className={ProductViewFormStyle.infoPart}>
+                <div className={ProductViewFormStyle.form}>
+                  <div
+                    className={
+                      ProductViewFormStyle.formLine +
+                      " " +
+                      ProductViewFormStyle.setMarginTop
+                    }
+                  >
+                    <div className={ProductViewFormStyle.data}>
+                      <label className={ProductViewFormStyle.labelStyle}>
+                        Product
+                      </label>
+                      <input
+                        type="text"
+                        value={order.product.name}
+                        placeholder="Product Name"
+                        className={ProductViewFormStyle.inputStyle}
+                        readOnly
+                      />
+                    </div>
+                    <div className={ProductViewFormStyle.data}>
+                      <label className={ProductViewFormStyle.labelStyle}>
+                        Quantity
+                      </label>
+                      <input
+                        type="text"
+                        value={order.quantity}
+                        placeholder="Product Qunatity"
+                        className={ProductViewFormStyle.inputStyle}
+                        readOnly
+                      />
+                    </div>
+                  </div>
+                  <div className={ProductViewFormStyle.formLine}>
+                    <div className={ProductViewFormStyle.data}>
+                      <label className={ProductViewFormStyle.labelStyle}>
+                        Price
+                      </label>
+                      <input
+                        type="text"
+                        value={order.product.price}
+                        placeholder="Product Price"
+                        className={ProductViewFormStyle.inputStyle}
+                        readOnly
+                      />
+                    </div>
+                    <div className={ProductViewFormStyle.data}>
+                      <label className={ProductViewFormStyle.labelStyle}>
+                        Discount
+                      </label>
+                      <input
+                        type="text"
+                        value={order.product.discount}
+                        placeholder="Product Discount"
+                        className={ProductViewFormStyle.inputStyle}
+                        readOnly
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className={ProductViewFormStyle.formLine}>
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>
-                  Quantity
-                </label>
-                <input
-                  type="text"
-                  value=""
-                  placeholder="Product Qunatity"
-                  className={ProductViewFormStyle.inputStyle}
-                />
-              </div>
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>
-                  Discount
-                </label>
-                <input
-                  type="text"
-                  value=""
-                  placeholder="Product Discount"
-                  className={ProductViewFormStyle.inputStyle}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+          ))}
+        </React.Fragment>
+      )}
 
-      <div className={ProductViewFormStyle.details}>
-        <div className={ProductViewFormStyle.infoPart}>
-          <div className={ProductViewFormStyle.form}>
-            <div
-              className={
-                ProductViewFormStyle.formLine +
-                " " +
-                ProductViewFormStyle.setMarginTop
-              }
-            >
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>
-                  Product
-                </label>
-                <input
-                  type="text"
-                  value=""
-                  placeholder="Product Name"
-                  className={ProductViewFormStyle.inputStyle}
-                />
-              </div>
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>Price</label>
-                <input
-                  type="text"
-                  value=""
-                  placeholder="Product Price"
-                  className={ProductViewFormStyle.inputStyle}
-                />
-              </div>
-            </div>
-            <div className={ProductViewFormStyle.formLine}>
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>
-                  Quantity
-                </label>
-                <input
-                  type="text"
-                  value=""
-                  placeholder="Product Qunatity"
-                  className={ProductViewFormStyle.inputStyle}
-                />
-              </div>
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>
-                  Discount
-                </label>
-                <input
-                  type="text"
-                  value=""
-                  placeholder="Product Discount"
-                  className={ProductViewFormStyle.inputStyle}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       {orderLocation === "deliveryDriver" && (
         <div className={ProductViewFormStyle.descButtonsAdd}>
           <div className={ProductViewFormStyle.descButtonAdd}>
