@@ -11,8 +11,8 @@ module.exports = async (email) => {
   const options = {
     from: "armagic24@outlook.com",
     to: email,
-    subject: "Password",
-    html: `<h1>Thank you for creating new account,we are lookig forwar to having you and providing with you the best of services.</h1>`,
+    subject: "Password Recovery",
+    html: `<h1>Password Recovery</h1>`,
   };
 
   try {

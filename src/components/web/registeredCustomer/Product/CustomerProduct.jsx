@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import Navigation from "../Navigation/UserNav";
 import Footer from "../../Common/Footer";
 import ProductBox  from "./CustomerAllProducts";

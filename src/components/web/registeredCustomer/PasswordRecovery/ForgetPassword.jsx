@@ -17,7 +17,7 @@ function ForgotPassword() {
             const res = await axios.post(`http://192.168.56.1:3002/api/forgetpassword/passwordRecovery/`,            
                 { data }
             );               
-            console.log(res.data)     
+            console.log(res.data.auth)     
             if(res.data.auth === true){
                 setIsSubmit(true);
             }else{

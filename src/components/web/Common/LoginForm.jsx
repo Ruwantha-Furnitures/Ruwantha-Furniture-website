@@ -56,7 +56,7 @@ const LoginForm = ({ loginHandler }) => {
                 <Button variant="success" type="submit" style={{width: '100%'}}>Login</Button>{' '}
               </div> <br />
               <center><Link to="/signup" style={belowlinks}>Don't have an account?</Link></center>
-              <center><Link to='/recoveryPassword' style={belowlinks}>Forgot Password</Link></center>
+              <center><Link to='/forgotPassword' style={belowlinks}>Forgot Password</Link></center>
             </Form>
           </Card>
         </div>
