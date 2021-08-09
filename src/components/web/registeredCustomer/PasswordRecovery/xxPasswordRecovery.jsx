@@ -6,7 +6,7 @@ import backcover from "../../../../assets/topimg33.jpg";
 import "../../../../css/web/Login.css";
 import FormRecovery from './PasswordRecoveryForm';
 
-function UpdateProfile() {
+function PasswordRecovery() {
     return (
         <div style={{              
             backgroundImage: `url(${backcover})`,        
@@ -26,4 +26,4 @@ function UpdateProfile() {
     )
 }
 
-export default UpdateProfile
+export default PasswordRecovery

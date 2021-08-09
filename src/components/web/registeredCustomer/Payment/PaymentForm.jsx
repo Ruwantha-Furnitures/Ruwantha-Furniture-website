@@ -5,7 +5,6 @@ import Navigation from "../Navigation/UserNav";
 import Footer from "../../Common/Footer";
 import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from 'reactstrap';
-import { Link } from "react-router-dom";
 import Avatar from '../../../../assets/shipping.png';
 
 function CustomerCheckoutDeteailsForm() {
@@ -26,8 +25,7 @@ function CustomerCheckoutDeteailsForm() {
 
     const textboxStyle = {
         width: '100%',
-        backgroundColor: '#eeeff5',
-        border: 'none',
+        backgroundColor: '#eeeff5',        
         height: '40px',
         borderRadius: '5px',
         padding: '5px',

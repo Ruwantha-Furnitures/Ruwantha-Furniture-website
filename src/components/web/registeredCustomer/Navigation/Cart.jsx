@@ -1,9 +1,9 @@
-import React , { useState , useEffect } from "react";
+import React , { useState } from "react";
 import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 export default function Cart() {
-const [itemCount, setItemCount] = useState(0);//0 should be change according to the cart table.
+// const [itemCount, setItemCount] = useState(0);//0 should be change according to the cart table.
 
 return (
 	<div style={{ display: "block", padding: 0 }}>

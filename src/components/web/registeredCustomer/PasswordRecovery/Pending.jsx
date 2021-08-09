@@ -10,6 +10,7 @@ import Navigation from "../../customer/Navigation/Indexnav";
 import Footer from "../../Common/Footer";
 
 function Pending() {
+
     const avatar = {
         width: '40%',
         height: '40%',

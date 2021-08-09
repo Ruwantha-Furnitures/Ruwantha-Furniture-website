@@ -6,7 +6,6 @@ import FormStyle from "../../../../css/web/Form.module.css";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-
 const PasswordRecoveryForm  = ({sendEmail}) => {
     const [email, setEmail] = useState("");   
     
