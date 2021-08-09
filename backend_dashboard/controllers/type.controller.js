@@ -27,7 +27,7 @@ exports.create = async (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-  Type.findAll({ where: { is_deleted: 0 } })
+  Type.findAll({ where: { is_deleted: 0 }, include: ["category"] })
     .then((data) => {
       res.send(data);
     })
@@ -43,7 +43,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Type.findOne({ where: { id: id, is_deleted: 0 } })
+  Type.findOne({ where: { id: id, is_deleted: 0 }, include: ["category"] })
     .then((data) => {
       res.send(data);
     })
@@ -62,7 +62,7 @@ exports.update = (req, res) => {
     where: { id: id, is_deleted: 0 },
   })
     .then((num) => {
-      if (num == 1) {
+      if (num === 1) {
         res.send({
           message: "Type was updated successfully",
         });
@@ -81,11 +81,16 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const id = req.params.id;
-  Type.update(req.body, {
-    where: { id: id, is_deleted: 0 },
-  })
+  Type.update(
+    {
+      is_deleted: true,
+    },
+    {
+      where: { id: id, is_deleted: 0 },
+    }
+  )
     .then((num) => {
-      if (num == 1) {
+      if (num === 1) {
         res.send({
           message: "Type was updated successfully",
         });

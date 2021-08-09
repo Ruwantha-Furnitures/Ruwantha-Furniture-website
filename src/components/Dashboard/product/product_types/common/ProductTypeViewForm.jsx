@@ -1,13 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import ProductTypeList from "./ProductTypeList";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Auth from "../../../service/auth";
+import {
+  getProductTypeDetails,
+  deleteProductTypeDetails,
+} from "./../../../service/productType";
 
 function ProductTypeViewForm() {
+  const { id } = useParams();
+
+  const [type, setType] = useState({
+    name: "",
+    categoryId: 0,
+    category: {
+      name: "",
+    },
+  });
+
+  useEffect(() => {
+    loadProductType();
+  }, [id]);
+
+  const loadProductType = async () => {
+    try {
+      const result = await getProductTypeDetails(id);
+      setType(result.data);
+    } catch (error) {
+      console.log("Error ", error.message);
+    }
+  };
+
   const user = Auth.getCurrentUser();
   const handleUpdate = () => {
-    window.location = "/dashboard/product/updateProductType";
+    window.location = `/dashboard/product/updateProductType/${id}`;
+  };
+
+  const handleDelete = async () => {
+    try {
+      const response = await deleteProductTypeDetails(id);
+      window.location = "/dashboard/products";
+    } catch (error) {
+      console.log("There was a problem with the server: ", error);
+    }
   };
 
   return (
@@ -47,7 +83,7 @@ function ProductTypeViewForm() {
                 </label>
                 <input
                   type="text"
-                  value="Category 1"
+                  value={type.category.name}
                   placeholder="Category 1"
                   className={ProductViewFormStyle.inputProductTitle}
                   readOnly
@@ -59,7 +95,7 @@ function ProductTypeViewForm() {
                 </label>
                 <input
                   type="text"
-                  value="Product Type 1"
+                  value={type.name}
                   placeholder="Product Type 1"
                   className={ProductViewFormStyle.inputProductTitle}
                   readOnly
@@ -86,6 +122,7 @@ function ProductTypeViewForm() {
                         " " +
                         ProductViewFormStyle.deleteButtonColor
                       }
+                      onClick={handleDelete}
                     >
                       Delete
                     </button>
@@ -96,7 +133,7 @@ function ProductTypeViewForm() {
           </div>
           <div className={ProductViewFormStyle.typesList}>
             {/* Product type List View */}
-            <ProductTypeList />
+            <ProductTypeList categoryId={type.categoryId} />
           </div>
         </div>
       </div>

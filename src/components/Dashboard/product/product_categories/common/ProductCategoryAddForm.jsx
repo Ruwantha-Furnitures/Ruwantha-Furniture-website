@@ -1,9 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import ProductCategoryList from "./ProductCategoryList";
 import { Link } from "react-router-dom";
+import { addProductCategories } from "./../../../service/productCategory";
 
 function ProductCategoryAddForm() {
+  const [category, setCategory] = useState({
+    name: "",
+  });
+
+  const onInputChange = (e) => {
+    setCategory({ ...category, [e.target.name]: e.target.value });
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await addProductCategories(category);
+      window.location = "/dashboard/product/addProductCategory";
+    } catch (error) {
+      if (error.response.status === 500) {
+        console.log("There was a problem with the server: ", error);
+      } else {
+        console.log(error.response.data.msg);
+      }
+    }
+    console.log(category);
+  };
+
   return (
     <React.Fragment>
       <div className={ProductViewFormStyle.titleHeader}>
@@ -31,7 +55,7 @@ function ProductCategoryAddForm() {
         </div>
       </div>
 
-      <form action="#">
+      <form onSubmit={(e) => onSubmit(e)}>
         <div className={ProductViewFormStyle.details}>
           <div className={ProductViewFormStyle.imgDescPart}>
             <div className={ProductViewFormStyle.typeForm}>
@@ -42,8 +66,11 @@ function ProductCategoryAddForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    value={category.name}
+                    name="name"
+                    onChange={(e) => onInputChange(e)}
                     placeholder="New Product Category"
+                    required
                     className={ProductViewFormStyle.inputProductTitle}
                   />
                 </div>

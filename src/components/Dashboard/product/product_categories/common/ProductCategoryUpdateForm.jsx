@@ -1,9 +1,50 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import ProductCategoryList from "./ProductCategoryList";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import {
+  getProductCategoriesDetails,
+  editProductCategoriesDetails,
+} from "./../../../service/productCategory";
 
 function ProductCategoryUpdateForm() {
+  const { id } = useParams();
+
+  const [category, setCategory] = useState({
+    name: "",
+  });
+
+  useEffect(() => {
+    loadCategory();
+  }, []);
+
+  const loadCategory = async () => {
+    try {
+      const result = await getProductCategoriesDetails(id);
+      setCategory(result.data);
+    } catch (error) {
+      console.log("Error ", error.message);
+    }
+  };
+
+  const onInputChange = (e) => {
+    setCategory({ ...category, [e.target.name]: e.target.value });
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await editProductCategoriesDetails(id, category);
+      window.location = `/dashboard/product/viewProductCategory/${id}`;
+    } catch (error) {
+      if (error.response.status === 500) {
+        console.log("There was a problem with the server: ", error);
+      } else {
+        console.log(error.response.data.msg);
+      }
+    }
+  };
+
   return (
     <React.Fragment>
       <div className={ProductViewFormStyle.titleHeader}>
@@ -31,7 +72,7 @@ function ProductCategoryUpdateForm() {
         </div>
       </div>
 
-      <form action="#">
+      <form onSubmit={(e) => onSubmit(e)}>
         <div className={ProductViewFormStyle.details}>
           <div className={ProductViewFormStyle.imgDescPart}>
             <div className={ProductViewFormStyle.typeForm}>
@@ -42,8 +83,10 @@ function ProductCategoryUpdateForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
-                    placeholder="New Product Category"
+                    value={category.name}
+                    name="name"
+                    placeholder="Update Product Category"
+                    onChange={(e) => onInputChange(e)}
                     className={ProductViewFormStyle.inputProductTitle}
                   />
                 </div>
