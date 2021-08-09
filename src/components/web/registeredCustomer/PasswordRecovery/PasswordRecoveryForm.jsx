@@ -7,13 +7,13 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 
-const PasswordRecoveryForm  = ({PasswordRecoveryHandler}) => {
+const PasswordRecoveryForm  = ({sendEmail}) => {
     const [email, setEmail] = useState("");   
     
     const submitHandler = () => {        
         const data = { email };
         // console.log(data);
-        PasswordRecoveryHandler(data);
+        sendEmail(data);
       };
   
     const avatar = {
@@ -22,7 +22,7 @@ const PasswordRecoveryForm  = ({PasswordRecoveryHandler}) => {
         borderRadius: '50%'
     }
     return (
-        <Card className={FormStyle.cardbox} style={{marginTop:'30px', marginBottom: '30px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
+        <Card className={FormStyle.cardbox} style={{marginTop:'30px', marginBottom: '30px', width: '21rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
             <Form style={{padding: '20px'}} onSubmit={submitHandler}>  
                 <center><img src={Avatar} style={avatar} alt='avatar'/></center><br />
                 <center><h3>Password Recovery</h3></center>
