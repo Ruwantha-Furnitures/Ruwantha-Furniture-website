@@ -1,9 +1,60 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import ProductTypeList from "./ProductTypeList";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import {
+  editProductTypeDetails,
+  getProductTypeDetails,
+} from "./../../../service/productType";
+import { getProductCategories } from "./../../../service/productCategory";
 
 function ProductTypeUpdateForm() {
+  const { id } = useParams();
+
+  const [type, setType] = useState({
+    id: 0,
+    name: "",
+    categoryId: 0,
+  });
+
+  const [categories, setCategories] = useState({
+    id: 0,
+    name: "",
+  });
+
+  useEffect(() => {
+    loadTypeAndCategories();
+  }, []);
+
+  const loadTypeAndCategories = async () => {
+    try {
+      const result = await getProductTypeDetails(id);
+      setType(result.data);
+      const resultCategories = await getProductCategories();
+      setCategories(resultCategories.data);
+    } catch (error) {
+      console.log("Error ", error.message);
+    }
+  };
+
+  const onInputChange = (e) => {
+    setType({ ...type, [e.target.name]: e.target.value });
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await editProductTypeDetails(id, type);
+      window.location = `/dashboard/product/viewProductType/${id}`;
+    } catch (error) {
+      if (error.response.status === 500) {
+        console.log("There was a problem with the server: ", error);
+      } else {
+        console.log(error.response.data.msg);
+      }
+    }
+  };
+
   return (
     <React.Fragment>
       <div className={ProductViewFormStyle.titleHeader}>
@@ -30,7 +81,7 @@ function ProductTypeUpdateForm() {
           </div>
         </div>
       </div>
-      <form action="#">
+      <form onSubmit={(e) => onSubmit(e)}>
         <div className={ProductViewFormStyle.details}>
           <div className={ProductViewFormStyle.imgDescPart}>
             <div className={ProductViewFormStyle.typeForm}>
@@ -39,12 +90,28 @@ function ProductTypeUpdateForm() {
                   <label className={ProductViewFormStyle.labelProductTitle}>
                     Category
                   </label>
-                  <select className={ProductViewFormStyle.inputProductTitle}>
-                    <option value="">Select Category</option>
-                    <option value="category1">Category 1</option>
-                    <option value="category2">Category 2</option>
-                    <option value="category3">Category 3</option>
-                    <option value="category4">Category 4</option>
+                  <select
+                    className={ProductViewFormStyle.inputProductTitle}
+                    name="categoryId"
+                    onChange={(e) => onInputChange(e)}
+                    required
+                  >
+                    {type.categoryId !== 0 ? (
+                      <option value={type.category.id}>
+                        {type.category.name}
+                      </option>
+                    ) : (
+                      <option value="#">Select Type</option>
+                    )}
+                    {Array.isArray(categories) === true && (
+                      <React.Fragment>
+                        {categories.map((category, index) => (
+                          <option key={index} value={category.id}>
+                            {category.name}
+                          </option>
+                        ))}
+                      </React.Fragment>
+                    )}
                   </select>
                 </div>
                 <div className={ProductViewFormStyle.dataProductTitle}>
@@ -53,7 +120,9 @@ function ProductTypeUpdateForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    name="name"
+                    value={type.name}
+                    onChange={(e) => onInputChange(e)}
                     placeholder="New Product Type"
                     className={ProductViewFormStyle.inputProductTitle}
                   />
@@ -74,7 +143,7 @@ function ProductTypeUpdateForm() {
               </div>
             </div>
             <div className={ProductViewFormStyle.typesList}>
-              <ProductTypeList />
+              <ProductTypeList categoryId={type.categoryId} />
             </div>
           </div>
         </div>

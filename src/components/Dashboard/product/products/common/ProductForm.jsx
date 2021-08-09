@@ -8,7 +8,9 @@ import { addProduct } from "./../../../service/product";
 
 function ProductForm() {
   const [file, setFile] = useState("");
-  const [filename, setFilename] = useState("Choose File");
+  // const [filename, setFilename] = useState("Choose File");
+  // const [picture, setPicture] = useState(null);
+  const [imgData, setImgData] = useState(null);
 
   const [product, setProduct] = useState({
     name: "",
@@ -36,13 +38,10 @@ function ProductForm() {
     try {
       const result = await getProductTypes();
       setProductTypes(result.data);
-    } catch (err) {
-      console.log("Error", err.message);
+    } catch (error) {
+      console.log("Error", error.message);
     }
   };
-
-  const [picture, setPicture] = useState(null);
-  const [imgData, setImgData] = useState(null);
 
   const onInputChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
@@ -51,9 +50,9 @@ function ProductForm() {
   const onChangePicture = (e) => {
     if (e.target.files[0]) {
       console.log(e.target.files[0]);
-      setPicture(e.target.files[0]);
+      // setPicture(e.target.files[0]);
       setFile(e.target.files[0]);
-      setFilename(e.target.files[0].name);
+      // setFilename(e.target.files[0].name);
 
       const reader = new FileReader();
       reader.addEventListener("load", () => {
@@ -65,8 +64,6 @@ function ProductForm() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(product);
-    console.log(picture);
 
     const formData = new FormData();
     formData.append("file", file);
