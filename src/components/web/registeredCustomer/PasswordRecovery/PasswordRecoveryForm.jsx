@@ -2,43 +2,28 @@ import React, {useState} from 'react';
 import Form from "react-bootstrap/Form";
 import "../../../../css/web/Login.css";
 import Avatar from "../../../../assets/pwrecovery.png";
-import NavButtonStyle from "../../../../css/web/common.module.css";
 import FormStyle from "../../../../css/web/Form.module.css";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 
-function PasswordRecoveryForm() {
-    const [email, setEmail] = useState("");    
+const PasswordRecoveryForm  = ({sendEmail}) => {
+    const [email, setEmail] = useState("");   
+    
+    const submitHandler = () => {        
+        const data = { email };
+        // console.log(data);
+        sendEmail(data);
+      };
   
-    const title={
-        margin: '0px',
-        padding: '3px',
-    };
-
-    const rowStyle={
-        margin: '10px'
-    };
-
-    const textboxStyle = {
-        width: '100%',
-        backgroundColor: '#eeeff5',
-        border: 'none',
-        height: '40px',
-        borderRadius: '5px',
-        padding: '5px',
-        margin: '5px',
-        border: 'solid 1px darkgray'        
-    };
-
     const avatar = {
         width: '40%',
         height: '40%',
         borderRadius: '50%'
     }
     return (
-        <Card className={FormStyle.cardbox} style={{marginTop:'30px', marginBottom: '30px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
-            <Form style={{padding: '20px'}}>  
+        <Card className={FormStyle.cardbox} style={{marginTop:'30px', marginBottom: '30px', width: '21rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
+            <Form style={{padding: '20px'}} onSubmit={submitHandler}>  
                 <center><img src={Avatar} style={avatar} alt='avatar'/></center><br />
                 <center><h3>Password Recovery</h3></center>
                           

@@ -123,10 +123,9 @@ function CustomerCheckoutDeteailsForm() {
                                     </Col>
                                     <Col sm={6}>
                                         <input style={textboxStyle}
-                                            type='tel' 
+                                            type='text' 
                                             placeholder='Enter your last name'
-                                            value={lname}
-                                            pattern="[0-9]{10}"
+                                            value={lname}                                            
                                             onChange={(e)=>setLName(e.target.value)}
                                             required
                                         />
