@@ -81,6 +81,8 @@ import CustomerChekoutFromViewProduct from "./components/web/registeredCustomer/
 import CustomerPaymentFromViewProduct from "./components/web/registeredCustomer/Product/CustomerPayment.jsx";
 import CustomerDeleteProfile from "./components/web/registeredCustomer/Profile/CustomerDeleteProfile.jsx";
 
+import ForgotPassword from "./components/web/registeredCustomer/PasswordRecovery/ForgetPassword";
+
 function App() {
   return (
     <Router>
@@ -315,17 +317,18 @@ function App() {
           <Route exact path="/recoveryPassword" component={RecoveryPassword} />
           <Route exact path="/PendingEmail" component={PendingEmail} />
           <Route exact path="/forgotPassword_changePassword" component={ForgotPasswordChangePassword} />
+          <Route exact path="/forgotPassword" component={ForgotPassword} />
+          
+
+
           
           <Route exact path="/customer_checkout" component={CustomerCheckout} />
 
           <Route exact path="/payment" component={CustomerPayment} />
           <Route exact path="/customer_reviews" component={CustomerReviews} />
           <Route exact path="/customer_thankyou" component={CustomerThankYou} />
-          <Route
-            exact
-            path="/customer_paymentGateway"
-            component={PayhereCheckout}
-          />
+          <Route exact path="/customer_paymentGateway" component={PayhereCheckout}/>
+
           <Route exact path="/customer_productDetails_checkout" component={CustomerChekoutFromViewProduct}></Route>
           <Route exact path="/customer_productDetails_payment" component={CustomerPaymentFromViewProduct}></Route>
           <Route exact path="/customer_deleteProfile" component={CustomerDeleteProfile}></Route>
