@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TableStyle from "../../../../css/dashboard/Table.module.css";
-// import { getInvoices } from "./../../service/invoice";
+import { getOrders } from "./../../service/order";
 
 function PurchaseOrdersTable() {
-  const [invoices, setInvoices] = useState({
+  const [orders, setOrders] = useState({
     total_amount: 0,
-    no_of_products: 0,
-    products_price: 0,
-    total_discounts: 0,
     customer_id: 0,
     customer: {
       first_name: "",
@@ -21,7 +18,7 @@ function PurchaseOrdersTable() {
   });
 
   const [search, setSearch] = useState("");
-  const [filterInvoices, setFilterInvoices] = useState({});
+  const [filterOrders, setFilterOrders] = useState({});
 
   useEffect(() => {
     loadInvoice();
@@ -29,9 +26,10 @@ function PurchaseOrdersTable() {
 
   const loadInvoice = async () => {
     try {
-      // const result = await getInvoices();
-      // setInvoices(result.data);
-      // setFilterInvoices(result.data);
+      const result = await getOrders();
+      const ordersData = result.data;
+      setOrders(result.data);
+      setFilterOrders(result.data);
     } catch (error) {
       console.log("Error", error.message);
     }
@@ -40,15 +38,15 @@ function PurchaseOrdersTable() {
   const onInputChange = (e) => {
     let search = e.target.value;
     if (search === "") {
-      setFilterInvoices(invoices);
+      setFilterOrders(orders);
     } else {
-      setFilterInvoices(
-        invoices.filter(
-          (invoice) =>
-            invoice.customer.first_name
+      setFilterOrders(
+        orders.filter(
+          (order) =>
+            order.customer.first_name
               .toLowerCase()
               .includes(search.toLowerCase()) ||
-            invoice.customer.last_name
+            order.customer.last_name
               .toLowerCase()
               .includes(search.toLowerCase())
         )
@@ -57,6 +55,8 @@ function PurchaseOrdersTable() {
 
     setSearch(search);
   };
+
+  // console.log(orders);
 
   return (
     <React.Fragment>
@@ -98,43 +98,43 @@ function PurchaseOrdersTable() {
                 <div className={TableStyle.header}>Customer Name</div>
               </th>
               <th>
-                <div className={TableStyle.header}>No. Products</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Price</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Discount</div>
+                <div className={TableStyle.header}>Contact Number</div>
               </th>
               <th>
                 <div className={TableStyle.header}>Amount</div>
               </th>
+              <th>
+                <div className={TableStyle.header}>Payment Method</div>
+              </th>
+              <th>
+                <div className={TableStyle.header}>Date</div>
+              </th>
             </tr>
           </thead>
           <tbody>
-            {Array.isArray(filterInvoices) === true && (
+            {Array.isArray(filterOrders) === true && (
               <React.Fragment>
-                {filterInvoices.map((invoice, index) => (
+                {filterOrders.map((order, index) => (
                   <tr key={index + 1}>
                     <td>
                       <Link
-                        to={`/dashboard/purchaseOrder/details/${invoice.id}`}
+                        to={`/dashboard/purchaseOrder/details/${order.id}`}
                         className={TableStyle.linkStyle}
                       >
                         <span className={TableStyle.statusStyleLink}>
-                          {invoice.id}
+                          {order.id}
                         </span>
                       </Link>
                     </td>
                     <td>
-                      {invoice.customer.first_name +
+                      {order.customer.first_name +
                         " " +
-                        invoice.customer.last_name}
+                        order.customer.last_name}
                     </td>
-                    <td>{invoice.no_of_products}</td>
-                    <td>{invoice.products_price}</td>
-                    <td>{invoice.total_discounts}</td>
-                    <td>{invoice.total_amount}</td>
+                    <td>{order.customer.contact_number}</td>
+                    <td>{"Rs. " + order.total_amount}</td>
+                    <td>{order.customer.payment_method}</td>
+                    <td>{order.createdAt.split("T")[0]}</td>
                   </tr>
                 ))}
               </React.Fragment>
