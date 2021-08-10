@@ -294,8 +294,8 @@ input[type="search"]:-webkit-autofill:active {
 }
 
 .statusStyle {
-  font-weight: 400;
-  font-size: 14px;
+  font-weight: normal;
+  font-size: 16px;
   line-height: 22px;
   color: #ffffff;
   border-radius: 22px;
@@ -307,8 +307,16 @@ input[type="search"]:-webkit-autofill:active {
 .statusColorNotCompleted {
   /* background-color: #be2e2e; */
   border: 1px solid #be2e2e;
-  color: #000000;
+  color: rgba(0, 0, 0, 0.76);
   font-weight: 400;
+}
+
+.statusColorNotAvailabile {
+  /* background-color: #be2e2e; */
+  border: 1px solid #be2e2e;
+  color: rgba(0, 0, 0, 0.76);
+  font-weight: 400;
+  cursor: auto;
 }
 
 .statusColorNotCompleted:hover {
@@ -322,16 +330,26 @@ input[type="search"]:-webkit-autofill:active {
 .statusColorCompleted {
   /* background-color: #2ebe72; */
   border: 1px solid #2ebe72;
-  color: #000000;
+  color: rgba(0, 0, 0, 0.76);
   font-weight: 400;
-  font-size: 14px;
+  /* font-size: 14px; */
   line-height: 22px;
+}
+
+.statusColorAvailabile {
+  /* background-color: #2ebe72; */
+  border: 1px solid #2ebe72;
+  color: rgba(0, 0, 0, 0.76);
+  font-weight: 400;
+  /* font-size: 14px; */
+  line-height: 22px;
+  cursor: auto;
 }
 
 .statusColorCompleted:hover {
   background-color: #2ebe72;
   font-weight: 400;
-  font-size: 14px;
+  /* font-size: 14px; */
   line-height: 22px;
   color: #ffffff;
 }

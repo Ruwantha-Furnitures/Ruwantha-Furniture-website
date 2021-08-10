@@ -1,10 +1,77 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.module.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import {
+  getDeliveryDriverDetails,
+  editDeliveryDriverDetails,
+} from "./../../service/deliveryDriver";
+import { getAccountDetails, editAccountDetails } from "./../../service/account";
 
 function DeliveryDriverUpdateForm() {
   const url = window.location.pathname.split("/");
   const driverProfileSet = url[2];
+
+  const { id } = useParams();
+
+  const [deliveryDriver, setDeliveryDriver] = useState({
+    first_name: "",
+    last_name: "",
+    address: "",
+    contact_number: "",
+    account_id: "",
+    availabilty: 0,
+  });
+
+  const [account, setAccount] = useState({
+    id: 0,
+    email: "",
+    password: "",
+    user_level: 0,
+  });
+
+  useEffect(() => {
+    loadDeliveryDriver();
+  }, []);
+
+  const loadDeliveryDriver = async () => {
+    try {
+      const result = await getDeliveryDriverDetails(id);
+      const driver = result.data;
+      const account_id = driver.account.id;
+      const resultAccount = await getAccountDetails(account_id);
+      setDeliveryDriver(driver);
+      setAccount(resultAccount.data);
+    } catch (error) {
+      console.log("Error", error.message);
+    }
+  };
+
+  const onInputChange = (e) => {
+    if (e.target.name === "email") {
+      setAccount({ ...account, [e.target.name]: e.target.value });
+    } else {
+      setDeliveryDriver({ ...deliveryDriver, [e.target.name]: e.target.value });
+    }
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const responseAccount = await editAccountDetails(account.id, account);
+      const responseDeliveryDriver = await editDeliveryDriverDetails(
+        id,
+        deliveryDriver
+      );
+      window.location = `/dashboard/deliveryDriver/view/${id}`;
+    } catch (error) {
+      if (error.response.status === 500) {
+        console.log("There was a problem with the server: ", error);
+      } else {
+        console.log(error.response.data.msg);
+      }
+    }
+  };
 
   return (
     <React.Fragment>
@@ -36,7 +103,10 @@ function DeliveryDriverUpdateForm() {
           </div>
         </div>
       </div>
-      <form action="#" className={ProductViewFormStyle.formStyle}>
+      <form
+        onSubmit={(e) => onSubmit(e)}
+        className={ProductViewFormStyle.formStyle}
+      >
         <div className={ProductViewFormStyle.details}>
           <div className={ProductViewFormStyle.infoPart}>
             <div className={ProductViewFormStyle.form}>
@@ -53,9 +123,12 @@ function DeliveryDriverUpdateForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    name="first_name"
+                    value={deliveryDriver.first_name}
+                    onChange={(e) => onInputChange(e)}
                     placeholder="Driver First Name"
                     className={ProductViewFormStyle.inputStyle}
+                    required
                   />
                 </div>
                 <div className={ProductViewFormStyle.data}>
@@ -64,9 +137,12 @@ function DeliveryDriverUpdateForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    name="last_name"
+                    value={deliveryDriver.last_name}
+                    onChange={(e) => onInputChange(e)}
                     placeholder="Driver Last Name"
                     className={ProductViewFormStyle.inputStyle}
+                    required
                   />
                 </div>
               </div>
@@ -77,9 +153,12 @@ function DeliveryDriverUpdateForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    name="email"
+                    value={account.email}
+                    onChange={(e) => onInputChange(e)}
                     placeholder="Delivery Driver Email"
                     className={ProductViewFormStyle.inputStyleforLong}
+                    required
                   />
                 </div>
               </div>
@@ -90,9 +169,12 @@ function DeliveryDriverUpdateForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    name="address"
+                    value={deliveryDriver.address}
+                    onChange={(e) => onInputChange(e)}
                     placeholder="Delivery Driver Address"
                     className={ProductViewFormStyle.inputStyleforLong}
+                    required
                   />
                 </div>
               </div>
@@ -103,45 +185,24 @@ function DeliveryDriverUpdateForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    name="contact_number"
+                    value={deliveryDriver.contact_number}
+                    onChange={(e) => onInputChange(e)}
                     placeholder="Driver Contact Number"
                     className={ProductViewFormStyle.inputStyle}
+                    required
                   />
                 </div>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
-                    Payment
+                    Availability
                   </label>
                   <input
                     type="text"
-                    value=""
+                    value={deliveryDriver.availability === 1 ? "TRUE" : "FALSE"}
                     placeholder="Basic Payment"
                     className={ProductViewFormStyle.inputStyle}
-                  />
-                </div>
-              </div>
-
-              <div className={ProductViewFormStyle.formLine}>
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Vehicle
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Vehicle Number"
-                    className={ProductViewFormStyle.inputStyle}
-                  />
-                </div>
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Type
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Vehicle Type"
-                    className={ProductViewFormStyle.inputStyle}
+                    readOnly
                   />
                 </div>
               </div>

@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import { addCustomer } from "../../../service/customer";
-import { addInvoice } from "../../../service/invoice";
+import { addOrder } from "../../../service/order";
 
 function ProductSellForm() {
   const [customer, setCustomer] = useState({
     first_name: "",
     last_name: "",
-    email: "",
     address: "",
     contact_number: "",
     payment_method: "CASH",
@@ -23,11 +22,11 @@ function ProductSellForm() {
     try {
       const response = await addCustomer(customer);
       const customerId = response.data.id;
-      const invoice = {
+      const order = {
         customer_id: customerId,
       };
-      const responseInvoice = await addInvoice(invoice);
-      const id = responseInvoice.data.id;
+      const responseOrder = await addOrder(order);
+      const id = responseOrder.data.id;
       window.location = `/dashboard/product/sell/product/${id}`;
       console.log(response);
     } catch (error) {
@@ -84,21 +83,6 @@ function ProductSellForm() {
                     onChange={(e) => onInputChange(e)}
                     placeholder="Customer Last Name"
                     className={ProductViewFormStyle.inputStyle}
-                  />
-                </div>
-              </div>
-              <div className={ProductViewFormStyle.formLine}>
-                <div className={ProductViewFormStyle.dataforLong}>
-                  <label className={ProductViewFormStyle.labelStyleforLong}>
-                    Email
-                  </label>
-                  <input
-                    type="text"
-                    name="email"
-                    value={customer.email}
-                    onChange={(e) => onInputChange(e)}
-                    placeholder="Customer Email Address"
-                    className={ProductViewFormStyle.inputStyleforLong}
                   />
                 </div>
               </div>

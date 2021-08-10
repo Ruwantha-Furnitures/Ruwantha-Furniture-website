@@ -1,10 +1,64 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TableStyle from "../../../../css/dashboard/Table.module.css";
 import Auth from "../../service/auth";
+import { getDeliveryDrivers } from "./../../service/deliveryDriver";
 
 function DeliveryDriversTable() {
   const user = Auth.getCurrentUser();
+
+  const [deliveryDrivers, setDeliveryDrivers] = useState({
+    first_name: "",
+    last_name: "",
+    address: "",
+    contact_number: "",
+    account_id: "",
+    account: {
+      email: "",
+    },
+    availabilty: 0,
+  });
+
+  const [search, setSearch] = useState("");
+  const [filterDeliveryDrivers, setFilterDeliveryDrivers] = useState({});
+
+  useEffect(() => {
+    loadDeliveryDrivers();
+  }, []);
+
+  const loadDeliveryDrivers = async () => {
+    try {
+      const result = await getDeliveryDrivers();
+
+      // console.log(resultCategories.data);
+      const drivers = result.data;
+
+      setDeliveryDrivers(drivers);
+      setFilterDeliveryDrivers(drivers);
+    } catch (error) {
+      console.log("Error", error.message);
+    }
+  };
+
+  const onInputChange = (e) => {
+    let search = e.target.value;
+    if (search === "") {
+      setFilterDeliveryDrivers(deliveryDrivers);
+    } else {
+      setFilterDeliveryDrivers(
+        deliveryDrivers.filter((driver) =>
+          (driver.first_name + " " + driver.last_name)
+            .toLowerCase()
+            .includes(search.toLowerCase())
+        )
+      );
+    }
+
+    setSearch(search);
+  };
+
+  console.log(filterDeliveryDrivers);
+
   return (
     <React.Fragment>
       <div className={TableStyle.titleHeader}>
@@ -23,9 +77,10 @@ function DeliveryDriversTable() {
               <div className={TableStyle.searchText}>
                 <input
                   type="search"
-                  placeholder="Search Here"
-                  value=""
+                  placeholder="Search Driver Here"
+                  value={search}
                   name="search"
+                  onChange={(e) => onInputChange(e)}
                   className={TableStyle.searchinput}
                 />
               </div>
@@ -37,6 +92,9 @@ function DeliveryDriversTable() {
         <table className={TableStyle.tableShow}>
           <thead>
             <tr>
+              <th>
+                <div className={TableStyle.header}>Driver ID</div>
+              </th>
               <th>
                 <div className={TableStyle.header}>
                   Delivery Driver
@@ -61,15 +119,48 @@ function DeliveryDriversTable() {
                 <div className={TableStyle.header}>Contact Number</div>
               </th>
               <th>
-                <div className={TableStyle.header}>Payment(Basic)</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Area</div>
+                <div className={TableStyle.header}>Availabilty</div>
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            {Array.isArray(filterDeliveryDrivers) === true && (
+              <React.Fragment>
+                {filterDeliveryDrivers.map((driver, index) => (
+                  <tr key={index + 1}>
+                    <td>
+                      <Link
+                        to={`/dashboard/deliveryDriver/view/${driver.id}`}
+                        className={TableStyle.linkStyle}
+                      >
+                        <span className={TableStyle.statusStyleLink}>
+                          {driver.id}
+                        </span>
+                      </Link>
+                    </td>
+                    <td> {driver.first_name + " " + driver.last_name}</td>
+                    <td>{driver.account.email}</td>
+                    <td>{driver.contact_number}</td>
+                    <td>
+                      <span
+                        className={
+                          TableStyle.statusStyle +
+                          " " +
+                          (driver.availability === 1
+                            ? TableStyle.statusColorAvailabile
+                            : TableStyle.statusColorNotAvailabile)
+                        }
+                      >
+                        {driver.availability === 1
+                          ? "Avaialable"
+                          : "NotAvailable"}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </React.Fragment>
+            )}
+            {/* <tr>
               <td>
                 <Link
                   to="/dashboard/deliveryDriver/view"
@@ -82,8 +173,8 @@ function DeliveryDriversTable() {
               <td>0778522736</td>
               <td>Rs.25000</td>
               <td>Galle</td>
-            </tr>
-            <tr>
+            </tr> */}
+            {/* <tr>
               <td>
                 <Link
                   to="/dashboard/deliveryDriver/view"
@@ -96,8 +187,8 @@ function DeliveryDriversTable() {
               <td>0778522436</td>
               <td>Rs.15000</td>
               <td>Mulleriayawa</td>
-            </tr>
-            <tr>
+            </tr> */}
+            {/* <tr>
               <td>
                 <Link
                   to="/dashboard/deliveryDriver/view"
@@ -110,8 +201,8 @@ function DeliveryDriversTable() {
               <td>0778222736</td>
               <td>Rs.35000</td>
               <td>Meepawala</td>
-            </tr>
-            <tr>
+            </tr> */}
+            {/* <tr>
               <td>
                 <Link
                   to="/dashboard/deliveryDriver/view"
@@ -124,8 +215,8 @@ function DeliveryDriversTable() {
               <td>0774536987</td>
               <td>Rs.45000</td>
               <td>Gonapura</td>
-            </tr>
-            <tr>
+            </tr> */}
+            {/* <tr>
               <td>
                 <Link
                   to="/dashboard/deliveryDriver/view"
@@ -138,8 +229,8 @@ function DeliveryDriversTable() {
               <td>0778522436</td>
               <td>Rs.15000</td>
               <td>Colombo</td>
-            </tr>
-            <tr>
+            </tr> */}
+            {/* <tr>
               <td>
                 <Link
                   to="/dashboard/deliveryDriver/view"
@@ -152,8 +243,8 @@ function DeliveryDriversTable() {
               <td>0778222736</td>
               <td>Rs.35000</td>
               <td>Beddegama</td>
-            </tr>
-            <tr>
+            </tr> */}
+            {/* <tr>
               <td>
                 <Link
                   to="/dashboard/deliveryDriver/view"
@@ -166,7 +257,7 @@ function DeliveryDriversTable() {
               <td>0774536987</td>
               <td>Rs.45000</td>
               <td>Borella</td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
       </div>

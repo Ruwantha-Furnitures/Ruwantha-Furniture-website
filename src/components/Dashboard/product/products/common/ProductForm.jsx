@@ -164,6 +164,7 @@ function ProductForm() {
                     onChange={(e) => onInputChange(e)}
                     placeholder="Product Description..."
                     className={ProductViewFormStyle.inputStyleDesc}
+                    required
                   />
                 </div>
               </div>
@@ -211,6 +212,7 @@ function ProductForm() {
                     onChange={(e) => onInputChange(e)}
                     placeholder="Product Colour"
                     className={ProductViewFormStyle.inputStyle}
+                    required
                   />
                 </div>
               </div>
@@ -226,6 +228,7 @@ function ProductForm() {
                     onChange={(e) => onInputChange(e)}
                     placeholder="Product Width in CM"
                     className={ProductViewFormStyle.inputStyle}
+                    required
                   />
                 </div>
                 <div className={ProductViewFormStyle.data}>
@@ -239,6 +242,7 @@ function ProductForm() {
                     onChange={(e) => onInputChange(e)}
                     placeholder="Product Height in CM"
                     className={ProductViewFormStyle.inputStyle}
+                    required
                   />
                 </div>
               </div>
@@ -254,6 +258,7 @@ function ProductForm() {
                     onChange={(e) => onInputChange(e)}
                     placeholder="Product Price in RS"
                     className={ProductViewFormStyle.inputStyle}
+                    required
                   />
                 </div>
                 <div className={ProductViewFormStyle.data}>
@@ -267,6 +272,7 @@ function ProductForm() {
                     onChange={(e) => onInputChange(e)}
                     placeholder="Product Discount in PR"
                     className={ProductViewFormStyle.inputStyle}
+                    required
                   />
                 </div>
               </div>
