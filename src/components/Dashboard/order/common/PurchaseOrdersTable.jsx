@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TableStyle from "../../../../css/dashboard/Table.module.css";
-import { getInvoices } from "./../../service/invoice";
+// import { getInvoices } from "./../../service/invoice";
 
 function PurchaseOrdersTable() {
   const [invoices, setInvoices] = useState({
@@ -29,9 +29,9 @@ function PurchaseOrdersTable() {
 
   const loadInvoice = async () => {
     try {
-      const result = await getInvoices();
-      setInvoices(result.data);
-      setFilterInvoices(result.data);
+      // const result = await getInvoices();
+      // setInvoices(result.data);
+      // setFilterInvoices(result.data);
     } catch (error) {
       console.log("Error", error.message);
     }

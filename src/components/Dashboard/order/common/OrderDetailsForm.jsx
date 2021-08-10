@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.module.css";
 import { Link, useParams } from "react-router-dom";
-import { getInvoiceDetails } from "./../../service/invoice";
+// import { getInvoiceDetails } from "./../../service/invoice";
 import { getOrders } from "./../../service/order";
 
 function OrderDetailsForm() {
@@ -51,8 +51,8 @@ function OrderDetailsForm() {
   const loadPageData = async () => {
     try {
       // get invoice data
-      const resultInvoice = await getInvoiceDetails(id);
-      setInvoice(resultInvoice.data);
+      // const resultInvoice = await getInvoiceDetails(id);
+      // setInvoice(resultInvoice.data);
       // get order data according to invoice
       const resultOrders = await getOrders();
       const ordersData = resultOrders.data.filter(

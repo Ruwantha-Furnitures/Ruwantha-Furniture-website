@@ -107,7 +107,7 @@ function App() {
           />
           <Route
             exact
-            path="/dashboard/product/sell/product"
+            path="/dashboard/product/sell/product/:id"
             component={ProductSell}
           />
           <Route
