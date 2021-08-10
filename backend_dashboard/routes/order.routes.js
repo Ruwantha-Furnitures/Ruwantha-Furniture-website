@@ -9,13 +9,13 @@ module.exports = (app) => {
   //   Retrieve all types
   router.get("/", order.findAll);
 
-  // //   get single type
+  //   get single type
   router.get("/:id", order.findOne);
 
-  // //   update the type
+  //   update the type
   router.put("/:id", order.update);
 
-  // //   delete type
+  //   delete type
   router.delete("/:id", order.delete);
 
   app.use("/api/order", router);

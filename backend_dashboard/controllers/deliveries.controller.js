@@ -1,44 +1,46 @@
 const db = require("../models");
-const Customer = db.customer;
+const Deliveries = db.deliveries;
 
 exports.create = async (req, res) => {
   // validate request
-  if (!req.body.first_name) {
+  if (!req.body.order_id) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
 
   //  Create a Product
-  const customer = {
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    address: req.body.address,
-    contact_number: req.body.contact_number,
-    payment_method: req.body.payment_method,
+  const deliveries = {
+    order_id: req.body.order_id,
+    delivery_driver_id: req.body.delivery_driver_id,
   };
 
-  //   Save customer in the database
-  await Customer.create(customer)
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Some error occured while creating the Product",
-      });
-    });
-};
-
-// retrieve the data
-exports.findAll = (req, res) => {
-  Customer.findAll({ where: { is_deleted: 0 } })
+  //   Save deliveries in the database
+  await Deliveries.create(deliveries)
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occured while retrieving Categories",
+          err.message || "Some error occured while creating the Deliveries",
+      });
+    });
+};
+
+// retrieve the data
+exports.findAll = (req, res) => {
+  Deliveries.findAll({
+    where: { is_deleted: 0 },
+    include: ["order", "deliveryDriver"],
+  })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message ||
+          "Some error occured while retrieving Deliveries Details",
       });
     });
 };
@@ -46,13 +48,16 @@ exports.findAll = (req, res) => {
 // retreive single object
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  Customer.findOne({ where: { id: id, is_deleted: 0 } })
+  Deliveries.findOne({
+    where: { id: id, is_deleted: 0 },
+    include: ["order", "deliveryDriver"],
+  })
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error retrieving Customer with id = " + id,
+        message: "Error retrieving Deliveries Details with id = " + id,
       });
     });
 };
@@ -61,21 +66,23 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  Customer.update(req.body, {
+  Deliveries.update(req.body, {
     where: { id: id, is_deleted: 0 },
   })
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Customer was updated successfully",
+          message: "Deliveries Details was updated successfully",
         });
       } else {
-        res.send({ message: `Cannot update Customer with id=${id}` });
+        res.send({
+          message: `Cannot update Deliveries Details with id=${id}`,
+        });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error updating Customer with id = " + id,
+        message: "Error updating Deliveries Details with id = " + id,
       });
     });
 };
@@ -84,7 +91,7 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const id = req.params.id;
-  Customer.update(
+  Deliveries.update(
     {
       is_deleted: true,
     },
@@ -95,15 +102,17 @@ exports.delete = (req, res) => {
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Customer was deleted successfully",
+          message: "Assign Order Details was deleted successfully",
         });
       } else {
-        res.send({ message: `Cannot delete Customer with id=${id}` });
+        res.send({
+          message: `Cannot delete Assign Order Details with id=${id}`,
+        });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error deleting Customer with id = " + id,
+        message: "Error deleting Product with id = " + id,
       });
     });
 };

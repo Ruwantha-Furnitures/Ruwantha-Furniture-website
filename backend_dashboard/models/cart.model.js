@@ -1,14 +1,14 @@
 module.exports = (sequelize, Sequelize) => {
-  const Invoice = sequelize.define("orders", {
-    total_amount: {
-      type: Sequelize.NUMBER,
-      defaultValue: 0,
+  const Cart = sequelize.define("carts", {
+    quantity: {
+      type: Sequelize.INTEGER,
     },
+
     is_deleted: {
       type: Sequelize.INTEGER,
       defaultValue: 0,
     },
   });
 
-  return Invoice;
+  return Cart;
 };

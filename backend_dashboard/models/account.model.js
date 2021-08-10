@@ -1,20 +1,17 @@
 module.exports = (sequelize, Sequelize) => {
-  const DeliverDriver = sequelize.define("delivery_drivers", {
-    first_name: {
+  const Account = sequelize.define("accounts", {
+    email: {
       type: Sequelize.STRING,
-    },
-    last_name: {
-      type: Sequelize.STRING,
-    },
-    address: {
-      type: Sequelize.STRING,
-    },
-    contact_number: {
-      type: Sequelize.INTEGER,
       allowNull: false,
       unique: true,
     },
-    availability: {
+    password: {
+      type: Sequelize.STRING,
+    },
+    user_level: {
+      type: Sequelize.INTEGER,
+    },
+    verified: {
       type: Sequelize.INTEGER,
       defaultValue: 1,
     },
@@ -24,5 +21,5 @@ module.exports = (sequelize, Sequelize) => {
     },
   });
 
-  return DeliverDriver;
+  return Account;
 };

@@ -3,20 +3,18 @@ const DeliveryDriver = db.deliveryDriver;
 
 exports.create = async (req, res) => {
   // validate request
-  if (!req.body.email) {
+  if (!req.body.account_id) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
 
   //  Create a DeliverDriver
   const deliverDriver = {
+    account_id: req.body.account_id,
     first_name: req.body.first_name,
     last_name: req.body.last_name,
-    email: req.body.email,
     address: req.body.address,
     contact_number: req.body.contact_number,
-    payment: req.body.payment,
-    area: req.body.area,
   };
 
   //   Save deliverDriver in the database
@@ -34,7 +32,7 @@ exports.create = async (req, res) => {
 
 // retrieve the data
 exports.findAll = (req, res) => {
-  DeliveryDriver.findAll({ where: { is_deleted: 0 } })
+  DeliveryDriver.findAll({ where: { is_deleted: 0 }, include: ["account"] })
     .then((data) => {
       res.send(data);
     })
@@ -51,6 +49,7 @@ exports.findOne = (req, res) => {
   const id = req.params.id;
   DeliveryDriver.findOne({
     where: { id: id, is_deleted: 0 },
+    include: ["account"],
   })
     .then((data) => {
       res.send(data);
@@ -89,9 +88,14 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const id = req.params.id;
-  DeliveryDriver.update(req.body, {
-    where: { id: id },
-  })
+  DeliveryDriver.update(
+    {
+      is_deleted: true,
+    },
+    {
+      where: { id: id },
+    }
+  )
     .then((num) => {
       if (num == 1) {
         res.send({

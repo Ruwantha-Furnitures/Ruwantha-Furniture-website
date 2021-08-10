@@ -1,39 +1,44 @@
 const db = require("../models");
-const Invoice = db.invoice;
+const Message = db.messages;
 
 exports.create = async (req, res) => {
   // validate request
-  if (!req.body.customer_id) {
+  if (!req.body.first_name) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
 
-  //  Create a Invoice
-  const invoice = {
-    customer_id: req.body.customer_id,
+  //  Create a Product
+  const message = {
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    contact_number: req.body.contact_number,
+    email: req.body.email,
+    details: req.body.details,
   };
 
-  //   Save invoice in the database
-  await Invoice.create(invoice)
+  //   Save customer in the database
+  await Message.create(message)
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occured while creating the Invoice",
+        message: err.message || "Some error occured while creating the Message",
       });
     });
 };
 
 // retrieve the data
 exports.findAll = (req, res) => {
-  Invoice.findAll({ where: { is_deleted: 0 }, include: ["customer"] })
+  Message.findAll({ where: { is_deleted: 0 } })
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occured while retrieving Invoice",
+        message:
+          err.message || "Some error occured while retrieving Categories",
       });
     });
 };
@@ -41,13 +46,13 @@ exports.findAll = (req, res) => {
 // retreive single object
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  Invoice.findOne({ where: { id: id, is_deleted: 0 }, include: ["customer"] })
+  Message.findOne({ where: { id: id, is_deleted: 0 } })
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error retrieving Invoice with id = " + id,
+        message: "Error retrieving Message with id = " + id,
       });
     });
 };
@@ -56,21 +61,21 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  Invoice.update(req.body, {
+  Message.update(req.body, {
     where: { id: id, is_deleted: 0 },
   })
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Invoice was updated successfully",
+          message: "Message was updated successfully",
         });
       } else {
-        res.send({ message: `Cannot update Invoice with id=${id}` });
+        res.send({ message: `Cannot update Message with id=${id}` });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error updating Invoice with id = " + id,
+        message: "Error updating Message with id = " + id,
       });
     });
 };
@@ -79,7 +84,7 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const id = req.params.id;
-  Invoice.update(
+  Message.update(
     {
       is_deleted: true,
     },
@@ -90,15 +95,15 @@ exports.delete = (req, res) => {
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Invoice was deleted successfully",
+          message: "Message was deleted successfully",
         });
       } else {
-        res.send({ message: `Cannot delete Invoice with id=${id}` });
+        res.send({ message: `Cannot delete Message with id=${id}` });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error deleting Invoice with id = " + id,
+        message: "Error deleting Message with id = " + id,
       });
     });
 };
