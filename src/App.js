@@ -69,16 +69,19 @@ import View_Product from "./components/web/customer/Products/ViewProductDetails.
 import View_Product_Details from "./components/web/registeredCustomer/Product/CustomerViewProductDetails";
 import CustomerUpdateProfile from "./components/web/registeredCustomer/Profile/UpdateProfile.jsx";
 import CustomerChangePassword from "./components/web/registeredCustomer/Profile/CustomerChangePassword.jsx";
-import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery/PasswordRecovery.jsx";
+// import RecoveryPassword from "./components/web/registeredCustomer/PasswordRecovery/PasswordRecovery.jsx";
 import CustomerPayment from "./components/web/registeredCustomer/Payment/PaymentForm.jsx";
 import CustomerCheckout from "./components/web/registeredCustomer/Cart/ShippingDetailsPage.jsx";
 import CustomerReviews from "./components/web/registeredCustomer/Reviews/CustomerReviewsPage.jsx";
 import CustomerThankYou from "./components/web/registeredCustomer/Payment/ThankYouPage.jsx";
 import PendingEmail from "./components/web/registeredCustomer/PasswordRecovery/Pending.jsx";
+import ForgotPasswordChangePassword from "./components/web/registeredCustomer/PasswordRecovery/ChangePassword.jsx";
 import PayhereCheckout from "./components/web/registeredCustomer/Payment/Checkout.jsx";
 import CustomerChekoutFromViewProduct from "./components/web/registeredCustomer/Product/CustomerCheckout.jsx";
 import CustomerPaymentFromViewProduct from "./components/web/registeredCustomer/Product/CustomerPayment.jsx";
 import CustomerDeleteProfile from "./components/web/registeredCustomer/Profile/CustomerDeleteProfile.jsx";
+
+import ForgotPassword from "./components/web/registeredCustomer/PasswordRecovery/ForgetPassword";
 
 function App() {
   return (
@@ -90,15 +93,11 @@ function App() {
           <Route exact path="/dashboardDriver" component={DashboardDriver} />
           {/* Dashboard-Product */}
           <Route exact path="/dashboard/products" component={Products} />
-          <Route
-            exact
-            path="/dashboard/product/view/:id"
-            component={ProductView}
-          />
+          <Route exact path="/dashboard/product/view" component={ProductView} />
           <Route exact path="/dashboard/product/add" component={ProductAdd} />
           <Route
             exact
-            path="/dashboard/product/update/:id"
+            path="/dashboard/product/update"
             component={ProductUpdate}
           />
           <Route
@@ -108,7 +107,7 @@ function App() {
           />
           <Route
             exact
-            path="/dashboard/product/sell/product/:id"
+            path="/dashboard/product/sell/product"
             component={ProductSell}
           />
           <Route
@@ -124,12 +123,12 @@ function App() {
 
           <Route
             exact
-            path="/dashboard/product/viewProductType/:id"
+            path="/dashboard/product/viewProductType"
             component={ProductTypeView}
           />
           <Route
             exact
-            path="/dashboard/product/updateProductType/:id"
+            path="/dashboard/product/updateProductType"
             component={ProductTypeUpdate}
           />
 
@@ -141,12 +140,12 @@ function App() {
 
           <Route
             exact
-            path="/dashboard/product/viewProductCategory/:id"
+            path="/dashboard/product/viewProductCategory"
             component={ProductCategoryView}
           />
           <Route
             exact
-            path="/dashboard/product/updateProductCategory/:id"
+            path="/dashboard/product/updateProductCategory"
             component={ProductCategoryUpdate}
           />
 
@@ -315,8 +314,14 @@ function App() {
             path="/updateProfile"
             component={CustomerUpdateProfile}
           />
-          <Route exact path="/recoveryPassword" component={RecoveryPassword} />
+          {/* <Route exact path="/recoveryPassword" component={RecoveryPassword} /> */}
           <Route exact path="/PendingEmail" component={PendingEmail} />
+          <Route
+            exact
+            path="/forgotPassword_changePassword"
+            component={ForgotPasswordChangePassword}
+          />
+          <Route exact path="/forgotPassword" component={ForgotPassword} />
 
           <Route exact path="/customer_checkout" component={CustomerCheckout} />
 
@@ -328,16 +333,7 @@ function App() {
             path="/customer_paymentGateway"
             component={PayhereCheckout}
           />
-          <Route
-            exact
-            path="/customer_productDetails_checkout"
-            component={CustomerChekoutFromViewProduct}
-          ></Route>
-          <Route
-            exact
-            path="/customer_productDetails_payment"
-            component={CustomerPaymentFromViewProduct}
-          ></Route>
+
           <Route
             exact
             path="/customer_productDetails_checkout"

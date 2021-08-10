@@ -4,7 +4,7 @@ import Navigation from "../Navigation/Indexnav";
 import Footer from "../../Common/Footer";
 import SignForm from "./SignupForm";
 import backcover from "../../../../assets/topimg27.jpg";
-import CommonFormStyle from "../../../../css/web/common.module.css";
+import { Container} from 'reactstrap';  
 import axios from "axios";
 
 const Signup = () => {  
@@ -42,10 +42,10 @@ const Signup = () => {
               height: '100%',
               width: '100%'    
             }}>
-              <Navigation></Navigation>
-              <div className={CommonFormStyle.formPageBox} align="left"> 
-                <SignForm  signUpHandler={signUpHandler} ></SignForm>   
-              </div>                    
+              <Navigation></Navigation>              
+              <Container align='left'>        
+                  <SignForm  signUpHandler={signUpHandler} ></SignForm>   
+              </Container>                   
               <Footer></Footer>                   
             </div>
         )}

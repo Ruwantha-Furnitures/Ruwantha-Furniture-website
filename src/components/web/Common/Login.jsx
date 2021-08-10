@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import { Redirect } from "react-router-dom";
 import backcover from "../../../assets/topimg30.jpg";
 import "../../../css/web/Login.css";
-import CommonFormStyle from "../../../css/web/common.module.css";
+import { Container} from 'reactstrap';  
 import axios from "axios";
 
 const Login = ({ navigation }) => {
@@ -85,9 +85,9 @@ const Login = ({ navigation }) => {
         width: '100%',
       }}>
         <Navigation></Navigation>
-        <div className={CommonFormStyle.formPageBox} align="left">
+        <Container align='left'>        
           <LoginForm navigation={navigation} loginHandler={loginHandler} ></LoginForm>
-        </div>
+        </Container>
         <Footer></Footer></div>)}
 
     </React.Fragment>

@@ -21,7 +21,7 @@ const SignupForm= ({ signUpHandler }) =>  {
 
   return (
       <div>      
-        <Card className={FormStyle.cardbox} style={{marginBottom: '20px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
+        <Card className={FormStyle.cardbox} style={{marginBottom: '20px', width: '21rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
             <Form style={{padding: '20px',margin: '10px'}} onSubmit={submitHandler}>          
             <center>        
                 <h2>Sign Up</h2>
