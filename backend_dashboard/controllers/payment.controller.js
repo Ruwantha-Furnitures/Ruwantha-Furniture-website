@@ -1,44 +1,40 @@
 const db = require("../models");
-const Customer = db.customer;
+const Payment = db.payments;
 
 exports.create = async (req, res) => {
   // validate request
-  if (!req.body.first_name) {
+  if (!req.body.order_id) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
 
   //  Create a Product
-  const customer = {
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    address: req.body.address,
-    contact_number: req.body.contact_number,
-    payment_method: req.body.payment_method,
+  const payment = {
+    order_id: req.body.order_id,
+    total_amounts: req.body.total_amounts,
   };
 
   //   Save customer in the database
-  await Customer.create(customer)
+  await Payment.create(payment)
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occured while creating the Product",
+        message: err.message || "Some error occured while creating the Payment",
       });
     });
 };
 
 // retrieve the data
 exports.findAll = (req, res) => {
-  Customer.findAll({ where: { is_deleted: 0 } })
+  Payment.findAll({ where: { is_deleted: 0 }, include: ["order"] })
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message:
-          err.message || "Some error occured while retrieving Categories",
+        message: err.message || "Some error occured while retrieving Payment",
       });
     });
 };
@@ -46,13 +42,16 @@ exports.findAll = (req, res) => {
 // retreive single object
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  Customer.findOne({ where: { id: id, is_deleted: 0 } })
+  Payment.findOne({
+    where: { id: id, is_deleted: 0 },
+    include: ["order"],
+  })
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error retrieving Customer with id = " + id,
+        message: "Error retrieving Payment with id = " + id,
       });
     });
 };
@@ -61,21 +60,21 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  Customer.update(req.body, {
+  Payment.update(req.body, {
     where: { id: id, is_deleted: 0 },
   })
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Customer was updated successfully",
+          message: "Payment was updated successfully",
         });
       } else {
-        res.send({ message: `Cannot update Customer with id=${id}` });
+        res.send({ message: `Cannot update Payment with id=${id}` });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error updating Customer with id = " + id,
+        message: "Error updating Payment with id = " + id,
       });
     });
 };
@@ -84,7 +83,7 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const id = req.params.id;
-  Customer.update(
+  Payment.update(
     {
       is_deleted: true,
     },
@@ -95,15 +94,15 @@ exports.delete = (req, res) => {
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Customer was deleted successfully",
+          message: "Payment was deleted successfully",
         });
       } else {
-        res.send({ message: `Cannot delete Customer with id=${id}` });
+        res.send({ message: `Cannot delete Payment with id=${id}` });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error deleting Customer with id = " + id,
+        message: "Error deleting Payment with id = " + id,
       });
     });
 };

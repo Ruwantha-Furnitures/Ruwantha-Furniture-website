@@ -1,37 +1,35 @@
 const db = require("../models");
-const Customer = db.customer;
+const Cart = db.cart;
 
 exports.create = async (req, res) => {
   // validate request
-  if (!req.body.first_name) {
+  if (!req.body.customer_id) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
 
   //  Create a Product
-  const customer = {
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    address: req.body.address,
-    contact_number: req.body.contact_number,
-    payment_method: req.body.payment_method,
+  const cart = {
+    customer_id: req.body.customer_id,
+    product_id: req.body.product_id,
+    quantity: req.body.quantity,
   };
 
   //   Save customer in the database
-  await Customer.create(customer)
+  await Cart.create(cart)
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occured while creating the Product",
+        message: err.message || "Some error occured while creating the Cart",
       });
     });
 };
 
 // retrieve the data
 exports.findAll = (req, res) => {
-  Customer.findAll({ where: { is_deleted: 0 } })
+  Cart.findAll({ where: { is_deleted: 0 }, include: ["customer", "product"] })
     .then((data) => {
       res.send(data);
     })
@@ -46,13 +44,16 @@ exports.findAll = (req, res) => {
 // retreive single object
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  Customer.findOne({ where: { id: id, is_deleted: 0 } })
+  Cart.findOne({
+    where: { id: id, is_deleted: 0 },
+    include: ["customer", "product"],
+  })
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error retrieving Customer with id = " + id,
+        message: "Error retrieving Cart with id = " + id,
       });
     });
 };
@@ -61,21 +62,21 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  Customer.update(req.body, {
+  Cart.update(req.body, {
     where: { id: id, is_deleted: 0 },
   })
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Customer was updated successfully",
+          message: "Cart was updated successfully",
         });
       } else {
-        res.send({ message: `Cannot update Customer with id=${id}` });
+        res.send({ message: `Cannot update Cart with id=${id}` });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error updating Customer with id = " + id,
+        message: "Error updating Cart with id = " + id,
       });
     });
 };
@@ -84,7 +85,7 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const id = req.params.id;
-  Customer.update(
+  Cart.update(
     {
       is_deleted: true,
     },
@@ -95,15 +96,15 @@ exports.delete = (req, res) => {
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Customer was deleted successfully",
+          message: "Cart was deleted successfully",
         });
       } else {
-        res.send({ message: `Cannot delete Customer with id=${id}` });
+        res.send({ message: `Cannot delete Cart with id=${id}` });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error deleting Customer with id = " + id,
+        message: "Error deleting Cart with id = " + id,
       });
     });
 };

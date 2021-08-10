@@ -1,5 +1,5 @@
 const db = require("../models");
-const Customer = db.customer;
+const Message = db.messages;
 
 exports.create = async (req, res) => {
   // validate request
@@ -9,29 +9,29 @@ exports.create = async (req, res) => {
   }
 
   //  Create a Product
-  const customer = {
+  const message = {
     first_name: req.body.first_name,
     last_name: req.body.last_name,
-    address: req.body.address,
     contact_number: req.body.contact_number,
-    payment_method: req.body.payment_method,
+    email: req.body.email,
+    details: req.body.details,
   };
 
   //   Save customer in the database
-  await Customer.create(customer)
+  await Message.create(message)
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occured while creating the Product",
+        message: err.message || "Some error occured while creating the Message",
       });
     });
 };
 
 // retrieve the data
 exports.findAll = (req, res) => {
-  Customer.findAll({ where: { is_deleted: 0 } })
+  Message.findAll({ where: { is_deleted: 0 } })
     .then((data) => {
       res.send(data);
     })
@@ -46,13 +46,13 @@ exports.findAll = (req, res) => {
 // retreive single object
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  Customer.findOne({ where: { id: id, is_deleted: 0 } })
+  Message.findOne({ where: { id: id, is_deleted: 0 } })
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error retrieving Customer with id = " + id,
+        message: "Error retrieving Message with id = " + id,
       });
     });
 };
@@ -61,21 +61,21 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  Customer.update(req.body, {
+  Message.update(req.body, {
     where: { id: id, is_deleted: 0 },
   })
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Customer was updated successfully",
+          message: "Message was updated successfully",
         });
       } else {
-        res.send({ message: `Cannot update Customer with id=${id}` });
+        res.send({ message: `Cannot update Message with id=${id}` });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error updating Customer with id = " + id,
+        message: "Error updating Message with id = " + id,
       });
     });
 };
@@ -84,7 +84,7 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const id = req.params.id;
-  Customer.update(
+  Message.update(
     {
       is_deleted: true,
     },
@@ -95,15 +95,15 @@ exports.delete = (req, res) => {
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Customer was deleted successfully",
+          message: "Message was deleted successfully",
         });
       } else {
-        res.send({ message: `Cannot delete Customer with id=${id}` });
+        res.send({ message: `Cannot delete Message with id=${id}` });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error deleting Customer with id = " + id,
+        message: "Error deleting Message with id = " + id,
       });
     });
 };

@@ -102,7 +102,7 @@ function App() {
           />
           <Route
             exact
-            path="/dashboard/product/sell/amount"
+            path="/dashboard/product/sell/amount/:id"
             component={ProductSellAmount}
           />
           <Route
@@ -158,7 +158,7 @@ function App() {
           {/* For Navigations Purpose */}
           <Route
             exact
-            path="/dashboard/purchaseOrder/details"
+            path="/dashboard/purchaseOrder/details/:id"
             component={OrderDetails}
           />
           <Route
@@ -316,23 +316,39 @@ function App() {
           />
           {/* <Route exact path="/recoveryPassword" component={RecoveryPassword} /> */}
           <Route exact path="/PendingEmail" component={PendingEmail} />
-          <Route exact path="/forgotPassword_changePassword" component={ForgotPasswordChangePassword} />
+          <Route
+            exact
+            path="/forgotPassword_changePassword"
+            component={ForgotPasswordChangePassword}
+          />
           <Route exact path="/forgotPassword" component={ForgotPassword} />
-          
 
-
-          
           <Route exact path="/customer_checkout" component={CustomerCheckout} />
 
           <Route exact path="/payment" component={CustomerPayment} />
           <Route exact path="/customer_reviews" component={CustomerReviews} />
           <Route exact path="/customer_thankyou" component={CustomerThankYou} />
-          <Route exact path="/customer_paymentGateway" component={PayhereCheckout}/>
+          <Route
+            exact
+            path="/customer_paymentGateway"
+            component={PayhereCheckout}
+          />
 
-          <Route exact path="/customer_productDetails_checkout" component={CustomerChekoutFromViewProduct}></Route>
-          <Route exact path="/customer_productDetails_payment" component={CustomerPaymentFromViewProduct}></Route>
-          <Route exact path="/customer_deleteProfile" component={CustomerDeleteProfile}></Route>
-
+          <Route
+            exact
+            path="/customer_productDetails_checkout"
+            component={CustomerChekoutFromViewProduct}
+          ></Route>
+          <Route
+            exact
+            path="/customer_productDetails_payment"
+            component={CustomerPaymentFromViewProduct}
+          ></Route>
+          <Route
+            exact
+            path="/customer_deleteProfile"
+            component={CustomerDeleteProfile}
+          ></Route>
         </Switch>
       </div>
     </Router>

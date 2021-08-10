@@ -1,21 +1,25 @@
 const db = require("../models");
-const AssignOrderDetails = db.assignOrderDetails;
+const ShippingDetails = db.shippingDetails;
 
 exports.create = async (req, res) => {
   // validate request
-  if (!req.body.customer_id) {
+  if (!req.body.first_name) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
 
   //  Create a Product
-  const assignOrderDetails = {
-    customer_id: req.body.customer_id,
-    delivery_driver_id: req.body.delivery_driver_id,
+  const shippingDetails = {
+    order_id: req.body.order_id,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    shipping_address: req.body.shipping_address,
+    contact_number: req.body.contact_number,
+    charge_id: req.body.charge_id,
   };
 
-  //   Save assignOrderDetails in the database
-  await AssignOrderDetails.create(assignOrderDetails)
+  //   Save customer in the database
+  await ShippingDetails.create(shippingDetails)
     .then((data) => {
       res.send(data);
     })
@@ -23,16 +27,16 @@ exports.create = async (req, res) => {
       res.status(500).send({
         message:
           err.message ||
-          "Some error occured while creating the AssignOrder Details",
+          "Some error occured while creating the Shipping Details",
       });
     });
 };
 
 // retrieve the data
 exports.findAll = (req, res) => {
-  AssignOrderDetails.findAll({
+  ShippingDetails.findAll({
     where: { is_deleted: 0 },
-    include: ["customer", "deliveryDriver"],
+    include: ["deliveryCharge", "order"],
   })
     .then((data) => {
       res.send(data);
@@ -40,8 +44,7 @@ exports.findAll = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message ||
-          "Some error occured while retrieving Assign Order Details",
+          err.message || "Some error occured while retrieving Shipping Details",
       });
     });
 };
@@ -49,16 +52,16 @@ exports.findAll = (req, res) => {
 // retreive single object
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  AssignOrderDetails.findOne({
+  ShippingDetails.findOne({
     where: { id: id, is_deleted: 0 },
-    include: ["customer", "deliveryDriver"],
+    include: ["deliveryCharge", "order"],
   })
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error retrieving Assign Order Details with id = " + id,
+        message: "Error retrieving ShippingDetails with id = " + id,
       });
     });
 };
@@ -67,23 +70,21 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  AssignOrderDetails.update(req.body, {
+  ShippingDetails.update(req.body, {
     where: { id: id, is_deleted: 0 },
   })
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Assign Order Details was updated successfully",
+          message: "ShippingDetails was updated successfully",
         });
       } else {
-        res.send({
-          message: `Cannot update Assign Order Details with id=${id}`,
-        });
+        res.send({ message: `Cannot update ShippingDetails with id=${id}` });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error updating Assign Order Details with id = " + id,
+        message: "Error updating ShippingDetails with id = " + id,
       });
     });
 };
@@ -92,23 +93,26 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const id = req.params.id;
-  AssignOrderDetails.update(req.body, {
-    where: { id: id },
-  })
+  ShippingDetails.update(
+    {
+      is_deleted: true,
+    },
+    {
+      where: { id: id },
+    }
+  )
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Assign Order Details was deleted successfully",
+          message: "ShippingDetails was deleted successfully",
         });
       } else {
-        res.send({
-          message: `Cannot delete Assign Order Details with id=${id}`,
-        });
+        res.send({ message: `Cannot delete ShippingDetails with id=${id}` });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error deleting Product with id = " + id,
+        message: "Error deleting Customer with id = " + id,
       });
     });
 };

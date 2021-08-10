@@ -3,16 +3,13 @@ const Order = db.order;
 
 exports.create = async (req, res) => {
   // validate request
-  if (!req.body.price) {
+  if (!req.body.customer_id) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
 
   //  Create a Order
   const order = {
-    product_id: req.body.product_id,
-    price: req.body.price,
-    quantity: req.body.quantity,
     customer_id: req.body.customer_id,
   };
 
@@ -30,14 +27,13 @@ exports.create = async (req, res) => {
 
 // retrieve the data
 exports.findAll = (req, res) => {
-  Order.findAll({ where: { is_deleted: 0 }, include: ["product", "customer"] })
+  Order.findAll({ where: { is_deleted: 0 }, include: ["customer"] })
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message:
-          err.message || "Some error occured while retrieving Categories",
+        message: err.message || "Some error occured while retrieving Order",
       });
     });
 };
@@ -45,10 +41,7 @@ exports.findAll = (req, res) => {
 // retreive single object
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  Order.findOne({
-    where: { id: id, is_deleted: 0 },
-    include: ["product", "customer"],
-  })
+  Order.findOne({ where: { id: id, is_deleted: 0 }, include: ["customer"] })
     .then((data) => {
       res.send(data);
     })
@@ -86,9 +79,14 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const id = req.params.id;
-  Order.update(req.body, {
-    where: { id: id },
-  })
+  Order.update(
+    {
+      is_deleted: true,
+    },
+    {
+      where: { id: id },
+    }
+  )
     .then((num) => {
       if (num == 1) {
         res.send({

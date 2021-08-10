@@ -1,12 +1,13 @@
 module.exports = (sequelize, Sequelize) => {
-  const AssignOrderDetails = sequelize.define("assign_order_details", {
-    request_status: {
-      type: Sequelize.INTEGER,
-      defaultValue: 1,
+  const Order = sequelize.define("sell_products", {
+    price: {
+      type: Sequelize.NUMBER,
     },
-    complete_status: {
+    quantity: {
       type: Sequelize.INTEGER,
-      defaultValue: 0,
+    },
+    discount: {
+      type: Sequelize.INTEGER,
     },
     is_deleted: {
       type: Sequelize.INTEGER,
@@ -14,5 +15,5 @@ module.exports = (sequelize, Sequelize) => {
     },
   });
 
-  return AssignOrderDetails;
+  return Order;
 };
