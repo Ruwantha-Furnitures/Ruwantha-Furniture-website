@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import { Link, useParams } from "react-router-dom";
-// import {
-//   editInvoiceDetails,
-//   getInvoiceDetails,
-// } from "./../../../service/invoice";
-
 import { getSellProducts } from "./../../../service/sellProduct";
 import { editOrderDetails, getOrderDetails } from "../../../service/order";
 

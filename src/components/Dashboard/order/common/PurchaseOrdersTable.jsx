@@ -41,14 +41,10 @@ function PurchaseOrdersTable() {
       setFilterOrders(orders);
     } else {
       setFilterOrders(
-        orders.filter(
-          (order) =>
-            order.customer.first_name
-              .toLowerCase()
-              .includes(search.toLowerCase()) ||
-            order.customer.last_name
-              .toLowerCase()
-              .includes(search.toLowerCase())
+        orders.filter((order) =>
+          (order.customer.first_name + " " + order.customer.last_name)
+            .toLowerCase()
+            .includes(search.toLowerCase())
         )
       );
     }
