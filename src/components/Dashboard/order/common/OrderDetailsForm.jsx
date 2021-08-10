@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.module.css";
 import { Link, useParams } from "react-router-dom";
-// import { getInvoiceDetails } from "./../../service/invoice";
-import { getOrders } from "./../../service/order";
+import { getSellProducts } from "./../../service/sellProduct";
+import { getOrderDetails } from "./../../service/order";
 
 function OrderDetailsForm() {
   const { id } = useParams();
 
-  const [orders, setOrders] = useState([]);
-  const [invoice, setInvoice] = useState({
+  const [bill, setBill] = useState({
+    no_of_products: 0,
+    products_price: 0,
+    total_discounts: 0,
+    total_amount: 0,
+  });
+
+  const [sellProducts, setSellProducts] = useState([]);
+  const [order, setOrder] = useState({
     total_amount: 0,
     customer: {
       first_name: "",
@@ -18,9 +25,6 @@ function OrderDetailsForm() {
       contact_number: "",
       payment_method: "",
     },
-    no_of_products: 0,
-    products_price: 0,
-    total_discounts: 0,
   });
 
   useEffect(() => {
@@ -51,14 +55,42 @@ function OrderDetailsForm() {
   const loadPageData = async () => {
     try {
       // get invoice data
-      // const resultInvoice = await getInvoiceDetails(id);
-      // setInvoice(resultInvoice.data);
+      const resultOrder = await getOrderDetails(id);
+      setOrder(resultOrder.data);
       // get order data according to invoice
-      const resultOrders = await getOrders();
-      const ordersData = resultOrders.data.filter(
-        (orderItem) => orderItem.invoice_id == id
+      const resultSellProducts = await getSellProducts();
+      const sellProductsData = resultSellProducts.data.filter(
+        (sellProductItem) => sellProductItem.order_id == id
       );
-      setOrders(ordersData);
+      setSellProducts(sellProductsData);
+      var numOfProducts = 0;
+      var totalPriceOfProducts = 0;
+      var totalAmountOfProducts = 0;
+      var totalDiscount = 0;
+
+      sellProductsData.forEach((sellProductItem) => {
+        numOfProducts = numOfProducts + 1;
+        totalPriceOfProducts =
+          totalPriceOfProducts +
+          parseInt(sellProductItem.product.price) *
+            parseInt(sellProductItem.quantity);
+        totalAmountOfProducts =
+          totalAmountOfProducts + parseInt(sellProductItem.price);
+      });
+
+      totalDiscount =
+        ((totalPriceOfProducts - totalAmountOfProducts) /
+          totalPriceOfProducts) *
+        100;
+
+      var discountofSellProducts = Math.round(totalDiscount);
+      setBill({
+        ...bill,
+        no_of_products: numOfProducts,
+        products_price: totalPriceOfProducts.toFixed(2),
+        total_discounts: discountofSellProducts,
+        total_amount: totalAmountOfProducts.toFixed(2),
+      });
     } catch (error) {
       console.log("Error", error.message);
     }
@@ -103,7 +135,7 @@ function OrderDetailsForm() {
                 </label>
                 <input
                   type="text"
-                  value={invoice.no_of_products}
+                  value={bill.no_of_products}
                   placeholder="Number of Products"
                   className={ProductViewFormStyle.inputStyle}
                   readOnly
@@ -113,7 +145,7 @@ function OrderDetailsForm() {
                 <label className={ProductViewFormStyle.labelStyle}>Price</label>
                 <input
                   type="text"
-                  value={"Rs." + invoice.products_price}
+                  value={"Rs. " + bill.products_price}
                   placeholder="Product(s) Price"
                   className={ProductViewFormStyle.inputStyle}
                   readOnly
@@ -127,7 +159,7 @@ function OrderDetailsForm() {
                 </label>
                 <input
                   type="text"
-                  value={invoice.total_discounts + "%"}
+                  value={bill.total_discounts + "%"}
                   placeholder="Total Discount"
                   className={ProductViewFormStyle.inputStyle}
                   readOnly
@@ -139,7 +171,7 @@ function OrderDetailsForm() {
                 </label>
                 <input
                   type="text"
-                  value={"Rs." + invoice.total_amount}
+                  value={"Rs. " + bill.total_amount}
                   placeholder="Total Amount"
                   className={ProductViewFormStyle.inputStyle}
                   readOnly
@@ -167,7 +199,7 @@ function OrderDetailsForm() {
                 </label>
                 <input
                   type="text"
-                  value={invoice.customer.first_name}
+                  value={order.customer.first_name}
                   placeholder="Customer First Name"
                   className={ProductViewFormStyle.inputStyle}
                   readOnly
@@ -179,23 +211,9 @@ function OrderDetailsForm() {
                 </label>
                 <input
                   type="text"
-                  value={invoice.customer.last_name}
+                  value={order.customer.last_name}
                   placeholder="Customer Last Name"
                   className={ProductViewFormStyle.inputStyle}
-                  readOnly
-                />
-              </div>
-            </div>
-            <div className={ProductViewFormStyle.formLine}>
-              <div className={ProductViewFormStyle.dataforLong}>
-                <label className={ProductViewFormStyle.labelStyleforLong}>
-                  Email
-                </label>
-                <input
-                  type="text"
-                  value={invoice.customer.email}
-                  placeholder="Customer Email Address"
-                  className={ProductViewFormStyle.inputStyleforLong}
                   readOnly
                 />
               </div>
@@ -207,7 +225,7 @@ function OrderDetailsForm() {
                 </label>
                 <input
                   type="text"
-                  value={invoice.customer.address}
+                  value={order.customer.address}
                   placeholder="Customer Dilever Address"
                   className={ProductViewFormStyle.inputStyleforLong}
                   readOnly
@@ -221,7 +239,7 @@ function OrderDetailsForm() {
                 </label>
                 <input
                   type="text"
-                  value={invoice.customer.contact_number}
+                  value={order.customer.contact_number}
                   placeholder="Customer Number"
                   className={ProductViewFormStyle.inputStyle}
                   readOnly
@@ -233,7 +251,7 @@ function OrderDetailsForm() {
                 </label>
                 <input
                   type="text"
-                  value={invoice.customer.payment_method}
+                  value={order.customer.payment_method}
                   placeholder="Payment Method"
                   className={ProductViewFormStyle.inputStyle}
                   readOnly
@@ -244,9 +262,9 @@ function OrderDetailsForm() {
         </div>
       </div>
 
-      {Array.isArray(orders) === true && (
+      {Array.isArray(sellProducts) === true && (
         <React.Fragment>
-          {orders.map((order, index) => (
+          {sellProducts.map((sellProduct, index) => (
             <div key={index + 1} className={ProductViewFormStyle.details}>
               <div className={ProductViewFormStyle.infoPart}>
                 <div className={ProductViewFormStyle.form}>
@@ -263,7 +281,7 @@ function OrderDetailsForm() {
                       </label>
                       <input
                         type="text"
-                        value={order.product.name}
+                        value={sellProduct.product.name}
                         placeholder="Product Name"
                         className={ProductViewFormStyle.inputStyle}
                         readOnly
@@ -275,7 +293,7 @@ function OrderDetailsForm() {
                       </label>
                       <input
                         type="text"
-                        value={order.quantity}
+                        value={sellProduct.quantity}
                         placeholder="Product Qunatity"
                         className={ProductViewFormStyle.inputStyle}
                         readOnly
@@ -289,7 +307,7 @@ function OrderDetailsForm() {
                       </label>
                       <input
                         type="text"
-                        value={order.product.price}
+                        value={"Rs. " + sellProduct.product.price}
                         placeholder="Product Price"
                         className={ProductViewFormStyle.inputStyle}
                         readOnly
@@ -301,7 +319,7 @@ function OrderDetailsForm() {
                       </label>
                       <input
                         type="text"
-                        value={order.product.discount}
+                        value={sellProduct.product.discount + "%"}
                         placeholder="Product Discount"
                         className={ProductViewFormStyle.inputStyle}
                         readOnly
