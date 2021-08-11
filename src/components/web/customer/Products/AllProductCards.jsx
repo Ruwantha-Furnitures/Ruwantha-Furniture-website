@@ -55,12 +55,7 @@ const AllProductCards = (props) => {
                 <Card style={{ width: "18rem" }}>
                   <center>
                     <img
-                      src={
-                        process.env.PUBLIC_URL +
-                        "/items/" +
-                        productList.itemid +
-                        ".jpg"
-                      }
+                      src={productList.img_location}
                       alt="items"
                       style={funitureimg}
                       width={200}
