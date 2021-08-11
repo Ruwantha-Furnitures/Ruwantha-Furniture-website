@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Card from 'react-bootstrap/Card';
 import Avatar from "../../../assets/contact.png";
 import FormStyle from "../../../css/web/Form.module.css";
+import axios from "axios";
 
 const ContactForm = ({contactUsHandler}) => {
     require("bootstrap/dist/css/bootstrap.min.css");
@@ -14,10 +15,22 @@ const ContactForm = ({contactUsHandler}) => {
     const [contact_number, setTelephone] = useState("");
     const [details, setDescription] = useState("");       
 
-    const submitHandler = () => {        
+    const submitHandler = async(e) => {       
+        e.preventDefault();
         const data = { first_name, last_name, contact_number, email, details };
+        try{            
+            let response = await axios.post("http://localhost:8080/api/message/",{ data });
+            console.log(response.data);
+        }catch (error) {
+            if (error.response.status === 500) {
+                console.log("There was a problem with the server: ", error);
+            } else {
+                console.log(error.response.data.msg);
+            }
+        }
+
         // console.log(data);
-        contactUsHandler(data);        
+        // contactUsHandler(data);        
       };
     
       const title={   
