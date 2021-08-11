@@ -7,7 +7,7 @@ import "../../../../css/web/Home.css";
 import CommnStyles from "../../../../css/web/common.module.css";
 import axios from "axios";
 
-const CustomerAllProducts = props => {    
+const CustomerAllProducts = () => {    
     require("bootstrap/dist/css/bootstrap.min.css");    
     // const [itemCount, setItemCount] = React.useState(0);
     const [products,setProducts]=useState([])    
@@ -17,6 +17,16 @@ const CustomerAllProducts = props => {
         viewAllProducts();
     },[])
 
+    const viewAllProducts = async () => {
+        try {           
+           let response = await axios.get("http://localhost:8080/api/product");
+           console.log(response.data); // received products from the backend API
+           setProducts(response.data);// set the received products into the products state array
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     //adding selected product Id to the localstorage
     function sayHello(itemid) {
         //alert(`hello, ${itemid}`);
@@ -25,18 +35,6 @@ const CustomerAllProducts = props => {
         
         //cart label number
     }
-
-    const viewAllProducts = async() => {
-        try {
-           console.log('Requests send') // done
-           let response =await axios.get('http://192.168.56.1:3002/api/products/')
-           console.log(response.data.products); // received products from the backend API
-           setProducts(response.data.products);// set the received products into the products state array
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
 
     const funitureimg = {
       marginTop: "30px",      

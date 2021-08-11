@@ -13,10 +13,10 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
     },
     width: {
-      type: Sequelize.STRING,
+      type: Sequelize.INTEGER,
     },
     height: {
-      type: Sequelize.STRING,
+      type: Sequelize.INTEGER,
     },
     discount: {
       type: Sequelize.INTEGER,
