@@ -17,6 +17,7 @@ const ContactForm = ({contactUsHandler}) => {
 
     const submitHandler = async(e) => {       
         e.preventDefault();
+        //data from the form
         const data = { first_name, last_name, contact_number, email, details };
         try{            
             let response = await axios.post("http://localhost:8080/api/message/",{ data });
