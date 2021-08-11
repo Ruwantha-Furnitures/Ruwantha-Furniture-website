@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import Rating from "../../Common/StartRating";
 import "../../../../css/web/Home.css";
 import CommnStyles from "../../../../css/web/common.module.css";
-
 import axios from "axios";
 
 const AllProductCards = props => {    

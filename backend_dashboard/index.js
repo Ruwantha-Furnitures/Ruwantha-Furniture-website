@@ -37,6 +37,8 @@ require("./routes/shippingDetails.routes")(app);
 require("./routes/productReview.routes")(app);
 require("./routes/resetToken.routes")(app);
 
+require("./routes/login.routes")(app);
+
 // set port
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

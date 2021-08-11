@@ -12,7 +12,7 @@ const Product = () => {
     const itemUpHandler = async (data) => {
         //console.log(data);
         try{
-            await axios.get("http://192.168.56.1:3002/api/customer/item",{
+            await axios.get("http://192.168.56.1:3002/api/customer/item",{                                          
             data,
           });
           console.log("Request successful");
