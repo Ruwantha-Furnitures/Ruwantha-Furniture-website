@@ -1,8 +1,8 @@
 module.exports = (sequelize, DataTypes) => {
-    const Account = sequelize.define(
-      "Account",
+    const Accounts = sequelize.define(
+      "Accounts",
       {
-        aid: {
+        id: {
           type: DataTypes.INTEGER,
           autoIncrement: true,
           primaryKey: true,
@@ -19,13 +19,21 @@ module.exports = (sequelize, DataTypes) => {
           type: DataTypes.INTEGER,
           allowNull: false,
         },
+        verified: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+        },
+        is_deleted: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+        },
       },
       {
         freezeTableName: true,
-        tableName: "Account",
+        tableName: "Accounts",
       }
     );
   
-    return Account;
+    return Accounts;
   };
   
