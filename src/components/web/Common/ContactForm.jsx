@@ -8,15 +8,16 @@ import FormStyle from "../../../css/web/Form.module.css";
 
 const ContactForm = ({contactUsHandler}) => {
     require("bootstrap/dist/css/bootstrap.min.css");
-    const [name, setName] = useState("");
+    const [first_name, setFName] = useState("");
+    const [last_name, setLName] = useState("");
     const [email, setEmail] = useState("");
-    const [telephone, setTelephone] = useState("");
-    const [description, setDescription] = useState("");       
+    const [contact_number, setTelephone] = useState("");
+    const [details, setDescription] = useState("");       
 
     const submitHandler = () => {        
-        const data = { name, email, telephone, description };
+        const data = { first_name, last_name, contact_number, email, details };
         // console.log(data);
-        contactUsHandler(data);
+        contactUsHandler(data);        
       };
     
       const title={   
@@ -60,16 +61,24 @@ const ContactForm = ({contactUsHandler}) => {
                     </Row>                                                         
                     <input style={textboxStyle} 
                         type='text'
-                        placeholder="Your Name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Your First Name"
+                        value={first_name}
+                        onChange={(e) => setFName(e.target.value)}
                         required
                     ></input><br />  
 
                     <input style={textboxStyle} 
+                        type='text'
+                        placeholder="Your Last Name"
+                        value={last_name}
+                        onChange={(e) => setLName(e.target.value)}
+                        required
+                    ></input><br /> 
+
+                    <input style={textboxStyle} 
                         type='tel' 
                         placeholder="Contact Number"
-                        value={telephone}
+                        value={contact_number}
                         pattern="[0-9]{10}"  
                         onChange={(e)=> setTelephone(e.target.value)}
                         required
@@ -87,7 +96,7 @@ const ContactForm = ({contactUsHandler}) => {
                         rows={5} 
                         cols={5} 
                         placeholder='Message'
-                        value={description}    
+                        value={details}    
                         onChange={(e)=>setDescription(e.target.value)}
                         required
                     ></textarea><br />       
