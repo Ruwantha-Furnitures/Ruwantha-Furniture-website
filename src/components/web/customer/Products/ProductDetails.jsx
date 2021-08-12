@@ -15,9 +15,7 @@ function ProductDetails() {
     const itemID = localStorage.getItem("productID");
     const fetchData = async () => {
       try {
-        const res = await axios.get(
-          `http://192.168.56.1:3002/api/products/viewProduct/${itemID}`
-        ); // wil receive the response
+        const res = await axios.get(`http://localhost:8080/api/product/${itemID}`); // wil receive the response
         console.log(res.data); //view the response object data
         setProductDetails(res.data); // set the response data to the state of productDetails object
       } catch (error) {
@@ -42,12 +40,7 @@ function ProductDetails() {
           <Row className="justify-content-md-center" xs={12}>
             <Col sm={6}>
               <img
-                src={
-                  process.env.PUBLIC_URL +
-                  "/items/" +
-                  productDetails.itemid +
-                  ".jpg"
-                }
+                src={productDetails.img_location}
                 className={CommonStyle.Productimage}
                 alt="items"
               ></img>
@@ -59,7 +52,7 @@ function ProductDetails() {
                   <h2>{productDetails.name}</h2>
                   <h4>{`Rs. ${productDetails.price}`}</h4>
                   <br />
-                  <p align="justify">{productDetails.details}</p>
+                  <p align="justify">{productDetails.description}</p>
                   <br />
                   <Rating></Rating>
                   <Link to="/login">
