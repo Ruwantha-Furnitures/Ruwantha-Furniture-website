@@ -34,7 +34,7 @@ const ContactForm = ({contactUsHandler}) => {
         // contactUsHandler(data);        
       };
     
-      const title={   
+    const title={   
         margin: '2px',     
         padding: '3px'        
     };

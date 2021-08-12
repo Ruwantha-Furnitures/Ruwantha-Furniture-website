@@ -13,14 +13,13 @@ const Signup = () => {
   const signUpHandler =async (data) =>{
     //console.log(data);
     try{
-        const respond = await axios.post("http://192.168.56.1:3002/api/customer/signup",{
-        data,
-      });
-      if(respond.data.auth === true){
-        setIsSubmit(true);
-      }else{
-        setIsSubmit(false);
-      }
+        const respond = await axios.post("http://localhost:8080/api/customer/",{data});
+        console.log(respond.data)
+        if(respond.data.auth === true){
+          setIsSubmit(true);
+        }else{
+          setIsSubmit(false);
+        }
 
       console.log("Request successful");
 

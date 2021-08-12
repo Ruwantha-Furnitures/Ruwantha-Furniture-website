@@ -14,9 +14,6 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
       unique: true,
     },
-    payment_method: {
-      type: Sequelize.STRING,
-    },
     is_deleted: {
       type: Sequelize.INTEGER,
       defaultValue: 0,

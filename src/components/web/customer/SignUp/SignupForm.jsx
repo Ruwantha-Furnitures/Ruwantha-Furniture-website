@@ -7,16 +7,17 @@ import "../../../../css/web/Signup.css";
 
 const SignupForm= ({ signUpHandler }) =>  {
   require("bootstrap/dist/css/bootstrap.min.css");
-  const [name, setName] = useState("");
+  const [first_name, setFName] = useState("");
+  const [last_name, setLName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
-  const [contactNo, setContactNo] = useState("");
+  const [contact_number, setContactNo] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const submitHandler = (e) => { 
       e.preventDefault();
-    signUpHandler({ name, email, address, contactNo, password });
+    signUpHandler({ first_name, last_name,email, address, contact_number, password });
   };
 
   return (
@@ -30,9 +31,19 @@ const SignupForm= ({ signUpHandler }) =>  {
             <input  style={{width: '260px'}} className={FormStyle.textBox}                   
                 name = "name"
                 type="text"                    
-                placeholder="Name"
-                value= {name}
-                onChange={(e) => setName(e.target.value)}
+                placeholder="First Name"
+                value= {first_name}
+                onChange={(e) => setFName(e.target.value)}
+                required
+            />
+            <br />
+
+            <input  style={{width: '260px'}} className={FormStyle.textBox}                   
+                name = "name"
+                type="text"                    
+                placeholder="Last Name"
+                value= {last_name}
+                onChange={(e) => setLName(e.target.value)}
                 required
             />
             <br />
@@ -52,7 +63,7 @@ const SignupForm= ({ signUpHandler }) =>  {
                 type="tele"       
                 pattern="[0-9]{10}"         
                 placeholder="Contact Number"
-                value ={contactNo}
+                value ={contact_number}
                 onChange={(e) => setContactNo(e.target.value)}
                 required
             />    
