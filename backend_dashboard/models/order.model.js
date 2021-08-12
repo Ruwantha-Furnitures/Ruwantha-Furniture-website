@@ -1,8 +1,12 @@
 module.exports = (sequelize, Sequelize) => {
-  const Invoice = sequelize.define("orders", {
-    total_amount: {
+  const Order = sequelize.define("orders", {
+    total_product_amount: {
       type: Sequelize.NUMBER,
       defaultValue: 0,
+    },
+    payment_method: {
+      type: Sequelize.STRING,
+      defaultValue: "ONLINE",
     },
     is_deleted: {
       type: Sequelize.INTEGER,
@@ -10,5 +14,5 @@ module.exports = (sequelize, Sequelize) => {
     },
   });
 
-  return Invoice;
+  return Order;
 };

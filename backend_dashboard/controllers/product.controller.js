@@ -22,6 +22,8 @@ exports.create = async (req, res) => {
     img_location: req.body.img_location,
   };
 
+  // console.log(product);
+
   //   Save Product in the database
   await Product.create(product)
     .then((data) => {
@@ -80,8 +82,7 @@ exports.findAll = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message:
-          err.message || "Some error occured while retrieving Categories",
+        message: err.message || "Some error occured while retrieving Products",
       });
     });
 };

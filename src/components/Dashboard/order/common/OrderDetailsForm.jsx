@@ -23,8 +23,8 @@ function OrderDetailsForm() {
       email: "",
       address: "",
       contact_number: "",
-      payment_method: "",
     },
+    payment_method: "ONLINE",
   });
 
   useEffect(() => {
@@ -251,7 +251,7 @@ function OrderDetailsForm() {
                 </label>
                 <input
                   type="text"
-                  value={order.customer.payment_method}
+                  value={order.payment_method}
                   placeholder="Payment Method"
                   className={ProductViewFormStyle.inputStyle}
                   readOnly

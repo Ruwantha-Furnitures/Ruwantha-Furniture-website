@@ -90,7 +90,7 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const id = req.params.id;
-  SellProduct.update(
+  SellProduct.destroy(
     {
       is_deleted: true,
     },

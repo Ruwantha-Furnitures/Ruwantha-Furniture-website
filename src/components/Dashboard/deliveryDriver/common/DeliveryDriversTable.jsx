@@ -11,7 +11,7 @@ function DeliveryDriversTable() {
     first_name: "",
     last_name: "",
     address: "",
-    contact_number: "",
+    telephone: "",
     account_id: "",
     account: {
       email: "",
@@ -77,7 +77,7 @@ function DeliveryDriversTable() {
               <div className={TableStyle.searchText}>
                 <input
                   type="search"
-                  placeholder="Search Driver Here"
+                  placeholder="search driver here"
                   value={search}
                   name="search"
                   onChange={(e) => onInputChange(e)}
@@ -140,7 +140,7 @@ function DeliveryDriversTable() {
                     </td>
                     <td> {driver.first_name + " " + driver.last_name}</td>
                     <td>{driver.account.email}</td>
-                    <td>{driver.contact_number}</td>
+                    <td>{driver.telephone}</td>
                     <td>
                       <span
                         className={

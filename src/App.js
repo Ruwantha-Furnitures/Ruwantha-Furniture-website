@@ -93,7 +93,11 @@ function App() {
           <Route exact path="/dashboardDriver" component={DashboardDriver} />
           {/* Dashboard-Product */}
           <Route exact path="/dashboard/products" component={Products} />
-          <Route exact path="/dashboard/product/view" component={ProductView} />
+          <Route
+            exact
+            path="/dashboard/product/view/:id"
+            component={ProductView}
+          />
           <Route exact path="/dashboard/product/add" component={ProductAdd} />
           <Route
             exact
@@ -215,13 +219,13 @@ function App() {
           />
           <Route
             exact
-            path="/dashboard/customerMessage/view"
+            path="/dashboard/customerMessage/view/:id"
             component={CustomerMessageView}
           />
 
           <Route
             exact
-            path="/dashboard/customer/detials"
+            path="/dashboard/customer/detials/:id"
             component={CustomerProfile}
           />
 

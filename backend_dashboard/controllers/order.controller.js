@@ -11,6 +11,7 @@ exports.create = async (req, res) => {
   //  Create a Order
   const order = {
     customer_id: req.body.customer_id,
+    payment_method: req.body.payment_method,
   };
 
   //   Save order in the database

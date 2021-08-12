@@ -14,7 +14,6 @@ exports.create = async (req, res) => {
     last_name: req.body.last_name,
     address: req.body.address,
     contact_number: req.body.contact_number,
-    payment_method: req.body.payment_method,
   };
 
   //   Save customer in the database

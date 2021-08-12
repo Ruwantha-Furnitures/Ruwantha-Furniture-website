@@ -7,13 +7,13 @@ function PurchaseOrdersTable() {
   const [orders, setOrders] = useState({
     total_amount: 0,
     customer_id: 0,
+    payment_method: "",
     customer: {
       first_name: "",
       last_name: "",
       email: "",
       address: "",
       contact_number: 0,
-      payment_method: "",
     },
   });
 
@@ -72,7 +72,7 @@ function PurchaseOrdersTable() {
               <div className={TableStyle.searchText}>
                 <input
                   type="search"
-                  placeholder="Search Customer Here"
+                  placeholder="search customer here"
                   value={search}
                   name="search"
                   onChange={(e) => onInputChange(e)}
@@ -128,8 +128,8 @@ function PurchaseOrdersTable() {
                         order.customer.last_name}
                     </td>
                     <td>{order.customer.contact_number}</td>
-                    <td>{"Rs. " + order.total_amount}</td>
-                    <td>{order.customer.payment_method}</td>
+                    <td>{"Rs. " + order.total_product_amount}</td>
+                    <td>{order.payment_method}</td>
                     <td>{order.createdAt.split("T")[0]}</td>
                   </tr>
                 ))}

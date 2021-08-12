@@ -15,7 +15,7 @@ function ProductSellProductForm() {
 
   const [products, setProducts] = useState({
     id: 0,
-    name: "",
+    name: "Select Product",
     price: 0,
     discount: 0,
   });
@@ -46,7 +46,7 @@ function ProductSellProductForm() {
 
       const resultProducts = await getProducts();
       var productItems = resultProducts.data;
-      // console.log(totalOrders);
+      console.log(productItems);
       resultSellProducts.forEach((sellProductItem) => {
         productItems = productItems.filter(
           (item) => item.id !== sellProductItem.product_id
@@ -61,14 +61,17 @@ function ProductSellProductForm() {
   };
 
   const onInputChange = (e) => {
-    if (e.target.name === "product_id") {
+    if (e.target.name === "product_id" && e.target.value != 0) {
       const product_id = e.target.value;
       const filterProduct = products.filter(
         (product) => product.id == product_id
       )[0];
 
+      console.log(product_id);
+
       const discount = filterProduct.discount;
-      const price = (filterProduct.price * (100 - discount)) / 100;
+      const price = (parseInt(filterProduct.price) * (100 - discount)) / 100;
+      console.log(price);
 
       setSellProduct({
         ...sellProduct,
@@ -149,7 +152,7 @@ function ProductSellProductForm() {
     // cancel order process
   };
 
-  // console.log(sellProduct);
+  console.log(sellProduct);
 
   return (
     <React.Fragment>
@@ -201,12 +204,18 @@ function ProductSellProductForm() {
                     name="product_id"
                     onChange={(e) => onInputChange(e)}
                     required
+                    value={sellProduct.product_id}
                   >
+                    {/* {sellProduct.product_id === 0 ? (
+                      <option value="0">Select Product</option>
+                    ) : (
+                      <option value="0">Select Product</option>
+                    )} */}
                     <option value="0">Select Product</option>
                     {Array.isArray(products) === true && (
                       <React.Fragment>
                         {products.map((product, index) => (
-                          <option key={index} value={product.id}>
+                          <option key={index + 1} value={product.id}>
                             {product.name}
                           </option>
                         ))}

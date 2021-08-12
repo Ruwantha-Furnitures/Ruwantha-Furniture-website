@@ -16,7 +16,7 @@ module.exports = (app) => {
   router.put("/:id", messages.update);
 
   //   delete tutorial
-  router.delete("/:id", messages.delete);
+  // router.delete("/:id", messages.delete);
 
   app.use("/api/message", router);
 };

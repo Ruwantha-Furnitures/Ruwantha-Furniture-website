@@ -30,16 +30,16 @@ db.resetToken = require("./resetToken.model")(sequelize, Sequelize);
 
 // Foreign key for types
 db.category.hasMany(db.type, {
-  foreignKey: "categoryId",
+  foreignKey: "category_id",
 });
 
 db.type.belongsTo(db.category, {
-  foreignKey: "categoryId",
+  foreignKey: "category_id",
   as: "category",
 });
 
 // Foreign key for product
-db.type.hasOne(db.product, {
+db.type.hasMany(db.product, {
   foreignKey: "type_id",
 });
 
