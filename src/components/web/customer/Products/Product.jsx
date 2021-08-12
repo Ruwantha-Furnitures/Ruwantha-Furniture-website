@@ -12,9 +12,9 @@ const Product = () => {
   const itemUpHandler = async (data) => {
     //console.log(data);
     try {
-      await axios.get("http://localhost:8080/api/product", {
-        data,
-      });
+      // await axios.get("http://192.168.56.1:3002/api/customer/item", {
+      //   data,
+      // });
       console.log("Request successful");
     } catch (error) {
       console.log(error);
@@ -26,6 +26,13 @@ const Product = () => {
     //backgroundImage: `url(${Coverimg})` ,
     MaxWidth: "100%",
   };
+
+  // require("bootstrap/dist/css/bootstrap.min.css");
+  // const contactImg = {
+  //   //backgroundImage: `url(${Coverimg})` ,
+  //   MaxWidth: "100%",
+  // };
+
   return (
     <div style={contactImg}>
       <Navigation></Navigation>

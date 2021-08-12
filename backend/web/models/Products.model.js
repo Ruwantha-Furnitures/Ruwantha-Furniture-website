@@ -1,8 +1,8 @@
 module.exports = (sequelize, DataTypes) => {
-    const Item = sequelize.define(
-      "Item",
+    const Products = sequelize.define(
+      "Products",
       {
-        itemid: {
+        id: {
           type: DataTypes.INTEGER,
           allowNull: false,
           autoIncrement: true,
@@ -12,22 +12,35 @@ module.exports = (sequelize, DataTypes) => {
           type: DataTypes.STRING,
           allowNull: false,
         },
-        typeid: {
+        type_id : {
           type: DataTypes.INTEGER,
           allowNull: false,
+          foreignKey: true,
         },
         price: {
           type: DataTypes.DECIMAL,
           allowNull: false,
         },
-        quantity: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        details: {
+        description: {
           type: DataTypes.STRING,
           allowNull: false,
         },
+        color: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
+        width: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
+        height: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
+        quantity: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },        
         objectid: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -39,10 +52,10 @@ module.exports = (sequelize, DataTypes) => {
       },
       {
         freezeTableName: true,
-        tableName: "Item",
+        tableName: "Products",
       }
     );
   
-    return Item;
+    return Products;
   };
   

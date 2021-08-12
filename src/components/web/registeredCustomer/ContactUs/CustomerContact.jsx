@@ -13,15 +13,13 @@ const CustomerContact = () => {
     //console.log("test")
     const contactUsHandler =async (data) =>{
         try{            
-            const respond = await axios.post("http://192.168.56.1:3002/api/contactus/contact",
-                { data }
-            );
-            // console.log("asini")
-            if(respond.data.auth === true){
-                setIsSubmit(true);
-            }else{
-                setIsSubmit(false);
-            }            
+            const respond = await axios.post("http://localhost:8080/api/message/",{ data });
+            console.log(respond.data)
+            // if(respond.data.auth === true){
+            //     setIsSubmit(true);
+            // }else{
+            //     setIsSubmit(false);
+            // }            
         }catch(error){
             console.log(error);
         }

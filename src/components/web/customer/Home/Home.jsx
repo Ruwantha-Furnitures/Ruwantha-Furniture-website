@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container} from "reactstrap";
 import ConForm from "../../Common/CustomizeProduct";
 import Topimg from '../../../../assets/topimg19.jpg';
-import ProductBox from "../Products/AllProductCards"; /// Change this to /ProductCards
+import ProductBox from "./ProductCards"; /// Change this to /ProductCards
 import Navigation from "../Navigation/Indexnav";
 import Slideshow from './Banner';
 import Footer from "../../Common/Footer";
