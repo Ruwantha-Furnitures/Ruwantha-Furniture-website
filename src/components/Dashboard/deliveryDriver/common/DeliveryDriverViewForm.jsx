@@ -19,7 +19,7 @@ function DeliveryDriverViewForm() {
     first_name: "",
     last_name: "",
     address: "",
-    contact_number: "",
+    telephone: "",
     account_id: "",
     account: {
       email: "",
@@ -161,7 +161,7 @@ function DeliveryDriverViewForm() {
                 </label>
                 <input
                   type="text"
-                  value={deliveryDriver.contact_number}
+                  value={deliveryDriver.telephone}
                   placeholder="Driver Contact Number"
                   className={ProductViewFormStyle.inputStyle}
                   readOnly

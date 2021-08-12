@@ -225,7 +225,7 @@ function App() {
 
           <Route
             exact
-            path="/dashboard/customer/detials"
+            path="/dashboard/customer/detials/:id"
             component={CustomerProfile}
           />
 

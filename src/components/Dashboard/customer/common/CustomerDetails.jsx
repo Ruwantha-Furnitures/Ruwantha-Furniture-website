@@ -1,14 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.module.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { getReviewDetails } from "./../../service/review";
 
 function CustomerDetails() {
+  const { id } = useParams();
+
+  const [review, setReview] = useState({
+    product_id: 0,
+    feedback: "",
+    rating_points: 0,
+    createdAt: "",
+    product: {
+      name: "",
+      price: "",
+      discount: "",
+    },
+  });
+
+  useEffect(() => {
+    loadReview();
+  }, []);
+
+  const loadReview = async () => {
+    try {
+      const result = await getReviewDetails(id);
+      // console.log(result.data);
+      setReview(result.data);
+    } catch (error) {
+      console.log("Error", error.message);
+    }
+  };
+
   return (
     <React.Fragment>
       <div>
         <div className={ProductViewFormStyle.titleHeader}>
           <h1 className={ProductViewFormStyle.tableTitleHeaderStyle}>
-            Customer Profile
+            Customer Review Details
           </h1>
           <div className={ProductViewFormStyle.backSection}>
             <div className={ProductViewFormStyle.back}>
@@ -46,74 +75,52 @@ function CustomerDetails() {
               >
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
-                    First Name
+                    Product
                   </label>
                   <input
                     type="text"
-                    value=""
-                    placeholder="Tharindu"
+                    value={review.product.name}
+                    placeholder="name"
                     className={ProductViewFormStyle.inputStyle}
+                    readOnly
                   />
                 </div>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
-                    Last Name
+                    Price
                   </label>
                   <input
                     type="text"
-                    value=""
-                    placeholder="Gihan"
+                    value={"Rs. " + review.product.price}
+                    placeholder="price"
                     className={ProductViewFormStyle.inputStyle}
-                  />
-                </div>
-              </div>
-              <div className={ProductViewFormStyle.formLine}>
-                <div className={ProductViewFormStyle.dataforLong}>
-                  <label className={ProductViewFormStyle.labelStyleforLong}>
-                    Email
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="wtgihan@gmail.com"
-                    className={ProductViewFormStyle.inputStyleforLong}
-                  />
-                </div>
-              </div>
-              <div className={ProductViewFormStyle.formLine}>
-                <div className={ProductViewFormStyle.dataforLong}>
-                  <label className={ProductViewFormStyle.labelStyleforLong}>
-                    Address
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Gonapura Poddala Galle"
-                    className={ProductViewFormStyle.inputStyleforLong}
+                    readOnly
                   />
                 </div>
               </div>
               <div className={ProductViewFormStyle.formLine}>
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
-                    Number
+                    Rating
                   </label>
                   <input
                     type="text"
-                    value=""
+                    value={review.rating_points}
+                    placeholder="rating_points"
+                    className={ProductViewFormStyle.inputStyle}
+                    readOnly
+                  />
+                </div>
+                <div className={ProductViewFormStyle.data}>
+                  <label className={ProductViewFormStyle.labelStyle}>
+                    Date
+                  </label>
+                  <input
+                    type="text"
+                    value={review.createdAt.split("T")[0]}
                     placeholder="Customer Number"
                     className={ProductViewFormStyle.inputStyle}
-                  />
-                </div>
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Payment
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Customer Number"
-                    className={ProductViewFormStyle.inputStyle}
+                    readOnly
                   />
                 </div>
               </div>
@@ -132,12 +139,13 @@ function CustomerDetails() {
                       ProductViewFormStyle.addMarginBottom
                     }
                   >
-                    Review
+                    Feedback
                   </label>
                   <textarea
-                    value=""
-                    placeholder="Customer Review..."
+                    value={review.feedback}
+                    placeholder="Customer Feedback..."
                     className={ProductViewFormStyle.labelStyleforLongDesc}
+                    readOnly
                   />
                 </div>
               </div>

@@ -77,7 +77,7 @@ function DeliveryDriversTable() {
               <div className={TableStyle.searchText}>
                 <input
                   type="search"
-                  placeholder="Search Driver Here"
+                  placeholder="search driver here"
                   value={search}
                   name="search"
                   onChange={(e) => onInputChange(e)}

@@ -104,7 +104,7 @@ function CustomersTable() {
                   <tr key={index + 1}>
                     <td>
                       <Link
-                        to="/dashboard/customer/detials"
+                        to={`/dashboard/customer/detials/${review.id}`}
                         className={TableStyle.linkStyle}
                       >
                         <span className={TableStyle.statusStyleLink}>

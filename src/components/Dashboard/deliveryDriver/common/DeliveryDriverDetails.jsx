@@ -9,7 +9,7 @@ function DeliveryDriverDetails() {
     first_name: "",
     last_name: "",
     address: "",
-    contact_number: "",
+    telephone: "",
     account_id: "",
   });
 
@@ -156,8 +156,8 @@ function DeliveryDriverDetails() {
                   </label>
                   <input
                     type="text"
-                    name="contact_number"
-                    value={deliveryDriver.contact_number}
+                    name="telephone"
+                    value={deliveryDriver.telephone}
                     onChange={(e) => onInputChange(e)}
                     placeholder="Driver Contact Number"
                     className={ProductViewFormStyle.inputStyle}
