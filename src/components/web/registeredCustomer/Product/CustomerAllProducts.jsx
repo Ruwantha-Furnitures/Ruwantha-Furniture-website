@@ -53,7 +53,8 @@ const CustomerAllProducts = () => {
                         <center>
                         <Card style={{width: '18rem'}}> 
                             <center>      
-                                <img src={process.env.PUBLIC_URL + '/items/'+ productList.itemid +'.jpg'} alt='items' style={funitureimg} width={200} height={150}></img>                  
+                                <img src={productList.img_location} alt='items' style={funitureimg} width={200} height={150}></img>    
+                                {/* src={process.env.PUBLIC_URL + '/items/'+ productList.itemid +'.jpg'}               */}
                             </center>
                             <br />
                             <center> {productList.name} </center>                                                   

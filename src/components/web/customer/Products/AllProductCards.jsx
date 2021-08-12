@@ -31,7 +31,7 @@ const AllProductCards = (props) => {
       console.log("Requests send"); // done
       let response = await axios.get("http://localhost:8080/api/product");
       console.log(response.data); // received products from the backend API
-      // setProducts(response.data); // set the received products into the products state array
+      setProducts(response.data); // set the received products into the products state array
     } catch (error) {
       console.log(error);
     }

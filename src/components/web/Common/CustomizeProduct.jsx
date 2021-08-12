@@ -5,19 +5,22 @@ import Button from "react-bootstrap/Button";
 import Card from 'react-bootstrap/Card';
 import Avatar from "../../../assets/contact.png";
 import FormStyle from "../../../css/web/Form.module.css";
-
+import axios from "axios";
 
 const CustomizeProduct = ({contactUsHandler}) =>{
     require("bootstrap/dist/css/bootstrap.min.css");
 
-    const [name, setName] = useState("");
+    const [first_name, setFName] = useState("");
+    const [last_name, setLName] = useState("");
     const [email, setEmail] = useState("");
-    const [telephone, setTelephone] = useState("");
-    const [description, setDescription] = useState("");
+    const [contact_number, setTelephone] = useState("");
+    const [details, setDescription] = useState("");   
     
-    const submithandler = () => {
-        const data =  { name, telephone, email, description };        
-        contactUsHandler(data);
+    const submithandler = (e) => {
+        // e.preventDefault();
+        //data from the form
+        const data = { first_name, last_name, contact_number, email, details };      
+        contactUsHandler(data);        
     }
     
     const title={   
@@ -60,15 +63,23 @@ const CustomizeProduct = ({contactUsHandler}) =>{
                     </Row>                                                         
                     <input style={textboxStyle} 
                         type='text'
-                        value= {name}
-                        placeholder="Your Name"
-                        onChange= {(e)=>setName(e.target.value)}
+                        placeholder="Your First Name"
+                        value={first_name}
+                        onChange={(e) => setFName(e.target.value)}
+                        required
+                    ></input><br />  
+
+                    <input style={textboxStyle} 
+                        type='text'
+                        placeholder="Your Last Name"
+                        value={last_name}
+                        onChange={(e) => setLName(e.target.value)}
                         required
                     ></input><br />                                           
 
                     <input style={textboxStyle} 
                         type='tel'
-                        value={telephone}
+                        value={contact_number}
                         pattern="[0-9]{10}"  
                         placeholder="Contact No"
                         onChange= {(e)=>setTelephone(e.target.value)}

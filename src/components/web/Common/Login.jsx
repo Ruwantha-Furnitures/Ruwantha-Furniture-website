@@ -20,6 +20,8 @@ const Login = ({ navigation }) => {
   const loginHandler = async (data) => {    
     try {      
         console.log(data.email)
+        // var md5 = require('md5'); 
+        // console.log(md5('123456')) //e10adc3949ba59abbe56e057f20f883e
         const email = data.email
         const password = data.password  
 
@@ -32,6 +34,7 @@ const Login = ({ navigation }) => {
         
         var md5 = require('md5'); 
         const encryptpw = md5(password);
+        // console.log(md5('123456'))
         // console.log(encryptpw)
         
         console.log(response.data.user_level)

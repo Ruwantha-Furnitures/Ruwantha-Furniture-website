@@ -17,9 +17,10 @@ function SearchProduct() {
     
     const getCategories = async() => {
         try {       
-           let res =await axios.get('http://192.168.56.1:3002/api/category/')       
-           setAllCategory(res.data.category);// set the received deliveryCharge into the district state array   
-           //console.log(res.data.category);    
+        //    let res =await axios.get('http://192.168.56.1:3002/api/category/')    
+            let res =await axios.get('http://localhost:8080/api/category/')          
+            setAllCategory(res.data);// set the received deliveryCharge into the district state array   
+            console.log(res.data);    
         } catch (error) {
             console.log(error);
         }

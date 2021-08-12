@@ -11,13 +11,13 @@ const SignupForm = ({ signUpHandler }) => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
-  const [contactNo, setContactNo] = useState("");
+  const [contact_number, setContactNo] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const submitHandler = (e) => {
     e.preventDefault();
-    signUpHandler({ firstName, lastName, email, address, contactNo, password });
+    signUpHandler({ firstName, lastName, email, address, contact_number, password });
   };
 
   return (
@@ -81,7 +81,7 @@ const SignupForm = ({ signUpHandler }) => {
             type="tele"
             pattern="[0-9]{10}"
             placeholder="Contact Number"
-            value={contactNo}
+            value={contact_number}
             onChange={(e) => setContactNo(e.target.value)}
             required
           />
