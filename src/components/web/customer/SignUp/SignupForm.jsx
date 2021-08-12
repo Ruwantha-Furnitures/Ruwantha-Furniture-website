@@ -7,7 +7,8 @@ import "../../../../css/web/Signup.css";
 
 const SignupForm = ({ signUpHandler }) => {
   require("bootstrap/dist/css/bootstrap.min.css");
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [contactNo, setContactNo] = useState("");
@@ -16,7 +17,7 @@ const SignupForm = ({ signUpHandler }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    signUpHandler({ name, email, address, contactNo, password });
+    signUpHandler({ firstName, lastName, email, address, contactNo, password });
   };
 
   return (
@@ -41,11 +42,22 @@ const SignupForm = ({ signUpHandler }) => {
           <input
             style={{ width: "260px" }}
             className={FormStyle.textBox}
-            name="name"
+            name="first_name"
             type="text"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            placeholder="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
+          />
+          <br />
+          <input
+            style={{ width: "260px" }}
+            className={FormStyle.textBox}
+            name="last_name"
+            type="text"
+            placeholder="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
             required
           />
           <br />

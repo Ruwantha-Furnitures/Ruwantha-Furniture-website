@@ -18,7 +18,7 @@ const Signup = () => {
         email: email,
         password: password,
       };
-      const { name, address, contactNo } = data;
+      const { firstName, lastName, address, contactNo } = data;
 
       // create account
       const responseAccount = await axios.post(
@@ -31,7 +31,8 @@ const Signup = () => {
       const account_id = responseAccount.data.id;
 
       const customer = {
-        name: name,
+        first_name: firstName,
+        last_name: lastName,
         address: address,
         account_id: account_id,
         contact_number: contactNo,
@@ -43,16 +44,16 @@ const Signup = () => {
         customer
       );
 
-      console.log(responseCustomer + " " + responseAccount);
+      console.log(responseCustomer.data + " " + responseAccount.data);
 
       //   const respond = await axios.post("http://localhost:8080/api/customer",{
       //   data,
       // });
-      // if(respond.data.auth === true){
-      //   setIsSubmit(true);
-      // }else{
-      //   setIsSubmit(false);
-      // }
+      if (responseCustomer.status === 200) {
+        setIsSubmit(true);
+      } else {
+        setIsSubmit(false);
+      }
 
       // console.log("Request successful");
     } catch (error) {
