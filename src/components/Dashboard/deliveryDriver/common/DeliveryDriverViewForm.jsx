@@ -5,6 +5,7 @@ import Auth from "../../service/auth";
 import {
   getDeliveryDriverDetails,
   deleteDeliveryDriver,
+  getDeliveryDrivers,
 } from "./../../service/deliveryDriver";
 
 function DeliveryDriverViewForm() {
@@ -16,6 +17,7 @@ function DeliveryDriverViewForm() {
   const { id } = useParams();
 
   const [deliveryDriver, setDeliveryDriver] = useState({
+    id: 0,
     first_name: "",
     last_name: "",
     address: "",
@@ -32,9 +34,20 @@ function DeliveryDriverViewForm() {
   }, []);
 
   const loadDeliveryDriver = async () => {
+    console.log(id);
     try {
-      const result = await getDeliveryDriverDetails(id);
-      const drivers = result.data;
+      let drivers = {};
+      if (id !== undefined) {
+        const result = await getDeliveryDriverDetails(id);
+        drivers = result.data;
+      } else {
+        const user_email = Auth.getCurrentUserEmail();
+        const result = await getDeliveryDrivers();
+        drivers = result.data.filter(
+          (driver) => driver.account.email === user_email
+        )[0];
+      }
+
       setDeliveryDriver(drivers);
     } catch (error) {
       console.log("Error", error.message);
@@ -43,9 +56,9 @@ function DeliveryDriverViewForm() {
 
   const handleUpdate = () => {
     if (driverProfileSet === "deliveryDriverProfile") {
-      window.location = `/dashboard/deliveryDriverProfile/update/${id}`;
+      window.location = `/dashboard/deliveryDriverProfile/update/${deliveryDriver.id}`;
     } else {
-      window.location = `/dashboard/deliveryDriver/update/${id}`;
+      window.location = `/dashboard/deliveryDriver/update/${deliveryDriver.id}`;
     }
   };
 

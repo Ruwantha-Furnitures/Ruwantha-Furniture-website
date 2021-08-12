@@ -154,6 +154,7 @@ function DeliveryDriverAvalabilityForm() {
                     value={deliveryDriver.telephone}
                     placeholder="Driver Contact Number"
                     className={ProductViewFormStyle.inputStyle}
+                    readOnly
                   />
                 </div>
                 <div className={ProductViewFormStyle.data}>

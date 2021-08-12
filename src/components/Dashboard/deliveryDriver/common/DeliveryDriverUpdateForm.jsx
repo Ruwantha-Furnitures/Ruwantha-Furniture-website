@@ -6,10 +6,12 @@ import {
   editDeliveryDriverDetails,
 } from "./../../service/deliveryDriver";
 import { getAccountDetails, editAccountDetails } from "./../../service/account";
+import Auth from "../../service/auth";
 
 function DeliveryDriverUpdateForm() {
   const url = window.location.pathname.split("/");
   const driverProfileSet = url[2];
+  const user = Auth.getCurrentUser();
 
   const { id } = useParams();
 
@@ -17,9 +19,12 @@ function DeliveryDriverUpdateForm() {
     first_name: "",
     last_name: "",
     address: "",
-    contact_number: "",
+    telephone: "",
     account_id: "",
     availabilty: 0,
+    account: {
+      email: "",
+    },
   });
 
   const [account, setAccount] = useState({
@@ -63,7 +68,12 @@ function DeliveryDriverUpdateForm() {
         id,
         deliveryDriver
       );
-      window.location = `/dashboard/deliveryDriver/view/${id}`;
+      if (user === "Delivery Driver") {
+        localStorage.setItem("userEmail", account.email);
+        window.location = `/dashboard/deliveryDriverProfile`;
+      } else {
+        window.location = `/dashboard/deliveryDriver/view/${id}`;
+      }
     } catch (error) {
       if (error.response.status === 500) {
         console.log("There was a problem with the server: ", error);
@@ -185,8 +195,8 @@ function DeliveryDriverUpdateForm() {
                   </label>
                   <input
                     type="text"
-                    name="contact_number"
-                    value={deliveryDriver.contact_number}
+                    name="telephone"
+                    value={deliveryDriver.telephone}
                     onChange={(e) => onInputChange(e)}
                     placeholder="Driver Contact Number"
                     className={ProductViewFormStyle.inputStyle}
