@@ -20,7 +20,7 @@ const ContactForm = ({contactUsHandler}) => {
         //data from the form
         const data = { first_name, last_name, contact_number, email, details };
         try{            
-            let response = await axios.post("http://localhost:8080/api/message/",{ data });
+            let response = await axios.post("http://localhost:8080/api/message/",data);
             console.log(response.data);
         }catch (error) {
             if (error.response.status === 500) {
