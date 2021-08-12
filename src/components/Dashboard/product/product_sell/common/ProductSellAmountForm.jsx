@@ -19,13 +19,13 @@ function ProductSellAmountForm() {
   const [sellProducts, setSellProducts] = useState([]);
   const [order, setOrder] = useState({
     total_amount: 0,
+    payment_method: "",
     customer: {
       first_name: "",
       last_name: "",
       email: "",
       address: "",
       contact_number: "",
-      payment_method: "",
     },
   });
 
@@ -97,7 +97,7 @@ function ProductSellAmountForm() {
     const total_amount = bill.total_amount;
     const newOrder = {
       ...order,
-      total_amount: total_amount,
+      total_product_amount: total_amount,
     };
 
     const response = await editOrderDetails(id, newOrder);
@@ -290,7 +290,7 @@ function ProductSellAmountForm() {
                 </label>
                 <input
                   type="text"
-                  value={order.customer.payment_method}
+                  value={order.payment_method}
                   placeholder="Payment Method"
                   className={ProductViewFormStyle.inputStyle}
                   readOnly
@@ -360,13 +360,14 @@ function ProductSellAmountForm() {
                       <input
                         type="text"
                         value={
-                          (((parseInt(sellProduct.product.price) *
-                            sellProduct.quantity -
-                            parseInt(sellProduct.price)) /
-                            parseInt(sellProduct.product.price)) *
-                            100) /
-                            sellProduct.quantity +
-                          "%"
+                          Math.round(
+                            (((parseInt(sellProduct.product.price) *
+                              sellProduct.quantity -
+                              parseInt(sellProduct.price)) /
+                              parseInt(sellProduct.product.price)) *
+                              100) /
+                              sellProduct.quantity
+                          ) + "%"
                         }
                         placeholder="Product Discount"
                         className={ProductViewFormStyle.inputStyle}

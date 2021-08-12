@@ -9,10 +9,8 @@ module.exports = (sequelize, Sequelize) => {
     address: {
       type: Sequelize.STRING,
     },
-    contact_number: {
+    telephone: {
       type: Sequelize.INTEGER,
-      allowNull: false,
-      unique: true,
     },
     availability: {
       type: Sequelize.INTEGER,

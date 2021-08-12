@@ -30,6 +30,7 @@ function ProductViewForm() {
   const loadProduct = async () => {
     try {
       const result = await getProductDetails(id);
+      // console.log(result.data);
       setProduct(result.data);
     } catch (error) {
       console.log("Error", error.message);

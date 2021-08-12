@@ -13,7 +13,7 @@ function ProductsTable() {
     type_id: 0,
     type: {
       name: "",
-      categoryId: 0,
+      category_id: 0,
       category: "",
     },
     price: "",
@@ -43,7 +43,7 @@ function ProductsTable() {
 
       products.forEach((product) => {
         var category = categories.filter(
-          (category) => category.id === product.type.categoryId
+          (category) => category.id === product.type.category_id
         );
         product.type.category = category[0];
       });
@@ -89,7 +89,7 @@ function ProductsTable() {
               <div className={TableStyle.searchText}>
                 <input
                   type="search"
-                  placeholder="Search product here"
+                  placeholder="search product here"
                   value={search}
                   name="search"
                   onChange={(e) => onInputChange(e)}

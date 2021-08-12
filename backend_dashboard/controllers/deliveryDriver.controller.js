@@ -14,7 +14,7 @@ exports.create = async (req, res) => {
     first_name: req.body.first_name,
     last_name: req.body.last_name,
     address: req.body.address,
-    contact_number: req.body.contact_number,
+    telephone: req.body.telephone,
   };
 
   //   Save deliverDriver in the database

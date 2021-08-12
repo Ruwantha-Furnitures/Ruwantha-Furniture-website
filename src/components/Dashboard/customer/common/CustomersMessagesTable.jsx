@@ -1,8 +1,52 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TableStyle from "../../../../css/dashboard/Table.module.css";
+import { getMessages } from "./../../service/message";
 
 function CustomersMessagesTable() {
+  const [messages, setMessages] = useState({
+    id: 0,
+    first_name: "",
+    last_name: "",
+    email: "",
+    contact_number: 0,
+    createdAt: "",
+  });
+
+  const [search, setSearch] = useState("");
+  const [filterMessages, setFilterMessages] = useState({});
+
+  useEffect(() => {
+    loadMessages();
+  }, []);
+
+  const loadMessages = async () => {
+    try {
+      const result = await getMessages();
+      setMessages(result.data);
+      setFilterMessages(result.data);
+    } catch (error) {
+      console.log("Error", error.message);
+    }
+  };
+
+  const onInputChange = (e) => {
+    let search = e.target.value;
+    if (search === "") {
+      setFilterMessages(messages);
+    } else {
+      setFilterMessages(
+        messages.filter((message) =>
+          (message.first_name + " " + message.last_name)
+            .toLowerCase()
+            .includes(search.toLowerCase())
+        )
+      );
+    }
+
+    setSearch(search);
+  };
+
   return (
     <React.Fragment>
       <div className={TableStyle.titleHeader}>
@@ -21,9 +65,10 @@ function CustomersMessagesTable() {
               <div className={TableStyle.searchText}>
                 <input
                   type="search"
-                  placeholder="Search Here"
-                  value=""
+                  placeholder="search customer here"
+                  value={search}
                   name="search"
+                  onChange={(e) => onInputChange(e)}
                   className={TableStyle.searchinput}
                 />
               </div>
@@ -36,7 +81,7 @@ function CustomersMessagesTable() {
           <thead>
             <tr>
               <th>
-                <div className={TableStyle.header}>Message</div>
+                <div className={TableStyle.header}>Message Id</div>
               </th>
               <th>
                 <div className={TableStyle.header}>Customer Name</div>
@@ -48,109 +93,33 @@ function CustomersMessagesTable() {
                 <div className={TableStyle.header}>Contact Number</div>
               </th>
               <th>
-                <div className={TableStyle.header}>Area</div>
+                <div className={TableStyle.header}>Date</div>
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/customerMessage/view"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  No:1
-                </Link>
-              </td>
-              <td>Tharindu Gihan</td>
-              <td>wtgihan@gmail.com</td>
-              <td>0778522736</td>
-              <td>Galle</td>
-            </tr>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/customerMessage/view"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  No:2
-                </Link>
-              </td>
-              <td>Himasha Anjali</td>
-              <td>anjali@gmail.com</td>
-              <td>0778522436</td>
-              <td>Colombo</td>
-            </tr>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/customerMessage/view"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  No:3
-                </Link>
-              </td>
-              <td>Sathira Dimuthu</td>
-              <td>dimuthu@gmail.com</td>
-              <td>0778222736</td>
-              <td>Galle</td>
-            </tr>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/customerMessage/view"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  No:4
-                </Link>
-              </td>
-              <td>Anushka Tharindu</td>
-              <td>anushka@gmail.com</td>
-              <td>0774536987</td>
-              <td>Pandura</td>
-            </tr>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/customerMessage/view"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  No:5
-                </Link>
-              </td>
-              <td>Himasha Anjali</td>
-              <td>anjali@gmail.com</td>
-              <td>0778522436</td>
-              <td>Colombo</td>
-            </tr>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/customerMessage/view"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  No:6
-                </Link>
-              </td>
-              <td>Sathira Dimuthu</td>
-              <td>dimuthu@gmail.com</td>
-              <td>0778222736</td>
-              <td>Poddala</td>
-            </tr>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/customerMessage/view"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  No:7
-                </Link>
-              </td>
-              <td>Anushka Tharindu</td>
-              <td>anushka@gmail.com</td>
-              <td>0774536987</td>
-              <td>Galle</td>
-            </tr>
+            {Array.isArray(filterMessages) === true && (
+              <React.Fragment>
+                {filterMessages.map((message, index) => (
+                  <tr key={index + 1}>
+                    <td>
+                      <Link
+                        to={`/dashboard/customerMessage/view/${message.id}`}
+                        className={TableStyle.linkStyle}
+                      >
+                        <span className={TableStyle.statusStyleLink}>
+                          {message.id}
+                        </span>
+                      </Link>
+                    </td>
+                    <td>{message.first_name + " " + message.last_name}</td>
+                    <td>{message.email}</td>
+                    <td>{message.contact_number}</td>
+                    <td>{message.createdAt.split("T")[0]}</td>
+                  </tr>
+                ))}
+              </React.Fragment>
+            )}
           </tbody>
         </table>
       </div>

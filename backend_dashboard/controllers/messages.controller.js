@@ -31,7 +31,7 @@ exports.create = async (req, res) => {
 
 // retrieve the data
 exports.findAll = (req, res) => {
-  Message.findAll({ where: { is_deleted: 0 } })
+  Message.findAll()
     .then((data) => {
       res.send(data);
     })
@@ -46,7 +46,7 @@ exports.findAll = (req, res) => {
 // retreive single object
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  Message.findOne({ where: { id: id, is_deleted: 0 } })
+  Message.findOne({ where: { id: id } })
     .then((data) => {
       res.send(data);
     })
@@ -62,7 +62,7 @@ exports.update = (req, res) => {
   const id = req.params.id;
 
   Message.update(req.body, {
-    where: { id: id, is_deleted: 0 },
+    where: { id: id },
   })
     .then((num) => {
       if (num == 1) {
@@ -82,28 +82,28 @@ exports.update = (req, res) => {
 
 // delete an object
 
-exports.delete = (req, res) => {
-  const id = req.params.id;
-  Message.update(
-    {
-      is_deleted: true,
-    },
-    {
-      where: { id: id },
-    }
-  )
-    .then((num) => {
-      if (num == 1) {
-        res.send({
-          message: "Message was deleted successfully",
-        });
-      } else {
-        res.send({ message: `Cannot delete Message with id=${id}` });
-      }
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: "Error deleting Message with id = " + id,
-      });
-    });
-};
+// exports.delete = (req, res) => {
+//   const id = req.params.id;
+//   Message.update(
+//     {
+//       is_deleted: true,
+//     },
+//     {
+//       where: { id: id },
+//     }
+//   )
+//     .then((num) => {
+//       if (num == 1) {
+//         res.send({
+//           message: "Message was deleted successfully",
+//         });
+//       } else {
+//         res.send({ message: `Cannot delete Message with id=${id}` });
+//       }
+//     })
+//     .catch((err) => {
+//       res.status(500).send({
+//         message: "Error deleting Message with id = " + id,
+//       });
+//     });
+// };

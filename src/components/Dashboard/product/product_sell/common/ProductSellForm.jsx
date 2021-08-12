@@ -9,8 +9,9 @@ function ProductSellForm() {
     last_name: "",
     address: "",
     contact_number: "",
-    payment_method: "CASH",
   });
+
+  const payment_method = "CASH";
 
   const onInputChange = (e) => {
     setCustomer({ ...customer, [e.target.name]: e.target.value });
@@ -24,6 +25,7 @@ function ProductSellForm() {
       const customerId = response.data.id;
       const order = {
         customer_id: customerId,
+        payment_method: "CASH",
       };
       const responseOrder = await addOrder(order);
       const id = responseOrder.data.id;
@@ -122,7 +124,7 @@ function ProductSellForm() {
                   <input
                     type="text"
                     name="payment_method"
-                    value={customer.payment_method}
+                    value={payment_method}
                     placeholder="Payment Method"
                     className={ProductViewFormStyle.inputStyle}
                     readOnly

@@ -12,10 +12,6 @@ module.exports = (sequelize, Sequelize) => {
     contact_number: {
       type: Sequelize.INTEGER,
       allowNull: false,
-      unique: true,
-    },
-    payment_method: {
-      type: Sequelize.STRING,
     },
     is_deleted: {
       type: Sequelize.INTEGER,

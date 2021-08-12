@@ -20,6 +20,7 @@ const AllProductCards = (props) => {
   //adding selected product Id to the localstorage
   function sayHello(itemid) {
     // alert(`hello, ${itemid}`);
+    console.log(itemid);
     localStorage.setItem("productID", itemid);
     console.log(localStorage.getItem("productID"));
 
@@ -75,7 +76,7 @@ const AllProductCards = (props) => {
                     <Link to="/viewProduct">
                       <button
                         class="addtocart"
-                        onClick={() => sayHello(productList.itemid)}
+                        onClick={() => sayHello(productList.id)}
                       >
                         Read More
                       </button>
