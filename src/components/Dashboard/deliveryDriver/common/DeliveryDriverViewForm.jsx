@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.module.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Auth from "../../service/auth";
+import {
+  getDeliveryDriverDetails,
+  deleteDeliveryDriver,
+  getDeliveryDrivers,
+} from "./../../service/deliveryDriver";
 
 function DeliveryDriverViewForm() {
   const user = Auth.getCurrentUser();
@@ -9,14 +14,62 @@ function DeliveryDriverViewForm() {
   const driverViewLocation = url[3];
   const driverProfileSet = url[2];
 
-  const handleUpdate = () => {
-    if (driverProfileSet === "deliveryDriverProfile") {
-      window.location = "/dashboard/deliveryDriverProfile/update";
-    } else {
-      window.location = "/dashboard/deliveryDriver/update";
+  const { id } = useParams();
+
+  const [deliveryDriver, setDeliveryDriver] = useState({
+    id: 0,
+    first_name: "",
+    last_name: "",
+    address: "",
+    telephone: "",
+    account_id: "",
+    account: {
+      email: "",
+    },
+    availabilty: 0,
+  });
+
+  useEffect(() => {
+    loadDeliveryDriver();
+  }, []);
+
+  const loadDeliveryDriver = async () => {
+    console.log(id);
+    try {
+      let drivers = {};
+      if (id !== undefined) {
+        const result = await getDeliveryDriverDetails(id);
+        drivers = result.data;
+      } else {
+        const user_email = Auth.getCurrentUserEmail();
+        const result = await getDeliveryDrivers();
+        drivers = result.data.filter(
+          (driver) => driver.account.email === user_email
+        )[0];
+      }
+
+      setDeliveryDriver(drivers);
+    } catch (error) {
+      console.log("Error", error.message);
     }
   };
 
+  const handleUpdate = () => {
+    if (driverProfileSet === "deliveryDriverProfile") {
+      window.location = `/dashboard/deliveryDriverProfile/update/${deliveryDriver.id}`;
+    } else {
+      window.location = `/dashboard/deliveryDriver/update/${deliveryDriver.id}`;
+    }
+  };
+
+  const handleDelete = async () => {
+    try {
+      const res = await deleteDeliveryDriver(id);
+      window.location = "/dashboard/deliveryDrivers";
+    } catch (error) {
+      console.log("There was a problem with the server: ", error);
+    }
+  };
   return (
     <React.Fragment>
       <div className={ProductViewFormStyle.titleHeader}>
@@ -67,9 +120,10 @@ function DeliveryDriverViewForm() {
                 </label>
                 <input
                   type="text"
-                  value=""
+                  value={deliveryDriver.first_name}
                   placeholder="Driver First Name"
                   className={ProductViewFormStyle.inputStyle}
+                  readOnly
                 />
               </div>
               <div className={ProductViewFormStyle.data}>
@@ -78,9 +132,10 @@ function DeliveryDriverViewForm() {
                 </label>
                 <input
                   type="text"
-                  value=""
+                  value={deliveryDriver.last_name}
                   placeholder="Driver Last Name"
                   className={ProductViewFormStyle.inputStyle}
+                  readOnly
                 />
               </div>
             </div>
@@ -91,9 +146,10 @@ function DeliveryDriverViewForm() {
                 </label>
                 <input
                   type="text"
-                  value=""
+                  value={deliveryDriver.account.email}
                   placeholder="Delivery Driver Email"
                   className={ProductViewFormStyle.inputStyleforLong}
+                  readOnly
                 />
               </div>
             </div>
@@ -104,9 +160,10 @@ function DeliveryDriverViewForm() {
                 </label>
                 <input
                   type="text"
-                  value=""
+                  value={deliveryDriver.address}
                   placeholder="Delivery Driver Address"
                   className={ProductViewFormStyle.inputStyleforLong}
+                  readOnly
                 />
               </div>
             </div>
@@ -117,43 +174,22 @@ function DeliveryDriverViewForm() {
                 </label>
                 <input
                   type="text"
-                  value=""
+                  value={deliveryDriver.telephone}
                   placeholder="Driver Contact Number"
                   className={ProductViewFormStyle.inputStyle}
+                  readOnly
                 />
               </div>
               <div className={ProductViewFormStyle.data}>
                 <label className={ProductViewFormStyle.labelStyle}>
-                  Payment
+                  Availability
                 </label>
                 <input
                   type="text"
-                  value=""
+                  value={deliveryDriver.availability === 1 ? "TRUE" : "FALSE"}
                   placeholder="Basic Payment"
                   className={ProductViewFormStyle.inputStyle}
-                />
-              </div>
-            </div>
-
-            <div className={ProductViewFormStyle.formLine}>
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>
-                  Vehicle
-                </label>
-                <input
-                  type="text"
-                  value=""
-                  placeholder="Vehicle Number"
-                  className={ProductViewFormStyle.inputStyle}
-                />
-              </div>
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>Type</label>
-                <input
-                  type="text"
-                  value=""
-                  placeholder="Vehicle Type"
-                  className={ProductViewFormStyle.inputStyle}
+                  readOnly
                 />
               </div>
             </div>
@@ -183,6 +219,7 @@ function DeliveryDriverViewForm() {
                   " " +
                   ProductViewFormStyle.deleteButtonColor
                 }
+                onClick={handleDelete}
               >
                 Delete
               </button>

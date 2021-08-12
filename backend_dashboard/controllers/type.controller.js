@@ -11,7 +11,7 @@ exports.create = async (req, res) => {
   //  Create a Type
   const type = {
     name: req.body.name,
-    categoryId: req.body.categoryId,
+    category_id: req.body.category_id,
   };
 
   //   Save Type in the database

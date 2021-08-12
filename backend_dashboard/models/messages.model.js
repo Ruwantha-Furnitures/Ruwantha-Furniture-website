@@ -15,10 +15,6 @@ module.exports = (sequelize, Sequelize) => {
     details: {
       type: Sequelize.STRING,
     },
-    is_deleted: {
-      type: Sequelize.INTEGER,
-      defaultValue: 0,
-    },
   });
 
   return Message;

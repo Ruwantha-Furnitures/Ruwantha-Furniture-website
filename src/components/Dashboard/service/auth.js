@@ -13,6 +13,12 @@ export function getCurrentUser() {
   return user;
 }
 
+export function getCurrentUserEmail() {
+  const email = localStorage.getItem("userEmail");
+  return email;
+}
+
 export default {
   getCurrentUser,
+  getCurrentUserEmail,
 };

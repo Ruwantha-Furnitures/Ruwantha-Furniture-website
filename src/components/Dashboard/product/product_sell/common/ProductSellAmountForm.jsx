@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import { Link, useParams } from "react-router-dom";
-import {
-  editInvoiceDetails,
-  getInvoiceDetails,
-} from "./../../../service/invoice";
-import { getOrders } from "./../../../service/order";
+import { getSellProducts } from "./../../../service/sellProduct";
+import { editOrderDetails, getOrderDetails } from "../../../service/order";
 
 function ProductSellAmountForm() {
   const { id } = useParams();
@@ -17,20 +14,19 @@ function ProductSellAmountForm() {
     total_amount: 0,
   });
 
-  const [orders, setOrders] = useState([]);
-  const [invoice, setInvoice] = useState({
+  // orders = sellProduct
+  // invoice = invoice
+  const [sellProducts, setSellProducts] = useState([]);
+  const [order, setOrder] = useState({
     total_amount: 0,
+    payment_method: "",
     customer: {
       first_name: "",
       last_name: "",
       email: "",
       address: "",
       contact_number: "",
-      payment_method: "",
     },
-    no_of_products: 0,
-    products_price: 0,
-    total_discounts: 0,
   });
 
   useEffect(() => {
@@ -40,40 +36,56 @@ function ProductSellAmountForm() {
   const loadPageData = async () => {
     try {
       // get invoice data
-      const resultInvoice = await getInvoiceDetails(id);
-      setInvoice(resultInvoice.data);
-      // get order data according to invoice
-      const resultOrders = await getOrders();
-      const ordersData = resultOrders.data.filter(
-        (orderItem) => orderItem.invoice_id == id
+      const resultOrder = await getOrderDetails(id);
+      setOrder(resultOrder.data);
+      // get order data according to order
+      const resultSellProducts = await getSellProducts();
+      const sellProductsData = resultSellProducts.data.filter(
+        (sellProductItem) => sellProductItem.order_id == id
       );
-      setOrders(ordersData);
+      console.log(sellProductsData);
+      setSellProducts(sellProductsData);
 
       var numOfProducts = 0;
       var totalPriceOfProducts = 0;
       var totalAmountOfProducts = 0;
       var totalDiscount = 0;
 
-      ordersData.forEach((orderItem) => {
+      sellProductsData.forEach((sellProductItem) => {
         numOfProducts = numOfProducts + 1;
         totalPriceOfProducts =
-          totalPriceOfProducts + orderItem.product.price * orderItem.quantity;
-        totalAmountOfProducts = totalAmountOfProducts + orderItem.price;
+          totalPriceOfProducts +
+          parseInt(sellProductItem.product.price) *
+            parseInt(sellProductItem.quantity);
+        totalAmountOfProducts =
+          totalAmountOfProducts + parseInt(sellProductItem.price);
+        // console.log(sellProductItem.product.price);
+        // console.log(totalPriceOfProducts);
+        // console.log(totalAmountOfProducts);
       });
+
+      // console.log(
+      //   "numOfProducts " +
+      //     numOfProducts +
+      //     " totalPriceOfProducts " +
+      //     totalPriceOfProducts +
+      //     " totalAmountOfProducts " +
+      //     totalAmountOfProducts
+      // );
 
       totalDiscount =
         ((totalPriceOfProducts - totalAmountOfProducts) /
           totalPriceOfProducts) *
         100;
 
-      var discountofOrders = totalDiscount.toFixed(2);
+      var discountofSellProducts = Math.round(totalDiscount);
 
       setBill({
         ...bill,
         no_of_products: numOfProducts,
-        products_price: totalPriceOfProducts,
-        total_discounts: discountofOrders,
-        total_amount: totalAmountOfProducts,
+        products_price: totalPriceOfProducts.toFixed(2),
+        total_discounts: discountofSellProducts,
+        total_amount: totalAmountOfProducts.toFixed(2),
       });
     } catch (error) {
       console.log("Error", error.message);
@@ -82,19 +94,14 @@ function ProductSellAmountForm() {
 
   const handlePaymentProcess = async (e) => {
     e.preventDefault();
-    const numOfProducts = bill.no_of_products;
-    const products_price = bill.products_price;
-    const total_discounts = bill.total_discounts;
     const total_amount = bill.total_amount;
-    const newInvoice = {
-      ...invoice,
-      total_amount: total_amount,
-      no_of_products: numOfProducts,
-      products_price: products_price,
-      total_discounts: total_discounts,
+    const newOrder = {
+      ...order,
+      total_product_amount: total_amount,
     };
 
-    const response = await editInvoiceDetails(id, newInvoice);
+    const response = await editOrderDetails(id, newOrder);
+    // Product Process
     window.location = "/dashboard/purchaseOrders";
   };
 
@@ -153,7 +160,7 @@ function ProductSellAmountForm() {
                   </label>
                   <input
                     type="text"
-                    value={bill.products_price}
+                    value={"Rs. " + bill.products_price}
                     placeholder="Product(s) Price"
                     className={ProductViewFormStyle.inputStyle}
                     readOnly
@@ -179,7 +186,7 @@ function ProductSellAmountForm() {
                   </label>
                   <input
                     type="text"
-                    value={"Rs." + bill.products_price}
+                    value={"Rs. " + bill.total_amount}
                     placeholder="Total Amount"
                     className={ProductViewFormStyle.inputStyle}
                     readOnly
@@ -231,7 +238,7 @@ function ProductSellAmountForm() {
                 </label>
                 <input
                   type="text"
-                  value={invoice.customer.first_name}
+                  value={order.customer.first_name}
                   placeholder="Customer First Name"
                   className={ProductViewFormStyle.inputStyle}
                   readOnly
@@ -243,23 +250,9 @@ function ProductSellAmountForm() {
                 </label>
                 <input
                   type="text"
-                  value={invoice.customer.last_name}
+                  value={order.customer.last_name}
                   placeholder="Customer Last Name"
                   className={ProductViewFormStyle.inputStyle}
-                  readOnly
-                />
-              </div>
-            </div>
-            <div className={ProductViewFormStyle.formLine}>
-              <div className={ProductViewFormStyle.dataforLong}>
-                <label className={ProductViewFormStyle.labelStyleforLong}>
-                  Email
-                </label>
-                <input
-                  type="text"
-                  value={invoice.customer.email}
-                  placeholder="Customer Email Address"
-                  className={ProductViewFormStyle.inputStyleforLong}
                   readOnly
                 />
               </div>
@@ -271,7 +264,7 @@ function ProductSellAmountForm() {
                 </label>
                 <input
                   type="text"
-                  value={invoice.customer.address}
+                  value={order.customer.address}
                   placeholder="Customer Dilever Address"
                   className={ProductViewFormStyle.inputStyleforLong}
                   readOnly
@@ -285,7 +278,7 @@ function ProductSellAmountForm() {
                 </label>
                 <input
                   type="text"
-                  value={invoice.customer.contact_number}
+                  value={order.customer.contact_number}
                   placeholder="Customer Number"
                   className={ProductViewFormStyle.inputStyle}
                   readOnly
@@ -297,7 +290,7 @@ function ProductSellAmountForm() {
                 </label>
                 <input
                   type="text"
-                  value={invoice.customer.payment_method}
+                  value={order.payment_method}
                   placeholder="Payment Method"
                   className={ProductViewFormStyle.inputStyle}
                   readOnly
@@ -309,9 +302,9 @@ function ProductSellAmountForm() {
       </div>
       {/* )} */}
 
-      {Array.isArray(orders) === true && (
+      {Array.isArray(sellProducts) === true && (
         <React.Fragment>
-          {orders.map((order, index) => (
+          {sellProducts.map((sellProduct, index) => (
             <div key={index + 1} className={ProductViewFormStyle.details}>
               <div className={ProductViewFormStyle.infoPart}>
                 <div className={ProductViewFormStyle.form}>
@@ -328,7 +321,7 @@ function ProductSellAmountForm() {
                       </label>
                       <input
                         type="text"
-                        value={order.product.name}
+                        value={sellProduct.product.name}
                         placeholder="Product Name"
                         className={ProductViewFormStyle.inputStyle}
                         readOnly
@@ -340,7 +333,7 @@ function ProductSellAmountForm() {
                       </label>
                       <input
                         type="text"
-                        value={order.quantity}
+                        value={sellProduct.quantity}
                         placeholder="Product Qunatity"
                         className={ProductViewFormStyle.inputStyle}
                         readOnly
@@ -354,7 +347,7 @@ function ProductSellAmountForm() {
                       </label>
                       <input
                         type="text"
-                        value={"Rs." + order.price}
+                        value={"Rs." + sellProduct.price}
                         placeholder="Product Price"
                         className={ProductViewFormStyle.inputStyle}
                         readOnly
@@ -367,12 +360,14 @@ function ProductSellAmountForm() {
                       <input
                         type="text"
                         value={
-                          (((order.product.price * order.quantity -
-                            order.price) /
-                            order.product.price) *
-                            100) /
-                            order.quantity +
-                          "%"
+                          Math.round(
+                            (((parseInt(sellProduct.product.price) *
+                              sellProduct.quantity -
+                              parseInt(sellProduct.price)) /
+                              parseInt(sellProduct.product.price)) *
+                              100) /
+                              sellProduct.quantity
+                          ) + "%"
                         }
                         placeholder="Product Discount"
                         className={ProductViewFormStyle.inputStyle}

@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.module.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { getMessageDetails } from "./../../service/message";
 
 function CustomerMessagesViewForm() {
+  const { id } = useParams();
+
+  const [message, setMessage] = useState({
+    id: 0,
+    first_name: "",
+    last_name: "",
+    email: "",
+    contact_number: 0,
+    details: "",
+  });
+
+  useEffect(() => {
+    loadMessage();
+  }, []);
+
+  const loadMessage = async () => {
+    try {
+      const result = await getMessageDetails(id);
+      setMessage(result.data);
+    } catch (error) {
+      console.log("Error", error.message);
+    }
+  };
+
   return (
     <React.Fragment>
       <div>
@@ -46,13 +71,14 @@ function CustomerMessagesViewForm() {
               >
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
-                    First Name
+                    First Names
                   </label>
                   <input
                     type="text"
-                    value=""
+                    value={message.first_name}
                     placeholder="Tharindu"
                     className={ProductViewFormStyle.inputStyle}
+                    readOnly
                   />
                 </div>
                 <div className={ProductViewFormStyle.data}>
@@ -61,9 +87,10 @@ function CustomerMessagesViewForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    value={message.last_name}
                     placeholder="Gihan"
                     className={ProductViewFormStyle.inputStyle}
+                    readOnly
                   />
                 </div>
               </div>
@@ -74,22 +101,10 @@ function CustomerMessagesViewForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    value={message.email}
                     placeholder="wtgihan@gmail.com"
                     className={ProductViewFormStyle.inputStyleforLong}
-                  />
-                </div>
-              </div>
-              <div className={ProductViewFormStyle.formLine}>
-                <div className={ProductViewFormStyle.dataforLong}>
-                  <label className={ProductViewFormStyle.labelStyleforLong}>
-                    Address
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Gonapura Poddala Galle"
-                    className={ProductViewFormStyle.inputStyleforLong}
+                    readOnly
                   />
                 </div>
               </div>
@@ -111,9 +126,10 @@ function CustomerMessagesViewForm() {
                     Message
                   </label>
                   <textarea
-                    value=""
+                    value={message.details}
                     placeholder="Customer Message..."
                     className={ProductViewFormStyle.labelStyleforLongDesc}
+                    readOnly
                   />
                 </div>
               </div>

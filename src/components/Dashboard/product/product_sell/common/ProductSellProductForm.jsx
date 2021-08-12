@@ -2,80 +2,91 @@ import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import { Link, useParams } from "react-router-dom";
 import { getProducts } from "./../../../service/product";
-import { addOrder, getOrders, deleteOrder } from "../../../service/order";
-import { getOrderDetails } from "./../../../service/order";
+import {
+  addSellProduct,
+  getSellProducts,
+  deleteSellProduct,
+  getSellProductDetails,
+} from "../../../service/sellProduct";
+// import { getOrderDetails } from "./../../../service/order";
 
 function ProductSellProductForm() {
   const { id } = useParams();
 
   const [products, setProducts] = useState({
     id: 0,
-    name: "",
+    name: "Select Product",
     price: 0,
     discount: 0,
   });
 
-  const [order, setOrder] = useState({
+  const [sellProduct, setSellProduct] = useState({
     product_id: 0,
     price: 0,
     quantity: 1,
-    invoice_id: id,
+    order_id: id,
     discount: 0,
+    productPrice: 0,
   });
 
-  const [totalOrders, setTotalOrders] = useState([]);
+  const [totalSellProducts, setTotalSellProducts] = useState([]);
 
   useEffect(() => {
-    loadOrdersAndProducts();
+    loadSellProductsAndProducts();
   }, []);
 
-  const loadOrdersAndProducts = async () => {
+  const loadSellProductsAndProducts = async () => {
     try {
-      const result = await getOrders();
-      // console.log(result.data);
-      const resultOrders = result.data.filter(
-        (orderItem) => orderItem.invoice_id == id
+      const result = await getSellProducts();
+      console.log(result.data);
+      console.log(id);
+      const resultSellProducts = result.data.filter(
+        (sellProductItem) => sellProductItem.order_id == id
       );
+
       const resultProducts = await getProducts();
       var productItems = resultProducts.data;
-      // console.log(totalOrders);
-      resultOrders.forEach((orderItem) => {
+      console.log(productItems);
+      resultSellProducts.forEach((sellProductItem) => {
         productItems = productItems.filter(
-          (item) => item.id !== orderItem.product_id
+          (item) => item.id !== sellProductItem.product_id
         );
       });
       // console.log(productItems);
       setProducts(productItems);
-      setTotalOrders(resultOrders);
+      setTotalSellProducts(resultSellProducts);
     } catch (error) {
       console.log("Error", error.message);
     }
   };
 
   const onInputChange = (e) => {
-    if (e.target.name === "product_id") {
+    if (e.target.name === "product_id" && e.target.value != 0) {
       const product_id = e.target.value;
       const filterProduct = products.filter(
         (product) => product.id == product_id
       )[0];
 
-      const discount = filterProduct.discount;
-      const price = (filterProduct.price * (100 - discount)) / 100;
+      console.log(product_id);
 
-      setOrder({
-        ...order,
+      const discount = filterProduct.discount;
+      const price = (parseInt(filterProduct.price) * (100 - discount)) / 100;
+      console.log(price);
+
+      setSellProduct({
+        ...sellProduct,
         [e.target.name]: e.target.value,
         discount: discount,
-        price: price * order.quantity,
+        price: price * sellProduct.quantity,
         productPrice: price,
       });
 
       // console.log(filterProduct);
     } else if (e.target.name === "quantity") {
       const quantity = e.target.value;
-      const priceTotal = order.productPrice * quantity;
-      setOrder({
-        ...order,
+      const priceTotal = sellProduct.productPrice * quantity;
+      setSellProduct({
+        ...sellProduct,
         [e.target.name]: e.target.value,
         price: priceTotal,
       });
@@ -84,24 +95,34 @@ function ProductSellProductForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // console.log(sellProduct);
     try {
-      const response = await addOrder(order);
+      const newSellProduct = {
+        product_id: sellProduct.product_id,
+        price: sellProduct.price,
+        quantity: sellProduct.quantity,
+        order_id: sellProduct.order_id,
+        discount: sellProduct.discount,
+      };
+      const response = await addSellProduct(newSellProduct);
+
       var product_id = response.data.id;
 
-      const result = await getOrderDetails(product_id);
+      const result = await getSellProductDetails(product_id);
       console.log(result.data);
       setProducts(
         products.filter((product) => product.id !== result.data.product.id)
       );
-      setTotalOrders([...totalOrders, result.data]);
+      setTotalSellProducts([...totalSellProducts, result.data]);
       const resetOrder = {
         product_id: 0,
         price: 0,
         quantity: 1,
-        customer_id: id,
+        order_id: id,
         discount: 0,
+        productPrice: 0,
       };
-      setOrder(resetOrder);
+      setSellProduct(resetOrder);
       // console.log(response.data);
     } catch (error) {
       if (error.response.status === 500) {
@@ -119,10 +140,10 @@ function ProductSellProductForm() {
     // send paramter value as customer id and date
   };
 
-  const handleCancelOrder = async (e, order_id) => {
+  const handleCancelSellProduct = async (e, order_id) => {
     e.preventDefault();
     try {
-      const response = await deleteOrder(order_id);
+      const response = await deleteSellProduct(order_id);
       window.location = `/dashboard/product/sell/product/${id}`;
     } catch (error) {
       console.log("Error", error.message);
@@ -131,7 +152,7 @@ function ProductSellProductForm() {
     // cancel order process
   };
 
-  // console.log(totalOrders);
+  console.log(sellProduct);
 
   return (
     <React.Fragment>
@@ -183,12 +204,18 @@ function ProductSellProductForm() {
                     name="product_id"
                     onChange={(e) => onInputChange(e)}
                     required
+                    value={sellProduct.product_id}
                   >
+                    {/* {sellProduct.product_id === 0 ? (
+                      <option value="0">Select Product</option>
+                    ) : (
+                      <option value="0">Select Product</option>
+                    )} */}
                     <option value="0">Select Product</option>
                     {Array.isArray(products) === true && (
                       <React.Fragment>
                         {products.map((product, index) => (
-                          <option key={index} value={product.id}>
+                          <option key={index + 1} value={product.id}>
                             {product.name}
                           </option>
                         ))}
@@ -203,7 +230,7 @@ function ProductSellProductForm() {
                   <input
                     type="number"
                     name="quantity"
-                    value={order.quantity}
+                    value={sellProduct.quantity}
                     onChange={(e) => onInputChange(e)}
                     placeholder="Product Qunatity"
                     className={ProductViewFormStyle.inputStyle}
@@ -218,7 +245,7 @@ function ProductSellProductForm() {
                   <input
                     type="text"
                     // name="price"
-                    value={order.discount + "%"}
+                    value={sellProduct.discount + "%"}
                     // onChange={(e) => onInputChange(e)}
                     placeholder="Product Price"
                     className={ProductViewFormStyle.inputStyle}
@@ -232,7 +259,7 @@ function ProductSellProductForm() {
                   <input
                     type="text"
                     name="price"
-                    value={"Rs." + order.price}
+                    value={"Rs." + sellProduct.price}
                     // onChange={(e) => onInputChange(e)}
                     placeholder="Product Price"
                     className={ProductViewFormStyle.inputStyle}
@@ -258,7 +285,7 @@ function ProductSellProductForm() {
             >
               Sell Product
             </button>
-            {totalOrders.length > 0 && (
+            {totalSellProducts.length > 0 && (
               <button
                 className={ProductViewFormStyle.descButtonAddStyle}
                 onClick={(e) => handleFinalProcess(e)}
@@ -270,9 +297,9 @@ function ProductSellProductForm() {
         </div>
       </form>
 
-      {Array.isArray(totalOrders) === true && (
+      {Array.isArray(totalSellProducts) === true && (
         <React.Fragment>
-          {totalOrders.map((order, index) => (
+          {totalSellProducts.map((sellProductItem, index) => (
             <form key={index + 1} className={ProductViewFormStyle.formStyle}>
               <div className={ProductViewFormStyle.details}>
                 <div className={ProductViewFormStyle.infoPart}>
@@ -290,7 +317,7 @@ function ProductSellProductForm() {
                         </label>
                         <input
                           type="text"
-                          value={order.product.name}
+                          value={sellProductItem.product.name}
                           readOnly
                           placeholder="Product Qunatity"
                           className={ProductViewFormStyle.inputStyle}
@@ -302,7 +329,7 @@ function ProductSellProductForm() {
                         </label>
                         <input
                           type="number"
-                          value={order.quantity}
+                          value={sellProductItem.quantity}
                           readOnly
                           placeholder="Product Qunatity"
                           className={ProductViewFormStyle.inputStyle}
@@ -316,7 +343,7 @@ function ProductSellProductForm() {
                         </label>
                         <input
                           type="text"
-                          value={order.discount + "%"}
+                          value={sellProductItem.discount + "%"}
                           placeholder="Product Price"
                           className={ProductViewFormStyle.inputStyle}
                           readOnly
@@ -329,7 +356,7 @@ function ProductSellProductForm() {
                         <input
                           type="text"
                           name="price"
-                          value={"Rs." + order.price}
+                          value={"Rs." + sellProductItem.price}
                           placeholder="Product Price"
                           className={ProductViewFormStyle.inputStyle}
                           readOnly
@@ -350,7 +377,9 @@ function ProductSellProductForm() {
                       " " +
                       ProductViewFormStyle.addRightMargin
                     }
-                    onClick={(e) => handleCancelOrder(e, order.id)}
+                    onClick={(e) =>
+                      handleCancelSellProduct(e, sellProductItem.id)
+                    }
                   >
                     Cancel
                   </button>
