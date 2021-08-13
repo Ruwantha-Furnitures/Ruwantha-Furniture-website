@@ -17,7 +17,21 @@ const SignupForm = ({ signUpHandler }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    signUpHandler({ first_name, last_name, email, address, contact_number, password });
+
+    const 
+
+    // console.log(password)
+    // console.log(confirmPassword)
+    if(password === confirmPassword){
+      console.log("matched")
+      signUpHandler({ first_name, last_name, email, address, contact_number, password });
+    }else{
+      // alert("Password not matched")
+      isValid = false;
+      errors["password"] = "Passwords don't match.";
+      setPassword("")
+      setConfirmPassword("")
+    }    
   };
 
   return (
