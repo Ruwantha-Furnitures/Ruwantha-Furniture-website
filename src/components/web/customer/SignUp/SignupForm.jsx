@@ -7,8 +7,8 @@ import "../../../../css/web/Signup.css";
 
 const SignupForm = ({ signUpHandler }) => {
   require("bootstrap/dist/css/bootstrap.min.css");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [contact_number, setContactNo] = useState("");
@@ -17,7 +17,7 @@ const SignupForm = ({ signUpHandler }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    signUpHandler({ firstName, lastName, email, address, contact_number, password });
+    signUpHandler({ first_name, last_name, email, address, contact_number, password });
   };
 
   return (
@@ -45,7 +45,7 @@ const SignupForm = ({ signUpHandler }) => {
             name="first_name"
             type="text"
             placeholder="First Name"
-            value={firstName}
+            value={first_name}
             onChange={(e) => setFirstName(e.target.value)}
             required
           />
@@ -56,7 +56,7 @@ const SignupForm = ({ signUpHandler }) => {
             name="last_name"
             type="text"
             placeholder="Last Name"
-            value={lastName}
+            value={last_name}
             onChange={(e) => setLastName(e.target.value)}
             required
           />
