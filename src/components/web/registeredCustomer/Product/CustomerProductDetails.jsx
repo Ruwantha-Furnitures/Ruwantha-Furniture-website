@@ -20,11 +20,11 @@ function CustomerProductDetails() {
 
         let accountID=localStorage.getItem('userAccID');
         console.log(accountID);
+
+        const data = { itemid , accountID }
         try{            
-            const respond = await axios.post("http://192.168.56.1:3002/api/cart/addcart/",
-                { itemid , accountID }
-            );
-            console.log("After the api call");
+            const respond = await axios.post("http://localhost:8080/api/cart",data);
+            console.log(respond.data);
             if(respond.data.auth === true){
                 setIsSubmit(true);
             }else{
@@ -73,7 +73,7 @@ function CustomerProductDetails() {
                                         <p align='justify'>{productDetails.description}</p><br />
                                         <Rating></Rating>
                                         {/* <Link to="/cart"><button onClick={() => setCartValue(itemCount + 1)} class="addtocart">Add to cart </button></Link> */}
-                                        <button onClick={() => setCartValue( productDetails.itemid )} class="addtocart">Add to cart </button> {' '}
+                                        <button onClick={() => setCartValue( productDetails.id )} class="addtocart">Add to cart </button> {' '}
                                         <Link to='/customer_productDetails_checkout'><button class="addtocart">Check out</button></Link>
                                     </center>
                                 </Container>
