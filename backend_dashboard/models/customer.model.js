@@ -10,8 +10,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
     },
     contact_number: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
+      type: Sequelize.INTEGER,      
     },
     is_deleted: {
       type: Sequelize.INTEGER,

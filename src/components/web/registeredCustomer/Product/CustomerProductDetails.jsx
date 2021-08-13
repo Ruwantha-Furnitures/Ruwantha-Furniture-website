@@ -20,11 +20,11 @@ function CustomerProductDetails() {
 
         let accountID=localStorage.getItem('userAccID');
         console.log(accountID);
+
+        const data = { itemid , accountID }
         try{            
-            const respond = await axios.post("http://192.168.56.1:3002/api/cart/addcart/",
-                { itemid , accountID }
-            );
-            console.log("After the api call");
+            const respond = await axios.post("http://localhost:8080/api/cart",data);
+            console.log(respond.data);
             if(respond.data.auth === true){
                 setIsSubmit(true);
             }else{
@@ -39,8 +39,8 @@ function CustomerProductDetails() {
         const itemID=localStorage.getItem('productID')
         const fetchData=async() =>{
             try{
-                const res=await axios.get(`http://192.168.56.1:3002/api/products/viewProduct/${itemID}`); // wil receive the response
-                //console.log(res.data) //view the response object data
+                const res=await axios.get(`http://localhost:8080/api/product/${itemID}`); // wil receive the response
+                console.log(res.data) //view the response object data
                 setProductDetails(res.data) // set the response data to the state of productDetails object   
                 localStorage.setItem("productName",res.data.name);              
                 //localStorage.setItem("productName","Product name");              
@@ -62,7 +62,7 @@ function CustomerProductDetails() {
                     <Card className={FormStyle.cardbox} style={{marginTop:'30px', marginBottom: '30px', padding:'30px', boxShadow:'0px 0px 5px #000'}}>                         
                         <Row className="justify-content-md-center" xs={12}>
                             <Col sm={6}>
-                                <img src={process.env.PUBLIC_URL + '/items/'+ productDetails.itemid +'.jpg'} className={CommonStyle.Productimage} alt='items'></img>                  
+                                <img src={productDetails.img_location} className={CommonStyle.Productimage} alt='items'></img>                  
                             </Col>
                             <br />
                             <Col sm={6}>
@@ -70,10 +70,10 @@ function CustomerProductDetails() {
                                     <center>
                                         <h2>{productDetails.name}</h2>
                                         <h4>{`Rs. ${productDetails.price}`}</h4><br />
-                                        <p align='justify'>{productDetails.details}</p><br />
+                                        <p align='justify'>{productDetails.description}</p><br />
                                         <Rating></Rating>
                                         {/* <Link to="/cart"><button onClick={() => setCartValue(itemCount + 1)} class="addtocart">Add to cart </button></Link> */}
-                                        <button onClick={() => setCartValue( productDetails.itemid )} class="addtocart">Add to cart </button> {' '}
+                                        <button onClick={() => setCartValue( productDetails.id )} class="addtocart">Add to cart </button> {' '}
                                         <Link to='/customer_productDetails_checkout'><button class="addtocart">Check out</button></Link>
                                     </center>
                                 </Container>

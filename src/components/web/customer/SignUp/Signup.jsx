@@ -8,35 +8,37 @@ import { Container } from "reactstrap";
 import axios from "axios";
 
 const Signup = () => {
-  const [isSubmit, setIsSubmit] = useState(false);
+    const [isSubmit, setIsSubmit] = useState(false);
 
-  const signUpHandler = async (data) => {
-    console.log(data);
-    try {
-      const { email, password } = data;
-      const account = {
-        email: email,
-        password: password,
-      };
-      const { firstName, lastName, address, contactNo } = data;
+    const signUpHandler = async (data) => {
+        console.log(data);
+                
+        try {
+            const { email, password } = data;
+      
+            const account = {
+              email: email,
+              password: password,
+              user_level: 1,
+            };                  
 
-      // create account
-      const responseAccount = await axios.post(
-        "http://localhost:8080/api/account",
-        account
-      );
+            // create account
+            const responseAccount = await axios.post(
+              "http://localhost:8080/api/account",
+              account
+            );      
 
-      // const response = await axios.get(`http://localhost:8080/api/product/${id}`)
+            const account_id = responseAccount.data.id; //done
+            // console.log(account_id)
+            
+            const { first_name, last_name, address, contact_number } = data;
 
-      const account_id = responseAccount.data.id;
-
-      const customer = {
-        first_name: firstName,
-        last_name: lastName,
-        address: address,
-        account_id: account_id,
-        contact_number: contactNo,
-      };
+            const customer = {
+                first_name: first_name,
+                last_name: last_name,
+                address: address,        
+                contact_number: contact_number,
+            };
 
       // customer create
       const responseCustomer = await axios.post(
@@ -44,7 +46,20 @@ const Signup = () => {
         customer
       );
 
-      console.log(responseCustomer.data + " " + responseAccount.data);
+      const customer_id = responseCustomer.data.id;
+
+      const onlineCustomer = {
+        customer_id: customer_id,
+        account_id: account_id,        
+      };
+
+      // customer create
+      const responseOnlineCustomer = await axios.post(
+        "http://localhost:8080/api/onlineCustomer",
+        onlineCustomer
+      );
+
+      console.log(responseCustomer.data + " " + responseAccount.data + " " + responseOnlineCustomer.data);
 
       //   const respond = await axios.post("http://localhost:8080/api/customer",{
       //   data,

@@ -65,7 +65,7 @@ const CustomerAllProducts = () => {
                                 <Rating></Rating>
                             </center>
                             <center>
-                                <Link to="/viewProductDetail"><button class="addtocart" onClick={() => sayHello(productList.itemid)}>Read More</button></Link>
+                                <Link to="/viewProductDetail"><button class="addtocart" onClick={() => sayHello(productList.id)}>Read More</button></Link>
                             </center>                                                                                       
                         </Card> 
                         <br />   

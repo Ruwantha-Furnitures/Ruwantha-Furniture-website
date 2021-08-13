@@ -74,7 +74,7 @@ const ProductCards = () => {
                     <Link to="/viewProduct">
                       <button
                         class="addtocart"
-                        onClick={() => sayHello(productList.itemid)}
+                        onClick={() => sayHello(productList.id)}
                       >
                         Read More
                       </button>

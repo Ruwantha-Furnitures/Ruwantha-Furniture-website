@@ -17,19 +17,6 @@ const Home = () => {
     const [isSubmit, setIsSubmit] = useState(false);
     
     const contactUsHandler =async (data) =>{
-        // try{            
-        //     const respond = await axios.post("http://192.168.56.1:3002/api/contactus/contact",
-        //         { data }
-        //     );
-        //     console.log("asini in home")
-        //     if(respond.data.auth === true){
-        //         setIsSubmit(true);
-        //     }else{
-        //         setIsSubmit(false);
-        //     }            
-        // }catch(error){
-        //     console.log(error);
-        // }
         try{            
             let response = await axios.post('http://localhost:8080/api/message',data);
             console.log(response.data);

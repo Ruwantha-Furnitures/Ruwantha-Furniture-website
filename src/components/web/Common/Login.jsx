@@ -39,14 +39,18 @@ const Login = ({ navigation }) => {
         
         console.log(response.data.user_level)
 
+        const accountId = response.data.id
+        let onlineCustomerData = await axios.get(`http://localhost:8080/api/onlineCustomer/${accountId}`);
+        console.log(onlineCustomerData)
+
         if(dbpassword === encryptpw){
             // console.log('password matched')
-            if ((response.status === 200) && (response.data.user_level === 1)) {
+            if ((response.status === 400) && (response.data.user_level === 1)) {
                 setIsLoading(true);
                 setErrorMessage("");
                 localStorage.setItem("userlevel", 1);
                 localStorage.setItem("userEmail", response.data.email);
-                localStorage.setItem("userAccID",response.data.accountID)
+                //localStorage.setItem("userAccID",response.data.id)
               setUserLevel(1)
             } else if ((response.status === 200) && (response.data.user_level === 0)) {
                 setIsLoading(true);
