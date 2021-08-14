@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import FormStyle from "../../../../css/web/Form.module.css";
 import "../../../../css/web/Signup.css";
+import axios from 'axios';
 
 const SignupForm = ({ signUpHandler }) => {
   require("bootstrap/dist/css/bootstrap.min.css");
@@ -13,11 +14,35 @@ const SignupForm = ({ signUpHandler }) => {
   const [address, setAddress] = useState("");
   const [contact_number, setContactNo] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");  
 
-  const submitHandler = (e) => {
+  const submitHandler = async(e) => {
     e.preventDefault();
-    signUpHandler({ first_name, last_name, email, address, contact_number, password });
+
+    try{
+      // search account
+      const validAccount = await axios.get(
+        `http://localhost:8080/api/signup/${email}`              
+      );  
+      console.log(validAccount)
+
+      if(validAccount.data === ""){
+        console.log("No such email on the database")
+        if(password === confirmPassword){
+          console.log("matched")
+          signUpHandler({ first_name, last_name, email, address, contact_number, password });
+        }else{
+          alert("Password not matched")      
+          setPassword("")
+          setConfirmPassword("")
+        }    
+      }else{
+        alert("The email has been already used")
+        setEmail("")
+      }
+    }catch(error){
+      console.log(error)
+    }        
   };
 
   return (
@@ -98,6 +123,8 @@ const SignupForm = ({ signUpHandler }) => {
             required
           />
           <br />
+          <label><i style={{fontSize:'9px'}}>**Use at least one lowercase, uppercase and digit. Minimum length is 6 characters.</i></label>
+          <br />
 
           <input
             style={{ width: "260px" }}
@@ -105,6 +132,7 @@ const SignupForm = ({ signUpHandler }) => {
             name="password"
             type="password"
             placeholder="Password"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -118,9 +146,10 @@ const SignupForm = ({ signUpHandler }) => {
             type="password"
             value={confirmPassword}
             placeholder="Confirm Password"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
-          />
+          />          
           <br />
 
           <center>
