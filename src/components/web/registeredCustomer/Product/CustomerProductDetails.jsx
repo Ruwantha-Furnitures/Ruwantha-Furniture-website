@@ -3,6 +3,7 @@ import { Container, Row, Col } from "reactstrap";
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 import Rating from "../../Common/StartRating";
+import Quantity from "./CustomerProductViewQuantity";
 import FormStyle from "../../../../css/web/Form.module.css";
 import CommonStyle from "../../../../css/web/common.module.css";
 import { Redirect } from 'react-router';
@@ -72,6 +73,7 @@ function CustomerProductDetails() {
                                         <h4>{`Rs. ${productDetails.price}`}</h4><br />
                                         <p align='justify'>{productDetails.description}</p><br />
                                         <Rating></Rating>
+                                        <Quantity></Quantity>
                                         {/* <Link to="/cart"><button onClick={() => setCartValue(itemCount + 1)} class="addtocart">Add to cart </button></Link> */}
                                         <button onClick={() => setCartValue( productDetails.id )} class="addtocart">Add to cart </button> {' '}
                                         <Link to='/customer_productDetails_checkout'><button class="addtocart">Check out</button></Link>
