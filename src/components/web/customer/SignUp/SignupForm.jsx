@@ -123,7 +123,7 @@ const SignupForm = ({ signUpHandler }) => {
             required
           />
           <br />
-          <label><i style={{fontSize:'9px'}}>**Use at least one lowercase, uppercase and digit. Minimum length is 6 characters.</i></label>
+          <label><b><i style={{fontSize:'10px'}}>**Use at least one lowercase, uppercase and digit. Minimum length is 6 characters.</i></b></label>
           <br />
 
           <input
