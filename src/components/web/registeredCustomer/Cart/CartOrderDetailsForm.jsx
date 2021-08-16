@@ -18,7 +18,7 @@ function CheckoutForm() {
                         <Form.Label>Total Purchase</Form.Label>  
                     </Col>
                     <Col sm={6}>
-                        <Form.Label>72975</Form.Label> 
+                        <Form.Label>{parseFloat(localStorage.getItem('cartTotal')).toFixed(2)}</Form.Label> 
                     </Col>
                 </Row> 
                 <Row sm={12}>
