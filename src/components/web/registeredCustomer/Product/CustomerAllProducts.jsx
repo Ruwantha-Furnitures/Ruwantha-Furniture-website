@@ -53,7 +53,8 @@ const CustomerAllProducts = () => {
                         <center>
                         <Card style={{width: '18rem'}}> 
                             <center>      
-                                <img src={process.env.PUBLIC_URL + '/items/'+ productList.itemid +'.jpg'} alt='items' style={funitureimg} width={200} height={150}></img>                  
+                                <img src={productList.img_location} alt='items' style={funitureimg} width={200} height={150}></img>    
+                                {/* src={process.env.PUBLIC_URL + '/items/'+ productList.itemid +'.jpg'}               */}
                             </center>
                             <br />
                             <center> {productList.name} </center>                                                   
@@ -64,7 +65,7 @@ const CustomerAllProducts = () => {
                                 <Rating></Rating>
                             </center>
                             <center>
-                                <Link to="/viewProductDetail"><button class="addtocart" onClick={() => sayHello(productList.itemid)}>Read More</button></Link>
+                                <Link to="/viewProductDetail"><button class="addtocart" onClick={() => sayHello(productList.id)}>Read More</button></Link>
                             </center>                                                                                       
                         </Card> 
                         <br />   

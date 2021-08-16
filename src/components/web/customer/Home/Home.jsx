@@ -18,17 +18,18 @@ const Home = () => {
     
     const contactUsHandler =async (data) =>{
         try{            
-            const respond = await axios.post("http://192.168.56.1:3002/api/contactus/contact",
-                { data }
-            );
-            console.log("asini in home")
-            if(respond.data.auth === true){
+            let response = await axios.post('http://localhost:8080/api/message',data);
+            console.log(response.data);
+        }catch (error) {
+            if (error.response.status === 200) {
                 setIsSubmit(true);
-            }else{
+            }if (error.response.status === 500) {
+                console.log("There was a problem with the server: ", error);
                 setIsSubmit(false);
-            }            
-        }catch(error){
-            console.log(error);
+            } else {
+                console.log(error.response.data.msg);
+                setIsSubmit(false);
+            }
         }
     };
 

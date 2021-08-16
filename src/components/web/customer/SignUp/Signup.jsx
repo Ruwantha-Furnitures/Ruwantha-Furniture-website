@@ -8,83 +8,101 @@ import { Container } from "reactstrap";
 import axios from "axios";
 
 const Signup = () => {
-  const [isSubmit, setIsSubmit] = useState(false);
+    const [isSubmit, setIsSubmit] = useState(false);
 
-  const signUpHandler = async (data) => {
-    console.log(data);
-    try {
-      const { email, password } = data;
-      const account = {
-        email: email,
-        password: password,
-      };
-      const { firstName, lastName, address, contactNo } = data;
+    const signUpHandler = async (data) => {
+        console.log(data);
+                
+        try {
+            const { email, password } = data;
 
-      // create account
-      const responseAccount = await axios.post(
-        "http://localhost:8080/api/account",
-        account
-      );
+            var md5 = require('md5'); 
+            const encryptpw = md5(password);
+            console.log(encryptpw)
+      
+            const account = {
+              email: email,
+              password: encryptpw,
+              user_level: 1,
+            };     
 
-      // const response = await axios.get(`http://localhost:8080/api/product/${id}`)
+            console.log(account)                            
 
-      const account_id = responseAccount.data.id;
+            // create account
+            const responseAccount = await axios.post(
+              "http://localhost:8080/api/account",
+              account
+            );      
 
-      const customer = {
-        first_name: firstName,
-        last_name: lastName,
-        address: address,
-        account_id: account_id,
-        contact_number: contactNo,
-      };
+            const account_id = responseAccount.data.id; //done
+            // console.log(account_id)
+            
+            const { first_name, last_name, address, contact_number } = data;
 
-      // customer create
-      const responseCustomer = await axios.post(
-        "http://localhost:8080/api/customer",
-        customer
-      );
+            const customer = {
+                first_name: first_name,
+                last_name: last_name,
+                address: address,        
+                contact_number: contact_number,
+            };
 
-      console.log(responseCustomer.data + " " + responseAccount.data);
+            // customer create
+            const responseCustomer = await axios.post(
+              "http://localhost:8080/api/customer",
+              customer
+            );
 
-      //   const respond = await axios.post("http://localhost:8080/api/customer",{
-      //   data,
-      // });
-      if (responseCustomer.status === 200) {
-        setIsSubmit(true);
-      } else {
-        setIsSubmit(false);
-      }
+            const customer_id = responseCustomer.data.id;
 
-      // console.log("Request successful");
-    } catch (error) {
-      console.log(error);
-    }
-  };
+            const onlineCustomer = {
+              customer_id: customer_id,
+              account_id: account_id,        
+            };
 
-  const redirectHome = <Redirect to="/login"></Redirect>;
-  return (
-    <React.Fragment>
-      {isSubmit === true && redirectHome}
-      {isSubmit === false && (
-        <div
-          style={{
-            backgroundImage: `url(${backcover})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            objectFit: "cover",
-            height: "100%",
-            width: "100%",
-          }}
-        >
-          <Navigation></Navigation>
-          <Container align="left">
-            <SignForm signUpHandler={signUpHandler}></SignForm>
-          </Container>
-          <Footer></Footer>
-        </div>
-      )}
-    </React.Fragment>
-  );
+            // online customer create
+            const responseOnlineCustomer = await axios.post(
+              "http://localhost:8080/api/onlineCustomer",
+              onlineCustomer
+            );
+
+            console.log(responseCustomer.data + " " + responseAccount.data + " " + responseOnlineCustomer.data);
+
+            if (responseCustomer.status === 200 && responseAccount.status === 200 && responseOnlineCustomer.status === 200) {
+              setIsSubmit(true);
+            } else {
+              setIsSubmit(false);
+            }
+
+          // console.log("Request successful");
+        } catch (error) {
+          console.log(error);
+        }
+    };
+
+    const redirectHome = <Redirect to="/login"></Redirect>;
+    return (
+        <React.Fragment>
+            {isSubmit === true && redirectHome}
+            {isSubmit === false && (
+                <div
+                    style={{
+                        backgroundImage: `url(${backcover})`,
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "cover",
+                        objectFit: "cover",
+                        height: "100%",
+                        width: "100%",
+                    }}
+                >
+                    <Navigation></Navigation>
+                    <Container align="left">
+                        <SignForm signUpHandler={signUpHandler}></SignForm>
+                    </Container>
+                    <Footer></Footer>
+                </div>
+            )}
+        </React.Fragment>
+    );
 };
 
 export default Signup;

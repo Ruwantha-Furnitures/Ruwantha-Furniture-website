@@ -20,6 +20,8 @@ const Login = ({ navigation }) => {
   const loginHandler = async (data) => {    
     try {      
         console.log(data.email)
+        // var md5 = require('md5'); 
+        // console.log(md5('123456')) //e10adc3949ba59abbe56e057f20f883e
         const email = data.email
         const password = data.password  
 
@@ -32,18 +34,28 @@ const Login = ({ navigation }) => {
         
         var md5 = require('md5'); 
         const encryptpw = md5(password);
+        // console.log(md5('123456'))
         // console.log(encryptpw)
         
         console.log(response.data.user_level)
 
+        const accountId = response.data.id
+        let onlineCustomerData = await axios.get(`http://localhost:8080/api/onlineCustomerLogin/${accountId}`);
+        console.log(onlineCustomerData)
+
+        const userAccID = onlineCustomerData.data.account_id 
+        const CustomerID = onlineCustomerData.data.customer_id
+        console.log(userAccID)
+
         if(dbpassword === encryptpw){
-            // console.log('password matched')
+            console.log('password matched')
             if ((response.status === 200) && (response.data.user_level === 1)) {
                 setIsLoading(true);
                 setErrorMessage("");
                 localStorage.setItem("userlevel", 1);
                 localStorage.setItem("userEmail", response.data.email);
-                localStorage.setItem("userAccID",response.data.accountID)
+                localStorage.setItem("userAccID",userAccID)
+                localStorage.setItem("CustomerID",CustomerID)
               setUserLevel(1)
             } else if ((response.status === 200) && (response.data.user_level === 0)) {
                 setIsLoading(true);
