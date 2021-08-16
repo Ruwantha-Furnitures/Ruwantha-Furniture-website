@@ -100,7 +100,7 @@ function PurchaseOrdersTable() {
                 <div className={TableStyle.header}>Amount</div>
               </th>
               <th>
-                <div className={TableStyle.header}>Payment Method</div>
+                <div className={TableStyle.header}>Method</div>
               </th>
               <th>
                 <div className={TableStyle.header}>Date</div>
@@ -118,7 +118,7 @@ function PurchaseOrdersTable() {
                         className={TableStyle.linkStyle}
                       >
                         <span className={TableStyle.statusStyleLink}>
-                          {order.id}
+                          {"OD000" + order.id}
                         </span>
                       </Link>
                     </td>
@@ -127,7 +127,7 @@ function PurchaseOrdersTable() {
                         " " +
                         order.customer.last_name}
                     </td>
-                    <td>{order.customer.contact_number}</td>
+                    <td>{"0" + order.customer.contact_number}</td>
                     <td>{"Rs. " + order.total_product_amount}</td>
                     <td>{order.payment_method}</td>
                     <td>{order.createdAt.split("T")[0]}</td>

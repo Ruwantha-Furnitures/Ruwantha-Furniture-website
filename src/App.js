@@ -172,7 +172,7 @@ function App() {
           />
           <Route
             exact
-            path="/dashboard/assigndOrder/details"
+            path="/dashboard/assignOrder/details/:id"
             component={OrderDetails}
           />
           <Route

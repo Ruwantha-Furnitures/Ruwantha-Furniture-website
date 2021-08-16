@@ -1,8 +1,87 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TableStyle from "../../../../css/dashboard/Table.module.css";
+import { getOrders } from "./../../service/order";
+import { getDeliveries } from "./../../service/delivery";
 
 function AssignDriverOrderList() {
+  const [orders, setOrders] = useState({
+    total_amount: 0,
+    customer_id: 0,
+    payment_method: "",
+    customer: {
+      first_name: "",
+      last_name: "",
+      email: "",
+      address: "",
+      contact_number: 0,
+    },
+    delivery_status: "",
+  });
+
+  const [search, setSearch] = useState("");
+  const [filterOrders, setFilterOrders] = useState({});
+
+  useEffect(() => {
+    loadOrders();
+  }, []);
+
+  const loadOrders = async () => {
+    try {
+      const result = await getOrders();
+      const ordersData = result.data;
+
+      const resultDeliveries = await getDeliveries();
+      const deliveriesData = resultDeliveries.data;
+
+      ordersData.forEach((order) => {
+        var deliveryStatus = deliveriesData.filter(
+          (delivery) => delivery.order.id === order.id
+        )[0];
+
+        console.log(deliveryStatus);
+
+        if (deliveryStatus !== undefined) {
+          if (deliveryStatus.request_status === 1) {
+            order.delivery_status = "Pending";
+          } else {
+            order.delivery_status = "Assigned";
+          }
+        } else {
+          order.delivery_status = "Not Assigned";
+        }
+      });
+
+      const newOrdersData = ordersData.filter(
+        (order) => order.delivery_status === "Not Assigned"
+      );
+
+      setOrders(newOrdersData);
+      setFilterOrders(newOrdersData);
+
+      console.log(newOrdersData);
+    } catch (error) {
+      console.log("Error", error.message);
+    }
+  };
+
+  const onInputChange = (e) => {
+    let search = e.target.value;
+    if (search === "") {
+      setFilterOrders(orders);
+    } else {
+      setFilterOrders(
+        orders.filter((order) =>
+          (order.customer.first_name + " " + order.customer.last_name)
+            .toLowerCase()
+            .includes(search.toLowerCase())
+        )
+      );
+    }
+
+    setSearch(search);
+  };
+
   return (
     <React.Fragment>
       <div className={TableStyle.titleHeader}>
@@ -23,9 +102,10 @@ function AssignDriverOrderList() {
               <div className={TableStyle.searchText}>
                 <input
                   type="search"
-                  placeholder="Search Here"
-                  value=""
+                  placeholder="search customer here"
+                  value={search}
                   name="search"
+                  onChange={(e) => onInputChange(e)}
                   className={TableStyle.searchinput}
                 />
               </div>
@@ -50,205 +130,52 @@ function AssignDriverOrderList() {
                 <div className={TableStyle.header}>Date</div>
               </th>
               <th>
-                <div className={TableStyle.header}>Payment</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Driver Status</div>
+                <div className={TableStyle.header}>Delivery</div>
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/assigndOrder/details"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Order 1
-                </Link>
-              </td>
-              <td>Tharindu Gihan</td>
-              <td>0778522736</td>
-              <td>2021-03-17</td>
-              <td>Rs.25000</td>
-              <td>
-                <Link
-                  to="/dashboard/assignDriver"
-                  className={TableStyle.linkStyle}
-                >
-                  <span
-                    className={
-                      TableStyle.statusStyle +
-                      " " +
-                      TableStyle.statusColorNotCompleted
-                    }
-                  >
-                    Not Assigned
-                  </span>
-                </Link>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/assigndOrder/details"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Order 2
-                </Link>
-              </td>
-              <td>Himasha Anjali</td>
-              <td>0778522736</td>
-              <td>2021-03-17</td>
-              <td>Rs.25000</td>
-              <td>
-                <Link
-                  to="/dashboard/assignDriver"
-                  className={TableStyle.linkStyle}
-                >
-                  <span
-                    className={
-                      TableStyle.statusStyle +
-                      " " +
-                      TableStyle.statusColorNotCompleted
-                    }
-                  >
-                    Not Assigned
-                  </span>
-                </Link>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/assigndOrder/details"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Order 3
-                </Link>
-              </td>
-              <td>Sathira Dimuthu</td>
-              <td>0778522736</td>
-              <td>2021-03-17</td>
-              <td>Rs.25000</td>
-              <td>
-                <Link
-                  to="/dashboard/assignDriver"
-                  className={TableStyle.linkStyle}
-                >
-                  <span
-                    className={
-                      TableStyle.statusStyle +
-                      " " +
-                      TableStyle.statusColorNotCompleted
-                    }
-                  >
-                    Not Assigned
-                    {/* should link for assign order page */}
-                  </span>
-                </Link>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/assigndOrder/details"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Order 4
-                </Link>
-              </td>
-              <td>Anushaka Tharindu</td>
-              <td>0778522736</td>
-              <td>2021-03-17</td>
-              <td>Rs.25000</td>
-              <td>
-                <span
-                  className={
-                    TableStyle.statusStyle +
-                    " " +
-                    TableStyle.statusColorCompleted
-                  }
-                >
-                  Assigned
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/assigndOrder/details"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Order 5
-                </Link>
-              </td>
-              <td>Tharindu Gihan</td>
-              <td>0778522736</td>
-              <td>2021-03-17</td>
-              <td>Rs.25000</td>
-              <td>
-                <span
-                  className={
-                    TableStyle.statusStyle +
-                    " " +
-                    TableStyle.statusColorCompleted
-                  }
-                >
-                  Assigned
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/assigndOrder/details"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Order 6
-                </Link>
-              </td>
-              <td>Thanuj Dasun</td>
-              <td>0778522736</td>
-              <td>2021-03-17</td>
-              <td>Rs.25000</td>
-              <td>
-                <span
-                  className={
-                    TableStyle.statusStyle +
-                    " " +
-                    TableStyle.statusColorCompleted
-                  }
-                >
-                  Assigned
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/assigndOrder/details"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Order 7
-                </Link>
-              </td>
-              <td>Dimuthu Rathnasinghe</td>
-              <td>0778522736</td>
-              <td>2021-03-17</td>
-              <td>Rs.25000</td>
-              <td>
-                <span
-                  className={
-                    TableStyle.statusStyle +
-                    " " +
-                    TableStyle.statusColorCompleted
-                  }
-                >
-                  Assigned
-                </span>
-              </td>
-            </tr>
+            {Array.isArray(filterOrders) === true && (
+              <React.Fragment>
+                {filterOrders.map((order, index) => (
+                  <tr>
+                    <td>
+                      <Link
+                        to={`/dashboard/assignOrder/details/${order.id}`}
+                        className={TableStyle.linkStyle}
+                      >
+                        <span className={TableStyle.statusStyleLink}>
+                          {"OD000" + order.id}
+                        </span>
+                      </Link>
+                    </td>
+                    <td>
+                      {order.customer.first_name +
+                        " " +
+                        order.customer.last_name}
+                    </td>
+                    <td>{"0" + order.customer.contact_number}</td>
+                    <td>{order.createdAt.split("T")[0]}</td>
+                    <td>
+                      <Link
+                        to="/dashboard/assignDriver"
+                        className={TableStyle.linkStyle}
+                      >
+                        <span
+                          className={
+                            TableStyle.statusStyle +
+                            " " +
+                            TableStyle.statusColorNotCompleted
+                          }
+                        >
+                          Not Assigned
+                        </span>
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+              </React.Fragment>
+            )}
           </tbody>
         </table>
       </div>

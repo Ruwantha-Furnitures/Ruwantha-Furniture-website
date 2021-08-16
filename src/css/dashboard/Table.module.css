@@ -322,7 +322,7 @@ input[type="search"]:-webkit-autofill:active {
 .statusColorNotCompleted:hover {
   background-color: #be2e2e;
   font-weight: 400;
-  font-size: 14px;
+  /* font-size: 14px; */
   line-height: 22px;
   color: #ffffff;
 }

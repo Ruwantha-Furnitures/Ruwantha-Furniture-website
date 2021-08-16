@@ -40,7 +40,7 @@ function OrderDetailsForm() {
   if (orderLocation === "completedOrder") {
     navigate = "/dashboard/completedOrders";
   }
-  if (orderLocation === "assigndOrder") {
+  if (orderLocation === "assignOrder") {
     navigate = "/dashboard/assignListOrderDriver";
   }
   if (orderLocation === "deliveryDriver") {

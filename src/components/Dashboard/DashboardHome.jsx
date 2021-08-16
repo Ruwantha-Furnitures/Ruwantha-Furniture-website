@@ -34,19 +34,19 @@ function Dashboard() {
                 detailCardMargin={true}
                 materialIconName={"category"}
                 cardText={"Sales Items"}
-                cardPrice={"No.10"}
+                cardPrice={"10"}
               />
               <DetailCard
                 detailCardMargin={true}
                 materialIconName={"stacked_line_chart"}
-                cardText={"Daily Income"}
-                cardPrice={"Rs.25,000"}
+                cardText={"New Orders"}
+                cardPrice={"10"}
               />
               <DetailCard
                 detailCardMargin={false}
                 materialIconName={"spa"}
-                cardText={"Total Income"}
-                cardPrice={"Rs.2,500,000"}
+                cardText={"Today Orders"}
+                cardPrice={"30"}
               />
             </div>
             <div className={DashboardStyle.chartCardSection}>

@@ -27,7 +27,7 @@ function PieChartCard() {
     <div className={PieChartCardStyle.pieChartSection}>
       <div className={PieChartCardStyle.pieChartLabel}>
         <h1 className={PieChartCardStyle.pieChartLabelStyle}>
-          Sales Of Product
+          Sales Of Categories
         </h1>
       </div>
       <div className={PieChartCardStyle.pieChart}>
