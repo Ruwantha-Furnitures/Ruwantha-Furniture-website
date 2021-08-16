@@ -134,7 +134,11 @@ function DeliveryDriversTable() {
                         className={TableStyle.linkStyle}
                       >
                         <span className={TableStyle.statusStyleLink}>
-                          {driver.id}
+                          {driver.id < 10
+                            ? "DD000" + driver.id
+                            : driver.id < 100
+                            ? "DD00" + driver.id
+                            : "DD0" + driver.id}
                         </span>
                       </Link>
                     </td>

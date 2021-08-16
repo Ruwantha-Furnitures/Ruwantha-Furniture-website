@@ -118,7 +118,11 @@ function PurchaseOrdersTable() {
                         className={TableStyle.linkStyle}
                       >
                         <span className={TableStyle.statusStyleLink}>
-                          {"OD000" + order.id}
+                          {order.id < 10
+                            ? "OD000" + order.id
+                            : order.id < 100
+                            ? "OD00" + order.id
+                            : "OD0" + order.id}
                         </span>
                       </Link>
                     </td>

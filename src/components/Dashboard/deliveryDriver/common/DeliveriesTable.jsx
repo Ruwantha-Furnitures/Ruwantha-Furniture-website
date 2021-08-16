@@ -149,7 +149,11 @@ function DeliveriesTable() {
                         className={TableStyle.linkStyle}
                       >
                         <span className={TableStyle.statusStyleLink}>
-                          {"DO000" + delivery.id}
+                          {delivery.id < 10
+                            ? "DO000" + delivery.id
+                            : delivery.id < 100
+                            ? "DO00" + delivery.id
+                            : "DO0" + delivery.id}
                         </span>
                       </Link>
                     </td>
