@@ -3,6 +3,7 @@ import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.modu
 import { Link, useParams } from "react-router-dom";
 import { getSellProducts } from "./../../service/sellProduct";
 import { getOrderDetails } from "./../../service/order";
+import { editDeliveryDetails, getDeliveries } from "./../../service/delivery";
 
 function OrderDetailsForm() {
   const { id } = useParams();
@@ -91,6 +92,32 @@ function OrderDetailsForm() {
         total_discounts: discountofSellProducts,
         total_amount: totalAmountOfProducts.toFixed(2),
       });
+    } catch (error) {
+      console.log("Error", error.message);
+    }
+  };
+
+  const handleCompleteDeliveryProcess = async (e) => {
+    e.preventDefault();
+    try {
+      const resultDeliveries = await getDeliveries();
+      console.log(resultDeliveries.data);
+      const delivery = resultDeliveries.data.filter(
+        (deliveryData) =>
+          deliveryData.order_id === parseInt(id) &&
+          deliveryData.request_status === 0
+      )[0];
+      // console.log(delivery);
+      const deliver_id = delivery.id;
+
+      const newDelivery = {
+        complete_status: 1,
+      };
+
+      // console.log(delivery);
+
+      const result = editDeliveryDetails(deliver_id, newDelivery);
+      window.location = "/dashboard/deliveryDriver/deliveries";
     } catch (error) {
       console.log("Error", error.message);
     }
@@ -342,6 +369,7 @@ function OrderDetailsForm() {
                 " " +
                 ProductViewFormStyle.successButtonColor
               }
+              onClick={(e) => handleCompleteDeliveryProcess(e)}
             >
               Complete
             </button>

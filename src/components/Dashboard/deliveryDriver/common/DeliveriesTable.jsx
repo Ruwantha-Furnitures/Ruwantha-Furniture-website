@@ -160,7 +160,6 @@ function DeliveriesTable() {
                     </td>
                     <td>{delivery.customer.contact_number}</td>
                     <td>{delivery.createdAt.split("T")[0]}</td>
-                    {/* <td>Rs.25000</td> */}
                     <td>
                       {delivery.complete_status === 0 ? (
                         <React.Fragment>
