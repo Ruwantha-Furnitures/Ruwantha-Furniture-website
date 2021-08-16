@@ -158,7 +158,7 @@ function DeliveriesTable() {
                         " " +
                         delivery.customer.last_name}
                     </td>
-                    <td>{delivery.customer.contact_number}</td>
+                    <td>{"0" + delivery.customer.contact_number}</td>
                     <td>{delivery.createdAt.split("T")[0]}</td>
                     <td>
                       {delivery.complete_status === 0 ? (

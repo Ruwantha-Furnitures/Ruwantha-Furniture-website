@@ -82,6 +82,7 @@ import CustomerPaymentFromViewProduct from "./components/web/registeredCustomer/
 import CustomerDeleteProfile from "./components/web/registeredCustomer/Profile/CustomerDeleteProfile.jsx";
 
 import ForgotPassword from "./components/web/registeredCustomer/PasswordRecovery/ForgetPassword";
+import PendingOrder from "./components/Dashboard/order/PendingOrder";
 
 function App() {
   return (
@@ -167,7 +168,7 @@ function App() {
           />
           <Route
             exact
-            path="/dashboard/completedOrder/details"
+            path="/dashboard/completedOrder/details/:id"
             component={OrderDetails}
           />
           <Route
@@ -185,6 +186,11 @@ function App() {
             path="/dashboard/deliveryDriverNotifications/details/:id"
             component={OrderDetails}
           />
+          <Route
+            exact
+            path="/dashboard/pendingOrder/details/:id"
+            component={OrderDetails}
+          />
           {/* End Navigations Purpose */}
 
           <Route
@@ -196,6 +202,11 @@ function App() {
             exact
             path="/dashboard/assignListOrderDriver"
             component={AssignOrderDriver}
+          />
+          <Route
+            exact
+            path="/dashboard/pendingListOrderDriver"
+            component={PendingOrder}
           />
           <Route
             exact
@@ -242,7 +253,7 @@ function App() {
           />
           <Route
             exact
-            path="/dashboard/deliveryDriver/viewOnly"
+            path="/dashboard/deliveryDriver/viewOnly/:id"
             component={DeliveryDriverView}
           />
           <Route

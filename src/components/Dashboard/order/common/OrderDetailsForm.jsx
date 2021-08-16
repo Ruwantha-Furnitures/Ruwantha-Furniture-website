@@ -8,6 +8,8 @@ import { editDeliveryDetails, getDeliveries } from "./../../service/delivery";
 function OrderDetailsForm() {
   const { id } = useParams();
 
+  const [isCompleted, setIsCompleted] = useState(false);
+
   const [bill, setBill] = useState({
     no_of_products: 0,
     products_price: 0,
@@ -49,6 +51,9 @@ function OrderDetailsForm() {
   }
   if (orderLocation === "deliveryDriverNotifications") {
     navigate = "/dashboard/deliveryDriver/notifications";
+  }
+  if (orderLocation === "pendingOrder") {
+    navigate = "/dashboard/pendingListOrderDriver";
   }
 
   console.log(navigate);
@@ -92,6 +97,19 @@ function OrderDetailsForm() {
         total_discounts: discountofSellProducts,
         total_amount: totalAmountOfProducts.toFixed(2),
       });
+
+      // set iscompleted
+      const resultDeliveries = await getDeliveries();
+      console.log(resultDeliveries.data);
+      const delivery = resultDeliveries.data.filter(
+        (deliveryData) =>
+          deliveryData.order_id === parseInt(id) &&
+          deliveryData.request_status === 0
+      )[0];
+
+      if (delivery.complete_status === 1) {
+        setIsCompleted(true);
+      }
     } catch (error) {
       console.log("Error", error.message);
     }
@@ -360,7 +378,7 @@ function OrderDetailsForm() {
         </React.Fragment>
       )}
 
-      {orderLocation === "deliveryDriver" && (
+      {orderLocation === "deliveryDriver" && isCompleted === false && (
         <div className={ProductViewFormStyle.descButtonsAdd}>
           <div className={ProductViewFormStyle.descButtonAdd}>
             <button

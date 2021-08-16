@@ -179,7 +179,6 @@ function DeliveryDriverNotificationsTable() {
                       </Link>
                     </td>
                     <td>
-                      {" "}
                       {delivery.customer.first_name +
                         " " +
                         delivery.customer.last_name}

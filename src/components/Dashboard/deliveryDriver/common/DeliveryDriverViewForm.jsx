@@ -174,7 +174,7 @@ function DeliveryDriverViewForm() {
                 </label>
                 <input
                   type="text"
-                  value={deliveryDriver.telephone}
+                  value={"0" + deliveryDriver.telephone}
                   placeholder="Driver Contact Number"
                   className={ProductViewFormStyle.inputStyle}
                   readOnly
