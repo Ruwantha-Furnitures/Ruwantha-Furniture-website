@@ -2,9 +2,9 @@ import axios from "axios";
 
 const apiCustomerUrl = "http://localhost:8080/api/customer";
 
-// export function getProductTypes() {
-//   return axios.get(apiProductTypeUrl);
-// }
+export function getCustomers() {
+  return axios.get(apiCustomerUrl);
+}
 
 export function addCustomer(customer) {
   return axios.post(apiCustomerUrl, customer);
