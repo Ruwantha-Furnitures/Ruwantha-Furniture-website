@@ -18,6 +18,10 @@
   margin-left: 31px;
 }
 
+.tablebody {
+  height: 73%;
+}
+
 .tableShow {
   width: 100%;
   margin-top: 15px;
@@ -309,6 +313,7 @@ input[type="search"]:-webkit-autofill:active {
   border: 1px solid #be2e2e;
   color: rgba(0, 0, 0, 0.76);
   font-weight: 400;
+  font-size: 14px;
 }
 
 .statusColorNotAvailabile {
@@ -316,6 +321,7 @@ input[type="search"]:-webkit-autofill:active {
   border: 1px solid #be2e2e;
   color: rgba(0, 0, 0, 0.76);
   font-weight: 400;
+  font-size: 14px;
   cursor: auto;
 }
 
@@ -330,9 +336,9 @@ input[type="search"]:-webkit-autofill:active {
 .statusColorCompleted {
   /* background-color: #2ebe72; */
   border: 1px solid #2ebe72;
-  color: rgba(0, 0, 0, 0.76);
+  color: rgba(66, 31, 31, 0.76);
   font-weight: 400;
-  /* font-size: 14px; */
+  font-size: 14px;
   line-height: 22px;
 }
 
@@ -341,7 +347,7 @@ input[type="search"]:-webkit-autofill:active {
   border: 1px solid #2ebe72;
   color: rgba(0, 0, 0, 0.76);
   font-weight: 400;
-  /* font-size: 14px; */
+  font-size: 14px;
   line-height: 22px;
   cursor: auto;
 }
@@ -349,7 +355,7 @@ input[type="search"]:-webkit-autofill:active {
 .statusColorCompleted:hover {
   background-color: #2ebe72;
   font-weight: 400;
-  /* font-size: 14px; */
+  font-size: 14px;
   line-height: 22px;
   color: #ffffff;
 }

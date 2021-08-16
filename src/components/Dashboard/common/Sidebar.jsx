@@ -151,6 +151,25 @@ function Sidebar() {
                   </div>
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="/dashboard/pendingListOrderDriver"
+                  className={SidebarStyle.sidebarLink}
+                >
+                  <div className={SidebarStyle.lineSection}>
+                    <div className={SidebarStyle.lineIcon}>
+                      <span
+                        className={"material-icons " + SidebarStyle.iconWidth}
+                      >
+                        pending_actions
+                      </span>
+                    </div>
+                    <div className={SidebarStyle.lineText}>
+                      <h1 className={SidebarStyle.lineTextStyle}>Pending</h1>
+                    </div>
+                  </div>
+                </Link>
+              </li>
             </>
           )}
           {user === "Owner" && (

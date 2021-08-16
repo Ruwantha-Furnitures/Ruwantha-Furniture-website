@@ -32,6 +32,10 @@ exports.findAll = (req, res) => {
   Deliveries.findAll({
     where: { is_deleted: 0 },
     include: ["order", "deliveryDriver"],
+    order: [
+      ["id", "DESC"],
+      ["complete_status", "DESC"],
+    ],
   })
     .then((data) => {
       res.send(data);

@@ -3,9 +3,12 @@ import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.modu
 import { Link, useParams } from "react-router-dom";
 import { getSellProducts } from "./../../service/sellProduct";
 import { getOrderDetails } from "./../../service/order";
+import { editDeliveryDetails, getDeliveries } from "./../../service/delivery";
 
 function OrderDetailsForm() {
   const { id } = useParams();
+
+  const [isCompleted, setIsCompleted] = useState(false);
 
   const [bill, setBill] = useState({
     no_of_products: 0,
@@ -40,7 +43,7 @@ function OrderDetailsForm() {
   if (orderLocation === "completedOrder") {
     navigate = "/dashboard/completedOrders";
   }
-  if (orderLocation === "assigndOrder") {
+  if (orderLocation === "assignOrder") {
     navigate = "/dashboard/assignListOrderDriver";
   }
   if (orderLocation === "deliveryDriver") {
@@ -48,6 +51,9 @@ function OrderDetailsForm() {
   }
   if (orderLocation === "deliveryDriverNotifications") {
     navigate = "/dashboard/deliveryDriver/notifications";
+  }
+  if (orderLocation === "pendingOrder") {
+    navigate = "/dashboard/pendingListOrderDriver";
   }
 
   console.log(navigate);
@@ -91,6 +97,45 @@ function OrderDetailsForm() {
         total_discounts: discountofSellProducts,
         total_amount: totalAmountOfProducts.toFixed(2),
       });
+
+      // set iscompleted
+      const resultDeliveries = await getDeliveries();
+      console.log(resultDeliveries.data);
+      const delivery = resultDeliveries.data.filter(
+        (deliveryData) =>
+          deliveryData.order_id === parseInt(id) &&
+          deliveryData.request_status === 0
+      )[0];
+
+      if (delivery.complete_status === 1) {
+        setIsCompleted(true);
+      }
+    } catch (error) {
+      console.log("Error", error.message);
+    }
+  };
+
+  const handleCompleteDeliveryProcess = async (e) => {
+    e.preventDefault();
+    try {
+      const resultDeliveries = await getDeliveries();
+      console.log(resultDeliveries.data);
+      const delivery = resultDeliveries.data.filter(
+        (deliveryData) =>
+          deliveryData.order_id === parseInt(id) &&
+          deliveryData.request_status === 0
+      )[0];
+      // console.log(delivery);
+      const deliver_id = delivery.id;
+
+      const newDelivery = {
+        complete_status: 1,
+      };
+
+      // console.log(delivery);
+
+      const result = editDeliveryDetails(deliver_id, newDelivery);
+      window.location = "/dashboard/deliveryDriver/deliveries";
     } catch (error) {
       console.log("Error", error.message);
     }
@@ -333,7 +378,7 @@ function OrderDetailsForm() {
         </React.Fragment>
       )}
 
-      {orderLocation === "deliveryDriver" && (
+      {orderLocation === "deliveryDriver" && isCompleted === false && (
         <div className={ProductViewFormStyle.descButtonsAdd}>
           <div className={ProductViewFormStyle.descButtonAdd}>
             <button
@@ -342,6 +387,7 @@ function OrderDetailsForm() {
                 " " +
                 ProductViewFormStyle.successButtonColor
               }
+              onClick={(e) => handleCompleteDeliveryProcess(e)}
             >
               Complete
             </button>

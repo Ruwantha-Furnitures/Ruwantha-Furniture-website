@@ -11,48 +11,48 @@ function TableCard() {
         <table className={TableCardStyle.tableShow}>
           <thead>
             <tr>
-              <th>Product</th>
+              <th>Products</th>
               <th>Price</th>
               <th>Discount</th>
               <th>Sold</th>
-              <th>Source</th>
+              {/* <th>Method</th> */}
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Table</td>
+              <td>Canon Suite Table</td>
               <td>Rs.25000</td>
-              <td>Rs.250</td>
-              <td>No.12</td>
-              <td>Direct</td>
+              <td>20%</td>
+              <td>12</td>
+              {/* <td>Cash</td> */}
             </tr>
             <tr>
-              <td>Chair</td>
-              <td>Rs.25000</td>
-              <td>Rs.250</td>
-              <td>No.12</td>
-              <td>Online</td>
+              <td>Red Suite Chair</td>
+              <td>Rs.15000</td>
+              <td>10%</td>
+              <td>10</td>
+              {/* <td>Online</td> */}
             </tr>
             <tr>
-              <td>Cupboard</td>
-              <td>Rs.25000</td>
-              <td>Rs.250</td>
-              <td>No.12</td>
-              <td>Direct</td>
+              <td>Indigo Delux Cupboard</td>
+              <td>Rs.35000</td>
+              <td>10%</td>
+              <td>10</td>
+              {/* <td>Cash</td> */}
             </tr>
             <tr>
-              <td>Desk</td>
-              <td>Rs.25000</td>
-              <td>Rs.250</td>
-              <td>No.12</td>
-              <td>Direct</td>
+              <td>Indigo Standard Desk</td>
+              <td>Rs.25050</td>
+              <td>10%</td>
+              <td>09</td>
+              {/* <td>Cash</td> */}
             </tr>
             <tr>
-              <td>Desk(High)</td>
-              <td>Rs.25000</td>
-              <td>Rs.250</td>
-              <td>No.12</td>
-              <td>Online</td>
+              <td>Indigo Standard Pro Desk</td>
+              <td>Rs.55000</td>
+              <td>09%</td>
+              <td>08</td>
+              {/* <td>Online</td> */}
             </tr>
           </tbody>
         </table>

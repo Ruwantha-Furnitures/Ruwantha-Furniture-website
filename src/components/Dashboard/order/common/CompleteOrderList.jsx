@@ -1,8 +1,96 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TableStyle from "../../../../css/dashboard/Table.module.css";
+import { getOrders } from "./../../service/order";
+import { getDeliveries } from "./../../service/delivery";
 
 function CompleteOrderList() {
+  const [orders, setOrders] = useState({
+    total_amount: 0,
+    customer_id: 0,
+    payment_method: "",
+    customer: {
+      first_name: "",
+      last_name: "",
+      email: "",
+      address: "",
+      contact_number: 0,
+    },
+    delivery_status: "",
+    driver: {
+      first_name: "",
+      last_name: "",
+    },
+  });
+
+  const [search, setSearch] = useState("");
+  const [filterOrders, setFilterOrders] = useState({});
+
+  useEffect(() => {
+    loadOrders();
+  }, []);
+
+  const loadOrders = async () => {
+    try {
+      const result = await getOrders();
+      const ordersData = result.data;
+
+      const resultDeliveries = await getDeliveries();
+      const deliveriesData = resultDeliveries.data;
+
+      ordersData.forEach((order) => {
+        var deliveryStatus = deliveriesData.filter(
+          (delivery) =>
+            delivery.order.id === order.id && delivery.complete_status === 1
+        )[0];
+
+        // console.log(deliveryStatus.request_status);
+
+        if (deliveryStatus !== undefined) {
+          if (deliveryStatus.request_status === 0) {
+            order.delivery_status = "Completed";
+            order.driver = deliveryStatus.deliveryDriver;
+          } else {
+            order.delivery_status = "Assigned";
+          }
+        } else {
+          order.delivery_status = "Not Assigned";
+        }
+
+        console.log(order);
+
+        // order.driver = deliveryStatus.deliveryDriver;
+      });
+
+      const newOrdersData = ordersData.filter(
+        (order) => order.delivery_status === "Completed"
+      );
+
+      setOrders(newOrdersData);
+      setFilterOrders(newOrdersData);
+
+      console.log(newOrdersData);
+    } catch (error) {
+      console.log("Error", error.message);
+    }
+  };
+
+  const onInputChange = (e) => {
+    let search = e.target.value;
+    if (search === "") {
+      setFilterOrders(orders);
+    } else {
+      setFilterOrders(
+        orders.filter((order) =>
+          (order.customer.first_name + " " + order.customer.last_name)
+            .toLowerCase()
+            .includes(search.toLowerCase())
+        )
+      );
+    }
+
+    setSearch(search);
+  };
   return (
     <React.Fragment>
       <div className={TableStyle.titleHeader}>
@@ -21,10 +109,11 @@ function CompleteOrderList() {
               <div className={TableStyle.searchText}>
                 <input
                   type="search"
-                  placeholder="Search Here"
-                  value=""
+                  placeholder="search customer here"
+                  value={search}
                   name="search"
                   className={TableStyle.searchinput}
+                  onChange={(e) => onInputChange(e)}
                 />
               </div>
             </div>
@@ -53,153 +142,43 @@ function CompleteOrderList() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/completedOrder/details"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Order 1
-                </Link>
-              </td>
-              <td>Tharindu Gihan</td>
-              <td>0778511736</td>
-              <td>2021-04-17</td>
-              <td>
-                <Link
-                  to="/dashboard/deliveryDriver/viewOnly"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Gihan Withanchchi
-                </Link>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/completedOrder/details"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Order 2
-                </Link>
-              </td>
-              <td>Himasha Anjali</td>
-              <td>0778522737</td>
-              <td>2021-03-18</td>
-              <td>
-                <Link
-                  to="/dashboard/deliveryDriver/viewOnly"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Himasha Anjali
-                </Link>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/completedOrder/details"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Order 3
-                </Link>
-              </td>
-              <td>Sathira Dimuthu</td>
-              <td>0778522836</td>
-              <td>2021-02-17</td>
-              <td>
-                <Link
-                  to="/dashboard/deliveryDriver/viewOnly"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Sathira Dimuthu
-                </Link>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/completedOrder/details"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Order 4
-                </Link>
-              </td>
-              <td>Anushaka Tharindu</td>
-              <td>0778522746</td>
-              <td>2021-01-17</td>
-              <td>
-                <Link
-                  to="/dashboard/deliveryDriver/viewOnly"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Anushka Tharindu
-                </Link>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/completedOrder/details"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Order 5
-                </Link>
-              </td>
-              <td>Tharindu Gihan</td>
-              <td>0778522736</td>
-              <td>2021-03-17</td>
-              <td>
-                <Link
-                  to="/dashboard/deliveryDriver/viewOnly"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Tharindu Gihan
-                </Link>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/completedOrder/details"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Order 6
-                </Link>
-              </td>
-              <td>Thanuj Dasun</td>
-              <td>0778522736</td>
-              <td>2021-05-17</td>
-              <td>
-                <Link
-                  to="/dashboard/deliveryDriver/viewOnly"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Dimuthu Ranthansinghe
-                </Link>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Link
-                  to="/dashboard/completedOrder/details"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Order 7
-                </Link>
-              </td>
-              <td>Dimuthu Rathnasinghe</td>
-              <td>0778522736</td>
-              <td>2021-03-17</td>
-              <td>
-                <Link
-                  to="/dashboard/deliveryDriver/viewOnly"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Tharindu Gihan
-                </Link>
-              </td>
-            </tr>
+            {Array.isArray(filterOrders) === true && (
+              <React.Fragment>
+                {filterOrders.map((order, index) => (
+                  <tr key={index}>
+                    <td>
+                      <Link
+                        to={`/dashboard/completedOrder/details/${order.id}`}
+                        className={TableStyle.linkStyle}
+                      >
+                        <span className={TableStyle.statusStyleLink}>
+                          {"OD000" + order.id}
+                        </span>
+                      </Link>
+                    </td>
+                    <td>
+                      {order.customer.first_name +
+                        " " +
+                        order.customer.last_name}
+                    </td>
+                    <td>{"0" + order.customer.contact_number}</td>
+                    <td>{order.createdAt.split("T")[0]}</td>
+                    <td>
+                      <Link
+                        to={`/dashboard/deliveryDriver/viewOnly/${order.driver.id}`}
+                        className={TableStyle.linkStyle}
+                      >
+                        <span className={TableStyle.statusStyleLink}>
+                          {order.driver.first_name +
+                            " " +
+                            order.driver.last_name}
+                        </span>
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+              </React.Fragment>
+            )}
           </tbody>
         </table>
       </div>
