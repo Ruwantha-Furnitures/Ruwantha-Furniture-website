@@ -177,7 +177,7 @@ function App() {
           />
           <Route
             exact
-            path="/dashboard/deliveryDriver/details"
+            path="/dashboard/deliveryDriver/details/:id"
             component={OrderDetails}
           />
           <Route
