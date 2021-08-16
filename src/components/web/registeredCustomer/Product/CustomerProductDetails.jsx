@@ -28,19 +28,52 @@ function CustomerProductDetails() {
 
         const customer_id = localStorage.getItem('CustomerID');
         const product_id = localStorage.getItem('productID');
-        const quantity = localStorage.getItem('quantity');
-        
+        // const quantity = localStorage.getItem('quantity');
+        const quantity = itemCount
+        // console.log(quantity)
+
         const data = { customer_id, product_id , quantity }
         try{            
             //check the customer before add to the cart
+            const cartobject = { customer_id, product_id }
+            // Request URL: http://localhost:3000/users/34/books/8989
 
-            const respond = await axios.post("http://localhost:8080/api/cart",data);
-            console.log(respond.data);
-            if(respond.data.auth === true){
-                setIsSubmit(true);
+            const CustomerInCartRespond = await axios.get(`http://localhost:8080/api/customerCart/customer_id/${customer_id}/product_id/${product_id}`);
+            // console.log(CustomerInCartRespond.data);          
+            // console.log(CustomerInCartRespond.data.id);  
+            const cartID = CustomerInCartRespond.data.id;
+                                             
+            if(CustomerInCartRespond.data){
+                console.log("product is in the cart - update should be done")
+                const dbQuantity = CustomerInCartRespond.data.quantity
+                console.log(dbQuantity)
+                console.log(quantity)
+                const newQuanttiy = (Number)(dbQuantity) + (Number)(quantity);
+                console.log(newQuanttiy)
+
+                // const newdata = {customer_id, product_id, newQuanttiy }
+
+                const updaterespond = await axios.put(`http://localhost:8080/api/cart/${cartID}`,{
+                    customer_id: customer_id,
+                    product_id: product_id,
+                    quantity: newQuanttiy
+                });
+                console.log(updaterespond.data);
+                if(updaterespond.data.status === 200){
+                    setIsSubmit(true);
+                }else{
+                    setIsSubmit(false);
+                } 
             }else{
-                setIsSubmit(false);
-            }            
+                console.log("product is not in the cart - insert should be done")
+                const respond = await axios.post("http://localhost:8080/api/cart",data);
+                console.log(respond.data);
+                if(respond.data.status === 200){
+                    setIsSubmit(true);
+                }else{
+                    setIsSubmit(false);
+                } 
+            }                       
         }catch(error){
             console.log(error);
         }
