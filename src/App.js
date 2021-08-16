@@ -76,7 +76,8 @@ import CustomerReviews from "./components/web/registeredCustomer/Reviews/Custome
 import CustomerThankYou from "./components/web/registeredCustomer/Payment/ThankYouPage.jsx";
 import PendingEmail from "./components/web/registeredCustomer/PasswordRecovery/Pending.jsx";
 import ForgotPasswordChangePassword from "./components/web/registeredCustomer/PasswordRecovery/ChangePassword.jsx";
-import PayhereCheckout from "./components/web/registeredCustomer/Payment/Checkout.jsx";
+// import PayhereCheckout from "./components/web/registeredCustomer/Payment/Checkout.jsx";
+import PaymentForm from "./components/web/registeredCustomer/Payment/PaymentForm.jsx";
 import CustomerChekoutFromViewProduct from "./components/web/registeredCustomer/Product/CustomerCheckout.jsx";
 import CustomerPaymentFromViewProduct from "./components/web/registeredCustomer/Product/CustomerPayment.jsx";
 import CustomerDeleteProfile from "./components/web/registeredCustomer/Profile/CustomerDeleteProfile.jsx";
@@ -332,11 +333,12 @@ function App() {
           <Route exact path="/payment" component={CustomerPayment} />
           <Route exact path="/customer_reviews" component={CustomerReviews} />
           <Route exact path="/customer_thankyou" component={CustomerThankYou} />
-          <Route
+          {/* <Route
             exact
             path="/customer_paymentGateway"
             component={PayhereCheckout}
-          />
+          /> */}
+          <Route exact path="/paymentForm" component={PaymentForm} />
 
           <Route
             exact

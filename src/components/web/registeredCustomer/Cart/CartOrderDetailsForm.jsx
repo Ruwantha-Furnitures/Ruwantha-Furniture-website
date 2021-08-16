@@ -23,23 +23,20 @@ function CheckoutForm() {
                 </Row> 
                 <Row sm={12}>
                     <Col sm={6}>
-                        <Form.Label>Discount</Form.Label>  
+                        <Form.Label style={{fontSize:'16px'}}><b>After Discount</b></Form.Label>  
                     </Col>
                     <Col sm={6}>
-                        <Form.Label>5%</Form.Label> 
+                        <Form.Label style={{fontSize:'16px'}}><b>Rs. {localStorage.getItem('afterDiscount')}</b></Form.Label> 
                     </Col>
                 </Row> 
                 <Row sm={12}>
-                    <Col sm={6}>
-                        <Form.Label><b>Total</b></Form.Label>  
-                    </Col>
-                    <Col sm={6}>
-                        <Form.Label><b style={{fontSize: '20px'}}>Rs. 69326.25</b></Form.Label> 
-                    </Col>
+                    <Col>
+                        <Form.Label><i style={{fontSize:'9px'}}>**Delivery charged will be added. Click on Continue for payment</i></Form.Label>  
+                    </Col> 
                 </Row>      
                 <br />                                                              
                 {/*<center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Checkout</button></center>*/}
-                <Link to='/customer_checkout'><center><Button variant="success" style={{width: '100%'}}>Checkout</Button></center></Link>
+                <Link to='/paymentForm'><center><Button variant="success" style={{width: '100%'}}>Checkout</Button></center></Link>
            </Form>
         </Card>        
     </div>
