@@ -37,8 +37,11 @@ require("./routes/shippingDetails.routes")(app);
 require("./routes/productReview.routes")(app);
 require("./routes/resetToken.routes")(app);
 
+
 require("./routes/login.routes")(app);
 require("./routes/signup.routes")(app);
+require("./routes/onlineCustomerLogin.routes")(app);
+require("./routes/cartForACustomer.routes")(app);
 
 // set port
 const PORT = process.env.PORT || 8080;
