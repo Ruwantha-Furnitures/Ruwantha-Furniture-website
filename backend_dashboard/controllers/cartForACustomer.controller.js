@@ -22,4 +22,18 @@ exports.findOne = (req, res) => {
     });
 };
   
+// retrieve the data
+exports.findAll = (req, res) => {
+    const customerID = req.params.customer_id;    
+    Cart.findAll({ where: { customer_id: customerID, is_deleted: 0 }, include: ["customer", "product"] })
+    .then((data) => {
+        res.send(data);
+    })
+    .catch((err) => {
+        res.status(500).send({
+            message:
+            err.message || "Some error occured while retrieving Categories",
+        });
+    });
+};
  

@@ -8,8 +8,10 @@ import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 
 function CartDetails() {
-    const [products,setProducts]=useState([]);
+    // const [products,setProducts]=useState([]);
     const [cartData,setCartDetails]=useState([]);
+    const [cartTotalAmount, setCartTotalAmount] = useState(""); 
+    var totalcounter = 0;
 
     const rowStyle={
         margin: '10px'
@@ -17,31 +19,28 @@ function CartDetails() {
 
     // to load the cart product 
     useEffect(() => {
-        let accountID=localStorage.getItem('userAccID');        
-        console.log(accountID); //done
+        let customer_id =localStorage.getItem('CustomerID');                
         const fecthData=async()=>{
             try {                
-                let res=await axios.get(`http://192.168.56.1:3002/api/cart/viewcart/${accountID}`);    
-                setCartDetails(res.data.cartItems)      
-                console.log(res.data.cartItems)         
-                
-                //Add a loop for cartItems's item ids
-                
-                    //console.log("Item-ID")
-                    // console.log(ItemList.itemid) // undefined
-                    
-                    // const res2=await axios.get(`http://192.168.56.1:3002/api/products/viewProduct/${cartData.itemid}`) // wil receive the response
-                    // setProducts(res2.body.data)                 
-
-                
-
+                const cartResponse = await axios.get(`http://localhost:8080/api/customerCart/customer_id/${customer_id}`);   
+                setCartDetails(cartResponse.data)      
+                console.log(cartResponse.data)                     
             } catch (error) {
                 console.log(error)
             }
         }
         fecthData()
     },[])
-
+    
+    function getTotal(price,quantity){
+        
+        const total = (Number)(price * quantity)
+        // var myNumberWithTwoDecimalPlaces=parseFloat(myNumber).toFixed(2); 
+        var totalTwoDecimalPlaces=parseFloat(total).toFixed(2); 
+        totalcounter = (Number)(totalcounter) + (Number)(totalTwoDecimalPlaces)
+        localStorage.setItem("cartTotal",totalcounter);
+        return totalTwoDecimalPlaces;
+    }    
 
 
     return (
@@ -54,7 +53,7 @@ function CartDetails() {
                             <Table responsive="sm">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
+                                        <th>ID</th>
                                         <th>Image</th>
                                         <th>Name</th>
                                         <th>Price Rs.</th>
@@ -64,17 +63,18 @@ function CartDetails() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {products.map((productList) =>(                                                                                  
+                                    {cartData.map((productList) =>(                                                                                  
                                     <tr>                                        
-                                        <td>{productList.itemid}</td>
-                                        <td><img src={productImg} style={{width:'100px', borderRadius: '20px'}} alt='imgitem'></img></td>
-                                        <td>product name</td>
-                                        <td>72975</td>
-                                        <td>1</td>
-                                        <td>72975</td>
+                                        <td>{productList.id}</td>
+                                        <td><img src={productList.product.img_location} style={{width:'100px', borderRadius: '20px'}} alt='imgitem'></img></td>
+                                        <td>{productList.product.name} </td>
+                                        <td>{productList.product.price} </td>
+                                        <td>{productList.quantity}</td>
+                                        {/* <td>{(Number)(productList.product.price)*(Number)(productList.quantity)}</td> */}
+                                        <td>{getTotal(productList.product.price,productList.quantity)}</td>
                                         <td><DeleteForeverIcon /></td>
                                     </tr>   
-                                    ))};                                 
+                                    ))}                              
                                 </tbody>
                             </Table>
                         </Col> 
