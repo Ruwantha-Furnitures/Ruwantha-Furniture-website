@@ -138,7 +138,7 @@ function AssignDriverOrderList() {
             {Array.isArray(filterOrders) === true && (
               <React.Fragment>
                 {filterOrders.map((order, index) => (
-                  <tr>
+                  <tr key={index}>
                     <td>
                       <Link
                         to={`/dashboard/assignOrder/details/${order.id}`}
@@ -158,7 +158,7 @@ function AssignDriverOrderList() {
                     <td>{order.createdAt.split("T")[0]}</td>
                     <td>
                       <Link
-                        to="/dashboard/assignDriver"
+                        to={`/dashboard/assignDriver/${order.id}`}
                         className={TableStyle.linkStyle}
                       >
                         <span

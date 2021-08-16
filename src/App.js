@@ -182,7 +182,7 @@ function App() {
           />
           <Route
             exact
-            path="/dashboard/deliveryDriverNotifications/details"
+            path="/dashboard/deliveryDriverNotifications/details/:id"
             component={OrderDetails}
           />
           {/* End Navigations Purpose */}
@@ -199,7 +199,7 @@ function App() {
           />
           <Route
             exact
-            path="/dashboard/assignDriver"
+            path="/dashboard/assignDriver/:id"
             component={AssignDriver}
           />
 
