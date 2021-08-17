@@ -59,7 +59,7 @@ function CustomerProductDetails() {
                     quantity: newQuanttiy
                 });
                 console.log(updaterespond.data);
-                if(updaterespond.data.status === 200){
+                if(updaterespond.status === 200){
                     setIsSubmit(true);
                 }else{
                     setIsSubmit(false);
@@ -68,7 +68,7 @@ function CustomerProductDetails() {
                 console.log("product is not in the cart - insert should be done")
                 const respond = await axios.post("http://localhost:8080/api/cart",data);
                 console.log(respond.data);
-                if(respond.data.status === 200){
+                if(respond.status === 200){
                     setIsSubmit(true);
                 }else{
                     setIsSubmit(false);
@@ -95,6 +95,7 @@ function CustomerProductDetails() {
         fetchData()                               
     }, []);
 
+    // console.log(isSubmit)
     const redirecCart = < Redirect to="/cart" />;
 
     return (       

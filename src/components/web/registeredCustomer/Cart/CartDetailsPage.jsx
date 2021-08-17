@@ -9,13 +9,13 @@ function ViewCart() {
     return (
         <div>
             <Navigation></Navigation> 
-            <Container>                
+            <Container fluid>                
                 <Row sm={12}>
-                    <Col sm={8}>                        
+                    <Col sm={9}>                        
                         <CustomerCartDetails></CustomerCartDetails>
                     </Col>
 
-                    <Col sm={4}>
+                    <Col sm={3}>
                         <CustomerCheckoutForm></CustomerCheckoutForm>  
                     </Col>
                 </Row>                                                                                                                              

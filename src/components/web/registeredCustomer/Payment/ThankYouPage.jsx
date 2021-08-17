@@ -7,56 +7,65 @@ import Form from "react-bootstrap/Form";
 import { Container } from "reactstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { addSellProduct } from "../../../Dashboard/service/sellProduct";
 
 function ThankYouPage() {
-  const orderid = localStorage.getItem("NewOrderID");
-  const itemid = localStorage.getItem("productID");
+  const order_id = localStorage.getItem("NewOrderID");
+  const cartData = JSON.parse(localStorage.getItem("cartItemsIDs"));
   const custid = localStorage.getItem("userAccID");
   const fname = localStorage.getItem("CustomerFName");
   const lname = localStorage.getItem("CustomerLName");
   const address = localStorage.getItem("CustomerAddress");
-  const city = localStorage.getItem("CustomerArea");
+  const total_product_amount = localStorage.getItem("cartTotal");
   const telephone = localStorage.getItem("CustomerTelephone");
   const chargeid = localStorage.getItem("DeliveryChargeID");
   const price = localStorage.getItem("finalTotalAmount");
-  const date = new Date().toLocaleString();
+  
   // alert(new Date().toLocaleString())
 
   const [isPaymentSubmit, setIsPaymentSubmit] = useState(false);
   const [isPurchaseOrderSubmit, setIsPurchaseOrderSubmit] = useState(false);
+  const [isSellProductSubmit, setIsSellProductSubmit] = useState(false);
+  const [isShippingDataSubmit, setIsShippingDataSubmit] = useState(false);
 
-  const payment = { orderid, price, date };
-  const order = {
-    orderid,
-    itemid,
-    custid,
-    fname,
-    lname,
-    address,
-    city,
-    telephone,
-    chargeid,
+  const payment = { 
+    order_id: order_id, 
+    total_amounts: price
   };
+
+  const orders = {
+    id: order_id,
+    total_product_amount: total_product_amount,
+    customer_id : custid,    
+  };
+  
+  const shippingData = {
+    order_id: order_id,
+    first_name: fname,
+    last_name: lname,
+    shipping_address: address,
+    contact_number: telephone,
+    charge_id: chargeid, 
+  }
 
   useEffect(() => {
     addPayment(payment);
-    addPurchaseOrder(order);
+    // addOrders(orders);
+    // addShippingData(shippingData);
+    // addSellProduct(cartData)                 
+        
   }, []);
 
-  const addPayment = async (data) => {
+  const addPayment = async (payment) => {
     try {
+      // const res = await axios.post("http://localhost:8080/api/payment",data);
+
       const res = await axios.post(
-        "http://192.168.56.1:3002/api/payment/addpayment",
-        {
-          data,
-        }
-      );
+        "http://localhost:8080/api/payment",
+        payment
+      );      
 
       if (res.status === 200) {
-        setIsPaymentSubmit(true);
-      }
-
-      if (res.data.auth === true) {
         setIsPaymentSubmit(true);
       } else {
         setIsPaymentSubmit(false);
@@ -66,18 +75,73 @@ function ThankYouPage() {
     }
   };
 
-  const addPurchaseOrder = async (data) => {
+  // const addOrders = async (data) => {
+  //   try {
+  //     const res = await axios.post("http://localhost:8080/api/order",data);
+  //     if (res.data.auth === true) {
+  //       setIsPurchaseOrderSubmit(true);
+  //     } else {
+  //       setIsPurchaseOrderSubmit(false);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  // const addSellProduct = async (data) => {
+
+  //   //cart data
+
+  //   // var sellProduct
+  //   // {data.map((productList) =>(      
+  //   //   sellProduct = {
+  //   //     product_id: productList.id,
+  //   //     order_id: order_id,
+  //   //     price: productList.price,
+  //   //     quantity: productList.quantity,
+  //   //     discount: productList.discount,  
+  //   //   }      
+  //   // ))}
+    
+  //     try {
+  //       const cartresponse = await axios.get("http://localhost:8080/api/cart")
+  //       console.log(cartresponse.data)
+
+  //       const sayHello = async(sellProduct) => {
+  //         // console.log("Hello Asini")
+  //         const res = await axios.post("http://localhost:8080/api/sellProduct",sellProduct);
+  //         if (res.data.auth === true) {
+  //           setIsSellProductSubmit(true);
+  //         } else {
+  //           setIsSellProductSubmit(false);
+  //         }
+  //       }   
+
+  //       var sellProduct
+  //       {cartresponse.data.map((productList) =>(      
+  //         sellProduct = {
+  //           product_id: productList.id,
+  //           order_id: orderid,
+  //           price: productList.price,
+  //           quantity: productList.quantity,
+  //           discount: productList.discount,  
+  //         },
+  //         sayHello(sellProduct)     
+  //       ))}
+            
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+    
+  // };
+
+  const addShippingData = async (data) => {
     try {
-      const res = await axios.post(
-        "http://192.168.56.1:3002/api/payment/addpurchaseorder",
-        {
-          data,
-        }
-      );
+      const res = await axios.post("http://localhost:8080/api/shippingDetail",data);
       if (res.data.auth === true) {
-        setIsPurchaseOrderSubmit(true);
+        setIsShippingDataSubmit(true);
       } else {
-        setIsPurchaseOrderSubmit(false);
+        setIsShippingDataSubmit(false);
       }
     } catch (error) {
       console.log(error);
@@ -101,6 +165,7 @@ function ThankYouPage() {
     justifyContent: "center",
     textAlign: "center",
   };
+  
   return (
     <div style={contactImg}>
       <Navigation></Navigation>
