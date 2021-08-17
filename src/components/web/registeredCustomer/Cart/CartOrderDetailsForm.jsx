@@ -36,7 +36,7 @@ function CheckoutForm() {
                 </Row>      
                 <br />                                                              
                 {/*<center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Checkout</button></center>*/}
-                <Link to='/paymentForm'><center><Button variant="success" style={{width: '100%'}}>Checkout</Button></center></Link>
+                <Link to='/customer_checkout'><center><Button variant="success" style={{width: '100%'}}>Checkout</Button></center></Link>
            </Form>
         </Card>        
     </div>
