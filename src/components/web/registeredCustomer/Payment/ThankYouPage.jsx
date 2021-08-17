@@ -49,39 +49,39 @@ function ThankYouPage() {
   }
 
   useEffect(() => {
-    addPayment(payment);
-    // addOrders(orders);
+    addOrders(orders);
+    // addPayment(payment);    
     // addShippingData(shippingData);
     // addSellProduct(cartData)                 
         
   }, []);
 
-  const addPayment = async (payment) => {
+  const addOrders = async (data) => {
     try {
-      // const res = await axios.post("http://localhost:8080/api/payment",data);
-
-      const res = await axios.post(
-        "http://localhost:8080/api/payment",
-        payment
-      );      
-
+      const res = await axios.post("http://localhost:8080/api/order",data);
       if (res.status === 200) {
-        setIsPaymentSubmit(true);
+        setIsPurchaseOrderSubmit(true);
       } else {
-        setIsPaymentSubmit(false);
+        setIsPurchaseOrderSubmit(false);
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  // const addOrders = async (data) => {
+  // const addPayment = async (payment) => {
   //   try {
-  //     const res = await axios.post("http://localhost:8080/api/order",data);
-  //     if (res.data.auth === true) {
-  //       setIsPurchaseOrderSubmit(true);
+  //     // const res = await axios.post("http://localhost:8080/api/payment",data);
+
+  //     const res = await axios.post(
+  //       "http://localhost:8080/api/payment",
+  //       payment
+  //     );      
+
+  //     if (res.status === 200) {
+  //       setIsPaymentSubmit(true);
   //     } else {
-  //       setIsPurchaseOrderSubmit(false);
+  //       setIsPaymentSubmit(false);
   //     }
   //   } catch (error) {
   //     console.log(error);
