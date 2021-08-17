@@ -123,7 +123,7 @@ function CartDetails() {
                                                     <thead>
                                                         <tr>
                                                             <th>#</th>
-                                                            <th>ID</th>
+                                                            {/* <th>ID</th> */}
                                                             <th>Image</th>
                                                             <th>Name</th>
                                                             <th>Price Rs.</th>
@@ -137,7 +137,7 @@ function CartDetails() {
                                                         {cartData.map((productList,i) =>(                                                                                  
                                                         <tr key={i}>                                        
                                                             <td>{i+1}</td>
-                                                            <td>{productList.id}</td>
+                                                            {/* <td>{productList.id}</td> */}
                                                             <td><img src={productList.product.img_location} style={{width:'100px', borderRadius: '20px'}} alt='imgitem'></img></td>
                                                             <td>{productList.product.name} </td>
                                                             <td>{productList.product.price} </td>
