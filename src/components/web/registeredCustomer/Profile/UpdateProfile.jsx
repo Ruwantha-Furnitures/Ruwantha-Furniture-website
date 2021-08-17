@@ -14,44 +14,46 @@ function UpdateProfile() {
     // require('dotenv').config();
     // let URI = { process.env.IP_ADDRESS };
 
-    useEffect(() => {
-        let accountID=localStorage.getItem('userAccID');
-        let accountEmail=localStorage.getItem('userEmail')
-        console.log(accountID);
-        const fecthData=async()=>{
-            try {                
-                let response=await axios.get(`http://192.168.56.1:3002/api/customer/viewprofile/${accountID}`)
-                // let response=await axios.get(`${URI}:3002/api/customer/viewprofile/${accountID}`)
-                const {name,address, telephone}=response.data
-                const userData={
-                    accountEmail,
-                    name,
-                    address,
-                    telephone,
-                }
-                setUserDetails(()=>userData)
-                console.log(response.data)
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        fecthData()
-    },[])
+    // useEffect(() => {
+    //     let accountID=localStorage.getItem('userAccID');
+    //     let accountEmail=localStorage.getItem('userEmail')
+    //     console.log(accountID);
+    //     const fecthData=async()=>{
+    //         try {                
+    //             let response=await axios.get(`http://192.168.56.1:3002/api/customer/viewprofile/${accountID}`)
+    //             // let response=await axios.get(`${URI}:3002/api/customer/viewprofile/${accountID}`)
+    //             const {name,address, telephone}=response.data
+    //             const userData={
+    //                 accountEmail,
+    //                 name,
+    //                 address,
+    //                 telephone,
+    //             }
+    //             setUserDetails(()=>userData)
+    //             console.log(response.data)
+    //         } catch (error) {
+    //             console.log(error)
+    //         }
+    //     }
+    //     fecthData()
+    // },[])
 
-    const updateHandler=(data)=>{
+    const updateHandler=(userDetails)=>{
         const updateData=async()=>{
-            let accountID=localStorage.getItem('userAccID');
+            let customerID=localStorage.getItem('CustomerID');
             try {                
-                let response=await axios.put(`http://192.168.56.1:3002/api/customer/updateprofile/${accountID}`,{data})
-                if(response){
+                let response = await axios.put(`http://localhost:8080/api/customer/${customerID}`,userDetails)
+                console.log(response.data)
+                if(response.status === 200){
                     alert("Your profile has been successfully updated.")
+                }else{
+                    alert("Your profile has not updated.")
                 }
             } catch (error) {
                 console.log(error)
             }
         }
-        updateData()
-        console.log(data)
+        updateData()        
     }
 
     const contactImg = {

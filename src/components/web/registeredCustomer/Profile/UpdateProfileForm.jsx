@@ -17,7 +17,8 @@ function UpdateProfileForm({updateHandler}) {
     const [contact_number, setTelephone] = useState("");    
 
     const submitHandler = () => {
-        const userDetails ={first_name,last_name,address,contact_number}
+        // const userDetails ={first_name:first_name, last_name:last_name, address:address, contact_number:contact_number}
+        const userDetails ={first_name, last_name, address, contact_number}
         updateHandler(userDetails)
     }
     
