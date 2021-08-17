@@ -1,18 +1,21 @@
 import React , { useEffect , useState } from 'react';
-import { Row, Col } from "reactstrap";
+import {Container, Row, Col } from "reactstrap";
 import productImg from "../../../../assets/items/1.jpg";
 import Table from 'react-bootstrap/Table';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { Redirect } from 'react-router';
 import Form from "react-bootstrap/Form";
 import Card from 'react-bootstrap/Card';
+import Navigation from "../Navigation/UserNav";
+import CustomerCheckoutForm from "./CartOrderDetailsForm";
+import Footer from "../../Common/Footer";
 import axios from 'axios';
 
-function CartDetails() {
-    // const [products,setProducts]=useState([]);
+function CartDetails() {    
     const [cartData,setCartDetails]=useState([]);    
     const [cartTotalAmount, setCartTotalAmount] = useState(""); 
     const [isLoading, setIsLoading] = useState(false);
+    
     var totalcounter = 0;
     var caldiscount = 0.00;
 
@@ -27,6 +30,8 @@ function CartDetails() {
             try {                
                 const cartResponse = await axios.get(`http://localhost:8080/api/customerCart/customer_id/${customer_id}`);   
                 setCartDetails(cartResponse.data) 
+                
+                console.log(cartResponse.data.length)                
                 
                 var cartItemIds = [];                
                 {cartData.map((productList) =>(      
@@ -58,12 +63,13 @@ function CartDetails() {
         totalcounter = (Number)(totalcounter) + (Number)(totalTwoDecimalPlaces)
         localStorage.setItem("cartTotal",totalcounter);
     
+        const afterDiscountForAProduct = parseFloat(((Number)(price) - ((Number)(price) * ((Number)(discount)/100))) * (Number)(quantity)).toFixed(2); 
         caldiscount = parseFloat(((Number)(price) - ((Number)(price) * ((Number)(discount)/100))) * (Number)(quantity) + (Number)(caldiscount)).toFixed(2); 
         // afterDiscount += (Number)(parseFloat((Number)(total - total*(discount/100))).toFixed(2)) ; 
         
         localStorage.setItem("afterDiscount",caldiscount);
                     
-        return totalTwoDecimalPlaces;
+        return afterDiscountForAProduct;
     }    
 
     // function getID(id){
@@ -72,29 +78,30 @@ function CartDetails() {
     // }
 
 
-    function handleDeleteRow(i,cartID) {
-        console.log("In the handleDeleteRow")
-        console.log(i)
-        console.log(cartID)
+    const removeData = (id) => {
+        axios.delete(`http://localhost:8080/api/customerCart/id/${id}`).then(res => {
+            const del = cartData.filter(cartData => id !== cartData.id)
+            setCartDetails(del)
+        })
     }
 
-    const deleteCartdata =async(cartID) =>{        
-        console.log("Your cart id")
-        console.log(cartID)
-        console.log(isLoading)
-        // try{
-        //     const res=await axios.delete(`http://localhost:8080/api/customerCart/id/${cartID}`); // wil receive the response
-        //     //console.log(res.data) //view the response object data
-        //     console.log(res.data)   
-        //     if(res.status===200){
-        //         setIsLoading(true)
-        //     }else{
-        //         setIsLoading(false)
-        //     }
-        // }catch (error){
-        //   console.log(error);
-        // }         
-    }
+    // const deleteCartdata =async(cartID) =>{        
+    //     console.log("Your cart id")
+    //     console.log(cartID)
+    //     console.log(isLoading)
+    //     // try{
+    //     //     const res=await axios.delete(`http://localhost:8080/api/customerCart/id/${cartID}`); // wil receive the response
+    //     //     //console.log(res.data) //view the response object data
+    //     //     console.log(res.data)   
+    //     //     if(res.status===200){
+    //     //         setIsLoading(true)
+    //     //     }else{
+    //     //         setIsLoading(false)
+    //     //     }
+    //     // }catch (error){
+    //     //   console.log(error);
+    //     // }         
+    // }
 
     const redirecCart = < Redirect to="/cart" />;
     return (
@@ -102,50 +109,68 @@ function CartDetails() {
             {(isLoading === true) && (redirecCart)}
             {(isLoading === false) && (
                 <div>            
-                <Card style={{marginBottom: '20px'}}>
-                    <Form style={{padding: '20px'}}>
-                        <Row sm={12} style={rowStyle}>
-                            <Col sm={12}>
-                                <h2 style={{textAlign:'center'}}>Shopping Cart</h2><br />
-                                <Table responsive="sm">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>ID</th>
-                                            <th>Image</th>
-                                            <th>Name</th>
-                                            <th>Price Rs.</th>
-                                            <th>Discount</th>
-                                            <th>Quantity</th>
-                                            <th>Total</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {cartData.map((productList,i) =>(                                                                                  
-                                        <tr key={i}>                                        
-                                            <td>{i+1}</td>
-                                            <td>{productList.id}</td>
-                                            <td><img src={productList.product.img_location} style={{width:'100px', borderRadius: '20px'}} alt='imgitem'></img></td>
-                                            <td>{productList.product.name} </td>
-                                            <td>{productList.product.price} </td>
-                                            <td>{productList.product.discount}%</td>
-                                            <td>{productList.quantity}</td>
-                                            {/* <td>{(Number)(productList.product.price)*(Number)(productList.quantity)}</td> */}
-                                            <td>{getTotal(productList.product.price,productList.quantity,productList.product.discount)}</td>
-                                            {/* <td><DeleteForeverIcon></DeleteForeverIcon></td> */}
-                                            <td>
-                                                {/* <button onsubmit={deleteCartdata(productList.id)}>Delete</button> */}
-                                                <button onClick={i => handleDeleteRow(i,i[1])}>Delete Row</button>
-                                            </td>
-                                        </tr>   
-                                        ))}                              
-                                    </tbody>
-                                </Table>
-                            </Col> 
-                        </Row>
-                    </Form>
-                </Card>            
+                    <Navigation></Navigation> 
+                    <Container fluid>                
+                        <Row sm={12}>
+                            <Col sm={9}>                        
+                                {/* <CustomerCartDetails></CustomerCartDetails> */}
+                                <Card style={{marginBottom: '20px'}}>
+                                    <Form style={{padding: '20px'}}>
+                                        <Row sm={12} style={rowStyle}>
+                                            <Col sm={12}>
+                                                <h2 style={{textAlign:'center'}}>Shopping Cart</h2><br />
+                                                <Table responsive="sm"  class="table table-hover table-bordered p-5">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>ID</th>
+                                                            <th>Image</th>
+                                                            <th>Name</th>
+                                                            <th>Price Rs.</th>
+                                                            <th>Discount</th>
+                                                            <th>Quantity</th>
+                                                            <th>Total</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {cartData.map((productList,i) =>(                                                                                  
+                                                        <tr key={i}>                                        
+                                                            <td>{i+1}</td>
+                                                            <td>{productList.id}</td>
+                                                            <td><img src={productList.product.img_location} style={{width:'100px', borderRadius: '20px'}} alt='imgitem'></img></td>
+                                                            <td>{productList.product.name} </td>
+                                                            <td>{productList.product.price} </td>
+                                                            <td>{productList.product.discount}%</td>
+                                                            <td>{productList.quantity}</td>
+                                                            {/* <td>{(Number)(productList.product.price)*(Number)(productList.quantity)}</td> */}
+                                                            <td>{getTotal(productList.product.price,productList.quantity,productList.product.discount)}</td>
+                                                            {/* <td><DeleteForeverIcon></DeleteForeverIcon></td> */}
+                                                            <td>                                                                                                                                                                              
+                                                                {/* <button className='button' onClick={() => removeData(productList.id)}>Delete</button> */}
+                                                                <button class="btn btn-light" onClick={() => removeData(productList.id)}><DeleteForeverIcon></DeleteForeverIcon></button>
+                                                            </td>
+                                                        </tr>   
+                                                        ))}                              
+                                                    </tbody>
+                                                </Table>
+                                                
+                                            </Col> 
+                                        </Row>
+                                    </Form>
+                                </Card>            
+                            </Col>
+
+                            <Col sm={3}>
+                                <CustomerCheckoutForm></CustomerCheckoutForm>  
+                            </Col>
+                        </Row>                                                                                                                              
+                    </Container>    
+                    <br /><br />  
+                    <br /><br />  
+                    <br /><br />        
+                    <br /><br />
+                    <Footer></Footer>                 
                 </div>
             )}
         </React.Fragment>       

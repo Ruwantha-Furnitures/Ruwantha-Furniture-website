@@ -63,7 +63,7 @@ import Customer_Home from "./components/web/registeredCustomer/Home/CustomerHome
 import Customer_Product from "./components/web/registeredCustomer/Product/CustomerProduct.jsx";
 import Customer_ContactUs from "./components/web/registeredCustomer/ContactUs/CustomerContact.jsx";
 import ViewProfile from "./components/web/registeredCustomer/Profile/ViewProfile.jsx";
-import Customer_Cart from "./components/web/registeredCustomer/Cart/CartDetailsPage.jsx";
+import Customer_Cart from "./components/web/registeredCustomer/Cart/CartTable.jsx";
 
 import View_Product from "./components/web/customer/Products/ViewProductDetails.jsx";
 import View_Product_Details from "./components/web/registeredCustomer/Product/CustomerViewProductDetails";
