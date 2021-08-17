@@ -42,6 +42,7 @@ require("./routes/login.routes")(app);
 require("./routes/signup.routes")(app);
 require("./routes/onlineCustomerLogin.routes")(app);
 require("./routes/cartForACustomer.routes")(app);
+require("./routes/deliverychargefordistrict.routes")(app);
 
 // set port
 const PORT = process.env.PORT || 8080;

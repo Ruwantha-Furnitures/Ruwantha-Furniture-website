@@ -10,7 +10,7 @@ import axios from 'axios';
 
 function CartDetails() {
     // const [products,setProducts]=useState([]);
-    const [cartData,setCartDetails]=useState([]);
+    const [cartData,setCartDetails]=useState([]);    
     const [cartTotalAmount, setCartTotalAmount] = useState(""); 
     const [isLoading, setIsLoading] = useState(false);
     var totalcounter = 0;
@@ -26,7 +26,20 @@ function CartDetails() {
         const fecthData=async()=>{
             try {                
                 const cartResponse = await axios.get(`http://localhost:8080/api/customerCart/customer_id/${customer_id}`);   
-                setCartDetails(cartResponse.data)      
+                setCartDetails(cartResponse.data) 
+                
+                var cartItemIds = [];                
+                {cartData.map((productList) =>(      
+                    cartItemIds = productList                    
+                ))}          
+                
+                localStorage.setItem("cartItemsIDs", JSON.stringify(cartItemIds));
+
+                //storing array in localStorage
+                // var colors = ["red","blue","green"];
+                // localStorage.setItem("my_colors", JSON.stringify(colors)); //store colors
+                // var storedColors = JSON.parse(localStorage.getItem("my_colors")); //get them back
+
                 console.log(cartResponse.data)                     
             } catch (error) {
                 console.log(error)
@@ -35,6 +48,7 @@ function CartDetails() {
         fecthData()
         localStorage.setItem("cartTotal",0.00);
         localStorage.setItem("afterDiscount",0.00);
+        console.log(localStorage.getItem('CustomerID'))
     },[])
     
     function getTotal(price,quantity,discount){        

@@ -14,19 +14,20 @@ function ViewProfile() {
     // let URI = { process.env.IP_ADDRESS };
 
     useEffect(() => {
-        let accountID=localStorage.getItem('userAccID');
+        let customerID=localStorage.getItem('CustomerID');
         let accountEmail=localStorage.getItem('userEmail')
-        console.log(accountID);
+        
         const fecthData=async()=>{
             try {                
-                let response=await axios.get(`http://192.168.56.1:3002/api/customer/viewprofile/${accountID}`)
+                let response=await axios.get(`http://localhost:8080/api/customer/${customerID}`)
                 // let response=await axios.get(`${URI}:3002/api/customer/viewprofile/${accountID}`)
-                const {name,address, telephone}=response.data
+                const {first_name,last_name,address, contact_number}=response.data
                 const userData={
                     accountEmail,
-                    name,
+                    first_name,
+                    last_name,
                     address,
-                    telephone,
+                    contact_number,
                 }
                 setUserDetails(()=>userData)
                 console.log(response.data)

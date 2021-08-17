@@ -5,6 +5,8 @@ import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from 'reactstrap';
 import Avatar from '../../../../assets/shipping.png';
 import CommonStyle from '../../../../css/web/common.module.css';
+import Navigation from "../Navigation/UserNav";
+import Footer from "../../Common/Footer";
 import axios from 'axios';
 import {Customer, CurrencyType,PayhereCheckout, CheckoutParams} from 'payhere-js-sdk';
 import {Payhere, AccountCategory} from "payhere-js-sdk";
@@ -47,7 +49,7 @@ const PaymentForm = () => {
 
         setPrice(localStorage.getItem('productPrice'))
         setDiscount(localStorage.getItem('productDiscount'))
-        setAfterDiscount(localStorage.getItem('totalAfterDiscount'))        
+        setAfterDiscount(localStorage.getItem('afterDiscount'))        
         
         getDeliveryCharge();
 
@@ -61,10 +63,13 @@ const PaymentForm = () => {
     const getDeliveryCharge =async() =>{
         const area = localStorage.getItem('CustomerArea')
         try{
-            const res=await axios.get(`http://192.168.56.1:3002/api/payment/deliverychargefordistrict/${area}`); // wil receive the response
+            const res=await axios.get(`http://localhost:8080/api/deliverychargefordistrict/area/${area}`); // wil receive the response
             console.log(res.data) //view the response object data
+            // alert(res.data.amount)
             setDeliveryChargeData(res.data) // set the response data to the state of productDetails object                        
-            localStorage.setItem('DeliveryChargeID',res.data.chargeid);            
+            localStorage.setItem('DeliveryChargeID',res.data.id);                
+            localStorage.setItem('DeliveryChargeAmount',res.data.amount);     
+            // alert(deliveryChargeID.id)       
         }catch (error){
           console.log(error);
         } 
@@ -73,12 +78,17 @@ const PaymentForm = () => {
     const getOrderId =async() =>{
         try{
             // alert("in orderId")       
-            const res=await axios.get(`http://192.168.56.1:3002/api/purchseorders/getpurchaseorders/`); // wil receive the response
-            console.log(res.data.count) //view the response object data
+            const res=await axios.get(`http://localhost:8080/api/order/`); // wil receive the response
+            // console.log(res.data) //view the response object data
             setCurrentOrderId(res.data.count) // set the response data to the state of productDetails object     
-            // alert(res.data.count)                          
-            const newOrder =   (Number)(currentOrderId + 1);                   
-            localStorage.setItem("NewOrderID",newOrder);                   
+            // alert(res.data.count)  
+            if(res.data.length === 0){
+                const newOrder = 1;
+                localStorage.setItem("NewOrderID",newOrder); 
+            }else{
+                const newOrder =   (Number)(currentOrderId + 1);                   
+                localStorage.setItem("NewOrderID",newOrder); 
+            }                              
         }catch (error){
           console.log(error);
         } 
@@ -133,7 +143,8 @@ const PaymentForm = () => {
                 cancelUrl: 'http://localhost:3000/cancel',
                 notifyUrl: 'http://localhost:8080/notify',
                 order_id: `${ localStorage.getItem('NewOrderID') }`,
-                itemTitle: `${ localStorage.getItem('productName') }`,
+                // itemTitle: `${ localStorage.getItem('productName') }`,
+                itemTitle: "Multiple Items Purchase",
                 currency: CurrencyType.LKR,
                 amount: `${ localStorage.getItem('finalTotalAmount') }`,
               })
@@ -147,7 +158,8 @@ const PaymentForm = () => {
       }
     
     return (
-        <div>                 
+        <div>  
+            <Navigation></Navigation>                 
             <Container>
             <Row sm={12}>
                 <Col sm={8}>                    
@@ -183,23 +195,15 @@ const PaymentForm = () => {
                                 <Form.Label>Total Purchase</Form.Label>  
                             </Col>
                             <Col sm={6}>
-                                <Form.Label>{ price }</Form.Label> 
+                                <Form.Label>{parseFloat(localStorage.getItem('cartTotal')).toFixed(2)}</Form.Label> 
                             </Col>
                         </Row>                        
-                        <Row sm={12}>
-                            <Col sm={6}>
-                                <Form.Label>Discount</Form.Label>  
-                            </Col>
-                            <Col sm={6}>
-                                <Form.Label>{discount}%</Form.Label> 
-                            </Col>
-                        </Row> 
                         <Row sm={12}>
                             <Col sm={6}>
                                 <Form.Label>After Discount</Form.Label>  
                             </Col>
                             <Col sm={6}>
-                                <Form.Label>{ afterDiscount }</Form.Label> 
+                                <Form.Label>Rs. {localStorage.getItem('afterDiscount')}</Form.Label> 
                             </Col>
                         </Row> 
                         <Row sm={12}>
@@ -233,7 +237,9 @@ const PaymentForm = () => {
                     </Card>
                 </Col>
             </Row>  
-            </Container>                               
+            </Container> 
+            <br /><br />
+            <Footer></Footer>                               
         </div>
     );
 };
