@@ -10,10 +10,12 @@ exports.create = async (req, res) => {
 
   //  Create a Order
   const order = {
-    customer_id: req.body.customer_id,
+    total_product_amount: req.body.total_product_amount,
+    customer_id: req.body.customer_id,    
     payment_method: req.body.payment_method,
   };
 
+  console.log("in the order controller")
   //   Save order in the database
   await Order.create(order)
     .then((data) => {

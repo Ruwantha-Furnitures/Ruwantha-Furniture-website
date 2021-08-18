@@ -54,27 +54,6 @@ function ShippingDeteailsForm() {
         }
     }
 
-    // const getProductData =async(id) =>{
-    //     try{
-    //         const res=await axios.get(`http://localhost:8080/api/api/products/${id}`); // wil receive the response
-    //         //console.log(res.data) //view the response object data
-    //         setProductDetails(res.data) // set the response data to the state of productDetails object
-    //     }catch (error){
-    //       console.log(error);
-    //     } 
-    // }
-
-    // function getTotal(price,discount){
-    //     const total = (Number)(price - (price*discount/100))
-    //     // var myNumberWithTwoDecimalPlaces=parseFloat(myNumber).toFixed(2); 
-    //     var totalTwoDecimalPlaces=parseFloat(total).toFixed(2); 
-
-    //     localStorage.setItem("productPrice",price);
-    //     localStorage.setItem("productDiscount",discount);
-    //     localStorage.setItem("totalAfterDiscount",totalTwoDecimalPlaces);
-    //     return totalTwoDecimalPlaces;
-    // }    
-
     const title={
         margin: '0px',
         padding: '3px',
@@ -95,7 +74,7 @@ function ShippingDeteailsForm() {
         border: 'solid 1px darkgray'               
     };
 
-    const redirectPaymentPage = <Redirect to="/customer_productDetails_payment" />;
+    const redirectPaymentPage = <Redirect to="/paymentForm" />;
     return (          
         <React.Fragment>
             {isSubmit === true && redirectPaymentPage}
@@ -160,7 +139,8 @@ function ShippingDeteailsForm() {
                                 <div align="right">
                                     <Button variant="danger" type='reset'>Cancel</Button>{' '}
                                     {/* <Link to='/customer_paymentGateway'><Button variant="success" type='submit'>Continue for payment</Button>{' '}</Link> */}
-                                    <Link to='paymentForm'><Button variant="success" type='submit'>Continue for payment</Button></Link>{' '}
+                                    {/* <Link to='paymentForm'><Button variant="success" type='submit'>Continue for payment</Button></Link>{' '} */}
+                                    <Button variant="success" type='submit'>Continue for payment</Button>{' '}
                                 </div>                         
                             </Form>
                         </Card>
@@ -174,7 +154,7 @@ function ShippingDeteailsForm() {
                                         <Form.Label>Total Purchase</Form.Label>  
                                     </Col>
                                     <Col sm={6}>
-                                        <Form.Label>{parseFloat(localStorage.getItem('cartTotal')).toFixed(2)}</Form.Label> 
+                                        <Form.Label>Rs. {parseFloat(localStorage.getItem('cartTotal')).toFixed(2)}</Form.Label> 
                                     </Col>
                                 </Row> 
                                 <Row sm={12}>

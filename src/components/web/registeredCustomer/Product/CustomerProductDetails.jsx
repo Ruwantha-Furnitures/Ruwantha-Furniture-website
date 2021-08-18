@@ -147,7 +147,7 @@ function CustomerProductDetails() {
 
                                         {/* <Link to="/cart"><button onClick={() => setCartValue(itemCount + 1)} class="addtocart">Add to cart </button></Link> */}
                                         <button onClick={() => setCartValue( productDetails.id )} class="addtocart">Add to cart </button> {' '}
-                                        <Link to='/customer_productDetails_checkout'><button class="addtocart">Check out</button></Link>
+                                        {/* <Link to='/customer_productDetails_checkout'><button class="addtocart">Check out</button></Link> */}
                                     </center>
                                 </Container>
                             </Col>                        

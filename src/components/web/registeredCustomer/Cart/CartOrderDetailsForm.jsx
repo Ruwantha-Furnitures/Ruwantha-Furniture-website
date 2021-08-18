@@ -18,7 +18,7 @@ function CheckoutForm() {
                         <Form.Label>Total Purchase</Form.Label>  
                     </Col>
                     <Col sm={6}>
-                        <Form.Label>{parseFloat(localStorage.getItem('cartTotal')).toFixed(2)}</Form.Label> 
+                        <Form.Label>Rs. {parseFloat(localStorage.getItem('cartTotal')).toFixed(2)}</Form.Label> 
                     </Col>
                 </Row> 
                 <Row sm={12}>
@@ -36,7 +36,7 @@ function CheckoutForm() {
                 </Row>      
                 <br />                                                              
                 {/*<center><button block size="lg" type="submit" className={NavButtonStyle.btn}>Checkout</button></center>*/}
-                <Link to='/paymentForm'><center><Button variant="success" style={{width: '100%'}}>Checkout</Button></center></Link>
+                <Link to='/customer_checkout'><center><Button variant="success" style={{width: '100%'}}>Checkout</Button></center></Link>
            </Form>
         </Card>        
     </div>

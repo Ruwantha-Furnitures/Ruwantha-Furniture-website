@@ -30,12 +30,13 @@ function CartDetails() {
             try {                
                 const cartResponse = await axios.get(`http://localhost:8080/api/customerCart/customer_id/${customer_id}`);   
                 setCartDetails(cartResponse.data) 
+                console.log(cartResponse.data)
                 
                 console.log(cartResponse.data.length)                
                 
                 var cartItemIds = [];                
                 {cartData.map((productList) =>(      
-                    cartItemIds = productList                    
+                    cartItemIds = productList                
                 ))}          
                 
                 localStorage.setItem("cartItemsIDs", JSON.stringify(cartItemIds));
@@ -45,7 +46,7 @@ function CartDetails() {
                 // localStorage.setItem("my_colors", JSON.stringify(colors)); //store colors
                 // var storedColors = JSON.parse(localStorage.getItem("my_colors")); //get them back
 
-                console.log(cartResponse.data)                     
+                // console.log(cartResponse.data)                     
             } catch (error) {
                 console.log(error)
             }
@@ -72,36 +73,12 @@ function CartDetails() {
         return afterDiscountForAProduct;
     }    
 
-    // function getID(id){
-    //     console.log("Your cart id")
-    //     console.log(id)
-    // }
-
-
     const removeData = (id) => {
         axios.delete(`http://localhost:8080/api/customerCart/id/${id}`).then(res => {
             const del = cartData.filter(cartData => id !== cartData.id)
             setCartDetails(del)
         })
     }
-
-    // const deleteCartdata =async(cartID) =>{        
-    //     console.log("Your cart id")
-    //     console.log(cartID)
-    //     console.log(isLoading)
-    //     // try{
-    //     //     const res=await axios.delete(`http://localhost:8080/api/customerCart/id/${cartID}`); // wil receive the response
-    //     //     //console.log(res.data) //view the response object data
-    //     //     console.log(res.data)   
-    //     //     if(res.status===200){
-    //     //         setIsLoading(true)
-    //     //     }else{
-    //     //         setIsLoading(false)
-    //     //     }
-    //     // }catch (error){
-    //     //   console.log(error);
-    //     // }         
-    // }
 
     const redirecCart = < Redirect to="/cart" />;
     return (
