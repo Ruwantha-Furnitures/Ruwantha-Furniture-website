@@ -77,18 +77,29 @@ const PaymentForm = () => {
 
     const getOrderId =async() =>{
         try{
-            // alert("in orderId")       
-            const res=await axios.get(`http://localhost:8080/api/order/`); // wil receive the response
-            // console.log(res.data) //view the response object data
-            setCurrentOrderId(res.data.count) // set the response data to the state of productDetails object     
-            // alert(res.data.count)  
-            if(res.data.length === 0){
-                const newOrder = 1;
-                localStorage.setItem("NewOrderID",newOrder); 
-            }else{
-                const newOrder =   (Number)(currentOrderId + 1);                   
-                localStorage.setItem("NewOrderID",newOrder); 
-            }                              
+            // // alert("in orderId")       
+            // const res=await axios.get(`http://localhost:8080/api/order/`); // wil receive the response
+            // // console.log(res.data) //view the response object data
+            // setCurrentOrderId(res.data.count) // set the response data to the state of productDetails object     
+            // // alert(res.data.count)  
+            // if(res.data.length === 0){
+            //     const newOrder = 1;
+            //     localStorage.setItem("NewOrderID",newOrder); 
+            // }else{
+            //     const newOrder =   (Number)(currentOrderId + 1);                   
+            //     localStorage.setItem("NewOrderID",newOrder); 
+            // }                              
+            const maxOrderIDResponse = await axios.get("http://localhost:8080/api/order");
+            console.log(maxOrderIDResponse.data);  
+            console.log(maxOrderIDResponse.data.length)    
+
+            const length = maxOrderIDResponse.data.length
+            console.log(maxOrderIDResponse.data[(Number)(length)-1].id)
+
+            const maxOrderID = maxOrderIDResponse.data[(Number)(length)-1].id
+            const newOrderID = (Number)(maxOrderID) + 1
+
+            localStorage.setItem("NewOrderID",newOrderID)
         }catch (error){
           console.log(error);
         } 

@@ -17,6 +17,8 @@ exports.create = async (req, res) => {
     order_id: req.body.order_id,
   };
 
+  console.log("in the sell product controller")
+  
   //   Save order in the database
   await SellProduct.create(sellProduct)
     .then((data) => {
