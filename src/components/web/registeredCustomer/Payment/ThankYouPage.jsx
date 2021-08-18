@@ -10,143 +10,46 @@ import axios from "axios";
 import { addSellProduct } from "../../../Dashboard/service/sellProduct";
 
 function ThankYouPage() {
-  const order_id = localStorage.getItem("NewOrderID");
-  const cartData = JSON.parse(localStorage.getItem("cartItemsIDs"));
-  const custid = localStorage.getItem("userAccID");
-  const fname = localStorage.getItem("CustomerFName");
-  const lname = localStorage.getItem("CustomerLName");
-  const address = localStorage.getItem("CustomerAddress");
-  const total_product_amount = localStorage.getItem("cartTotal");
-  const telephone = localStorage.getItem("CustomerTelephone");
-  const chargeid = localStorage.getItem("DeliveryChargeID");
-  const price = localStorage.getItem("finalTotalAmount");
+    const [cartItemData,setCartDetails]=useState([]);   
+    const order_id = localStorage.getItem("NewOrderID");
+    const cartData = JSON.parse(localStorage.getItem("cartItemsIDs"));
+    const customer_id = localStorage.getItem("userAccID");
+    const fname = localStorage.getItem("CustomerFName");
+    const lname = localStorage.getItem("CustomerLName");
+    const address = localStorage.getItem("CustomerAddress");
+    const total_product_amount = localStorage.getItem("cartTotal");
+    const telephone = localStorage.getItem("CustomerTelephone");
+    const chargeid = localStorage.getItem("DeliveryChargeID");
+    const total_amounts = localStorage.getItem("finalTotalAmount");
   
-  // alert(new Date().toLocaleString())
+    // alert(new Date().toLocaleString())
 
-  const [isPaymentSubmit, setIsPaymentSubmit] = useState(false);
-  const [isPurchaseOrderSubmit, setIsPurchaseOrderSubmit] = useState(false);
-  const [isSellProductSubmit, setIsSellProductSubmit] = useState(false);
-  const [isShippingDataSubmit, setIsShippingDataSubmit] = useState(false);
-
-  const payment = { 
-    order_id: order_id, 
-    total_amounts: price
-  };
-
-  const orders = {
-    id: order_id,
-    total_product_amount: total_product_amount,
-    customer_id : custid,    
-  };
-  
-  const shippingData = {
-    order_id: order_id,
-    first_name: fname,
-    last_name: lname,
-    shipping_address: address,
-    contact_number: telephone,
-    charge_id: chargeid, 
-  }
-
-  useEffect(() => {
-    addOrders(orders);
-    // addPayment(payment);    
-    // addShippingData(shippingData);
-    // addSellProduct(cartData)                 
-        
-  }, []);
-
-  const addOrders = async (data) => {
-    try {
-      const res = await axios.post("http://localhost:8080/api/order",data);
-      if (res.status === 200) {
-        setIsPurchaseOrderSubmit(true);
-      } else {
-        setIsPurchaseOrderSubmit(false);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  // const addPayment = async (payment) => {
-  //   try {
-  //     // const res = await axios.post("http://localhost:8080/api/payment",data);
-
-  //     const res = await axios.post(
-  //       "http://localhost:8080/api/payment",
-  //       payment
-  //     );      
-
-  //     if (res.status === 200) {
-  //       setIsPaymentSubmit(true);
-  //     } else {
-  //       setIsPaymentSubmit(false);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // const addSellProduct = async (data) => {
-
-  //   //cart data
-
-  //   // var sellProduct
-  //   // {data.map((productList) =>(      
-  //   //   sellProduct = {
-  //   //     product_id: productList.id,
-  //   //     order_id: order_id,
-  //   //     price: productList.price,
-  //   //     quantity: productList.quantity,
-  //   //     discount: productList.discount,  
-  //   //   }      
-  //   // ))}
-    
-  //     try {
-  //       const cartresponse = await axios.get("http://localhost:8080/api/cart")
-  //       console.log(cartresponse.data)
-
-  //       const sayHello = async(sellProduct) => {
-  //         // console.log("Hello Asini")
-  //         const res = await axios.post("http://localhost:8080/api/sellProduct",sellProduct);
-  //         if (res.data.auth === true) {
-  //           setIsSellProductSubmit(true);
-  //         } else {
-  //           setIsSellProductSubmit(false);
-  //         }
-  //       }   
-
-  //       var sellProduct
-  //       {cartresponse.data.map((productList) =>(      
-  //         sellProduct = {
-  //           product_id: productList.id,
-  //           order_id: orderid,
-  //           price: productList.price,
-  //           quantity: productList.quantity,
-  //           discount: productList.discount,  
-  //         },
-  //         sayHello(sellProduct)     
-  //       ))}
-            
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-    
-  // };
-
-  const addShippingData = async (data) => {
-    try {
-      const res = await axios.post("http://localhost:8080/api/shippingDetail",data);
-      if (res.data.auth === true) {
-        setIsShippingDataSubmit(true);
-      } else {
-        setIsShippingDataSubmit(false);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    const [isPaymentSubmit, setIsPaymentSubmit] = useState(false);
+    const [isPurchaseOrderSubmit, setIsPurchaseOrderSubmit] = useState(false);
+    const [isSellProductSubmit, setIsSellProductSubmit] = useState(false);
+    const [isShippingDataSubmit, setIsShippingDataSubmit] = useState(false);        
+   
+    useEffect(() => {    
+        const fecthData=async()=>{
+          try {                
+              const cartResponse = await axios.get(`http://localhost:8080/api/customerCart/customer_id/${customer_id}`);   
+              setCartDetails(cartResponse.data) 
+              console.log(cartResponse.data)                                    
+                
+              var cartItemIds= []; 
+              {cartResponse.data.map((productList) =>(      
+                  cartItemIds = productList.data.id               
+              ))}          
+                  
+              console.log(cartItemIds)
+              localStorage.setItem("cartItemsIDs", JSON.stringify(cartItemIds));
+                  
+          } catch (error) {
+              console.log(error)
+          }
+        }     
+        fecthData()                       
+    }, []);
 
   const contactImg = {
     backgroundImage: `url(${Topimg})`,

@@ -43,19 +43,19 @@ function CustomerCheckoutDeteailsForm() {
 
     const getAllDistricts = async() => {
         try {
-           console.log('Requests send in delivery charge') // done
-           let res =await axios.get('http://192.168.56.1:3002/api/payment/deliverycharge/')
-           console.log(res.data.deliveryCharge); // received deliveryCharge from the backend API
-           setDistrict(res.data.deliveryCharge);// set the received deliveryCharge into the district state array
-           
-        } catch (error) {
+            console.log('Requests send in delivery charge') // done
+            let res =await axios.get("http://localhost:8080/api/deliveryCharge/")
+            //console.log(res.data); // received deliveryCharge from the backend API
+            setDistrict(res.data);// set the received deliveryCharge into the district state array
+            
+        }catch (error) {
             console.log(error);
         }
     }
 
-    const getProductData =async(itemID) =>{
+    const getProductData =async(id) =>{
         try{
-            const res=await axios.get(`http://192.168.56.1:3002/api/products/viewProduct/${itemID}`); // wil receive the response
+            const res=await axios.get(`http://localhost:8080/api/api/products/${id}`); // wil receive the response
             //console.log(res.data) //view the response object data
             setProductDetails(res.data) // set the response data to the state of productDetails object
         }catch (error){

@@ -144,7 +144,7 @@ const PaymentForm = () => {
                 notifyUrl: 'http://localhost:8080/notify',
                 order_id: `${ localStorage.getItem('NewOrderID') }`,
                 // itemTitle: `${ localStorage.getItem('productName') }`,
-                itemTitle: "Multiple Items Purchase",
+                itemTitle: 'Multiple Items Purchase',
                 currency: CurrencyType.LKR,
                 amount: `${ localStorage.getItem('finalTotalAmount') }`,
               })
@@ -224,13 +224,6 @@ const PaymentForm = () => {
                         </Row>  
                         <br />   
                         <center>                                                                                     
-                            {/* <PaymentModal
-                                // Use a unique value for the orderId
-                                // orderId={45896588}
-                                // name="Canton Dining Suite"
-                                // amount="69826.25"
-                            /> */}
-                            {/* <Link  to="/customer_paymentGateway"><button>Checkout Demo</button></Link> */}
                             <button onClick={checkout} className={CommonStyle.paybtn}>Pay with Payhere</button>
                         </center>                                                    
                         
