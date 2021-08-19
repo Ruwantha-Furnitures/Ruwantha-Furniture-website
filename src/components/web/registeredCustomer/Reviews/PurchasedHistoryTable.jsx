@@ -13,6 +13,9 @@ function PurchasedHistoryTable() {
     const [modalShow, setModalShow] = React.useState(false);
     const [historyItems,setHistoryItems]=useState([]);   
 
+    var totalcounter = 0;
+    var caldiscount = 0.00;
+
     useEffect(() => {
         getItems()
     }, [])
@@ -22,6 +25,22 @@ function PurchasedHistoryTable() {
         setHistoryItems(ItemResponse.data) 
         console.log(ItemResponse.data)
     }
+
+    function getTotal(price,quantity,discount){        
+        const total = (Number)(price * quantity)
+        // var myNumberWithTwoDecimalPlaces=parseFloat(myNumber).toFixed(2); 
+        var totalTwoDecimalPlaces=parseFloat(total).toFixed(2); 
+        totalcounter = (Number)(totalcounter) + (Number)(totalTwoDecimalPlaces)
+        localStorage.setItem("cartTotal",totalcounter);
+    
+        const afterDiscountForAProduct = parseFloat(((Number)(price) - ((Number)(price) * ((Number)(discount)/100))) * (Number)(quantity)).toFixed(2); 
+        caldiscount = parseFloat(((Number)(price) - ((Number)(price) * ((Number)(discount)/100))) * (Number)(quantity) + (Number)(caldiscount)).toFixed(2); 
+        // afterDiscount += (Number)(parseFloat((Number)(total - total*(discount/100))).toFixed(2)) ; 
+        
+        localStorage.setItem("afterDiscount",caldiscount);
+                    
+        return afterDiscountForAProduct;
+    }    
 
     const rowStyle={
         margin: '10px'
@@ -56,12 +75,12 @@ function PurchasedHistoryTable() {
                                         <td>{productList.product.price}</td>
                                         <td>{productList.quantity}</td>
                                         <td>{productList.product.discount}</td>
-                                        <td>6875</td>
-                                        <td><GradeIcon  onClick={() => setModalShow(true)}/>
+                                        <td>{getTotal(productList.product.price,productList.quantity,productList.product.discount)}</td>                                        
+                                        <td><GradeIcon  onClick={() => setModalShow(true)}/>                                        
                                             <AddReviewPopup
                                                 show={modalShow}
                                                 onHide={() => setModalShow(false)}
-                                            />
+                                            />                                        
                                         </td>
                                     </tr> 
                                     ))}                                                                          
