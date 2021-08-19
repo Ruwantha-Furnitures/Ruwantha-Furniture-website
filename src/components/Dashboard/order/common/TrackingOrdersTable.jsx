@@ -6,7 +6,7 @@ import { getDeliveries } from "./../../service/delivery";
 import Pagination from "./../../common/pagination";
 import { paginate } from "./../../utils/paginate";
 
-function PendingOrderList() {
+function TrackingOrdersTable() {
   const [orders, setOrders] = useState({
     total_amount: 0,
     customer_id: 0,
@@ -19,11 +19,10 @@ function PendingOrderList() {
       contact_number: 0,
     },
     delivery_status: "",
-    driver: {
-      first_name: "",
-      last_name: "",
-    },
+    completed_date: "",
+    days: 0,
   });
+
   const [page, setPage] = useState({
     pageSize: 8,
     currentPage: 1,
@@ -49,27 +48,41 @@ function PendingOrderList() {
           (delivery) => delivery.order.id === order.id
         )[0];
 
-        // console.log(deliveryStatus.request_status);
+        console.log(deliveryStatus);
+
+        var startDate;
+        var lastDate;
 
         if (deliveryStatus !== undefined) {
-          if (deliveryStatus.request_status === 1) {
-            order.delivery_status = "Pending";
-            order.driver = deliveryStatus.deliveryDriver;
+          if (
+            deliveryStatus.request_status === 0 &&
+            deliveryStatus.complete_status === 1
+          ) {
+            order.delivery_status = "Completed";
+            order.completed_date = deliveryStatus.updatedAt;
+            startDate = new Date(order.createdAt);
+            lastDate = new Date(deliveryStatus.updatedAt);
           } else {
-            order.delivery_status = "Assigned";
+            order.delivery_status = "Not Completed";
+            startDate = new Date(order.createdAt);
+            lastDate = new Date();
           }
         } else {
-          order.delivery_status = "Not Assigned";
+          order.delivery_status = "Not Completed";
+          startDate = new Date(order.createdAt);
+          lastDate = new Date();
         }
 
-        console.log(order);
-
-        // order.driver = deliveryStatus.deliveryDriver;
+        let differenceTime = lastDate.getTime() - startDate.getTime();
+        let differenceDays = differenceTime / (1000 * 3600 * 24);
+        order.days = Math.round(differenceDays);
       });
 
-      const newOrdersData = ordersData.filter(
-        (order) => order.delivery_status === "Pending"
-      );
+      //   const newOrdersData = ordersData.filter(
+      //     (order) => order.delivery_status === "Not Assigned"
+      //   );
+
+      const newOrdersData = ordersData;
 
       setOrders(newOrdersData);
       setFilterOrders(paginate(newOrdersData, page.currentPage, page.pageSize));
@@ -97,7 +110,6 @@ function PendingOrderList() {
         )
       );
     }
-
     setSearch(search);
   };
 
@@ -106,12 +118,12 @@ function PendingOrderList() {
     setPage({ currentPage: page, pageSize: 8 });
   };
 
+  console.log(orders);
+
   return (
     <React.Fragment>
       <div className={TableStyle.titleHeader}>
-        <h1 className={TableStyle.tableTitleProductStyle}>
-          Assign Drivers For Orders
-        </h1>
+        <h1 className={TableStyle.tableTitleProductStyle}>Tracking Orders</h1>
         <div className={TableStyle.searchSection}>
           <form action="#">
             <div className={TableStyle.search}>
@@ -137,7 +149,6 @@ function PendingOrderList() {
           </form>
         </div>
       </div>
-
       <div className={TableStyle.tablebody}>
         <table className={TableStyle.tableShow}>
           <thead>
@@ -146,16 +157,16 @@ function PendingOrderList() {
                 <div className={TableStyle.header}>Order Id</div>
               </th>
               <th>
-                <div className={TableStyle.header}>Customer</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Delivery Driver</div>
+                <div className={TableStyle.header}>Customer Name</div>
               </th>
               <th>
                 <div className={TableStyle.header}>Date</div>
               </th>
               <th>
-                <div className={TableStyle.header}>Driver</div>
+                <div className={TableStyle.header}>Days</div>
+              </th>
+              <th>
+                <div className={TableStyle.header}>Status</div>
               </th>
             </tr>
           </thead>
@@ -163,10 +174,10 @@ function PendingOrderList() {
             {Array.isArray(filterOrders) === true && (
               <React.Fragment>
                 {filterOrders.map((order, index) => (
-                  <tr key={index}>
+                  <tr key={index + 1}>
                     <td>
                       <Link
-                        to={`/dashboard/pendingOrder/details/${order.id}`}
+                        to={`/dashboard/trackingOrder/details/${order.id}`}
                         className={TableStyle.linkStyle}
                       >
                         <span className={TableStyle.statusStyleLink}>
@@ -183,20 +194,36 @@ function PendingOrderList() {
                         " " +
                         order.customer.last_name}
                     </td>
-                    <td>
-                      {order.driver.first_name + " " + order.driver.last_name}
-                    </td>
                     <td>{order.createdAt.split("T")[0]}</td>
+                    <td>{order.days < 10 ? "0" + order.days : order.days}</td>
                     <td>
-                      <span
-                        className={
-                          TableStyle.statusStyle +
-                          " " +
-                          TableStyle.statusColorAvailabile
-                        }
-                      >
-                        Pending
-                      </span>
+                      {order.delivery_status === "Not Completed" ? (
+                        <>
+                          <span
+                            className={
+                              TableStyle.statusStyle +
+                              " " +
+                              TableStyle.statusColorNotAvailabile
+                            }
+                          >
+                            Not Completed
+                          </span>
+                        </>
+                      ) : (
+                        <>
+                          <span
+                            className={
+                              TableStyle.statusStyle +
+                              " " +
+                              TableStyle.statusColorAvailabile
+                            }
+                          >
+                            Completed
+                          </span>
+                        </>
+                      )}
+
+                      {/* {order.createdAt.split("T")[0]} */}
                     </td>
                   </tr>
                 ))}
@@ -215,4 +242,4 @@ function PendingOrderList() {
   );
 }
 
-export default PendingOrderList;
+export default TrackingOrdersTable;

@@ -13,6 +13,7 @@ exports.create = async (req, res) => {
     total_product_amount: req.body.total_product_amount,
     customer_id: req.body.customer_id,    
     payment_method: req.body.payment_method,
+    total_product_amount: req.body.total_product_amount,
   };
 
   console.log("in the order controller")
@@ -30,7 +31,11 @@ exports.create = async (req, res) => {
 
 // retrieve the data
 exports.findAll = (req, res) => {
-  Order.findAll({ where: { is_deleted: 0 }, include: ["customer"] })
+  Order.findAll({
+    where: { is_deleted: 0 },
+    include: ["customer"],
+    order: [["id", "DESC"]],
+  })
     .then((data) => {
       res.send(data);
     })

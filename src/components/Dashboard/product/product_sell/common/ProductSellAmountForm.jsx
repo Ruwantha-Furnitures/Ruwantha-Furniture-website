@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getSellProducts } from "./../../../service/sellProduct";
 import { editOrderDetails, getOrderDetails } from "../../../service/order";
+import { addPayment } from "../../../service/payments";
 
 function ProductSellAmountForm() {
   const { id } = useParams();
@@ -101,8 +102,30 @@ function ProductSellAmountForm() {
     };
 
     const response = await editOrderDetails(id, newOrder);
+
+    const newPayment = {
+      order_id: id,
+      total_amounts: total_amount,
+    };
+
+    // add total payment table
+    const responsePayment = await addPayment(newPayment);
     // Product Process
     window.location = "/dashboard/purchaseOrders";
+  };
+
+  const handlePaymentShippingProcess = async (e) => {
+    e.preventDefault();
+    const total_amount = bill.total_amount;
+    const newOrder = {
+      ...order,
+      total_product_amount: total_amount,
+    };
+
+    const response = await editOrderDetails(id, newOrder);
+
+    // Product shpping Process
+    window.location = `/dashboard/product/sell/shipping/${id}`;
   };
 
   return (
@@ -111,7 +134,7 @@ function ProductSellAmountForm() {
         <h1 className={ProductViewFormStyle.tableTitleHeaderStyle}>
           Product Sell Page - Amount
         </h1>
-        <div className={ProductViewFormStyle.backSection}>
+        {/* <div className={ProductViewFormStyle.backSection}>
           <div className={ProductViewFormStyle.back}>
             <Link
               to="/dashboard/product/sell/product"
@@ -129,7 +152,7 @@ function ProductSellAmountForm() {
               </div>
             </Link>
           </div>
-        </div>
+        </div> */}
       </div>
       <form className={ProductViewFormStyle.formStyle}>
         <div className={ProductViewFormStyle.details}>
@@ -211,10 +234,20 @@ function ProductSellAmountForm() {
               Cancel
             </button>
             <button
-              className={ProductViewFormStyle.descButtonAddStyle}
+              className={
+                ProductViewFormStyle.descButtonAddStyle +
+                " " +
+                ProductViewFormStyle.addRightMargin
+              }
               onClick={(e) => handlePaymentProcess(e)}
             >
-              Pay Now
+              Finish Pay
+            </button>
+            <button
+              className={ProductViewFormStyle.descButtonAddStyle}
+              onClick={(e) => handlePaymentShippingProcess(e)}
+            >
+              Add Shipping
             </button>
           </div>
         </div>

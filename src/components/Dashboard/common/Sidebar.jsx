@@ -170,13 +170,32 @@ function Sidebar() {
                   </div>
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="/dashboard/trackingOrders"
+                  className={SidebarStyle.sidebarLink}
+                >
+                  <div className={SidebarStyle.lineSection}>
+                    <div className={SidebarStyle.lineIcon}>
+                      <span
+                        className={"material-icons " + SidebarStyle.iconWidth}
+                      >
+                        track_changes
+                      </span>
+                    </div>
+                    <div className={SidebarStyle.lineText}>
+                      <h1 className={SidebarStyle.lineTextStyle}>Tracking</h1>
+                    </div>
+                  </div>
+                </Link>
+              </li>
             </>
           )}
           {user === "Owner" && (
             <>
               <li>
                 <Link
-                  to="/dashboard/customers"
+                  to="/dashboard/reviews"
                   className={SidebarStyle.sidebarLink}
                 >
                   <div className={SidebarStyle.lineSection}>

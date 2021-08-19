@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import TableStyle from "../../../../css/dashboard/Table.module.css";
 import { getOrders } from "./../../service/order";
 import { getDeliveries } from "./../../service/delivery";
+import Pagination from "./../../common/pagination";
+import { paginate } from "./../../utils/paginate";
 
 function AssignDriverOrderList() {
   const [orders, setOrders] = useState({
@@ -19,12 +21,17 @@ function AssignDriverOrderList() {
     delivery_status: "",
   });
 
+  const [page, setPage] = useState({
+    pageSize: 8,
+    currentPage: 1,
+  });
+
   const [search, setSearch] = useState("");
   const [filterOrders, setFilterOrders] = useState({});
 
   useEffect(() => {
     loadOrders();
-  }, []);
+  }, [page]);
 
   const loadOrders = async () => {
     try {
@@ -57,9 +64,9 @@ function AssignDriverOrderList() {
       );
 
       setOrders(newOrdersData);
-      setFilterOrders(newOrdersData);
+      setFilterOrders(paginate(newOrdersData, page.currentPage, page.pageSize));
 
-      console.log(newOrdersData);
+      // console.log(newOrdersData);
     } catch (error) {
       console.log("Error", error.message);
     }
@@ -68,18 +75,27 @@ function AssignDriverOrderList() {
   const onInputChange = (e) => {
     let search = e.target.value;
     if (search === "") {
-      setFilterOrders(orders);
+      setFilterOrders(paginate(orders, page.currentPage, page.pageSize));
     } else {
       setFilterOrders(
-        orders.filter((order) =>
-          (order.customer.first_name + " " + order.customer.last_name)
-            .toLowerCase()
-            .includes(search.toLowerCase())
+        paginate(
+          orders.filter((order) =>
+            (order.customer.first_name + " " + order.customer.last_name)
+              .toLowerCase()
+              .includes(search.toLowerCase())
+          ),
+          1,
+          page.pageSize
         )
       );
     }
 
     setSearch(search);
+  };
+
+  const handlePageChange = (page) => {
+    console.log(page);
+    setPage({ currentPage: page, pageSize: 8 });
   };
 
   return (
@@ -146,7 +162,11 @@ function AssignDriverOrderList() {
                         className={TableStyle.linkStyle}
                       >
                         <span className={TableStyle.statusStyleLink}>
-                          {"OD000" + order.id}
+                          {order.id < 10
+                            ? "OD000" + order.id
+                            : order.id < 100
+                            ? "OD00" + order.id
+                            : "OD0" + order.id}
                         </span>
                       </Link>
                     </td>
@@ -180,50 +200,12 @@ function AssignDriverOrderList() {
           </tbody>
         </table>
       </div>
-      <div className={TableStyle.tablePagination}>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationArrowIcon}>
-            arrow_back_ios
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span
-            className={
-              "material-icons " +
-              TableStyle.paginationCircleIcon +
-              " " +
-              TableStyle.active
-            }
-          >
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationArrowIcon}>
-            arrow_forward_ios
-          </span>
-        </Link>
-      </div>
+      <Pagination
+        itemsCount={orders.length}
+        pageSize={page.pageSize}
+        currentPage={page.currentPage}
+        onPageChange={handlePageChange}
+      />
     </React.Fragment>
   );
 }

@@ -138,7 +138,7 @@ function ProductSellForm() {
         <div className={ProductViewFormStyle.descButtonsAdd}>
           <div className={ProductViewFormStyle.descButtonAdd}>
             <button className={ProductViewFormStyle.descButtonAddStyle}>
-              Sell Product
+              Add Product
             </button>
           </div>
         </div>

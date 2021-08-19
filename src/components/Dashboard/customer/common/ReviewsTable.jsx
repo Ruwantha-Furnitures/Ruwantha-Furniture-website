@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TableStyle from "../../../../css/dashboard/Table.module.css";
 import { getReviews } from "./../../service/review";
+import Pagination from "./../../common/pagination";
+import { paginate } from "./../../utils/paginate";
 
-function CustomersTable() {
+function ReviewsTable() {
   const [reviews, setReviews] = useState({
     product_id: 0,
     feedback: "",
@@ -15,18 +17,23 @@ function CustomersTable() {
     },
   });
 
+  const [page, setPage] = useState({
+    pageSize: 8,
+    currentPage: 1,
+  });
+
   const [search, setSearch] = useState("");
   const [filterReviews, setFilterReviews] = useState({});
 
   useEffect(() => {
     loadReviews();
-  }, []);
+  }, [page]);
 
   const loadReviews = async () => {
     try {
       const result = await getReviews();
       setReviews(result.data);
-      setFilterReviews(result.data);
+      setFilterReviews(paginate(result.data, page.currentPage, page.pageSize));
     } catch (error) {
       console.log("Error", error.message);
     }
@@ -35,16 +42,25 @@ function CustomersTable() {
   const onInputChange = (e) => {
     let search = e.target.value;
     if (search === "") {
-      setFilterReviews(reviews);
+      setFilterReviews(paginate(reviews, page.currentPage, page.pageSize));
     } else {
       setFilterReviews(
-        reviews.filter((review) =>
-          review.product.name.toLowerCase().includes(search.toLowerCase())
+        paginate(
+          reviews.filter((review) =>
+            review.product.name.toLowerCase().includes(search.toLowerCase())
+          ),
+          1,
+          page.pageSize
         )
       );
     }
 
     setSearch(search);
+  };
+
+  const handlePageChange = (page) => {
+    console.log(page);
+    setPage({ currentPage: page, pageSize: 8 });
   };
 
   return (
@@ -108,7 +124,11 @@ function CustomersTable() {
                         className={TableStyle.linkStyle}
                       >
                         <span className={TableStyle.statusStyleLink}>
-                          {review.id}
+                          {review.id < 10
+                            ? "RV000" + review.id
+                            : review.id < 100
+                            ? "RV00" + review.id
+                            : "RV0" + review.id}
                         </span>
                       </Link>
                     </td>
@@ -189,52 +209,14 @@ function CustomersTable() {
           </tbody>
         </table>
       </div>
-      <div className={TableStyle.tablePagination}>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationArrowIcon}>
-            arrow_back_ios
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span
-            className={
-              "material-icons " +
-              TableStyle.paginationCircleIcon +
-              " " +
-              TableStyle.active
-            }
-          >
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationArrowIcon}>
-            arrow_forward_ios
-          </span>
-        </Link>
-      </div>
+      <Pagination
+        itemsCount={reviews.length}
+        pageSize={page.pageSize}
+        currentPage={page.currentPage}
+        onPageChange={handlePageChange}
+      />
     </React.Fragment>
   );
 }
 
-export default CustomersTable;
+export default ReviewsTable;

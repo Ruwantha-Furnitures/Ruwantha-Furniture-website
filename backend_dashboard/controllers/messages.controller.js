@@ -31,7 +31,7 @@ exports.create = async (req, res) => {
 
 // retrieve the data
 exports.findAll = (req, res) => {
-  Message.findAll()
+  Message.findAll({ order: [["id", "DESC"]] })
     .then((data) => {
       res.send(data);
     })
