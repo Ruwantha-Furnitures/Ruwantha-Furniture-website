@@ -9,6 +9,8 @@ import {
   deleteDelivery,
 } from "./../../service/delivery";
 import { getCustomers } from "./../../service/customer";
+import Pagination from "./../../common/pagination";
+import { paginate } from "./../../utils/paginate";
 
 function DeliveryDriverNotificationsTable() {
   const [deliveries, setDeliveries] = useState({
@@ -23,12 +25,17 @@ function DeliveryDriverNotificationsTable() {
     createdAt: "",
   });
 
+  const [page, setPage] = useState({
+    pageSize: 8,
+    currentPage: 1,
+  });
+
   const [search, setSearch] = useState("");
   const [filterDeliveries, setFilterDeliveries] = useState({});
 
   useEffect(() => {
     loadDeliveries();
-  }, []);
+  }, [page]);
 
   const loadDeliveries = async () => {
     try {
@@ -63,7 +70,9 @@ function DeliveryDriverNotificationsTable() {
 
       console.log(deliveries);
       setDeliveries(deliveries);
-      setFilterDeliveries(deliveries);
+      setFilterDeliveries(
+        paginate(deliveries, page.currentPage, page.pageSize)
+      );
     } catch (error) {
       console.log("Error", error.message);
     }
@@ -72,13 +81,19 @@ function DeliveryDriverNotificationsTable() {
   const onInputChange = (e) => {
     let search = e.target.value;
     if (search === "") {
-      setFilterDeliveries(deliveries);
+      setFilterDeliveries(
+        paginate(deliveries, page.currentPage, page.pageSize)
+      );
     } else {
       setFilterDeliveries(
-        deliveries.filter((delivery) =>
-          (delivery.customer.first_name + " " + delivery.customer.last_name)
-            .toLowerCase()
-            .includes(search.toLowerCase())
+        paginate(
+          deliveries.filter((delivery) =>
+            (delivery.customer.first_name + " " + delivery.customer.last_name)
+              .toLowerCase()
+              .includes(search.toLowerCase())
+          ),
+          1,
+          page.pageSize
         )
       );
     }
@@ -105,6 +120,11 @@ function DeliveryDriverNotificationsTable() {
     const result = await deleteDelivery(delivery_id);
 
     window.location = "/dashboard/deliveryDriver/notifications";
+  };
+
+  const handlePageChange = (page) => {
+    console.log(page);
+    setPage({ currentPage: page, pageSize: 8 });
   };
 
   return (
@@ -216,50 +236,12 @@ function DeliveryDriverNotificationsTable() {
           </tbody>
         </table>
       </div>
-      <div className={TableStyle.tablePagination}>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationArrowIcon}>
-            arrow_back_ios
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span
-            className={
-              "material-icons " +
-              TableStyle.paginationCircleIcon +
-              " " +
-              TableStyle.active
-            }
-          >
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationArrowIcon}>
-            arrow_forward_ios
-          </span>
-        </Link>
-      </div>
+      <Pagination
+        itemsCount={deliveries.length}
+        pageSize={page.pageSize}
+        currentPage={page.currentPage}
+        onPageChange={handlePageChange}
+      />
     </React.Fragment>
   );
 }
