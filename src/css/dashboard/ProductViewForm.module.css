@@ -7,6 +7,11 @@
   margin-left: 7px;
 }
 
+.titleHeaderNew {
+  display: flex;
+  flex-direction: row;
+}
+
 .titleHeader {
   display: flex;
   flex-direction: row;
@@ -16,6 +21,19 @@
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
+  line-height: 33px;
+
+  color: #000000;
+  margin-left: 8px;
+  width: 88%;
+  order: 1;
+  position: relative;
+}
+
+.tableFormHeaderStyle {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
   line-height: 33px;
 
   color: #000000;
@@ -502,6 +520,10 @@
 input[type="text"]:focus {
   outline: none;
 }
+
+input[type="number"]:focus {
+  outline: none;
+}
 /* input[type="textarea"]:focus {
   outline: none;
 } */
@@ -542,7 +564,7 @@ select:focus {
   padding-left: 15px;
   width: 74%;
   padding-top: 9px;
-  margin-top: 13px;
+  /* margin-top: 13px; */
   resize: none;
 }
 
@@ -550,9 +572,9 @@ select:focus {
   display: inline-flex;
 }
 
-.addMarginBottom {
+/* .addMarginBottom {
   margin-top: 18px;
-}
+} */
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

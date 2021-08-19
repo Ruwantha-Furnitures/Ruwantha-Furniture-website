@@ -8,7 +8,7 @@ function AllProductsView() {
       <div className={AllProductViewStyle.allProductsSection}>
         <div className={AllProductViewStyle.allProductsLabel}>
           <h1 className={AllProductViewStyle.allProductsLabelStyle}>
-            All Products
+            All Categories
           </h1>
         </div>
         <div className={AllProductViewStyle.allProductsTable}>

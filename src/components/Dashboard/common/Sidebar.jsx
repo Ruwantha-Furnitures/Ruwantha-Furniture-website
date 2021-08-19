@@ -1,33 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SidebarStyle from "../../../css/dashboard/Sidebar.module.css";
+import Auth from "../service/auth";
 
 function Sidebar() {
-  // Admin
-  // Owner
-  // DeliveryDriver
-  const user = "DeliveryDriver";
+  const user = Auth.getCurrentUser();
 
   return (
     <div className={SidebarStyle.sidebarBar}>
       <div className={SidebarStyle.sideList}>
         <ul>
-          <li>
-            <Link to="/dashboard" className={SidebarStyle.sidebarLink}>
-              <div className={SidebarStyle.lineSection}>
-                <div className={SidebarStyle.lineIcon}>
-                  <span className={"material-icons " + SidebarStyle.iconWidth}>
-                    home
-                  </span>
-                </div>
-                <div className={SidebarStyle.lineText}>
-                  <h1 className={SidebarStyle.lineTextStyle}>Dashboard</h1>
-                </div>
-              </div>
-            </Link>
-          </li>
           {(user === "Admin" || user === "Owner") && (
             <>
+              <li>
+                <Link to="/dashboard" className={SidebarStyle.sidebarLink}>
+                  <div className={SidebarStyle.lineSection}>
+                    <div className={SidebarStyle.lineIcon}>
+                      <span
+                        className={"material-icons " + SidebarStyle.iconWidth}
+                      >
+                        home
+                      </span>
+                    </div>
+                    <div className={SidebarStyle.lineText}>
+                      <h1 className={SidebarStyle.lineTextStyle}>Dashboard</h1>
+                    </div>
+                  </div>
+                </Link>
+              </li>
               <li>
                 <Link
                   to="/dashboard/products"
@@ -85,26 +85,29 @@ function Sidebar() {
                   </div>
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="/dashboard/deliveryDrivers"
+                  className={SidebarStyle.sidebarLink}
+                >
+                  <div className={SidebarStyle.lineSection}>
+                    <div className={SidebarStyle.lineIcon}>
+                      <span
+                        className={"material-icons " + SidebarStyle.iconWidth}
+                      >
+                        local_shipping
+                      </span>
+                    </div>
+                    <div className={SidebarStyle.lineText}>
+                      <h1 className={SidebarStyle.lineTextStyle}>Drivers</h1>
+                    </div>
+                  </div>
+                </Link>
+              </li>
             </>
           )}
           {/* Commone for all users */}
-          <li>
-            <Link
-              to="/dashboard/deliveryDrivers"
-              className={SidebarStyle.sidebarLink}
-            >
-              <div className={SidebarStyle.lineSection}>
-                <div className={SidebarStyle.lineIcon}>
-                  <span className={"material-icons " + SidebarStyle.iconWidth}>
-                    local_shipping
-                  </span>
-                </div>
-                <div className={SidebarStyle.lineText}>
-                  <h1 className={SidebarStyle.lineTextStyle}>Drivers</h1>
-                </div>
-              </div>
-            </Link>
-          </li>
+
           {user === "Admin" && (
             <>
               <li>
@@ -148,13 +151,9 @@ function Sidebar() {
                   </div>
                 </Link>
               </li>
-            </>
-          )}
-          {user === "Owner" && (
-            <>
               <li>
                 <Link
-                  to="/dashboard/customers"
+                  to="/dashboard/pendingListOrderDriver"
                   className={SidebarStyle.sidebarLink}
                 >
                   <div className={SidebarStyle.lineSection}>
@@ -162,11 +161,53 @@ function Sidebar() {
                       <span
                         className={"material-icons " + SidebarStyle.iconWidth}
                       >
-                        supervisor_account
+                        pending_actions
                       </span>
                     </div>
                     <div className={SidebarStyle.lineText}>
-                      <h1 className={SidebarStyle.lineTextStyle}>Customers</h1>
+                      <h1 className={SidebarStyle.lineTextStyle}>Pending</h1>
+                    </div>
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/trackingOrders"
+                  className={SidebarStyle.sidebarLink}
+                >
+                  <div className={SidebarStyle.lineSection}>
+                    <div className={SidebarStyle.lineIcon}>
+                      <span
+                        className={"material-icons " + SidebarStyle.iconWidth}
+                      >
+                        track_changes
+                      </span>
+                    </div>
+                    <div className={SidebarStyle.lineText}>
+                      <h1 className={SidebarStyle.lineTextStyle}>Tracking</h1>
+                    </div>
+                  </div>
+                </Link>
+              </li>
+            </>
+          )}
+          {user === "Owner" && (
+            <>
+              <li>
+                <Link
+                  to="/dashboard/reviews"
+                  className={SidebarStyle.sidebarLink}
+                >
+                  <div className={SidebarStyle.lineSection}>
+                    <div className={SidebarStyle.lineIcon}>
+                      <span
+                        className={"material-icons " + SidebarStyle.iconWidth}
+                      >
+                        reviews
+                      </span>
+                    </div>
+                    <div className={SidebarStyle.lineText}>
+                      <h1 className={SidebarStyle.lineTextStyle}>Reviews</h1>
                     </div>
                   </div>
                 </Link>
@@ -192,8 +233,27 @@ function Sidebar() {
               </li>
             </>
           )}
-          {user === "DeliveryDriver" && (
+          {user === "Delivery Driver" && (
             <>
+              <li>
+                <Link
+                  to="/dashboardDriver"
+                  className={SidebarStyle.sidebarLink}
+                >
+                  <div className={SidebarStyle.lineSection}>
+                    <div className={SidebarStyle.lineIcon}>
+                      <span
+                        className={"material-icons " + SidebarStyle.iconWidth}
+                      >
+                        home
+                      </span>
+                    </div>
+                    <div className={SidebarStyle.lineText}>
+                      <h1 className={SidebarStyle.lineTextStyle}>Dashboard</h1>
+                    </div>
+                  </div>
+                </Link>
+              </li>
               <li>
                 <Link
                   to="/dashboard/deliveryDriver/deliveries"

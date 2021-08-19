@@ -42,6 +42,7 @@ function PurchasedHistoryTable() {
                                         <th>Name</th>
                                         <th>Price Rs.</th>
                                         <th>Quantity</th>
+                                        <th>Discount</th>
                                         <th>Total</th>
                                         <th>Rate</th>
                                     </tr>
@@ -52,8 +53,9 @@ function PurchasedHistoryTable() {
                                         <td>{i+1}</td>
                                         <td><img src={productList.product.img_location} style={{width:'100px', borderRadius: '20px'}} alt='imgitem'></img></td>
                                         <td>{productList.product.name}</td>
-                                        <td>6875</td>
-                                        <td>1</td>
+                                        <td>{productList.product.price}</td>
+                                        <td>{productList.quantity}</td>
+                                        <td>{productList.product.discount}</td>
                                         <td>6875</td>
                                         <td><GradeIcon  onClick={() => setModalShow(true)}/>
                                             <AddReviewPopup

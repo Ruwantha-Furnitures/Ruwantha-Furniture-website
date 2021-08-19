@@ -56,7 +56,7 @@
 }
 
 .date {
-  background: #b89068;
+  /* background: #b89068; */
   border-radius: 22px;
   display: flex;
   align-items: center;
@@ -71,9 +71,16 @@
   display: flex;
 }
 
+.dateicon2 {
+  order: 3;
+  margin-left: 15px;
+  padding: 5px;
+  display: flex;
+}
+
 .dateIconStyle {
   font-size: 29px;
-  color: #f7f7f7;
+  color: #000000;
 }
 
 .dateText {
@@ -82,13 +89,13 @@
 }
 
 .dateTitle {
-  background: #b89068;
+  /* background: #b89068; */
   border: none;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 900;
   font-size: 19px;
   line-height: 25px;
-  color: #f7f7f7;
+  color: #000000;
 }
 
 .dateText > ::placeholder {
@@ -126,16 +133,16 @@
 .logoutButton {
   width: 92px;
   height: 33px;
-  background: #b89068;
+  /* background: #b89068; */
+  background: #ffffff;
   border-radius: 22px;
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
   line-height: 16px;
   text-align: center;
-
-  color: #ffffff;
-  border: none;
+  border: 1px solid #b89068;
+  color: #b89068;
   cursor: pointer;
 }
 

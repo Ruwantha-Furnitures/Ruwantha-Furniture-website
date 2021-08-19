@@ -27,7 +27,7 @@ function PieChartCard() {
     <div className={PieChartCardStyle.pieChartSection}>
       <div className={PieChartCardStyle.pieChartLabel}>
         <h1 className={PieChartCardStyle.pieChartLabelStyle}>
-          Sales Of Product
+          Sales Of Categories
         </h1>
       </div>
       <div className={PieChartCardStyle.pieChart}>
@@ -64,7 +64,7 @@ function PieChartCard() {
             </span>
           </div>
           <div className={PieChartCardStyle.rowText}>
-            <h1 className={PieChartCardStyle.rowTextStyle}>Product 1</h1>
+            <h1 className={PieChartCardStyle.rowTextStyle}>Table</h1>
           </div>
           <div className={PieChartCardStyle.rowPercentage}>
             <h1 className={PieChartCardStyle.rowPercentageStyle}>25%</h1>
@@ -77,7 +77,7 @@ function PieChartCard() {
             </span>
           </div>
           <div className={PieChartCardStyle.rowText}>
-            <h1 className={PieChartCardStyle.rowTextStyle}>Product 2</h1>
+            <h1 className={PieChartCardStyle.rowTextStyle}>Chair</h1>
           </div>
           <div className={PieChartCardStyle.rowPercentage}>
             <h1 className={PieChartCardStyle.rowPercentageStyle}>45%</h1>
@@ -90,7 +90,7 @@ function PieChartCard() {
             </span>
           </div>
           <div className={PieChartCardStyle.rowText}>
-            <h1 className={PieChartCardStyle.rowTextStyle}>Product 3</h1>
+            <h1 className={PieChartCardStyle.rowTextStyle}>Cupboard</h1>
           </div>
           <div className={PieChartCardStyle.rowPercentage}>
             <h1 className={PieChartCardStyle.rowPercentageStyle}>25%</h1>
@@ -103,7 +103,7 @@ function PieChartCard() {
             </span>
           </div>
           <div className={PieChartCardStyle.rowText}>
-            <h1 className={PieChartCardStyle.rowTextStyle}>Product 4</h1>
+            <h1 className={PieChartCardStyle.rowTextStyle}>Desk</h1>
           </div>
           <div className={PieChartCardStyle.rowPercentage}>
             <h1 className={PieChartCardStyle.rowPercentageStyle}>15%</h1>
@@ -116,7 +116,7 @@ function PieChartCard() {
             </span>
           </div>
           <div className={PieChartCardStyle.rowText}>
-            <h1 className={PieChartCardStyle.rowTextStyle}>Product 5</h1>
+            <h1 className={PieChartCardStyle.rowTextStyle}>Desk(High)</h1>
           </div>
           <div className={PieChartCardStyle.rowPercentage}>
             <h1 className={PieChartCardStyle.rowPercentageStyle}>10%</h1>
@@ -129,7 +129,7 @@ function PieChartCard() {
             </span>
           </div>
           <div className={PieChartCardStyle.rowText}>
-            <h1 className={PieChartCardStyle.rowTextStyle}>Product 6</h1>
+            <h1 className={PieChartCardStyle.rowTextStyle}>Cabinet</h1>
           </div>
           <div className={PieChartCardStyle.rowPercentage}>
             <h1 className={PieChartCardStyle.rowPercentageStyle}>8%</h1>
