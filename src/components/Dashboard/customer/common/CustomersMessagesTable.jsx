@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TableStyle from "../../../../css/dashboard/Table.module.css";
 import { getMessages } from "./../../service/message";
+import Pagination from "./../../common/pagination";
+import { paginate } from "./../../utils/paginate";
 
 function CustomersMessagesTable() {
   const [messages, setMessages] = useState({
@@ -13,18 +15,23 @@ function CustomersMessagesTable() {
     createdAt: "",
   });
 
+  const [page, setPage] = useState({
+    pageSize: 8,
+    currentPage: 1,
+  });
+
   const [search, setSearch] = useState("");
   const [filterMessages, setFilterMessages] = useState({});
 
   useEffect(() => {
     loadMessages();
-  }, []);
+  }, [page]);
 
   const loadMessages = async () => {
     try {
       const result = await getMessages();
       setMessages(result.data);
-      setFilterMessages(result.data);
+      setFilterMessages(paginate(result.data, page.currentPage, page.pageSize));
     } catch (error) {
       console.log("Error", error.message);
     }
@@ -33,18 +40,27 @@ function CustomersMessagesTable() {
   const onInputChange = (e) => {
     let search = e.target.value;
     if (search === "") {
-      setFilterMessages(messages);
+      setFilterMessages(paginate(messages, page.currentPage, page.pageSize));
     } else {
       setFilterMessages(
-        messages.filter((message) =>
-          (message.first_name + " " + message.last_name)
-            .toLowerCase()
-            .includes(search.toLowerCase())
+        paginate(
+          messages.filter((message) =>
+            (message.first_name + " " + message.last_name)
+              .toLowerCase()
+              .includes(search.toLowerCase())
+          ),
+          1,
+          page.pageSize
         )
       );
     }
 
     setSearch(search);
+  };
+
+  const handlePageChange = (page) => {
+    console.log(page);
+    setPage({ currentPage: page, pageSize: 8 });
   };
 
   return (
@@ -118,7 +134,7 @@ function CustomersMessagesTable() {
                     </td>
                     <td>{message.first_name + " " + message.last_name}</td>
                     <td>{message.email}</td>
-                    <td>{message.contact_number}</td>
+                    <td>{"0" + message.contact_number}</td>
                     <td>{message.createdAt.split("T")[0]}</td>
                   </tr>
                 ))}
@@ -127,50 +143,12 @@ function CustomersMessagesTable() {
           </tbody>
         </table>
       </div>
-      <div className={TableStyle.tablePagination}>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationArrowIcon}>
-            arrow_back_ios
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span
-            className={
-              "material-icons " +
-              TableStyle.paginationCircleIcon +
-              " " +
-              TableStyle.active
-            }
-          >
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationArrowIcon}>
-            arrow_forward_ios
-          </span>
-        </Link>
-      </div>
+      <Pagination
+        itemsCount={messages.length}
+        pageSize={page.pageSize}
+        currentPage={page.currentPage}
+        onPageChange={handlePageChange}
+      />
     </React.Fragment>
   );
 }

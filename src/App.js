@@ -31,7 +31,7 @@ import ProductSellCustomer from "./components/Dashboard/product/product_sell/Pro
 import CustomerMessages from "./components/Dashboard/customer/CustomerMessages";
 import CustomerMessageView from "./components/Dashboard/customer/CustomerMessageView";
 import CustomerProfile from "./components/Dashboard/customer/CustomerProfile";
-import Customers from "./components/Dashboard/customer/Customers";
+import ProductReviews from "./components/Dashboard/customer/ProductReviews";
 
 // deliveryDriver
 import DeliveryDrivers from "./components/Dashboard/deliveryDriver/DeliveryDrivers";
@@ -233,7 +233,7 @@ function App() {
           />
 
           {/* Dashboard-Customer Section */}
-          <Route exact path="/dashboard/customers" component={Customers} />
+          <Route exact path="/dashboard/reviews" component={ProductReviews} />
           <Route
             exact
             path="/dashboard/customerMessages"

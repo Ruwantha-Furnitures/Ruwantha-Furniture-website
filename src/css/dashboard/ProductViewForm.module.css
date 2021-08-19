@@ -551,7 +551,7 @@ select:focus {
   padding-left: 15px;
   width: 74%;
   padding-top: 9px;
-  margin-top: 13px;
+  /* margin-top: 13px; */
   resize: none;
 }
 
@@ -559,9 +559,9 @@ select:focus {
   display: inline-flex;
 }
 
-.addMarginBottom {
+/* .addMarginBottom {
   margin-top: 18px;
-}
+} */
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

@@ -30,7 +30,11 @@ exports.create = async (req, res) => {
 
 // retrieve the data
 exports.findAll = (req, res) => {
-  ProductReview.findAll({ where: { is_deleted: 0 }, include: ["product"] })
+  ProductReview.findAll({
+    where: { is_deleted: 0 },
+    include: ["product"],
+    order: [["id", "DESC"]],
+  })
     .then((data) => {
       res.send(data);
     })

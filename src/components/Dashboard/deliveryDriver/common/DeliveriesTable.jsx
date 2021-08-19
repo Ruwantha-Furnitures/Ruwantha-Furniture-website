@@ -9,6 +9,8 @@ import {
   deleteDelivery,
 } from "./../../service/delivery";
 import { getCustomers } from "./../../service/customer";
+import Pagination from "./../../common/pagination";
+import { paginate } from "./../../utils/paginate";
 
 function DeliveriesTable() {
   const [deliveries, setDeliveries] = useState({
@@ -24,12 +26,17 @@ function DeliveriesTable() {
     createdAt: "",
   });
 
+  const [page, setPage] = useState({
+    pageSize: 8,
+    currentPage: 1,
+  });
+
   const [search, setSearch] = useState("");
   const [filterDeliveries, setFilterDeliveries] = useState({});
 
   useEffect(() => {
     loadDeliveries();
-  }, []);
+  }, [page]);
 
   const loadDeliveries = async () => {
     try {
@@ -64,7 +71,9 @@ function DeliveriesTable() {
 
       console.log(deliveries);
       setDeliveries(deliveries);
-      setFilterDeliveries(deliveries);
+      setFilterDeliveries(
+        paginate(deliveries, page.currentPage, page.pageSize)
+      );
     } catch (error) {
       console.log("Error", error.message);
     }
@@ -73,18 +82,29 @@ function DeliveriesTable() {
   const onInputChange = (e) => {
     let search = e.target.value;
     if (search === "") {
-      setFilterDeliveries(deliveries);
+      setFilterDeliveries(
+        paginate(deliveries, page.currentPage, page.pageSize)
+      );
     } else {
       setFilterDeliveries(
-        deliveries.filter((delivery) =>
-          (delivery.customer.first_name + " " + delivery.customer.last_name)
-            .toLowerCase()
-            .includes(search.toLowerCase())
+        paginate(
+          deliveries.filter((delivery) =>
+            (delivery.customer.first_name + " " + delivery.customer.last_name)
+              .toLowerCase()
+              .includes(search.toLowerCase())
+          ),
+          1,
+          page.pageSize
         )
       );
     }
 
     setSearch(search);
+  };
+
+  const handlePageChange = (page) => {
+    console.log(page);
+    setPage({ currentPage: page, pageSize: 8 });
   };
 
   return (
@@ -198,6 +218,12 @@ function DeliveriesTable() {
           </tbody>
         </table>
       </div>
+      <Pagination
+        itemsCount={deliveries.length}
+        pageSize={page.pageSize}
+        currentPage={page.currentPage}
+        onPageChange={handlePageChange}
+      />
     </React.Fragment>
   );
 }
