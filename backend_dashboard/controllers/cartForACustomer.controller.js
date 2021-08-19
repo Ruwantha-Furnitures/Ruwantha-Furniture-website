@@ -39,6 +39,7 @@ exports.findAll = (req, res) => {
 
 // delete an object
 exports.delete = (req, res) => {
+    console.log("In the delete controller in cart for one customer")
     const cartID = req.params.cartID;    
     Cart.destroy({ where: { id: cartID, is_deleted: 0 }, include: ["customer", "product"] })
     .then((data) => {
