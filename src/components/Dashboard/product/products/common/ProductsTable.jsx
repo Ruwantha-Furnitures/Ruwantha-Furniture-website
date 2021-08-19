@@ -4,6 +4,8 @@ import TableStyle from "../../../../../css/dashboard/Table.module.css";
 import Auth from "../../../service/auth";
 import { getProducts } from "./../../../service/product";
 import { getProductCategories } from "./../../../service/productCategory";
+import Pagination from "./../../../common/pagination";
+import { paginate } from "./../../../utils/paginate";
 
 function ProductsTable() {
   const user = Auth.getCurrentUser();
@@ -25,12 +27,17 @@ function ProductsTable() {
     img_location: "",
   });
 
+  const [page, setPage] = useState({
+    pageSize: 8,
+    currentPage: 1,
+  });
+
   const [search, setSearch] = useState("");
   const [filterProducts, setFilterProducts] = useState({});
 
   useEffect(() => {
     loadProducts();
-  }, []);
+  }, [page]);
 
   const loadProducts = async () => {
     try {
@@ -49,7 +56,8 @@ function ProductsTable() {
       });
 
       setProducts(products);
-      setFilterProducts(products);
+      const data = paginate(products, page.currentPage, page.pageSize);
+      setFilterProducts(data);
     } catch (error) {
       console.log("Error", error.message);
     }
@@ -68,6 +76,11 @@ function ProductsTable() {
     }
 
     setSearch(search);
+  };
+
+  const handlePageChange = (page) => {
+    console.log(page);
+    setPage({ currentPage: page, pageSize: 8 });
   };
 
   console.log(products);
@@ -211,50 +224,12 @@ function ProductsTable() {
           </tbody>
         </table>
       </div>
-      <div className={TableStyle.tablePagination}>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationArrowIcon}>
-            arrow_back_ios
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span
-            className={
-              "material-icons " +
-              TableStyle.paginationCircleIcon +
-              " " +
-              TableStyle.active
-            }
-          >
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationArrowIcon}>
-            arrow_forward_ios
-          </span>
-        </Link>
-      </div>
+      <Pagination
+        itemsCount={products.length}
+        pageSize={page.pageSize}
+        currentPage={page.currentPage}
+        onPageChange={handlePageChange}
+      />
     </React.Fragment>
   );
 }
