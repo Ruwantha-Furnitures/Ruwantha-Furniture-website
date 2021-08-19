@@ -30,6 +30,19 @@
   position: relative;
 }
 
+.tableFormHeaderStyle {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 33px;
+
+  color: #000000;
+  margin-left: 8px;
+  width: 88%;
+  order: 1;
+  position: relative;
+}
+
 .backSection {
   order: 2;
   width: 12%;

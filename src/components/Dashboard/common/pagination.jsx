@@ -29,10 +29,10 @@ const Pagination = (props) => {
           arrow_back_ios
         </span>
       </Link>
-      {pages.map((page) => (
+      {pages.map((page, index) => (
         <>
           <Link
-            key={page}
+            key={index}
             to="#"
             className={TableStyle.paginationLink}
             onClick={() => onPageChange(page)}

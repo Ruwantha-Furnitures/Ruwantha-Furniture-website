@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getSellProducts } from "./../../../service/sellProduct";
 import { editOrderDetails, getOrderDetails } from "../../../service/order";
 import { addPayment } from "../../../service/payments";
@@ -109,7 +109,7 @@ function ProductSellAmountForm() {
     };
 
     // add total payment table
-    const responsePayment = await addPayment(id, newPayment);
+    const responsePayment = await addPayment(newPayment);
     // Product Process
     window.location = "/dashboard/purchaseOrders";
   };
