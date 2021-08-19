@@ -124,7 +124,6 @@ function PurchaseOrdersTable() {
           <tbody>
             {Array.isArray(filterOrders) === true && (
               <React.Fragment>
-                {}
                 {filterOrders.map((order, index) => (
                   <tr key={index + 1}>
                     <td>

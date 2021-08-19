@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import TableStyle from "../../../../css/dashboard/Table.module.css";
 import { getOrders } from "./../../service/order";
 import { getDeliveries } from "./../../service/delivery";
+import Pagination from "./../../common/pagination";
+import { paginate } from "./../../utils/paginate";
 
 function TrackingOrdersTable() {
   const [orders, setOrders] = useState({
@@ -21,12 +23,17 @@ function TrackingOrdersTable() {
     days: 0,
   });
 
+  const [page, setPage] = useState({
+    pageSize: 8,
+    currentPage: 1,
+  });
+
   const [search, setSearch] = useState("");
   const [filterOrders, setFilterOrders] = useState({});
 
   useEffect(() => {
     loadOrders();
-  }, []);
+  }, [page]);
 
   const loadOrders = async () => {
     try {
@@ -78,7 +85,7 @@ function TrackingOrdersTable() {
       const newOrdersData = ordersData;
 
       setOrders(newOrdersData);
-      setFilterOrders(newOrdersData);
+      setFilterOrders(paginate(newOrdersData, page.currentPage, page.pageSize));
 
       console.log(newOrdersData);
     } catch (error) {
@@ -89,17 +96,26 @@ function TrackingOrdersTable() {
   const onInputChange = (e) => {
     let search = e.target.value;
     if (search === "") {
-      setFilterOrders(orders);
+      setFilterOrders(paginate(orders, page.currentPage, page.pageSize));
     } else {
       setFilterOrders(
-        orders.filter((order) =>
-          (order.customer.first_name + " " + order.customer.last_name)
-            .toLowerCase()
-            .includes(search.toLowerCase())
+        paginate(
+          orders.filter((order) =>
+            (order.customer.first_name + " " + order.customer.last_name)
+              .toLowerCase()
+              .includes(search.toLowerCase())
+          ),
+          1,
+          page.pageSize
         )
       );
     }
     setSearch(search);
+  };
+
+  const handlePageChange = (page) => {
+    console.log(page);
+    setPage({ currentPage: page, pageSize: 8 });
   };
 
   console.log(orders);
@@ -146,9 +162,6 @@ function TrackingOrdersTable() {
               <th>
                 <div className={TableStyle.header}>Date</div>
               </th>
-              {/* <th>
-                <div className={TableStyle.header}>Amount</div>
-              </th> */}
               <th>
                 <div className={TableStyle.header}>Days</div>
               </th>
@@ -219,50 +232,12 @@ function TrackingOrdersTable() {
           </tbody>
         </table>
       </div>
-      <div className={TableStyle.tablePagination}>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationArrowIcon}>
-            arrow_back_ios
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span
-            className={
-              "material-icons " +
-              TableStyle.paginationCircleIcon +
-              " " +
-              TableStyle.active
-            }
-          >
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationArrowIcon}>
-            arrow_forward_ios
-          </span>
-        </Link>
-      </div>
+      <Pagination
+        itemsCount={orders.length}
+        pageSize={page.pageSize}
+        currentPage={page.currentPage}
+        onPageChange={handlePageChange}
+      />
     </React.Fragment>
   );
 }

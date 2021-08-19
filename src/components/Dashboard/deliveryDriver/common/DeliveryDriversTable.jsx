@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import TableStyle from "../../../../css/dashboard/Table.module.css";
 import Auth from "../../service/auth";
 import { getDeliveryDrivers } from "./../../service/deliveryDriver";
+import Pagination from "./../../common/pagination";
+import { paginate } from "./../../utils/paginate";
 
 function DeliveryDriversTable() {
   const user = Auth.getCurrentUser();
@@ -19,12 +21,17 @@ function DeliveryDriversTable() {
     availabilty: 0,
   });
 
+  const [page, setPage] = useState({
+    pageSize: 8,
+    currentPage: 1,
+  });
+
   const [search, setSearch] = useState("");
   const [filterDeliveryDrivers, setFilterDeliveryDrivers] = useState({});
 
   useEffect(() => {
     loadDeliveryDrivers();
-  }, []);
+  }, [page]);
 
   const loadDeliveryDrivers = async () => {
     try {
@@ -34,7 +41,9 @@ function DeliveryDriversTable() {
       const drivers = result.data;
 
       setDeliveryDrivers(drivers);
-      setFilterDeliveryDrivers(drivers);
+      setFilterDeliveryDrivers(
+        paginate(drivers, page.currentPage, page.pageSize)
+      );
     } catch (error) {
       console.log("Error", error.message);
     }
@@ -43,18 +52,29 @@ function DeliveryDriversTable() {
   const onInputChange = (e) => {
     let search = e.target.value;
     if (search === "") {
-      setFilterDeliveryDrivers(deliveryDrivers);
+      setFilterDeliveryDrivers(
+        paginate(deliveryDrivers, page.currentPage, page.pageSize)
+      );
     } else {
       setFilterDeliveryDrivers(
-        deliveryDrivers.filter((driver) =>
-          (driver.first_name + " " + driver.last_name)
-            .toLowerCase()
-            .includes(search.toLowerCase())
+        paginate(
+          deliveryDrivers.filter((driver) =>
+            (driver.first_name + " " + driver.last_name)
+              .toLowerCase()
+              .includes(search.toLowerCase())
+          ),
+          1,
+          page.pageSize
         )
       );
     }
 
     setSearch(search);
+  };
+
+  const handlePageChange = (page) => {
+    console.log(page);
+    setPage({ currentPage: page, pageSize: 8 });
   };
 
   console.log(filterDeliveryDrivers);
@@ -164,151 +184,15 @@ function DeliveryDriversTable() {
                 ))}
               </React.Fragment>
             )}
-            {/* <tr>
-              <td>
-                <Link
-                  to="/dashboard/deliveryDriver/view"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Tharindu Gihan
-                </Link>
-              </td>
-              <td>wtgihan@gmail.com</td>
-              <td>0778522736</td>
-              <td>Rs.25000</td>
-              <td>Galle</td>
-            </tr> */}
-            {/* <tr>
-              <td>
-                <Link
-                  to="/dashboard/deliveryDriver/view"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Himasha Anjali
-                </Link>
-              </td>
-              <td>anjali@gmail.com</td>
-              <td>0778522436</td>
-              <td>Rs.15000</td>
-              <td>Mulleriayawa</td>
-            </tr> */}
-            {/* <tr>
-              <td>
-                <Link
-                  to="/dashboard/deliveryDriver/view"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Sathira Dimuthu
-                </Link>
-              </td>
-              <td>dimuthu@gmail.com</td>
-              <td>0778222736</td>
-              <td>Rs.35000</td>
-              <td>Meepawala</td>
-            </tr> */}
-            {/* <tr>
-              <td>
-                <Link
-                  to="/dashboard/deliveryDriver/view"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Anushka Tharindu
-                </Link>
-              </td>
-              <td>anushka@gmail.com</td>
-              <td>0774536987</td>
-              <td>Rs.45000</td>
-              <td>Gonapura</td>
-            </tr> */}
-            {/* <tr>
-              <td>
-                <Link
-                  to="/dashboard/deliveryDriver/view"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Himasha Anjali
-                </Link>
-              </td>
-              <td>anjali@gmail.com</td>
-              <td>0778522436</td>
-              <td>Rs.15000</td>
-              <td>Colombo</td>
-            </tr> */}
-            {/* <tr>
-              <td>
-                <Link
-                  to="/dashboard/deliveryDriver/view"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Sathira Dimuthu
-                </Link>
-              </td>
-              <td>dimuthu@gmail.com</td>
-              <td>0778222736</td>
-              <td>Rs.35000</td>
-              <td>Beddegama</td>
-            </tr> */}
-            {/* <tr>
-              <td>
-                <Link
-                  to="/dashboard/deliveryDriver/view"
-                  className={TableStyle.linkStyleAdd}
-                >
-                  Anushka Tharindu
-                </Link>
-              </td>
-              <td>anushka@gmail.com</td>
-              <td>0774536987</td>
-              <td>Rs.45000</td>
-              <td>Borella</td>
-            </tr> */}
           </tbody>
         </table>
       </div>
-      <div className={TableStyle.tablePagination}>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationArrowIcon}>
-            arrow_back_ios
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span
-            className={
-              "material-icons " +
-              TableStyle.paginationCircleIcon +
-              " " +
-              TableStyle.active
-            }
-          >
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationArrowIcon}>
-            arrow_forward_ios
-          </span>
-        </Link>
-      </div>
+      <Pagination
+        itemsCount={deliveryDrivers.length}
+        pageSize={page.pageSize}
+        currentPage={page.currentPage}
+        onPageChange={handlePageChange}
+      />
     </React.Fragment>
   );
 }

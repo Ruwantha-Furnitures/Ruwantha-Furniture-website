@@ -66,11 +66,15 @@ function ProductsTable() {
   const onInputChange = (e) => {
     let search = e.target.value;
     if (search === "") {
-      setFilterProducts(products);
+      setFilterProducts(paginate(products, page.currentPage, page.pageSize));
     } else {
       setFilterProducts(
-        products.filter((product) =>
-          product.name.toLowerCase().includes(search.toLowerCase())
+        paginate(
+          products.filter((product) =>
+            product.name.toLowerCase().includes(search.toLowerCase())
+          ),
+          1,
+          page.pageSize
         )
       );
     }
