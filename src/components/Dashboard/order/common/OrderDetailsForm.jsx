@@ -55,6 +55,9 @@ function OrderDetailsForm() {
   if (orderLocation === "pendingOrder") {
     navigate = "/dashboard/pendingListOrderDriver";
   }
+  if (orderLocation === "trackingOrder") {
+    navigate = "/dashboard/trackingOrders";
+  }
 
   console.log(navigate);
 

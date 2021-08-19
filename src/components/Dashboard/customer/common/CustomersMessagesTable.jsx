@@ -108,7 +108,11 @@ function CustomersMessagesTable() {
                         className={TableStyle.linkStyle}
                       >
                         <span className={TableStyle.statusStyleLink}>
-                          {message.id}
+                          {message.id < 10
+                            ? "MS000" + message.id
+                            : message.id < 100
+                            ? "MS00" + message.id
+                            : "MS0" + message.id}
                         </span>
                       </Link>
                     </td>

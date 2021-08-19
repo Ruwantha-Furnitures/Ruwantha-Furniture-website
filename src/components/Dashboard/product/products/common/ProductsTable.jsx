@@ -70,7 +70,7 @@ function ProductsTable() {
     setSearch(search);
   };
 
-  // console.log(products);
+  console.log(products);
 
   return (
     <React.Fragment>
@@ -194,7 +194,7 @@ function ProductsTable() {
                     </td>
                     <td>
                       <Link
-                        to={`/dashboard/product/viewProductCategory/${product.type.categoryId}`}
+                        to={`/dashboard/product/viewProductCategory/${product.type.category_id}`}
                         className={TableStyle.linkStyle}
                       >
                         <span className={TableStyle.statusStyleLink}>

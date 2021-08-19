@@ -83,6 +83,7 @@ import CustomerDeleteProfile from "./components/web/registeredCustomer/Profile/C
 
 import ForgotPassword from "./components/web/registeredCustomer/PasswordRecovery/ForgetPassword";
 import PendingOrder from "./components/Dashboard/order/PendingOrder";
+import TrackingOrders from "./components/Dashboard/order/TrackingOrders";
 
 function App() {
   return (
@@ -102,7 +103,7 @@ function App() {
           <Route exact path="/dashboard/product/add" component={ProductAdd} />
           <Route
             exact
-            path="/dashboard/product/update"
+            path="/dashboard/product/update/:id"
             component={ProductUpdate}
           />
           <Route
@@ -128,12 +129,12 @@ function App() {
 
           <Route
             exact
-            path="/dashboard/product/viewProductType"
+            path="/dashboard/product/viewProductType/:id"
             component={ProductTypeView}
           />
           <Route
             exact
-            path="/dashboard/product/updateProductType"
+            path="/dashboard/product/updateProductType/:id"
             component={ProductTypeUpdate}
           />
 
@@ -145,12 +146,12 @@ function App() {
 
           <Route
             exact
-            path="/dashboard/product/viewProductCategory"
+            path="/dashboard/product/viewProductCategory/:id"
             component={ProductCategoryView}
           />
           <Route
             exact
-            path="/dashboard/product/updateProductCategory"
+            path="/dashboard/product/updateProductCategory/:id"
             component={ProductCategoryUpdate}
           />
 
@@ -158,6 +159,11 @@ function App() {
             exact
             path="/dashboard/purchaseOrders"
             component={PurchaseOrders}
+          />
+          <Route
+            exact
+            path="/dashboard/trackingOrders"
+            component={TrackingOrders}
           />
 
           {/* For Navigations Purpose */}
@@ -183,7 +189,12 @@ function App() {
           />
           <Route
             exact
-            path="/dashboard/deliveryDriverNotifications/details/:id"
+            path="/dashboard/deliveryDriver/details/:id"
+            component={OrderDetails}
+          />
+          <Route
+            exact
+            path="/dashboard/trackingOrder/details/:id"
             component={OrderDetails}
           />
           <Route

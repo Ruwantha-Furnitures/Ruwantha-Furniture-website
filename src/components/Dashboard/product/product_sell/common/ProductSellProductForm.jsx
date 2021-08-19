@@ -283,14 +283,14 @@ function ProductSellProductForm() {
               }
               onClick={(e) => handleSubmit(e)}
             >
-              Sell Product
+              add Product
             </button>
             {totalSellProducts.length > 0 && (
               <button
                 className={ProductViewFormStyle.descButtonAddStyle}
                 onClick={(e) => handleFinalProcess(e)}
               >
-                Finish Sell
+                Finish Add
               </button>
             )}
           </div>
