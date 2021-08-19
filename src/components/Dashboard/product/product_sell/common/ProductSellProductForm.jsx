@@ -152,6 +152,11 @@ function ProductSellProductForm() {
     // cancel order process
   };
 
+  const handleCancelProcess = (e) => {
+    e.preventDefault();
+    console.log(e);
+  };
+
   console.log(sellProduct);
 
   return (
@@ -160,7 +165,7 @@ function ProductSellProductForm() {
         <h1 className={ProductViewFormStyle.tableTitleHeaderStyle}>
           Product Sell Page - Product
         </h1>
-        <div className={ProductViewFormStyle.backSection}>
+        {/* <div className={ProductViewFormStyle.backSection}>
           <div className={ProductViewFormStyle.back}>
             <Link
               to="/dashboard/product/sell/customer"
@@ -178,7 +183,7 @@ function ProductSellProductForm() {
               </div>
             </Link>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <form
@@ -273,6 +278,18 @@ function ProductSellProductForm() {
 
         <div className={ProductViewFormStyle.descButtonsAdd}>
           <div className={ProductViewFormStyle.descButtonAdd}>
+            <button
+              className={
+                ProductViewFormStyle.descButtonAddStyle +
+                " " +
+                ProductViewFormStyle.descButtonAddStyleColor +
+                " " +
+                ProductViewFormStyle.addRightMargin
+              }
+              onClick={(e) => handleCancelProcess(e)}
+            >
+              Cancel
+            </button>
             <button
               className={
                 ProductViewFormStyle.descButtonAddStyle +

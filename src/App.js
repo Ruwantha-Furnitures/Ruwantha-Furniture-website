@@ -84,6 +84,7 @@ import CustomerDeleteProfile from "./components/web/registeredCustomer/Profile/C
 import ForgotPassword from "./components/web/registeredCustomer/PasswordRecovery/ForgetPassword";
 import PendingOrder from "./components/Dashboard/order/PendingOrder";
 import TrackingOrders from "./components/Dashboard/order/TrackingOrders";
+import ProductSellShipping from "./components/Dashboard/product/product_sell/ProductSellShipping";
 
 function App() {
   return (
@@ -115,6 +116,11 @@ function App() {
             exact
             path="/dashboard/product/sell/product/:id"
             component={ProductSell}
+          />
+          <Route
+            exact
+            path="/dashboard/product/sell/shipping/:id"
+            component={ProductSellShipping}
           />
           <Route
             exact
@@ -160,6 +166,7 @@ function App() {
             path="/dashboard/purchaseOrders"
             component={PurchaseOrders}
           />
+
           <Route
             exact
             path="/dashboard/trackingOrders"
