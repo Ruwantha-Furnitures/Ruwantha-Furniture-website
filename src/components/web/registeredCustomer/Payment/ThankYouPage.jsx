@@ -149,8 +149,8 @@ function ThankYouPage() {
           const discount = cartResponse.data[i].product.discount
           console.log(discount)
 
-          const id = cartResponse.data[i].id
-          console.log(id)
+          const cartID = cartResponse.data[i].id
+          console.log(cartID)
 
           const quantity = cartResponse.data[i].quantity
           console.log(quantity)
@@ -179,30 +179,16 @@ function ThankYouPage() {
               }
           }
 
-          console.log(isOrderSubmit)
-          console.log(isPaymentSubmit)
-          console.log(isSellProductSubmit)
-          console.log(isShippingDataSubmit)
-
-          if((isOrderSubmit === true) && (isPaymentSubmit === true) && (isSellProductSubmit === true) && (isShippingDataSubmit === true)){
+          console.log(cartID)
             try{                                             
-                  let response = await axios.delete(`http://localhost:8080/api/customerCart/id/${id}`)
+                  let response = await axios.delete(`http://localhost:8080/api/customerCart/id/${cartID}`)
                   console.log(response.data);
-                  if(response.status === 200){
-                      setIsCartDeleted(true)
-                  }else{
-                      setIsCartDeleted(false)
-                  }
+                 
               }catch (error) {
-                  if (error.response.status === 500) {
-                      console.log("There was a problem with the server: ", error);
-                  } else {
-                      console.log(error.response.data.msg);
-                  }
-              }
-          }         
+                  console.log(error)
+              }                  
       }     
-        
+            
       // ---------------------------------------------------------------------------------------------------------------------
         
         // const product_id = cartProductArray.tempProductID
@@ -261,7 +247,10 @@ function ThankYouPage() {
              
   }, []);
   
- 
+  console.log(isOrderSubmit)
+  console.log(isPaymentSubmit)
+  console.log(isSellProductSubmit)
+  console.log(isShippingDataSubmit)
  
   
   const contactImg = {
@@ -285,7 +274,7 @@ function ThankYouPage() {
   const redirectThankYou = <Redirect to="/customer_thankyou"></Redirect>;
   return (
     <React.Fragment>
-      {(IsCartDeleted === true) && (isOrderSubmit === true) && (isPaymentSubmit === true) && (isSellProductSubmit === true) && (isShippingDataSubmit === true) && (redirectThankYou)}
+      {(isOrderSubmit === true) && (isPaymentSubmit === true) && (isSellProductSubmit === true) && (isShippingDataSubmit === true) && (redirectThankYou)}
       {(IsCartDeleted === false) && (
         <div style={contactImg}>
           <Navigation></Navigation>
@@ -315,3 +304,4 @@ function ThankYouPage() {
 }
 
 export default ThankYouPage;
+
