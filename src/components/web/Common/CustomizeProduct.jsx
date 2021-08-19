@@ -1,21 +1,30 @@
-import React from "react";
+import React , { useState } from "react";
 import Form from "react-bootstrap/Form";
 import {Row} from "reactstrap";
 import Button from "react-bootstrap/Button";
 import Card from 'react-bootstrap/Card';
-import Avatar from "../../../assets/avatar.png";
+import Avatar from "../../../assets/contact.png";
 import FormStyle from "../../../css/web/Form.module.css";
+import axios from "axios";
 
-function CustomizeProduct() {
+const CustomizeProduct = ({contactUsHandler}) =>{
     require("bootstrap/dist/css/bootstrap.min.css");
 
-    // const [name, setName] = useState("");
-    // const [email, setEmail] = useState("");
-    // const [telephone, setTelephone] = useState("");
-    // const [description, setDescription] = useState("");   
+    const [first_name, setFName] = useState("");
+    const [last_name, setLName] = useState("");
+    const [email, setEmail] = useState("");
+    const [contact_number, setTelephone] = useState("");
+    const [details, setDescription] = useState("");   
+    
+    const submithandler = (e) => {
+        // e.preventDefault();
+        //data from the form
+        const data = { first_name, last_name, contact_number, email, details };      
+        contactUsHandler(data);        
+    }
     
     const title={   
-        margin: '10px',     
+        margin: '2px',     
         padding: '3px'        
     };
 
@@ -30,7 +39,8 @@ function CustomizeProduct() {
         height: '40px',
         borderRadius: '5px',
         padding: '5px',
-        margin: '5px'            
+        margin: '5px',
+        border: 'solid 1px darkgray'          
     };
 
     const textareaStyle = {
@@ -39,34 +49,62 @@ function CustomizeProduct() {
         border: 'none',        
         borderRadius: '5px',
         padding: '5px',
-        margin: '5px'            
+        margin: '5px',
+        border: 'solid 1px darkgray'           
     };
-      
-      
-    // function validateForm() {
-    //     //Put the correct validation 
-    // }
-      
-    // function handleSubmit(event) {
-    //     event.preventDefault();
-    // }
-    
+          
     return (                    
-        <div>                    
-        {/*<Form className={FormStyle.innerbox}>*/}
-        <Card className={FormStyle.cardbox} style={{marginBottom: '20px', width: '23rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
-            <Form style={{padding: '15px'}}>
+        <div>                            
+        <Card className={FormStyle.cardbox} style={{marginBottom: '20px', width: '21rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
+            <Form style={{padding: '15px'}} onSubmit={submithandler}>
                     <Row style={rowStyle}>                                
-                        <center><img src={Avatar} alt={Avatar} width={50} height={50}></img></center>
+                        <center><img src={Avatar} alt={Avatar} width={30} height={30}></img></center>
                         <center><h4 style={title}>Customize Furniture</h4></center>
                     </Row>                                                         
-                    <input type='text' style={textboxStyle} placeholder="Your Name"></input><br />                                           
-                    <input type='text' style={textboxStyle} placeholder="Contact No"></input><br />                                                                  
-                    <input type='text' style={textboxStyle} placeholder='Email'></input><br />                           
-                    <textarea rows={5} cols={5} style={textareaStyle} placeholder='Message'></textarea><br />                          
+                    <input style={textboxStyle} 
+                        type='text'
+                        placeholder="Your First Name"
+                        value={first_name}
+                        onChange={(e) => setFName(e.target.value)}
+                        required
+                    ></input><br />  
+
+                    <input style={textboxStyle} 
+                        type='text'
+                        placeholder="Your Last Name"
+                        value={last_name}
+                        onChange={(e) => setLName(e.target.value)}
+                        required
+                    ></input><br />                                           
+
+                    <input style={textboxStyle} 
+                        type='tel'
+                        value={contact_number}
+                        pattern="[0-9]{10}"  
+                        placeholder="Contact No"
+                        onChange= {(e)=>setTelephone(e.target.value)}
+                        required
+                    ></input><br />                                                                  
+
+                    <input style={textboxStyle} 
+                        type='email' 
+                        value={email}
+                        placeholder='Email'
+                        onChange= {(e)=>setEmail(e.target.value)}
+                        required
+                    ></input><br />                           
+
+                    <textarea style={textareaStyle} 
+                        rows={5} 
+                        cols={5} 
+                        placeholder='Message' 
+                        onChange= {(e)=>setDescription(e.target.value)}
+                        required 
+                    ></textarea><br />                          
+
                     <div align="right"><br />                                       
                         <Button variant="danger" type='reset'>Cancel</Button>{' '}
-                        <Button variant="success">Submit</Button>{' '}                     
+                        <Button variant="success" type='submit'>Submit</Button>{' '}                     
                     </div>                                                     
                 </Form>    
             </Card>

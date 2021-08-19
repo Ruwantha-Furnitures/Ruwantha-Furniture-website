@@ -7,12 +7,13 @@ import "../../../css/web/Login.css";
 import Avatar from "../../../assets/avatar.png";
 import FormStyle from "../../../css/web/Form.module.css";
 
-const LoginForm = ({ navigation, loginHandler }) => {
+const LoginForm = ({ loginHandler }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const submitHandler = (e) => {
       e.preventDefault();
+      localStorage.setItem("CustomerEmail",email);
       loginHandler({ email, password });
     };
 
@@ -29,8 +30,8 @@ const LoginForm = ({ navigation, loginHandler }) => {
 
     return (
         <div>                  
-          <Card className={FormStyle.cardbox} style={{marginTop:'30px', marginBottom: '30px', width: '22rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
-            <Form style={{padding: '20px',margin: '10px'}} onSubmit={submitHandler}>  
+          <Card className={FormStyle.cardbox} style={{marginTop:'30px', marginBottom: '30px', width: '21rem',border: 'solid 3px bisque', boxShadow:'0px 0px 20px #000'}}>      
+            <Form style={{padding: '20px'}} onSubmit={submitHandler}>  
             <center><img src={Avatar} style={avatar} alt='avatar'/></center><br />
             
               {/* <center><h2>Login</h2></center><br /> */}
@@ -55,7 +56,7 @@ const LoginForm = ({ navigation, loginHandler }) => {
                 <Button variant="success" type="submit" style={{width: '100%'}}>Login</Button>{' '}
               </div> <br />
               <center><Link to="/signup" style={belowlinks}>Don't have an account?</Link></center>
-              <center><Link to='/recoveryPassword' style={belowlinks}>Forgot Password</Link></center>
+              <center><Link to='/forgotPassword' style={belowlinks}>Forgot Password</Link></center>
             </Form>
           </Card>
         </div>
