@@ -10,7 +10,8 @@ import FormStyle from "../../../../css/web/Form.module.css";
 function ViewProfileForm({userDetails}) {
     require("bootstrap/dist/css/bootstrap.min.css");
 
-    const [name,setName]=useState("")
+    const [fname,setFName]=useState("")
+    const [lname,setLName]=useState("")
     const [email,setEmail]=useState("")
     const [address,setAddress]=useState("")
     const [telephone,setTelephone]=useState("")
@@ -18,9 +19,10 @@ function ViewProfileForm({userDetails}) {
     useEffect(() => {
         if (userDetails) {
           setEmail(() => userDetails.accountEmail);
-          setName(() => userDetails.name);
+          setFName(() => userDetails.first_name);
+          setLName(() => userDetails.last_name);          
           setAddress(() => userDetails.address);
-          setTelephone(() => userDetails.telephone);
+          setTelephone(() => userDetails.contact_number);
         }
       }, [userDetails]);
 
@@ -52,10 +54,15 @@ function ViewProfileForm({userDetails}) {
                         <center><img src={Avatar} alt={Avatar} width={50} height={50}></img></center>
                         <center><h3 style={title}>Profile</h3></center>
                     </Row> 
-                    <label style={{margin: '4px'}}><b>Name</b></label>
+                    <label style={{margin: '4px'}}><b>First Name</b></label>
                     <input style={textboxStyle} 
                         type='text' 
-                        value={name}                    
+                        value={fname}                    
+                    ></input><br />
+                    <label style={{margin: '4px'}}><b>Last Name</b></label>
+                    <input style={textboxStyle} 
+                        type='text' 
+                        value={lname}                    
                     ></input><br />
                     <label style={{margin: '4px'}}><b>Address</b></label><br />  
                     <input style={textboxStyle}

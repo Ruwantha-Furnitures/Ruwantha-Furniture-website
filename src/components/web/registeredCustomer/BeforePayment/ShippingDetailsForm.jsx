@@ -6,10 +6,11 @@ import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from 'reactstrap';
 import { Redirect } from "react-router-dom";
 import Avatar from '../../../../assets/shipping.png';
+import { Link } from "react-router-dom";
 import axios from 'axios';
 import { FormatListNumberedRtlTwoTone } from '@material-ui/icons';
 
-function CustomerCheckoutDeteailsForm() {
+function ShippingDeteailsForm() {
     require("bootstrap/dist/css/bootstrap.min.css");
     const [district,setDistrict]=useState([])    
     const [productDetails,setProductDetails]=useState({})
@@ -37,42 +38,21 @@ function CustomerCheckoutDeteailsForm() {
     useEffect(() => {
         const itemID=localStorage.getItem('productID')
         getAllDistricts();
-        getProductData(itemID)
-        getTotal();
+        // getProductData(itemID)
+        // getTotal();
     },[])
 
     const getAllDistricts = async() => {
         try {
-            console.log('Requests send in delivery charge') // done
-            let res =await axios.get("http://localhost:8080/api/deliveryCharge/")
-            //console.log(res.data); // received deliveryCharge from the backend API
-            setDistrict(res.data);// set the received deliveryCharge into the district state array
-            
-        }catch (error) {
+           console.log('Requests send in delivery charge') // done
+           let res =await axios.get("http://localhost:8080/api/deliveryCharge/")
+        //    console.log(res.data); // received deliveryCharge from the backend API
+           setDistrict(res.data);// set the received deliveryCharge into the district state array
+           
+        } catch (error) {
             console.log(error);
         }
     }
-
-    const getProductData =async(id) =>{
-        try{
-            const res=await axios.get(`http://localhost:8080/api/api/products/${id}`); // wil receive the response
-            //console.log(res.data) //view the response object data
-            setProductDetails(res.data) // set the response data to the state of productDetails object
-        }catch (error){
-          console.log(error);
-        } 
-    }
-
-    function getTotal(price,discount){
-        const total = (Number)(price - (price*discount/100))
-        // var myNumberWithTwoDecimalPlaces=parseFloat(myNumber).toFixed(2); 
-        var totalTwoDecimalPlaces=parseFloat(total).toFixed(2); 
-
-        localStorage.setItem("productPrice",price);
-        localStorage.setItem("productDiscount",discount);
-        localStorage.setItem("totalAfterDiscount",totalTwoDecimalPlaces);
-        return totalTwoDecimalPlaces;
-    }    
 
     const title={
         margin: '0px',
@@ -94,7 +74,7 @@ function CustomerCheckoutDeteailsForm() {
         border: 'solid 1px darkgray'               
     };
 
-    const redirectPaymentPage = <Redirect to="/customer_productDetails_payment" />;
+    const redirectPaymentPage = <Redirect to="/paymentForm" />;
     return (          
         <React.Fragment>
             {isSubmit === true && redirectPaymentPage}
@@ -159,6 +139,7 @@ function CustomerCheckoutDeteailsForm() {
                                 <div align="right">
                                     <Button variant="danger" type='reset'>Cancel</Button>{' '}
                                     {/* <Link to='/customer_paymentGateway'><Button variant="success" type='submit'>Continue for payment</Button>{' '}</Link> */}
+                                    {/* <Link to='paymentForm'><Button variant="success" type='submit'>Continue for payment</Button></Link>{' '} */}
                                     <Button variant="success" type='submit'>Continue for payment</Button>{' '}
                                 </div>                         
                             </Form>
@@ -173,29 +154,21 @@ function CustomerCheckoutDeteailsForm() {
                                         <Form.Label>Total Purchase</Form.Label>  
                                     </Col>
                                     <Col sm={6}>
-                                        <Form.Label>{productDetails.price}</Form.Label> 
+                                        <Form.Label>Rs. {parseFloat(localStorage.getItem('cartTotal')).toFixed(2)}</Form.Label> 
                                     </Col>
                                 </Row> 
                                 <Row sm={12}>
                                     <Col sm={6}>
-                                        <Form.Label>Discount</Form.Label>  
+                                        <Form.Label style={{fontSize:'16px'}}><b>After Discount</b></Form.Label>  
                                     </Col>
                                     <Col sm={6}>
-                                        <Form.Label>{productDetails.discount}%</Form.Label> 
-                                    </Col>
-                                </Row> 
-                                <Row sm={12}>
-                                    <Col sm={6}>
-                                        <Form.Label><b style={{fontSize: '20px'}}>Total</b></Form.Label>  
-                                    </Col>
-                                    <Col sm={6}>
-                                        <Form.Label><b style={{fontSize: '20px'}}>Rs.{' '}{getTotal(productDetails.price,productDetails.discount)}</b></Form.Label> 
+                                        <Form.Label style={{fontSize:'16px'}}><b>Rs. {localStorage.getItem('afterDiscount')}</b></Form.Label> 
                                     </Col>
                                 </Row> 
                                 <Row sm={12}>
                                     <Col>
                                         <Form.Label><i style={{fontSize:'9px'}}>**Delivery charged will be added. Click on Continue for payment</i></Form.Label>  
-                                    </Col>                                
+                                    </Col> 
                                 </Row> 
                             </Form>
                         </Card>
@@ -208,4 +181,4 @@ function CustomerCheckoutDeteailsForm() {
     );
 }
 
-export default CustomerCheckoutDeteailsForm;
+export default ShippingDeteailsForm;

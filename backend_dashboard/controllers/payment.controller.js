@@ -14,6 +14,8 @@ exports.create = async (req, res) => {
     total_amounts: req.body.total_amounts,
   };
 
+  console.log("in the order controller")
+  
   //   Save customer in the database
   await Payment.create(payment)
     .then((data) => {

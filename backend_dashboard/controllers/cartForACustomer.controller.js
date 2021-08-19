@@ -22,4 +22,33 @@ exports.findOne = (req, res) => {
     });
 };
   
+// retrieve the data
+exports.findAll = (req, res) => {
+    const customerID = req.params.customer_id;    
+    Cart.findAll({ where: { customer_id: customerID, is_deleted: 0 }, include: ["customer", "product"] })
+    .then((data) => {
+        res.send(data);
+    })
+    .catch((err) => {
+        res.status(500).send({
+            message:
+            err.message || "Some error occured while retrieving Categories",
+        });
+    });
+};
+
+// delete an object
+exports.delete = (req, res) => {
+    const cartID = req.params.cartID;    
+    Cart.destroy({ where: { id: cartID, is_deleted: 0 }, include: ["customer", "product"] })
+    .then((data) => {
+        res.send(data);
+    })
+    .catch((err) => {
+        res.status(500).send({
+            message:
+            err.message || "Some error occured while retrieving Categories",
+        });
+    });
+};
  

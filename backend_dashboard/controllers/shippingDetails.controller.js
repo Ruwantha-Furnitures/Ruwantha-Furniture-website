@@ -18,6 +18,8 @@ exports.create = async (req, res) => {
     charge_id: req.body.charge_id,
   };
 
+  console.log("in the shipping details controller")
+  
   //   Save customer in the database
   await ShippingDetails.create(shippingDetails)
     .then((data) => {
