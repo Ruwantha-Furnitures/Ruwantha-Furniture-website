@@ -34,12 +34,12 @@ function CartDetails() {
                 
                 console.log(cartResponse.data.length)                
                 
-                var cartItemIds = [];                
-                {cartData.map((productList) =>(      
-                    cartItemIds = productList                
-                ))}          
+                // var cartItemIds = [];                
+                // {cartData.map((productList) =>(      
+                //     cartItemIds = productList                
+                // ))}          
                 
-                localStorage.setItem("cartItemsIDs", JSON.stringify(cartItemIds));
+                // localStorage.setItem("cartItemsIDs", JSON.stringify(cartItemIds));
 
                 //storing array in localStorage
                 // var colors = ["red","blue","green"];

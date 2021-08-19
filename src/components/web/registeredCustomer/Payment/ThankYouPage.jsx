@@ -12,8 +12,7 @@ import { addSellProduct } from "../../../Dashboard/service/sellProduct";
 
 function ThankYouPage() {
   const [cartItemData,setCartDetails]=useState([]);   
-  const [cartProductArray,setCartProductArray]=useState([]);   
-  
+
 
   const order_id = localStorage.getItem("NewOrderID");
   // const cartData = JSON.parse(localStorage.getItem("cartItemsIDs"));
@@ -33,8 +32,7 @@ function ThankYouPage() {
   const [isPaymentSubmit, setIsPaymentSubmit] = useState(false);
   const [isSellProductSubmit, setIsSellProductSubmit] = useState(false);
   const [isShippingDataSubmit, setIsShippingDataSubmit] = useState(false);
-  const [IsCartDeleted, setIsCartDeleted] = useState(false);
-  var sellProduct
+  const [IsCartDeleted, setIsCartDeleted] = useState(false);  
   
   useEffect( async() => {  
   
@@ -54,7 +52,30 @@ function ThankYouPage() {
           } else {
               console.log(error.response.data.msg);
           }
-      }      
+      }     
+      
+      //get order ID
+      try{                             
+        const maxOrderIDResponse = await axios.get("http://localhost:8080/api/order");
+        console.log(maxOrderIDResponse.data);  
+        console.log(maxOrderIDResponse.data.length)   
+        
+        if(maxOrderIDResponse.data.length === 0){
+            const newOrderID =  1
+            localStorage.setItem("NewOrderID",newOrderID)
+            console.log(newOrderID)
+        }else{
+            const length = maxOrderIDResponse.data.length
+            console.log(maxOrderIDResponse.data[(Number)(length)-1].id)
+
+            const newOrderID = maxOrderIDResponse.data[(Number)(length)-1].id          
+
+            localStorage.setItem("NewOrderID",newOrderID)
+            console.log(newOrderID)
+        }            
+    }catch (error){
+      console.log(error);
+    } 
 
       //add payment
       const paymentdata = { order_id:order_id, total_amounts:total_amounts};      
@@ -99,62 +120,56 @@ function ThankYouPage() {
           }
       }
 
+      // -----------------------------------------------------------------------------------------------------------------
+
       //get cart products details  
       const cartResponse = await axios.get(`http://localhost:8080/api/customerCart/customer_id/${customer_id}`);   
       setCartDetails(cartResponse.data) 
       console.log(cartResponse.data)
                         
-      {cartItemData.map((productList) =>(      
-          sellProduct = {
-            id: productList.id,
-            product_id: productList.product_id,                        
-            quantity: productList.quantity,            
-          }      
-        ))
-        setCartProductArray(sellProduct) 
-        // console.log(sellProduct)
-        
+      const length = cartResponse.data.length
 
-        const productResponse = await axios.get(`http://localhost:8080/api/product/${cartProductArray.product_id}`);             
-        console.log(productResponse.data)
-        const price = productResponse.data.price          
-        const discount = productResponse.data.discount
+      // ---------------------------------------------------------------------------------------------------------------------
 
-        //add sell product data
-        const sellProductdata = {
-            product_id: cartProductArray.product_id,
-            price: price,
-            quantity: cartProductArray.quantity,
-            discount: discount,
-            order_id: order_id,  
-        }
-        console.log(sellProductdata)
+      // let cartProductArray = cartItemData.map((productList) =>(    
+      //     tempID = productList.id,
+      //     tempProductID = productList.product_id,
+      //     tempQuantity = productList.quantity         
+      // ))
 
-        try{                                        
-            let response = await axios.post('http://localhost:8080/api/sellProduct',sellProductdata);
-            console.log(response.data);
-            if(response.status === 200){
-              setIsSellProductSubmit(true)
-            }else{
-              setIsSellProductSubmit(false)
-            }
-        }catch (error) {
-            if (error.response.status === 500) {
-                console.log("There was a problem with the server: ", error);
-            } else {
-                console.log(error.response.data.msg);
-            }
-        }
-        
-        // if((isOrderSubmit === true) && (isPaymentSubmit === true) && (isSellProductSubmit === true) && (isShippingDataSubmit === true)){
-        //delete cart data
-          try{                                       
-              let response = await axios.delete(`http://localhost:8080/api/customerCart/id/${cartProductArray.id}`)
+      for(let i=0; i<(Number)(length); i++ ){
+          console.log(cartResponse.data[i])        
+          
+          const product_id = cartResponse.data[i].product.id
+          console.log(product_id)
+
+          const price = cartResponse.data[i].product.price
+          console.log(price)
+
+          const discount = cartResponse.data[i].product.discount
+          console.log(discount)
+
+          const id = cartResponse.data[i].id
+          console.log(id)
+
+          const quantity = cartResponse.data[i].quantity
+          console.log(quantity)
+
+          const sellProductdata = {
+              product_id: product_id,
+              price: price,
+              quantity: quantity,
+              discount: discount,
+              order_id: order_id,  
+          }
+
+          try{                                        
+              let response = await axios.post('http://localhost:8080/api/sellProduct',sellProductdata);
               console.log(response.data);
               if(response.status === 200){
-                setIsCartDeleted(true)
+                  setIsSellProductSubmit(true)
               }else{
-                setIsCartDeleted(false)
+                  setIsSellProductSubmit(false)
               }
           }catch (error) {
               if (error.response.status === 500) {
@@ -163,7 +178,86 @@ function ThankYouPage() {
                   console.log(error.response.data.msg);
               }
           }
-    }
+
+          console.log(isOrderSubmit)
+          console.log(isPaymentSubmit)
+          console.log(isSellProductSubmit)
+          console.log(isShippingDataSubmit)
+
+          if((isOrderSubmit === true) && (isPaymentSubmit === true) && (isSellProductSubmit === true) && (isShippingDataSubmit === true)){
+            try{                                             
+                  let response = await axios.delete(`http://localhost:8080/api/customerCart/id/${id}`)
+                  console.log(response.data);
+                  if(response.status === 200){
+                      setIsCartDeleted(true)
+                  }else{
+                      setIsCartDeleted(false)
+                  }
+              }catch (error) {
+                  if (error.response.status === 500) {
+                      console.log("There was a problem with the server: ", error);
+                  } else {
+                      console.log(error.response.data.msg);
+                  }
+              }
+          }         
+      }     
+        
+      // ---------------------------------------------------------------------------------------------------------------------
+        
+        // const product_id = cartProductArray.tempProductID
+
+        // const productResponse = await axios.get(`http://localhost:8080/api/product/${product_id}`);             
+        // console.log(productResponse.data)
+        // const price = productResponse.data.price          
+        // const discount = productResponse.data.discount
+
+        // //add sell product data
+        // const sellProductdata = {
+        //     product_id: tempProductID,
+        //     price: price,
+        //     quantity: tempQuantity,
+        //     discount: discount,
+        //     order_id: order_id,  
+        // }
+        // console.log(sellProductdata)
+
+        // try{                                        
+        //     let response = await axios.post('http://localhost:8080/api/sellProduct',sellProductdata);
+        //     console.log(response.data);
+        //     if(response.status === 200){
+        //       setIsSellProductSubmit(true)
+        //     }else{
+        //       setIsSellProductSubmit(false)
+        //     }
+        // }catch (error) {
+        //     if (error.response.status === 500) {
+        //         console.log("There was a problem with the server: ", error);
+        //     } else {
+        //         console.log(error.response.data.msg);
+        //     }
+        // }
+        
+        // // if((isOrderSubmit === true) && (isPaymentSubmit === true) && (isSellProductSubmit === true) && (isShippingDataSubmit === true)){
+        // //delete cart data
+        //   try{                   
+        //       const id = tempID
+            
+        //       let response = await axios.delete(`http://localhost:8080/api/customerCart/id/${id}`)
+        //       console.log(response.data);
+        //       if(response.status === 200){
+        //         setIsCartDeleted(true)
+        //       }else{
+        //         setIsCartDeleted(false)
+        //       }
+        //   }catch (error) {
+        //       if (error.response.status === 500) {
+        //           console.log("There was a problem with the server: ", error);
+        //       } else {
+        //           console.log(error.response.data.msg);
+        //       }
+        //   }
+    
              
   }, []);
   
