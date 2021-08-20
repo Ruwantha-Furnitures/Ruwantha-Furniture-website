@@ -30,6 +30,19 @@
   position: relative;
 }
 
+.tableFormHeaderStyle {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 33px;
+
+  color: #000000;
+  margin-left: 8px;
+  width: 88%;
+  order: 1;
+  position: relative;
+}
+
 .backSection {
   order: 2;
   width: 12%;
@@ -551,7 +564,7 @@ select:focus {
   padding-left: 15px;
   width: 74%;
   padding-top: 9px;
-  margin-top: 13px;
+  /* margin-top: 13px; */
   resize: none;
 }
 
@@ -559,9 +572,9 @@ select:focus {
   display: inline-flex;
 }
 
-.addMarginBottom {
+/* .addMarginBottom {
   margin-top: 18px;
-}
+} */
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

@@ -3,9 +3,14 @@ import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.modu
 import { Link, useParams } from "react-router-dom";
 import { getSellProducts } from "./../../service/sellProduct";
 import { getOrderDetails } from "./../../service/order";
+import { editDeliveryDetails, getDeliveries } from "./../../service/delivery";
+import { getShippings } from "./../../service/shippingDetail";
+import { getPayments } from "./../../service/payments";
 
 function OrderDetailsForm() {
   const { id } = useParams();
+
+  const [isCompleted, setIsCompleted] = useState(false);
 
   const [bill, setBill] = useState({
     no_of_products: 0,
@@ -27,6 +32,12 @@ function OrderDetailsForm() {
     payment_method: "ONLINE",
   });
 
+  const [shippingDetails, setShippingDetails] = useState({
+    shipping_address: "",
+    contact_number: "",
+    total_amounts: 0,
+  });
+
   useEffect(() => {
     loadPageData();
   }, []);
@@ -40,7 +51,7 @@ function OrderDetailsForm() {
   if (orderLocation === "completedOrder") {
     navigate = "/dashboard/completedOrders";
   }
-  if (orderLocation === "assigndOrder") {
+  if (orderLocation === "assignOrder") {
     navigate = "/dashboard/assignListOrderDriver";
   }
   if (orderLocation === "deliveryDriver") {
@@ -48,6 +59,12 @@ function OrderDetailsForm() {
   }
   if (orderLocation === "deliveryDriverNotifications") {
     navigate = "/dashboard/deliveryDriver/notifications";
+  }
+  if (orderLocation === "pendingOrder") {
+    navigate = "/dashboard/pendingListOrderDriver";
+  }
+  if (orderLocation === "trackingOrder") {
+    navigate = "/dashboard/trackingOrders";
   }
 
   console.log(navigate);
@@ -91,6 +108,78 @@ function OrderDetailsForm() {
         total_discounts: discountofSellProducts,
         total_amount: totalAmountOfProducts.toFixed(2),
       });
+
+      // set shipping details
+      const resultShippings = await getShippings();
+
+      const shipping = resultShippings.data.filter(
+        (shippingData) => shippingData.order_id === parseInt(id)
+      )[0];
+
+      let new_shipping_address;
+      let new_contact_number;
+      if (shipping !== undefined) {
+        new_shipping_address = shipping.shipping_address;
+        new_contact_number = shipping.contact_number;
+      } else {
+        new_shipping_address = resultOrder.data.customer.address;
+        new_contact_number = resultOrder.data.customer.contact_number;
+      }
+
+      // get total payments
+      const resultPayments = await getPayments();
+      const payment = resultPayments.data.filter(
+        (paymentData) => paymentData.order_id === parseInt(id)
+      )[0];
+
+      const newShippingDetails = {
+        shipping_address: new_shipping_address,
+        contact_number: new_contact_number,
+        total_amounts: payment.total_amounts,
+      };
+
+      setShippingDetails(newShippingDetails);
+
+      console.log(newShippingDetails);
+
+      // set iscompleted
+      const resultDeliveries = await getDeliveries();
+      console.log(resultDeliveries.data);
+      const delivery = resultDeliveries.data.filter(
+        (deliveryData) =>
+          deliveryData.order_id === parseInt(id) &&
+          deliveryData.request_status === 0
+      )[0];
+
+      if (delivery.complete_status === 1) {
+        setIsCompleted(true);
+      }
+    } catch (error) {
+      console.log("Error", error.message);
+    }
+  };
+
+  const handleCompleteDeliveryProcess = async (e) => {
+    e.preventDefault();
+    try {
+      const resultDeliveries = await getDeliveries();
+      console.log(resultDeliveries.data);
+      const delivery = resultDeliveries.data.filter(
+        (deliveryData) =>
+          deliveryData.order_id === parseInt(id) &&
+          deliveryData.request_status === 0
+      )[0];
+      // console.log(delivery);
+      const deliver_id = delivery.id;
+
+      const newDelivery = {
+        complete_status: 1,
+      };
+
+      // console.log(delivery);
+
+      const result = editDeliveryDetails(deliver_id, newDelivery);
+      window.location = "/dashboard/deliveryDriver/deliveries";
     } catch (error) {
       console.log("Error", error.message);
     }
@@ -119,6 +208,146 @@ function OrderDetailsForm() {
           </div>
         </div>
       </div>
+      <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
+        Shipping Details
+      </h1>
+      <div className={ProductViewFormStyle.details}>
+        <div className={ProductViewFormStyle.infoPart}>
+          <div className={ProductViewFormStyle.form}>
+            <div
+              className={
+                ProductViewFormStyle.formLine +
+                " " +
+                ProductViewFormStyle.setMarginTop
+              }
+            >
+              <div className={ProductViewFormStyle.dataforLong}>
+                <label className={ProductViewFormStyle.labelStyleforLong}>
+                  Shipping
+                </label>
+                <input
+                  type="text"
+                  value={shippingDetails.shipping_address}
+                  placeholder="Customer Dilever Address"
+                  className={ProductViewFormStyle.inputStyleforLong}
+                  readOnly
+                />
+              </div>
+            </div>
+            <div className={ProductViewFormStyle.formLine}>
+              <div className={ProductViewFormStyle.data}>
+                <label className={ProductViewFormStyle.labelStyle}>
+                  Number
+                </label>
+                <input
+                  type="text"
+                  value={"0" + shippingDetails.contact_number}
+                  placeholder="Total Discount"
+                  className={ProductViewFormStyle.inputStyle}
+                  readOnly
+                />
+              </div>
+              <div className={ProductViewFormStyle.data}>
+                <label className={ProductViewFormStyle.labelStyle}>Total</label>
+                <input
+                  type="text"
+                  value={"Rs. " + shippingDetails.total_amounts}
+                  placeholder="Total Amount"
+                  className={ProductViewFormStyle.inputStyle}
+                  readOnly
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
+        Customer Details
+      </h1>
+      {/* Customer Details */}
+      <div className={ProductViewFormStyle.details}>
+        <div className={ProductViewFormStyle.infoPart}>
+          <div className={ProductViewFormStyle.form}>
+            <div
+              className={
+                ProductViewFormStyle.formLine +
+                " " +
+                ProductViewFormStyle.setMarginTop
+              }
+            >
+              <div className={ProductViewFormStyle.data}>
+                <label className={ProductViewFormStyle.labelStyle}>
+                  First Name
+                </label>
+                <input
+                  type="text"
+                  value={order.customer.first_name}
+                  placeholder="Customer First Name"
+                  className={ProductViewFormStyle.inputStyle}
+                  readOnly
+                />
+              </div>
+              <div className={ProductViewFormStyle.data}>
+                <label className={ProductViewFormStyle.labelStyle}>
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  value={order.customer.last_name}
+                  placeholder="Customer Last Name"
+                  className={ProductViewFormStyle.inputStyle}
+                  readOnly
+                />
+              </div>
+            </div>
+            <div className={ProductViewFormStyle.formLine}>
+              <div className={ProductViewFormStyle.dataforLong}>
+                <label className={ProductViewFormStyle.labelStyleforLong}>
+                  Address
+                </label>
+                <input
+                  type="text"
+                  value={order.customer.address}
+                  placeholder="Customer Dilever Address"
+                  className={ProductViewFormStyle.inputStyleforLong}
+                  readOnly
+                />
+              </div>
+            </div>
+            <div className={ProductViewFormStyle.formLine}>
+              <div className={ProductViewFormStyle.data}>
+                <label className={ProductViewFormStyle.labelStyle}>
+                  Number
+                </label>
+                <input
+                  type="text"
+                  value={"0" + order.customer.contact_number}
+                  placeholder="Customer Number"
+                  className={ProductViewFormStyle.inputStyle}
+                  readOnly
+                />
+              </div>
+              <div className={ProductViewFormStyle.data}>
+                <label className={ProductViewFormStyle.labelStyle}>
+                  Payment
+                </label>
+                <input
+                  type="text"
+                  value={order.payment_method}
+                  placeholder="Payment Method"
+                  className={ProductViewFormStyle.inputStyle}
+                  readOnly
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
+        Sold Products Details
+      </h1>
       <div className={ProductViewFormStyle.details}>
         <div className={ProductViewFormStyle.infoPart}>
           <div className={ProductViewFormStyle.form}>
@@ -181,87 +410,6 @@ function OrderDetailsForm() {
           </div>
         </div>
       </div>
-
-      {/* Customer Details */}
-      <div className={ProductViewFormStyle.details}>
-        <div className={ProductViewFormStyle.infoPart}>
-          <div className={ProductViewFormStyle.form}>
-            <div
-              className={
-                ProductViewFormStyle.formLine +
-                " " +
-                ProductViewFormStyle.setMarginTop
-              }
-            >
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>
-                  First Name
-                </label>
-                <input
-                  type="text"
-                  value={order.customer.first_name}
-                  placeholder="Customer First Name"
-                  className={ProductViewFormStyle.inputStyle}
-                  readOnly
-                />
-              </div>
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  value={order.customer.last_name}
-                  placeholder="Customer Last Name"
-                  className={ProductViewFormStyle.inputStyle}
-                  readOnly
-                />
-              </div>
-            </div>
-            <div className={ProductViewFormStyle.formLine}>
-              <div className={ProductViewFormStyle.dataforLong}>
-                <label className={ProductViewFormStyle.labelStyleforLong}>
-                  Address
-                </label>
-                <input
-                  type="text"
-                  value={order.customer.address}
-                  placeholder="Customer Dilever Address"
-                  className={ProductViewFormStyle.inputStyleforLong}
-                  readOnly
-                />
-              </div>
-            </div>
-            <div className={ProductViewFormStyle.formLine}>
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>
-                  Number
-                </label>
-                <input
-                  type="text"
-                  value={order.customer.contact_number}
-                  placeholder="Customer Number"
-                  className={ProductViewFormStyle.inputStyle}
-                  readOnly
-                />
-              </div>
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>
-                  Payment
-                </label>
-                <input
-                  type="text"
-                  value={order.payment_method}
-                  placeholder="Payment Method"
-                  className={ProductViewFormStyle.inputStyle}
-                  readOnly
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {Array.isArray(sellProducts) === true && (
         <React.Fragment>
           {sellProducts.map((sellProduct, index) => (
@@ -333,7 +481,7 @@ function OrderDetailsForm() {
         </React.Fragment>
       )}
 
-      {orderLocation === "deliveryDriver" && (
+      {orderLocation === "deliveryDriver" && isCompleted === false && (
         <div className={ProductViewFormStyle.descButtonsAdd}>
           <div className={ProductViewFormStyle.descButtonAdd}>
             <button
@@ -342,6 +490,7 @@ function OrderDetailsForm() {
                 " " +
                 ProductViewFormStyle.successButtonColor
               }
+              onClick={(e) => handleCompleteDeliveryProcess(e)}
             >
               Complete
             </button>

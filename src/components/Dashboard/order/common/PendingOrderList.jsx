@@ -6,7 +6,7 @@ import { getDeliveries } from "./../../service/delivery";
 import Pagination from "./../../common/pagination";
 import { paginate } from "./../../utils/paginate";
 
-function AssignDriverOrderList() {
+function PendingOrderList() {
   const [orders, setOrders] = useState({
     total_amount: 0,
     customer_id: 0,
@@ -19,8 +19,11 @@ function AssignDriverOrderList() {
       contact_number: 0,
     },
     delivery_status: "",
+    driver: {
+      first_name: "",
+      last_name: "",
+    },
   });
-
   const [page, setPage] = useState({
     pageSize: 8,
     currentPage: 1,
@@ -46,27 +49,32 @@ function AssignDriverOrderList() {
           (delivery) => delivery.order.id === order.id
         )[0];
 
-        console.log(deliveryStatus);
+        // console.log(deliveryStatus.request_status);
 
         if (deliveryStatus !== undefined) {
           if (deliveryStatus.request_status === 1) {
             order.delivery_status = "Pending";
+            order.driver = deliveryStatus.deliveryDriver;
           } else {
             order.delivery_status = "Assigned";
           }
         } else {
           order.delivery_status = "Not Assigned";
         }
+
+        console.log(order);
+
+        // order.driver = deliveryStatus.deliveryDriver;
       });
 
       const newOrdersData = ordersData.filter(
-        (order) => order.delivery_status === "Not Assigned"
+        (order) => order.delivery_status === "Pending"
       );
 
       setOrders(newOrdersData);
       setFilterOrders(paginate(newOrdersData, page.currentPage, page.pageSize));
 
-      // console.log(newOrdersData);
+      console.log(newOrdersData);
     } catch (error) {
       console.log("Error", error.message);
     }
@@ -141,13 +149,13 @@ function AssignDriverOrderList() {
                 <div className={TableStyle.header}>Customer</div>
               </th>
               <th>
-                <div className={TableStyle.header}>Contact Number</div>
+                <div className={TableStyle.header}>Delivery Driver</div>
               </th>
               <th>
                 <div className={TableStyle.header}>Date</div>
               </th>
               <th>
-                <div className={TableStyle.header}>Delivery</div>
+                <div className={TableStyle.header}>Driver</div>
               </th>
             </tr>
           </thead>
@@ -158,7 +166,7 @@ function AssignDriverOrderList() {
                   <tr key={index}>
                     <td>
                       <Link
-                        to={`/dashboard/assignOrder/details/${order.id}`}
+                        to={`/dashboard/pendingOrder/details/${order.id}`}
                         className={TableStyle.linkStyle}
                       >
                         <span className={TableStyle.statusStyleLink}>
@@ -175,23 +183,20 @@ function AssignDriverOrderList() {
                         " " +
                         order.customer.last_name}
                     </td>
-                    <td>{"0" + order.customer.contact_number}</td>
+                    <td>
+                      {order.driver.first_name + " " + order.driver.last_name}
+                    </td>
                     <td>{order.createdAt.split("T")[0]}</td>
                     <td>
-                      <Link
-                        to={`/dashboard/assignDriver/${order.id}`}
-                        className={TableStyle.linkStyle}
+                      <span
+                        className={
+                          TableStyle.statusStyle +
+                          " " +
+                          TableStyle.statusColorAvailabile
+                        }
                       >
-                        <span
-                          className={
-                            TableStyle.statusStyle +
-                            " " +
-                            TableStyle.statusColorNotCompleted
-                          }
-                        >
-                          Not Assigned
-                        </span>
-                      </Link>
+                        Pending
+                      </span>
                     </td>
                   </tr>
                 ))}
@@ -210,4 +215,4 @@ function AssignDriverOrderList() {
   );
 }
 
-export default AssignDriverOrderList;
+export default PendingOrderList;

@@ -1,8 +1,111 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.module.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { getOrderDetails } from "./../../service/order";
+import { getSellProducts } from "./../../service/sellProduct";
+import { getDeliveryDrivers } from "./../../service/deliveryDriver";
+import { addDelivery } from "../../service/delivery";
 
 function AssignDriverForm() {
+  const { id } = useParams();
+
+  const [bill, setBill] = useState({
+    no_of_products: 0,
+    products_price: 0,
+    total_discounts: 0,
+    total_amount: 0,
+  });
+
+  const [order, setOrder] = useState({
+    total_amount: 0,
+    customer: {
+      first_name: "",
+      last_name: "",
+      email: "",
+      address: "",
+      contact_number: "",
+    },
+    payment_method: "ONLINE",
+  });
+
+  const [drivers, setDrivers] = useState({});
+  const [delivery, setDelivery] = useState({
+    order_id: id,
+    delivery_driver_id: 0,
+  });
+
+  useEffect(() => {
+    loadPageData();
+  }, []);
+
+  const loadPageData = async () => {
+    try {
+      // get invoice data
+      const resultOrder = await getOrderDetails(id);
+      setOrder(resultOrder.data);
+      // get order data according to invoice
+      const resultSellProducts = await getSellProducts();
+      console.log(resultSellProducts.data);
+      const sellProductsData = resultSellProducts.data.filter(
+        (sellProductItem) => sellProductItem.order_id == id
+      );
+      // setSellProducts(sellProductsData);
+      console.log(sellProductsData);
+      var numOfProducts = 0;
+      var totalPriceOfProducts = 0;
+      var totalAmountOfProducts = 0;
+      var totalDiscount = 0;
+
+      sellProductsData.forEach((sellProductItem) => {
+        numOfProducts = numOfProducts + 1;
+        totalPriceOfProducts =
+          totalPriceOfProducts +
+          parseInt(sellProductItem.product.price) *
+            parseInt(sellProductItem.quantity);
+        totalAmountOfProducts =
+          totalAmountOfProducts + parseInt(sellProductItem.price);
+      });
+
+      totalDiscount =
+        ((totalPriceOfProducts - totalAmountOfProducts) /
+          totalPriceOfProducts) *
+        100;
+
+      var discountofSellProducts = Math.round(totalDiscount);
+      setBill({
+        ...bill,
+        no_of_products: numOfProducts,
+        products_price: totalPriceOfProducts.toFixed(2),
+        total_discounts: discountofSellProducts,
+        total_amount: totalAmountOfProducts.toFixed(2),
+      });
+
+      // load drivers
+      const resultDrivers = await getDeliveryDrivers();
+      const driversData = resultDrivers.data.filter(
+        (driver) => driver.availability === 1
+      );
+      setDrivers(driversData);
+    } catch (error) {
+      console.log("Error", error.message);
+    }
+  };
+
+  const onInputChange = (e) => {
+    setDelivery({ ...delivery, [e.target.name]: parseInt(e.target.value) });
+  };
+
+  const handleAssignDriverProcess = async (e) => {
+    e.preventDefault();
+    // console.log(delivery);
+    if (delivery.delivery_driver_id !== 0) {
+      console.log(delivery);
+      const result = await addDelivery(delivery);
+      console.log(result.data);
+      window.location = "/dashboard/assignListOrderDriver";
+    }
+  };
+
   return (
     <React.Fragment>
       <div>
@@ -50,9 +153,10 @@ function AssignDriverForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    value={bill.no_of_products}
                     placeholder="Number of Products"
                     className={ProductViewFormStyle.inputStyle}
+                    readOnly
                   />
                 </div>
                 <div className={ProductViewFormStyle.data}>
@@ -61,9 +165,10 @@ function AssignDriverForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    value={"Rs. " + bill.products_price}
                     placeholder="Product(s) Price"
                     className={ProductViewFormStyle.inputStyle}
+                    readOnly
                   />
                 </div>
               </div>
@@ -74,9 +179,10 @@ function AssignDriverForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    value={bill.total_discounts + "%"}
                     placeholder="Total Discount"
                     className={ProductViewFormStyle.inputStyle}
+                    readOnly
                   />
                 </div>
                 <div className={ProductViewFormStyle.data}>
@@ -85,9 +191,10 @@ function AssignDriverForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    value={"Rs. " + bill.total_amount}
                     placeholder="Total Amount"
                     className={ProductViewFormStyle.inputStyle}
+                    readOnly
                   />
                 </div>
               </div>
@@ -109,9 +216,10 @@ function AssignDriverForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    value={order.customer.first_name}
                     placeholder="Customer First Name"
                     className={ProductViewFormStyle.inputStyle}
+                    readOnly
                   />
                 </div>
                 <div className={ProductViewFormStyle.data}>
@@ -120,22 +228,10 @@ function AssignDriverForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    value={order.customer.last_name}
                     placeholder="Customer Last Name"
                     className={ProductViewFormStyle.inputStyle}
-                  />
-                </div>
-              </div>
-              <div className={ProductViewFormStyle.formLine}>
-                <div className={ProductViewFormStyle.dataforLong}>
-                  <label className={ProductViewFormStyle.labelStyleforLong}>
-                    Email
-                  </label>
-                  <input
-                    type="text"
-                    value=""
-                    placeholder="Customer Email Address"
-                    className={ProductViewFormStyle.inputStyleforLong}
+                    readOnly
                   />
                 </div>
               </div>
@@ -146,9 +242,10 @@ function AssignDriverForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    value={order.customer.address}
                     placeholder="Customer Dilever Address"
                     className={ProductViewFormStyle.inputStyleforLong}
+                    readOnly
                   />
                 </div>
               </div>
@@ -159,9 +256,10 @@ function AssignDriverForm() {
                   </label>
                   <input
                     type="text"
-                    value=""
+                    value={order.customer.contact_number}
                     placeholder="Customer Number"
                     className={ProductViewFormStyle.inputStyle}
+                    readOnly
                   />
                 </div>
                 <div className={ProductViewFormStyle.data}>
@@ -169,12 +267,22 @@ function AssignDriverForm() {
                     Delivery
                   </label>
                   {/* Drivers filter by area and according to avaliable status */}
-                  <select className={ProductViewFormStyle.inputFormSelectStyle}>
-                    <option value="">Select Driver</option>
-                    <option value="driver1">Driver 1</option>
-                    <option value="driver2">Driver 2</option>
-                    <option value="driver3">Driver 3</option>
-                    <option value="driver4">Driver 4</option>
+                  <select
+                    className={ProductViewFormStyle.inputFormSelectStyle}
+                    name="delivery_driver_id"
+                    onChange={(e) => onInputChange(e)}
+                    required
+                  >
+                    <option value="0">Select Driver</option>
+                    {Array.isArray(drivers) === true && (
+                      <React.Fragment>
+                        {drivers.map((driver, index) => (
+                          <option key={index} value={driver.id}>
+                            {driver.first_name + " " + driver.last_name}
+                          </option>
+                        ))}
+                      </React.Fragment>
+                    )}
                   </select>
                 </div>
               </div>
@@ -184,7 +292,10 @@ function AssignDriverForm() {
 
         <div className={ProductViewFormStyle.descButtonsAdd}>
           <div className={ProductViewFormStyle.descButtonAdd}>
-            <button className={ProductViewFormStyle.descButtonAddStyle}>
+            <button
+              className={ProductViewFormStyle.descButtonAddStyle}
+              onClick={(e) => handleAssignDriverProcess(e)}
+            >
               Assign Driver
             </button>
           </div>
