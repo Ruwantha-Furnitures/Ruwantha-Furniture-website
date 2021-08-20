@@ -5,6 +5,7 @@ import { getOrders } from "./../../service/order";
 import { getDeliveries } from "./../../service/delivery";
 import Pagination from "./../../common/pagination";
 import { paginate } from "./../../utils/paginate";
+import { getShippings } from "./../../service/shippingDetail";
 
 function AssignDriverOrderList() {
   const [orders, setOrders] = useState({
@@ -41,21 +42,29 @@ function AssignDriverOrderList() {
       const resultDeliveries = await getDeliveries();
       const deliveriesData = resultDeliveries.data;
 
+      const shippingResult = await getShippings();
+
       ordersData.forEach((order) => {
-        var deliveryStatus = deliveriesData.filter(
-          (delivery) => delivery.order.id === order.id
+        var shippingStatus = shippingResult.data.filter(
+          (shipping) => shipping.order_id === order.id
         )[0];
 
-        console.log(deliveryStatus);
+        if (shippingStatus !== undefined) {
+          var deliveryStatus = deliveriesData.filter(
+            (delivery) => delivery.order.id === order.id
+          )[0];
 
-        if (deliveryStatus !== undefined) {
-          if (deliveryStatus.request_status === 1) {
-            order.delivery_status = "Pending";
+          console.log(deliveryStatus);
+
+          if (deliveryStatus !== undefined) {
+            if (deliveryStatus.request_status === 1) {
+              order.delivery_status = "Pending";
+            } else {
+              order.delivery_status = "Assigned";
+            }
           } else {
-            order.delivery_status = "Assigned";
+            order.delivery_status = "Not Assigned";
           }
-        } else {
-          order.delivery_status = "Not Assigned";
         }
       });
 

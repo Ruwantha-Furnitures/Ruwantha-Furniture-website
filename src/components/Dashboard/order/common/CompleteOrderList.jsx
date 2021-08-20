@@ -5,6 +5,7 @@ import { getOrders } from "./../../service/order";
 import { getDeliveries } from "./../../service/delivery";
 import Pagination from "./../../common/pagination";
 import { paginate } from "./../../utils/paginate";
+import { getShippings } from "./../../service/shippingDetail";
 
 function CompleteOrderList() {
   const [orders, setOrders] = useState({
@@ -20,6 +21,7 @@ function CompleteOrderList() {
     },
     delivery_status: "",
     driver: {
+      id: 0,
       first_name: "",
       last_name: "",
     },
@@ -44,27 +46,43 @@ function CompleteOrderList() {
 
       const resultDeliveries = await getDeliveries();
       const deliveriesData = resultDeliveries.data;
+      const shippingResult = await getShippings();
 
       ordersData.forEach((order) => {
-        var deliveryStatus = deliveriesData.filter(
-          (delivery) =>
-            delivery.order.id === order.id && delivery.complete_status === 1
+        var shippingStatus = shippingResult.data.filter(
+          (shipping) => shipping.order_id === order.id
         )[0];
 
-        // console.log(deliveryStatus.request_status);
+        console.log(shippingStatus);
 
-        if (deliveryStatus !== undefined) {
-          if (deliveryStatus.request_status === 0) {
-            order.delivery_status = "Completed";
-            order.driver = deliveryStatus.deliveryDriver;
+        if (shippingStatus !== undefined) {
+          var deliveryStatus = deliveriesData.filter(
+            (delivery) =>
+              delivery.order.id === order.id && delivery.complete_status === 1
+          )[0];
+          // console.log(deliveryStatus.request_status);
+
+          if (deliveryStatus !== undefined) {
+            if (deliveryStatus.request_status === 0) {
+              order.delivery_status = "Completed";
+              order.driver = deliveryStatus.deliveryDriver;
+            } else {
+              order.delivery_status = "Assigned";
+            }
           } else {
-            order.delivery_status = "Assigned";
+            order.delivery_status = "Not Assigned";
           }
         } else {
-          order.delivery_status = "Not Assigned";
+          var newDriver = {
+            id: 0,
+            first_name: "Not",
+            last_name: "Required",
+          };
+          order.delivery_status = "Completed";
+          order.driver = newDriver;
         }
 
-        console.log(order);
+        // console.log(order);
 
         // order.driver = deliveryStatus.deliveryDriver;
       });
@@ -72,6 +90,8 @@ function CompleteOrderList() {
       const newOrdersData = ordersData.filter(
         (order) => order.delivery_status === "Completed"
       );
+
+      console.log(newOrdersData);
 
       setOrders(newOrdersData);
       const data = paginate(newOrdersData, page.currentPage, page.pageSize);
@@ -186,16 +206,32 @@ function CompleteOrderList() {
                     <td>{"0" + order.customer.contact_number}</td>
                     <td>{order.createdAt.split("T")[0]}</td>
                     <td>
-                      <Link
-                        to={`/dashboard/deliveryDriver/viewOnly/${order.driver.id}`}
-                        className={TableStyle.linkStyle}
-                      >
-                        <span className={TableStyle.statusStyleLink}>
-                          {order.driver.first_name +
-                            " " +
-                            order.driver.last_name}
-                        </span>
-                      </Link>
+                      {order.driver.id !== 0 ? (
+                        <>
+                          <Link
+                            to={`/dashboard/deliveryDriver/viewOnly/${order.driver.id}`}
+                            className={TableStyle.linkStyle}
+                          >
+                            <span className={TableStyle.statusStyleLink}>
+                              {order.driver.first_name +
+                                " " +
+                                order.driver.last_name}
+                            </span>
+                          </Link>
+                        </>
+                      ) : (
+                        <>
+                          <span
+                            className={
+                              TableStyle.statusStyle +
+                              " " +
+                              TableStyle.statusColorNotAvailabile
+                            }
+                          >
+                            Not Required
+                          </span>
+                        </>
+                      )}
                     </td>
                   </tr>
                 ))}

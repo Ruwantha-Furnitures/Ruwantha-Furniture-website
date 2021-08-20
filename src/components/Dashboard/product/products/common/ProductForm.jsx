@@ -24,6 +24,18 @@ function ProductForm() {
     img_location: "",
   });
 
+  const [errors, setErrors] = useState({
+    name: "",
+    type_id: 0,
+    price: "",
+    description: "",
+    color: "",
+    width: "",
+    height: "",
+    discount: "",
+    img_location: "",
+  });
+
   const [productTypes, setProductTypes] = useState({
     id: 0,
     name: "",
@@ -43,7 +55,21 @@ function ProductForm() {
     }
   };
 
+  const validateInput = ({ name, value }) => {
+    if (name === "name") {
+      if (value.trim() === "") return "Product name is required";
+    }
+  };
+
   const onInputChange = (e) => {
+    const newErrors = { ...errors };
+    // validation
+    const errorMessage = validateInput(e.target);
+    if (errorMessage) newErrors[e.target.name] = errorMessage;
+    else delete newErrors[e.target.name];
+
+    console.log(newErrors);
+    setErrors(newErrors);
     setProduct({ ...product, [e.target.name]: e.target.value });
   };
 
@@ -151,6 +177,7 @@ function ProductForm() {
                     onChange={(e) => onInputChange(e)}
                     className={ProductViewFormStyle.inputProductTitle}
                   />
+                  {/* <span>Error Here</span> */}
                 </div>
               </div>
               <div className={ProductViewFormStyle.descDetails}>

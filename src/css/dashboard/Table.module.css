@@ -174,7 +174,7 @@ input[type="search"]:-webkit-autofill:active {
   display: inline-flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin-top: 51px;
+  margin-top: 45px;
   float: right;
 }
 

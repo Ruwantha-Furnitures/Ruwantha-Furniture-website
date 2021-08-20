@@ -140,6 +140,9 @@ function AssignDriverForm() {
         <div className={ProductViewFormStyle.details}>
           <div className={ProductViewFormStyle.infoPart}>
             <div className={ProductViewFormStyle.form}>
+              <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
+                Amount Details
+              </h1>
               <div
                 className={
                   ProductViewFormStyle.formLine +
@@ -200,9 +203,14 @@ function AssignDriverForm() {
               </div>
             </div>
           </div>
+        </div>
 
+        <div className={ProductViewFormStyle.details}>
           <div className={ProductViewFormStyle.infoPart}>
             <div className={ProductViewFormStyle.form}>
+              <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
+                Customer Details
+              </h1>
               <div
                 className={
                   ProductViewFormStyle.formLine +

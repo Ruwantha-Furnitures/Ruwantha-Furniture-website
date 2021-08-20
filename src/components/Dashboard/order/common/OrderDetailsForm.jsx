@@ -122,8 +122,10 @@ function OrderDetailsForm() {
         new_shipping_address = shipping.shipping_address;
         new_contact_number = shipping.contact_number;
       } else {
-        new_shipping_address = resultOrder.data.customer.address;
-        new_contact_number = resultOrder.data.customer.contact_number;
+        // new_shipping_address = resultOrder.data.customer.address;
+        // new_contact_number = resultOrder.data.customer.contact_number;
+        new_shipping_address = "Not Required";
+        new_contact_number = "Not Required";
       }
 
       // get total payments
@@ -208,67 +210,73 @@ function OrderDetailsForm() {
           </div>
         </div>
       </div>
-      <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
-        Shipping Details
-      </h1>
-      <div className={ProductViewFormStyle.details}>
-        <div className={ProductViewFormStyle.infoPart}>
-          <div className={ProductViewFormStyle.form}>
-            <div
-              className={
-                ProductViewFormStyle.formLine +
-                " " +
-                ProductViewFormStyle.setMarginTop
-              }
-            >
-              <div className={ProductViewFormStyle.dataforLong}>
-                <label className={ProductViewFormStyle.labelStyleforLong}>
-                  Shipping
-                </label>
-                <input
-                  type="text"
-                  value={shippingDetails.shipping_address}
-                  placeholder="Customer Dilever Address"
-                  className={ProductViewFormStyle.inputStyleforLong}
-                  readOnly
-                />
-              </div>
-            </div>
-            <div className={ProductViewFormStyle.formLine}>
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>
-                  Number
-                </label>
-                <input
-                  type="text"
-                  value={"0" + shippingDetails.contact_number}
-                  placeholder="Total Discount"
-                  className={ProductViewFormStyle.inputStyle}
-                  readOnly
-                />
-              </div>
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>Total</label>
-                <input
-                  type="text"
-                  value={"Rs. " + shippingDetails.total_amounts}
-                  placeholder="Total Amount"
-                  className={ProductViewFormStyle.inputStyle}
-                  readOnly
-                />
+      {shippingDetails.shipping_address !== "Not Required" && (
+        <>
+          <div className={ProductViewFormStyle.details}>
+            <div className={ProductViewFormStyle.infoPart}>
+              <div className={ProductViewFormStyle.form}>
+                <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
+                  Shipping Details
+                </h1>
+                <div
+                  className={
+                    ProductViewFormStyle.formLine +
+                    " " +
+                    ProductViewFormStyle.setMarginTop
+                  }
+                >
+                  <div className={ProductViewFormStyle.dataforLong}>
+                    <label className={ProductViewFormStyle.labelStyleforLong}>
+                      Shipping
+                    </label>
+                    <input
+                      type="text"
+                      value={shippingDetails.shipping_address}
+                      placeholder="Customer Dilever Address"
+                      className={ProductViewFormStyle.inputStyleforLong}
+                      readOnly
+                    />
+                  </div>
+                </div>
+                <div className={ProductViewFormStyle.formLine}>
+                  <div className={ProductViewFormStyle.data}>
+                    <label className={ProductViewFormStyle.labelStyle}>
+                      Number
+                    </label>
+                    <input
+                      type="text"
+                      value={"0" + shippingDetails.contact_number}
+                      placeholder="Total Discount"
+                      className={ProductViewFormStyle.inputStyle}
+                      readOnly
+                    />
+                  </div>
+                  <div className={ProductViewFormStyle.data}>
+                    <label className={ProductViewFormStyle.labelStyle}>
+                      Total
+                    </label>
+                    <input
+                      type="text"
+                      value={"Rs. " + shippingDetails.total_amounts}
+                      placeholder="Total Amount"
+                      className={ProductViewFormStyle.inputStyle}
+                      readOnly
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
 
-      <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
-        Customer Details
-      </h1>
       {/* Customer Details */}
       <div className={ProductViewFormStyle.details}>
         <div className={ProductViewFormStyle.infoPart}>
           <div className={ProductViewFormStyle.form}>
+            <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
+              Customer Details
+            </h1>
             <div
               className={
                 ProductViewFormStyle.formLine +
@@ -345,12 +353,12 @@ function OrderDetailsForm() {
         </div>
       </div>
 
-      <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
-        Sold Products Details
-      </h1>
       <div className={ProductViewFormStyle.details}>
         <div className={ProductViewFormStyle.infoPart}>
           <div className={ProductViewFormStyle.form}>
+            <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
+              Product Amount Details
+            </h1>
             <div
               className={
                 ProductViewFormStyle.formLine +
@@ -416,6 +424,9 @@ function OrderDetailsForm() {
             <div key={index + 1} className={ProductViewFormStyle.details}>
               <div className={ProductViewFormStyle.infoPart}>
                 <div className={ProductViewFormStyle.form}>
+                  <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
+                    Product Details
+                  </h1>
                   <div
                     className={
                       ProductViewFormStyle.formLine +
