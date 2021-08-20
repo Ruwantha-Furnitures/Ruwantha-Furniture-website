@@ -1,19 +1,66 @@
-import React from 'react';
+import React , { useEffect, useState } from 'react';
 import { Row, Col } from "reactstrap";
-import productImg from "../../../../assets/items/2.jpg";
 import Table from 'react-bootstrap/Table';
-import { Link } from 'react-router-dom';
 import GradeIcon from '@material-ui/icons/Grade';
 import Form from "react-bootstrap/Form";
 import Card from 'react-bootstrap/Card';
-import AddReviewPopup from './AddReviewPopup';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-function PurchasedHistoryTable() {
-    const [modalShow, setModalShow] = React.useState(false);
+function PurchasedHistoryTable() {    
+    const [orderIDs,setorderIDs]=useState([]);   
+    const [historyItems,setHistoryItems]=useState([]);       
+
+    var totalcounter = 0;
+    var caldiscount = 0.00;
+
+    useEffect(() => {
+        getItems()
+    }, [])
+
+    const getItems = async() => {
+        let customer_id =localStorage.getItem('CustomerID');  
+        const orderResponse = await axios.get(`http://localhost:8080/api/customerorder/${customer_id}`)
+        // console.log(orderResponse.data)
+        setorderIDs(orderResponse.data)
+
+        
+        const length = orderResponse.data.length
+
+        for(let i=0; i<(Number)(length); i++){
+            console.log( orderResponse.data[i].id)
+            const order_id = orderResponse.data[i].id            
+
+            const sellProductResponse = await axios.get(`http://localhost:8080/api/customersellProduct/${order_id}`); 
+            console.log(sellProductResponse.data)
+
+            setHistoryItems(sellProductResponse.data)  
+            
+           
+        }                     
+    }
+
+    function getTotal(price,quantity,discount){        
+        const total = (Number)(price * quantity)
+        // var myNumberWithTwoDecimalPlaces=parseFloat(myNumber).toFixed(2); 
+        var totalTwoDecimalPlaces=parseFloat(total).toFixed(2); 
+        totalcounter = (Number)(totalcounter) + (Number)(totalTwoDecimalPlaces)
+        localStorage.setItem("cartTotal",totalcounter);
+    
+        const afterDiscountForAProduct = parseFloat(((Number)(price) - ((Number)(price) * ((Number)(discount)/100))) * (Number)(quantity)).toFixed(2); 
+        caldiscount = parseFloat(((Number)(price) - ((Number)(price) * ((Number)(discount)/100))) * (Number)(quantity) + (Number)(caldiscount)).toFixed(2); 
+        // afterDiscount += (Number)(parseFloat((Number)(total - total*(discount/100))).toFixed(2)) ; 
+        
+        localStorage.setItem("afterDiscount",caldiscount);
+                    
+        return afterDiscountForAProduct;
+    }    
+
 
     const rowStyle={
         margin: '10px'
     };
+
 
     return (
         <div>
@@ -30,25 +77,26 @@ function PurchasedHistoryTable() {
                                         <th>Name</th>
                                         <th>Price Rs.</th>
                                         <th>Quantity</th>
+                                        <th>Discount</th>
                                         <th>Total</th>
                                         <th>Rate</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>                                        
-                                        <td>1</td>
-                                        <td><img src={productImg} style={{width:'100px', borderRadius: '20px'}} alt='imgitem'></img></td>
-                                        <td>Pearl Wooden Dining Chair</td>
-                                        <td>6875</td>
-                                        <td>1</td>
-                                        <td>6875</td>
-                                        <td><GradeIcon  onClick={() => setModalShow(true)}/>
-                                            <AddReviewPopup
-                                                show={modalShow}
-                                                onHide={() => setModalShow(false)}
-                                            />
-                                        </td>
-                                    </tr>                                    
+                                <tbody>                                    
+                                    {historyItems.map((productList,i) =>(                                                                                  
+                                        <tr key={i}>                                        
+                                            <td>{i+1}</td>
+                                            <td><img src={productList.product.img_location} style={{width:'100px', borderRadius: '20px'}} alt='imgitem'></img></td>
+                                            <td>{productList.product.name}</td>
+                                            <td>{productList.product.price}</td>
+                                            <td>{productList.quantity}</td>
+                                            <td>{productList.product.discount}</td>
+                                            <td>{getTotal(productList.product.price,productList.quantity,productList.product.discount)}</td>
+                                            <td>
+                                                <Link to='/customer_add_reviews'><button class="btn btn-light"><GradeIcon></GradeIcon></button></Link>
+                                            </td>
+                                        </tr> 
+                                    ))}                                                                         
                                 </tbody>
                             </Table>
                         </Col> 
