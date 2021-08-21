@@ -12,12 +12,6 @@ const SearchProduct = ({DropDownHandler}) => {
     require("bootstrap/dist/css/bootstrap.min.css");
     const [allcategory,setAllCategory]=useState([])    
     const [category, setCategory] = useState("");    
-    
-
-    const submithandler = (e) => {
-        console.log(category)
-        DropDownHandler(category)     
-    }
 
     useEffect(() => {
         getCategories();
@@ -32,6 +26,13 @@ const SearchProduct = ({DropDownHandler}) => {
         } catch (error) {
             console.log(error);
         }
+    }
+
+    function filterProduct(categoryname){     
+        setCategory(categoryname)
+        console.log(category)
+        // setCategory(categoryname)
+        // DropDownHandler(category)
     }
 
     const textboxStyle = {
@@ -50,15 +51,14 @@ const SearchProduct = ({DropDownHandler}) => {
             <Navbar expand="lg"  sticky="top" style={{ maxWidth:'100%', marginTop:'0px', marginBottom: '20px'}}>            
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-                <Form inline onSubmit={submithandler}>
+                <Form inline>
                     <Row>
-                        <select style={textboxStyle} onChange={(e)=>setCategory(e.target.value)}>
-                            <option style={{color:'red'}} value="" disabled selected hidden >Select category</option>
-                            {allcategory.map((categoryList) =>(                                          
-                                <option value={categoryList.id}>{categoryList.name}</option>
+                        <select style={textboxStyle} value={category} onChange={(e)=>setCategory(e.target.value)}>                    
+                            <option value="" disabled selected hidden>Choose a category</option>                                                              
+                            {allcategory.map((categoryList) =>(                                                                                                      
+                                <option value={categoryList.name} >{categoryList.name}</option>                                
                             ))}
-                        </select>
-                        <Button variant="success" type='submit'>Submit</Button>{' '}
+                        </select>                       
                     </Row>                     
                 </Form>
                 {/* <Form inline> 
