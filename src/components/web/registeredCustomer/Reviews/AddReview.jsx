@@ -18,21 +18,38 @@ function AddReview() {
     const [rating_points, setRating] = React.useState(1);
 
     const [reviewProduct, setReviewProduct] = useState("");
+    const [isSubmit, setIsSubmit] = useState(false);
 
-    
     useEffect(() => {
         fetchProductData()
     }, [])
 
     const submitHandler = async(e) => {       
         e.preventDefault();
-        //data from the form
-        const data = { product_id, feedback, rating_points };
-        
         console.log(rating_points)
         
+        const reviewdata = {
+            product_id: product_id,
+            feedback: feedback,
+            rating_points: rating_points
+        };      
+        try{                      
+            let response = await axios.post('http://localhost:8080/api/productReview',reviewdata);
+            console.log(response.data);
+            if(response.status === 200){
+                setIsSubmit(true)
+            }else{
+                setIsSubmit(false)
+            }
+        }catch (error) {
+            if (error.response.status === 500) {
+                console.log("There was a problem with the server: ", error);
+            } else {
+                console.log(error.response.data.msg);
+            }
+        }
         
-      };
+    };
     
     const fetchProductData = async() => {
         let id =localStorage.getItem('ReviewProductID');  
