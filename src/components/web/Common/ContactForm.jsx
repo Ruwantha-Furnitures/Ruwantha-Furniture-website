@@ -19,19 +19,9 @@ const ContactForm = ({contactUsHandler}) => {
         e.preventDefault();
         //data from the form
         const data = { first_name, last_name, contact_number, email, details };
-        try{            
-            let response = await axios.post("http://localhost:8080/api/message/",data);
-            console.log(response.data);
-        }catch (error) {
-            if (error.response.status === 500) {
-                console.log("There was a problem with the server: ", error);
-            } else {
-                console.log(error.response.data.msg);
-            }
-        }
-
+        
         // console.log(data);
-        // contactUsHandler(data);        
+        contactUsHandler(data);        
       };
     
     const title={   
