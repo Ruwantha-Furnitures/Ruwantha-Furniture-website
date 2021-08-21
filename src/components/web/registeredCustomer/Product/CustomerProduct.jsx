@@ -17,14 +17,15 @@ import axios from "axios";
 const CustomerProduct = () => {
     require("bootstrap/dist/css/bootstrap.min.css");
     const [allcategory,setAllCategory]=useState([])    
-    const [category, setCategory] = useState("");    
+    const [category, setCategory] = useState(-1);    
 
     const [products,setProducts]=useState([])   
 
     useEffect(() => {
+        console.log(category)
         getCategories();
-        viewAllProducts();
-    },[])
+        viewAllProducts();          
+    },[])    
     
     const getCategories = async() => {
         try {       
@@ -37,7 +38,7 @@ const CustomerProduct = () => {
         }
     }
 
-    const viewAllProducts = async () => {
+    const viewAllProducts = async () => {        
         try {           
            let response = await axios.get("http://localhost:8080/api/product");
            console.log(response.data); // received products from the backend API
@@ -56,6 +57,15 @@ const CustomerProduct = () => {
         //cart label number
     }
 
+    const getSelectedCategoryID = async(categoryID) =>{
+        console.log(categoryID)
+        const category_id = categoryID
+        const CategoryResponse = await axios.get(`http://localhost:8080/api/typeforcategory/${category_id }`)
+        console.log(CategoryResponse.data)
+        // setorderIDs(orderResponse.data)
+
+    }
+
     const funitureimg = {
       marginTop: "30px",      
       display: "flex",
@@ -63,7 +73,7 @@ const CustomerProduct = () => {
       alignItems: "center",
       borderRadius: '20px'
     };
-    
+
     const contactImg = {  
         //backgroundImage: `url(${Coverimg})` ,              
         MaxWidth: "100%"
@@ -93,10 +103,10 @@ const CustomerProduct = () => {
                             <Navbar.Collapse id="basic-navbar-nav">
                                 <Form inline>
                                     <Row>
-                                        <select style={textboxStyle} value={category} onChange={(e)=>setCategory(e.target.value)}>                    
-                                            <option value="" disabled selected hidden>Choose a category</option>                                                              
+                                        <select style={textboxStyle} value={category} onChange={(e)=> getSelectedCategoryID(e.target.value)}>                    
+                                            <option value="-1" disabled hidden selected>Choose a category</option>                                                              
                                             {allcategory.map((categoryList) =>(                                                                                                      
-                                                <option value={categoryList.name} >{categoryList.name}</option>                                
+                                                <option value={categoryList.id} >{categoryList.name}</option>                                
                                             ))}
                                         </select>                       
                                     </Row>                     
@@ -111,6 +121,7 @@ const CustomerProduct = () => {
                     <Card.Body>                                                
                         {/* <center><ProductBox itemUpHandler={itemUpHandler}></ProductBox></center> */}
                         <center>
+                            
                             {/* <ProductBox></ProductBox> */}
                             <div className={CommnStyles.gridContainer}>
                                 {products.map((productList) =>(  
