@@ -18,8 +18,9 @@ const CustomerProduct = () => {
     require("bootstrap/dist/css/bootstrap.min.css");
     const [allcategory,setAllCategory]=useState([])    
     const [category, setCategory] = useState(-1);    
-
     const [products,setProducts]=useState([])   
+    const [typesIDs,setTypeIDs]=useState([]);   
+    const [selectedProducts,setSelectedProducts]=useState([]);   
 
     useEffect(() => {
         console.log(category)
@@ -60,10 +61,29 @@ const CustomerProduct = () => {
     const getSelectedCategoryID = async(categoryID) =>{
         console.log(categoryID)
         const category_id = categoryID
-        const CategoryResponse = await axios.get(`http://localhost:8080/api/typeforcategory/${category_id }`)
-        console.log(CategoryResponse.data)
-        // setorderIDs(orderResponse.data)
+        const typeResponse = await axios.get(`http://localhost:8080/api/typeforcategory/${category_id }`)
+        console.log(typeResponse.data)
+        setTypeIDs(typeResponse.data)
 
+        const length = typeResponse.data.length;
+
+        var filterProducts =[];
+
+        for(let i=0; i<(Number)(length); i++){
+            console.log( typeResponse.data[i].id)
+            const type_id = typeResponse.data[i].id            
+
+            const selectedProductResponse = await axios.get(`http://localhost:8080/api/productfortype/${type_id}`); 
+                    
+            var newobject = selectedProductResponse.data;
+            console.log(newobject);
+        
+            filterProducts.push(newobject);
+            
+        }  
+        console.log(filterProducts);
+        setSelectedProducts(filterProducts);
+        console.log(selectedProducts);            
     }
 
     const funitureimg = {
