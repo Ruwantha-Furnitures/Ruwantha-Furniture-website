@@ -1,44 +1,149 @@
-import React, {useEffect} from 'react';
-import { Row, Col } from 'reactstrap';
+import React, {useState,useEffect} from 'react';
+import Navbar from 'react-bootstrap/Navbar';
+import { Row, Col, Container } from 'reactstrap';
 import Navigation from "../Navigation/UserNav";
 import Footer from "../../Common/Footer";
 import ProductBox  from "./CustomerAllProducts";
-import Search from "../../Common/SearchProduct";
+// import Search from "../../Common/SearchProduct";
 import Card from 'react-bootstrap/Card';
+import Form from 'react-bootstrap/Form';
+import Rating from "../../Common/StartRating";
+import { Link } from "react-router-dom";
 import SliderProducts from "../../Common/ProductSlider";
-// import axios from "axios";
+import CommnStyles from "../../../../css/web/common.module.css";
+import "../../../../css/web/Home.css";
+import axios from "axios";
 
 const CustomerProduct = () => {
     require("bootstrap/dist/css/bootstrap.min.css");
+    const [allcategory,setAllCategory]=useState([])    
+    const [category, setCategory] = useState("");    
 
-    // const itemUpHandler = async () => {
-    //   //console.log(data);
-    //     try{
-    //         let res = await axios.get("http://localhost:8080/api/product");
-    //         console.log(res.data);
-    //         console.log("Request successful");
-    //     }catch (error){
-    //         console.log(error);
-    //     } 
-    // };
+    const [products,setProducts]=useState([])   
+
+    useEffect(() => {
+        getCategories();
+        viewAllProducts();
+    },[])
+    
+    const getCategories = async() => {
+        try {       
+        //    let res =await axios.get('http://192.168.56.1:3002/api/category/')    
+            let res =await axios.get('http://localhost:8080/api/category/')          
+            setAllCategory(res.data);// set the received deliveryCharge into the district state array   
+            console.log(res.data);    
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const viewAllProducts = async () => {
+        try {           
+           let response = await axios.get("http://localhost:8080/api/product");
+           console.log(response.data); // received products from the backend API
+           setProducts(response.data);// set the received products into the products state array
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    //adding selected product Id to the localstorage
+    function sayHello(itemid) {
+        //alert(`hello, ${itemid}`);
+        localStorage.setItem("productID", itemid);
+        console.log(localStorage.getItem("productID"));  
+        
+        //cart label number
+    }
+
+    const funitureimg = {
+      marginTop: "30px",      
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      borderRadius: '20px'
+    };
     
     const contactImg = {  
         //backgroundImage: `url(${Coverimg})` ,              
         MaxWidth: "100%"
     }
+
+    const textboxStyle = {
+        width: '100%',
+        backgroundColor: '#eeeff5',
+        border: 'none',
+        height: '40px',
+        borderRadius: '5px',
+        padding: '5px',        
+        border: 'solid 1px darkgray'               
+    };
+
     return (
         <div style={contactImg}>  
         <Navigation></Navigation>          
         <Row sm={12} align="justify">
             <Col sm={12}>                
                 <Card>     
-                    <Search></Search>               
-                    <Card.Body>                        
-                        <br />
+                    {/* <Search></Search>*/}
+                    <Container>
+                        <div>            
+                            <Navbar expand="lg"  sticky="top" style={{ maxWidth:'100%', marginTop:'0px', marginBottom: '20px'}}>            
+                            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                            <Navbar.Collapse id="basic-navbar-nav">
+                                <Form inline>
+                                    <Row>
+                                        <select style={textboxStyle} value={category} onChange={(e)=>setCategory(e.target.value)}>                    
+                                            <option value="" disabled selected hidden>Choose a category</option>                                                              
+                                            {allcategory.map((categoryList) =>(                                                                                                      
+                                                <option value={categoryList.name} >{categoryList.name}</option>                                
+                                            ))}
+                                        </select>                       
+                                    </Row>                     
+                                </Form>
+                            </Navbar.Collapse>
+                            </Navbar>                       
+                        </div>
+                        <br /><br />
                         <SliderProducts></SliderProducts>
                         <br />
+                    </Container>
+                    <Card.Body>                                                
                         {/* <center><ProductBox itemUpHandler={itemUpHandler}></ProductBox></center> */}
-                        <center><ProductBox></ProductBox></center>
+                        <center>
+                            {/* <ProductBox></ProductBox> */}
+                            <div className={CommnStyles.gridContainer}>
+                                {products.map((productList) =>(  
+                                <Container>
+                                    <Row sm={12}>
+                                        <Col sm={3}>
+                                            <center>
+                                            <Card style={{width: '18rem'}}> 
+                                                <center>      
+                                                    <img src={productList.img_location} alt='items' style={funitureimg} width={200} height={150}></img>    
+                                                    {/* src={process.env.PUBLIC_URL + '/items/'+ productList.itemid +'.jpg'}               */}
+                                                </center>
+                                                <br />
+                                                <center> {productList.name} </center>                                                   
+                                                    <p class="textinbox">                        
+                                                        Rs. {productList.price}<br />                                        
+                                                    </p>
+                                                <center>    
+                                                    <Rating></Rating>
+                                                </center>
+                                                <center>
+                                                    <Link to="/viewProductDetail"><button class="addtocart" onClick={() => sayHello(productList.id)}>Read More</button></Link>
+                                                </center>                                                                                       
+                                            </Card> 
+                                            <br />   
+                                            </center>                                   
+                                        </Col>
+                                    </Row>
+                                    </Container>
+                                ))}                    
+                            </div>
+                        
+                        </center>
                     </Card.Body>
                 </Card>  
                 <br />
