@@ -10,10 +10,12 @@ import axios from 'axios';
 
 function PurchasedHistoryTable() {    
     const [orderIDs,setorderIDs]=useState([]);   
+    const [historyItems,setHistoryItems]=useState([]);   
+    const [isReviewID,setisReviewID]=useState(false); 
+    
 
     const [historyItems,setHistoryItems]=useState([]);   
     const [isReviewID,setisReviewID]=useState(false); 
-
 
     var totalcounter = 0;
     var caldiscount = 0.00;
@@ -41,7 +43,6 @@ function PurchasedHistoryTable() {
             const order_id = orderResponse.data[i].id            
 
             const sellProductResponse = await axios.get(`http://localhost:8080/api/customersellProduct/${order_id}`); 
-
             
             // const object3 = {...object1, ...object2 }
             var newobject = sellProductResponse.data;
@@ -66,9 +67,6 @@ function PurchasedHistoryTable() {
             console.log(sellProductResponse.data)
 
             setHistoryItems(sellProductResponse.data)  
-            
-           
-        }                     
     }
 
     function getTotal(price,quantity,discount){        
