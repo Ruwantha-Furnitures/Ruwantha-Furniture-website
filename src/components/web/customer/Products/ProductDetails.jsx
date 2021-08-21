@@ -58,9 +58,6 @@ function ProductDetails() {
                   <Link to="/login">
                     <button class="addtocart">Add to cart</button>
                   </Link>{" "}
-                  <Link to="/login">
-                    <button class="addtocart">Check out</button>
-                  </Link>
                 </center>
               </Container>
             </Col>
