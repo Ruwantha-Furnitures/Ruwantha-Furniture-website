@@ -28,6 +28,13 @@ const SearchProduct = ({DropDownHandler}) => {
         }
     }
 
+    function filterProduct(categoryname){     
+        setCategory(categoryname)
+        console.log(category)
+        // setCategory(categoryname)
+        // DropDownHandler(category)
+    }
+
     const textboxStyle = {
         width: '100%',
         backgroundColor: '#eeeff5',
