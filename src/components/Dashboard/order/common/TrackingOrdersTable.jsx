@@ -152,7 +152,9 @@ function TrackingOrdersTable() {
   return (
     <React.Fragment>
       <div className={TableStyle.titleHeader}>
-        <h1 className={TableStyle.tableTitleProductStyle}>Tracking Orders</h1>
+        <h1 className={TableStyle.tableTitleProductStyle}>
+          Tracking Not Completed Orders
+        </h1>
         <div className={TableStyle.searchSection}>
           <form action="#">
             <div className={TableStyle.search}>
@@ -167,7 +169,7 @@ function TrackingOrdersTable() {
               <div className={TableStyle.searchText}>
                 <input
                   type="search"
-                  placeholder="search customer here"
+                  placeholder="Search customer here"
                   value={search}
                   name="search"
                   onChange={(e) => onInputChange(e)}

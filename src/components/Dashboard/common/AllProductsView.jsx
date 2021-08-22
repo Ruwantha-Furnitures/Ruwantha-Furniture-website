@@ -1,6 +1,8 @@
 import React from "react";
 // import "../css/AllProductsView.css";
 import AllProductViewStyle from "../../../css/dashboard/AllProductsView.module.css";
+import TableStyle from "../../../css/dashboard/Table.module.css";
+import { Link } from "react-router-dom";
 
 function AllProductsView() {
   return (

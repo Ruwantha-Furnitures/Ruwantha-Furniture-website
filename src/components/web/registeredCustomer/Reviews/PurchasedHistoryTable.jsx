@@ -9,7 +9,7 @@ import axios from "axios";
 
 function PurchasedHistoryTable() {
   const [orderIDs, setorderIDs] = useState([]);
-  const [historyItems, setHistoryItems] = useState([{}]);
+  const [historyItems, setHistoryItems] = useState([]);
 
   var totalcounter = 0;
   var caldiscount = 0.0;
@@ -27,7 +27,6 @@ function PurchasedHistoryTable() {
     setorderIDs(orderResponse.data);
 
     const length = orderResponse.data.length;
-    var sellProducts = {};
 
     for (let i = 0; i < Number(length); i++) {
       console.log(orderResponse.data[i].id);
@@ -36,10 +35,10 @@ function PurchasedHistoryTable() {
       const sellProductResponse = await axios.get(
         `http://localhost:8080/api/customersellProduct/${order_id}`
       );
-      sellProducts = sellProducts.merge(sellProductResponse.data);
       console.log(sellProductResponse.data);
+
+      setHistoryItems(sellProductResponse.data);
     }
-    setHistoryItems(sellProducts);
   };
 
   function getTotal(price, quantity, discount) {

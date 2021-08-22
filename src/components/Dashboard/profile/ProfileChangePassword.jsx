@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "./common/Navbar";
-import Sidebar from "./common/Sidebar";
-import AllProductsView from "./common/AllProductsView";
-import MainStyle from "../../css/dashboard/Main.module.css";
-import ProductStyle from "../../css/dashboard/Products.module.css";
-import ProfileChangePasswordForm from "./profile/ProfileChangePasswordForm";
+import Navbar from "../common/Navbar";
+import Sidebar from "../common/Sidebar";
+import AllProductsView from "../common/AllProductsView";
+import MainStyle from "../../../css/dashboard/Main.module.css";
+import ProductStyle from "../../../css/dashboard/Products.module.css";
+import ProfileChangePasswordForm from "./common/ProfileChangePasswordForm";
 
 function ProfileChangePassword() {
   return (

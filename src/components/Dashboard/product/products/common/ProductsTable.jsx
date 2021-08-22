@@ -106,7 +106,7 @@ function ProductsTable() {
               <div className={TableStyle.searchText}>
                 <input
                   type="search"
-                  placeholder="search product here"
+                  placeholder="Search product here"
                   value={search}
                   name="search"
                   onChange={(e) => onInputChange(e)}

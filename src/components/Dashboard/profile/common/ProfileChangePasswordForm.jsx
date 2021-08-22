@@ -1,5 +1,5 @@
 import React from "react";
-import ProductViewFormStyle from "../../../css/dashboard/ProductViewForm.module.css";
+import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.module.css";
 
 function ProfileChangePasswordForm() {
   return (
@@ -29,6 +29,7 @@ function ProfileChangePasswordForm() {
                     value=""
                     placeholder="User Email"
                     className={ProductViewFormStyle.inputStyle}
+                    readonly
                   />
                 </div>
                 <div className={ProductViewFormStyle.data}>

@@ -126,7 +126,7 @@ function PendingOrderList() {
               <div className={TableStyle.searchText}>
                 <input
                   type="search"
-                  placeholder="search customer here"
+                  placeholder="Search customer here"
                   value={search}
                   name="search"
                   onChange={(e) => onInputChange(e)}
