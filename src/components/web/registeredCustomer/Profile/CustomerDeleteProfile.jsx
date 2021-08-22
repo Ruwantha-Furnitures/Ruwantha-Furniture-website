@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react';
 import Navigation from "../Navigation/UserNav";
 import Footer from "../../Common/Footer";
 import { Container } from 'reactstrap';
+import { Redirect } from 'react-router-dom';
 import DeleteForm from './CustomerDeleteProfileForm';
 import Subnavigation from "../Navigation/Subnav";
 import Topimg from '../../../../assets/topimg35.jpg';
@@ -66,18 +67,30 @@ function CustomerDeleteProfile() {
         padding: '0',
         MaxWidth: "100%"
     }
-        
+
+    const redirectLogin = <Redirect to="/login"></Redirect>;    
     return (
-        <div className="col-md-12" style={contactImg}>  
-            <Navigation></Navigation> 
-            <Subnavigation></Subnavigation>
-            <br />
-            <Container align="left"> 
-                <DeleteForm deleteProfileHandler={deleteProfileHandler}></DeleteForm>
-            </Container>
-            <br /><br />
-            <Footer></Footer>    
-        </div>
+        <React.Fragment>
+            {(isCustomerDelete === true) && (isAccountDelete === true) && (isOnlineCustomerDelete === true) && (redirectLogin)}
+            {(isCustomerDelete === false) && (isAccountDelete === false) && (isOnlineCustomerDelete === false) ||
+            (isCustomerDelete === true) && (isAccountDelete === false) && (isOnlineCustomerDelete === false) ||
+            (isCustomerDelete === true) && (isAccountDelete === true) && (isOnlineCustomerDelete === false) ||
+            (isCustomerDelete === false) && (isAccountDelete === true) && (isOnlineCustomerDelete === false) ||
+            (isCustomerDelete === false) && (isAccountDelete === true) && (isOnlineCustomerDelete === true) ||
+            (isCustomerDelete === false) && (isAccountDelete === false) && (isOnlineCustomerDelete === true) 
+            && (
+                <div className="col-md-12" style={contactImg}>  
+                    <Navigation></Navigation> 
+                    <Subnavigation></Subnavigation>
+                    <br />
+                    <Container align="left"> 
+                        <DeleteForm deleteProfileHandler={deleteProfileHandler}></DeleteForm>
+                    </Container>
+                    <br /><br />
+                    <Footer></Footer>    
+                </div>
+            )}
+        </React.Fragment>
     )
 }
 

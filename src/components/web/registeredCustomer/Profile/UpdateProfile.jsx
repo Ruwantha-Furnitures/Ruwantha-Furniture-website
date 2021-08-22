@@ -9,34 +9,7 @@ import axios from 'axios';
 
 function UpdateProfile() {
 
-
-    const [userDetails,setUserDetails] =useState();
-    // require('dotenv').config();
-    // let URI = { process.env.IP_ADDRESS };
-
-    // useEffect(() => {
-    //     let accountID=localStorage.getItem('userAccID');
-    //     let accountEmail=localStorage.getItem('userEmail')
-    //     console.log(accountID);
-    //     const fecthData=async()=>{
-    //         try {                
-    //             let response=await axios.get(`http://192.168.56.1:3002/api/customer/viewprofile/${accountID}`)
-    //             // let response=await axios.get(`${URI}:3002/api/customer/viewprofile/${accountID}`)
-    //             const {name,address, telephone}=response.data
-    //             const userData={
-    //                 accountEmail,
-    //                 name,
-    //                 address,
-    //                 telephone,
-    //             }
-    //             setUserDetails(()=>userData)
-    //             console.log(response.data)
-    //         } catch (error) {
-    //             console.log(error)
-    //         }
-    //     }
-    //     fecthData()
-    // },[])
+    const [userDetails,setUserDetails] =useState(false);
 
     const updateHandler=(userDetails)=>{
         const updateData=async()=>{
