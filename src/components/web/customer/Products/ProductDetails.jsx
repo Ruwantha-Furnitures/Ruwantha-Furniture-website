@@ -88,15 +88,10 @@ function ProductDetails() {
                   <h4>{`Rs. ${productDetails.price}`}</h4>
                   <br />
                   <p align="justify">{productDetails.description}</p>
-                  <br />
-                 
-                      
+                  <br />                                       
                       <Box component="fieldset" mb={3} borderColor="transparent">
                           <Rating name="read-only" value={rating} readOnly />
-                      </Box> 
-
-                     
-                  
+                      </Box>                                        
                   <Link to="/login">
                     <button class="addtocart">Add to cart</button>
                   </Link>{" "}
