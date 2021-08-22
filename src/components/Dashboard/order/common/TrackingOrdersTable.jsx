@@ -5,6 +5,7 @@ import { getOrders } from "./../../service/order";
 import { getDeliveries } from "./../../service/delivery";
 import Pagination from "./../../common/pagination";
 import { paginate } from "./../../utils/paginate";
+import { getShippings } from "./../../service/shippingDetail";
 
 function TrackingOrdersTable() {
   const [orders, setOrders] = useState({
@@ -43,39 +44,64 @@ function TrackingOrdersTable() {
       const resultDeliveries = await getDeliveries();
       const deliveriesData = resultDeliveries.data;
 
+      const shippingResult = await getShippings();
+
       ordersData.forEach((order) => {
-        var deliveryStatus = deliveriesData.filter(
-          (delivery) => delivery.order.id === order.id
+        var shippingStatus = shippingResult.data.filter(
+          (shipping) => shipping.order_id === order.id
         )[0];
 
-        console.log(deliveryStatus);
+        if (shippingStatus !== undefined) {
+          var deliveryStatus = deliveriesData.filter(
+            (delivery) => delivery.order.id === order.id
+          )[0];
 
-        var startDate;
-        var lastDate;
+          console.log(deliveryStatus);
 
-        if (deliveryStatus !== undefined) {
-          if (
-            deliveryStatus.request_status === 0 &&
-            deliveryStatus.complete_status === 1
-          ) {
-            order.delivery_status = "Completed";
-            order.completed_date = deliveryStatus.updatedAt;
-            startDate = new Date(order.createdAt);
-            lastDate = new Date(deliveryStatus.updatedAt);
+          var startDate;
+          var lastDate;
+
+          if (deliveryStatus !== undefined) {
+            if (
+              deliveryStatus.request_status === 0 &&
+              deliveryStatus.complete_status === 1
+            ) {
+              order.delivery_status = "Completed";
+              order.completed_date = deliveryStatus.updatedAt;
+              startDate = new Date(order.createdAt);
+              lastDate = new Date(deliveryStatus.updatedAt);
+            }
+            if (
+              deliveryStatus.request_status === 0 &&
+              deliveryStatus.complete_status === 0
+            ) {
+              order.delivery_status = "Not Completed";
+              startDate = new Date(order.createdAt);
+              lastDate = new Date();
+            }
+            if (
+              deliveryStatus.request_status === 1 &&
+              deliveryStatus.complete_status === 0
+            ) {
+              order.delivery_status = "Pending Assigned";
+              startDate = new Date(order.createdAt);
+              lastDate = new Date();
+            }
           } else {
-            order.delivery_status = "Not Completed";
+            order.delivery_status = "Not Assigned";
             startDate = new Date(order.createdAt);
             lastDate = new Date();
           }
+          let differenceTime = lastDate.getTime() - startDate.getTime();
+          let differenceDays = differenceTime / (1000 * 3600 * 24);
+          order.days = Math.round(differenceDays);
         } else {
-          order.delivery_status = "Not Completed";
+          order.delivery_status = "Completed";
+          order.completed_date = order.createdAt;
           startDate = new Date(order.createdAt);
-          lastDate = new Date();
+          lastDate = new Date(order.updatedAt);
+          order.days = 0;
         }
-
-        let differenceTime = lastDate.getTime() - startDate.getTime();
-        let differenceDays = differenceTime / (1000 * 3600 * 24);
-        order.days = Math.round(differenceDays);
       });
 
       //   const newOrdersData = ordersData.filter(
@@ -218,7 +244,7 @@ function TrackingOrdersTable() {
                               TableStyle.statusColorAvailabile
                             }
                           >
-                            Completed
+                            {order.delivery_status}
                           </span>
                         </>
                       )}
