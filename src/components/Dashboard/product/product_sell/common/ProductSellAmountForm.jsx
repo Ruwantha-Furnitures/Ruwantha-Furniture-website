@@ -210,17 +210,6 @@ function ProductSellAmountForm() {
               className={
                 ProductViewFormStyle.descButtonAddStyle +
                 " " +
-                ProductViewFormStyle.descButtonAddStyleColor +
-                " " +
-                ProductViewFormStyle.addRightMargin
-              }
-            >
-              Cancel
-            </button>
-            <button
-              className={
-                ProductViewFormStyle.descButtonAddStyle +
-                " " +
                 ProductViewFormStyle.addRightMargin
               }
               onClick={(e) => handlePaymentProcess(e)}

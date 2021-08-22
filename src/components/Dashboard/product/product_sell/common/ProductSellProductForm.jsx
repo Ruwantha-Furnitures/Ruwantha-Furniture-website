@@ -8,7 +8,8 @@ import {
   deleteSellProduct,
   getSellProductDetails,
 } from "../../../service/sellProduct";
-// import { getOrderDetails } from "./../../../service/order";
+import { deleteOrder } from "./../../../service/order";
+import { deleteSellProductOrder } from "./../../../service/sellProductOrder";
 
 function ProductSellProductForm() {
   const { id } = useParams();
@@ -142,6 +143,7 @@ function ProductSellProductForm() {
 
   const handleCancelSellProduct = async (e, order_id) => {
     e.preventDefault();
+    console.log(order_id);
     try {
       const response = await deleteSellProduct(order_id);
       window.location = `/dashboard/product/sell/product/${id}`;
@@ -152,9 +154,18 @@ function ProductSellProductForm() {
     // cancel order process
   };
 
-  const handleCancelProcess = (e) => {
+  const handleCancelProcess = async (e) => {
     e.preventDefault();
-    console.log(e);
+
+    try {
+      const responseDelteSellProducts = await deleteSellProductOrder(id);
+
+      const resopnse = await deleteOrder(id);
+      window.location = `/dashboard/product/sell/customer`;
+    } catch (error) {
+      console.log("Error", error.message);
+    }
+    // console.log(e);
   };
 
   console.log(sellProduct);
@@ -321,6 +332,9 @@ function ProductSellProductForm() {
               <div className={ProductViewFormStyle.details}>
                 <div className={ProductViewFormStyle.infoPart}>
                   <div className={ProductViewFormStyle.form}>
+                    <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
+                      Product Details
+                    </h1>
                     <div
                       className={
                         ProductViewFormStyle.formLine +
