@@ -172,7 +172,7 @@ const Product = () => {
                                                     <Rating dataFromParent = {productList.id} ></Rating>
                                                 </center>
                                                 <center>
-                                                    <Link to="/viewProductDetail"><button class="addtocart" onClick={() => sayHello(productList.id)}>Read More</button></Link>
+                                                    <Link to="/viewProduct"><button class="addtocart" onClick={() => sayHello(productList.id)}>Read More</button></Link>
                                                 </center>                                                                                       
                                             </Card> 
                                             <br />   
