@@ -101,7 +101,11 @@ function CustomerChangePasswordForm({UpdateHandler}) {
                             placeholder='Enter your password'
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                        ></input><br />              
+                        ></input>      
+
+                         <br />
+                            <label><b><i style={{fontSize:'10px'}}>**Use at least one lowercase, uppercase and digit. Minimum length is 6 characters.</i></b></label>
+                        <br />        
                                     
                         <input className={FormStyle.passwordBox}  
                             type="password"    

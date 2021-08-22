@@ -36,15 +36,17 @@ function PurchasedHistoryTable() {
             const order_id = orderResponse.data[i].id            
 
             const sellProductResponse = await axios.get(`http://localhost:8080/api/customersellProduct/${order_id}`); 
-            
-            // const object3 = {...object1, ...object2 }
+                        
             var newobject = sellProductResponse.data;
             console.log(newobject);
-            // var merge = mergeobject.data
-            // sellProducts = {...sellProducts, ...newobject };
-            sellProducts.push(newobject);
-            // console.log(sellProducts);
-            // setMergeObject(merge)  
+
+            // sellProducts.push(newobject);
+            if((Number)(newobject.length) >= 0 ){
+                for(let i=0; i<(Number)(newobject.length); i++){
+                    sellProducts.push(newobject[i]);
+                }
+            }  
+
 
         }  
         console.log(sellProducts);
@@ -74,6 +76,20 @@ function PurchasedHistoryTable() {
         return afterDiscountForAProduct;
     }    
 
+    
+    function getDate(date){
+        // date = new Date('2013-03-10T02:00:00Z');
+
+        // var sentence = "Oh a cookie!"
+        // sentence.split(" ");
+        // [ "Oh", "a", "cookie!" ]
+ 
+        var sentence = date
+        console.log(sentence)
+        var pieces = sentence.split("T");
+        console.log(pieces)
+        return pieces[0]
+    }
 
     const rowStyle={
         margin: '10px'
@@ -100,6 +116,7 @@ function PurchasedHistoryTable() {
                                             <th>Quantity</th>
                                             <th>Discount</th>
                                             <th>Total</th>
+                                            <th>Purchase Date</th>
                                             <th>Rate</th>
                                         </tr>
                                     </thead>
@@ -108,15 +125,17 @@ function PurchasedHistoryTable() {
                                         {historyItems.map((productList,i) =>(                                                                                  
                                             <tr key={i}>                                        
                                                 <td>{i+1}</td>
-                                                <td><img src={productList[0].product.img_location} style={{width:'100px', borderRadius: '20px'}} alt='imgitem'></img></td>
-                                                <td>{productList[0].product.name}</td>
-                                                <td>{productList[0].product.price}</td>
-                                                <td>{productList[0].quantity}</td>
-                                                <td>{productList[0].product.discount}</td>
-                                                <td>{getTotal(productList[0].product.price,productList[0].quantity,productList[0].product.discount)}</td>                                           
+                                                <td><img src={productList.product.img_location} style={{width:'100px', borderRadius: '20px'}} alt='imgitem'></img></td>
+                                                <td>{productList.product.name}</td>
+                                                <td>{productList.product.price}</td>
+                                                <td>{productList.quantity}</td>
+                                                <td>{productList.product.discount}</td>
+                                                <td>{getTotal(productList.product.price,productList.quantity,productList.product.discount)}</td>                                                                                           
+                                                <td>{getDate(productList.updatedAt)}</td>
+                                                {/* <td>{productList.updatedAt}</td> */}
                                                 <td>
                                                     {/* <Link to='/customer_add_reviews'><button class="btn btn-light" onClick={() => GetProductID(productList.id)}><GradeIcon></GradeIcon></button></Link> */}
-                                                    <button class="btn btn-light" onClick={() => GetProductID(productList[0].product.id)}><GradeIcon></GradeIcon></button>
+                                                    <button class="btn btn-light" onClick={() => GetProductID(productList.product.id)}><GradeIcon></GradeIcon></button>
                                                 </td>
                                             </tr> 
                                         ))} 
