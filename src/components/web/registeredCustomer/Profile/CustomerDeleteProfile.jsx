@@ -8,7 +8,7 @@ import Topimg from '../../../../assets/topimg35.jpg';
 import axios from 'axios';
 
 function CustomerDeleteProfile() {
-    const [isSubmit, setIsSubmit] = useState(false);    
+    const [isCustomerDelete, setIsCustomerDelete] = useState(false);    
 
     const deleteProfileHandler =async () =>{
         let accountID=localStorage.getItem('userAccID');
@@ -16,21 +16,20 @@ function CustomerDeleteProfile() {
 
         const onlineCustomerIDResponse = await axios.get(`http://localhost:8080/api/onlineCustomerLogin/${accountID}`)  
         console.log(onlineCustomerIDResponse.data.id)          
-        // let onlineCustomerID=onlineCustomerIDResponse.data.id;
-
-        // try{            
-        //     const res = await axios.delete(`http://localhost:8080/api/customer/delete/${accountID}`,            
-        //         { data }
-        //     );
         
-        //     if(res.data.auth === true){
-        //         setIsSubmit(true);
-        //     }else{
-        //         setIsSubmit(false);
-        //     }            
-        // }catch(error){
-        //     console.log(error);
-        // }
+        let onlineCustomerID=onlineCustomerIDResponse.data.id;
+
+        try{            
+            const CustomerDeleteResponse = await axios.delete(`http://localhost:8080/api/customer/${CustomerID}`);
+            console.log(CustomerDeleteResponse.data)
+            if(CustomerDeleteResponse.status === 200){
+                setIsCustomerDelete(true);
+            }else{
+                setIsCustomerDelete(false);
+            }            
+        }catch(error){
+            console.log(error);
+        }
     };
 
     const contactImg = {
