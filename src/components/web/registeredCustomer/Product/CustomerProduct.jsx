@@ -21,6 +21,7 @@ const CustomerProduct = () => {
     const [products,setProducts]=useState([])   
     const [typesIDs,setTypeIDs]=useState([]);   
     const [selectedProducts,setSelectedProducts]=useState([]);   
+    const [isFiltered,setisFiltered]=useState(false); 
 
     useEffect(() => {
         console.log(category)
@@ -78,12 +79,17 @@ const CustomerProduct = () => {
             var newobject = selectedProductResponse.data;
             console.log(newobject);
         
-            filterProducts.push(newobject);
+            if((Number)(newobject.length) >= 0 ){
+                for(let i=0; i<(Number)(newobject.length); i++){
+                    filterProducts.push(newobject[i]);
+                }
+            }            
             
         }  
         console.log(filterProducts);
         setSelectedProducts(filterProducts);
-        console.log(selectedProducts);            
+        setisFiltered(true)
+        // console.log(selectedProducts);            
     }
 
     const funitureimg = {
@@ -109,6 +115,8 @@ const CustomerProduct = () => {
         border: 'solid 1px darkgray'               
     };
 
+    console.log(selectedProducts);            
+    console.log(isFiltered);     
     return (
         <div style={contactImg}>  
         <Navigation></Navigation>          
@@ -144,6 +152,7 @@ const CustomerProduct = () => {
                             
                             {/* <ProductBox></ProductBox> */}
                             <div className={CommnStyles.gridContainer}>
+                            {(isFiltered=== false) && (<>
                                 {products.map((productList) =>(  
                                 <Container>
                                     <Row sm={12}>
@@ -160,7 +169,7 @@ const CustomerProduct = () => {
                                                         Rs. {productList.price}<br />                                        
                                                     </p>
                                                 <center>    
-                                                    <Rating></Rating>
+                                                    <Rating dataFromParent = {productList.id} ></Rating>
                                                 </center>
                                                 <center>
                                                     <Link to="/viewProductDetail"><button class="addtocart" onClick={() => sayHello(productList.id)}>Read More</button></Link>
@@ -171,7 +180,55 @@ const CustomerProduct = () => {
                                         </Col>
                                     </Row>
                                     </Container>
-                                ))}                    
+                                ))} 
+                            </>  )}        
+                            {(isFiltered=== true) && (Array.isArray(selectedProducts) === true) && (<>
+                                {selectedProducts.map((selectedproductList) =>(  
+                                <Container fluid >                                  
+                                    <Card style={{width: '18rem'}}> 
+                                        <center>      
+                                            <img src={selectedproductList.img_location} alt='items' style={funitureimg} width={200} height={150}></img>                                                        
+                                        </center>
+                                        <br />
+                                        <center> {selectedproductList.name} </center>                                                   
+                                        <p class="textinbox">                        
+                                            Rs. {selectedproductList.price}<br />                                        
+                                        </p>
+                                        <center>    
+                                        <Rating></Rating>
+                                        </center>
+                                        <center>
+                                            <Link to="/viewProductDetail"><button class="addtocart" onClick={() => sayHello(selectedproductList.id)}>Read More</button></Link>
+                                        </center>                                                                                       
+                                    </Card> 
+ 
+                               
+                                    {/* <Row sm={12}>
+                                        <Col sm={3}>
+                                            <center>
+                                            <Card style={{width: '18rem'}}> 
+                                                <center>      
+                                                    <img src={selectedproductList[0].img_location} alt='items' style={funitureimg} width={200} height={150}></img>                                                        
+                                                </center>
+                                                <br />
+                                                <center> {selectedproductList[0].name} </center>                                                   
+                                                    <p class="textinbox">                        
+                                                        Rs. {selectedproductList[0].price}<br />                                        
+                                                    </p>
+                                                <center>    
+                                                    <Rating></Rating>
+                                                </center>
+                                                <center>
+                                                    <Link to="/viewProductDetail"><button class="addtocart" onClick={() => sayHello(selectedproductList[0].id)}>Read More</button></Link>
+                                                </center>                                                                                       
+                                            </Card> 
+                                            <br />   
+                                            </center>                                   
+                                        </Col>
+                                    </Row> */}
+                                    </Container>
+                                ))} 
+                            </>  )}               
                             </div>
                         
                         </center>
