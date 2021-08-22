@@ -79,7 +79,11 @@ const CustomerProduct = () => {
             var newobject = selectedProductResponse.data;
             console.log(newobject);
         
-            filterProducts.push(newobject);
+            if((Number)(newobject.length) >= 0 ){
+                for(let i=0; i<(Number)(newobject.length); i++){
+                    filterProducts.push(newobject[i]);
+                }
+            }            
             
         }  
         console.log(filterProducts);
@@ -180,13 +184,31 @@ const CustomerProduct = () => {
                             </>  )}        
                             {(isFiltered=== true) && (Array.isArray(selectedProducts) === true) && (<>
                                 {selectedProducts.map((selectedproductList) =>(  
-                                <Container>
-                                    <Row sm={12}>
+                                <Container fluid >                                  
+                                    <Card style={{width: '18rem'}}> 
+                                        <center>      
+                                            <img src={selectedproductList.img_location} alt='items' style={funitureimg} width={200} height={150}></img>                                                        
+                                        </center>
+                                        <br />
+                                        <center> {selectedproductList.name} </center>                                                   
+                                        <p class="textinbox">                        
+                                            Rs. {selectedproductList.price}<br />                                        
+                                        </p>
+                                        <center>    
+                                        <Rating></Rating>
+                                        </center>
+                                        <center>
+                                            <Link to="/viewProductDetail"><button class="addtocart" onClick={() => sayHello(selectedproductList.id)}>Read More</button></Link>
+                                        </center>                                                                                       
+                                    </Card> 
+ 
+                               
+                                    {/* <Row sm={12}>
                                         <Col sm={3}>
                                             <center>
                                             <Card style={{width: '18rem'}}> 
                                                 <center>      
-                                                    <img src={selectedproductList[0].product.img_location} alt='items' style={funitureimg} width={200} height={150}></img>                                                        
+                                                    <img src={selectedproductList[0].img_location} alt='items' style={funitureimg} width={200} height={150}></img>                                                        
                                                 </center>
                                                 <br />
                                                 <center> {selectedproductList[0].name} </center>                                                   
@@ -203,7 +225,7 @@ const CustomerProduct = () => {
                                             <br />   
                                             </center>                                   
                                         </Col>
-                                    </Row>
+                                    </Row> */}
                                     </Container>
                                 ))} 
                             </>  )}               
