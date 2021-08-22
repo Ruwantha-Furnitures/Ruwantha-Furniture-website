@@ -5,7 +5,6 @@ import GradeIcon from '@material-ui/icons/Grade';
 import Form from "react-bootstrap/Form";
 import Card from 'react-bootstrap/Card';
 import { Redirect } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function PurchasedHistoryTable() {    
@@ -13,9 +12,6 @@ function PurchasedHistoryTable() {
     const [historyItems,setHistoryItems]=useState([]);   
     const [isReviewID,setisReviewID]=useState(false); 
     
-
-    const [historyItems,setHistoryItems]=useState([]);   
-    const [isReviewID,setisReviewID]=useState(false); 
 
     var totalcounter = 0;
     var caldiscount = 0.00;
@@ -31,12 +27,9 @@ function PurchasedHistoryTable() {
         setorderIDs(orderResponse.data)
 
         
-
         const length = orderResponse.data.length;
 
         var sellProducts =[];
-
-        const length = orderResponse.data.length
 
         for(let i=0; i<(Number)(length); i++){
             console.log( orderResponse.data[i].id)
@@ -63,10 +56,6 @@ function PurchasedHistoryTable() {
         console.log(id)
         localStorage.setItem("ReviewProductID",id)
         setisReviewID(true)        
-
-            console.log(sellProductResponse.data)
-
-            setHistoryItems(sellProductResponse.data)  
     }
 
     function getTotal(price,quantity,discount){        
