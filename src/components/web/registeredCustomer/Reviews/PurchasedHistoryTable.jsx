@@ -12,6 +12,12 @@ function PurchasedHistoryTable() {
     const [historyItems,setHistoryItems]=useState([]);   
     const [isReviewID,setisReviewID]=useState(false); 
     
+<<<<<<< HEAD
+=======
+
+    const [historyItems,setHistoryItems]=useState([]);   
+    const [isReviewID,setisReviewID]=useState(false); 
+>>>>>>> 9d4470edaa6d234336b6e3935f55b6378517b3fd
 
     var totalcounter = 0;
     var caldiscount = 0.00;
@@ -36,7 +42,12 @@ function PurchasedHistoryTable() {
             const order_id = orderResponse.data[i].id            
 
             const sellProductResponse = await axios.get(`http://localhost:8080/api/customersellProduct/${order_id}`); 
+<<<<<<< HEAD
                         
+=======
+            
+            // const object3 = {...object1, ...object2 }
+>>>>>>> 9d4470edaa6d234336b6e3935f55b6378517b3fd
             var newobject = sellProductResponse.data;
             console.log(newobject);
 
@@ -58,6 +69,13 @@ function PurchasedHistoryTable() {
         console.log(id)
         localStorage.setItem("ReviewProductID",id)
         setisReviewID(true)        
+<<<<<<< HEAD
+=======
+
+            console.log(sellProductResponse.data)
+
+            setHistoryItems(sellProductResponse.data)  
+>>>>>>> 9d4470edaa6d234336b6e3935f55b6378517b3fd
     }
 
     function getTotal(price,quantity,discount){        
