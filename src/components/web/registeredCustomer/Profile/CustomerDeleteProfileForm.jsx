@@ -27,16 +27,15 @@ const CustomerDeleteProfileForm = ({deleteProfileHandler}) => {
             console.log(response.data.password)
 
             if(encryptpw === response.data.password){
-                console.log("Current password is matched")                
+                console.log("Current password is matched")     
+                deleteProfileHandler()           
             }else{
                 alert("Current password is not matched")
                 setPassword("")
             }            
         }catch (error) {
             console.log(error)
-        }        
-
-        deleteProfileHandler()
+        }                
     };
 
       
