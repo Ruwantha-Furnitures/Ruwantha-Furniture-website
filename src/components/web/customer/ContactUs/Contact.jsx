@@ -4,7 +4,7 @@ import About from "../../Common/About";
 import { Container} from 'reactstrap';
 import Topimg from '../../../../assets/topimg10.jpg';
 import ConForm from "../../Common/ContactForm";
-import Footer from "../../Common/Footer";
+import Footer from "../../Common/FooterunRegistered";
 import axios from "axios";
 import { Redirect } from 'react-router-dom';
 

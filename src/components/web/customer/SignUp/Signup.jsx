@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import Navigation from "../Navigation/Indexnav";
-import Footer from "../../Common/Footer";
+import Footer from "../../Common/FooterunRegistered";
 import SignForm from "./SignupForm";
 import backcover from "../../../../assets/topimg27.jpg";
 import { Container } from "reactstrap";

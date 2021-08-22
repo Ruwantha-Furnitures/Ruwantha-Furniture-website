@@ -50,7 +50,11 @@ require("./routes/productForType.routes")(app);
 <<<<<<< HEAD
 require("./routes/productReviewForAProduct.routes")(app);
 =======
+<<<<<<< HEAD
+require("./routes/productReviewForAProduct.routes")(app);
+=======
 >>>>>>> 9d4470edaa6d234336b6e3935f55b6378517b3fd
+>>>>>>> 5c2ecc631d2f893bf7f6879b4fe4cac549fe688f
 
 // set port
 const PORT = process.env.PORT || 8080;

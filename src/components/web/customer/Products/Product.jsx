@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import { Row, Col, Container } from 'reactstrap';
 import Navigation from "../Navigation/Indexnav";
-import Footer from "../../Common/Footer";
+import Footer from "../../Common/FooterunRegistered";
 import ProductBox from "./AllProductCards";
 import Search from "../../Common/SearchProduct";
 import SliderProducts from "../../Common/ProductSlider";

@@ -5,7 +5,7 @@ import Topimg from '../../../../assets/topimg19.jpg';
 import ProductBox from "./ProductCards"; /// Change this to /ProductCards
 import Navigation from "../Navigation/Indexnav";
 import Slideshow from './Banner';
-import Footer from "../../Common/Footer";
+import Footer from "../../Common/FooterunRegistered";
 import Card from 'react-bootstrap/Card';
 import Gallary from '../../Common/ImageGallary';
 import "../../../../css/web/Home.css";
