@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState,useEffect} from 'react';
 import { Row, Col } from "reactstrap";
 import Navigation from "../Navigation/Indexnav";
 import Footer from "../../Common/Footer";
@@ -9,7 +9,6 @@ import Card from "react-bootstrap/Card";
 import Form from 'react-bootstrap/Form';
 import Rating from "../../Common/StartRating";
 import { Link } from "react-router-dom";
-import SliderProducts from "../../Common/ProductSlider";
 import CommnStyles from "../../../../css/web/common.module.css";
 import "../../../../css/web/Home.css";
 import axios from "axios";
@@ -127,7 +126,7 @@ const Product = () => {
                                 <br />
                                 <SliderProducts></SliderProducts>
                                 <br />
-                                <ProductBox itemUpHandler={itemUpHandler}></ProductBox>
+                                <ProductBox></ProductBox>
                             </center>
                         </Card.Body>
                     </Card>

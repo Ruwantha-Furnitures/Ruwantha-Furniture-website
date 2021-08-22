@@ -165,7 +165,7 @@ const CustomerProduct = () => {
                                                         Rs. {productList.price}<br />                                        
                                                     </p>
                                                 <center>    
-                                                    <Rating></Rating>
+                                                    <Rating dataFromParent = {productList.id} ></Rating>
                                                 </center>
                                                 <center>
                                                     <Link to="/viewProductDetail"><button class="addtocart" onClick={() => sayHello(productList.id)}>Read More</button></Link>
