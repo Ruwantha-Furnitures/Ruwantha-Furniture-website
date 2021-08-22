@@ -5,16 +5,21 @@ import { Link } from "react-router-dom";
 import Rating from "../../Common/StartRating";
 import "../../../../css/web/Home.css";
 import CommnStyles from "../../../../css/web/common.module.css";
+
 import axios from "axios";
 
 const CustomerAllProducts = () => {    
     require("bootstrap/dist/css/bootstrap.min.css");    
     // const [itemCount, setItemCount] = React.useState(0);
     const [products,setProducts]=useState([])    
+    const [value, setValue] = React.useState(1);
+    const [rateData,setRateDetails]=useState([]);   
+    const [rating, setRating] = useState(1);
+    const [haveRating, setHaveRating] = React.useState(false);
 
     // to load the product when the page is first rendered
     useEffect(() => {
-        viewAllProducts();
+        viewAllProducts();        
     },[])
 
     const viewAllProducts = async () => {
@@ -34,7 +39,7 @@ const CustomerAllProducts = () => {
         console.log(localStorage.getItem("productID"));  
         
         //cart label number
-    }
+    } 
 
     const funitureimg = {
       marginTop: "30px",      
@@ -62,7 +67,7 @@ const CustomerAllProducts = () => {
                                     Rs. {productList.price}<br />                                        
                                 </p>
                             <center>    
-                                <Rating></Rating>
+                                <Rating dataFromParent = {productList.id} ></Rating>
                             </center>
                             <center>
                                 <Link to="/viewProductDetail"><button class="addtocart" onClick={() => sayHello(productList.id)}>Read More</button></Link>

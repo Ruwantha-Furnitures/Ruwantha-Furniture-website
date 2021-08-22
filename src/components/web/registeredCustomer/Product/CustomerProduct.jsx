@@ -21,10 +21,7 @@ const CustomerProduct = () => {
     const [products,setProducts]=useState([])   
     const [typesIDs,setTypeIDs]=useState([]);   
     const [selectedProducts,setSelectedProducts]=useState([]);   
-<<<<<<< HEAD
     const [isFiltered,setisFiltered]=useState(false); 
-=======
->>>>>>> 9d4470edaa6d234336b6e3935f55b6378517b3fd
 
     useEffect(() => {
         console.log(category)
@@ -82,25 +79,17 @@ const CustomerProduct = () => {
             var newobject = selectedProductResponse.data;
             console.log(newobject);
         
-<<<<<<< HEAD
             if((Number)(newobject.length) >= 0 ){
                 for(let i=0; i<(Number)(newobject.length); i++){
                     filterProducts.push(newobject[i]);
                 }
             }            
-=======
-            filterProducts.push(newobject);
->>>>>>> 9d4470edaa6d234336b6e3935f55b6378517b3fd
             
         }  
         console.log(filterProducts);
         setSelectedProducts(filterProducts);
-<<<<<<< HEAD
         setisFiltered(true)
         // console.log(selectedProducts);            
-=======
-        console.log(selectedProducts);            
->>>>>>> 9d4470edaa6d234336b6e3935f55b6378517b3fd
     }
 
     const funitureimg = {
@@ -126,11 +115,8 @@ const CustomerProduct = () => {
         border: 'solid 1px darkgray'               
     };
 
-<<<<<<< HEAD
     console.log(selectedProducts);            
     console.log(isFiltered);     
-=======
->>>>>>> 9d4470edaa6d234336b6e3935f55b6378517b3fd
     return (
         <div style={contactImg}>  
         <Navigation></Navigation>          
@@ -166,10 +152,7 @@ const CustomerProduct = () => {
                             
                             {/* <ProductBox></ProductBox> */}
                             <div className={CommnStyles.gridContainer}>
-<<<<<<< HEAD
                             {(isFiltered=== false) && (<>
-=======
->>>>>>> 9d4470edaa6d234336b6e3935f55b6378517b3fd
                                 {products.map((productList) =>(  
                                 <Container>
                                     <Row sm={12}>
@@ -186,11 +169,7 @@ const CustomerProduct = () => {
                                                         Rs. {productList.price}<br />                                        
                                                     </p>
                                                 <center>    
-<<<<<<< HEAD
                                                     <Rating dataFromParent = {productList.id} ></Rating>
-=======
-                                                    <Rating></Rating>
->>>>>>> 9d4470edaa6d234336b6e3935f55b6378517b3fd
                                                 </center>
                                                 <center>
                                                     <Link to="/viewProductDetail"><button class="addtocart" onClick={() => sayHello(productList.id)}>Read More</button></Link>
@@ -201,7 +180,6 @@ const CustomerProduct = () => {
                                         </Col>
                                     </Row>
                                     </Container>
-<<<<<<< HEAD
                                 ))} 
                             </>  )}        
                             {(isFiltered=== true) && (Array.isArray(selectedProducts) === true) && (<>
@@ -251,9 +229,6 @@ const CustomerProduct = () => {
                                     </Container>
                                 ))} 
                             </>  )}               
-=======
-                                ))}                    
->>>>>>> 9d4470edaa6d234336b6e3935f55b6378517b3fd
                             </div>
                         
                         </center>
