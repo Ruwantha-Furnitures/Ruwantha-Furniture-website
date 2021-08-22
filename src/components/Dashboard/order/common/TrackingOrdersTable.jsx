@@ -6,7 +6,7 @@ import { getDeliveries } from "./../../service/delivery";
 import Pagination from "./../../common/pagination";
 import { paginate } from "./../../utils/paginate";
 
-function AssignDriverOrderList() {
+function TrackingOrdersTable() {
   const [orders, setOrders] = useState({
     total_amount: 0,
     customer_id: 0,
@@ -19,6 +19,8 @@ function AssignDriverOrderList() {
       contact_number: 0,
     },
     delivery_status: "",
+    completed_date: "",
+    days: 0,
   });
 
   const [page, setPage] = useState({
@@ -48,25 +50,44 @@ function AssignDriverOrderList() {
 
         console.log(deliveryStatus);
 
+        var startDate;
+        var lastDate;
+
         if (deliveryStatus !== undefined) {
-          if (deliveryStatus.request_status === 1) {
-            order.delivery_status = "Pending";
+          if (
+            deliveryStatus.request_status === 0 &&
+            deliveryStatus.complete_status === 1
+          ) {
+            order.delivery_status = "Completed";
+            order.completed_date = deliveryStatus.updatedAt;
+            startDate = new Date(order.createdAt);
+            lastDate = new Date(deliveryStatus.updatedAt);
           } else {
-            order.delivery_status = "Assigned";
+            order.delivery_status = "Not Completed";
+            startDate = new Date(order.createdAt);
+            lastDate = new Date();
           }
         } else {
-          order.delivery_status = "Not Assigned";
+          order.delivery_status = "Not Completed";
+          startDate = new Date(order.createdAt);
+          lastDate = new Date();
         }
+
+        let differenceTime = lastDate.getTime() - startDate.getTime();
+        let differenceDays = differenceTime / (1000 * 3600 * 24);
+        order.days = Math.round(differenceDays);
       });
 
-      const newOrdersData = ordersData.filter(
-        (order) => order.delivery_status === "Not Assigned"
-      );
+      //   const newOrdersData = ordersData.filter(
+      //     (order) => order.delivery_status === "Not Assigned"
+      //   );
+
+      const newOrdersData = ordersData;
 
       setOrders(newOrdersData);
       setFilterOrders(paginate(newOrdersData, page.currentPage, page.pageSize));
 
-      // console.log(newOrdersData);
+      console.log(newOrdersData);
     } catch (error) {
       console.log("Error", error.message);
     }
@@ -89,7 +110,6 @@ function AssignDriverOrderList() {
         )
       );
     }
-
     setSearch(search);
   };
 
@@ -98,12 +118,12 @@ function AssignDriverOrderList() {
     setPage({ currentPage: page, pageSize: 8 });
   };
 
+  console.log(orders);
+
   return (
     <React.Fragment>
       <div className={TableStyle.titleHeader}>
-        <h1 className={TableStyle.tableTitleProductStyle}>
-          Assign Drivers For Orders
-        </h1>
+        <h1 className={TableStyle.tableTitleProductStyle}>Tracking Orders</h1>
         <div className={TableStyle.searchSection}>
           <form action="#">
             <div className={TableStyle.search}>
@@ -129,7 +149,6 @@ function AssignDriverOrderList() {
           </form>
         </div>
       </div>
-
       <div className={TableStyle.tablebody}>
         <table className={TableStyle.tableShow}>
           <thead>
@@ -138,16 +157,16 @@ function AssignDriverOrderList() {
                 <div className={TableStyle.header}>Order Id</div>
               </th>
               <th>
-                <div className={TableStyle.header}>Customer</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Contact Number</div>
+                <div className={TableStyle.header}>Customer Name</div>
               </th>
               <th>
                 <div className={TableStyle.header}>Date</div>
               </th>
               <th>
-                <div className={TableStyle.header}>Delivery</div>
+                <div className={TableStyle.header}>Days</div>
+              </th>
+              <th>
+                <div className={TableStyle.header}>Status</div>
               </th>
             </tr>
           </thead>
@@ -155,10 +174,10 @@ function AssignDriverOrderList() {
             {Array.isArray(filterOrders) === true && (
               <React.Fragment>
                 {filterOrders.map((order, index) => (
-                  <tr key={index}>
+                  <tr key={index + 1}>
                     <td>
                       <Link
-                        to={`/dashboard/assignOrder/details/${order.id}`}
+                        to={`/dashboard/trackingOrder/details/${order.id}`}
                         className={TableStyle.linkStyle}
                       >
                         <span className={TableStyle.statusStyleLink}>
@@ -175,23 +194,36 @@ function AssignDriverOrderList() {
                         " " +
                         order.customer.last_name}
                     </td>
-                    <td>{"0" + order.customer.contact_number}</td>
                     <td>{order.createdAt.split("T")[0]}</td>
+                    <td>{order.days < 10 ? "0" + order.days : order.days}</td>
                     <td>
-                      <Link
-                        to={`/dashboard/assignDriver/${order.id}`}
-                        className={TableStyle.linkStyle}
-                      >
-                        <span
-                          className={
-                            TableStyle.statusStyle +
-                            " " +
-                            TableStyle.statusColorNotCompleted
-                          }
-                        >
-                          Not Assigned
-                        </span>
-                      </Link>
+                      {order.delivery_status === "Not Completed" ? (
+                        <>
+                          <span
+                            className={
+                              TableStyle.statusStyle +
+                              " " +
+                              TableStyle.statusColorNotAvailabile
+                            }
+                          >
+                            Not Completed
+                          </span>
+                        </>
+                      ) : (
+                        <>
+                          <span
+                            className={
+                              TableStyle.statusStyle +
+                              " " +
+                              TableStyle.statusColorAvailabile
+                            }
+                          >
+                            Completed
+                          </span>
+                        </>
+                      )}
+
+                      {/* {order.createdAt.split("T")[0]} */}
                     </td>
                   </tr>
                 ))}
@@ -210,4 +242,4 @@ function AssignDriverOrderList() {
   );
 }
 
-export default AssignDriverOrderList;
+export default TrackingOrdersTable;

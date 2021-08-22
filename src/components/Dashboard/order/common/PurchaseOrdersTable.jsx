@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TableStyle from "../../../../css/dashboard/Table.module.css";
 import { getOrders } from "./../../service/order";
+import Pagination from "./../../common/pagination";
+import { paginate } from "./../../utils/paginate";
 
 function PurchaseOrdersTable() {
   const [orders, setOrders] = useState({
@@ -17,19 +19,25 @@ function PurchaseOrdersTable() {
     },
   });
 
+  const [page, setPage] = useState({
+    pageSize: 8,
+    currentPage: 1,
+  });
+
   const [search, setSearch] = useState("");
   const [filterOrders, setFilterOrders] = useState({});
 
   useEffect(() => {
     loadInvoice();
-  }, []);
+  }, [page]);
 
   const loadInvoice = async () => {
     try {
       const result = await getOrders();
-      const ordersData = result.data;
+      // const ordersData = result.data;
       setOrders(result.data);
-      setFilterOrders(result.data);
+      const data = paginate(result.data, page.currentPage, page.pageSize);
+      setFilterOrders(data);
     } catch (error) {
       console.log("Error", error.message);
     }
@@ -38,13 +46,18 @@ function PurchaseOrdersTable() {
   const onInputChange = (e) => {
     let search = e.target.value;
     if (search === "") {
-      setFilterOrders(orders);
+      const data = paginate(orders, page.currentPage, page.pageSize);
+      setFilterOrders(data);
     } else {
       setFilterOrders(
-        orders.filter((order) =>
-          (order.customer.first_name + " " + order.customer.last_name)
-            .toLowerCase()
-            .includes(search.toLowerCase())
+        paginate(
+          orders.filter((order) =>
+            (order.customer.first_name + " " + order.customer.last_name)
+              .toLowerCase()
+              .includes(search.toLowerCase())
+          ),
+          1,
+          page.pageSize
         )
       );
     }
@@ -52,8 +65,12 @@ function PurchaseOrdersTable() {
     setSearch(search);
   };
 
-  // console.log(orders);
+  const handlePageChange = (page) => {
+    console.log(page);
+    setPage({ currentPage: page, pageSize: 8 });
+  };
 
+  // console.log(orders);
   return (
     <React.Fragment>
       <div className={TableStyle.titleHeader}>
@@ -97,10 +114,7 @@ function PurchaseOrdersTable() {
                 <div className={TableStyle.header}>Contact Number</div>
               </th>
               <th>
-                <div className={TableStyle.header}>Amount</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Payment Method</div>
+                <div className={TableStyle.header}>Method</div>
               </th>
               <th>
                 <div className={TableStyle.header}>Date</div>
@@ -118,7 +132,11 @@ function PurchaseOrdersTable() {
                         className={TableStyle.linkStyle}
                       >
                         <span className={TableStyle.statusStyleLink}>
-                          {order.id}
+                          {order.id < 10
+                            ? "OD000" + order.id
+                            : order.id < 100
+                            ? "OD00" + order.id
+                            : "OD0" + order.id}
                         </span>
                       </Link>
                     </td>
@@ -127,8 +145,7 @@ function PurchaseOrdersTable() {
                         " " +
                         order.customer.last_name}
                     </td>
-                    <td>{order.customer.contact_number}</td>
-                    <td>{"Rs. " + order.total_product_amount}</td>
+                    <td>{"0" + order.customer.contact_number}</td>
                     <td>{order.payment_method}</td>
                     <td>{order.createdAt.split("T")[0]}</td>
                   </tr>
@@ -138,50 +155,12 @@ function PurchaseOrdersTable() {
           </tbody>
         </table>
       </div>
-      <div className={TableStyle.tablePagination}>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationArrowIcon}>
-            arrow_back_ios
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span
-            className={
-              "material-icons " +
-              TableStyle.paginationCircleIcon +
-              " " +
-              TableStyle.active
-            }
-          >
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationCircleIcon}>
-            circle
-          </span>
-        </Link>
-        <Link to="#" className={TableStyle.paginationLink}>
-          <span className={"material-icons " + TableStyle.paginationArrowIcon}>
-            arrow_forward_ios
-          </span>
-        </Link>
-      </div>
+      <Pagination
+        itemsCount={orders.length}
+        pageSize={page.pageSize}
+        currentPage={page.currentPage}
+        onPageChange={handlePageChange}
+      />
     </React.Fragment>
   );
 }
