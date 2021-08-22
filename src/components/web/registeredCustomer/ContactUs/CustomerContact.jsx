@@ -11,20 +11,23 @@ import { Redirect } from 'react-router-dom';
 const CustomerContact = () => {
     const [isSubmit, setIsSubmit] = useState(false);
     //console.log("test")
-    // const contactUsHandler =async (data) =>{
-    //     try{            
-    //         console.log(data)
-    //         const respond = await axios.post("http://localhost:8080/api/message/",{ data });
-    //         console.log(respond.data)
-    //         if(respond.data.auth === true){
-    //             setIsSubmit(true);
-    //         }else{
-    //             setIsSubmit(false);
-    //         }            
-    //     }catch(error){
-    //         console.log(error);
-    //     }
-    // };
+    const contactUsHandler =async (data) =>{
+        try{            
+            let response = await axios.post("http://localhost:8080/api/message/",data);
+            console.log(response.data);
+            if(response.status === 200){
+                setIsSubmit(true)
+            }else{
+                setIsSubmit(false)
+            }
+        }catch (error) {
+            if (error.response.status === 500) {
+                console.log("There was a problem with the server: ", error);
+            } else {
+                console.log(error.response.data.msg);
+            }
+        }
+    };
 
     const contactImg = {
         backgroundImage: `url(${Topimg})` ,
@@ -43,8 +46,7 @@ const CustomerContact = () => {
                     <div style={contactImg}>
                         <Container align="left">
                             <br />
-                            {/* <ConForm contactUsHandler={contactUsHandler}></ConForm> */}
-                            <ConForm></ConForm>
+                            <ConForm contactUsHandler={contactUsHandler}></ConForm>                            
                             <br />
                         </Container>
                     </div>            
