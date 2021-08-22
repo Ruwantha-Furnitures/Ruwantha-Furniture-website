@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import emailjs from "emailjs-com";
 import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.module.css";
 import { Link, useParams } from "react-router-dom";
 import Auth from "../../service/auth";
@@ -70,6 +71,39 @@ function DeliveryDriverViewForm() {
       console.log("There was a problem with the server: ", error);
     }
   };
+
+  const handleSendMail = () => {
+    const data = {
+      to_email: "wtgihan@gmail.com",
+      from_name: "AR MAgic",
+      to_name: "Driver Name",
+      message: "You have orders yet please completedddd!",
+    };
+    const email = "wtgihan@gmail.com";
+    console.log(email);
+    emailjs
+      .send(
+        "service_pvdt2dh",
+        "template_rp0pjkb",
+        {
+          to_name: data.to_name,
+          from_name: data.from_name,
+          message: data.message,
+          to_email: data.to_email,
+        },
+        "user_jVl4NzJU1xAWDuQ598yyT"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
+
+  console.log(driverProfileSet);
   return (
     <React.Fragment>
       <div className={ProductViewFormStyle.titleHeader}>
@@ -82,7 +116,9 @@ function DeliveryDriverViewForm() {
               <Link
                 to={
                   driverViewLocation === "view"
-                    ? "/dashboard/deliveryDrivers"
+                    ? driverProfileSet !== "deliveryDriverNotCompleted"
+                      ? "/dashboard/deliveryDrivers"
+                      : "/dashboard/trackingOrders"
                     : "/dashboard/completedOrders"
                 }
                 className={ProductViewFormStyle.linkStyle}
@@ -225,6 +261,17 @@ function DeliveryDriverViewForm() {
               </button>
             </div>
           )}
+          {user === "Admin" &&
+            driverProfileSet === "deliveryDriverNotCompleted" && (
+              <div className={ProductViewFormStyle.descButtonAdd}>
+                <button
+                  className={ProductViewFormStyle.descButtonAddStyle}
+                  onClick={handleSendMail}
+                >
+                  Send Mail
+                </button>
+              </div>
+            )}
         </div>
       )}
       {driverProfileSet === "deliveryDriverProfile" && (

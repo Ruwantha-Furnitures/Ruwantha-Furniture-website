@@ -278,6 +278,11 @@ function App() {
           />
           <Route
             exact
+            path="/dashboard/deliveryDriverNotCompleted/view/:id"
+            component={DeliveryDriverView}
+          />
+          <Route
+            exact
             path="/dashboard/deliveryDriver/viewOnly/:id"
             component={DeliveryDriverView}
           />

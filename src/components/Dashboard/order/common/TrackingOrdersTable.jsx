@@ -76,6 +76,7 @@ function TrackingOrdersTable() {
               deliveryStatus.complete_status === 0
             ) {
               order.delivery_status = "Not Completed";
+              order.driver_id = deliveryStatus.delivery_driver_id;
               startDate = new Date(order.createdAt);
               lastDate = new Date();
             }
@@ -104,11 +105,13 @@ function TrackingOrdersTable() {
         }
       });
 
-      //   const newOrdersData = ordersData.filter(
-      //     (order) => order.delivery_status === "Not Assigned"
-      //   );
+      const newOrdersData = ordersData.filter(
+        (order) =>
+          order.delivery_status === "Not Completed" ||
+          order.delivery_status === "Pending Assigned"
+      );
 
-      const newOrdersData = ordersData;
+      // const newOrdersData = ordersData;
 
       setOrders(newOrdersData);
       setFilterOrders(paginate(newOrdersData, page.currentPage, page.pageSize));
@@ -225,15 +228,20 @@ function TrackingOrdersTable() {
                     <td>
                       {order.delivery_status === "Not Completed" ? (
                         <>
-                          <span
-                            className={
-                              TableStyle.statusStyle +
-                              " " +
-                              TableStyle.statusColorNotAvailabile
-                            }
+                          <Link
+                            to={`/dashboard/deliveryDriverNotCompleted/view/${order.driver_id}`}
+                            className={TableStyle.linkStyle}
                           >
-                            Not Completed
-                          </span>
+                            <span
+                              className={
+                                TableStyle.statusStyle +
+                                " " +
+                                TableStyle.statusColorNotCompleted
+                              }
+                            >
+                              Not Completed
+                            </span>
+                          </Link>
                         </>
                       ) : (
                         <>
