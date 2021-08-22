@@ -7,11 +7,13 @@ import Card from 'react-bootstrap/Card';
 import FormStyle from "../../../../css/web/Form.module.css";
 import Avatar from "../../../../assets/avatar.png";
 
-function CustomerDeleteProfileForm() {
+const CustomerDeleteProfileForm = ({deleteProfileHandler}) => {
     const [password, setPassword] = useState("");
 
-    const submitHandler = () => {        
+    const submitHandler = (e) => {   
+        e.preventDefault();
         const data = {password };
+        deleteProfileHandler()
     };
 
       

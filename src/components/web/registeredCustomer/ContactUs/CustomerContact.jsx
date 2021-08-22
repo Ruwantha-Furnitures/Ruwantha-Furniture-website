@@ -35,7 +35,7 @@ const CustomerContact = () => {
         MaxWidth: "100%"
     }
 
-    const redirectHome = <Redirect to="/home" />
+    const redirectHome = <Redirect to="/customer_home" />
     return ( 
         <React.Fragment>
             {(isSubmit===true) && (redirectHome)}

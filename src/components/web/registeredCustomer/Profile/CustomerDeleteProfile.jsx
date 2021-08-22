@@ -8,24 +8,29 @@ import Topimg from '../../../../assets/topimg35.jpg';
 import axios from 'axios';
 
 function CustomerDeleteProfile() {
-    const [isSubmit, setIsSubmit] = useState(false);
+    const [isSubmit, setIsSubmit] = useState(false);    
 
-
-    const submitHandler =async (data) =>{
+    const deleteProfileHandler =async () =>{
         let accountID=localStorage.getItem('userAccID');
-        try{            
-            const res = await axios.delete(`http://192.168.56.1:3002/api/customer/delete/${accountID}`,            
-                { data }
-            );
+        let CustomerID=localStorage.getItem('CustomerID');
+
+        const onlineCustomerIDResponse = await axios.get(`http://localhost:8080/api/onlineCustomerLogin/${accountID}`)  
+        console.log(onlineCustomerIDResponse.data.id)          
+        // let onlineCustomerID=onlineCustomerIDResponse.data.id;
+
+        // try{            
+        //     const res = await axios.delete(`http://localhost:8080/api/customer/delete/${accountID}`,            
+        //         { data }
+        //     );
         
-            if(res.data.auth === true){
-                setIsSubmit(true);
-            }else{
-                setIsSubmit(false);
-            }            
-        }catch(error){
-            console.log(error);
-        }
+        //     if(res.data.auth === true){
+        //         setIsSubmit(true);
+        //     }else{
+        //         setIsSubmit(false);
+        //     }            
+        // }catch(error){
+        //     console.log(error);
+        // }
     };
 
     const contactImg = {
@@ -42,7 +47,7 @@ function CustomerDeleteProfile() {
             <Subnavigation></Subnavigation>
             <br />
             <Container align="left"> 
-                <DeleteForm submitHandler={submitHandler}></DeleteForm>
+                <DeleteForm deleteProfileHandler={deleteProfileHandler}></DeleteForm>
             </Container>
             <br /><br />
             <Footer></Footer>    
