@@ -79,10 +79,16 @@ function PurchasedHistoryTable() {
     
     function getDate(date){
         // date = new Date('2013-03-10T02:00:00Z');
-        var startDate = date;
-        {startDate.split("T").map(function(char, index){
-            return char
-        })}        
+
+        // var sentence = "Oh a cookie!"
+        // sentence.split(" ");
+        // [ "Oh", "a", "cookie!" ]
+ 
+        var sentence = date
+        console.log(sentence)
+        var pieces = sentence.split("T");
+        console.log(pieces)
+        return pieces[0]
     }
 
     const rowStyle={
@@ -125,8 +131,8 @@ function PurchasedHistoryTable() {
                                                 <td>{productList.quantity}</td>
                                                 <td>{productList.product.discount}</td>
                                                 <td>{getTotal(productList.product.price,productList.quantity,productList.product.discount)}</td>                                                                                           
-                                                {/* <td>{getDate(productList.updatedAt)}</td> */}
-                                                <td>{productList.updatedAt}</td>
+                                                <td>{getDate(productList.updatedAt)}</td>
+                                                {/* <td>{productList.updatedAt}</td> */}
                                                 <td>
                                                     {/* <Link to='/customer_add_reviews'><button class="btn btn-light" onClick={() => GetProductID(productList.id)}><GradeIcon></GradeIcon></button></Link> */}
                                                     <button class="btn btn-light" onClick={() => GetProductID(productList.product.id)}><GradeIcon></GradeIcon></button>
