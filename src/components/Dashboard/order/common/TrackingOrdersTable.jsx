@@ -160,7 +160,7 @@ function TrackingOrdersTable() {
                 <div className={TableStyle.header}>Customer Name</div>
               </th>
               <th>
-                <div className={TableStyle.header}>Date</div>
+                <div className={TableStyle.header}>Order Date</div>
               </th>
               <th>
                 <div className={TableStyle.header}>Days</div>

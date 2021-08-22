@@ -117,7 +117,7 @@ function PurchaseOrdersTable() {
                 <div className={TableStyle.header}>Method</div>
               </th>
               <th>
-                <div className={TableStyle.header}>Date</div>
+                <div className={TableStyle.header}>Order Date</div>
               </th>
             </tr>
           </thead>

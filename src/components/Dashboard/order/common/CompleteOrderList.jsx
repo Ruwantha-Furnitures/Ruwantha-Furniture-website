@@ -172,7 +172,7 @@ function CompleteOrderList() {
                 <div className={TableStyle.header}>Contact Number</div>
               </th>
               <th>
-                <div className={TableStyle.header}>Date</div>
+                <div className={TableStyle.header}>Order Date</div>
               </th>
               <th>
                 <div className={TableStyle.header}>Driver</div>

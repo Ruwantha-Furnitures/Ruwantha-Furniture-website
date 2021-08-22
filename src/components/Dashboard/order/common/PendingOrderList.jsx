@@ -152,7 +152,7 @@ function PendingOrderList() {
                 <div className={TableStyle.header}>Delivery Driver</div>
               </th>
               <th>
-                <div className={TableStyle.header}>Date</div>
+                <div className={TableStyle.header}>Order Date</div>
               </th>
               <th>
                 <div className={TableStyle.header}>Driver</div>

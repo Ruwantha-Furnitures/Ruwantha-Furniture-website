@@ -120,7 +120,7 @@
 .Img {
   order: 1;
   width: 34%;
-  height: 221px;
+  height: 226px;
   display: flex;
   margin-right: 39px;
   position: relative;
@@ -130,7 +130,7 @@
   order: 2;
   width: 60.5%;
   /* width: 287px; */
-  height: 221px;
+  min-height: 226px;
   background-color: #dbdbdb;
   display: flex;
   flex-direction: column;
@@ -140,7 +140,7 @@
 .typeForm {
   order: 1;
   width: 60.5%;
-  height: 221px;
+  min-height: 221px;
   background-color: #dbdbdb;
   display: flex;
   flex-direction: column;
@@ -242,6 +242,7 @@
   margin-left: 25px;
   margin-right: 25px;
   margin-top: 6px;
+  height: 113px;
 }
 
 .dataProductTitle {
@@ -252,9 +253,15 @@
   /* flex-direction: row;*/
 }
 
+.dataProductTitleNew {
+  width: 99.5%;
+  margin-top: 15px;
+}
+
 .labelProductTitle {
   order: 1;
   width: 29%;
+  height: 33px;
   font-weight: 600;
   font-size: 17px;
   line-height: 19px;
@@ -266,6 +273,51 @@
   /* margin-top: 12px; */
   padding-left: 31px;
   display: flex;
+}
+
+.inputForm {
+  order: 2;
+  width: 56.6%;
+}
+
+.inputFormDesc {
+  order: 2;
+  width: 100%;
+}
+
+.inputBar {
+  height: 33px;
+  background: #ffffff;
+  border-radius: 22px;
+  border: none;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  color: #000000;
+  padding-left: 15px;
+  width: 100%;
+}
+
+.inputError {
+  display: inline-flex;
+  padding: 4px;
+  padding-left: 11px;
+}
+.inputErrorDesc {
+  display: inline-flex;
+  padding: 4px;
+  padding-left: 11px;
+  margin-left: 20px;
+}
+
+.iconWidth {
+  font-size: 20px;
+  color: #bb0b0b;
+}
+
+.inputErrorText {
+  font-size: 14px;
+  color: #bb0b0b;
 }
 
 .inputProductTitle {
@@ -444,12 +496,33 @@
   margin-bottom: 21px;
 }
 
+.formLineError {
+  display: inline-flex;
+  width: 100%;
+  margin-bottom: 2px;
+}
+
 .setMarginTop {
   margin-top: 9px;
 }
 
 .data {
   width: 50%;
+}
+
+.inputFormSide {
+  width: 50%;
+}
+
+.dataForm {
+  order: 1;
+  width: 100%;
+}
+
+.dataFormNew {
+  order: 1;
+  width: 100%;
+  display: inline-flex;
 }
 
 .dataforLong {
@@ -461,6 +534,7 @@
   /* display: inline-flex; */
   display: flex;
   flex-direction: column;
+  margin-bottom: 13px;
 }
 
 .labelStyleTitle {
@@ -470,10 +544,20 @@
   line-height: 19px;
   text-align: start;
   color: #000000;
-  /* width: 32%; */
-  margin-top: 12px;
   padding-left: 31px;
   display: inline-block;
+}
+
+.labelStyleTitleMargin {
+  order: 1;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 19px;
+  text-align: start;
+  color: #000000;
+  padding-left: 31px;
+  display: inline-block;
+  margin-top: 12px;
 }
 
 .inputStyleTitle {
@@ -550,6 +634,7 @@ select:focus {
   width: 88%;
   margin-left: 20px;
   margin-top: 13px;
+
   resize: none;
 }
 
