@@ -69,7 +69,7 @@ function CustomerChangePasswordForm({UpdateHandler}) {
             console.log(error)
         }
 
-        UpdateHandler(changePasswordData)
+        // UpdateHandler(changePasswordData)
     }
     
     const title={        
