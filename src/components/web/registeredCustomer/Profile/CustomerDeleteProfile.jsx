@@ -9,6 +9,7 @@ import axios from 'axios';
 
 function CustomerDeleteProfile() {
     const [isCustomerDelete, setIsCustomerDelete] = useState(false);    
+    const [isAccountDelete, setAccountDelete] = useState(false);        
 
     const deleteProfileHandler =async () =>{
         let accountID=localStorage.getItem('userAccID');
@@ -30,6 +31,19 @@ function CustomerDeleteProfile() {
         }catch(error){
             console.log(error);
         }
+
+        try{            
+            const AccountDeleteResponse = await axios.delete(`http://localhost:8080/api/account/${accountID}`);
+            console.log(AccountDeleteResponse.data)
+            if(AccountDeleteResponse.status === 200){
+                setAccountDelete(true);
+            }else{
+                setAccountDelete(false);
+            }            
+        }catch(error){
+            console.log(error);
+        }
+
     };
 
     const contactImg = {
