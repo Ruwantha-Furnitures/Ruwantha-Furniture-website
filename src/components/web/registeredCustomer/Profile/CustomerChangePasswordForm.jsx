@@ -10,7 +10,7 @@ import FormStyle from "../../../../css/web/Form.module.css";
 import axios from "axios";
 
 
-function CustomerChangePasswordForm({UpdateHandler}) {
+function CustomerChangePasswordForm() {
     require("bootstrap/dist/css/bootstrap.min.css");
     const [isUpdate, setIsUpdate] = useState(false);
     const [password, setPassword] = useState("");
@@ -48,7 +48,7 @@ function CustomerChangePasswordForm({UpdateHandler}) {
                     console.log(NewPasswordResponse.data)
 
                     if(NewPasswordResponse.status === 200){
-                        alert("Your profile has been successfully updated.")
+                        alert("Your password has been successfully updated.")
                         setIsUpdate(true)
                     }else{
                         // alert("Your profile has not updated.")    
@@ -69,7 +69,7 @@ function CustomerChangePasswordForm({UpdateHandler}) {
             console.log(error)
         }
 
-        UpdateHandler(changePasswordData)
+        // UpdateHandler(changePasswordData)
     }
     
     const title={        
@@ -101,7 +101,11 @@ function CustomerChangePasswordForm({UpdateHandler}) {
                             placeholder='Enter your password'
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                        ></input><br />              
+                        ></input>      
+
+                         <br />
+                            <label><b><i style={{fontSize:'10px'}}>**Use at least one lowercase, uppercase and digit. Minimum length is 6 characters.</i></b></label>
+                        <br />        
                                     
                         <input className={FormStyle.passwordBox}  
                             type="password"    
