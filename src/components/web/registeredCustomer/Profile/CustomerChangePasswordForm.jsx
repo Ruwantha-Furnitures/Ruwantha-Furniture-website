@@ -10,7 +10,7 @@ import FormStyle from "../../../../css/web/Form.module.css";
 import axios from "axios";
 
 
-function CustomerChangePasswordForm({UpdateHandler}) {
+function CustomerChangePasswordForm() {
     require("bootstrap/dist/css/bootstrap.min.css");
     const [isUpdate, setIsUpdate] = useState(false);
     const [password, setPassword] = useState("");
@@ -48,7 +48,7 @@ function CustomerChangePasswordForm({UpdateHandler}) {
                     console.log(NewPasswordResponse.data)
 
                     if(NewPasswordResponse.status === 200){
-                        alert("Your profile has been successfully updated.")
+                        alert("Your password has been successfully updated.")
                         setIsUpdate(true)
                     }else{
                         // alert("Your profile has not updated.")    
