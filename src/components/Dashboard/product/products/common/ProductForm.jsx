@@ -69,19 +69,6 @@ function ProductForm() {
     }
   };
 
-  // const validate = () => {
-  //   console.log("HEllo");
-  //   const options = { abortEarly: true };
-  //   const result = Joi.validate(product, schema, options);
-
-  //   if (!result.error) return null;
-  //   const newErrors = {};
-  //   for (let item of result.error.details) {
-  //     newErrors[item.path[0]] = item.message;
-  //   }
-  //   return newErrors;
-  // };
-
   const validateInput = ({ name, value }) => {
     const obj = { [name]: value };
     const newSchema = { [name]: schema[name] };
@@ -211,6 +198,7 @@ function ProductForm() {
                       value={product.name}
                       onChange={(e) => onInputChange(e)}
                       className={ProductViewFormStyle.inputBar}
+                      required
                     />
                     {errors["name"] && (
                       <div className={ProductViewFormStyle.inputError}>
@@ -247,7 +235,7 @@ function ProductForm() {
                       onChange={(e) => onInputChange(e)}
                       placeholder="Product Description..."
                       className={ProductViewFormStyle.inputStyleDesc}
-                      // required
+                      required
                     />
                     {errors["description"] && (
                       <div className={ProductViewFormStyle.inputErrorDesc}>
@@ -288,7 +276,7 @@ function ProductForm() {
                       className={ProductViewFormStyle.inputFormSelectStyle}
                       name="type_id"
                       onChange={(e) => onInputChange(e)}
-                      // required
+                      required
                     >
                       <option value="0">Select Type</option>
                       {Array.isArray(productTypes) === true && (
@@ -330,7 +318,7 @@ function ProductForm() {
                       onChange={(e) => onInputChange(e)}
                       placeholder="Product Colour"
                       className={ProductViewFormStyle.inputStyle}
-                      // required
+                      required
                     />
                   </div>
                   {errors["color"] && (
@@ -368,7 +356,7 @@ function ProductForm() {
                       onChange={(e) => onInputChange(e)}
                       placeholder="Product Width in CM"
                       className={ProductViewFormStyle.inputStyle}
-                      // required
+                      required
                     />
                   </div>
                   {errors["width"] && (
@@ -398,7 +386,7 @@ function ProductForm() {
                       onChange={(e) => onInputChange(e)}
                       placeholder="Product Height in CM"
                       className={ProductViewFormStyle.inputStyle}
-                      // required
+                      required
                     />
                   </div>
                   {errors["height"] && (
@@ -436,7 +424,7 @@ function ProductForm() {
                       onChange={(e) => onInputChange(e)}
                       placeholder="Product Price in RS"
                       className={ProductViewFormStyle.inputStyle}
-                      // required
+                      required
                     />
                   </div>
                   {errors["price"] && (
@@ -467,7 +455,7 @@ function ProductForm() {
                       onChange={(e) => onInputChange(e)}
                       placeholder="Product Discount in PR"
                       className={ProductViewFormStyle.inputStyle}
-                      // required
+                      required
                     />
                   </div>
                   {errors["discount"] && (

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Joi from "joi-browser";
 import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.module.css";
 import { Link, useParams } from "react-router-dom";
 import { getOrderDetails } from "./../../service/order";
@@ -33,6 +34,16 @@ function AssignDriverForm() {
     order_id: id,
     delivery_driver_id: 0,
   });
+
+  const [errors, setErrors] = useState({
+    delivery_driver_id: "",
+  });
+
+  const [isSubmit, setIsSubmit] = useState(false);
+
+  const schema = {
+    delivery_driver_id: Joi.number().min(1).required().label("Charge"),
+  };
 
   useEffect(() => {
     loadPageData();
@@ -91,12 +102,29 @@ function AssignDriverForm() {
     }
   };
 
+  const validateInput = ({ name, value }) => {
+    const obj = { [name]: value };
+    const newSchema = { [name]: schema[name] };
+    const { error } = Joi.validate(obj, newSchema);
+    return error ? error.details[0].message : null;
+  };
+
   const onInputChange = (e) => {
+    const newErrors = { ...errors };
+    // validation
+    const errorMessage = validateInput(e.target);
+    if (errorMessage) newErrors[e.target.name] = errorMessage;
+    else delete newErrors[e.target.name];
+
+    console.log(newErrors);
+    setErrors(newErrors);
     setDelivery({ ...delivery, [e.target.name]: parseInt(e.target.value) });
   };
 
   const handleAssignDriverProcess = async (e) => {
     e.preventDefault();
+    console.log("Onsubmit");
+    setIsSubmit(true);
     // console.log(delivery);
     if (delivery.delivery_driver_id !== 0) {
       console.log(delivery);
@@ -257,41 +285,63 @@ function AssignDriverForm() {
                   />
                 </div>
               </div>
-              <div className={ProductViewFormStyle.formLine}>
+              <div
+                className={
+                  errors["delivery_driver_id"] || errors["area"]
+                    ? ProductViewFormStyle.formLineError
+                    : ProductViewFormStyle.formLine
+                }
+              >
                 <div className={ProductViewFormStyle.data}>
                   <label className={ProductViewFormStyle.labelStyle}>
                     Number
                   </label>
                   <input
                     type="text"
-                    value={order.customer.contact_number}
+                    value={"0" + order.customer.contact_number}
                     placeholder="Customer Number"
                     className={ProductViewFormStyle.inputStyle}
                     readOnly
                   />
                 </div>
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Delivery
-                  </label>
-                  {/* Drivers filter by area and according to avaliable status */}
-                  <select
-                    className={ProductViewFormStyle.inputFormSelectStyle}
-                    name="delivery_driver_id"
-                    onChange={(e) => onInputChange(e)}
-                    required
-                  >
-                    <option value="0">Select Driver</option>
-                    {Array.isArray(drivers) === true && (
-                      <React.Fragment>
-                        {drivers.map((driver, index) => (
-                          <option key={index} value={driver.id}>
-                            {driver.first_name + " " + driver.last_name}
-                          </option>
-                        ))}
-                      </React.Fragment>
+                <div className={ProductViewFormStyle.inputFormSide}>
+                  <div className={ProductViewFormStyle.dataForm}>
+                    <label className={ProductViewFormStyle.labelStyle}>
+                      Delivery
+                    </label>
+                    {/* Drivers filter by area and according to avaliable status */}
+                    <select
+                      className={ProductViewFormStyle.inputFormSelectStyle}
+                      name="delivery_driver_id"
+                      onChange={(e) => onInputChange(e)}
+                      required
+                    >
+                      <option value="0">Select Driver</option>
+                      {Array.isArray(drivers) === true && (
+                        <React.Fragment>
+                          {drivers.map((driver, index) => (
+                            <option key={index} value={driver.id}>
+                              {driver.first_name + " " + driver.last_name}
+                            </option>
+                          ))}
+                        </React.Fragment>
+                      )}
+                    </select>
+                    {errors["delivery_driver_id"] && (
+                      <div className={ProductViewFormStyle.inputErrorDesc}>
+                        <span
+                          className={
+                            "material-icons " + ProductViewFormStyle.iconWidth
+                          }
+                        >
+                          error
+                        </span>
+                        <span className={ProductViewFormStyle.inputErrorText}>
+                          "Driver" is not allowed to be empty
+                        </span>
+                      </div>
                     )}
-                  </select>
+                  </div>
                 </div>
               </div>
             </div>
@@ -301,6 +351,11 @@ function AssignDriverForm() {
         <div className={ProductViewFormStyle.descButtonsAdd}>
           <div className={ProductViewFormStyle.descButtonAdd}>
             <button
+              disabled={
+                Object.keys(errors).length === 0 && isSubmit === false
+                  ? false
+                  : true
+              }
               className={ProductViewFormStyle.descButtonAddStyle}
               onClick={(e) => handleAssignDriverProcess(e)}
             >

@@ -41,6 +41,7 @@ function ProductCategoryAddForm() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmit(true);
     try {
       const response = await addProductCategories(category);
       window.location = "/dashboard/product/addProductCategory";

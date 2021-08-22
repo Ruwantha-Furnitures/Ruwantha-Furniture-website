@@ -289,7 +289,7 @@
   height: 33px;
   background: #ffffff;
   border-radius: 22px;
-  border: none;
+  border: 1px solid #ffffff;
   font-weight: 400;
   font-size: 15px;
   line-height: 18px;
@@ -325,7 +325,7 @@
   height: 33px;
   background: #ffffff;
   border-radius: 22px;
-  border: none;
+  border: 1px solid #ffffff;
   font-weight: 400;
   font-size: 15px;
   line-height: 18px;
@@ -338,7 +338,7 @@
   height: 33px;
   background: #ffffff;
   border-radius: 22px;
-  border: none;
+  border: 1px solid #ffffff;
   font-weight: 400;
   font-size: 15px;
   line-height: 18px;
@@ -514,6 +514,10 @@
   width: 50%;
 }
 
+.inputFormSideLong {
+  width: 100%;
+}
+
 .dataForm {
   order: 1;
   width: 100%;
@@ -580,7 +584,7 @@
   height: 33px;
   background: #ffffff;
   border-radius: 22px;
-  border: none;
+  border: 1px solid #ffffff;
   font-weight: 400;
   font-size: 15px;
   line-height: 18px;
@@ -593,7 +597,7 @@
   height: 33px;
   background: #ffffff;
   border-radius: 22px;
-  border: none;
+  border: 1px solid #ffffff;
   font-weight: 400;
   font-size: 15px;
   line-height: 18px;
@@ -604,10 +608,12 @@
 
 input[type="text"]:focus {
   outline: none;
+  border: 1px solid #be622e;
 }
 
 input[type="number"]:focus {
   outline: none;
+  border: 1px solid #be622e;
 }
 /* input[type="textarea"]:focus {
   outline: none;
@@ -616,6 +622,7 @@ input[type="number"]:focus {
 textarea:focus,
 select:focus {
   outline: none;
+  border: 1px solid #be622e;
 }
 
 .inputStyleDesc {
@@ -624,7 +631,7 @@ select:focus {
   height: 106px;
   background: #ffffff;
   border-radius: 22px;
-  border: none;
+  border: 1px solid #ffffff;
   font-weight: 400;
   font-size: 15px;
   line-height: 18px;
