@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import FormStyle from "../../../../css/web/Form.module.css";
 import "../../../../css/web/Signup.css";
+import Pdf from "../../terms and conditions.pdf"
 import axios from 'axios';
 
 const SignupForm = ({ signUpHandler }) => {
@@ -155,15 +156,19 @@ const SignupForm = ({ signUpHandler }) => {
           <center>
             {["checkbox"].map((type) => (
               <div key={`inline-${type}`} className="mb-3">
+                
                 <Form.Check
                   style={{ fontSize: "14px" }}
                   inline
-                  label=" I agree to the terms and conditions"
+                  // label=" I agree to the terms and conditions"
                   name="group1"
                   type={type}
                   id={`inline-${type}-1`}
                   required
-                />
+                >
+                </Form.Check>
+                  <a href = {Pdf} target = "_blank" style={{fontSize: '14px'}}>I agree to the terms and conditions</a>                
+                
               </div>
             ))}
           </center>
