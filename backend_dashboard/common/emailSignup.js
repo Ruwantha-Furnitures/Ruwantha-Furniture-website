@@ -6,13 +6,16 @@ module.exports = async (email) => {
       user: "armagic24@outlook.com",
       pass: "armagic1234",
     },
+    tls: {
+      rejectUnauthorized: false
+    }
   });
 
   const options = {
     from: "armagic24@outlook.com",
     to: email,
     subject: "Account has been created",
-    html: `<h1>Thank you for creating a new account, we are looking forward to having you and providing with you the best of services.</h1>`,
+    html: `<h1>Thank you for creating new account,we are lookig forwar to having you and providing with you the best of services.</h1>`,
   };
 
   try {
