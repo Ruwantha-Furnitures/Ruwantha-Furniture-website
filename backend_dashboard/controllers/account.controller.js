@@ -1,7 +1,6 @@
-const sendEmail = require("../common/emailSignup");
-
 const db = require("../models");
 const Account = db.account;
+const sendEmail = require("../common/emailSignup");
 
 exports.create = async (req, res) => {
   // validate request
@@ -17,13 +16,11 @@ exports.create = async (req, res) => {
     user_level: req.body.user_level,
   };
 
-  if (account.user_level === 1) {
-    sendEmail(account.email)
-  }
   //   Save order in the database
   await Account.create(account)
     .then((data) => {
-      res.send(data);
+      sendEmail(account.email)
+      res.send(data);      
     })
     .catch((err) => {
       res.status(500).send({
