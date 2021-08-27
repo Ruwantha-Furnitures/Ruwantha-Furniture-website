@@ -49,6 +49,7 @@ require("./routes/typeFoeACategory.routes")(app);
 require("./routes/productForType.routes")(app);
 require("./routes/productReviewForAProduct.routes")(app);
 
+require("./routes/sendEmail.routes")(app);
 
 // set port
 const PORT = process.env.PORT || 8080;
