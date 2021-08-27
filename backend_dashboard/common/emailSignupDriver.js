@@ -16,7 +16,7 @@ module.exports = async (email) => {
     to: email,
     subject: "Account has been created",
     html: `<h1>Welcome to AR Magic</h1><br />
-            <p>Thank you for signing. We're delighted to have you here. We are hoping to bring the finest possible service to make your dream house true.</p>
+            <p>Thank you for signing. We're delighted to have you here. We hope to have a strong bond with you. We also anticipate excellent service from you..</p>
             <a href='https://drive.google.com/file/d/1rLOdqUpsGY-tCpy_X-nYINiSaDJ6PJpc/view?usp=sharing'>This is the link for the user manual</a>`,
   };
 
