@@ -2,11 +2,15 @@ import React from "react";
 import Navbar from "../common/Navbar";
 import Sidebar from "../common/Sidebar";
 import AllProductsView from "../common/AllProductsView";
+import DriverDateView from "../common/DriverDateView";
 import MainStyle from "../../../css/dashboard/Main.module.css";
 import ProductStyle from "../../../css/dashboard/Products.module.css";
 import OrderDetailsForm from "./common/OrderDetailsForm";
+import Auth from "../service/auth";
 
 function OrderDetails() {
+  const user = Auth.getCurrentUser();
+
   return (
     <div className={MainStyle.bodycontainer}>
       <div className={MainStyle.navSection}>
@@ -26,7 +30,11 @@ function OrderDetails() {
             </div>
           </div>
           <div className={ProductStyle.productsViewSection}>
-            <AllProductsView />
+            {user !== "Delivery Driver" ? (
+              <AllProductsView />
+            ) : (
+              <DriverDateView />
+            )}
           </div>
         </div>
       </div>

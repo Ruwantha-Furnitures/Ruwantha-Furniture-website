@@ -15,6 +15,7 @@ function ProfileChangePasswordForm() {
     id: 0,
     email: "",
     password: "",
+    user_level: 1,
   });
 
   const [errors, setErrors] = useState({
@@ -143,22 +144,40 @@ function ProfileChangePasswordForm() {
               <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
                 Password Details
               </h1>
-              <div
-                className={
-                  errors["current_password"]
-                    ? ProductViewFormStyle.formLineError
-                    : ProductViewFormStyle.formLine +
-                      " " +
-                      ProductViewFormStyle.setMarginTop
-                }
-              >
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Username
+              <div className={ProductViewFormStyle.formLine}>
+                <div className={ProductViewFormStyle.dataforLong}>
+                  <label className={ProductViewFormStyle.labelStyleforLong}>
+                    User Email
                   </label>
                   <input
                     type="text"
                     value={loginUser.email}
+                    placeholder="wtgihan@gmail.com"
+                    className={ProductViewFormStyle.inputStyleforLong}
+                    readOnly
+                  />
+                </div>
+              </div>
+              <div
+                className={
+                  errors["current_password"]
+                    ? ProductViewFormStyle.formLineError
+                    : ProductViewFormStyle.formLine
+                }
+              >
+                <div className={ProductViewFormStyle.data}>
+                  <label className={ProductViewFormStyle.labelStyle}>
+                    User Level
+                  </label>
+                  <input
+                    type="text"
+                    value={
+                      loginUser.user_level === 0
+                        ? "Owner"
+                        : loginUser.user_level === 2
+                        ? "Admin"
+                        : "Delivery Driver"
+                    }
                     placeholder="User Email"
                     className={ProductViewFormStyle.inputStyle}
                     readOnly

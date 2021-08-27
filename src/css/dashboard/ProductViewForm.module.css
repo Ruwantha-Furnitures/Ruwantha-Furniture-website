@@ -140,7 +140,7 @@
 .typeForm {
   order: 1;
   width: 60.5%;
-  min-height: 221px;
+  max-height: 221px;
   background-color: #dbdbdb;
   display: flex;
   flex-direction: column;
@@ -151,7 +151,7 @@
   order: 2;
   width: 34%;
   margin-left: 39px;
-  height: auto;
+  height: 452px;
   background-color: #dbdbdb;
   display: flex;
   flex-direction: column;

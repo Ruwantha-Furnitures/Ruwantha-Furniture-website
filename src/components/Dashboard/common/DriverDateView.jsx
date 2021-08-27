@@ -1,9 +1,45 @@
-import React from "react";
-import { Link } from "react-router-dom";
-// import "../css/AllProductsView.css";
+import React, { useState, useEffect } from "react";
 import AllProductViewStyle from "../../../css/dashboard/AllProductsView.module.css";
+import Pagination from "./paginationSide";
+import { paginate } from "./../utils/paginate";
+import { getDeliveryCharges } from "./../service/deliveryCharges";
 
 function AllProductsView() {
+  const [charges, setCharges] = useState({
+    id: 0,
+    area: "",
+    amount: 0,
+  });
+
+  const [filterCharges, setFilterCharges] = useState({});
+
+  const [page, setPage] = useState({
+    pageSize: 9,
+    currentPage: 1,
+  });
+
+  useEffect(() => {
+    loadChargesData();
+  }, [page]);
+
+  const loadChargesData = async () => {
+    try {
+      const result = await getDeliveryCharges();
+      setCharges(result.data);
+      const data = paginate(result.data, page.currentPage, page.pageSize);
+      setFilterCharges(data);
+    } catch (error) {
+      console.log("Error", error.message);
+    }
+  };
+
+  const handlePageChange = (page) => {
+    console.log(page);
+    setPage({ currentPage: page, pageSize: 9 });
+  };
+
+  console.log(charges.length);
+
   return (
     <React.Fragment>
       <div className={AllProductViewStyle.allProductsSection}>
@@ -13,253 +49,44 @@ function AllProductsView() {
           </h1>
         </div>
         <div className={AllProductViewStyle.allProductsTable}>
-          <div className={AllProductViewStyle.tooltip}>
-            <div className={AllProductViewStyle.allProductsTableRow}>
-              <div className={AllProductViewStyle.allProductsRowPointer}>
-                <span
-                  className={
-                    "material-icons " +
-                    AllProductViewStyle.allProductPointerSize
-                  }
-                >
-                  circle
-                </span>
-              </div>
-              <div className={AllProductViewStyle.allProductsRowText}>
-                <h1 className={AllProductViewStyle.allProductsRowTextStyle}>
-                  Jaffna
-                </h1>
-              </div>
-            </div>
-            <span className={AllProductViewStyle.tooltiptext}>
-              Charge is Rs.200
-            </span>
-          </div>
-
-          <div className={AllProductViewStyle.tooltip}>
-            <div className={AllProductViewStyle.allProductsTableRow}>
-              <div className={AllProductViewStyle.allProductsRowPointer}>
-                <span
-                  className={
-                    "material-icons " +
-                    AllProductViewStyle.allProductPointerSize
-                  }
-                >
-                  circle
-                </span>
-              </div>
-              <div className={AllProductViewStyle.allProductsRowText}>
-                <h1 className={AllProductViewStyle.allProductsRowTextStyle}>
-                  Nuwara Eliya
-                </h1>
-              </div>
-            </div>
-            <span className={AllProductViewStyle.tooltiptext}>
-              Charge is Rs.400
-            </span>
-          </div>
-          <div className={AllProductViewStyle.tooltip}>
-            <div className={AllProductViewStyle.allProductsTableRow}>
-              <div className={AllProductViewStyle.allProductsRowPointer}>
-                <span
-                  className={
-                    "material-icons " +
-                    AllProductViewStyle.allProductPointerSize
-                  }
-                >
-                  circle
-                </span>
-              </div>
-              <div className={AllProductViewStyle.allProductsRowText}>
-                <h1 className={AllProductViewStyle.allProductsRowTextStyle}>
-                  Galle
-                </h1>
-              </div>
-            </div>
-            <span className={AllProductViewStyle.tooltiptext}>
-              Charge is Rs.400
-            </span>
-          </div>
-          <div className={AllProductViewStyle.tooltip}>
-            <div className={AllProductViewStyle.allProductsTableRow}>
-              <div className={AllProductViewStyle.allProductsRowPointer}>
-                <span
-                  className={
-                    "material-icons " +
-                    AllProductViewStyle.allProductPointerSize
-                  }
-                >
-                  circle
-                </span>
-              </div>
-              <div className={AllProductViewStyle.allProductsRowText}>
-                <h1 className={AllProductViewStyle.allProductsRowTextStyle}>
-                  Ampara
-                </h1>
-              </div>
-            </div>
-            <span className={AllProductViewStyle.tooltiptext}>
-              Charge is Rs.400
-            </span>
-          </div>
-          <div className={AllProductViewStyle.tooltip}>
-            <div className={AllProductViewStyle.allProductsTableRow}>
-              <div className={AllProductViewStyle.allProductsRowPointer}>
-                <span
-                  className={
-                    "material-icons " +
-                    AllProductViewStyle.allProductPointerSize
-                  }
-                >
-                  circle
-                </span>
-              </div>
-              <div className={AllProductViewStyle.allProductsRowText}>
-                <h1 className={AllProductViewStyle.allProductsRowTextStyle}>
-                  Anuradhapura
-                </h1>
-              </div>
-            </div>
-            <span className={AllProductViewStyle.tooltiptext}>
-              Charge is Rs.400
-            </span>
-          </div>
-          <div className={AllProductViewStyle.tooltip}>
-            <div className={AllProductViewStyle.allProductsTableRow}>
-              <div className={AllProductViewStyle.allProductsRowPointer}>
-                <span
-                  className={
-                    "material-icons " +
-                    AllProductViewStyle.allProductPointerSize
-                  }
-                >
-                  circle
-                </span>
-              </div>
-              <div className={AllProductViewStyle.allProductsRowText}>
-                <h1 className={AllProductViewStyle.allProductsRowTextStyle}>
-                  Kandy
-                </h1>
-              </div>
-            </div>
-            <span className={AllProductViewStyle.tooltiptext}>
-              Charge is Rs.400
-            </span>
-          </div>
-          <div className={AllProductViewStyle.tooltip}>
-            <div className={AllProductViewStyle.allProductsTableRow}>
-              <div className={AllProductViewStyle.allProductsRowPointer}>
-                <span
-                  className={
-                    "material-icons " +
-                    AllProductViewStyle.allProductPointerSize
-                  }
-                >
-                  circle
-                </span>
-              </div>
-              <div className={AllProductViewStyle.allProductsRowText}>
-                <h1 className={AllProductViewStyle.allProductsRowTextStyle}>
-                  Colombo
-                </h1>
-              </div>
-            </div>
-            <span className={AllProductViewStyle.tooltiptext}>
-              Charge is Rs.400
-            </span>
-          </div>
-          <div className={AllProductViewStyle.tooltip}>
-            <div className={AllProductViewStyle.allProductsTableRow}>
-              <div className={AllProductViewStyle.allProductsRowPointer}>
-                <span
-                  className={
-                    "material-icons " +
-                    AllProductViewStyle.allProductPointerSize
-                  }
-                >
-                  circle
-                </span>
-              </div>
-              <div className={AllProductViewStyle.allProductsRowText}>
-                <h1 className={AllProductViewStyle.allProductsRowTextStyle}>
-                  Trincomalee
-                </h1>
-              </div>
-            </div>
-            <span className={AllProductViewStyle.tooltiptext}>
-              Charge is Rs.400
-            </span>
-          </div>
-          <div className={AllProductViewStyle.tooltip}>
-            <div className={AllProductViewStyle.allProductsTableRow}>
-              <div className={AllProductViewStyle.allProductsRowPointer}>
-                <span
-                  className={
-                    "material-icons " +
-                    AllProductViewStyle.allProductPointerSize
-                  }
-                >
-                  circle
-                </span>
-              </div>
-              <div className={AllProductViewStyle.allProductsRowText}>
-                <h1 className={AllProductViewStyle.allProductsRowTextStyle}>
-                  Matara
-                </h1>
-              </div>
-            </div>
-            <span className={AllProductViewStyle.tooltiptext}>
-              Charge is Rs.400
-            </span>
-          </div>
+          {Array.isArray(filterCharges) === true && (
+            <>
+              {filterCharges.map((charge, index) => (
+                <div className={AllProductViewStyle.tooltip} key={index + 1}>
+                  <div className={AllProductViewStyle.allProductsTableRow}>
+                    <div className={AllProductViewStyle.allProductsRowPointer}>
+                      <span
+                        className={
+                          "material-icons " +
+                          AllProductViewStyle.allProductPointerSize
+                        }
+                      >
+                        circle
+                      </span>
+                    </div>
+                    <div className={AllProductViewStyle.allProductsRowText}>
+                      <h1
+                        className={AllProductViewStyle.allProductsRowTextStyle}
+                      >
+                        {charge.area}
+                      </h1>
+                    </div>
+                  </div>
+                  <span className={AllProductViewStyle.tooltiptext}>
+                    {"Charge is Rs." + charge.amount}
+                  </span>
+                </div>
+              ))}
+            </>
+          )}
         </div>
         {/* Pagination */}
-        <div className={AllProductViewStyle.tablePagination}>
-          <Link to="#" className={AllProductViewStyle.paginationLink}>
-            <span
-              className={
-                "material-icons " + AllProductViewStyle.paginationArrowIcon
-              }
-            >
-              arrow_back_ios
-            </span>
-          </Link>
-          <Link to="#" className={AllProductViewStyle.paginationLink}>
-            <span
-              className={
-                "material-icons " +
-                AllProductViewStyle.paginationCircleIcon +
-                " " +
-                AllProductViewStyle.active
-                // : "material-icons " + TableStyle.paginationCircleIcon
-              }
-            >
-              circle
-            </span>
-          </Link>
-          <Link to="#" className={AllProductViewStyle.paginationLink}>
-            <span
-              className={
-                "material-icons " + AllProductViewStyle.paginationCircleIcon
-                // +
-                //   " " +
-                //   AllProductViewStyle.active
-                // : "material-icons " + TableStyle.paginationCircleIcon
-              }
-            >
-              circle
-            </span>
-          </Link>
-          <Link to="#" className={AllProductViewStyle.paginationLink}>
-            <span
-              className={
-                "material-icons " + AllProductViewStyle.paginationArrowIcon
-              }
-            >
-              arrow_forward_ios
-            </span>
-          </Link>
-        </div>
+        <Pagination
+          itemsCount={charges.length}
+          pageSize={page.pageSize}
+          currentPage={page.currentPage}
+          onPageChange={handlePageChange}
+        />
       </div>
     </React.Fragment>
   );
