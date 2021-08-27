@@ -17,20 +17,20 @@ function ForgotPassword() {
     const [email, setEmail] = useState("");
     
     const submitHandler  = async (e,email) =>{
-        e.preventHandler()
+        e.preventDefault();
         try{   
             console.log("Send request in password recovery.")   
             console.log(email)      
-            const res = await axios.get(`http://localhost:8080/api/login/${email}`,                            
+            const res = await axios.get(`http://localhost:8080/api/passwordRecovery/${email}`,                            
             );               
             console.log(res.data)     
-            // if(res.data.auth === true){
-            //     setIsSubmit(true);
-            // }else{
-            //     alert("Invalid Email Address.")
-            //     setIsSubmit(false);                
-            // }     
-            // console.log("Request successful");       
+            if(res.status === 200){
+                setIsSubmit(true);
+            }else{
+                alert("Invalid Email Address.")
+                setIsSubmit(false);                
+            }     
+            console.log("Request successful");       
         }catch(error){
             console.log(error);
         }
@@ -49,17 +49,12 @@ function ForgotPassword() {
         height: '40%',
         borderRadius: '50%'
     }
-
-    const belowlinks = {
-        color: "black",
-        paddig: "10px"    
-    }
     
     const redirectHome = <Redirect to="/PendingEmail"></Redirect>
     return (  
         <React.Fragment>
-            {/* {isSubmit === true && (redirectHome)}
-            {isSubmit === false && (                 */}
+            {isSubmit === true && (redirectHome)}
+            {isSubmit === false && (                
                 <div className="col-md-12" style={contactImg}>                                     
                     <Navigation></Navigation>                    
                     <Container align='left'>             
@@ -87,7 +82,7 @@ function ForgotPassword() {
                     <br /><br />         
                     <Footer></Footer>  
                 </div>
-            {/* )}         */}
+            )}        
         </React.Fragment>    
     );
   
