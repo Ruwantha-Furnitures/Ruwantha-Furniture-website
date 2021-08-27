@@ -69,3 +69,69 @@
 
   color: #000000;
 }
+
+.tooltip {
+  position: relative;
+  /* display: inline-block; */
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 180px;
+  background-color: #542b14;
+  color: #fff;
+  text-align: center;
+  border-radius: 22px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 3px;
+  right: 95%;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 99%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent #542b14;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tablePagination {
+  order: 4;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 22px;
+  float: right;
+}
+
+.paginationLink {
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+}
+
+.paginationArrowIcon {
+  color: #542b14;
+  font-size: 21px;
+}
+
+.paginationCircleIcon {
+  color: #b89068;
+  font-size: 17px;
+}
+.paginationCircleIcon.active {
+  color: #542b14;
+  font-size: 17px;
+}
+
+/* .tooltiptext {
+
+} */

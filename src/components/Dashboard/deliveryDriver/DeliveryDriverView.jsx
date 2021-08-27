@@ -33,7 +33,11 @@ function DeliveryDriverView() {
           </div>
           <div className={ProductStyle.productsViewSection}>
             {/* {user === "Admin" && <><AllProductsView>} */}
-            {user === "Admin" ? <AllProductsView /> : <DriverDateView />}
+            {user !== "Delivery Driver" ? (
+              <AllProductsView />
+            ) : (
+              <DriverDateView />
+            )}
           </div>
         </div>
       </div>

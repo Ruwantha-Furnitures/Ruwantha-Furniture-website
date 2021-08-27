@@ -241,18 +241,6 @@ function DeliveryDriverViewForm() {
                 className={
                   ProductViewFormStyle.buttonStyle +
                   " " +
-                  ProductViewFormStyle.successButtonColor +
-                  " " +
-                  ProductViewFormStyle.addRightMargin
-                }
-                onClick={handleUpdate}
-              >
-                Update
-              </button>
-              <button
-                className={
-                  ProductViewFormStyle.buttonStyle +
-                  " " +
                   ProductViewFormStyle.deleteButtonColor
                 }
                 onClick={handleDelete}
