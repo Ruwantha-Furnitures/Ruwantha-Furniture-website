@@ -70,10 +70,10 @@ const Signup = () => {
             if (responseCustomer.status === 200 && responseAccount.status === 200 && responseOnlineCustomer.status === 200) {
 
 
-              const SendEmail = await axios.get(
-                `http://localhost:8080/api/sendEmail/${email}`              
-              );  
-              console.log(SendEmail.data)              
+              // const SendEmail = await axios.post(
+              //   `http://localhost:8080/api/sendEmail/${email}`              
+              // );  
+              // console.log(SendEmail.data)              
 
 
               setIsSubmit(true);
