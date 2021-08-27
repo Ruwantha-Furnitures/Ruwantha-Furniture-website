@@ -117,7 +117,7 @@ function DeliveryDriversTable() {
               </th>
               <th>
                 <div className={TableStyle.header}>
-                  Delivery Driver
+                  Driver
                   {user === "Owner" && (
                     <Link
                       to="/dashboard/deliveryDriver/profile"
@@ -136,7 +136,7 @@ function DeliveryDriversTable() {
                 <div className={TableStyle.header}>Email</div>
               </th>
               <th>
-                <div className={TableStyle.header}>Contact Number</div>
+                <div className={TableStyle.header}>Telephone</div>
               </th>
               <th>
                 <div className={TableStyle.header}>Availabilty</div>
@@ -164,7 +164,7 @@ function DeliveryDriversTable() {
                     </td>
                     <td> {driver.first_name + " " + driver.last_name}</td>
                     <td>{driver.account.email}</td>
-                    <td>{driver.telephone}</td>
+                    <td>{"0" + driver.telephone}</td>
                     <td>
                       <span
                         className={

@@ -170,7 +170,7 @@ function DeliveryDriverNotificationsTable() {
                 <div className={TableStyle.header}>Customer</div>
               </th>
               <th>
-                <div className={TableStyle.header}>Date</div>
+                <div className={TableStyle.header}>Order Date</div>
               </th>
               <th>
                 <div className={TableStyle.header}>Payment</div>

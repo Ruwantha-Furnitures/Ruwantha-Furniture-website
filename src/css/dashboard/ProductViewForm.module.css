@@ -615,6 +615,11 @@ input[type="number"]:focus {
   outline: none;
   border: 1px solid #be622e;
 }
+
+input[type="password"]:focus {
+  outline: none;
+  border: 1px solid #be622e;
+}
 /* input[type="textarea"]:focus {
   outline: none;
 } */
@@ -655,6 +660,7 @@ select:focus {
   line-height: 18px;
   color: #000000;
   padding-left: 15px;
+  border: 1px solid #ffffff;
   width: 74%;
   padding-top: 9px;
   /* margin-top: 13px; */

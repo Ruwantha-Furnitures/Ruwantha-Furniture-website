@@ -8,7 +8,7 @@ function AllProductsView() {
       <div className={AllProductViewStyle.allProductsSection}>
         <div className={AllProductViewStyle.allProductsLabel}>
           <h1 className={AllProductViewStyle.allProductsLabelStyle}>
-            Delivery Dates
+            Charge for Area
           </h1>
         </div>
         <div className={AllProductViewStyle.allProductsTable}>
@@ -24,7 +24,7 @@ function AllProductsView() {
             </div>
             <div className={AllProductViewStyle.allProductsRowText}>
               <h1 className={AllProductViewStyle.allProductsRowTextStyle}>
-                2021-07-10
+                Jaffna Rs.400
               </h1>
             </div>
           </div>
@@ -40,7 +40,7 @@ function AllProductsView() {
             </div>
             <div className={AllProductViewStyle.allProductsRowText}>
               <h1 className={AllProductViewStyle.allProductsRowTextStyle}>
-                2021-06-17
+                Nuwara Eliya Rs.400
               </h1>
             </div>
           </div>
@@ -56,7 +56,7 @@ function AllProductsView() {
             </div>
             <div className={AllProductViewStyle.allProductsRowText}>
               <h1 className={AllProductViewStyle.allProductsRowTextStyle}>
-                2021-06-10
+                Anuradhapura Rs.400
               </h1>
             </div>
           </div>
@@ -72,7 +72,7 @@ function AllProductsView() {
             </div>
             <div className={AllProductViewStyle.allProductsRowText}>
               <h1 className={AllProductViewStyle.allProductsRowTextStyle}>
-                2021-05-27
+                Col Rs.300
               </h1>
             </div>
           </div>
@@ -88,7 +88,7 @@ function AllProductsView() {
             </div>
             <div className={AllProductViewStyle.allProductsRowText}>
               <h1 className={AllProductViewStyle.allProductsRowTextStyle}>
-                2021-04-17
+                Matara Rs.400
               </h1>
             </div>
           </div>
@@ -104,7 +104,7 @@ function AllProductsView() {
             </div>
             <div className={AllProductViewStyle.allProductsRowText}>
               <h1 className={AllProductViewStyle.allProductsRowTextStyle}>
-                2021-04-10
+                Hambanthota Rs.400
               </h1>
             </div>
           </div>

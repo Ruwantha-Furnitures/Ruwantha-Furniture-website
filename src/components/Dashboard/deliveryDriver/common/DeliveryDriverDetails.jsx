@@ -170,7 +170,7 @@ function DeliveryDriverDetails() {
                   </label>
                   <input
                     type="text"
-                    value="TRUE"
+                    value="FALSE"
                     placeholder="Vehicle Number"
                     className={ProductViewFormStyle.inputStyle}
                     readOnly
