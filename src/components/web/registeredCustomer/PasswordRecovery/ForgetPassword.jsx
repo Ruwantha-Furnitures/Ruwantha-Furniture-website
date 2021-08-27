@@ -16,12 +16,12 @@ function ForgotPassword() {
     const [isSubmit, setIsSubmit] = useState(false);
     const [email, setEmail] = useState("");
     
-    const submitHandler  = async (e,email) =>{
+    const submitHandler  = async (e) =>{
         e.preventDefault();
         try{   
             console.log("Send request in password recovery.")   
             console.log(email)      
-            const res = await axios.get(`http://localhost:8080/api/passwordRecovery/${email}`,                            
+            const res = await axios.get(`http://localhost:8080/api/passwordRecovery/${email} `,                           
             );               
             console.log(res.data)     
             if(res.status === 200){
