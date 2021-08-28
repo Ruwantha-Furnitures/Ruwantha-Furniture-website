@@ -21,7 +21,7 @@ const Home = () => {
             let response = await axios.post('http://localhost:8080/api/message',data);
             console.log(response.data);
         }catch (error) {
-            if (error.response.status === 200) {
+            if (error.response.status === 200) {                
                 setIsSubmit(true);
             }if (error.response.status === 500) {
                 console.log("There was a problem with the server: ", error);

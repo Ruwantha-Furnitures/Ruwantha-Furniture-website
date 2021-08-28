@@ -27,6 +27,9 @@ module.exports = (app) => {
             user: "armagic24@outlook.com",
             pass: "armagic1234",
           },
+          tls: {
+            rejectUnauthorized: false
+          }
         });
 
         const mailOptions = {

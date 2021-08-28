@@ -13,61 +13,45 @@ import axios from "axios";
 function PasswordRecoveryForm() {
     require("bootstrap/dist/css/bootstrap.min.css");
     const [isUpdate, setIsUpdate] = useState(false);
-    const [password, setPassword] = useState("");
+    // const [password, setPassword] = useState("");
     const [newpassword, setNewPassword] = useState("");
     const [confirmpassword, setConfirmPassword] = useState("");      
 
     const submitHandler = async(e) => {
         e.preventDefault();
-        const changePasswordData = {password,newpassword,confirmpassword}
+        const changePasswordData = {newpassword,confirmpassword}
 
-        // const currentPassword = changePasswordData.password        
-        const accountID=localStorage.getItem('userAccID')
-        const customerEmail=localStorage.getItem('CustomerEmail')
+        // try{
 
-        var md5 = require('md5'); 
-        const encryptpw = md5(password);
-        console.log(encryptpw)
+        //     if(newpassword === confirmpassword){
+        //         console.log("New passwords are matched")
+        //         var md5 = require('md5'); 
+        //         const encryptnewpw = md5(newpassword);
+        //         console.log(encryptnewpw)
 
-        try{
-            let response = await axios.get(`http://localhost:8080/api/account/${accountID}`)
-            console.log(response.data)
-            console.log(response.data.password)
+        //         const NewPasswordData = {email:email,password:encryptnewpw}
+        //         console.log(NewPasswordData)
+                
+        //         let NewPasswordResponse = await axios.put(`http://localhost:8080/api/email/${email}`,NewPasswordData)                    
+        //         console.log(NewPasswordResponse.data)
 
-            if(encryptpw === response.data.password){
-                console.log("Current password is matched")
-                if(newpassword === confirmpassword){
-                    console.log("New passwords are matched")
-                    var md5 = require('md5'); 
-                    const encryptnewpw = md5(newpassword);
-                    console.log(encryptnewpw)
+        //         if(NewPasswordResponse.status === 200){
+        //             alert("Your profile has been successfully updated.")
+        //             setIsUpdate(true)
+        //         }else{
+        //             // alert("Your profile has not updated.")    
+        //             setIsUpdate(false)            
+        //         }
 
-                    const NewPasswordData = {email:customerEmail,password:encryptnewpw}
-                    console.log(NewPasswordData)
-                    let NewPasswordResponse = await axios.put(`http://localhost:8080/api/account/${accountID}`,NewPasswordData)                    
-                    console.log(NewPasswordResponse.data)
-
-                    if(NewPasswordResponse.status === 200){
-                        alert("Your profile has been successfully updated.")
-                        setIsUpdate(true)
-                    }else{
-                        // alert("Your profile has not updated.")    
-                        setIsUpdate(false)            
-                    }
-
-                }else{
-                    console.log("New passwords are not matched")
-                    alert("New passwords are not matched")
-                    setNewPassword("")
-                    setConfirmPassword("")
-                }
-            }else{
-                alert("Current password is not matched")
-                setPassword("")
-            }            
-        }catch (error) {
-            console.log(error)
-        }
+        //     }else{
+        //         console.log("New passwords are not matched")
+        //         alert("New passwords are not matched")
+        //         setNewPassword("")
+        //         setConfirmPassword("")
+        //     }
+        // }catch (error) {
+        //     console.log(error)
+        // }
 
         // UpdateHandler(changePasswordData)
     }
@@ -94,14 +78,6 @@ function PasswordRecoveryForm() {
                             <center><h4 style={title}>Change Password</h4></center>
                         </Row>                 
                                     
-                        <input  className={FormStyle.emailBox}
-                            type='password'
-                            value={password}
-                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-                            placeholder='Enter your password'
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        ></input>      
 
                          <br />
                             <label><b><i style={{fontSize:'10px'}}>**Use at least one lowercase, uppercase and digit. Minimum length is 6 characters.</i></b></label>

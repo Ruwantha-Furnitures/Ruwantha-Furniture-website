@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from '../Profile/CustomerChangePasswordForm';
+import Form from './PasswordRecoveryForm';
 import Navigation from "../../customer/Navigation/Indexnav";
 import Footer from "../../Common/Footer";
 import { Container } from 'reactstrap';
