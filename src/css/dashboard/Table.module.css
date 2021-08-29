@@ -19,7 +19,7 @@
 }
 
 .tablebody {
-  height: 73%;
+  height: 77%;
 }
 
 .tableShow {
@@ -174,7 +174,7 @@ input[type="search"]:-webkit-autofill:active {
   display: inline-flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin-top: 45px;
+  margin-top: 24px;
   float: right;
 }
 

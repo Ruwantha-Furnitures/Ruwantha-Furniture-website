@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import PropagateLoader from "react-spinners/PropagateLoader";
 import TableStyle from "../../../../css/dashboard/Table.module.css";
+import ProductStyle from "../../../../css/dashboard/Products.module.css";
 import Auth from "../../service/auth";
 import { getDeliveryDrivers } from "./../../service/deliveryDriver";
 import Pagination from "./../../common/pagination";
 import { paginate } from "./../../utils/paginate";
 
 function DeliveryDriversTable() {
+  const [loading, setLoading] = useState(false);
   const user = Auth.getCurrentUser();
 
   const [deliveryDrivers, setDeliveryDrivers] = useState({
@@ -35,7 +38,12 @@ function DeliveryDriversTable() {
 
   const loadDeliveryDrivers = async () => {
     try {
+      setLoading(true);
       const result = await getDeliveryDrivers();
+
+      if (result.status === 200) {
+        setLoading(false);
+      }
 
       // console.log(resultCategories.data);
       const drivers = result.data;
@@ -81,118 +89,130 @@ function DeliveryDriversTable() {
 
   return (
     <React.Fragment>
-      <div className={TableStyle.titleHeader}>
-        <h1 className={TableStyle.tableTitleProductStyle}>Delivery Drivers</h1>
-        <div className={TableStyle.searchSection}>
-          <form action="#">
-            <div className={TableStyle.search}>
-              <div className={TableStyle.searchicon}>
-                <span
-                  className={"material-icons " + TableStyle.searchIconStyle}
-                >
-                  search
-                </span>
-              </div>
-
-              <div className={TableStyle.searchText}>
-                <input
-                  type="search"
-                  placeholder="Search driver here"
-                  value={search}
-                  name="search"
-                  onChange={(e) => onInputChange(e)}
-                  className={TableStyle.searchinput}
-                />
-              </div>
-            </div>
-          </form>
+      {loading ? (
+        <div className={ProductStyle.loader}>
+          <PropagateLoader color={"#542B14"} loading={loading} size={20} />
         </div>
-      </div>
-      <div className={TableStyle.tablebody}>
-        <table className={TableStyle.tableShow}>
-          <thead>
-            <tr>
-              <th>
-                <div className={TableStyle.header}>Driver ID</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>
-                  Driver
-                  {user === "Owner" && (
-                    <Link
-                      to="/dashboard/deliveryDriver/profile"
-                      className={TableStyle.linkStyleAddHeader}
+      ) : (
+        <>
+          <div className={TableStyle.titleHeader}>
+            <h1 className={TableStyle.tableTitleProductStyle}>
+              Delivery Drivers
+            </h1>
+            <div className={TableStyle.searchSection}>
+              <form action="#">
+                <div className={TableStyle.search}>
+                  <div className={TableStyle.searchicon}>
+                    <span
+                      className={"material-icons " + TableStyle.searchIconStyle}
                     >
-                      <span
-                        className={"material-icons " + TableStyle.addIconStyle}
-                      >
-                        add_circle
-                      </span>
-                    </Link>
-                  )}
+                      search
+                    </span>
+                  </div>
+
+                  <div className={TableStyle.searchText}>
+                    <input
+                      type="search"
+                      placeholder="Search driver here"
+                      value={search}
+                      name="search"
+                      onChange={(e) => onInputChange(e)}
+                      className={TableStyle.searchinput}
+                    />
+                  </div>
                 </div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Email</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Telephone</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Availabilty</div>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {Array.isArray(filterDeliveryDrivers) === true && (
-              <React.Fragment>
-                {filterDeliveryDrivers.map((driver, index) => (
-                  <tr key={index + 1}>
-                    <td>
-                      <Link
-                        to={`/dashboard/deliveryDriver/view/${driver.id}`}
-                        className={TableStyle.linkStyle}
-                      >
-                        <span className={TableStyle.statusStyleLink}>
-                          {driver.id < 10
-                            ? "DD000" + driver.id
-                            : driver.id < 100
-                            ? "DD00" + driver.id
-                            : "DD0" + driver.id}
-                        </span>
-                      </Link>
-                    </td>
-                    <td> {driver.first_name + " " + driver.last_name}</td>
-                    <td>{driver.account.email}</td>
-                    <td>{"0" + driver.telephone}</td>
-                    <td>
-                      <span
-                        className={
-                          TableStyle.statusStyle +
-                          " " +
-                          (driver.availability === 1
-                            ? TableStyle.statusColorAvailabile
-                            : TableStyle.statusColorNotAvailabile)
-                        }
-                      >
-                        {driver.availability === 1
-                          ? "Avaialable"
-                          : "NotAvailable"}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </React.Fragment>
-            )}
-          </tbody>
-        </table>
-      </div>
-      <Pagination
-        itemsCount={deliveryDrivers.length}
-        pageSize={page.pageSize}
-        currentPage={page.currentPage}
-        onPageChange={handlePageChange}
-      />
+              </form>
+            </div>
+          </div>
+          <div className={TableStyle.tablebody}>
+            <table className={TableStyle.tableShow}>
+              <thead>
+                <tr>
+                  <th>
+                    <div className={TableStyle.header}>Driver ID</div>
+                  </th>
+                  <th>
+                    <div className={TableStyle.header}>
+                      Driver
+                      {user === "Owner" && (
+                        <Link
+                          to="/dashboard/deliveryDriver/profile"
+                          className={TableStyle.linkStyleAddHeader}
+                        >
+                          <span
+                            className={
+                              "material-icons " + TableStyle.addIconStyle
+                            }
+                          >
+                            add_circle
+                          </span>
+                        </Link>
+                      )}
+                    </div>
+                  </th>
+                  <th>
+                    <div className={TableStyle.header}>Email</div>
+                  </th>
+                  <th>
+                    <div className={TableStyle.header}>Telephone</div>
+                  </th>
+                  <th>
+                    <div className={TableStyle.header}>Availabilty</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {Array.isArray(filterDeliveryDrivers) === true && (
+                  <React.Fragment>
+                    {filterDeliveryDrivers.map((driver, index) => (
+                      <tr key={index + 1}>
+                        <td>
+                          <Link
+                            to={`/dashboard/deliveryDriver/view/${driver.id}`}
+                            className={TableStyle.linkStyle}
+                          >
+                            <span className={TableStyle.statusStyleLink}>
+                              {driver.id < 10
+                                ? "DD000" + driver.id
+                                : driver.id < 100
+                                ? "DD00" + driver.id
+                                : "DD0" + driver.id}
+                            </span>
+                          </Link>
+                        </td>
+                        <td> {driver.first_name + " " + driver.last_name}</td>
+                        <td>{driver.account.email}</td>
+                        <td>{"0" + driver.telephone}</td>
+                        <td>
+                          <span
+                            className={
+                              TableStyle.statusStyle +
+                              " " +
+                              (driver.availability === 1
+                                ? TableStyle.statusColorAvailabile
+                                : TableStyle.statusColorNotAvailabile)
+                            }
+                          >
+                            {driver.availability === 1
+                              ? "Avaialable"
+                              : "NotAvailable"}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </React.Fragment>
+                )}
+              </tbody>
+            </table>
+          </div>
+          <Pagination
+            itemsCount={deliveryDrivers.length}
+            pageSize={page.pageSize}
+            currentPage={page.currentPage}
+            onPageChange={handlePageChange}
+          />
+        </>
+      )}
     </React.Fragment>
   );
 }

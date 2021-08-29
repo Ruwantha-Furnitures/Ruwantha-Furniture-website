@@ -5,7 +5,7 @@ import { getOrders } from "./../../service/order";
 import Pagination from "./../../common/pagination";
 import { paginate } from "./../../utils/paginate";
 import PropagateLoader from "react-spinners/PropagateLoader";
-import MainStyle from "../../../../css/dashboard/Products.module.css";
+import ProductStyle from "../../../../css/dashboard/Products.module.css";
 
 function PurchaseOrdersTable() {
   const [loading, setLoading] = useState(false);
@@ -36,7 +36,7 @@ function PurchaseOrdersTable() {
 
     // setTimeout(() => {
     //   setLoading(false);
-    // }, 28000);
+    // }, 8000);
   }, [page]);
 
   const loadInvoice = async () => {
@@ -90,7 +90,7 @@ function PurchaseOrdersTable() {
   return (
     <React.Fragment>
       {loading ? (
-        <div className={MainStyle.loader}>
+        <div className={ProductStyle.loader}>
           <PropagateLoader color={"#542B14"} loading={loading} size={20} />
         </div>
       ) : (

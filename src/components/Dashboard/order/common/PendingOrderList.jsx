@@ -5,8 +5,11 @@ import { getOrders } from "./../../service/order";
 import { getDeliveries } from "./../../service/delivery";
 import Pagination from "./../../common/pagination";
 import { paginate } from "./../../utils/paginate";
+import PropagateLoader from "react-spinners/PropagateLoader";
+import ProductStyle from "../../../../css/dashboard/Products.module.css";
 
 function PendingOrderList() {
+  const [loading, setLoading] = useState(false);
   const [orders, setOrders] = useState({
     total_amount: 0,
     customer_id: 0,
@@ -38,11 +41,16 @@ function PendingOrderList() {
 
   const loadOrders = async () => {
     try {
+      setLoading(true);
       const result = await getOrders();
       const ordersData = result.data;
 
       const resultDeliveries = await getDeliveries();
       const deliveriesData = resultDeliveries.data;
+
+      if (result.status === 200 && resultDeliveries.status === 200) {
+        setLoading(false);
+      }
 
       ordersData.forEach((order) => {
         var deliveryStatus = deliveriesData.filter(
@@ -108,109 +116,119 @@ function PendingOrderList() {
 
   return (
     <React.Fragment>
-      <div className={TableStyle.titleHeader}>
-        <h1 className={TableStyle.tableTitleProductStyle}>
-          Assign Drivers For Orders
-        </h1>
-        <div className={TableStyle.searchSection}>
-          <form action="#">
-            <div className={TableStyle.search}>
-              <div className={TableStyle.searchicon}>
-                <span
-                  className={"material-icons " + TableStyle.searchIconStyle}
-                >
-                  search
-                </span>
-              </div>
-
-              <div className={TableStyle.searchText}>
-                <input
-                  type="search"
-                  placeholder="Search customer here"
-                  value={search}
-                  name="search"
-                  onChange={(e) => onInputChange(e)}
-                  className={TableStyle.searchinput}
-                />
-              </div>
-            </div>
-          </form>
+      {loading ? (
+        <div className={ProductStyle.loader}>
+          <PropagateLoader color={"#542B14"} loading={loading} size={20} />
         </div>
-      </div>
+      ) : (
+        <>
+          <div className={TableStyle.titleHeader}>
+            <h1 className={TableStyle.tableTitleProductStyle}>
+              Assign Drivers For Orders
+            </h1>
+            <div className={TableStyle.searchSection}>
+              <form action="#">
+                <div className={TableStyle.search}>
+                  <div className={TableStyle.searchicon}>
+                    <span
+                      className={"material-icons " + TableStyle.searchIconStyle}
+                    >
+                      search
+                    </span>
+                  </div>
 
-      <div className={TableStyle.tablebody}>
-        <table className={TableStyle.tableShow}>
-          <thead>
-            <tr>
-              <th>
-                <div className={TableStyle.header}>Order Id</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Customer</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Delivery Driver</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Order Date</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Driver</div>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {Array.isArray(filterOrders) === true && (
-              <React.Fragment>
-                {filterOrders.map((order, index) => (
-                  <tr key={index}>
-                    <td>
-                      <Link
-                        to={`/dashboard/pendingOrder/details/${order.id}`}
-                        className={TableStyle.linkStyle}
-                      >
-                        <span className={TableStyle.statusStyleLink}>
-                          {order.id < 10
-                            ? "OD000" + order.id
-                            : order.id < 100
-                            ? "OD00" + order.id
-                            : "OD0" + order.id}
-                        </span>
-                      </Link>
-                    </td>
-                    <td>
-                      {order.customer.first_name +
-                        " " +
-                        order.customer.last_name}
-                    </td>
-                    <td>
-                      {order.driver.first_name + " " + order.driver.last_name}
-                    </td>
-                    <td>{order.createdAt.split("T")[0]}</td>
-                    <td>
-                      <span
-                        className={
-                          TableStyle.statusStyle +
-                          " " +
-                          TableStyle.statusColorAvailabile
-                        }
-                      >
-                        Pending
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </React.Fragment>
-            )}
-          </tbody>
-        </table>
-      </div>
-      <Pagination
-        itemsCount={orders.length}
-        pageSize={page.pageSize}
-        currentPage={page.currentPage}
-        onPageChange={handlePageChange}
-      />
+                  <div className={TableStyle.searchText}>
+                    <input
+                      type="search"
+                      placeholder="Search customer here"
+                      value={search}
+                      name="search"
+                      onChange={(e) => onInputChange(e)}
+                      className={TableStyle.searchinput}
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div className={TableStyle.tablebody}>
+            <table className={TableStyle.tableShow}>
+              <thead>
+                <tr>
+                  <th>
+                    <div className={TableStyle.header}>Order Id</div>
+                  </th>
+                  <th>
+                    <div className={TableStyle.header}>Customer</div>
+                  </th>
+                  <th>
+                    <div className={TableStyle.header}>Delivery Driver</div>
+                  </th>
+                  <th>
+                    <div className={TableStyle.header}>Order Date</div>
+                  </th>
+                  <th>
+                    <div className={TableStyle.header}>Driver</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {Array.isArray(filterOrders) === true && (
+                  <React.Fragment>
+                    {filterOrders.map((order, index) => (
+                      <tr key={index}>
+                        <td>
+                          <Link
+                            to={`/dashboard/pendingOrder/details/${order.id}`}
+                            className={TableStyle.linkStyle}
+                          >
+                            <span className={TableStyle.statusStyleLink}>
+                              {order.id < 10
+                                ? "OD000" + order.id
+                                : order.id < 100
+                                ? "OD00" + order.id
+                                : "OD0" + order.id}
+                            </span>
+                          </Link>
+                        </td>
+                        <td>
+                          {order.customer.first_name +
+                            " " +
+                            order.customer.last_name}
+                        </td>
+                        <td>
+                          {order.driver.first_name +
+                            " " +
+                            order.driver.last_name}
+                        </td>
+                        <td>{order.createdAt.split("T")[0]}</td>
+                        <td>
+                          <span
+                            className={
+                              TableStyle.statusStyle +
+                              " " +
+                              TableStyle.statusColorAvailabile
+                            }
+                          >
+                            Pending
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </React.Fragment>
+                )}
+              </tbody>
+            </table>
+          </div>
+          <Pagination
+            itemsCount={orders.length}
+            pageSize={page.pageSize}
+            currentPage={page.currentPage}
+            onPageChange={handlePageChange}
+          />
+        </>
+      )}
     </React.Fragment>
   );
 }
