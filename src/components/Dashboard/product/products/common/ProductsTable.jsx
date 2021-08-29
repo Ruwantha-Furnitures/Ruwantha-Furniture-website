@@ -44,7 +44,7 @@ function ProductsTable() {
 
     // setTimeout(() => {
     //   setLoading(false);
-    // }, 28000);
+    // }, 8000);
   }, [page]);
 
   const loadProducts = async () => {
