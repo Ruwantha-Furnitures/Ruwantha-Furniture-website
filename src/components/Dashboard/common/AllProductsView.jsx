@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 import Pagination from "./paginationSide";
 import { paginate } from "./../utils/paginate";
 import { getProductCategories } from "./../service/productCategory";
+import PropagateLoader from "react-spinners/PropagateLoader";
+import ProductStyle from "../../../css/dashboard/Products.module.css";
 
 function AllProductsView() {
+  const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState({
     id: 0,
     name: "",
@@ -24,7 +27,11 @@ function AllProductsView() {
 
   const loadCategoriesData = async () => {
     try {
+      setLoading(true);
       const result = await getProductCategories();
+      if (result.status === 200) {
+        setLoading(false);
+      }
       setCategories(result.data);
       const data = paginate(result.data, page.currentPage, page.pageSize);
       setFilterCategories(data);
@@ -41,46 +48,60 @@ function AllProductsView() {
   return (
     <React.Fragment>
       <div className={AllProductViewStyle.allProductsSection}>
-        <div className={AllProductViewStyle.allProductsLabel}>
-          <h1 className={AllProductViewStyle.allProductsLabelStyle}>
-            All Categories
-          </h1>
-        </div>
-        <div className={AllProductViewStyle.allProductsTable}>
-          {Array.isArray(filterCategories) === true && (
-            <>
-              {filterCategories.map((category, index) => (
-                <div
-                  className={AllProductViewStyle.allProductsTableRow}
-                  key={index + 1}
-                >
-                  <div className={AllProductViewStyle.allProductsRowPointer}>
-                    <span
-                      className={
-                        "material-icons " +
-                        AllProductViewStyle.allProductPointerSize
-                      }
+        {loading ? (
+          <div className={ProductStyle.loader}>
+            <PropagateLoader color={"#542B14"} loading={loading} size={15} />
+          </div>
+        ) : (
+          <>
+            <div className={AllProductViewStyle.allProductsLabel}>
+              <h1 className={AllProductViewStyle.allProductsLabelStyle}>
+                All Categories
+              </h1>
+            </div>
+            <div className={AllProductViewStyle.allProductsTable}>
+              {Array.isArray(filterCategories) === true && (
+                <>
+                  {filterCategories.map((category, index) => (
+                    <div
+                      className={AllProductViewStyle.allProductsTableRow}
+                      key={index + 1}
                     >
-                      circle
-                    </span>
-                  </div>
-                  <div className={AllProductViewStyle.allProductsRowText}>
-                    <h1 className={AllProductViewStyle.allProductsRowTextStyle}>
-                      {category.name}
-                    </h1>
-                  </div>
-                </div>
-              ))}
-            </>
-          )}
-        </div>
-        {/* Pagination */}
-        <Pagination
-          itemsCount={categories.length}
-          pageSize={page.pageSize}
-          currentPage={page.currentPage}
-          onPageChange={handlePageChange}
-        />
+                      <div
+                        className={AllProductViewStyle.allProductsRowPointer}
+                      >
+                        <span
+                          className={
+                            "material-icons " +
+                            AllProductViewStyle.allProductPointerSize
+                          }
+                        >
+                          circle
+                        </span>
+                      </div>
+                      <div className={AllProductViewStyle.allProductsRowText}>
+                        <h1
+                          className={
+                            AllProductViewStyle.allProductsRowTextStyle
+                          }
+                        >
+                          {category.name}
+                        </h1>
+                      </div>
+                    </div>
+                  ))}
+                </>
+              )}
+            </div>
+            {/* Pagination */}
+            <Pagination
+              itemsCount={categories.length}
+              pageSize={page.pageSize}
+              currentPage={page.currentPage}
+              onPageChange={handlePageChange}
+            />
+          </>
+        )}
       </div>
     </React.Fragment>
   );

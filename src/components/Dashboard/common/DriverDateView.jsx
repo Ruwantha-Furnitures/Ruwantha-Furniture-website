@@ -3,8 +3,11 @@ import AllProductViewStyle from "../../../css/dashboard/AllProductsView.module.c
 import Pagination from "./paginationSide";
 import { paginate } from "./../utils/paginate";
 import { getDeliveryCharges } from "./../service/deliveryCharges";
+import PropagateLoader from "react-spinners/PropagateLoader";
+import ProductStyle from "../../../css/dashboard/Products.module.css";
 
 function AllProductsView() {
+  const [loading, setLoading] = useState(false);
   const [charges, setCharges] = useState({
     id: 0,
     area: "",
@@ -24,7 +27,11 @@ function AllProductsView() {
 
   const loadChargesData = async () => {
     try {
+      setLoading(true);
       const result = await getDeliveryCharges();
+      if (result.status === 200) {
+        setLoading(false);
+      }
       setCharges(result.data);
       const data = paginate(result.data, page.currentPage, page.pageSize);
       setFilterCharges(data);
@@ -43,50 +50,65 @@ function AllProductsView() {
   return (
     <React.Fragment>
       <div className={AllProductViewStyle.allProductsSection}>
-        <div className={AllProductViewStyle.allProductsLabel}>
-          <h1 className={AllProductViewStyle.allProductsLabelStyle}>
-            Charge for Area
-          </h1>
-        </div>
-        <div className={AllProductViewStyle.allProductsTable}>
-          {Array.isArray(filterCharges) === true && (
-            <>
-              {filterCharges.map((charge, index) => (
-                <div className={AllProductViewStyle.tooltip} key={index + 1}>
-                  <div className={AllProductViewStyle.allProductsTableRow}>
-                    <div className={AllProductViewStyle.allProductsRowPointer}>
-                      <span
-                        className={
-                          "material-icons " +
-                          AllProductViewStyle.allProductPointerSize
-                        }
-                      >
-                        circle
+        {loading ? (
+          <div className={ProductStyle.loader}>
+            <PropagateLoader color={"#542B14"} loading={loading} size={15} />
+          </div>
+        ) : (
+          <>
+            <div className={AllProductViewStyle.allProductsLabel}>
+              <h1 className={AllProductViewStyle.allProductsLabelStyle}>
+                Charge for Area
+              </h1>
+            </div>
+            <div className={AllProductViewStyle.allProductsTable}>
+              {Array.isArray(filterCharges) === true && (
+                <>
+                  {filterCharges.map((charge, index) => (
+                    <div
+                      className={AllProductViewStyle.tooltip}
+                      key={index + 1}
+                    >
+                      <div className={AllProductViewStyle.allProductsTableRow}>
+                        <div
+                          className={AllProductViewStyle.allProductsRowPointer}
+                        >
+                          <span
+                            className={
+                              "material-icons " +
+                              AllProductViewStyle.allProductPointerSize
+                            }
+                          >
+                            circle
+                          </span>
+                        </div>
+                        <div className={AllProductViewStyle.allProductsRowText}>
+                          <h1
+                            className={
+                              AllProductViewStyle.allProductsRowTextStyle
+                            }
+                          >
+                            {charge.area}
+                          </h1>
+                        </div>
+                      </div>
+                      <span className={AllProductViewStyle.tooltiptext}>
+                        {"Charge is Rs." + charge.amount}
                       </span>
                     </div>
-                    <div className={AllProductViewStyle.allProductsRowText}>
-                      <h1
-                        className={AllProductViewStyle.allProductsRowTextStyle}
-                      >
-                        {charge.area}
-                      </h1>
-                    </div>
-                  </div>
-                  <span className={AllProductViewStyle.tooltiptext}>
-                    {"Charge is Rs." + charge.amount}
-                  </span>
-                </div>
-              ))}
-            </>
-          )}
-        </div>
-        {/* Pagination */}
-        <Pagination
-          itemsCount={charges.length}
-          pageSize={page.pageSize}
-          currentPage={page.currentPage}
-          onPageChange={handlePageChange}
-        />
+                  ))}
+                </>
+              )}
+            </div>
+            {/* Pagination */}
+            <Pagination
+              itemsCount={charges.length}
+              pageSize={page.pageSize}
+              currentPage={page.currentPage}
+              onPageChange={handlePageChange}
+            />
+          </>
+        )}
       </div>
     </React.Fragment>
   );
