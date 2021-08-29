@@ -1,15 +1,17 @@
 import React, {useState,useEffect} from 'react';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Nav from 'react-bootstrap/Nav';
+// import NavDropdown from 'react-bootstrap/NavDropdown';
+// import Nav from 'react-bootstrap/Nav';
 import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl';
+import {Row} from "reactstrap";
+import Button from "react-bootstrap/Button";
+// import FormControl from 'react-bootstrap/FormControl';
 import axios from 'axios';
 
-function SearchProduct() {    
+const SearchProduct = ({DropDownHandler}) => {    
     require("bootstrap/dist/css/bootstrap.min.css");
     const [allcategory,setAllCategory]=useState([])    
-    const [category, setCategory] = useState("");     
+    const [category, setCategory] = useState("");    
 
     useEffect(() => {
         getCategories();
@@ -43,21 +45,23 @@ function SearchProduct() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Form inline>
-                    <select style={textboxStyle} onChange={(e)=>setCategory(e.target.value)}>
-                        <option style={{color:'red'}} value="" disabled selected hidden >Select category</option>
-                        {allcategory.map((categoryList) =>(                                          
-                            <option value={categoryList.name}>{categoryList.name}</option>
-                        ))}
-                    </select>
+                    <Row>
+                        <select style={textboxStyle} value={category} onChange={(e)=>setCategory(e.target.value)}>                    
+                            <option value="" disabled selected hidden>Choose a category</option>                                                              
+                            {allcategory.map((categoryList) =>(                                                                                                      
+                                <option value={categoryList.name} >{categoryList.name}</option>                                
+                            ))}
+                        </select>                       
+                    </Row>                     
                 </Form>
-                <Form inline> 
+                {/* <Form inline> 
                     <input style={textboxStyle}
                         type='text' 
                         placeholder='Search' 
                         //value={address}
                         //onChange={(e)=>setAddress(e.target.value)}                        
                     ></input>                   
-                </Form>
+                </Form> */}
             </Navbar.Collapse>
             </Navbar>                       
         </div>

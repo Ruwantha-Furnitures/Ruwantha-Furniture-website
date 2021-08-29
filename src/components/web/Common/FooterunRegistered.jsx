@@ -8,7 +8,7 @@ import { Container, Row, Col } from 'reactstrap';
 import logo from "../../../assets/nlogo.png";
 import Appicon from "../../../assets/google.svg";
 
-const Footer = () => {
+const FooterunRegistered = () => {
 return (
 	<Box>	
 	<Container align='center'>
@@ -18,9 +18,9 @@ return (
 				AR Magic</Heading>
 			</Col>
 			<Col sm={2} style={{marginTop:"20px"}}>
-				<FooterLink href="/customer_home">Home</FooterLink><br />
-				<FooterLink href="/customer_product">Product</FooterLink><br />
-				<FooterLink href="/customer_contact-us">Contact Us</FooterLink><br />			
+				<FooterLink href="/home">Home</FooterLink><br />
+				<FooterLink href="/product">Product</FooterLink><br />
+				<FooterLink href="/contact-us">Contact Us</FooterLink><br />			
 			</Col>					
 			<Col sm={3} style={{marginTop:"20px"}}>				
 				<FooterLink>No. 10, Nuge Asala,</FooterLink><br />
@@ -39,4 +39,4 @@ return (
 	</Box>
 );
 };
-export default Footer;
+export default FooterunRegistered;

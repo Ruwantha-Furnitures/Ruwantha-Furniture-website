@@ -4,12 +4,13 @@ import Table from "react-bootstrap/Table";
 import GradeIcon from "@material-ui/icons/Grade";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 
 function PurchasedHistoryTable() {
   const [orderIDs, setorderIDs] = useState([]);
   const [historyItems, setHistoryItems] = useState([]);
+  const [isReviewID, setisReviewID] = useState(false);
 
   var totalcounter = 0;
   var caldiscount = 0.0;
@@ -28,6 +29,8 @@ function PurchasedHistoryTable() {
 
     const length = orderResponse.data.length;
 
+    var sellProducts = [];
+
     for (let i = 0; i < Number(length); i++) {
       console.log(orderResponse.data[i].id);
       const order_id = orderResponse.data[i].id;
@@ -35,11 +38,27 @@ function PurchasedHistoryTable() {
       const sellProductResponse = await axios.get(
         `http://localhost:8080/api/customersellProduct/${order_id}`
       );
-      console.log(sellProductResponse.data);
 
-      setHistoryItems(sellProductResponse.data);
+      var newobject = sellProductResponse.data;
+      console.log(newobject);
+
+      // sellProducts.push(newobject);
+      if (Number(newobject.length) >= 0) {
+        for (let i = 0; i < Number(newobject.length); i++) {
+          sellProducts.push(newobject[i]);
+        }
+      }
     }
+    console.log(sellProducts);
+    setHistoryItems(sellProducts);
+    console.log(historyItems);
   };
+
+  function GetProductID(id) {
+    console.log(id);
+    localStorage.setItem("ReviewProductID", id);
+    setisReviewID(true);
+  }
 
   function getTotal(price, quantity, discount) {
     const total = Number(price * quantity);
@@ -64,69 +83,103 @@ function PurchasedHistoryTable() {
     return afterDiscountForAProduct;
   }
 
+  function getDate(date) {
+    // date = new Date('2013-03-10T02:00:00Z');
+
+    // var sentence = "Oh a cookie!"
+    // sentence.split(" ");
+    // [ "Oh", "a", "cookie!" ]
+
+    var sentence = date;
+    console.log(sentence);
+    var pieces = sentence.split("T");
+    console.log(pieces);
+    return pieces[0];
+  }
+
   const rowStyle = {
     margin: "10px",
   };
 
+  const redirectReview = <Redirect to="/customer_add_reviews" />;
   return (
-    <div>
-      <Card style={{ marginBottom: "20px", marginTop: "30px" }}>
-        <Form style={{ padding: "20px" }}>
-          <Row sm={12} style={rowStyle}>
-            <Col sm={12}>
-              <h2 style={{ textAlign: "center" }}>Purchased History</h2>
-              <br />
-              <Table responsive="sm">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Price Rs.</th>
-                    <th>Quantity</th>
-                    <th>Discount</th>
-                    <th>Total</th>
-                    <th>Rate</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {historyItems.map((productList, i) => (
-                    <tr key={i}>
-                      <td>{i + 1}</td>
-                      <td>
-                        <img
-                          src={productList.product.img_location}
-                          style={{ width: "100px", borderRadius: "20px" }}
-                          alt="imgitem"
-                        ></img>
-                      </td>
-                      <td>{productList.product.name}</td>
-                      <td>{productList.product.price}</td>
-                      <td>{productList.quantity}</td>
-                      <td>{productList.product.discount}</td>
-                      <td>
-                        {getTotal(
-                          productList.product.price,
-                          productList.quantity,
-                          productList.product.discount
-                        )}
-                      </td>
-                      <td>
-                        <Link to="/customer_add_reviews">
-                          <button class="btn btn-light">
-                            <GradeIcon></GradeIcon>
-                          </button>
-                        </Link>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </Table>
-            </Col>
-          </Row>
-        </Form>
-      </Card>
-    </div>
+    <React.Fragment>
+      {isReviewID === true && redirectReview}
+      {isReviewID === false && (
+        <div>
+          <Card style={{ marginBottom: "20px", marginTop: "30px" }}>
+            <Form style={{ padding: "20px" }}>
+              <Row sm={12} style={rowStyle}>
+                <Col sm={12}>
+                  <h2 style={{ textAlign: "center" }}>Purchased History</h2>
+                  <br />
+                  <Table responsive="sm">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Price Rs.</th>
+                        <th>Quantity</th>
+                        <th>Discount</th>
+                        <th>Total</th>
+                        <th>Purchase Date</th>
+                        <th>Rate</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {Array.isArray(historyItems) === true && (
+                        <>
+                          {historyItems.map((productList, i) => (
+                            <tr key={i}>
+                              <td>{i + 1}</td>
+                              <td>
+                                <img
+                                  src={productList.product.img_location}
+                                  style={{
+                                    width: "100px",
+                                    borderRadius: "20px",
+                                  }}
+                                  alt="imgitem"
+                                ></img>
+                              </td>
+                              <td>{productList.product.name}</td>
+                              <td>{productList.product.price}</td>
+                              <td>{productList.quantity}</td>
+                              <td>{productList.product.discount}</td>
+                              <td>
+                                {getTotal(
+                                  productList.product.price,
+                                  productList.quantity,
+                                  productList.product.discount
+                                )}
+                              </td>
+                              <td>{getDate(productList.updatedAt)}</td>
+                              {/* <td>{productList.updatedAt}</td> */}
+                              <td>
+                                {/* <Link to='/customer_add_reviews'><button class="btn btn-light" onClick={() => GetProductID(productList.id)}><GradeIcon></GradeIcon></button></Link> */}
+                                <button
+                                  class="btn btn-light"
+                                  onClick={() =>
+                                    GetProductID(productList.product.id)
+                                  }
+                                >
+                                  <GradeIcon></GradeIcon>
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
+                        </>
+                      )}
+                    </tbody>
+                  </Table>
+                </Col>
+              </Row>
+            </Form>
+          </Card>
+        </div>
+      )}
+    </React.Fragment>
   );
 }
 

@@ -6,12 +6,36 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import FormStyle from "../../../../css/web/Form.module.css";
 import Avatar from "../../../../assets/avatar.png";
+import axios from "axios";
 
-function CustomerDeleteProfileForm() {
+const CustomerDeleteProfileForm = ({deleteProfileHandler}) => {
     const [password, setPassword] = useState("");
 
-    const submitHandler = () => {        
-        const data = {password };
+    const submitHandler = async(e) => {   
+        e.preventDefault();
+        const data = { password };
+
+        const accountID=localStorage.getItem('userAccID')        
+
+        var md5 = require('md5'); 
+        const encryptpw = md5(password);
+        console.log(encryptpw)
+
+        try{
+            let response = await axios.get(`http://localhost:8080/api/account/${accountID}`)
+            console.log(response.data)
+            console.log(response.data.password)
+
+            if(encryptpw === response.data.password){
+                console.log("Current password is matched")     
+                deleteProfileHandler()           
+            }else{
+                alert("Current password is not matched")
+                setPassword("")
+            }            
+        }catch (error) {
+            console.log(error)
+        }                
     };
 
       

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import Navigation from "../Navigation/Indexnav";
-import Footer from "../../Common/Footer";
+import Footer from "../../Common/FooterunRegistered";
 import SignForm from "./SignupForm";
 import backcover from "../../../../assets/topimg27.jpg";
 import { Container } from "reactstrap";
@@ -68,6 +68,14 @@ const Signup = () => {
             console.log(responseCustomer.data + " " + responseAccount.data + " " + responseOnlineCustomer.data);
 
             if (responseCustomer.status === 200 && responseAccount.status === 200 && responseOnlineCustomer.status === 200) {
+
+
+              // const SendEmail = await axios.post(
+              //   `http://localhost:8080/api/sendEmail/${email}`              
+              // );  
+              // console.log(SendEmail.data)              
+
+
               setIsSubmit(true);
             } else {
               setIsSubmit(false);
