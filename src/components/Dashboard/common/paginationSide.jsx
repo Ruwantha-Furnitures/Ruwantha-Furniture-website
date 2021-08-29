@@ -1,7 +1,7 @@
 import React from "react";
 import _ from "lodash";
 import { Link } from "react-router-dom";
-import TableStyle from "../../../css/dashboard/Table.module.css";
+import AllProductViewStyle from "../../../css/dashboard/AllProductsView.module.css";
 
 const Pagination = (props) => {
   const { itemsCount, pageSize, currentPage, onPageChange } = props;
@@ -17,15 +17,19 @@ const Pagination = (props) => {
   console.log(pages);
 
   return (
-    <div className={TableStyle.tablePagination}>
+    <div className={AllProductViewStyle.tablePagination}>
       <Link
         to="#"
-        className={TableStyle.paginationLink}
+        className={AllProductViewStyle.paginationLink}
         onClick={() =>
           onPageChange(currentPage !== 1 ? currentPage - 1 : currentPage)
         }
       >
-        <span className={"material-icons " + TableStyle.paginationArrowIcon}>
+        <span
+          className={
+            "material-icons " + AllProductViewStyle.paginationArrowIcon
+          }
+        >
           arrow_back_ios
         </span>
       </Link>
@@ -34,17 +38,17 @@ const Pagination = (props) => {
           <Link
             key={index + 1}
             to="#"
-            className={TableStyle.paginationLink}
+            className={AllProductViewStyle.paginationLink}
             onClick={() => onPageChange(page)}
           >
             <span
               className={
                 page === currentPage
                   ? "material-icons " +
-                    TableStyle.paginationCircleIcon +
+                    AllProductViewStyle.paginationCircleIcon +
                     " " +
-                    TableStyle.active
-                  : "material-icons " + TableStyle.paginationCircleIcon
+                    AllProductViewStyle.active
+                  : "material-icons " + AllProductViewStyle.paginationCircleIcon
               }
             >
               circle
@@ -52,12 +56,17 @@ const Pagination = (props) => {
           </Link>
         </>
       ))}
+
       <Link
         to="#"
-        className={TableStyle.paginationLink}
+        className={AllProductViewStyle.paginationLink}
         onClick={() => onPageChange(currentPage + 1)}
       >
-        <span className={"material-icons " + TableStyle.paginationArrowIcon}>
+        <span
+          className={
+            "material-icons " + AllProductViewStyle.paginationArrowIcon
+          }
+        >
           arrow_forward_ios
         </span>
       </Link>

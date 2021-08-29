@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // Dashboard Components
 import Dashboard from "./components/Dashboard/DashboardHome";
-import ProfileChangePassword from "./components/Dashboard/ProfileChangePassword";
+import ProfileChangePassword from "./components/Dashboard/profile/ProfileChangePassword";
 import DashboardDriver from "./components/Dashboard/DashboardDriver";
 
 // products
@@ -73,7 +73,7 @@ import CustomerChangePassword from "./components/web/registeredCustomer/Profile/
 import CustomerPayment from "./components/web/registeredCustomer/Payment/PaymentForm.jsx";
 import CustomerCheckout from "./components/web/registeredCustomer/BeforePayment/ShippingDetailsPage.jsx";
 import CustomerReviews from "./components/web/registeredCustomer/Reviews/CustomerReviewsPage.jsx";
-import CustomerAddReview from "./components/web/registeredCustomer/Reviews/AddReview.jsx"
+import CustomerAddReview from "./components/web/registeredCustomer/Reviews/AddReview.jsx";
 import CustomerThankYou from "./components/web/registeredCustomer/Payment/ThankYouPage.jsx";
 import PendingEmail from "./components/web/registeredCustomer/PasswordRecovery/Pending.jsx";
 import ForgotPasswordChangePassword from "./components/web/registeredCustomer/PasswordRecovery/ChangePassword.jsx";
@@ -211,6 +211,11 @@ function App() {
             path="/dashboard/pendingOrder/details/:id"
             component={OrderDetails}
           />
+          <Route
+            exact
+            path="/dashboard/deliveryDriverNotifications/details/:id"
+            component={OrderDetails}
+          />
           {/* End Navigations Purpose */}
 
           <Route
@@ -273,6 +278,11 @@ function App() {
           />
           <Route
             exact
+            path="/dashboard/deliveryDriverNotCompleted/view/:id"
+            component={DeliveryDriverView}
+          />
+          <Route
+            exact
             path="/dashboard/deliveryDriver/viewOnly/:id"
             component={DeliveryDriverView}
           />
@@ -307,6 +317,7 @@ function App() {
             path="/dashboard/deliveryDriver/notifications"
             component={DeliveryDriverNotifications}
           />
+
           <Route
             exact
             path="/dashboard/deliveryDriver/availablity"
@@ -362,7 +373,11 @@ function App() {
 
           <Route exact path="/payment" component={CustomerPayment} />
           <Route exact path="/customer_reviews" component={CustomerReviews} />
-          <Route exact path="/customer_add_reviews" component={CustomerAddReview} />          
+          <Route
+            exact
+            path="/customer_add_reviews"
+            component={CustomerAddReview}
+          />
           <Route exact path="/customer_thankyou" component={CustomerThankYou} />
           {/* <Route
             exact

@@ -134,30 +134,14 @@ function ProductSellAmountForm() {
         <h1 className={ProductViewFormStyle.tableTitleHeaderStyle}>
           Product Sell Page - Amount
         </h1>
-        {/* <div className={ProductViewFormStyle.backSection}>
-          <div className={ProductViewFormStyle.back}>
-            <Link
-              to="/dashboard/product/sell/product"
-              className={ProductViewFormStyle.linkStyle}
-            >
-              <div className={ProductViewFormStyle.backStyle}>
-                <span
-                  className={
-                    "material-icons " + ProductViewFormStyle.backIconStyle
-                  }
-                >
-                  arrow_back_ios
-                </span>
-                <div className={ProductViewFormStyle.backButtonStyle}>Back</div>
-              </div>
-            </Link>
-          </div>
-        </div> */}
       </div>
       <form className={ProductViewFormStyle.formStyle}>
         <div className={ProductViewFormStyle.details}>
           <div className={ProductViewFormStyle.infoPart}>
             <div className={ProductViewFormStyle.form}>
+              <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
+                Amount Details
+              </h1>
               <div
                 className={
                   ProductViewFormStyle.formLine +
@@ -226,17 +210,6 @@ function ProductSellAmountForm() {
               className={
                 ProductViewFormStyle.descButtonAddStyle +
                 " " +
-                ProductViewFormStyle.descButtonAddStyleColor +
-                " " +
-                ProductViewFormStyle.addRightMargin
-              }
-            >
-              Cancel
-            </button>
-            <button
-              className={
-                ProductViewFormStyle.descButtonAddStyle +
-                " " +
                 ProductViewFormStyle.addRightMargin
               }
               onClick={(e) => handlePaymentProcess(e)}
@@ -258,6 +231,9 @@ function ProductSellAmountForm() {
       <div className={ProductViewFormStyle.details}>
         <div className={ProductViewFormStyle.infoPart}>
           <div className={ProductViewFormStyle.form}>
+            <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
+              Customer Details
+            </h1>
             <div
               className={
                 ProductViewFormStyle.formLine +
@@ -341,6 +317,9 @@ function ProductSellAmountForm() {
             <div key={index + 1} className={ProductViewFormStyle.details}>
               <div className={ProductViewFormStyle.infoPart}>
                 <div className={ProductViewFormStyle.form}>
+                  <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
+                    Product Details
+                  </h1>
                   <div
                     className={
                       ProductViewFormStyle.formLine +

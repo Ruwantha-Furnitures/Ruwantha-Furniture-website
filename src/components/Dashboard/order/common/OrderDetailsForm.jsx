@@ -6,9 +6,12 @@ import { getOrderDetails } from "./../../service/order";
 import { editDeliveryDetails, getDeliveries } from "./../../service/delivery";
 import { getShippings } from "./../../service/shippingDetail";
 import { getPayments } from "./../../service/payments";
+import PropagateLoader from "react-spinners/PropagateLoader";
+import ProductStyle from "../../../../css/dashboard/Products.module.css";
 
 function OrderDetailsForm() {
   const { id } = useParams();
+  const [loading, setLoading] = useState(false);
 
   const [isCompleted, setIsCompleted] = useState(false);
 
@@ -71,11 +74,31 @@ function OrderDetailsForm() {
 
   const loadPageData = async () => {
     try {
+      setLoading(true);
       // get invoice data
       const resultOrder = await getOrderDetails(id);
-      setOrder(resultOrder.data);
+
       // get order data according to invoice
       const resultSellProducts = await getSellProducts();
+      // get shipping details
+      const resultShippings = await getShippings();
+      // get total payments
+      const resultPayments = await getPayments();
+      // get total deliveries
+      const resultDeliveries = await getDeliveries();
+
+      if (
+        resultOrder.status === 200 &&
+        resultSellProducts.status === 200 &&
+        resultShippings.status === 200 &&
+        resultPayments.status === 200 &&
+        resultDeliveries.status === 200
+      ) {
+        setLoading(false);
+      }
+
+      setOrder(resultOrder.data);
+
       const sellProductsData = resultSellProducts.data.filter(
         (sellProductItem) => sellProductItem.order_id == id
       );
@@ -110,8 +133,6 @@ function OrderDetailsForm() {
       });
 
       // set shipping details
-      const resultShippings = await getShippings();
-
       const shipping = resultShippings.data.filter(
         (shippingData) => shippingData.order_id === parseInt(id)
       )[0];
@@ -122,12 +143,14 @@ function OrderDetailsForm() {
         new_shipping_address = shipping.shipping_address;
         new_contact_number = shipping.contact_number;
       } else {
-        new_shipping_address = resultOrder.data.customer.address;
-        new_contact_number = resultOrder.data.customer.contact_number;
+        // new_shipping_address = resultOrder.data.customer.address;
+        // new_contact_number = resultOrder.data.customer.contact_number;
+        new_shipping_address = "Not Required";
+        new_contact_number = "Not Required";
       }
 
       // get total payments
-      const resultPayments = await getPayments();
+
       const payment = resultPayments.data.filter(
         (paymentData) => paymentData.order_id === parseInt(id)
       )[0];
@@ -143,7 +166,6 @@ function OrderDetailsForm() {
       console.log(newShippingDetails);
 
       // set iscompleted
-      const resultDeliveries = await getDeliveries();
       console.log(resultDeliveries.data);
       const delivery = resultDeliveries.data.filter(
         (deliveryData) =>
@@ -187,315 +209,338 @@ function OrderDetailsForm() {
 
   return (
     <React.Fragment>
-      <div className={ProductViewFormStyle.titleHeader}>
-        <h1 className={ProductViewFormStyle.tableTitleHeaderStyle}>
-          Purchase Order Details
-        </h1>
-        <div className={ProductViewFormStyle.backSection}>
-          <div className={ProductViewFormStyle.back}>
-            <Link to={navigate} className={ProductViewFormStyle.linkStyle}>
-              <div className={ProductViewFormStyle.backStyle}>
-                <span
-                  className={
-                    "material-icons " + ProductViewFormStyle.backIconStyle
-                  }
-                >
-                  arrow_back_ios
-                </span>
-                <div className={ProductViewFormStyle.backButtonStyle}>Back</div>
-              </div>
-            </Link>
-          </div>
+      {loading ? (
+        <div className={ProductStyle.loader}>
+          <PropagateLoader color={"#542B14"} loading={loading} size={20} />
         </div>
-      </div>
-      <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
-        Shipping Details
-      </h1>
-      <div className={ProductViewFormStyle.details}>
-        <div className={ProductViewFormStyle.infoPart}>
-          <div className={ProductViewFormStyle.form}>
-            <div
-              className={
-                ProductViewFormStyle.formLine +
-                " " +
-                ProductViewFormStyle.setMarginTop
-              }
-            >
-              <div className={ProductViewFormStyle.dataforLong}>
-                <label className={ProductViewFormStyle.labelStyleforLong}>
-                  Shipping
-                </label>
-                <input
-                  type="text"
-                  value={shippingDetails.shipping_address}
-                  placeholder="Customer Dilever Address"
-                  className={ProductViewFormStyle.inputStyleforLong}
-                  readOnly
-                />
-              </div>
-            </div>
-            <div className={ProductViewFormStyle.formLine}>
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>
-                  Number
-                </label>
-                <input
-                  type="text"
-                  value={"0" + shippingDetails.contact_number}
-                  placeholder="Total Discount"
-                  className={ProductViewFormStyle.inputStyle}
-                  readOnly
-                />
-              </div>
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>Total</label>
-                <input
-                  type="text"
-                  value={"Rs. " + shippingDetails.total_amounts}
-                  placeholder="Total Amount"
-                  className={ProductViewFormStyle.inputStyle}
-                  readOnly
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
-        Customer Details
-      </h1>
-      {/* Customer Details */}
-      <div className={ProductViewFormStyle.details}>
-        <div className={ProductViewFormStyle.infoPart}>
-          <div className={ProductViewFormStyle.form}>
-            <div
-              className={
-                ProductViewFormStyle.formLine +
-                " " +
-                ProductViewFormStyle.setMarginTop
-              }
-            >
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>
-                  First Name
-                </label>
-                <input
-                  type="text"
-                  value={order.customer.first_name}
-                  placeholder="Customer First Name"
-                  className={ProductViewFormStyle.inputStyle}
-                  readOnly
-                />
-              </div>
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  value={order.customer.last_name}
-                  placeholder="Customer Last Name"
-                  className={ProductViewFormStyle.inputStyle}
-                  readOnly
-                />
-              </div>
-            </div>
-            <div className={ProductViewFormStyle.formLine}>
-              <div className={ProductViewFormStyle.dataforLong}>
-                <label className={ProductViewFormStyle.labelStyleforLong}>
-                  Address
-                </label>
-                <input
-                  type="text"
-                  value={order.customer.address}
-                  placeholder="Customer Dilever Address"
-                  className={ProductViewFormStyle.inputStyleforLong}
-                  readOnly
-                />
-              </div>
-            </div>
-            <div className={ProductViewFormStyle.formLine}>
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>
-                  Number
-                </label>
-                <input
-                  type="text"
-                  value={"0" + order.customer.contact_number}
-                  placeholder="Customer Number"
-                  className={ProductViewFormStyle.inputStyle}
-                  readOnly
-                />
-              </div>
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>
-                  Payment
-                </label>
-                <input
-                  type="text"
-                  value={order.payment_method}
-                  placeholder="Payment Method"
-                  className={ProductViewFormStyle.inputStyle}
-                  readOnly
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
-        Sold Products Details
-      </h1>
-      <div className={ProductViewFormStyle.details}>
-        <div className={ProductViewFormStyle.infoPart}>
-          <div className={ProductViewFormStyle.form}>
-            <div
-              className={
-                ProductViewFormStyle.formLine +
-                " " +
-                ProductViewFormStyle.setMarginTop
-              }
-            >
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>
-                  No. Product
-                </label>
-                <input
-                  type="text"
-                  value={bill.no_of_products}
-                  placeholder="Number of Products"
-                  className={ProductViewFormStyle.inputStyle}
-                  readOnly
-                />
-              </div>
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>Price</label>
-                <input
-                  type="text"
-                  value={"Rs. " + bill.products_price}
-                  placeholder="Product(s) Price"
-                  className={ProductViewFormStyle.inputStyle}
-                  readOnly
-                />
-              </div>
-            </div>
-            <div className={ProductViewFormStyle.formLine}>
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>
-                  Discount(s)
-                </label>
-                <input
-                  type="text"
-                  value={bill.total_discounts + "%"}
-                  placeholder="Total Discount"
-                  className={ProductViewFormStyle.inputStyle}
-                  readOnly
-                />
-              </div>
-              <div className={ProductViewFormStyle.data}>
-                <label className={ProductViewFormStyle.labelStyle}>
-                  Amount
-                </label>
-                <input
-                  type="text"
-                  value={"Rs. " + bill.total_amount}
-                  placeholder="Total Amount"
-                  className={ProductViewFormStyle.inputStyle}
-                  readOnly
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {Array.isArray(sellProducts) === true && (
-        <React.Fragment>
-          {sellProducts.map((sellProduct, index) => (
-            <div key={index + 1} className={ProductViewFormStyle.details}>
-              <div className={ProductViewFormStyle.infoPart}>
-                <div className={ProductViewFormStyle.form}>
-                  <div
-                    className={
-                      ProductViewFormStyle.formLine +
-                      " " +
-                      ProductViewFormStyle.setMarginTop
-                    }
-                  >
-                    <div className={ProductViewFormStyle.data}>
-                      <label className={ProductViewFormStyle.labelStyle}>
-                        Product
-                      </label>
-                      <input
-                        type="text"
-                        value={sellProduct.product.name}
-                        placeholder="Product Name"
-                        className={ProductViewFormStyle.inputStyle}
-                        readOnly
-                      />
-                    </div>
-                    <div className={ProductViewFormStyle.data}>
-                      <label className={ProductViewFormStyle.labelStyle}>
-                        Quantity
-                      </label>
-                      <input
-                        type="text"
-                        value={sellProduct.quantity}
-                        placeholder="Product Qunatity"
-                        className={ProductViewFormStyle.inputStyle}
-                        readOnly
-                      />
+      ) : (
+        <>
+          <div className={ProductViewFormStyle.titleHeader}>
+            <h1 className={ProductViewFormStyle.tableTitleHeaderStyle}>
+              Purchase Order Details
+            </h1>
+            <div className={ProductViewFormStyle.backSection}>
+              <div className={ProductViewFormStyle.back}>
+                <Link to={navigate} className={ProductViewFormStyle.linkStyle}>
+                  <div className={ProductViewFormStyle.backStyle}>
+                    <span
+                      className={
+                        "material-icons " + ProductViewFormStyle.backIconStyle
+                      }
+                    >
+                      arrow_back_ios
+                    </span>
+                    <div className={ProductViewFormStyle.backButtonStyle}>
+                      Back
                     </div>
                   </div>
-                  <div className={ProductViewFormStyle.formLine}>
-                    <div className={ProductViewFormStyle.data}>
-                      <label className={ProductViewFormStyle.labelStyle}>
-                        Price
-                      </label>
-                      <input
-                        type="text"
-                        value={"Rs. " + sellProduct.product.price}
-                        placeholder="Product Price"
-                        className={ProductViewFormStyle.inputStyle}
-                        readOnly
-                      />
+                </Link>
+              </div>
+            </div>
+          </div>
+          {shippingDetails.shipping_address !== "Not Required" && (
+            <>
+              <div className={ProductViewFormStyle.details}>
+                <div className={ProductViewFormStyle.infoPart}>
+                  <div className={ProductViewFormStyle.form}>
+                    <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
+                      Shipping Details
+                    </h1>
+                    <div
+                      className={
+                        ProductViewFormStyle.formLine +
+                        " " +
+                        ProductViewFormStyle.setMarginTop
+                      }
+                    >
+                      <div className={ProductViewFormStyle.dataforLong}>
+                        <label
+                          className={ProductViewFormStyle.labelStyleforLong}
+                        >
+                          Shipping
+                        </label>
+                        <input
+                          type="text"
+                          value={shippingDetails.shipping_address}
+                          placeholder="Customer Dilever Address"
+                          className={ProductViewFormStyle.inputStyleforLong}
+                          readOnly
+                        />
+                      </div>
                     </div>
-                    <div className={ProductViewFormStyle.data}>
-                      <label className={ProductViewFormStyle.labelStyle}>
-                        Discount
-                      </label>
-                      <input
-                        type="text"
-                        value={sellProduct.product.discount + "%"}
-                        placeholder="Product Discount"
-                        className={ProductViewFormStyle.inputStyle}
-                        readOnly
-                      />
+                    <div className={ProductViewFormStyle.formLine}>
+                      <div className={ProductViewFormStyle.data}>
+                        <label className={ProductViewFormStyle.labelStyle}>
+                          Number
+                        </label>
+                        <input
+                          type="text"
+                          value={"0" + shippingDetails.contact_number}
+                          placeholder="Total Discount"
+                          className={ProductViewFormStyle.inputStyle}
+                          readOnly
+                        />
+                      </div>
+                      <div className={ProductViewFormStyle.data}>
+                        <label className={ProductViewFormStyle.labelStyle}>
+                          Total
+                        </label>
+                        <input
+                          type="text"
+                          value={"Rs. " + shippingDetails.total_amounts}
+                          placeholder="Total Amount"
+                          className={ProductViewFormStyle.inputStyle}
+                          readOnly
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </React.Fragment>
-      )}
+            </>
+          )}
 
-      {orderLocation === "deliveryDriver" && isCompleted === false && (
-        <div className={ProductViewFormStyle.descButtonsAdd}>
-          <div className={ProductViewFormStyle.descButtonAdd}>
-            <button
-              className={
-                ProductViewFormStyle.buttonStyle +
-                " " +
-                ProductViewFormStyle.successButtonColor
-              }
-              onClick={(e) => handleCompleteDeliveryProcess(e)}
-            >
-              Complete
-            </button>
+          {/* Customer Details */}
+          <div className={ProductViewFormStyle.details}>
+            <div className={ProductViewFormStyle.infoPart}>
+              <div className={ProductViewFormStyle.form}>
+                <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
+                  Customer Details
+                </h1>
+                <div
+                  className={
+                    ProductViewFormStyle.formLine +
+                    " " +
+                    ProductViewFormStyle.setMarginTop
+                  }
+                >
+                  <div className={ProductViewFormStyle.data}>
+                    <label className={ProductViewFormStyle.labelStyle}>
+                      First Name
+                    </label>
+                    <input
+                      type="text"
+                      value={order.customer.first_name}
+                      placeholder="Customer First Name"
+                      className={ProductViewFormStyle.inputStyle}
+                      readOnly
+                    />
+                  </div>
+                  <div className={ProductViewFormStyle.data}>
+                    <label className={ProductViewFormStyle.labelStyle}>
+                      Last Name
+                    </label>
+                    <input
+                      type="text"
+                      value={order.customer.last_name}
+                      placeholder="Customer Last Name"
+                      className={ProductViewFormStyle.inputStyle}
+                      readOnly
+                    />
+                  </div>
+                </div>
+                <div className={ProductViewFormStyle.formLine}>
+                  <div className={ProductViewFormStyle.dataforLong}>
+                    <label className={ProductViewFormStyle.labelStyleforLong}>
+                      Address
+                    </label>
+                    <input
+                      type="text"
+                      value={order.customer.address}
+                      placeholder="Customer Dilever Address"
+                      className={ProductViewFormStyle.inputStyleforLong}
+                      readOnly
+                    />
+                  </div>
+                </div>
+                <div className={ProductViewFormStyle.formLine}>
+                  <div className={ProductViewFormStyle.data}>
+                    <label className={ProductViewFormStyle.labelStyle}>
+                      Number
+                    </label>
+                    <input
+                      type="text"
+                      value={"0" + order.customer.contact_number}
+                      placeholder="Customer Number"
+                      className={ProductViewFormStyle.inputStyle}
+                      readOnly
+                    />
+                  </div>
+                  <div className={ProductViewFormStyle.data}>
+                    <label className={ProductViewFormStyle.labelStyle}>
+                      Payment
+                    </label>
+                    <input
+                      type="text"
+                      value={order.payment_method}
+                      placeholder="Payment Method"
+                      className={ProductViewFormStyle.inputStyle}
+                      readOnly
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+
+          <div className={ProductViewFormStyle.details}>
+            <div className={ProductViewFormStyle.infoPart}>
+              <div className={ProductViewFormStyle.form}>
+                <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
+                  Product Amount Details
+                </h1>
+                <div
+                  className={
+                    ProductViewFormStyle.formLine +
+                    " " +
+                    ProductViewFormStyle.setMarginTop
+                  }
+                >
+                  <div className={ProductViewFormStyle.data}>
+                    <label className={ProductViewFormStyle.labelStyle}>
+                      No. Product
+                    </label>
+                    <input
+                      type="text"
+                      value={bill.no_of_products}
+                      placeholder="Number of Products"
+                      className={ProductViewFormStyle.inputStyle}
+                      readOnly
+                    />
+                  </div>
+                  <div className={ProductViewFormStyle.data}>
+                    <label className={ProductViewFormStyle.labelStyle}>
+                      Price
+                    </label>
+                    <input
+                      type="text"
+                      value={"Rs. " + bill.products_price}
+                      placeholder="Product(s) Price"
+                      className={ProductViewFormStyle.inputStyle}
+                      readOnly
+                    />
+                  </div>
+                </div>
+                <div className={ProductViewFormStyle.formLine}>
+                  <div className={ProductViewFormStyle.data}>
+                    <label className={ProductViewFormStyle.labelStyle}>
+                      Discount(s)
+                    </label>
+                    <input
+                      type="text"
+                      value={bill.total_discounts + "%"}
+                      placeholder="Total Discount"
+                      className={ProductViewFormStyle.inputStyle}
+                      readOnly
+                    />
+                  </div>
+                  <div className={ProductViewFormStyle.data}>
+                    <label className={ProductViewFormStyle.labelStyle}>
+                      Amount
+                    </label>
+                    <input
+                      type="text"
+                      value={"Rs. " + bill.total_amount}
+                      placeholder="Total Amount"
+                      className={ProductViewFormStyle.inputStyle}
+                      readOnly
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {Array.isArray(sellProducts) === true && (
+            <React.Fragment>
+              {sellProducts.map((sellProduct, index) => (
+                <div key={index + 1} className={ProductViewFormStyle.details}>
+                  <div className={ProductViewFormStyle.infoPart}>
+                    <div className={ProductViewFormStyle.form}>
+                      <h1 className={ProductViewFormStyle.tableFormHeaderStyle}>
+                        Product Details
+                      </h1>
+                      <div
+                        className={
+                          ProductViewFormStyle.formLine +
+                          " " +
+                          ProductViewFormStyle.setMarginTop
+                        }
+                      >
+                        <div className={ProductViewFormStyle.data}>
+                          <label className={ProductViewFormStyle.labelStyle}>
+                            Product
+                          </label>
+                          <input
+                            type="text"
+                            value={sellProduct.product.name}
+                            placeholder="Product Name"
+                            className={ProductViewFormStyle.inputStyle}
+                            readOnly
+                          />
+                        </div>
+                        <div className={ProductViewFormStyle.data}>
+                          <label className={ProductViewFormStyle.labelStyle}>
+                            Quantity
+                          </label>
+                          <input
+                            type="text"
+                            value={sellProduct.quantity}
+                            placeholder="Product Qunatity"
+                            className={ProductViewFormStyle.inputStyle}
+                            readOnly
+                          />
+                        </div>
+                      </div>
+                      <div className={ProductViewFormStyle.formLine}>
+                        <div className={ProductViewFormStyle.data}>
+                          <label className={ProductViewFormStyle.labelStyle}>
+                            Price
+                          </label>
+                          <input
+                            type="text"
+                            value={"Rs. " + sellProduct.product.price}
+                            placeholder="Product Price"
+                            className={ProductViewFormStyle.inputStyle}
+                            readOnly
+                          />
+                        </div>
+                        <div className={ProductViewFormStyle.data}>
+                          <label className={ProductViewFormStyle.labelStyle}>
+                            Discount
+                          </label>
+                          <input
+                            type="text"
+                            value={sellProduct.product.discount + "%"}
+                            placeholder="Product Discount"
+                            className={ProductViewFormStyle.inputStyle}
+                            readOnly
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </React.Fragment>
+          )}
+
+          {orderLocation === "deliveryDriver" && isCompleted === false && (
+            <div className={ProductViewFormStyle.descButtonsAdd}>
+              <div className={ProductViewFormStyle.descButtonAdd}>
+                <button
+                  className={
+                    ProductViewFormStyle.buttonStyle +
+                    " " +
+                    ProductViewFormStyle.successButtonColor
+                  }
+                  onClick={(e) => handleCompleteDeliveryProcess(e)}
+                >
+                  Complete
+                </button>
+              </div>
+            </div>
+          )}
+        </>
       )}
     </React.Fragment>
   );

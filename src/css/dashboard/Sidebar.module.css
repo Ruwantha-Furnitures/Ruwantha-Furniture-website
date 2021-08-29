@@ -43,7 +43,7 @@
 
 .lineSection:hover {
   background-color: #542b14;
-  width: 80%;
+  width: 85%;
   color: #f7f7f7;
   border-radius: 22px;
   cursor: pointer;
@@ -54,7 +54,7 @@
 }
 .lineSection:hover > .lineText > .lineTextStyle {
   color: #f7f7f7;
-  font-size: 20px;
+  font-size: 19px;
 }
 
 /* .material-icons.iconWidth {
@@ -71,7 +71,7 @@
 .lineTextStyle {
   font-style: normal;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 19px;
   line-height: 33px;
   color: #000000;
 }

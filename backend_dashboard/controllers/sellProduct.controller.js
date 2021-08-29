@@ -17,8 +17,8 @@ exports.create = async (req, res) => {
     order_id: req.body.order_id,
   };
 
-  console.log("in the sell product controller")
-  
+  console.log("in the sell product controller");
+
   //   Save order in the database
   await SellProduct.create(sellProduct)
     .then((data) => {
@@ -92,14 +92,30 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const id = req.params.id;
-  SellProduct.destroy(
-    {
-      is_deleted: true,
-    },
-    {
-      where: { id: id },
-    }
-  )
+  SellProduct.destroy({
+    where: { id: id },
+  })
+    .then((num) => {
+      if (num == 1) {
+        res.send({
+          message: "Sell Product was deleted successfully",
+        });
+      } else {
+        res.send({ message: `Cannot delete Sell Product with id=${id}` });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error deleting Sell Product with id = " + id,
+      });
+    });
+};
+
+exports.deleteOrder = (req, res) => {
+  const id = req.params.id;
+  SellProduct.destroy({
+    where: { order_id: id },
+  })
     .then((num) => {
       if (num == 1) {
         res.send({

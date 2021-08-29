@@ -28,7 +28,7 @@ function ProductTypeList({ categoryId }) {
         category_id = categoryId;
       }
       var typesResult = result.data.filter(
-        (type) => type.categoryId == category_id
+        (type) => type.category_id == category_id
       );
 
       setCategory(

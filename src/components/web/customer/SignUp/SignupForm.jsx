@@ -4,8 +4,8 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import FormStyle from "../../../../css/web/Form.module.css";
 import "../../../../css/web/Signup.css";
-import Pdf from "../../terms and conditions.pdf"
-import axios from 'axios';
+import Pdf from "../../terms and conditions.pdf";
+import axios from "axios";
 
 const SignupForm = ({ signUpHandler }) => {
   require("bootstrap/dist/css/bootstrap.min.css");
@@ -15,35 +15,42 @@ const SignupForm = ({ signUpHandler }) => {
   const [address, setAddress] = useState("");
   const [contact_number, setContactNo] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");  
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-  const submitHandler = async(e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
 
-    try{
+    try {
       // search account
       const validAccount = await axios.get(
-        `http://localhost:8080/api/signup/${email}`              
-      );  
-      console.log(validAccount)
+        `http://localhost:8080/api/signup/${email}`
+      );
+      console.log(validAccount);
 
-      if(validAccount.data === ""){
-        console.log("No such email on the database")
-        if(password === confirmPassword){
-          console.log("matched")
-          signUpHandler({ first_name, last_name, email, address, contact_number, password });
-        }else{
-          alert("Password not matched")      
-          setPassword("")
-          setConfirmPassword("")
-        }    
-      }else{
-        alert("The email has been already used")
-        setEmail("")
+      if (validAccount.data === "") {
+        console.log("No such email on the database");
+        if (password === confirmPassword) {
+          console.log("matched");
+          signUpHandler({
+            first_name,
+            last_name,
+            email,
+            address,
+            contact_number,
+            password,
+          });
+        } else {
+          alert("Password not matched");
+          setPassword("");
+          setConfirmPassword("");
+        }
+      } else {
+        alert("The email has been already used");
+        setEmail("");
       }
-    }catch(error){
-      console.log(error)
-    }        
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -124,7 +131,14 @@ const SignupForm = ({ signUpHandler }) => {
             required
           />
           <br />
-          <label><b><i style={{fontSize:'10px'}}>**Use at least one lowercase, uppercase and digit. Minimum length is 6 characters.</i></b></label>
+          <label>
+            <b>
+              <i style={{ fontSize: "10px" }}>
+                **Use at least one lowercase, uppercase and digit. Minimum
+                length is 6 characters.
+              </i>
+            </b>
+          </label>
           <br />
 
           <input
@@ -150,13 +164,12 @@ const SignupForm = ({ signUpHandler }) => {
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
-          />          
+          />
           <br />
 
           <center>
             {["checkbox"].map((type) => (
               <div key={`inline-${type}`} className="mb-3">
-                
                 <Form.Check
                   style={{ fontSize: "14px" }}
                   inline
@@ -165,10 +178,10 @@ const SignupForm = ({ signUpHandler }) => {
                   type={type}
                   id={`inline-${type}-1`}
                   required
-                >
-                </Form.Check>
-                  <a href = {Pdf} target = "_blank" style={{fontSize: '14px'}}>I agree to the terms and conditions</a>                
-                
+                ></Form.Check>
+                <a href={Pdf} target="_blank" style={{ fontSize: "14px" }}>
+                  I agree to the terms and conditions
+                </a>
               </div>
             ))}
           </center>

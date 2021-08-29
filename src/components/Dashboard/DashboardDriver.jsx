@@ -25,27 +25,27 @@ function DashboardDriver() {
             <div className={DashboardStyle.detailsCardSection}>
               <DetailCard
                 detailCardMargin={true}
-                materialIconName={"local_shipping"}
-                cardText={"Today Deliveries"}
-                cardPrice={"No.5"}
+                materialIconName={"price_change"}
+                cardText={"Today Sales"}
+                cardPrice={"Rs.10000"}
               />
               <DetailCard
                 detailCardMargin={true}
                 materialIconName={"category"}
-                cardText={"All Deliveries"}
-                cardPrice={"No.10"}
+                cardText={"Sales Items"}
+                cardPrice={"10"}
               />
               <DetailCard
                 detailCardMargin={true}
                 materialIconName={"stacked_line_chart"}
-                cardText={"Daily Income"}
-                cardPrice={"Rs.25,000"}
+                cardText={"New Orders"}
+                cardPrice={"10"}
               />
               <DetailCard
                 detailCardMargin={false}
                 materialIconName={"spa"}
-                cardText={"Total Income"}
-                cardPrice={"Rs.2,500,000"}
+                cardText={"Today Orders"}
+                cardPrice={"30"}
               />
             </div>
             <div className={DashboardStyle.chartCardSection}>

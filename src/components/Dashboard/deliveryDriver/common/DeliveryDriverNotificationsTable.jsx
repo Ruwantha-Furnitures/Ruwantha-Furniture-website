@@ -11,8 +11,11 @@ import {
 import { getCustomers } from "./../../service/customer";
 import Pagination from "./../../common/pagination";
 import { paginate } from "./../../utils/paginate";
+import PropagateLoader from "react-spinners/PropagateLoader";
+import ProductStyle from "../../../../css/dashboard/Products.module.css";
 
 function DeliveryDriverNotificationsTable() {
+  const [loading, setLoading] = useState(false);
   const [deliveries, setDeliveries] = useState({
     id: 0,
     customer: {
@@ -35,19 +38,36 @@ function DeliveryDriverNotificationsTable() {
 
   useEffect(() => {
     loadDeliveries();
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 8000);
   }, [page]);
 
   const loadDeliveries = async () => {
     try {
       const user_email = Auth.getCurrentUserEmail();
       const result = await getDeliveryDrivers();
+      const resultDeliveries = await getDeliveries();
+      const resultCustomers = await getCustomers();
+
+      setLoading(true);
+      if (
+        result.status === 200 &&
+        resultDeliveries.status === 200 &&
+        resultCustomers.status === 200
+      ) {
+        setLoading(false);
+      }
+
       const driver = result.data.filter(
         (driver) => driver.account.email === user_email
       )[0];
       const driver_id = driver.id;
 
       // get total deliveries
-      const resultDeliveries = await getDeliveries();
+
       const deliveries = resultDeliveries.data.filter(
         (deliveryData) =>
           deliveryData.delivery_driver_id === driver_id &&
@@ -55,7 +75,7 @@ function DeliveryDriverNotificationsTable() {
       );
 
       // get total customer
-      const resultCustomers = await getCustomers();
+
       const customersData = resultCustomers.data;
 
       deliveries.forEach((delivery) => {
@@ -129,119 +149,131 @@ function DeliveryDriverNotificationsTable() {
 
   return (
     <React.Fragment>
-      <div className={TableStyle.titleHeader}>
-        <h1 className={TableStyle.tableTitleProductStyle}>
-          Deliveries Notifications
-        </h1>
-        <div className={TableStyle.searchSection}>
-          <form action="#">
-            <div className={TableStyle.search}>
-              <div className={TableStyle.searchicon}>
-                <span
-                  className={"material-icons " + TableStyle.searchIconStyle}
-                >
-                  search
-                </span>
-              </div>
-
-              <div className={TableStyle.searchText}>
-                <input
-                  type="search"
-                  placeholder="search customer here"
-                  value={search}
-                  name="search"
-                  onChange={(e) => onInputChange(e)}
-                  className={TableStyle.searchinput}
-                />
-              </div>
-            </div>
-          </form>
+      {loading ? (
+        <div className={ProductStyle.loader}>
+          <PropagateLoader color={"#542B14"} loading={loading} size={20} />
         </div>
-      </div>
+      ) : (
+        <>
+          <div className={TableStyle.titleHeader}>
+            <h1 className={TableStyle.tableTitleProductStyle}>
+              Deliveries Notifications
+            </h1>
+            <div className={TableStyle.searchSection}>
+              <form action="#">
+                <div className={TableStyle.search}>
+                  <div className={TableStyle.searchicon}>
+                    <span
+                      className={"material-icons " + TableStyle.searchIconStyle}
+                    >
+                      search
+                    </span>
+                  </div>
 
-      <div className={TableStyle.tablebody}>
-        <table className={TableStyle.tableShow}>
-          <thead>
-            <tr>
-              <th>
-                <div className={TableStyle.header}>Delivery</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Customer</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Date</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Payment</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Accept</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Decline</div>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {Array.isArray(filterDeliveries) === true && (
-              <React.Fragment>
-                {filterDeliveries.map((delivery, index) => (
-                  <tr key={index}>
-                    <td>
-                      <Link
-                        to={`/dashboard/deliveryDriverNotifications/details/${delivery.order_id}`}
-                        className={TableStyle.linkStyle}
-                      >
-                        <span className={TableStyle.statusStyleLink}>
-                          {"DO000" + delivery.id}
-                        </span>
-                      </Link>
-                    </td>
-                    <td>
-                      {delivery.customer.first_name +
-                        " " +
-                        delivery.customer.last_name}
-                    </td>
-                    <td>{delivery.createdAt.split("T")[0]}</td>
-                    <td>{"Rs." + delivery.order.total_product_amount}</td>
-                    <td>
-                      <span
-                        className={
-                          TableStyle.statusStyle +
-                          " " +
-                          TableStyle.statusColorCompleted
-                        }
-                        onClick={(e) => handleAcceptDelivery(e, delivery.id)}
-                      >
-                        Accept
-                      </span>
-                    </td>
-                    <td>
-                      <span
-                        className={
-                          TableStyle.statusStyle +
-                          " " +
-                          TableStyle.statusColorNotCompleted
-                        }
-                        onClick={(e) => handleDeclineDelivery(e, delivery.id)}
-                      >
-                        Decline
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </React.Fragment>
-            )}
-          </tbody>
-        </table>
-      </div>
-      <Pagination
-        itemsCount={deliveries.length}
-        pageSize={page.pageSize}
-        currentPage={page.currentPage}
-        onPageChange={handlePageChange}
-      />
+                  <div className={TableStyle.searchText}>
+                    <input
+                      type="search"
+                      placeholder="search customer here"
+                      value={search}
+                      name="search"
+                      onChange={(e) => onInputChange(e)}
+                      className={TableStyle.searchinput}
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div className={TableStyle.tablebody}>
+            <table className={TableStyle.tableShow}>
+              <thead>
+                <tr>
+                  <th>
+                    <div className={TableStyle.header}>Delivery</div>
+                  </th>
+                  <th>
+                    <div className={TableStyle.header}>Customer</div>
+                  </th>
+                  <th>
+                    <div className={TableStyle.header}>Order Date</div>
+                  </th>
+                  <th>
+                    <div className={TableStyle.header}>Payment</div>
+                  </th>
+                  <th>
+                    <div className={TableStyle.header}>Accept</div>
+                  </th>
+                  <th>
+                    <div className={TableStyle.header}>Decline</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {Array.isArray(filterDeliveries) === true && (
+                  <React.Fragment>
+                    {filterDeliveries.map((delivery, index) => (
+                      <tr key={index}>
+                        <td>
+                          <Link
+                            to={`/dashboard/deliveryDriverNotifications/details/${delivery.order_id}`}
+                            className={TableStyle.linkStyle}
+                          >
+                            <span className={TableStyle.statusStyleLink}>
+                              {"DO000" + delivery.id}
+                            </span>
+                          </Link>
+                        </td>
+                        <td>
+                          {delivery.customer.first_name +
+                            " " +
+                            delivery.customer.last_name}
+                        </td>
+                        <td>{delivery.createdAt.split("T")[0]}</td>
+                        <td>{"Rs." + delivery.order.total_product_amount}</td>
+                        <td>
+                          <span
+                            className={
+                              TableStyle.statusStyle +
+                              " " +
+                              TableStyle.statusColorCompleted
+                            }
+                            onClick={(e) =>
+                              handleAcceptDelivery(e, delivery.id)
+                            }
+                          >
+                            Accept
+                          </span>
+                        </td>
+                        <td>
+                          <span
+                            className={
+                              TableStyle.statusStyle +
+                              " " +
+                              TableStyle.statusColorNotCompleted
+                            }
+                            onClick={(e) =>
+                              handleDeclineDelivery(e, delivery.id)
+                            }
+                          >
+                            Decline
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </React.Fragment>
+                )}
+              </tbody>
+            </table>
+          </div>
+          <Pagination
+            itemsCount={deliveries.length}
+            pageSize={page.pageSize}
+            currentPage={page.currentPage}
+            onPageChange={handlePageChange}
+          />
+        </>
+      )}
     </React.Fragment>
   );
 }
