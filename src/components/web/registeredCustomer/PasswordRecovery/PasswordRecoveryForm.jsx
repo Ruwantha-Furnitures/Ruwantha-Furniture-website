@@ -5,17 +5,23 @@ import { Row } from 'reactstrap';
 import Button from 'react-bootstrap/Button';
 import Avatar from "../../../../assets/pwchange.png";
 import { Redirect } from "react-router-dom";
+import { useParams } from "react-router";
 import "../../../../css/web/Login.css";
 import FormStyle from "../../../../css/web/Form.module.css";
 import axios from "axios";
 
 
-function PasswordRecoveryForm() {
+function PasswordRecoveryForm(props) {
     require("bootstrap/dist/css/bootstrap.min.css");
     const [isUpdate, setIsUpdate] = useState(false);
     // const [password, setPassword] = useState("");
     const [newpassword, setNewPassword] = useState("");
-    const [confirmpassword, setConfirmPassword] = useState("");      
+    const [confirmpassword, setConfirmPassword] = useState("");     
+    
+    const queryParams = new URLSearchParams(window.location.search);
+    
+    const token = queryParams.get('token');
+    console.log(token)
 
     const submitHandler = async(e) => {
         e.preventDefault();
