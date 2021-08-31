@@ -27,6 +27,15 @@ function PasswordRecoveryForm(props) {
         e.preventDefault();
         const changePasswordData = {newpassword,confirmpassword}
 
+        console.log(changePasswordData.data)
+
+        try{
+            let TokenResponse = await axios.get(`http://localhost:8080/api/resetTokenByToken/${token}`)                    
+            console.log(TokenResponse.data)
+        }catch(error){
+            console.log(error)
+        }
+
         // try{
 
         //     if(newpassword === confirmpassword){
