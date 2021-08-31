@@ -6,6 +6,10 @@ module.exports = (app) => {
     // //   get single type
     router.get("/:token", resetToken.findOne);
 
+    
+    // //   delete type
+    router.delete("/:token", resetToken.delete);
+
     app.use("/api/resetTokenByToken", router);
   };
   
