@@ -31,7 +31,8 @@ function PasswordRecoveryForm() {
             console.log(TokenResponse.data)
             console.log(TokenResponse.data.email)
             
-            // console.log(newpassword)
+            console.log(newpassword)
+            console.log(confirmpassword)
             if(newpassword === confirmpassword){
                 
                 console.log("New passwords are matched")
@@ -44,13 +45,12 @@ function PasswordRecoveryForm() {
                         
                 const NewPasswordResponse = await axios.put(`http://localhost:8080/api/accountForCustomer/${TokenResponse.data.email}`,NewPasswordData)                    
                 console.log(NewPasswordResponse.data)
-
-                ///delete the token from the token table
-                // const tokenDeleteResponse = axios.delete(`http://localhost:8080/api/resetTokenByToken/${token}`)
-                // console.log(tokenDeleteResponse.data)
-        
+                                        
                 if(NewPasswordResponse.status === 200){
-                    alert("Your profile has been successfully updated.")
+                    alert("Your password has been successfully updated.")    
+                    ///delete the token from the token table
+                    const tokenDeleteResponse = axios.delete(`http://localhost:8080/api/resetTokenByToken/${token}`)
+                    console.log(tokenDeleteResponse.data)                
                     setIsUpdate(true)
                 }else{
                     // alert("Your profile has not updated.")    
