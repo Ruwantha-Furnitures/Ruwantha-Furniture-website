@@ -16,3 +16,18 @@ exports.findOne = (req, res) => {
         });
       });
   };
+
+// delete an object
+exports.delete = (req, res) => {
+  const token = req.params.token;    
+  ResetToken.destroy({ where: { token: token}})
+  .then((data) => {
+      res.send(data);
+  })
+  .catch((err) => {
+      res.status(500).send({
+          message:
+          err.message || "Some error occured while retrieving Categories",
+      });
+  });
+};
