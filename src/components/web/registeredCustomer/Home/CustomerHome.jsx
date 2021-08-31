@@ -24,6 +24,7 @@ const CustomerHome = () => {
             let response = await axios.post("http://localhost:8080/api/message/",data);
             console.log(response.data);
             if(response.status === 200){
+                // alert("Send the message successfully.")
                 setIsSubmit(true)
             }else{
                 setIsSubmit(false)
