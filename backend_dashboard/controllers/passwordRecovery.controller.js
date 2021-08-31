@@ -1,5 +1,6 @@
 const db = require("../models");
 const Account = db.account;
+const ResetToken = db.resetToken;
 var crypto = require('crypto');
 const nodemailer = require('nodemailer');
 // const sendEmailPasswordRecovery = require("../common/emailPasswordReset");
@@ -20,7 +21,24 @@ exports.findOne = (req, res) => {
             user.update({
                 resetPasswordToken: token,
                 resetPasswordExpires: Date.now() + 3600000,
+        });
+
+        const resetToken = {
+            email: email,
+            token: token,
+        };
+        
+        //   Save resetToken in the database
+        ResetToken.create(resetToken)
+            .then((data) => {
+                res.send(data);
+            })
+            .catch((err) => {
+            res.status(500).send({
+                message:
+                err.message || "Some error occured while creating the ResetToken",
             });
+        });     
 
             const transporter = nodemailer.createTransport({
                 service: 'hotmail',
