@@ -11,11 +11,11 @@ exports.create = async (req, res) => {
   //  Create a Order
   const order = {
     total_product_amount: req.body.total_product_amount,
-    customer_id: req.body.customer_id,
+    customer_id: req.body.customer_id,    
     payment_method: req.body.payment_method,
   };
 
-  console.log("in the order controller");
+  console.log("in the order controller")
   //   Save order in the database
   await Order.create(order)
     .then((data) => {
@@ -82,9 +82,14 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const id = req.params.id;
-  Order.destroy({
-    where: { id: id },
-  })
+  Order.update(
+    {
+      is_deleted: true,
+    },
+    {
+      where: { id: id },
+    }
+  )
     .then((num) => {
       if (num == 1) {
         res.send({
