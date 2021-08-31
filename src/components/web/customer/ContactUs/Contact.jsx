@@ -15,7 +15,7 @@ const Contact = () => {
         try{            
             let response = await axios.post("http://localhost:8080/api/message/",data);
             console.log(response.data);
-            if(response.status === 200){
+            if(response.status === 200){                
                 setIsSubmit(true)
             }else{
                 setIsSubmit(false)
