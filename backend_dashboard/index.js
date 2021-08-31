@@ -23,7 +23,6 @@ require("./routes/type.routes")(app);
 require("./routes/product.routes")(app);
 require("./routes/customer.routes")(app);
 require("./routes/sellProduct.routes")(app);
-require("./routes/sellProductOrder.routes")(app);
 require("./routes/deliveryDriver.routes")(app);
 require("./routes/deliveries.routes")(app);
 require("./routes/imageUpload.routes")(app);
@@ -38,6 +37,7 @@ require("./routes/shippingDetails.routes")(app);
 require("./routes/productReview.routes")(app);
 require("./routes/resetToken.routes")(app);
 
+
 require("./routes/login.routes")(app);
 require("./routes/signup.routes")(app);
 require("./routes/onlineCustomerLogin.routes")(app);
@@ -49,6 +49,7 @@ require("./routes/typeFoeACategory.routes")(app);
 require("./routes/productForType.routes")(app);
 require("./routes/productReviewForAProduct.routes")(app);
 require("./routes/passwordRecovery.router")(app);
+require("./routes/resetPasswordFromToken.routes")(app);
 
 // set port
 const PORT = process.env.PORT || 8080;
