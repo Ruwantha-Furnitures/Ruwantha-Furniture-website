@@ -11,7 +11,7 @@ import FormStyle from "../../../../css/web/Form.module.css";
 import axios from "axios";
 
 
-function PasswordRecoveryForm(props) {
+function PasswordRecoveryForm() {
     require("bootstrap/dist/css/bootstrap.min.css");
     const [isUpdate, setIsUpdate] = useState(false);
     // const [password, setPassword] = useState("");
@@ -24,51 +24,49 @@ function PasswordRecoveryForm(props) {
     console.log(token)
 
     const submitHandler = async(e) => {
-        e.preventDefault();
-        const changePasswordData = {newpassword,confirmpassword}
-
-        console.log(changePasswordData.data)
+        e.preventDefault();           
 
         try{
-            let TokenResponse = await axios.get(`http://localhost:8080/api/resetTokenByToken/${token}`)                    
+            const TokenResponse = await axios.get(`http://localhost:8080/api/resetTokenByToken/${token}`)                    
             console.log(TokenResponse.data)
+            console.log(TokenResponse.data.email)
+            
+            // console.log(newpassword)
+            if(newpassword === confirmpassword){
+                
+                console.log("New passwords are matched")
+                var md5 = require('md5'); 
+                const encryptnewpw = md5(newpassword);
+                console.log(encryptnewpw)
+        
+                const NewPasswordData = {email: TokenResponse.email , password:encryptnewpw}
+                console.log(NewPasswordData)
+                        
+                const NewPasswordResponse = await axios.put(`http://localhost:8080/api/accountForCustomer/${TokenResponse.data.email}`,NewPasswordData)                    
+                console.log(NewPasswordResponse.data)
+
+                ///delete the token from the token table
+                // const tokenDeleteResponse = axios.delete(`http://localhost:8080/api/resetTokenByToken/${token}`)
+                // console.log(tokenDeleteResponse.data)
+        
+                if(NewPasswordResponse.status === 200){
+                    alert("Your profile has been successfully updated.")
+                    setIsUpdate(true)
+                }else{
+                    // alert("Your profile has not updated.")    
+                    setIsUpdate(false)            
+                }
+        
+            }else{
+                console.log("New passwords are not matched")
+                alert("New passwords are not matched")
+                setNewPassword("")
+                setConfirmPassword("")
+            }
+
         }catch(error){
             console.log(error)
         }
-
-        // try{
-
-        //     if(newpassword === confirmpassword){
-        //         console.log("New passwords are matched")
-        //         var md5 = require('md5'); 
-        //         const encryptnewpw = md5(newpassword);
-        //         console.log(encryptnewpw)
-
-        //         const NewPasswordData = {email:email,password:encryptnewpw}
-        //         console.log(NewPasswordData)
-                
-        //         let NewPasswordResponse = await axios.put(`http://localhost:8080/api/email/${email}`,NewPasswordData)                    
-        //         console.log(NewPasswordResponse.data)
-
-        //         if(NewPasswordResponse.status === 200){
-        //             alert("Your profile has been successfully updated.")
-        //             setIsUpdate(true)
-        //         }else{
-        //             // alert("Your profile has not updated.")    
-        //             setIsUpdate(false)            
-        //         }
-
-        //     }else{
-        //         console.log("New passwords are not matched")
-        //         alert("New passwords are not matched")
-        //         setNewPassword("")
-        //         setConfirmPassword("")
-        //     }
-        // }catch (error) {
-        //     console.log(error)
-        // }
-
-        // UpdateHandler(changePasswordData)
     }
     
     const title={        
@@ -79,7 +77,7 @@ function PasswordRecoveryForm(props) {
         margin: '10px'
     };
 
-    const redirectProfile = <Redirect to="/viewProfile"></Redirect>;
+    const redirectProfile = <Redirect to="/login"></Redirect>;
     return ( 
         <React.Fragment>
             {(isUpdate === true) && (redirectProfile)}   
