@@ -50,6 +50,7 @@ require("./routes/productForType.routes")(app);
 require("./routes/productReviewForAProduct.routes")(app);
 require("./routes/passwordRecovery.router")(app);
 require("./routes/resetPasswordFromToken.routes")(app);
+require("./routes/accountForACustomer.route")(app);
 
 // set port
 const PORT = process.env.PORT || 8080;
