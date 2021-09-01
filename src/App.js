@@ -89,9 +89,6 @@ import TrackingOrders from "./components/Dashboard/order/TrackingOrders";
 import ProductSellShipping from "./components/Dashboard/product/product_sell/ProductSellShipping";
 
 
-// Reports
-import ReportsPage from "./components/web/report/ButtonForReport";
-
 function App() {
   return (
     <Router>
@@ -390,15 +387,6 @@ function App() {
             path="/customer_deleteProfile"
             component={CustomerDeleteProfile}
           ></Route>
-
-
-          {/* Reports */}
-          <Route
-            exact
-            path="/reports"
-            component={ReportsPage}
-          ></Route>
-
           
         </Switch>
       </div>

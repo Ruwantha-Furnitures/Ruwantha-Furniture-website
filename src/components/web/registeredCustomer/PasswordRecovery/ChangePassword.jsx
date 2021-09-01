@@ -15,7 +15,7 @@ function CustomerChangePassword() {
         MaxWidth: "100%"
     }
     
-      return (
+    return (
           <div className="col-md-12" style={contactImg}>                                     
               <Navigation></Navigation> 
               <Subnavigation></Subnavigation>
