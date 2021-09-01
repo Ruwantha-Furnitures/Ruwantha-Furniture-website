@@ -11,8 +11,11 @@ import {
 import { getCustomers } from "./../../service/customer";
 import Pagination from "./../../common/pagination";
 import { paginate } from "./../../utils/paginate";
+import PropagateLoader from "react-spinners/PropagateLoader";
+import ProductStyle from "../../../../css/dashboard/Products.module.css";
 
 function DeliveriesTable() {
+  const [loading, setLoading] = useState(false);
   const [deliveries, setDeliveries] = useState({
     id: 0,
     customer: {
@@ -41,14 +44,26 @@ function DeliveriesTable() {
   const loadDeliveries = async () => {
     try {
       const user_email = Auth.getCurrentUserEmail();
+      setLoading(true);
       const result = await getDeliveryDrivers();
+      const resultDeliveries = await getDeliveries();
+      const resultCustomers = await getCustomers();
+
+      if (
+        result.status === 200 &&
+        resultDeliveries.status === 200 &&
+        resultCustomers.status === 200
+      ) {
+        setLoading(false);
+      }
+
       const driver = result.data.filter(
         (driver) => driver.account.email === user_email
       )[0];
       const driver_id = driver.id;
 
       // get total deliveries
-      const resultDeliveries = await getDeliveries();
+
       const deliveries = resultDeliveries.data.filter(
         (deliveryData) =>
           deliveryData.delivery_driver_id === driver_id &&
@@ -56,7 +71,7 @@ function DeliveriesTable() {
       );
 
       // get total customer
-      const resultCustomers = await getCustomers();
+
       const customersData = resultCustomers.data;
 
       deliveries.forEach((delivery) => {
@@ -109,121 +124,131 @@ function DeliveriesTable() {
 
   return (
     <React.Fragment>
-      <div className={TableStyle.titleHeader}>
-        <h1 className={TableStyle.tableTitleProductStyle}>Driver Deliveries</h1>
-        <div className={TableStyle.searchSection}>
-          <form action="#">
-            <div className={TableStyle.search}>
-              <div className={TableStyle.searchicon}>
-                <span
-                  className={"material-icons " + TableStyle.searchIconStyle}
-                >
-                  search
-                </span>
-              </div>
-
-              <div className={TableStyle.searchText}>
-                <input
-                  type="search"
-                  placeholder="search customer here"
-                  value={search}
-                  name="search"
-                  onChange={(e) => onInputChange(e)}
-                  className={TableStyle.searchinput}
-                />
-              </div>
-            </div>
-          </form>
+      {loading ? (
+        <div className={ProductStyle.loader}>
+          <PropagateLoader color={"#542B14"} loading={loading} size={20} />
         </div>
-      </div>
+      ) : (
+        <>
+          <div className={TableStyle.titleHeader}>
+            <h1 className={TableStyle.tableTitleProductStyle}>
+              Driver Deliveries
+            </h1>
+            <div className={TableStyle.searchSection}>
+              <form action="#">
+                <div className={TableStyle.search}>
+                  <div className={TableStyle.searchicon}>
+                    <span
+                      className={"material-icons " + TableStyle.searchIconStyle}
+                    >
+                      search
+                    </span>
+                  </div>
 
-      <div className={TableStyle.tablebody}>
-        <table className={TableStyle.tableShow}>
-          <thead>
-            <tr>
-              <th>
-                <div className={TableStyle.header}>Delivery Id</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Customer</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Contact Number</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Date</div>
-              </th>
-              <th>
-                <div className={TableStyle.header}>Status</div>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {Array.isArray(filterDeliveries) === true && (
-              <React.Fragment>
-                {filterDeliveries.map((delivery, index) => (
-                  <tr key={index}>
-                    <td>
-                      <Link
-                        to={`/dashboard/deliveryDriver/details/${delivery.order_id}`}
-                        className={TableStyle.linkStyle}
-                      >
-                        <span className={TableStyle.statusStyleLink}>
-                          {delivery.id < 10
-                            ? "DO000" + delivery.id
-                            : delivery.id < 100
-                            ? "DO00" + delivery.id
-                            : "DO0" + delivery.id}
-                        </span>
-                      </Link>
-                    </td>
-                    <td>
-                      {delivery.customer.first_name +
-                        " " +
-                        delivery.customer.last_name}
-                    </td>
-                    <td>{"0" + delivery.customer.contact_number}</td>
-                    <td>{delivery.createdAt.split("T")[0]}</td>
-                    <td>
-                      {delivery.complete_status === 0 ? (
-                        <React.Fragment>
-                          <span
-                            className={
-                              TableStyle.statusStyle +
-                              " " +
-                              TableStyle.statusColorNotAvailabile
-                            }
+                  <div className={TableStyle.searchText}>
+                    <input
+                      type="search"
+                      placeholder="Search customer here"
+                      value={search}
+                      name="search"
+                      onChange={(e) => onInputChange(e)}
+                      className={TableStyle.searchinput}
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div className={TableStyle.tablebody}>
+            <table className={TableStyle.tableShow}>
+              <thead>
+                <tr>
+                  <th>
+                    <div className={TableStyle.header}>Delivery Id</div>
+                  </th>
+                  <th>
+                    <div className={TableStyle.header}>Customer</div>
+                  </th>
+                  <th>
+                    <div className={TableStyle.header}>Contact Number</div>
+                  </th>
+                  <th>
+                    <div className={TableStyle.header}>Order Date</div>
+                  </th>
+                  <th>
+                    <div className={TableStyle.header}>Status</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {Array.isArray(filterDeliveries) === true && (
+                  <React.Fragment>
+                    {filterDeliveries.map((delivery, index) => (
+                      <tr key={index}>
+                        <td>
+                          <Link
+                            to={`/dashboard/deliveryDriver/details/${delivery.order_id}`}
+                            className={TableStyle.linkStyle}
                           >
-                            NotCompleted
-                          </span>
-                        </React.Fragment>
-                      ) : (
-                        <React.Fragment>
-                          <span
-                            className={
-                              TableStyle.statusStyle +
-                              " " +
-                              TableStyle.statusColorAvailabile
-                            }
-                          >
-                            Completed
-                          </span>
-                        </React.Fragment>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </React.Fragment>
-            )}
-          </tbody>
-        </table>
-      </div>
-      <Pagination
-        itemsCount={deliveries.length}
-        pageSize={page.pageSize}
-        currentPage={page.currentPage}
-        onPageChange={handlePageChange}
-      />
+                            <span className={TableStyle.statusStyleLink}>
+                              {delivery.id < 10
+                                ? "DO000" + delivery.id
+                                : delivery.id < 100
+                                ? "DO00" + delivery.id
+                                : "DO0" + delivery.id}
+                            </span>
+                          </Link>
+                        </td>
+                        <td>
+                          {delivery.customer.first_name +
+                            " " +
+                            delivery.customer.last_name}
+                        </td>
+                        <td>{"0" + delivery.customer.contact_number}</td>
+                        <td>{delivery.createdAt.split("T")[0]}</td>
+                        <td>
+                          {delivery.complete_status === 0 ? (
+                            <React.Fragment>
+                              <span
+                                className={
+                                  TableStyle.statusStyle +
+                                  " " +
+                                  TableStyle.statusColorNotAvailabile
+                                }
+                              >
+                                NotCompleted
+                              </span>
+                            </React.Fragment>
+                          ) : (
+                            <React.Fragment>
+                              <span
+                                className={
+                                  TableStyle.statusStyle +
+                                  " " +
+                                  TableStyle.statusColorAvailabile
+                                }
+                              >
+                                Completed
+                              </span>
+                            </React.Fragment>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </React.Fragment>
+                )}
+              </tbody>
+            </table>
+          </div>
+          <Pagination
+            itemsCount={deliveries.length}
+            pageSize={page.pageSize}
+            currentPage={page.currentPage}
+            onPageChange={handlePageChange}
+          />
+        </>
+      )}
     </React.Fragment>
   );
 }

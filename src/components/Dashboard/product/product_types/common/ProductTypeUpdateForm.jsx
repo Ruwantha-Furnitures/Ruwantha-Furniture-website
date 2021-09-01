@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Joi from "joi-browser";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import ProductTypeList from "./ProductTypeList";
 import { Link, useParams } from "react-router-dom";
@@ -21,6 +22,14 @@ function ProductTypeUpdateForm() {
     id: 0,
     name: "",
   });
+  const [errors, setErrors] = useState({});
+
+  const [isSubmit, setIsSubmit] = useState(false);
+
+  const schema = {
+    name: Joi.string().required().label("New Type"),
+    category_id: Joi.number().min(1).required().label("Category"),
+  };
 
   useEffect(() => {
     loadTypeAndCategories();
@@ -37,12 +46,28 @@ function ProductTypeUpdateForm() {
     }
   };
 
+  const validateInput = ({ name, value }) => {
+    const obj = { [name]: value };
+    const newSchema = { [name]: schema[name] };
+    const { error } = Joi.validate(obj, newSchema);
+    return error ? error.details[0].message : null;
+  };
+
   const onInputChange = (e) => {
+    const newErrors = { ...errors };
+    // validation
+    const errorMessage = validateInput(e.target);
+    if (errorMessage) newErrors[e.target.name] = errorMessage;
+    else delete newErrors[e.target.name];
+
+    console.log(newErrors);
+    setErrors(newErrors);
     setType({ ...type, [e.target.name]: e.target.value });
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmit(true);
     try {
       const response = await editProductTypeDetails(id, type);
       window.location = `/dashboard/product/viewProductType/${id}`;
@@ -86,50 +111,87 @@ function ProductTypeUpdateForm() {
           <div className={ProductViewFormStyle.imgDescPart}>
             <div className={ProductViewFormStyle.typeForm}>
               <div className={ProductViewFormStyle.descTitle}>
-                <div className={ProductViewFormStyle.dataProductTitle}>
-                  <label className={ProductViewFormStyle.labelProductTitle}>
-                    Category
-                  </label>
-                  <select
-                    className={ProductViewFormStyle.inputProductTitle}
-                    name="categoryId"
-                    onChange={(e) => onInputChange(e)}
-                    required
-                  >
-                    {type.categoryId !== 0 ? (
-                      <option value={type.category.id}>
-                        {type.category.name}
-                      </option>
-                    ) : (
-                      <option value="#">Select Type</option>
-                    )}
-                    {Array.isArray(categories) === true && (
-                      <React.Fragment>
-                        {categories.map((category, index) => (
-                          <option key={index} value={category.id}>
-                            {category.name}
-                          </option>
-                        ))}
-                      </React.Fragment>
-                    )}
-                  </select>
+                <div className={ProductViewFormStyle.dataProductTitleNew}>
+                  <div className={ProductViewFormStyle.dataFormNew}>
+                    <label className={ProductViewFormStyle.labelProductTitle}>
+                      Category
+                    </label>
+                    <select
+                      className={ProductViewFormStyle.inputProductTitle}
+                      name="categoryId"
+                      onChange={(e) => onInputChange(e)}
+                      required
+                    >
+                      {type.categoryId !== 0 ? (
+                        <option value={type.category.id}>
+                          {type.category.name}
+                        </option>
+                      ) : (
+                        <option value="#">Select Type</option>
+                      )}
+                      {Array.isArray(categories) === true && (
+                        <React.Fragment>
+                          {categories.map((category, index) => (
+                            <option key={index} value={category.id}>
+                              {category.name}
+                            </option>
+                          ))}
+                        </React.Fragment>
+                      )}
+                    </select>
+                  </div>
+                  {errors["category_id"] && (
+                    <div className={ProductViewFormStyle.inputErrorDesc}>
+                      <span
+                        className={
+                          "material-icons " + ProductViewFormStyle.iconWidth
+                        }
+                      >
+                        error
+                      </span>
+                      <span className={ProductViewFormStyle.inputErrorText}>
+                        "Category" is not allowed to be empty
+                      </span>
+                    </div>
+                  )}
                 </div>
-                <div className={ProductViewFormStyle.dataProductTitle}>
-                  <label className={ProductViewFormStyle.labelProductTitle}>
-                    New Type
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={type.name}
-                    onChange={(e) => onInputChange(e)}
-                    placeholder="New Product Type"
-                    className={ProductViewFormStyle.inputProductTitle}
-                  />
+                <div className={ProductViewFormStyle.dataProductTitleNew}>
+                  <div className={ProductViewFormStyle.dataFormNew}>
+                    <label className={ProductViewFormStyle.labelProductTitle}>
+                      New Type
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={type.name}
+                      onChange={(e) => onInputChange(e)}
+                      placeholder="New Product Type"
+                      className={ProductViewFormStyle.inputProductTitle}
+                    />
+                  </div>
+                  {errors["name"] && (
+                    <div className={ProductViewFormStyle.inputErrorDesc}>
+                      <span
+                        className={
+                          "material-icons " + ProductViewFormStyle.iconWidth
+                        }
+                      >
+                        error
+                      </span>
+                      <span className={ProductViewFormStyle.inputErrorText}>
+                        {errors["name"]}
+                      </span>
+                    </div>
+                  )}
                 </div>
                 <div className={ProductViewFormStyle.descButtonsAddType}>
                   <div className={ProductViewFormStyle.descButtonAdd}>
                     <button
+                      disabled={
+                        Object.keys(errors).length === 0 && isSubmit === false
+                          ? false
+                          : true
+                      }
                       className={
                         ProductViewFormStyle.buttonStyle +
                         " " +

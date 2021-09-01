@@ -5,8 +5,13 @@ import DriverDateView from "../common/DriverDateView";
 import MainStyle from "../../../css/dashboard/Main.module.css";
 import ProductStyle from "../../../css/dashboard/Products.module.css";
 import DeliveryDriverViewForm from "./common/DeliveryDriverViewForm";
+import Auth from "../service/auth";
+import AllProductsView from "./../common/AllProductsView";
 
 function DeliveryDriverView() {
+  const user = Auth.getCurrentUser();
+
+  console.log(user);
   return (
     <div className={MainStyle.bodycontainer}>
       <div className={MainStyle.navSection}>
@@ -27,7 +32,12 @@ function DeliveryDriverView() {
             </div>
           </div>
           <div className={ProductStyle.productsViewSection}>
-            <DriverDateView />
+            {/* {user === "Admin" && <><AllProductsView>} */}
+            {user !== "Delivery Driver" ? (
+              <AllProductsView />
+            ) : (
+              <DriverDateView />
+            )}
           </div>
         </div>
       </div>

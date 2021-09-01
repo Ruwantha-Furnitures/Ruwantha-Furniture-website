@@ -125,7 +125,7 @@ function Sidebar() {
                     </div>
                     <div className={SidebarStyle.lineText}>
                       <h1 className={SidebarStyle.lineTextStyle}>
-                        Sell Product
+                        Manual Sales
                       </h1>
                     </div>
                   </div>

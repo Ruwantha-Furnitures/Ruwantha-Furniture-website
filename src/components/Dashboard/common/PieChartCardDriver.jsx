@@ -27,7 +27,7 @@ function PieChartCardDriver() {
     <div className={PieChartCardStyle.pieChartSection}>
       <div className={PieChartCardStyle.pieChartLabel}>
         <h1 className={PieChartCardStyle.pieChartLabelStyle}>
-          Deliveries Of Product
+          Deliveries Of Categories
         </h1>
       </div>
       <div className={PieChartCardStyle.pieChart}>

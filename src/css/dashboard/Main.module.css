@@ -8,7 +8,9 @@
 }
 
 body {
-  background: #eeeff5 !important;
+  background: #eeeff5;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 ul {
@@ -46,4 +48,23 @@ h1 {
   width: 16%;
   display: flex;
   flex-direction: column;
+}
+
+/* Scroll bar style */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #542b14f3;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #542b14f3;
 }

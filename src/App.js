@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // Dashboard Components
 import Dashboard from "./components/Dashboard/DashboardHome";
-import ProfileChangePassword from "./components/Dashboard/ProfileChangePassword";
+import ProfileChangePassword from "./components/Dashboard/profile/ProfileChangePassword";
 import DashboardDriver from "./components/Dashboard/DashboardDriver";
 
 // products

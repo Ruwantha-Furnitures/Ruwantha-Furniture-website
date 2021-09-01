@@ -5,10 +5,12 @@ import {
   editDeliveryDriverDetails,
   getDeliveryDrivers,
 } from "./../../service/deliveryDriver";
+import PropagateLoader from "react-spinners/PropagateLoader";
+import ProductStyle from "../../../../css/dashboard/Products.module.css";
 
 function DeliveryDriverAvalabilityForm() {
   const user_email = Auth.getCurrentUserEmail();
-
+  const [loading, setLoading] = useState(false);
   const [deliveryDriver, setDeliveryDriver] = useState({
     id: 0,
     first_name: "",
@@ -28,7 +30,11 @@ function DeliveryDriverAvalabilityForm() {
 
   const loadDeliveryDriver = async () => {
     try {
+      setLoading(true);
       const result = await getDeliveryDrivers();
+      if (result.status === 200) {
+        setLoading(false);
+      }
 
       // console.log(resultCategories.data);
       const drivers = result.data;
@@ -72,118 +78,126 @@ function DeliveryDriverAvalabilityForm() {
   console.log(deliveryDriver);
   return (
     <React.Fragment>
-      <div>
-        <h1 className={ProductViewFormStyle.titleStyle}>
-          Delivery Driver Availability
-        </h1>
-      </div>
-      <form
-        onSubmit={(e) => onSubmit(e)}
-        className={ProductViewFormStyle.formStyle}
-      >
-        <div className={ProductViewFormStyle.details}>
-          <div className={ProductViewFormStyle.infoPart}>
-            <div className={ProductViewFormStyle.form}>
-              <div
-                className={
-                  ProductViewFormStyle.formLine +
-                  " " +
-                  ProductViewFormStyle.setMarginTop
-                }
-              >
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    First Name
-                  </label>
-                  <input
-                    type="text"
-                    value={deliveryDriver.first_name}
-                    placeholder="Driver First Name"
-                    className={ProductViewFormStyle.inputStyle}
-                    readOnly
-                  />
-                </div>
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Last Name
-                  </label>
-                  <input
-                    type="text"
-                    value={deliveryDriver.last_name}
-                    placeholder="Driver Last Name"
-                    className={ProductViewFormStyle.inputStyle}
-                    readOnly
-                  />
-                </div>
-              </div>
-              <div className={ProductViewFormStyle.formLine}>
-                <div className={ProductViewFormStyle.dataforLong}>
-                  <label className={ProductViewFormStyle.labelStyleforLong}>
-                    Email
-                  </label>
-                  <input
-                    type="text"
-                    value={deliveryDriver.account.email}
-                    placeholder="Delivery Driver Email"
-                    className={ProductViewFormStyle.inputStyleforLong}
-                    readOnly
-                  />
-                </div>
-              </div>
-              <div className={ProductViewFormStyle.formLine}>
-                <div className={ProductViewFormStyle.dataforLong}>
-                  <label className={ProductViewFormStyle.labelStyleforLong}>
-                    Address
-                  </label>
-                  <input
-                    type="text"
-                    value={deliveryDriver.address}
-                    placeholder="Delivery Driver Email"
-                    className={ProductViewFormStyle.inputStyleforLong}
-                    readOnly
-                  />
-                </div>
-              </div>
-              <div className={ProductViewFormStyle.formLine}>
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Phone
-                  </label>
-                  <input
-                    type="text"
-                    value={deliveryDriver.telephone}
-                    placeholder="Driver Contact Number"
-                    className={ProductViewFormStyle.inputStyle}
-                    readOnly
-                  />
-                </div>
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Availability
-                  </label>
-                  {/* Drivers filter by area and according to avaliable status */}
-                  <select
-                    className={ProductViewFormStyle.inputFormSelectStyle}
-                    name="availability"
-                    onChange={(e) => onInputChange(e)}
+      {loading ? (
+        <div className={ProductStyle.loader}>
+          <PropagateLoader color={"#542B14"} loading={loading} size={20} />
+        </div>
+      ) : (
+        <>
+          <div>
+            <h1 className={ProductViewFormStyle.titleStyle}>
+              Delivery Driver Availability
+            </h1>
+          </div>
+          <form
+            onSubmit={(e) => onSubmit(e)}
+            className={ProductViewFormStyle.formStyle}
+          >
+            <div className={ProductViewFormStyle.details}>
+              <div className={ProductViewFormStyle.infoPart}>
+                <div className={ProductViewFormStyle.form}>
+                  <div
+                    className={
+                      ProductViewFormStyle.formLine +
+                      " " +
+                      ProductViewFormStyle.setMarginTop
+                    }
                   >
-                    <option value="1">Available</option>
-                    <option value="0">Not Availabile</option>
-                  </select>
+                    <div className={ProductViewFormStyle.data}>
+                      <label className={ProductViewFormStyle.labelStyle}>
+                        First Name
+                      </label>
+                      <input
+                        type="text"
+                        value={deliveryDriver.first_name}
+                        placeholder="Driver First Name"
+                        className={ProductViewFormStyle.inputStyle}
+                        readOnly
+                      />
+                    </div>
+                    <div className={ProductViewFormStyle.data}>
+                      <label className={ProductViewFormStyle.labelStyle}>
+                        Last Name
+                      </label>
+                      <input
+                        type="text"
+                        value={deliveryDriver.last_name}
+                        placeholder="Driver Last Name"
+                        className={ProductViewFormStyle.inputStyle}
+                        readOnly
+                      />
+                    </div>
+                  </div>
+                  <div className={ProductViewFormStyle.formLine}>
+                    <div className={ProductViewFormStyle.dataforLong}>
+                      <label className={ProductViewFormStyle.labelStyleforLong}>
+                        Email
+                      </label>
+                      <input
+                        type="text"
+                        value={deliveryDriver.account.email}
+                        placeholder="Delivery Driver Email"
+                        className={ProductViewFormStyle.inputStyleforLong}
+                        readOnly
+                      />
+                    </div>
+                  </div>
+                  <div className={ProductViewFormStyle.formLine}>
+                    <div className={ProductViewFormStyle.dataforLong}>
+                      <label className={ProductViewFormStyle.labelStyleforLong}>
+                        Address
+                      </label>
+                      <input
+                        type="text"
+                        value={deliveryDriver.address}
+                        placeholder="Delivery Driver Email"
+                        className={ProductViewFormStyle.inputStyleforLong}
+                        readOnly
+                      />
+                    </div>
+                  </div>
+                  <div className={ProductViewFormStyle.formLine}>
+                    <div className={ProductViewFormStyle.data}>
+                      <label className={ProductViewFormStyle.labelStyle}>
+                        Phone
+                      </label>
+                      <input
+                        type="text"
+                        value={deliveryDriver.telephone}
+                        placeholder="Driver Contact Number"
+                        className={ProductViewFormStyle.inputStyle}
+                        readOnly
+                      />
+                    </div>
+                    <div className={ProductViewFormStyle.data}>
+                      <label className={ProductViewFormStyle.labelStyle}>
+                        Availability
+                      </label>
+                      {/* Drivers filter by area and according to avaliable status */}
+                      <select
+                        className={ProductViewFormStyle.inputFormSelectStyle}
+                        name="availability"
+                        onChange={(e) => onInputChange(e)}
+                      >
+                        <option value="1">Available</option>
+                        <option value="0">Not Availabile</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div className={ProductViewFormStyle.descButtonsAdd}>
-          <div className={ProductViewFormStyle.descButtonAdd}>
-            <button className={ProductViewFormStyle.descButtonAddStyle}>
-              Change Availabilty
-            </button>
-          </div>
-        </div>
-      </form>
+            <div className={ProductViewFormStyle.descButtonsAdd}>
+              <div className={ProductViewFormStyle.descButtonAdd}>
+                <button className={ProductViewFormStyle.descButtonAddStyle}>
+                  Change Availabilty
+                </button>
+              </div>
+            </div>
+          </form>
+        </>
+      )}
     </React.Fragment>
   );
 }

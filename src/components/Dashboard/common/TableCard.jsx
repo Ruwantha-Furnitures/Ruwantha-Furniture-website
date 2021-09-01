@@ -14,8 +14,7 @@ function TableCard() {
               <th>Products</th>
               <th>Price</th>
               <th>Discount</th>
-              <th>Sold</th>
-              {/* <th>Method</th> */}
+              <th>Quantity</th>
             </tr>
           </thead>
           <tbody>
