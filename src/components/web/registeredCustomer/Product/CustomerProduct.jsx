@@ -180,8 +180,8 @@ const CustomerProduct = () => {
                                         </Col>
                                     </Row>
                                     </Container>
-                                ))} 
-                            </>  )}        
+                                ))}
+                            </>  )}                                    
                             {(isFiltered=== true) && (Array.isArray(selectedProducts) === true) && (<>
                                 {selectedProducts.map((selectedproductList) =>(  
                                 <Container fluid >                                  
