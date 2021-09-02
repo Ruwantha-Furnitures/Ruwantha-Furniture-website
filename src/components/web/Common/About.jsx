@@ -100,8 +100,8 @@ function CustomerAbout() {
                             </Card.Text>                            
                         </Card.Body>
                         <div align="right">
-                            <a href="#" align="right" style={{padding: '20px'}}><img src={Appicon} width={130}/></a>{ ' '}
-                            <a href="#" align="right" style={{padding: '20px'}}><img src={usermanual} width={70}/></a>   
+                            <a href="https://play.google.com/store/apps/?hl=en&gl=US" target="_blank" align="right" style={{padding: '20px'}}><img src={Appicon} width={130}/></a>{ ' '}
+                            <a href="https://drive.google.com/file/d/1rLOdqUpsGY-tCpy_X-nYINiSaDJ6PJpc/view?usp=sharing" target="_blank" align="right" style={{padding: '20px'}}><img src={usermanual} width={70}/></a>   
                         </div>                     
                         </Card>  
                         <br />
