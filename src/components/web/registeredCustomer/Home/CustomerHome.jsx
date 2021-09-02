@@ -58,6 +58,9 @@ const CustomerHome = () => {
                     <Container fluid><Card>
                         <br/><Card.Title><center><h2>Furniture Items</h2></center></Card.Title><br />
                         <ProductBox></ProductBox> 
+                        <div align="center">
+                            <button class="btn btn-outline-secondary"><i class="bi bi-arrow-right-circle"></i> View All Furniture Items</button>                               
+                        </div><br />
                     </Card></Container><br />
                     <Container fluid><Gallary></Gallary></Container>      
                     <div style={contactImg}>

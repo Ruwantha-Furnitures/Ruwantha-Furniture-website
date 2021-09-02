@@ -78,7 +78,7 @@ const CustomerAllProducts = () => {
                     </Col>
                 </Row>
                 </Container>
-            ))}                    
+            ))}                            
         </div>            
     )
 }
