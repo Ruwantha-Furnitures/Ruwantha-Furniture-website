@@ -5,6 +5,8 @@ import vision from "../../../assets/visionmission.jpg";
 import webapp from "../../../assets/6.png";
 import { Container, Row, Col } from "reactstrap";
 import Appicon from "../../../assets/google.svg";
+import usermanual from "../../../assets/usermanual.jpg";
+
 
 function CustomerAbout() {
     require("bootstrap/dist/css/bootstrap.min.css");
@@ -97,7 +99,10 @@ function CustomerAbout() {
                                customer will always be treated with the utmost care and respect.
                             </Card.Text>                            
                         </Card.Body>
-                        <a href="#" align="right" style={{padding: '20px'}}><img src={Appicon} width={130}/></a>
+                        <div align="right">
+                            <a href="https://play.google.com/store/apps/?hl=en&gl=US" target="_blank" align="right" style={{padding: '20px'}}><img src={Appicon} width={130}/></a>{ ' '}
+                            <a href="https://drive.google.com/file/d/1rLOdqUpsGY-tCpy_X-nYINiSaDJ6PJpc/view?usp=sharing" target="_blank" align="right" style={{padding: '20px'}}><img src={usermanual} width={70}/></a>   
+                        </div>                     
                         </Card>  
                         <br />
                     </Col> 

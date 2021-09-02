@@ -72,12 +72,12 @@ function CustomerDeleteProfile() {
     return (
         <React.Fragment>
             {(isCustomerDelete === true) && (isAccountDelete === true) && (isOnlineCustomerDelete === true) && (redirectLogin)}
-            {(isCustomerDelete === false) && (isAccountDelete === false) && (isOnlineCustomerDelete === false) ||
-            (isCustomerDelete === true) && (isAccountDelete === false) && (isOnlineCustomerDelete === false) ||
-            (isCustomerDelete === true) && (isAccountDelete === true) && (isOnlineCustomerDelete === false) ||
-            (isCustomerDelete === false) && (isAccountDelete === true) && (isOnlineCustomerDelete === false) ||
-            (isCustomerDelete === false) && (isAccountDelete === true) && (isOnlineCustomerDelete === true) ||
-            (isCustomerDelete === false) && (isAccountDelete === false) && (isOnlineCustomerDelete === true) 
+            {(isCustomerDelete === false) && (isAccountDelete === false) && (isOnlineCustomerDelete === false) 
+            // || (isCustomerDelete === true) && (isAccountDelete === false) && (isOnlineCustomerDelete === false) ||
+            // (isCustomerDelete === true) && (isAccountDelete === true) && (isOnlineCustomerDelete === false) ||
+            // (isCustomerDelete === false) && (isAccountDelete === true) && (isOnlineCustomerDelete === false) ||
+            // (isCustomerDelete === false) && (isAccountDelete === true) && (isOnlineCustomerDelete === true) ||
+            // (isCustomerDelete === false) && (isAccountDelete === false) && (isOnlineCustomerDelete === true) 
             && (
                 <div className="col-md-12" style={contactImg}>  
                     <Navigation></Navigation> 

@@ -64,14 +64,14 @@ const Login = ({ navigation }) => {
                 localStorage.setItem("userEmail", response.data.email);
                 setUserLevel(0);
                 window.location = "/dashboard";
-            } else if (response.data.auth === true && response.data.user_level === 2) {
+            } else if ((response.status === 200) && response.data.user_level === 2) {
                 setIsLoading(true);
                 setErrorMessage("");
                 localStorage.setItem("userlevel", 2);
                 localStorage.setItem("userEmail", response.data.email);
                 setUserLevel(2);
                 window.location = "/dashboard";
-            } else if (response.data.auth === true && response.data.user_level === 3) {
+            } else if ((response.status === 200) && response.data.user_level === 3) {
                 setIsLoading(true);
                 setErrorMessage("");
                 localStorage.setItem("userlevel", 3);

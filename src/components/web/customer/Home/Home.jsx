@@ -10,6 +10,7 @@ import Card from 'react-bootstrap/Card';
 import Gallary from '../../Common/ImageGallary';
 import "../../../../css/web/Home.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import  { Redirect } from 'react-router-dom';
 
 const Home = () => {
@@ -51,6 +52,9 @@ const Home = () => {
                     <Container fluid><Card>
                         <br/><Card.Title><center><h2>Furniture Items</h2></center></Card.Title><br />
                         <ProductBox></ProductBox> 
+                        <div align="center">
+                            <Link to='/product'><button class="btn btn-outline-secondary"><i class="bi bi-arrow-right-circle"></i> View All Furniture Items</button></Link>
+                        </div><br />
                     </Card></Container> 
                     <br />        
                     <Container fluid><Gallary></Gallary></Container>      

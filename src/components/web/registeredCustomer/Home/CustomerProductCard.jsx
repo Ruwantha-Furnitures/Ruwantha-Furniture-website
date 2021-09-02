@@ -78,7 +78,7 @@ const CustomerProductCard = () => {
                     </Col>
                 </Row>
                 </Container>
-            ))}                    
+            ))}                                                                   
         </div>            
     )
 }
