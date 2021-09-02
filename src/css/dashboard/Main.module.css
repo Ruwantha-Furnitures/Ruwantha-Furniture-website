@@ -8,7 +8,7 @@
 }
 
 body {
-  background: #eeeff5;
+  background: #eeeff5 !important;
   overflow-y: scroll;
   overflow-x: hidden;
 }
