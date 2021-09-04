@@ -80,6 +80,8 @@ npm install sequelize mysql2 sequelize-cli (in the backend folder)
 
 sequelize init (in the backend folder)
 
+npm install nodemailer
+
 ----------------------------------------
 
 npm install axios

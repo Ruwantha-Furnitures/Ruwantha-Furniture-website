@@ -24,6 +24,7 @@ function ThankYouPage() {
   const contact_number = localStorage.getItem("CustomerTelephone");
   const charge_id = localStorage.getItem("DeliveryChargeID");
   const total_amounts = localStorage.getItem("finalTotalAmount");
+  const afterDiscount = localStorage.getItem("afterDiscount");
   const payment_method = "ONLINE";
   
   // alert(new Date().toLocaleString())
@@ -36,7 +37,7 @@ function ThankYouPage() {
   
   useEffect( async() => {  
   
-      const orders = { total_product_amount: total_product_amount	, customer_id:customer_id, payment_method:payment_method};
+      const orders = { total_product_amount: afterDiscount	, customer_id:customer_id, payment_method:payment_method};
       console.log(orders)
       try{            
           let response = await axios.post("http://localhost:8080/api/order",orders);
