@@ -68,7 +68,8 @@ function DashboardDriver() {
         today_assignment: new_today_assignments.length,
         today_completed: new_today_completed.length,
         today_pending: new_today_pending.length,
-        availabilty: user_driver.availability === 1 ? "TRUE" : "FALSE",
+        availabilty:
+          user_driver.availability === 1 ? "Available" : "Unavailable",
       };
 
       // console.log(driverDashboard);
