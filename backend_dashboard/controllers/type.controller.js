@@ -1,12 +1,11 @@
 const db = require("../models");
 const Type = db.type;
+const validate = require("../validation/type.validation");
 
 exports.create = async (req, res) => {
   // validate request
-  if (!req.body.name) {
-    res.status(400).send({ message: "Content can not be empty!" });
-    return;
-  }
+  const { error } = validate(req.body);
+  if (error) return res.status(404).send(error.details[0].message);
 
   //  Create a Type
   const type = {

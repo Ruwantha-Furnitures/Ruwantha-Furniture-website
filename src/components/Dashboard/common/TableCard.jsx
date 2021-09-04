@@ -1,7 +1,78 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import TableCardStyle from "../../../css/dashboard/Table.module.css";
+import { getSellProducts } from "./../service/sellProduct";
+import { getProducts } from "./../service/product";
 
 function TableCard() {
+  const [topProducts, setTopProducts] = useState({
+    name: "",
+    price: "",
+    discount: 0,
+    quantity: 0,
+  });
+
+  useEffect(() => {
+    loadTopProducts();
+  }, []);
+
+  const loadTopProducts = async () => {
+    try {
+      const result = await getSellProducts();
+      const sellProductsData = result.data;
+
+      const resultProduct = await getProducts();
+      const productsData = resultProduct.data;
+
+      productsData.forEach((product) => {
+        var sellProducts = sellProductsData.filter(
+          (sellProduct) => sellProduct.product_id === product.id
+        );
+
+        // console.log(sellProducts);
+        // console.log(sellProducts.length);
+        var itemCount = 0;
+        if (sellProducts.length > 0) {
+          sellProducts.forEach((sellProduct) => {
+            itemCount = itemCount + sellProduct.quantity;
+          });
+        }
+        product.quantity = itemCount;
+      });
+
+      // select Top 5 products
+      let products = productsData;
+      var topSellProducts = [];
+      var position;
+      var maxQuantity;
+      console.log(products);
+      for (var i = 0; i < 5; i++) {
+        maxQuantity = 0;
+        position = 0;
+        for (var j = 0; j < products.length; j++) {
+          if (maxQuantity < products[j].quantity) {
+            maxQuantity = products[j].quantity;
+            position = j;
+          }
+        }
+
+        // console.log(position);
+
+        var new_product = products[position];
+        // console.log(position);
+        // console.log(new_product);
+        topSellProducts.push(new_product);
+
+        products = products.filter((item) => item.id !== new_product.id);
+        // console.log(products);
+        // console.log(topSellProducts);
+      }
+      setTopProducts(topSellProducts);
+      console.log(productsData.sort());
+    } catch (error) {
+      console.log("Error", error.message);
+    }
+  };
+
   return (
     <div className={TableCardStyle.table}>
       <div className={TableCardStyle.tabletitle}>
@@ -18,41 +89,44 @@ function TableCard() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Canon Suite Table</td>
-              <td>Rs.25000</td>
-              <td>20%</td>
-              <td>12</td>
-              {/* <td>Cash</td> */}
-            </tr>
-            <tr>
-              <td>Red Suite Chair</td>
-              <td>Rs.15000</td>
-              <td>10%</td>
-              <td>10</td>
-              {/* <td>Online</td> */}
-            </tr>
-            <tr>
-              <td>Indigo Delux Cupboard</td>
-              <td>Rs.35000</td>
-              <td>10%</td>
-              <td>10</td>
-              {/* <td>Cash</td> */}
-            </tr>
-            <tr>
-              <td>Indigo Standard Desk</td>
-              <td>Rs.25050</td>
-              <td>10%</td>
-              <td>09</td>
-              {/* <td>Cash</td> */}
-            </tr>
-            <tr>
-              <td>Indigo Standard Pro Desk</td>
-              <td>Rs.55000</td>
-              <td>09%</td>
-              <td>08</td>
-              {/* <td>Online</td> */}
-            </tr>
+            {Array.isArray(topProducts) === true && (
+              <>
+                {topProducts.map((product, index) => (
+                  <tr key={index + 1}>
+                    <td>{product.name}</td>
+                    <td>
+                      Rs.
+                      {product.price < 100
+                        ? "00000" + product.price
+                        : product.price < 1000
+                        ? "0000" + product.price
+                        : product.price < 10000
+                        ? "000" + product.price
+                        : product.price < 100000
+                        ? "00" + product.price
+                        : product.price < 1000000
+                        ? "0" + product.price
+                        : product.price}
+                    </td>
+                    <td>
+                      {product.discount < 10
+                        ? "0" + product.discount
+                        : product.discount}
+                      %
+                    </td>
+                    <td>
+                      {product.quantity < 10
+                        ? "000" + product.quantity
+                        : product.quantity < 100
+                        ? "00" + product.quantity
+                        : product.quantity < 100
+                        ? "0" + product.quantity
+                        : product.quantity}
+                    </td>
+                  </tr>
+                ))}
+              </>
+            )}
           </tbody>
         </table>
       </div>

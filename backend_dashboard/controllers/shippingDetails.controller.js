@@ -1,12 +1,11 @@
 const db = require("../models");
 const ShippingDetails = db.shippingDetails;
+const validate = require("../validation/shippingDetails.validation");
 
-exports.create = async (req, res) => {
+exports.create = (req, res) => {
   // validate request
-  if (!req.body.first_name) {
-    res.status(400).send({ message: "Content can not be empty!" });
-    return;
-  }
+  const { error } = validate(req.body);
+  if (error) return res.status(404).send(error.details[0].message);
 
   //  Create a Product
   const shippingDetails = {
@@ -18,10 +17,10 @@ exports.create = async (req, res) => {
     charge_id: req.body.charge_id,
   };
 
-  console.log("in the shipping details controller")
-  
+  console.log("in the shipping details controller");
+
   //   Save customer in the database
-  await ShippingDetails.create(shippingDetails)
+  ShippingDetails.create(shippingDetails)
     .then((data) => {
       res.send(data);
     })

@@ -1,12 +1,11 @@
 const db = require("../models");
 const Cart = db.cart;
+const validate = require("../validation/cart.validation");
 
-exports.create = async (req, res) => {
+exports.create = (req, res) => {
   // validate request
-  if (!req.body.customer_id) {
-    res.status(400).send({ message: "Content can not be empty!" });
-    return;
-  }
+  const { error } = validate(req.body);
+  if (error) return res.status(404).send(error.details[0].message);
 
   //  Create a Product
   const cart = {
@@ -16,7 +15,7 @@ exports.create = async (req, res) => {
   };
 
   //   Save customer in the database
-  await Cart.create(cart)
+  Cart.create(cart)
     .then((data) => {
       res.send(data);
     })

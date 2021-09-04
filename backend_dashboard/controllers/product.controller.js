@@ -1,13 +1,12 @@
 const db = require("../models");
 const Product = db.product;
 var fs = require("fs");
+const validate = require("../validation/product.validation");
 
-exports.create = async (req, res) => {
+exports.create = (req, res) => {
   // validate request
-  if (!req.body.name) {
-    res.status(400).send({ message: "Content can not be empty!" });
-    return;
-  }
+  const { error } = validate(req.body);
+  if (error) return res.status(404).send(error.details[0].message);
 
   //  Create a Product
   const product = {
@@ -25,7 +24,7 @@ exports.create = async (req, res) => {
   // console.log(product);
 
   //   Save Product in the database
-  await Product.create(product)
+  Product.create(product)
     .then((data) => {
       res.send(data);
     })

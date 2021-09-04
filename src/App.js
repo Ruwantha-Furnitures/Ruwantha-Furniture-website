@@ -87,6 +87,12 @@ import ForgotPassword from "./components/web/registeredCustomer/PasswordRecovery
 import PendingOrder from "./components/Dashboard/order/PendingOrder";
 import TrackingOrders from "./components/Dashboard/order/TrackingOrders";
 import ProductSellShipping from "./components/Dashboard/product/product_sell/ProductSellShipping";
+import Report from "./components/Dashboard/report/Report";
+import ReportView from "./components/Dashboard/report/ReportView";
+import AnnualOrderReport from "./components/Dashboard/report/AnnualOrderReport";
+import TopCustomersReport from "./components/Dashboard/report/TopCustomersReport";
+import TopProductsReport from "./components/Dashboard/report/TopProductsReport";
+import TopDriversReport from "./components/Dashboard/report/TopDriversReport";
 
 function App() {
   return (
@@ -323,6 +329,27 @@ function App() {
             path="/dashboard/deliveryDriver/availablity"
             component={DeliveryDriverAvalability}
           />
+          <Route
+            exact
+            path="/dashboard/annualOrderReport/:year"
+            component={AnnualOrderReport}
+          />
+          <Route
+            exact
+            path="/dashboard/topCustomersReport/:year"
+            component={TopCustomersReport}
+          />
+          <Route
+            exact
+            path="/dashboard/topProductsReport/:year"
+            component={TopProductsReport}
+          />
+          <Route
+            exact
+            path="/dashboard/topDriversReport/:year"
+            component={TopDriversReport}
+          />
+          <Route exact path="/dashboard/reportView" component={ReportView} />
 
           {/* Web */}
           <Route exact path="/" component={Home} />

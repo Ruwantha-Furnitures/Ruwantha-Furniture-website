@@ -1,12 +1,11 @@
 const db = require("../models");
 const Payment = db.payments;
+const validate = require("../validation/payment.validation");
 
-exports.create = async (req, res) => {
+exports.create = (req, res) => {
   // validate request
-  if (!req.body.order_id) {
-    res.status(400).send({ message: "Content can not be empty!" });
-    return;
-  }
+  const { error } = validate(req.body);
+  if (error) return res.status(404).send(error.details[0].message);
 
   //  Create a Product
   const payment = {
@@ -14,10 +13,10 @@ exports.create = async (req, res) => {
     total_amounts: req.body.total_amounts,
   };
 
-  console.log("in the order controller")
-  
+  console.log("in the order controller");
+
   //   Save customer in the database
-  await Payment.create(payment)
+  Payment.create(payment)
     .then((data) => {
       res.send(data);
     })

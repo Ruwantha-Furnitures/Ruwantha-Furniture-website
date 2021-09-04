@@ -15,7 +15,7 @@ function ProductTypeViewForm() {
   const [loading, setLoading] = useState(false);
   const [type, setType] = useState({
     name: "",
-    categoryId: 0,
+    category_id: 0,
     category: {
       name: "",
     },
@@ -51,6 +51,8 @@ function ProductTypeViewForm() {
       console.log("There was a problem with the server: ", error);
     }
   };
+
+  console.log(type.category_id);
 
   return (
     <React.Fragment>
@@ -147,7 +149,7 @@ function ProductTypeViewForm() {
               </div>
               <div className={ProductViewFormStyle.typesList}>
                 {/* Product type List View */}
-                <ProductTypeList categoryId={type.categoryId} />
+                <ProductTypeList categoryId={type.category_id} />
               </div>
             </div>
           </div>

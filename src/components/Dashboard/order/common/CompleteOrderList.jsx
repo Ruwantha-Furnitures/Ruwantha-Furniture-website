@@ -248,7 +248,7 @@ function CompleteOrderList() {
                                   TableStyle.statusColorNotAvailabile
                                 }
                               >
-                                Not Required
+                                Unessential
                               </span>
                             </>
                           )}

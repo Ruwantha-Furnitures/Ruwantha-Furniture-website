@@ -27,7 +27,6 @@ function ProductViewForm() {
 
   useEffect(() => {
     loadProduct();
-    setLoading(true);
   }, []);
 
   const loadProduct = async () => {

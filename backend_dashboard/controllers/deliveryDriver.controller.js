@@ -1,12 +1,11 @@
 const db = require("../models");
 const DeliveryDriver = db.deliveryDriver;
+const validate = require("../validation/deliveryDriver.validation");
 
-exports.create = async (req, res) => {
+exports.create = (req, res) => {
   // validate request
-  if (!req.body.account_id) {
-    res.status(400).send({ message: "Content can not be empty!" });
-    return;
-  }
+  const { error } = validate(req.body);
+  if (error) return res.status(404).send(error.details[0].message);
 
   //  Create a DeliverDriver
   const deliverDriver = {
@@ -18,7 +17,7 @@ exports.create = async (req, res) => {
   };
 
   //   Save deliverDriver in the database
-  await DeliveryDriver.create(deliverDriver)
+  DeliveryDriver.create(deliverDriver)
     .then((data) => {
       res.send(data);
     })

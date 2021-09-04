@@ -15,7 +15,7 @@ function ProductTypeUpdateForm() {
   const [type, setType] = useState({
     id: 0,
     name: "",
-    categoryId: 0,
+    category_id: 0,
   });
 
   const [categories, setCategories] = useState({
@@ -118,11 +118,11 @@ function ProductTypeUpdateForm() {
                     </label>
                     <select
                       className={ProductViewFormStyle.inputProductTitle}
-                      name="categoryId"
+                      name="category_id"
                       onChange={(e) => onInputChange(e)}
                       required
                     >
-                      {type.categoryId !== 0 ? (
+                      {type.category_id !== 0 ? (
                         <option value={type.category.id}>
                           {type.category.name}
                         </option>
@@ -205,7 +205,7 @@ function ProductTypeUpdateForm() {
               </div>
             </div>
             <div className={ProductViewFormStyle.typesList}>
-              <ProductTypeList categoryId={type.categoryId} />
+              <ProductTypeList categoryId={type.category_id} />
             </div>
           </div>
         </div>
