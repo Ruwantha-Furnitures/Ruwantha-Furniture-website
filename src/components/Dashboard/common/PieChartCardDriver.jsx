@@ -118,13 +118,18 @@ function PieChartCardDriver() {
           countSellProducts = countSellProducts + sellProductData[i].quantity;
         }
         var new_sales_categories = {};
-        var percentage =
-          (parseInt(countSellProducts) / parseInt(total_count)) * 100;
+        var percentage = 0;
+        if (countSellProducts > 0 && total_count > 0) {
+          percentage =
+            (parseInt(countSellProducts) / parseInt(total_count)) * 100;
+        }
+
         new_sales_categories = {
           id: category.id,
           name: category.name,
           value: Math.round(percentage),
         };
+        console.log(percentage);
         salesCategories.push(new_sales_categories);
         // console.log(topSellProducts);
         // console.log(salesCategories);
@@ -155,7 +160,7 @@ function PieChartCardDriver() {
             );
           }
         }
-        // console.log(topSellProductCategories);
+        console.log(topSellProductCategories);
         setSalesOfCategories(topSellProductCategories);
       });
     } catch (error) {

@@ -88,8 +88,13 @@ function PieChartCard() {
           countSellProducts = countSellProducts + sellProductData[i].quantity;
         }
         var new_sales_categories = {};
-        var percentage =
-          (parseInt(countSellProducts) / parseInt(total_count)) * 100;
+
+        var percentage = 0;
+        if (countSellProducts > 0 && total_count > 0) {
+          percentage =
+            (parseInt(countSellProducts) / parseInt(total_count)) * 100;
+        }
+
         new_sales_categories = {
           id: category.id,
           name: category.name,
