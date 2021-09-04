@@ -1,12 +1,11 @@
 const db = require("../models");
 const Order = db.order;
+const validate = require("../validation/order.validation");
 
-exports.create = async (req, res) => {
+exports.create = (req, res) => {
   // validate request
-  if (!req.body.customer_id) {
-    res.status(400).send({ message: "Content can not be empty!" });
-    return;
-  }
+  const { error } = validate(req.body);
+  if (error) return res.status(404).send(error.details[0].message);
 
   //  Create a Order
   const order = {
@@ -17,7 +16,7 @@ exports.create = async (req, res) => {
 
   console.log("in the order controller")
   //   Save order in the database
-  await Order.create(order)
+  Order.create(order)
     .then((data) => {
       res.send(data);
     })

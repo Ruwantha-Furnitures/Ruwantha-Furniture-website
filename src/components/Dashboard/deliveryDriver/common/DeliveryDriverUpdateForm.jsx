@@ -71,7 +71,7 @@ function DeliveryDriverUpdateForm() {
     first_name: Joi.string().required().label("First Name"),
     last_name: Joi.string().required().label("Last Name"),
     address: Joi.string().required().label("Address"),
-    telephone: Joi.string().required().length(10).label("Number"),
+    telephone: Joi.string().required().length(10).label("Tel No"),
     email: Joi.string().required().email().label("Email"),
   };
 
@@ -335,10 +335,10 @@ function DeliveryDriverUpdateForm() {
                 <div className={ProductViewFormStyle.inputFormSide}>
                   <div className={ProductViewFormStyle.dataForm}>
                     <label className={ProductViewFormStyle.labelStyle}>
-                      Number
+                      Tel No
                     </label>
                     <input
-                      type="text"
+                      type="tel"
                       name="telephone"
                       value={deliveryDriver.telephone}
                       onChange={(e) => onInputChange(e)}

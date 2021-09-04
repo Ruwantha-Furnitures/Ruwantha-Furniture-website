@@ -214,7 +214,7 @@ function ProductsTable() {
                   <React.Fragment>
                     {filterProducts.map((product, index) => (
                       <tr key={index + 1}>
-                        <td>
+                        <td className={TableStyle.tableTextStyle}>
                           <Link
                             to={`/dashboard/product/view/${product.id}`}
                             className={TableStyle.linkStyle}
@@ -224,25 +224,37 @@ function ProductsTable() {
                             </span>
                           </Link>
                         </td>
-                        <td>
-                          <Link
-                            to={`/dashboard/product/viewProductType/${product.type.id}`}
-                            className={TableStyle.linkStyle}
-                          >
-                            <span className={TableStyle.statusStyleLink}>
-                              {product.type.name}
-                            </span>
-                          </Link>
+                        <td className={TableStyle.tableTextStyle}>
+                          {user === "Admin" ? (
+                            <>
+                              <Link
+                                to={`/dashboard/product/viewProductType/${product.type.id}`}
+                                className={TableStyle.linkStyle}
+                              >
+                                <span className={TableStyle.statusStyleLink}>
+                                  {product.type.name}
+                                </span>
+                              </Link>
+                            </>
+                          ) : (
+                            product.type.name
+                          )}
                         </td>
-                        <td>
-                          <Link
-                            to={`/dashboard/product/viewProductCategory/${product.type.category_id}`}
-                            className={TableStyle.linkStyle}
-                          >
-                            <span className={TableStyle.statusStyleLink}>
-                              {product.type.category.name}
-                            </span>
-                          </Link>
+                        <td className={TableStyle.tableTextStyle}>
+                          {user === "Admin" ? (
+                            <>
+                              <Link
+                                to={`/dashboard/product/viewProductCategory/${product.type.category_id}`}
+                                className={TableStyle.linkStyle}
+                              >
+                                <span className={TableStyle.statusStyleLink}>
+                                  {product.type.category.name}
+                                </span>
+                              </Link>
+                            </>
+                          ) : (
+                            product.type.category.name
+                          )}
                         </td>
                         <td>Rs.{product.price}</td>
                         <td>{product.discount}%</td>

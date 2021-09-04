@@ -182,7 +182,7 @@ function AssignDriverOrderList() {
                 {Array.isArray(filterOrders) === true && (
                   <React.Fragment>
                     {filterOrders.map((order, index) => (
-                      <tr key={index}>
+                      <tr key={index + 1}>
                         <td>
                           <Link
                             to={`/dashboard/assignOrder/details/${order.id}`}

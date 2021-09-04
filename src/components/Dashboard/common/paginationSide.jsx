@@ -6,15 +6,15 @@ import AllProductViewStyle from "../../../css/dashboard/AllProductsView.module.c
 const Pagination = (props) => {
   const { itemsCount, pageSize, currentPage, onPageChange } = props;
 
-  console.log(
-    currentPage + ":ItemsCount" + itemsCount + ":PageSize" + pageSize
-  );
+  // console.log(
+  //   currentPage + ":ItemsCount" + itemsCount + ":PageSize" + pageSize
+  // );
 
   const pagesCount = Math.ceil(itemsCount / pageSize);
   if (pagesCount === 1) return null;
   const pages = _.range(1, pagesCount + 1);
 
-  console.log(pages);
+  // console.log(pages);
 
   return (
     <div className={AllProductViewStyle.tablePagination}>

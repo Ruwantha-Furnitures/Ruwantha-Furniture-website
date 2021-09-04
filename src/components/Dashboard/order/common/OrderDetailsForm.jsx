@@ -271,7 +271,7 @@ function OrderDetailsForm() {
                     <div className={ProductViewFormStyle.formLine}>
                       <div className={ProductViewFormStyle.data}>
                         <label className={ProductViewFormStyle.labelStyle}>
-                          Number
+                          Tel No
                         </label>
                         <input
                           type="text"
@@ -356,7 +356,7 @@ function OrderDetailsForm() {
                 <div className={ProductViewFormStyle.formLine}>
                   <div className={ProductViewFormStyle.data}>
                     <label className={ProductViewFormStyle.labelStyle}>
-                      Number
+                      Tel No
                     </label>
                     <input
                       type="text"

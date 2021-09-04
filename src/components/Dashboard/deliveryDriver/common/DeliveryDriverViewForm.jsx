@@ -224,7 +224,7 @@ function DeliveryDriverViewForm() {
                 <div className={ProductViewFormStyle.formLine}>
                   <div className={ProductViewFormStyle.data}>
                     <label className={ProductViewFormStyle.labelStyle}>
-                      Number
+                      Tel No
                     </label>
                     <input
                       type="text"
@@ -241,7 +241,9 @@ function DeliveryDriverViewForm() {
                     <input
                       type="text"
                       value={
-                        deliveryDriver.availability === 1 ? "TRUE" : "FALSE"
+                        deliveryDriver.availability === 1
+                          ? "Available"
+                          : "Not Available"
                       }
                       placeholder="Basic Payment"
                       className={ProductViewFormStyle.inputStyle}

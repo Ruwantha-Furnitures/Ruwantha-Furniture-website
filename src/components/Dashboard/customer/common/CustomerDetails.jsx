@@ -55,7 +55,7 @@ function CustomerDetails() {
               <div className={ProductViewFormStyle.backSection}>
                 <div className={ProductViewFormStyle.back}>
                   <Link
-                    to="/dashboard/customers"
+                    to="/dashboard/reviews"
                     className={ProductViewFormStyle.linkStyle}
                   >
                     <div className={ProductViewFormStyle.backStyle}>

@@ -3,12 +3,12 @@ const Account = db.account;
 const sendEmail = require("../common/emailSignup");
 const sendEmailDriver = require("../common/emailSignupDriver");
 
-exports.create = async (req, res) => {
+const validate = require("../validation/account.validation");
+
+exports.create = (req, res) => {
   // validate request
-  if (!req.body.email) {
-    res.status(400).send({ message: "Content can not be empty!" });
-    return;
-  }
+  const { error } = validate(req.body);
+  if (error) return res.status(404).send(error.details[0].message);
 
   //  Create a Order
   const account = {
@@ -18,16 +18,16 @@ exports.create = async (req, res) => {
   };
 
   //   Save order in the database
-  await Account.create(account)
+  Account.create(account)
     .then((data) => {
-      if(account.user_level === 1){
-        sendEmail(account.email)
+      if (account.user_level === 1) {
+        sendEmail(account.email);
       }
-      if(account.user_level === 3){
-        sendEmailDriver(account.email)
+      if (account.user_level === 3) {
+        sendEmailDriver(account.email);
       }
-      
-      res.send(data);      
+
+      res.send(data);
     })
     .catch((err) => {
       res.status(500).send({

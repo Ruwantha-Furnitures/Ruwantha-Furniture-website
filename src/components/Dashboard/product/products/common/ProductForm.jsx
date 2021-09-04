@@ -50,10 +50,10 @@ function ProductForm() {
     description: Joi.string().required().label("Description"),
     type_id: Joi.number().min(1).required().label("Type"),
     color: Joi.string().required().label("Colour"),
-    width: Joi.number().required().label("Width"),
-    height: Joi.number().required().label("Height"),
-    price: Joi.number().required().label("Price"),
-    discount: Joi.number().required().label("Discount"),
+    width: Joi.number().min(1).required().label("Width"),
+    height: Joi.number().min(1).required().label("Height"),
+    price: Joi.number().min(1).required().label("Price"),
+    discount: Joi.number().min(1).required().label("Discount"),
   };
 
   useEffect(() => {
@@ -354,7 +354,7 @@ function ProductForm() {
                       name="width"
                       value={product.width}
                       onChange={(e) => onInputChange(e)}
-                      placeholder="Product Width in CM"
+                      placeholder="Product width in cm"
                       className={ProductViewFormStyle.inputStyle}
                       required
                     />
@@ -384,7 +384,7 @@ function ProductForm() {
                       name="height"
                       value={product.height}
                       onChange={(e) => onInputChange(e)}
-                      placeholder="Product Height in CM"
+                      placeholder="Product height in cm"
                       className={ProductViewFormStyle.inputStyle}
                       required
                     />
@@ -422,7 +422,7 @@ function ProductForm() {
                       name="price"
                       value={product.price}
                       onChange={(e) => onInputChange(e)}
-                      placeholder="Product Price in RS"
+                      placeholder="Product price in Rs."
                       className={ProductViewFormStyle.inputStyle}
                       required
                     />
@@ -453,7 +453,7 @@ function ProductForm() {
                       name="discount"
                       value={product.discount}
                       onChange={(e) => onInputChange(e)}
-                      placeholder="Product Discount in PR"
+                      placeholder="Product discount in %"
                       className={ProductViewFormStyle.inputStyle}
                       required
                     />

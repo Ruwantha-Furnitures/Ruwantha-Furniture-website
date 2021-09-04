@@ -30,6 +30,22 @@
   cursor: pointer;
 }
 
+.lineSectionActive {
+  display: flex;
+  flex-direction: row;
+  height: 42px;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 15px;
+  margin-top: 9px;
+  cursor: pointer;
+  background-color: #542b14;
+  width: 85%;
+  color: #f7f7f7;
+  border-radius: 22px;
+  cursor: pointer;
+}
+
 .lineIcon {
   order: 1;
   margin-right: 12px;
@@ -42,7 +58,7 @@
 }
 
 .lineSection:hover {
-  background-color: #542b14;
+  background-color: #542b14d3;
   width: 85%;
   color: #f7f7f7;
   border-radius: 22px;
@@ -53,6 +69,14 @@
   color: #f7f7f7;
 }
 .lineSection:hover > .lineText > .lineTextStyle {
+  color: #f7f7f7;
+  font-size: 19px;
+}
+
+.lineSectionActive > .lineIcon > .iconWidth {
+  color: #f7f7f7;
+}
+.lineSectionActive > .lineText > .lineTextStyle {
   color: #f7f7f7;
   font-size: 19px;
 }

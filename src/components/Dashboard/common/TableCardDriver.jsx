@@ -1,7 +1,108 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import TableCardStyle from "../../../css/dashboard/Table.module.css";
+import { getSellProducts } from "./../service/sellProduct";
+import Auth from "./../service/auth";
+import { getDeliveryDrivers } from "./../service/deliveryDriver";
+import { getDeliveries } from "./../service/delivery";
+import { getProducts } from "./../service/product";
 
 function TableCardDriver() {
+  const [topProductDeliveries, setTopProductDeliveries] = useState({
+    name: "",
+    price: "",
+    discount: 0,
+    quantity: 0,
+  });
+
+  useEffect(() => {
+    loadTopProductsDeliveries();
+  }, []);
+
+  const loadTopProductsDeliveries = async () => {
+    try {
+      const user_email = Auth.getCurrentUserEmail();
+      const result_drivers = await getDeliveryDrivers();
+      const user_driver = result_drivers.data.filter(
+        (driver) => driver.account.email === user_email
+      )[0];
+
+      const resultDeliveries = await getDeliveries();
+      const driver_deliveries = resultDeliveries.data.filter(
+        (delivery) => delivery.deliveryDriver.id === user_driver.id
+      );
+
+      // console.log(driver_deliveries);
+
+      const result = await getSellProducts();
+      const sellProducts = result.data;
+
+      var driver_sell_products_all = [];
+      driver_deliveries.forEach((delivery) => {
+        var driver_sell_products = sellProducts.filter(
+          (sellProduct) => sellProduct.order_id === delivery.order_id
+        );
+
+        // console.log(driver_sell_products);
+
+        driver_sell_products.forEach((sellProduct) => {
+          driver_sell_products_all.push(sellProduct);
+        });
+      });
+
+      // console.log(driver_sell_products_all);
+
+      const resultProduct = await getProducts();
+      const productsData = resultProduct.data;
+
+      productsData.forEach((product) => {
+        var sellProducts = driver_sell_products_all.filter(
+          (sellProduct) => sellProduct.product_id === product.id
+        );
+
+        // console.log(sellProducts);
+        // console.log(sellProducts.length);
+        var itemCount = 0;
+        if (sellProducts.length > 0) {
+          sellProducts.forEach((sellProduct) => {
+            itemCount = itemCount + sellProduct.quantity;
+          });
+        }
+        product.quantity = itemCount;
+      });
+
+      // select Top 5 products
+      let products = productsData;
+      var topSellProducts = [];
+      var position;
+      var maxQuantity;
+      // console.log(products);
+      for (var i = 0; i < 5; i++) {
+        maxQuantity = 0;
+        position = 0;
+        for (var j = 0; j < products.length; j++) {
+          if (maxQuantity < products[j].quantity) {
+            maxQuantity = products[j].quantity;
+            position = j;
+          }
+        }
+
+        // console.log(position);
+
+        var new_product = products[position];
+        // console.log(position);
+        // console.log(new_product);
+        topSellProducts.push(new_product);
+
+        products = products.filter((item) => item.id !== new_product.id);
+        // console.log(products);
+        // console.log(topSellProducts);
+      }
+      // console.log(topSellProducts);
+      setTopProductDeliveries(topSellProducts);
+    } catch (error) {
+      console.log("Error", error.message);
+    }
+  };
   return (
     <div className={TableCardStyle.table}>
       <div className={TableCardStyle.tabletitle}>
@@ -17,45 +118,47 @@ function TableCardDriver() {
               <th>Price</th>
               <th>Discount</th>
               <th>Sold</th>
-              {/* <th>Method</th> */}
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Canon Suite Table</td>
-              <td>Rs.25000</td>
-              <td>20%</td>
-              <td>12</td>
-              {/* <td>Cash</td> */}
-            </tr>
-            <tr>
-              <td>Red Suite Chair</td>
-              <td>Rs.15000</td>
-              <td>10%</td>
-              <td>10</td>
-              {/* <td>Online</td> */}
-            </tr>
-            <tr>
-              <td>Indigo Delux Cupboard</td>
-              <td>Rs.35000</td>
-              <td>10%</td>
-              <td>10</td>
-              {/* <td>Cash</td> */}
-            </tr>
-            <tr>
-              <td>Indigo Standard Desk</td>
-              <td>Rs.25050</td>
-              <td>10%</td>
-              <td>09</td>
-              {/* <td>Cash</td> */}
-            </tr>
-            <tr>
-              <td>Indigo Standard Pro Desk</td>
-              <td>Rs.55000</td>
-              <td>09%</td>
-              <td>08</td>
-              {/* <td>Online</td> */}
-            </tr>
+            {Array.isArray(topProductDeliveries) === true && (
+              <>
+                {topProductDeliveries.map((product, index) => (
+                  <tr key={index + 1}>
+                    <td>{product.name}</td>
+                    <td>
+                      Rs.
+                      {product.price < 100
+                        ? "00000" + product.price
+                        : product.price < 1000
+                        ? "0000" + product.price
+                        : product.price < 10000
+                        ? "000" + product.price
+                        : product.price < 100000
+                        ? "00" + product.price
+                        : product.price < 1000000
+                        ? "0" + product.price
+                        : product.price}
+                    </td>
+                    <td>
+                      {product.discount < 10
+                        ? "0" + product.discount
+                        : product.discount}
+                      %
+                    </td>
+                    <td>
+                      {product.quantity < 10
+                        ? "000" + product.quantity
+                        : product.quantity < 100
+                        ? "00" + product.quantity
+                        : product.quantity < 100
+                        ? "0" + product.quantity
+                        : product.quantity}
+                    </td>
+                  </tr>
+                ))}
+              </>
+            )}
           </tbody>
         </table>
       </div>

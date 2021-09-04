@@ -1,12 +1,11 @@
 const db = require("../models");
 const ResetToken = db.resetToken;
+const validate = require("../validation/resetToken.validation");
 
-exports.create = async (req, res) => {
+exports.create = (req, res) => {
   // validate request
-  if (!req.body.email) {
-    res.status(400).send({ message: "Content can not be empty!" });
-    return;
-  }
+  const { error } = validate(req.body);
+  if (error) return res.status(404).send(error.details[0].message);
 
   //  Create a Order
   const resetToken = {
@@ -15,7 +14,7 @@ exports.create = async (req, res) => {
   };
 
   //   Save order in the database
-  await ResetToken.create(resetToken)
+  ResetToken.create(resetToken)
     .then((data) => {
       res.send(data);
     })

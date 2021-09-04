@@ -203,10 +203,10 @@ function ProductSellForm() {
                 <div className={ProductViewFormStyle.inputFormSide}>
                   <div className={ProductViewFormStyle.dataForm}>
                     <label className={ProductViewFormStyle.labelStyle}>
-                      Number
+                      Tel No
                     </label>
                     <input
-                      type="number"
+                      type="tel"
                       name="contact_number"
                       value={customer.contact_number}
                       onChange={(e) => onInputChange(e)}
