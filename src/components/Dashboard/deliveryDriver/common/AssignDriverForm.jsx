@@ -36,7 +36,7 @@ function AssignDriverForm() {
 
   const [drivers, setDrivers] = useState({});
   const [delivery, setDelivery] = useState({
-    order_id: id,
+    order_id: parseInt(id),
     delivery_driver_id: 0,
   });
 
@@ -147,7 +147,7 @@ function AssignDriverForm() {
     setIsSubmit(true);
     // console.log(delivery);
     if (delivery.delivery_driver_id !== 0) {
-      // console.log(delivery);
+      console.log(delivery);
       const result = await addDelivery(delivery);
       // console.log(result.data);
       window.location = "/dashboard/assignListOrderDriver";

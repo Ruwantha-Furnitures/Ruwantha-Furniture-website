@@ -57,6 +57,7 @@ function ProductSellForm() {
       const response = await addCustomer(customer);
       const customerId = response.data.id;
       const order = {
+        total_product_amount: 0,
         customer_id: customerId,
         payment_method: "CASH",
       };
