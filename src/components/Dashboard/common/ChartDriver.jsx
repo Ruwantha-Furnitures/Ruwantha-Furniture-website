@@ -81,7 +81,7 @@ function ChartDriver() {
       const result = await getSellProducts();
       const sellProducts = result.data;
 
-      var monthlyCount = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+      var monthlyCount = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       driver_deliveries.forEach((delivery) => {
         var driver_sell_products = sellProducts.filter(
           (sellProduct) => sellProduct.order_id === delivery.order_id
@@ -103,51 +103,51 @@ function ChartDriver() {
       const data = [
         {
           name: "Jan",
-          sales: 1 * monthlyCount[1],
+          sales: monthlyCount[1],
         },
         {
           name: "Feb",
-          sales: 1 * monthlyCount[2],
+          sales: monthlyCount[2],
         },
         {
           name: "Mar",
-          sales: 1 * monthlyCount[3],
+          sales: monthlyCount[3],
         },
         {
           name: "Apr",
-          sales: 1 * monthlyCount[4],
+          sales: monthlyCount[4],
         },
         {
           name: "May",
-          sales: 1 * monthlyCount[5],
+          sales: monthlyCount[5],
         },
         {
           name: "Jun",
-          sales: 1 * monthlyCount[6],
+          sales: monthlyCount[6],
         },
         {
           name: "Jul",
-          sales: 1 * monthlyCount[7],
+          sales: monthlyCount[7],
         },
         {
           name: "Aug",
-          sales: 1 * monthlyCount[8],
+          sales: monthlyCount[8],
         },
         {
           name: "Sep",
-          sales: 1 * monthlyCount[9],
+          sales: monthlyCount[9],
         },
         {
           name: "Oct",
-          sales: 1 * monthlyCount[10],
+          sales: monthlyCount[10],
         },
         {
           name: "Nov",
-          sales: 1 * monthlyCount[11],
+          sales: monthlyCount[11],
         },
         {
           name: "Dec",
-          sales: 1 * monthlyCount[12],
+          sales: monthlyCount[12],
         },
       ];
       setSalesOfYear(data);

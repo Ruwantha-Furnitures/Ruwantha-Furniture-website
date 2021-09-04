@@ -123,7 +123,7 @@ function PieChartCardDriver() {
         new_sales_categories = {
           id: category.id,
           name: category.name,
-          value: Math.round(percentage) === 0 ? 1 : Math.round(percentage),
+          value: Math.round(percentage),
         };
         salesCategories.push(new_sales_categories);
         // console.log(topSellProducts);
@@ -232,12 +232,7 @@ function PieChartCardDriver() {
                 </div>
                 <div className={PieChartCardStyle.rowPercentage}>
                   <h1 className={PieChartCardStyle.rowPercentageStyle}>
-                    {category.value === 1
-                      ? "000"
-                      : category.value < 10
-                      ? "0" + category.value
-                      : category.value}
-                    %
+                    {category.value === 1 ? "0" : category.value}%
                   </h1>
                 </div>
               </div>

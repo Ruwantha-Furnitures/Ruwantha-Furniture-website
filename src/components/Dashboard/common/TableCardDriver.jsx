@@ -128,17 +128,7 @@ function TableCardDriver() {
                     <td>{product.name}</td>
                     <td>
                       Rs.
-                      {product.price < 100
-                        ? "00000" + product.price
-                        : product.price < 1000
-                        ? "0000" + product.price
-                        : product.price < 10000
-                        ? "000" + product.price
-                        : product.price < 100000
-                        ? "00" + product.price
-                        : product.price < 1000000
-                        ? "0" + product.price
-                        : product.price}
+                      {product.price}
                     </td>
                     <td>
                       {product.discount < 10
@@ -148,8 +138,6 @@ function TableCardDriver() {
                     </td>
                     <td>
                       {product.quantity < 10
-                        ? "000" + product.quantity
-                        : product.quantity < 100
                         ? "00" + product.quantity
                         : product.quantity < 100
                         ? "0" + product.quantity
