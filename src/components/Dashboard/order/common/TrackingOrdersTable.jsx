@@ -245,7 +245,9 @@ function TrackingOrdersTable() {
                         </td>
                         <td>{order.createdAt.split("T")[0]}</td>
                         <td>
-                          {order.days < 10 ? "0" + order.days : order.days}
+                          {order.days < 10
+                            ? "0" + order.days + " Days"
+                            : order.days + " Days"}
                         </td>
                         <td>
                           {order.delivery_status === "Not Completed" ? (
@@ -267,15 +269,20 @@ function TrackingOrdersTable() {
                             </>
                           ) : (
                             <>
-                              <span
-                                className={
-                                  TableStyle.statusStyle +
-                                  " " +
-                                  TableStyle.statusColorAvailabile
-                                }
+                              <Link
+                                to={`/dashboard/deliveryDriverNotCompleted/view/${order.driver_id}`}
+                                className={TableStyle.linkStyle}
                               >
-                                {order.delivery_status}
-                              </span>
+                                <span
+                                  className={
+                                    TableStyle.statusStyle +
+                                    " " +
+                                    TableStyle.statusColorCompleted
+                                  }
+                                >
+                                  {order.delivery_status}
+                                </span>
+                              </Link>
                             </>
                           )}
 

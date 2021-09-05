@@ -39,7 +39,7 @@ function DashboardDriver() {
       );
 
       // console.log(driver_deliveries);
-      var today = new Date("2021-08-16");
+      var today = new Date();
       var current_date = today.toISOString().split("T")[0];
 
       // today assignment
