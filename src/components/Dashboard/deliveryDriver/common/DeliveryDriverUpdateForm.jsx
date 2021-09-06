@@ -369,7 +369,11 @@ function DeliveryDriverUpdateForm() {
                   </label>
                   <input
                     type="text"
-                    value={deliveryDriver.availability === 1 ? "TRUE" : "FALSE"}
+                    value={
+                      deliveryDriver.availability === 1
+                        ? "Available"
+                        : "Unavailable"
+                    }
                     placeholder="Basic Payment"
                     className={ProductViewFormStyle.inputStyle}
                     readOnly
