@@ -41,10 +41,10 @@ exports.findOne = (req, res) => {
         });     
 
             const transporter = nodemailer.createTransport({
-                service: 'hotmail',
+                service: 'gmail',
                 auth: {
-                    user: "armagic24@outlook.com",
-                    pass: "armagic1234",
+                    user: "ucscarmagic@gmail.com",
+                    pass: "TYPucsc123",
                 },
                 tls: {
                     rejectUnauthorized: false
@@ -52,7 +52,7 @@ exports.findOne = (req, res) => {
             });
 
             const mailOptions = {
-                from: 'armagic24@outlook.com',
+                from: 'ucscarmagic@gmail.com',
                 to: `${user.email}`,
                 subject: 'Link To Reset Password',
                 html:`<p>You are receiving this because you (or someone else) have requested the reset of the password for your account.</p><br />

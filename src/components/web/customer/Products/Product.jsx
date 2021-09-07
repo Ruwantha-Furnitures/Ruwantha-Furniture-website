@@ -198,7 +198,7 @@ const Product = () => {
                                         <Rating></Rating>
                                         </center>
                                         <center>
-                                            <Link to="/viewProductDetail"><button class="addtocart" onClick={() => sayHello(selectedproductList.id)}>Read More</button></Link>
+                                            <Link to="/viewProduct"><button class="addtocart" onClick={() => sayHello(selectedproductList.id)}>Read More</button></Link>
                                         </center>                                                                                       
                                     </Card> 
  
