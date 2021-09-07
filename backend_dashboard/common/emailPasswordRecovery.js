@@ -1,10 +1,10 @@
 const nodemailer = require("nodemailer");
 module.exports = async (email) => {
   const transporter = nodemailer.createTransport({
-    service: "hotmail",
+    service: "gmail",
     auth: {
-      user: "armagic24@outlook.com",
-      pass: "armagic1234",
+      user: "ucscarmagic@gmail.com",
+      pass: "TYPucsc123",
     },
     tls: {
       rejectUnauthorized: false
@@ -12,7 +12,7 @@ module.exports = async (email) => {
   });
 
   const options = {
-    from: "armagic24@outlook.com",
+    from: "ucscarmagic@gmail.com",
     to: email,
     subject: "Account has been created",
     html: `<h1>Welcome to AR Magic</h1><br />

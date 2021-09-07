@@ -55,7 +55,7 @@ const ProductCards = () => {
                 <Row sm={12}>
                     <Col sm={3}>
                         <center>
-                        <Card style={{width: '18rem'}}> 
+                        <Card style={{width: '18rem'}} > 
                             <center>      
                                 <img src={productList.img_location} alt='items' style={funitureimg} width={200} height={150}></img>    
                                 {/* src={process.env.PUBLIC_URL + '/items/'+ productList.itemid +'.jpg'}               */}
@@ -69,13 +69,13 @@ const ProductCards = () => {
                                 <Rating dataFromParent = {productList.id} ></Rating>
                             </center>
                             <center>
-                                <Link to="/viewProductDetail"><button class="addtocart" onClick={() => sayHello(productList.id)}>Read More</button></Link>
+                                <Link to="/viewProduct"><button class="addtocart" onClick={() => sayHello(productList.id)}>Read More</button></Link>
                             </center>                                                                                       
                         </Card> 
                         <br />   
                         </center>                                   
                     </Col>
-                </Row>
+                </Row>                
                 </Container>
             ))}                                                                   
         </div>            
