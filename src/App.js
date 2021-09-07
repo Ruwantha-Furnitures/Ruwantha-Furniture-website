@@ -93,6 +93,7 @@ import AnnualOrderReport from "./components/Dashboard/report/AnnualOrderReport";
 import TopCustomersReport from "./components/Dashboard/report/TopCustomersReport";
 import TopProductsReport from "./components/Dashboard/report/TopProductsReport";
 import TopDriversReport from "./components/Dashboard/report/TopDriversReport";
+import DriverAssignPending from "./components/Dashboard/deliveryDriver/DriverAssignPending";
 
 function App() {
   return (
@@ -281,6 +282,11 @@ function App() {
             exact
             path="/dashboard/deliveryDriverNotCompleted/view/:id"
             component={DeliveryDriverView}
+          />
+          <Route
+            exact
+            path="/dashboard/deliveryDriverPending/:id"
+            component={DriverAssignPending}
           />
           <Route
             exact

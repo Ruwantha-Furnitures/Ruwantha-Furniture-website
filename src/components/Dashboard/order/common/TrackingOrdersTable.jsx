@@ -159,7 +159,7 @@ function TrackingOrdersTable() {
     setPage({ currentPage: page, pageSize: 8 });
   };
 
-  console.log(orders);
+  console.log("orders", orders);
 
   return (
     <React.Fragment>
@@ -270,7 +270,7 @@ function TrackingOrdersTable() {
                           ) : (
                             <>
                               <Link
-                                to={`/dashboard/deliveryDriverNotCompleted/view/${order.driver_id}`}
+                                to={`/dashboard/deliveryDriverPending/${order.id}`}
                                 className={TableStyle.linkStyle}
                               >
                                 <span

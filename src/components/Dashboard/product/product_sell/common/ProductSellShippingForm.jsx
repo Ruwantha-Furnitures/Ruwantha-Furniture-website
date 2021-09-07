@@ -25,11 +25,13 @@ function ProductSellShippingForm() {
 
   const [deliveryCharges, setDeliveryCharges] = useState({
     id: 0,
-    area: "",
+    area: 0,
     amount: 0,
   });
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({
+    area: "",
+  });
 
   const [isSubmit, setIsSubmit] = useState(false);
 
@@ -159,6 +161,7 @@ function ProductSellShippingForm() {
     }
   };
 
+  console.log(errors);
   return (
     <React.Fragment>
       <div>
@@ -289,7 +292,7 @@ function ProductSellShippingForm() {
                 <div className={ProductViewFormStyle.inputFormSide}>
                   <div className={ProductViewFormStyle.dataForm}>
                     <label className={ProductViewFormStyle.labelStyle}>
-                      Number
+                      Tel No
                     </label>
                     <input
                       type="number"

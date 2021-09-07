@@ -36,7 +36,7 @@ const Header = () => (
   <View style={styles.titleContainer}>
     <Image style={styles.logo} src={logo} />
     <View style={styles.companyHeader}>
-      <Text style={styles.headerTitle}>Ruwantha Furniture</Text>
+      <Text style={styles.headerTitle}>ARMagic</Text>
       <Text style={styles.minHeaderTitle}>Online Furniture Sales Paltform</Text>
     </View>
   </View>
