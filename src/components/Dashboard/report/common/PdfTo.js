@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 const PdfTo = () => (
   <View style={styles.headerContainer}>
     <Text style={styles.billTo}>G.G.S. Gunawardana</Text>
-    <Text>ARMagic Group Owner</Text>
+    <Text>Owner of ARMagic</Text>
     <Text>No. 10, Nuge Asala, Nauththuduwa, Matugama</Text>
     <Text>+94 8522 736</Text>
     <Text>armagic@gmail.com</Text>

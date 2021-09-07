@@ -469,6 +469,12 @@
   cursor: pointer;
 }
 
+button:disabled,
+button[disabled] {
+  background: #be632ec4;
+  cursor: not-allowed;
+}
+
 .buttonStyle {
   padding: 8px;
   padding-left: 18px;
@@ -647,6 +653,11 @@ input[type="number"]:focus {
 }
 
 input[type="tel"]:focus {
+  outline: none;
+  border: 1px solid #be622e;
+}
+
+input[type="email"]:focus {
   outline: none;
   border: 1px solid #be622e;
 }
