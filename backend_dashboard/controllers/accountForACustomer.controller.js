@@ -14,12 +14,12 @@ exports.update = (req, res) => {
             message: "Account was updated successfully",
           });
         } else {
-          res.send({ message: `Cannot update Account with id=${id}` });
+          res.send({ message: `Cannot update Account with ` });
         }
       })
       .catch((err) => {
         res.status(500).send({
-          message: "Error updating Account with id = " + id,
+          message: "Error updating Account with id = "
         });
       });
   };

@@ -1,5 +1,5 @@
 const nodemailer = require("nodemailer");
-module.exports = async (email) => {
+module.exports = async (email,password) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -14,9 +14,12 @@ module.exports = async (email) => {
   const options = {
     from: "ucscarmagic@gmail.com",
     to: email,
-    subject: "Account has been created",
-    html: `<h1>Welcome to AR Magic</h1><br />
-            <p>Thank you for signing. We're delighted to have you here. We hope to have a strong bond with you. We also anticipate excellent service from you..</p>
+    subject: "Driver Account has been created",
+    html: `<h1>Welcome to AR Magic Family</h1><br />
+            <p>Thank you for joining. We're delighted to have you here. We are hoping to bring the finest possible service to make customer happy!!</p>
+            <p>Login Credentials Following here....</p>
+            <p>Email:: ${email}</p>
+            <p>Passowrd:: ${password}
             <a href='https://drive.google.com/file/d/1rLOdqUpsGY-tCpy_X-nYINiSaDJ6PJpc/view?usp=sharing'>This is the link for the user manual</a>`,
   };
 

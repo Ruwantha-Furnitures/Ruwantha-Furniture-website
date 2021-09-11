@@ -23,9 +23,9 @@ exports.create = (req, res) => {
       if (account.user_level === 1) {
         sendEmail(account.email);
       }
-      if (account.user_level === 3) {
-        sendEmailDriver(account.email);
-      }
+      // if (account.user_level === 3) {
+      //   sendEmailDriver(account.email,account.password);
+      // }
 
       res.send(data);
     })
