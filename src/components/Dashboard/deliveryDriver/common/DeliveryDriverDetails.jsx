@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { addAccount } from "../../service/account";
 import { addDeliveryDriver } from "../../service/deliveryDriver";
 import { getAccounts } from "./../../service/account";
+import { addDriverEmail } from "../../service/driverMail";
 
 function DeliveryDriverDetails() {
   const [deliveryDriver, setDeliveryDriver] = useState({
@@ -112,6 +113,7 @@ function DeliveryDriverDetails() {
         Math.floor(Math.random() * 10000 + 1).toString();
       console.log(new_password);
       const encrypt_password = md5(new_password);
+      
 
       const newAccount = {
         ...account,
@@ -131,6 +133,16 @@ function DeliveryDriverDetails() {
       console.log(newDiliveryDriver);
       // send mail to driver email
       const response = await addDeliveryDriver(newDiliveryDriver);
+
+      // send driver to details
+      const driver = {
+        email: account.email,
+        password: new_password
+      }
+
+      console.log("Driver",driver);
+      const responseEmail = await addDriverEmail(driver);
+      
       window.location = "/dashboard/deliveryDrivers";
     } catch (error) {
       if (error.response.status === 500) {

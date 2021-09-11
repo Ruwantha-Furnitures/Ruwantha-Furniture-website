@@ -19,6 +19,7 @@
     "express-fileupload": "^1.2.1",
     "file-system": "^2.2.2",
     "joi": "^17.4.2",
+    "md5": "^2.3.0",
     "mysql2": "^2.2.5",
     "nodemailer": "^6.6.3",
     "nodemon": "^2.0.12",

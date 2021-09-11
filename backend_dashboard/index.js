@@ -36,6 +36,8 @@ require("./routes/payment.routes")(app);
 require("./routes/shippingDetails.routes")(app);
 require("./routes/productReview.routes")(app);
 require("./routes/resetToken.routes")(app);
+require("./routes/driverMail.routes")(app);
+
 
 
 require("./routes/login.routes")(app);
