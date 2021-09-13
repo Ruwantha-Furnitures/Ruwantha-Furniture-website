@@ -14,9 +14,9 @@ export function addDriverEmail(emailData) {
 //   return axios.get(apiAccountUrl + "/" + id);
 // }
 
-// export function editAccountDetails(id, account) {
-//   return axios.put(apiAccountUrl + "/" + id, account);
-// }
+export function sendMailToDriver(id, mailData) {
+  return axios.put(apiDriverMailUrl + "/" + id, mailData);
+}
 
 // export function deleteAccount(id) {
 //   return axios.delete(apiAccountUrl + "/" + id);

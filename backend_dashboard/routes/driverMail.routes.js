@@ -9,8 +9,8 @@ module.exports = (app) => {
     // //   Retrieve all Tutorials
     // router.get("/", account.findAll);
   
-    // //   Retrieve a single Tutorial with id
-    // router.get("/:id", account.findOne);
+    //   Retrieve a single Tutorial with id
+    router.put("/:id", mail.sendAssignMail);
   
     // //   update the tutorial
     // router.put("/:id", account.update);

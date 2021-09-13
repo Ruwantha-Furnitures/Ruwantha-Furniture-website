@@ -1,7 +1,7 @@
 const db = require("../models");
 const Account = db.account;
 const sendEmail = require("../common/emailSignup");
-const sendEmailDriver = require("../common/emailSignupDriver");
+
 
 const validate = require("../validation/account.validation");
 
