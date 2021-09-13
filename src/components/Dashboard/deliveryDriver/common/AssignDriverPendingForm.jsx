@@ -177,16 +177,13 @@ function AssignDriverPendingForm() {
   const handleAssignDriverProcess = async (e) => {
     e.preventDefault();
     setIsSubmit(true);
-    console.log("Driver Id", old_driver_id);
     if (delivery.delivery_driver_id !== 0) {
-      console.log("New", delivery);
       var today = new Date();
       const new_delivery = {
         ...delivery,
         createdAt: today.toISOString(),
       };
 
-      console.log("New_One", new_delivery);
 
       const old_driver = drivers.filter((driver)=> driver.id === parseInt(old_driver_id))[0];
       const old_driver_email = old_driver.account.email;
@@ -210,6 +207,7 @@ function AssignDriverPendingForm() {
           email: old_driver_email,
           order_id: order_id
         }
+
         const resultOldDriverMail = await sendMailToDriver(old_msg_level, old_driver_mail);
       }
 
@@ -219,10 +217,6 @@ function AssignDriverPendingForm() {
     }
   };
 
-  // console.log("Order", order);
-  // console.log("Bill", bill);
-  //   console.log("Delivery", Array.isArray(delivery));
-  console.log(errors);
 
   return (
     <React.Fragment>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.module.css";
 import { Link, useParams } from "react-router-dom";
+import Joi from "joi-browser";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import ProductStyle from "../../../../css/dashboard/Products.module.css";
 
@@ -11,6 +12,13 @@ function OrderDetailsForm() {
   const [annualOrderReportData, setAnnualOrderReportData] = useState({
     annual_order_year: "",
   });
+
+  const [errorAnnualOrderReport, setErrorAnnualOrderReport] = useState({
+    annual_order_year: "",
+  });
+
+  
+  const [isSubmitAnnualOrderReport, setIsSubmitAnnualOrderReport] = useState(false);
 
   const [topProductsReportData, setTopProductsReportData] = useState({
     product_report_year: "",
@@ -45,6 +53,16 @@ function OrderDetailsForm() {
 
   const onInputChange = (e) => {
     if (e.target.name === "annual_order_year") {
+      const newErrors = {...errorAnnualOrderReport};
+      if(parseInt(e.target.value) === 0) {
+        newErrors[e.target.name] = "Please select year!!!"
+       
+        console.log(e.target.value)
+      }
+      else {
+        delete newErrors[e.target.name];
+      }
+      setErrorAnnualOrderReport(newErrors);
       setAnnualOrderReportData({
         ...annualOrderReportData,
         [e.target.name]: e.target.value,
@@ -112,8 +130,11 @@ function OrderDetailsForm() {
     // console.log(year);
   };
 
+  
   // console.log(annualOrderReportData);
 
+  console.log("AnnualOrderError ",Object.keys(errorAnnualOrderReport).length === 0);
+  console.log("Errors", errorAnnualOrderReport)
   return (
     <React.Fragment>
       {loading ? (
@@ -208,6 +229,11 @@ function OrderDetailsForm() {
                   <div className={ProductViewFormStyle.descButtonsAddReport}>
                     <div className={ProductViewFormStyle.descButtonAdd}>
                       <button
+                      disabled={
+                        Object.keys(errorAnnualOrderReport).length === 0
+                          ? false
+                          : true
+                      }
                         className={ProductViewFormStyle.descButtonAddStyle}
                       >
                         Report

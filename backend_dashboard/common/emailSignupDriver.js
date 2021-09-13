@@ -25,7 +25,6 @@ module.exports = async (email,password) => {
 
   try {
     let info = await transporter.sendMail(options);
-    // console.log(info.response);
   } catch (error) {
     console.log(error);
   }
