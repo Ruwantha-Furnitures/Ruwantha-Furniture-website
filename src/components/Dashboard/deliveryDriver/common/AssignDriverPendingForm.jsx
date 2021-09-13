@@ -12,6 +12,7 @@ import {
 } from "../../service/delivery";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import ProductStyle from "../../../../css/dashboard/Products.module.css";
+import { sendMailToDriver } from "../../service/driverMail";
 
 function AssignDriverPendingForm() {
   const { id } = useParams();
@@ -175,9 +176,7 @@ function AssignDriverPendingForm() {
 
   const handleAssignDriverProcess = async (e) => {
     e.preventDefault();
-    // console.log("Onsubmit");
     setIsSubmit(true);
-    // console.log(delivery);
     console.log("Driver Id", old_driver_id);
     if (delivery.delivery_driver_id !== 0) {
       console.log("New", delivery);
@@ -188,10 +187,34 @@ function AssignDriverPendingForm() {
       };
 
       console.log("New_One", new_delivery);
-      //   const delivery_id = delivery.id
+
+      const old_driver = drivers.filter((driver)=> driver.id === parseInt(old_driver_id))[0];
+      const old_driver_email = old_driver.account.email;
+
+      const new_driver = drivers.filter((driver)=> driver.id === parseInt(delivery.delivery_driver_id))[0];
+      const new_driver_email = new_driver.account.email;
+
+      if(new_driver_email !== undefined && old_driver_email !== undefined) {
+        const old_msg_level = 2;
+        const new_msg_level = 1;
+        const order_id = parseInt(id);
+
+        const new_driver_mail = {
+          email: new_driver_email,
+          order_id: order_id
+        }
+
+        const resultNewDriverMail = await sendMailToDriver(new_msg_level, new_driver_mail);
+
+        const old_driver_mail = {
+          email: old_driver_email,
+          order_id: order_id
+        }
+        const resultOldDriverMail = await sendMailToDriver(old_msg_level, old_driver_mail);
+      }
+
       const result = await editDeliveryDetails(new_delivery.id, new_delivery);
 
-      console.log(result.data);
       window.location = "/dashboard/trackingOrders";
     }
   };

@@ -81,6 +81,29 @@ exports.sendAssignMail = async(req, res) => {
       console.log(error);
     }
   }
+  else if(parseInt(msg_level) === 2) { // assign driver
+    const options = {
+      from: "ucscarmagic@gmail.com",
+      to: driver_email,
+      subject: "Driver Assign Deleted From Order",
+      html: `<h1>You Relase From order of ${order_id}</h1><br />
+              <p>Thank you for joining. We're delighted to have you here. We are hoping to bring the finest possible service to make customer happy!!</p>
+              <p>Thank you</p>
+              <a href='https://drive.google.com/file/d/1rLOdqUpsGY-tCpy_X-nYINiSaDJ6PJpc/view?usp=sharing'>This is the link for the user manual</a>`,
+    };
+
+    try {
+      let result = await transporter.sendMail(options);
+      console.log(result);
+      res.status(200).send({
+          message: "Email Send to " + driver_email,
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
 
   
 
