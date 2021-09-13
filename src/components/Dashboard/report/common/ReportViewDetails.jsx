@@ -29,7 +29,16 @@ function OrderDetailsForm() {
     customer_report_year: "",
   });
 
+  const [errorTopCustomersReportData, setErrorTopCustomersReportData] =
+    useState({
+      customer_report_year: "",
+    });
+
   const [topDriversReportData, setTopDriversReportData] = useState({
+    driver_report_year: "",
+  });
+
+  const [errorTopDriversReportData, setErrorTopDriversReportData] = useState({
     driver_report_year: "",
   });
 
@@ -80,12 +89,26 @@ function OrderDetailsForm() {
       });
     }
     if (e.target.name === "customer_report_year") {
+      const newErrors = { ...errorTopCustomersReportData };
+      if (parseInt(e.target.value) === 0) {
+        newErrors[e.target.name] = "Please select year!!!";
+      } else {
+        delete newErrors[e.target.name];
+      }
+      setErrorTopCustomersReportData(newErrors);
       setTopCustomersReportData({
         ...topCustomersReportData,
         [e.target.name]: e.target.value,
       });
     }
     if (e.target.name === "driver_report_year") {
+      const newErrors = { ...errorTopDriversReportData };
+      if (parseInt(e.target.value) === 0) {
+        newErrors[e.target.name] = "Please select year!!!";
+      } else {
+        delete newErrors[e.target.name];
+      }
+      setErrorTopDriversReportData(newErrors);
       setTopDriversReportData({
         ...topDriversReportData,
         [e.target.name]: e.target.value,
@@ -137,11 +160,11 @@ function OrderDetailsForm() {
 
   // console.log(annualOrderReportData);
 
-  console.log(
-    "AnnualOrderError ",
-    Object.keys(errorAnnualOrderReport).length === 0
-  );
-  console.log("Errors", errorAnnualOrderReport);
+  // console.log(
+  //   "AnnualOrderError ",
+  //   Object.keys(errorAnnualOrderReport).length === 0
+  // );
+  console.log("Errors", errorTopProductsReportData);
   return (
     <React.Fragment>
       {loading ? (
@@ -279,9 +302,11 @@ function OrderDetailsForm() {
                   </h1>
                   <div
                     className={
-                      ProductViewFormStyle.formLine +
-                      " " +
-                      ProductViewFormStyle.setMarginTop
+                      errorTopProductsReportData["product_report_year"]
+                        ? ProductViewFormStyle.formLineError
+                        : ProductViewFormStyle.formLine +
+                          " " +
+                          ProductViewFormStyle.setMarginTop
                     }
                   >
                     <div className={ProductViewFormStyle.inputFormSide}>
@@ -307,7 +332,7 @@ function OrderDetailsForm() {
                           )}
                         </select>
                       </div>
-                      {errorAnnualOrderReport["product_report_year"] && (
+                      {errorTopProductsReportData["product_report_year"] && (
                         <div className={ProductViewFormStyle.inputErrorDesc}>
                           <span
                             className={
@@ -317,7 +342,7 @@ function OrderDetailsForm() {
                             error
                           </span>
                           <span className={ProductViewFormStyle.inputErrorText}>
-                            "Type" is not allowed to be empty
+                            "Select Year" is not allowed to be empty
                           </span>
                         </div>
                       )}
@@ -365,6 +390,11 @@ function OrderDetailsForm() {
                     <div className={ProductViewFormStyle.descButtonAdd}>
                       <button
                         className={ProductViewFormStyle.descButtonAddStyle}
+                        disabled={
+                          Object.keys(errorTopProductsReportData).length === 0
+                            ? false
+                            : true
+                        }
                       >
                         Report
                       </button>
@@ -383,33 +413,52 @@ function OrderDetailsForm() {
                   </h1>
                   <div
                     className={
-                      ProductViewFormStyle.formLine +
-                      " " +
-                      ProductViewFormStyle.setMarginTop
+                      errorTopCustomersReportData["customer_report_year"]
+                        ? ProductViewFormStyle.formLineError
+                        : ProductViewFormStyle.formLine +
+                          " " +
+                          ProductViewFormStyle.setMarginTop
                     }
                   >
-                    <div className={ProductViewFormStyle.data}>
-                      <label className={ProductViewFormStyle.labelStyle}>
-                        Select Year
-                      </label>
-                      <select
-                        className={ProductViewFormStyle.inputFormSelectStyle}
-                        name="customer_report_year"
-                        onChange={onInputChange}
-                        required
-                      >
-                        <option value="0">Select Year</option>
-                        {Array.isArray(years) === true && (
-                          <>
-                            {years.map((year, index) => (
-                              <option key={index} value={year}>
-                                {year}
-                              </option>
-                            ))}
-                          </>
-                        )}
-                      </select>
+                    <div className={ProductViewFormStyle.inputFormSide}>
+                      <div className={ProductViewFormStyle.dataForm}>
+                        <label className={ProductViewFormStyle.labelStyle}>
+                          Select Year
+                        </label>
+                        <select
+                          className={ProductViewFormStyle.inputFormSelectStyle}
+                          name="customer_report_year"
+                          onChange={onInputChange}
+                          required
+                        >
+                          <option value="0">Select Year</option>
+                          {Array.isArray(years) === true && (
+                            <>
+                              {years.map((year, index) => (
+                                <option key={index} value={year}>
+                                  {year}
+                                </option>
+                              ))}
+                            </>
+                          )}
+                        </select>
+                      </div>
+                      {errorTopCustomersReportData["customer_report_year"] && (
+                        <div className={ProductViewFormStyle.inputErrorDesc}>
+                          <span
+                            className={
+                              "material-icons " + ProductViewFormStyle.iconWidth
+                            }
+                          >
+                            error
+                          </span>
+                          <span className={ProductViewFormStyle.inputErrorText}>
+                            "Select Year" is not allowed to be empty
+                          </span>
+                        </div>
+                      )}
                     </div>
+
                     <div className={ProductViewFormStyle.data}>
                       <label className={ProductViewFormStyle.labelStyle}>
                         Report Type
@@ -453,6 +502,11 @@ function OrderDetailsForm() {
                     <div className={ProductViewFormStyle.descButtonAdd}>
                       <button
                         className={ProductViewFormStyle.descButtonAddStyle}
+                        disabled={
+                          Object.keys(errorTopCustomersReportData).length === 0
+                            ? false
+                            : true
+                        }
                       >
                         Report
                       </button>
@@ -471,33 +525,52 @@ function OrderDetailsForm() {
                   </h1>
                   <div
                     className={
-                      ProductViewFormStyle.formLine +
-                      " " +
-                      ProductViewFormStyle.setMarginTop
+                      errorTopDriversReportData["driver_report_year"]
+                        ? ProductViewFormStyle.formLineError
+                        : ProductViewFormStyle.formLine +
+                          " " +
+                          ProductViewFormStyle.setMarginTop
                     }
                   >
-                    <div className={ProductViewFormStyle.data}>
-                      <label className={ProductViewFormStyle.labelStyle}>
-                        Select Year
-                      </label>
-                      <select
-                        className={ProductViewFormStyle.inputFormSelectStyle}
-                        name="driver_report_year"
-                        onChange={onInputChange}
-                        required
-                      >
-                        <option value="0">Select Year</option>
-                        {Array.isArray(years) === true && (
-                          <>
-                            {years.map((year, index) => (
-                              <option key={index} value={year}>
-                                {year}
-                              </option>
-                            ))}
-                          </>
-                        )}
-                      </select>
+                    <div className={ProductViewFormStyle.inputFormSide}>
+                      <div className={ProductViewFormStyle.dataForm}>
+                        <label className={ProductViewFormStyle.labelStyle}>
+                          Select Year
+                        </label>
+                        <select
+                          className={ProductViewFormStyle.inputFormSelectStyle}
+                          name="driver_report_year"
+                          onChange={onInputChange}
+                          required
+                        >
+                          <option value="0">Select Year</option>
+                          {Array.isArray(years) === true && (
+                            <>
+                              {years.map((year, index) => (
+                                <option key={index} value={year}>
+                                  {year}
+                                </option>
+                              ))}
+                            </>
+                          )}
+                        </select>
+                      </div>
+                      {errorTopDriversReportData["driver_report_year"] && (
+                        <div className={ProductViewFormStyle.inputErrorDesc}>
+                          <span
+                            className={
+                              "material-icons " + ProductViewFormStyle.iconWidth
+                            }
+                          >
+                            error
+                          </span>
+                          <span className={ProductViewFormStyle.inputErrorText}>
+                            "Select Year" is not allowed to be empty
+                          </span>
+                        </div>
+                      )}
                     </div>
+
                     <div className={ProductViewFormStyle.data}>
                       <label className={ProductViewFormStyle.labelStyle}>
                         Report Type
@@ -540,6 +613,11 @@ function OrderDetailsForm() {
                     <div className={ProductViewFormStyle.descButtonAdd}>
                       <button
                         className={ProductViewFormStyle.descButtonAddStyle}
+                        disabled={
+                          Object.keys(errorTopDriversReportData).length === 0
+                            ? false
+                            : true
+                        }
                       >
                         Report
                       </button>
