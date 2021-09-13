@@ -6,17 +6,8 @@ module.exports = (app) => {
     //   Create a new Mail
     router.post("/", mail.create);
   
-    // //   Retrieve all Tutorials
-    // router.get("/", account.findAll);
-  
-    // //   Retrieve a single Tutorial with id
-    // router.get("/:id", account.findOne);
-  
-    // //   update the tutorial
-    // router.put("/:id", account.update);
-  
-    // //   delete tutorial
-    // router.delete("/:id", account.delete);
+    //   Retrieve a single Tutorial with id
+    router.put("/:id", mail.sendAssignMail);
   
     app.use("/api/driverMail", router);
   };

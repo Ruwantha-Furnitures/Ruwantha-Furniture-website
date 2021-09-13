@@ -8,6 +8,7 @@ import { getDeliveryDrivers } from "./../../service/deliveryDriver";
 import { addDelivery } from "../../service/delivery";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import ProductStyle from "../../../../css/dashboard/Products.module.css";
+import { sendMailToDriver } from "../../service/driverMail";
 
 function AssignDriverForm() {
   const { id } = useParams();
@@ -143,13 +144,25 @@ function AssignDriverForm() {
 
   const handleAssignDriverProcess = async (e) => {
     e.preventDefault();
-    // console.log("Onsubmit");
     setIsSubmit(true);
-    // console.log(delivery);
     if (delivery.delivery_driver_id !== 0) {
+      
+
       console.log(delivery);
-      const result = await addDelivery(delivery);
-      // console.log(result.data);
+      const driver = drivers.filter((driver)=> driver.id === delivery.delivery_driver_id)[0];
+      if(driver !== undefined) {
+        const driver_email = driver.account.email;
+        const order_id = delivery.order_id;
+        const msg_level = 1;
+
+        const mail_data = {
+          email: driver_email,
+          order_id: order_id
+        }
+
+        const result = await addDelivery(delivery);
+        const resultMail = await sendMailToDriver(msg_level, mail_data);
+      }
       window.location = "/dashboard/assignListOrderDriver";
     }
   };

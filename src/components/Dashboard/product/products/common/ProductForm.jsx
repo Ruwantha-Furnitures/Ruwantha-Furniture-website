@@ -83,7 +83,7 @@ function ProductForm() {
     if (errorMessage) newErrors[e.target.name] = errorMessage;
     else delete newErrors[e.target.name];
 
-    console.log(newErrors);
+    // console.log(newErrors);
     setErrors(newErrors);
     setProduct({ ...product, [e.target.name]: e.target.value });
   };
