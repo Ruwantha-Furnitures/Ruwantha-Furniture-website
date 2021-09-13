@@ -17,10 +17,11 @@ function OrderDetailsForm() {
     annual_order_year: "",
   });
 
-  
-  const [isSubmitAnnualOrderReport, setIsSubmitAnnualOrderReport] = useState(false);
-
   const [topProductsReportData, setTopProductsReportData] = useState({
+    product_report_year: "",
+  });
+
+  const [errorTopProductsReportData, setErrorTopProductsReportData] = useState({
     product_report_year: "",
   });
 
@@ -49,17 +50,14 @@ function OrderDetailsForm() {
     setYears(years_array);
   };
 
-  // console.log(year);
+  console.log(years);
 
   const onInputChange = (e) => {
     if (e.target.name === "annual_order_year") {
-      const newErrors = {...errorAnnualOrderReport};
-      if(parseInt(e.target.value) === 0) {
-        newErrors[e.target.name] = "Please select year!!!"
-       
-        console.log(e.target.value)
-      }
-      else {
+      const newErrors = { ...errorAnnualOrderReport };
+      if (parseInt(e.target.value) === 0) {
+        newErrors[e.target.name] = "Please select year!!!";
+      } else {
         delete newErrors[e.target.name];
       }
       setErrorAnnualOrderReport(newErrors);
@@ -69,6 +67,13 @@ function OrderDetailsForm() {
       });
     }
     if (e.target.name === "product_report_year") {
+      const newErrors = { ...errorTopProductsReportData };
+      if (parseInt(e.target.value) === 0) {
+        newErrors[e.target.name] = "Please select year!!!";
+      } else {
+        delete newErrors[e.target.name];
+      }
+      setErrorTopProductsReportData(newErrors);
       setTopProductsReportData({
         ...topProductsReportData,
         [e.target.name]: e.target.value,
@@ -130,11 +135,13 @@ function OrderDetailsForm() {
     // console.log(year);
   };
 
-  
   // console.log(annualOrderReportData);
 
-  console.log("AnnualOrderError ",Object.keys(errorAnnualOrderReport).length === 0);
-  console.log("Errors", errorAnnualOrderReport)
+  console.log(
+    "AnnualOrderError ",
+    Object.keys(errorAnnualOrderReport).length === 0
+  );
+  console.log("Errors", errorAnnualOrderReport);
   return (
     <React.Fragment>
       {loading ? (
@@ -159,34 +166,53 @@ function OrderDetailsForm() {
                   </h1>
                   <div
                     className={
-                      ProductViewFormStyle.formLine +
-                      " " +
-                      ProductViewFormStyle.setMarginTop
+                      errorAnnualOrderReport["annual_order_year"]
+                        ? ProductViewFormStyle.formLineError
+                        : ProductViewFormStyle.formLine +
+                          " " +
+                          ProductViewFormStyle.setMarginTop
                     }
                   >
-                    <div className={ProductViewFormStyle.data}>
-                      <label className={ProductViewFormStyle.labelStyle}>
-                        Select Year
-                      </label>
-                      <select
-                        className={ProductViewFormStyle.inputFormSelectStyle}
-                        name="annual_order_year"
-                        onChange={onInputChange}
-                        required
-                      >
-                        <option value="0">Select Year</option>
-                        {Array.isArray(years) === true && (
-                          <>
-                            {years.map((year, index) => (
-                              <option key={index} value={year}>
-                                {year}
-                              </option>
-                            ))}
-                          </>
-                        )}
-                        {/* <option value="2021">2021</option> */}
-                      </select>
+                    <div className={ProductViewFormStyle.inputFormSide}>
+                      <div className={ProductViewFormStyle.dataForm}>
+                        <label className={ProductViewFormStyle.labelStyle}>
+                          Select Year
+                        </label>
+                        <select
+                          className={ProductViewFormStyle.inputFormSelectStyle}
+                          name="annual_order_year"
+                          onChange={onInputChange}
+                          required
+                        >
+                          <option value="0">Select Year</option>
+                          {Array.isArray(years) === true && (
+                            <>
+                              {years.map((year, index) => (
+                                <option key={index} value={year}>
+                                  {year}
+                                </option>
+                              ))}
+                            </>
+                          )}
+                          {/* <option value="2021">2021</option> */}
+                        </select>
+                      </div>
+                      {errorAnnualOrderReport["annual_order_year"] && (
+                        <div className={ProductViewFormStyle.inputErrorDesc}>
+                          <span
+                            className={
+                              "material-icons " + ProductViewFormStyle.iconWidth
+                            }
+                          >
+                            error
+                          </span>
+                          <span className={ProductViewFormStyle.inputErrorText}>
+                            "Select Year" is not allowed to be empty
+                          </span>
+                        </div>
+                      )}
                     </div>
+
                     <div className={ProductViewFormStyle.data}>
                       <label className={ProductViewFormStyle.labelStyle}>
                         Report Type
@@ -229,11 +255,11 @@ function OrderDetailsForm() {
                   <div className={ProductViewFormStyle.descButtonsAddReport}>
                     <div className={ProductViewFormStyle.descButtonAdd}>
                       <button
-                      disabled={
-                        Object.keys(errorAnnualOrderReport).length === 0
-                          ? false
-                          : true
-                      }
+                        disabled={
+                          Object.keys(errorAnnualOrderReport).length === 0
+                            ? false
+                            : true
+                        }
                         className={ProductViewFormStyle.descButtonAddStyle}
                       >
                         Report
@@ -258,28 +284,45 @@ function OrderDetailsForm() {
                       ProductViewFormStyle.setMarginTop
                     }
                   >
-                    <div className={ProductViewFormStyle.data}>
-                      <label className={ProductViewFormStyle.labelStyle}>
-                        Select Year
-                      </label>
-                      <select
-                        className={ProductViewFormStyle.inputFormSelectStyle}
-                        name="product_report_year"
-                        onChange={onInputChange}
-                        required
-                      >
-                        <option value="0">Select Year</option>
-                        {Array.isArray(years) === true && (
-                          <>
-                            {years.map((year, index) => (
-                              <option key={index} value={year}>
-                                {year}
-                              </option>
-                            ))}
-                          </>
-                        )}
-                      </select>
+                    <div className={ProductViewFormStyle.inputFormSide}>
+                      <div className={ProductViewFormStyle.dataForm}>
+                        <label className={ProductViewFormStyle.labelStyle}>
+                          Select Year
+                        </label>
+                        <select
+                          className={ProductViewFormStyle.inputFormSelectStyle}
+                          name="product_report_year"
+                          onChange={onInputChange}
+                          required
+                        >
+                          <option value="0">Select Year</option>
+                          {Array.isArray(years) === true && (
+                            <>
+                              {years.map((year, index) => (
+                                <option key={index} value={year}>
+                                  {year}
+                                </option>
+                              ))}
+                            </>
+                          )}
+                        </select>
+                      </div>
+                      {errorAnnualOrderReport["product_report_year"] && (
+                        <div className={ProductViewFormStyle.inputErrorDesc}>
+                          <span
+                            className={
+                              "material-icons " + ProductViewFormStyle.iconWidth
+                            }
+                          >
+                            error
+                          </span>
+                          <span className={ProductViewFormStyle.inputErrorText}>
+                            "Type" is not allowed to be empty
+                          </span>
+                        </div>
+                      )}
                     </div>
+
                     <div className={ProductViewFormStyle.data}>
                       <label className={ProductViewFormStyle.labelStyle}>
                         Report Type
