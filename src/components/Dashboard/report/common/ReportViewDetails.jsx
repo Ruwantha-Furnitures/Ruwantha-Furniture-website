@@ -267,8 +267,8 @@ function OrderDetailsForm() {
                         Report
                       </label>
                       <textarea
-                        value="Simple ladder back chair with a clean finish crafted usin treated wood for lasting strength. Ample seating capacity with attractive soft padded fabric upholstery will provide a satisfactory seating."
-                        placeholder="Customer Message..."
+                        value="The annual orders report will show you all of the orders that were placed during the specified year. According to the selected year, you will see the total amount you earned from those orders."
+                        placeholder="Annual Order Description"
                         className={ProductViewFormStyle.labelStyleforLongDesc}
                         readOnly
                       />
@@ -379,8 +379,8 @@ function OrderDetailsForm() {
                         Report
                       </label>
                       <textarea
-                        value="Simple ladder back chair with a clean finish crafted usin treated wood for lasting strength. Ample seating capacity with attractive soft padded fabric upholstery will provide a satisfactory seating."
-                        placeholder="Customer Message..."
+                        value="The top products report will show you which products were the most popular during the chosen year. With the product's information, you can find out how many units were sold."
+                        placeholder="Top Product Description..."
                         className={ProductViewFormStyle.labelStyleforLongDesc}
                         readOnly
                       />
@@ -490,8 +490,8 @@ function OrderDetailsForm() {
                         Report
                       </label>
                       <textarea
-                        value="Simple ladder back chair with a clean finish crafted usin treated wood for lasting strength. Ample seating capacity with attractive soft padded fabric upholstery will provide a satisfactory seating."
-                        placeholder="Customer Message..."
+                        value="The top customers report will give you details on the top customers who placed orders during the specified year. Customers will be listed in ascending order based on the number of orders they completed during the selected year. You'll learn how many orders that particular consumer has completed."
+                        placeholder="Top Customer Report..."
                         className={ProductViewFormStyle.labelStyleforLongDesc}
                         readOnly
                       />
@@ -602,8 +602,8 @@ function OrderDetailsForm() {
                         Report
                       </label>
                       <textarea
-                        value="Simple ladder back chair with a clean finish crafted usin treated wood for lasting strength. Ample seating capacity with attractive soft padded fabric upholstery will provide a satisfactory seating."
-                        placeholder="Customer Message..."
+                        value="The top drivers report will give you details on the top drivers who delivered orders during the chosen year. The list of drivers will be sorted in ascending order by the number of orders they delivered in the chosen year. You'll learn how many orders that individual driver has delivered."
+                        placeholder="Top Drivers Report Description..."
                         className={ProductViewFormStyle.labelStyleforLongDesc}
                         readOnly
                       />

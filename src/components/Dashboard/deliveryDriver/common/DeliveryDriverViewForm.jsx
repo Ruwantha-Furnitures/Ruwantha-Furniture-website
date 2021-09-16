@@ -10,6 +10,7 @@ import {
 } from "./../../service/deliveryDriver";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import ProductStyle from "../../../../css/dashboard/Products.module.css";
+import { sendMailToDriver } from "../../service/driverMail";
 
 function DeliveryDriverViewForm() {
   const user = Auth.getCurrentUser();
@@ -84,35 +85,17 @@ function DeliveryDriverViewForm() {
     }
   };
 
-  const handleSendMail = () => {
-    const data = {
-      to_email: "wtgihan@gmail.com",
-      from_name: "AR MAgic",
-      to_name: "Driver Name",
-      message: "You have orders yet please completedddd!",
+  const handleSendMail = async () => {
+    console.log("Submit");
+    const driver_mail = {
+      email: deliveryDriver.account.email,
+      order_id: 0,
     };
-    const email = "wtgihan@gmail.com";
-    console.log(email);
-    emailjs
-      .send(
-        "service_pvdt2dh",
-        "template_rp0pjkb",
-        {
-          to_name: data.to_name,
-          from_name: data.from_name,
-          message: data.message,
-          to_email: data.to_email,
-        },
-        "user_jVl4NzJU1xAWDuQ598yyT"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+    const msg_level = 3;
+    console.log(driver_mail);
+    const result_mail = await sendMailToDriver(msg_level, driver_mail);
+    console.log(result_mail);
+    window.location = "/dashboard/trackingOrders";
   };
 
   console.log(driverProfileSet);
