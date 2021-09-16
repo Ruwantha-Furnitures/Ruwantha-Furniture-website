@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.module.css";
 import { Link, useParams } from "react-router-dom";
@@ -13,7 +12,7 @@ import {
 import PropagateLoader from "react-spinners/PropagateLoader";
 import ProductStyle from "../../../../css/dashboard/Products.module.css";
 import { sendMailToDriver } from "../../service/driverMail";
-import MainStyle from "../../../../css/dashboard/Main.module.css";
+import { notification } from "../../utils/notification";
 
 function DeliveryDriverViewForm() {
   const user = Auth.getCurrentUser();
@@ -85,24 +84,7 @@ function DeliveryDriverViewForm() {
     try {
       setIsSubmit(true);
       const res = await deleteDeliveryDriver(id);
-      toast.success("Delete the Delivery Driver", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        closeButton: false,
-        pauseOnHover: false,
-        draggable: false,
-        progress: undefined,
-        style: {
-          color: "#be622e",
-          borderRadius: "22px",
-        },
-        className: MainStyle.root,
-        progressStyle: { backgroundColor: "#be622e" },
-        onClose: () => (window.location = "/dashboard/deliveryDrivers"),
-      });
-      // window.location = "/dashboard/deliveryDrivers";
+      notification("Delete the Delivery Driver", "/dashboard/deliveryDrivers");
     } catch (error) {
       console.log("There was a problem with the server: ", error);
     }
@@ -119,24 +101,7 @@ function DeliveryDriverViewForm() {
       const msg_level = 3;
 
       const result_mail = await sendMailToDriver(msg_level, driver_mail);
-
-      toast.success("Send Mail to Driver", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        closeButton: false,
-        pauseOnHover: false,
-        draggable: false,
-        progress: undefined,
-        style: {
-          color: "#be622e",
-          borderRadius: "22px",
-        },
-        className: MainStyle.root,
-        progressStyle: { backgroundColor: "#be622e" },
-        onClose: () => (window.location = "/dashboard/trackingOrders"),
-      });
+      notification("Send Mail to Driver", "/dashboard/trackingOrders");
     } catch (error) {
       console.log("There was a problem with the server: ", error);
     }
@@ -297,6 +262,7 @@ function DeliveryDriverViewForm() {
                   >
                     Delete
                   </button>
+                  <ToastContainer />
                 </div>
               )}
               {user === "Admin" &&
