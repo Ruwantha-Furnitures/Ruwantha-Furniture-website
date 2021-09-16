@@ -9,5 +9,3 @@ export function addDriverEmail(emailData) {
 export function sendMailToDriver(id, mailData) {
   return axios.put(apiDriverMailUrl + "/" + id, mailData);
 }
-
-

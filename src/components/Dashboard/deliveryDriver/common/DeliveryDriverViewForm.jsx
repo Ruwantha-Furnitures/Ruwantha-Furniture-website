@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import emailjs from "emailjs-com";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.module.css";
 import { Link, useParams } from "react-router-dom";
 import Auth from "../../service/auth";
@@ -11,6 +13,7 @@ import {
 import PropagateLoader from "react-spinners/PropagateLoader";
 import ProductStyle from "../../../../css/dashboard/Products.module.css";
 import { sendMailToDriver } from "../../service/driverMail";
+import MainStyle from "../../../../css/dashboard/Main.module.css";
 
 function DeliveryDriverViewForm() {
   const user = Auth.getCurrentUser();
@@ -37,6 +40,8 @@ function DeliveryDriverViewForm() {
   useEffect(() => {
     loadDeliveryDriver();
   }, []);
+
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const loadDeliveryDriver = async () => {
     console.log(id);
@@ -78,24 +83,63 @@ function DeliveryDriverViewForm() {
 
   const handleDelete = async () => {
     try {
+      setIsSubmit(true);
       const res = await deleteDeliveryDriver(id);
-      window.location = "/dashboard/deliveryDrivers";
+      toast.success("Delete the Delivery Driver", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        closeButton: false,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        style: {
+          color: "#be622e",
+          borderRadius: "22px",
+        },
+        className: MainStyle.root,
+        progressStyle: { backgroundColor: "#be622e" },
+        onClose: () => (window.location = "/dashboard/deliveryDrivers"),
+      });
+      // window.location = "/dashboard/deliveryDrivers";
     } catch (error) {
       console.log("There was a problem with the server: ", error);
     }
   };
 
   const handleSendMail = async () => {
-    console.log("Submit");
-    const driver_mail = {
-      email: deliveryDriver.account.email,
-      order_id: 0,
-    };
-    const msg_level = 3;
-    console.log(driver_mail);
-    const result_mail = await sendMailToDriver(msg_level, driver_mail);
-    console.log(result_mail);
-    window.location = "/dashboard/trackingOrders";
+    try {
+      setIsSubmit(true);
+      console.log("Submit");
+      const driver_mail = {
+        email: deliveryDriver.account.email,
+        order_id: 0,
+      };
+      const msg_level = 3;
+
+      const result_mail = await sendMailToDriver(msg_level, driver_mail);
+
+      toast.success("Send Mail to Driver", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        closeButton: false,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        style: {
+          color: "#be622e",
+          borderRadius: "22px",
+        },
+        className: MainStyle.root,
+        progressStyle: { backgroundColor: "#be622e" },
+        onClose: () => (window.location = "/dashboard/trackingOrders"),
+      });
+    } catch (error) {
+      console.log("There was a problem with the server: ", error);
+    }
   };
 
   console.log(driverProfileSet);
@@ -249,6 +293,7 @@ function DeliveryDriverViewForm() {
                       ProductViewFormStyle.deleteButtonColor
                     }
                     onClick={handleDelete}
+                    disabled={isSubmit === false ? false : true}
                   >
                     Delete
                   </button>
@@ -260,9 +305,11 @@ function DeliveryDriverViewForm() {
                     <button
                       className={ProductViewFormStyle.descButtonAddStyle}
                       onClick={handleSendMail}
+                      disabled={isSubmit === false ? false : true}
                     >
                       Send Mail
                     </button>
+                    <ToastContainer />
                   </div>
                 )}
             </div>
