@@ -21,7 +21,7 @@ exports.create = async (req, res) => {
     from: "ucscarmagic@gmail.com",
     to: email,
     subject: "Driver created account",
-    html: `     <h1>Dear Driver,</h1><br />
+    html: `     <h3>Dear Driver,</h3>
                 <p>You have successfully created your account and now you have been added to our system as an official driver. When there are orders the company will notify you on the details about the deliveries that you will have to do. Good luck with your new journey!</p>
                 <p>Login Credentials Following here....</p>
                 <p>Email   :: ${email}</p>
@@ -73,7 +73,7 @@ exports.sendAssignMail = async (req, res) => {
       from: "ucscarmagic@gmail.com",
       to: driver_email,
       subject: "Driver assign order",
-      html: ` <h1>Dear Driver,</h1><br/>
+      html: ` <h3>Dear Driver,</h3>
               <p>You have been assigned with a delivery order ${order_id}. Please check the deliveries tab in order to view more details regarding the order.</p>
               <p>Thank you</p>
               <p>Regards,</p>
@@ -95,7 +95,7 @@ exports.sendAssignMail = async (req, res) => {
       from: "ucscarmagic@gmail.com",
       to: driver_email,
       subject: "Driver rejects an assigned order",
-      html: ` <h1>Dear Driver,</h1><br />
+      html: ` <h3>Dear Driver,</h3>
               <p>You have successfully rejected the order ${order_id} and we have now notified the rejection to the owner. You will be assigned to future orders and will be notify on them.</p>
               <p>Thank you</p>
               <p>Regards,</p>
@@ -117,8 +117,8 @@ exports.sendAssignMail = async (req, res) => {
       from: "ucscarmagic@gmail.com",
       to: driver_email,
       subject: "Remind driver",
-      html: ` <h1>Dear Driver,</h1><br />
-              <p>This is to remind that you have an order ${order_id} pending which you have to deliver to the customer. Hope this reminder will help you.</p>
+      html: ` <h3>Dear Driver,</h3>
+              <p>This is to remind that you have an order pending which you have to deliver to the customer. Hope this reminder will help you.</p>
               <p>Thank you</p>
               <p>Regards,</p>
               <p>AR Magic.</p>`,
