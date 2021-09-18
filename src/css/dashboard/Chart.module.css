@@ -4,6 +4,8 @@
   background: #ffffff;
   border-radius: 22px;
   padding: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
 .chartLabel {
@@ -15,4 +17,43 @@
   color: rgba(0, 0, 0, 0.7);
   margin-left: 31px;
   /* padding: 10px; */
+}
+
+@media screen and (max-width: 1205px) {
+  .chartLabel {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 33px;
+
+    color: rgba(0, 0, 0, 0.7);
+    margin-left: 31px;
+    /* padding: 10px; */
+  }
+}
+
+@media screen and (max-width: 1120px) {
+  .chartLabel {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 33px;
+
+    color: rgba(0, 0, 0, 0.7);
+    margin-left: 31px;
+    /* padding: 10px; */
+  }
+}
+
+@media screen and (max-width: 894px) {
+  .chartLabel {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 33px;
+
+    color: rgba(0, 0, 0, 0.7);
+    margin-left: 31px;
+    /* padding: 10px; */
+  }
 }

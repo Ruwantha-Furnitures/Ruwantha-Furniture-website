@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import ProductTypeList from "./ProductTypeList";
+import { ToastContainer } from "react-toastify";
 import { Link, useParams } from "react-router-dom";
 import Auth from "../../../service/auth";
 import {
@@ -9,6 +10,7 @@ import {
 } from "./../../../service/productType";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import ProductStyle from "../../../../../css/dashboard/Products.module.css";
+import { notification } from "../../../utils/notification";
 
 function ProductTypeViewForm() {
   const { id } = useParams();
@@ -24,6 +26,8 @@ function ProductTypeViewForm() {
   useEffect(() => {
     loadProductType();
   }, [id]);
+
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const loadProductType = async () => {
     try {
@@ -45,8 +49,10 @@ function ProductTypeViewForm() {
 
   const handleDelete = async () => {
     try {
+      setIsSubmit(true);
       const response = await deleteProductTypeDetails(id);
-      window.location = "/dashboard/products";
+      notification("Product Type Deleted", "/dashboard/products");
+      // window.location = "/dashboard/products";
     } catch (error) {
       console.log("There was a problem with the server: ", error);
     }
@@ -138,10 +144,12 @@ function ProductTypeViewForm() {
                             " " +
                             ProductViewFormStyle.deleteButtonColor
                           }
+                          disabled={isSubmit === false ? false : true}
                           onClick={handleDelete}
                         >
                           Delete
                         </button>
+                        <ToastContainer />
                       </div>
                     )}
                   </div>

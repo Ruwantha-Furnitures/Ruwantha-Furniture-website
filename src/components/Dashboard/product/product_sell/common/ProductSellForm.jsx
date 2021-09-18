@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Joi from "joi-browser";
+import { ToastContainer } from "react-toastify";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import { addCustomer } from "../../../service/customer";
 import { addOrder } from "../../../service/order";
+import { notification } from "../../../utils/notification";
 
 function ProductSellForm() {
   const [customer, setCustomer] = useState({
@@ -63,7 +65,11 @@ function ProductSellForm() {
       };
       const responseOrder = await addOrder(order);
       const id = responseOrder.data.id;
-      window.location = `/dashboard/product/sell/product/${id}`;
+      notification(
+        "Customer Details Added",
+        `/dashboard/product/sell/product/${id}`
+      );
+      // window.location = `/dashboard/product/sell/product/${id}`;
       console.log(response);
     } catch (error) {
       if (error.response.status === 500) {
@@ -259,8 +265,9 @@ function ProductSellForm() {
               }
               className={ProductViewFormStyle.descButtonAddStyle}
             >
-              Add Product
+              Add Customer
             </button>
+            <ToastContainer />
           </div>
         </div>
       </form>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Joi from "joi-browser";
+import { ToastContainer } from "react-toastify";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import ProductTypeList from "./ProductTypeList";
 import { Link, useParams } from "react-router-dom";
@@ -8,6 +9,7 @@ import {
   getProductTypeDetails,
 } from "./../../../service/productType";
 import { getProductCategories } from "./../../../service/productCategory";
+import { notification } from "../../../utils/notification";
 
 function ProductTypeUpdateForm() {
   const { id } = useParams();
@@ -70,7 +72,11 @@ function ProductTypeUpdateForm() {
     setIsSubmit(true);
     try {
       const response = await editProductTypeDetails(id, type);
-      window.location = `/dashboard/product/viewProductType/${id}`;
+      notification(
+        "Product Type Updated",
+        `/dashboard/product/viewProductType/${id}`
+      );
+      // window.location = `/dashboard/product/viewProductType/${id}`;
     } catch (error) {
       if (error.response.status === 500) {
         console.log("There was a problem with the server: ", error);
@@ -200,6 +206,7 @@ function ProductTypeUpdateForm() {
                     >
                       Update
                     </button>
+                    <ToastContainer />
                   </div>
                 </div>
               </div>

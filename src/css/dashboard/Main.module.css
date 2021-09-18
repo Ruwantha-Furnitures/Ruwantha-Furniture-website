@@ -25,6 +25,10 @@ h1 {
   box-sizing: inherit !important;
 } */
 
+.root {
+  --toastify-icon-color-success: #be622e !important;
+}
+
 .bodycontainer {
   display: flex;
   margin: 0 25px 0 25px;
@@ -50,6 +54,15 @@ h1 {
   flex-direction: column;
 }
 
+.toasitfyNotification {
+  color: #be622e;
+  border-radius: 22px;
+}
+
+.toasitfyProgress {
+  background: #be622e !important;
+}
+
 /* Scroll bar style */
 ::-webkit-scrollbar {
   width: 8px;
@@ -67,4 +80,33 @@ h1 {
 }
 ::-webkit-scrollbar-thumb:window-inactive {
   background: #542b14f3;
+}
+
+@media screen and (max-width: 1278px) {
+  .navSection {
+    order: 1;
+    width: 100%;
+  }
+  .bodySection {
+    order: 2;
+    width: 100%;
+    margin-top: 28px;
+    display: flex;
+  }
+
+  .sidebarSection {
+    order: 1;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 1120px) {
+  .sidebarSection {
+    order: 1;
+    width: 9%;
+    display: flex;
+    flex-direction: column;
+  }
 }

@@ -737,3 +737,151 @@ input:-webkit-autofill:active {
   text-decoration: none;
   align-items: center;
 }
+
+@media screen and (max-width: 822px) {
+  .tableTitleHeaderStyle {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 33px;
+
+    color: #000000;
+    margin-left: 8px;
+    width: 88%;
+    order: 1;
+    position: relative;
+  }
+
+  .backStyle {
+    order: 1;
+    margin-left: 9px;
+    padding: 5px;
+    display: flex;
+  }
+
+  .labelProductTitle {
+    order: 1;
+    width: 29%;
+    height: 33px;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 19px;
+    text-align: start;
+    color: #000000;
+    align-items: center;
+    /* justify-content: normal; */
+    /* width: 32%; */
+    /* margin-top: 12px; */
+    padding-left: 31px;
+    display: flex;
+  }
+
+  .labelStyleTitleMargin {
+    order: 1;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 19px;
+    text-align: start;
+    color: #000000;
+    padding-left: 31px;
+    display: inline-block;
+    margin-top: 12px;
+  }
+
+  .labelStyle {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 19px;
+    text-align: start;
+    color: #000000;
+    width: 32%;
+    padding-left: 31px;
+    display: inline-block;
+  }
+
+  .labelStyleTitle {
+    order: 1;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 19px;
+    text-align: start;
+    color: #000000;
+    padding-left: 31px;
+    display: inline-block;
+  }
+
+  .labelStyleforLong {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 19px;
+    text-align: start;
+    color: #000000;
+    width: 16%;
+    padding-left: 31px;
+    display: inline-block;
+  }
+
+  .inputBar {
+    height: 33px;
+    background: #ffffff;
+    border-radius: 22px;
+    border: 1px solid #ffffff;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    color: #000000;
+    padding-left: 15px;
+    width: 100%;
+  }
+
+  .inputErrorText {
+    font-size: 12px;
+    color: #bb0b0b;
+  }
+
+  .inputStyleDesc {
+    order: 2;
+
+    height: 106px;
+    background: #ffffff;
+    border-radius: 22px;
+    border: 1px solid #ffffff;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    color: #000000;
+    padding-left: 15px;
+    padding-top: 9px;
+    width: 88%;
+    margin-left: 20px;
+    margin-top: 13px;
+
+    resize: none;
+  }
+
+  .inputStyle {
+    height: 33px;
+    background: #ffffff;
+    border-radius: 22px;
+    border: 1px solid #ffffff;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    color: #000000;
+    padding-left: 15px;
+    width: 48%;
+  }
+
+  .inputFormSelectStyle {
+    height: 33px;
+    background: #ffffff;
+    border-radius: 22px;
+    border: 1px solid #ffffff;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    color: #000000;
+    padding-left: 15px;
+    width: 48%;
+  }
+}

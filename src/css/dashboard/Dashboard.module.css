@@ -41,3 +41,51 @@
 .tableSection {
   order: 2;
 }
+
+@media screen and (max-width: 1205px) {
+  .cardSection {
+    order: 2;
+    width: 84%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 62px;
+  }
+
+  .graphTableSection {
+    order: 1;
+    width: 67%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .circleGraphSection {
+    order: 2;
+    width: 33%;
+    /* display: none; */
+  }
+}
+
+@media screen and (max-width: 1120px) {
+  .cardSection {
+    order: 2;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 894px) {
+  .graphTableSection {
+    order: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .circleGraphSection {
+    /* order: 2;
+    width: 33%; */
+    display: none;
+  }
+}

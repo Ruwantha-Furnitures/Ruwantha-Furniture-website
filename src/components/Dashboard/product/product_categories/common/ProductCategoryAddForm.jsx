@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { ToastContainer } from "react-toastify";
 import Joi from "joi-browser";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import ProductCategoryList from "./ProductCategoryList";
 import { Link } from "react-router-dom";
 import { addProductCategories } from "./../../../service/productCategory";
+import { notification } from "../../../utils/notification";
 
 function ProductCategoryAddForm() {
   const [category, setCategory] = useState({
@@ -44,7 +46,11 @@ function ProductCategoryAddForm() {
     setIsSubmit(true);
     try {
       const response = await addProductCategories(category);
-      window.location = "/dashboard/product/addProductCategory";
+      notification(
+        "New Product Category Added",
+        "/dashboard/product/addProductCategory"
+      );
+      // window.location = "/dashboard/product/addProductCategory";
     } catch (error) {
       if (error.response.status === 500) {
         console.log("There was a problem with the server: ", error);
@@ -129,6 +135,7 @@ function ProductCategoryAddForm() {
                     >
                       Add Category
                     </button>
+                    <ToastContainer />
                   </div>
                 </div>
               </div>

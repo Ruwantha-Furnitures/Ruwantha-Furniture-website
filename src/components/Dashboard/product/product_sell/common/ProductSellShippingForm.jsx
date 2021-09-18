@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Joi from "joi-browser";
+import { ToastContainer } from "react-toastify";
 import { useParams } from "react-router-dom";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import { addCustomer } from "../../../service/customer";
@@ -8,6 +9,7 @@ import { getOrderDetails } from "./../../../service/order";
 import { getDeliveryCharges } from "./../../../service/deliveryCharges";
 import { addShipping } from "../../../service/shippingDetail";
 import { addPayment } from "../../../service/payments";
+import { notification } from "../../../utils/notification";
 
 function ProductSellShippingForm() {
   const { id } = useParams();
@@ -150,7 +152,8 @@ function ProductSellShippingForm() {
           total_amounts: shippingDetails.total_amounts,
         };
         const responsePayment = await addPayment(newPayment);
-        window.location = "/dashboard/purchaseOrders";
+        notification("Added New Order", "/dashboard/purchaseOrders");
+        // window.location = "/dashboard/purchaseOrders";
       } catch (error) {
         if (error.response.status === 500) {
           console.log("There was a problem with the server: ", error);
@@ -295,7 +298,7 @@ function ProductSellShippingForm() {
                       Tel No
                     </label>
                     <input
-                      type="number"
+                      type="tel"
                       name="contact_number"
                       value={shippingDetails.contact_number}
                       onChange={(e) => onInputChange(e)}
@@ -403,6 +406,7 @@ function ProductSellShippingForm() {
             >
               Finish Pay
             </button>
+            <ToastContainer />
           </div>
         </div>
       </form>

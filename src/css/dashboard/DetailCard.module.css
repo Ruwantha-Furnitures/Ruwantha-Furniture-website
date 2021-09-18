@@ -34,11 +34,12 @@
   font-style: normal;
   font-weight: 600;
 
-  font-size: 22px;
+  font-size: 21px;
   line-height: 33px;
 
   color: rgba(0, 0, 0, 0.44);
 }
+
 .cardTextStyle2 {
   font-style: normal;
   font-weight: bold;
@@ -50,4 +51,88 @@
 .cardwrapper {
   margin-left: 10px;
   margin-bottom: 18px;
+}
+
+@media screen and (max-width: 1287px) {
+  .cardTextStyle1 {
+    font-style: normal;
+    font-weight: 600;
+
+    font-size: 20px;
+    line-height: 33px;
+
+    color: rgba(0, 0, 0, 0.44);
+  }
+
+  .cardTextStyle2 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 21px;
+    line-height: 41px;
+    color: #000000;
+  }
+}
+
+@media screen and (max-width: 1208px) {
+  .cardTextStyle1 {
+    font-style: normal;
+    font-weight: 600;
+
+    font-size: 18px;
+    line-height: 33px;
+
+    color: rgba(0, 0, 0, 0.44);
+  }
+
+  .cardTextStyle2 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 19px;
+    line-height: 41px;
+    color: #000000;
+  }
+}
+
+@media screen and (max-width: 1004px) {
+  .cardTextStyle1 {
+    font-style: normal;
+    font-weight: 600;
+
+    font-size: 16px;
+    line-height: 33px;
+
+    color: rgba(0, 0, 0, 0.44);
+  }
+
+  .cardTextStyle2 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 41px;
+    color: #000000;
+  }
+}
+
+@media screen and (max-width: 942px) {
+  .cardTextStyle1 {
+    font-style: normal;
+    font-weight: 600;
+
+    font-size: 16px;
+    line-height: 33px;
+
+    color: rgba(0, 0, 0, 0.44);
+  }
+
+  .cardTextStyle2 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 41px;
+    color: #000000;
+  }
+
+  .detailCardMarginStyle {
+    margin-right: 15px;
+  }
 }

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Joi from "joi-browser";
+import { ToastContainer } from "react-toastify";
 import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.module.css";
 import { Link } from "react-router-dom";
 import { addAccount } from "../../service/account";
 import { addDeliveryDriver } from "../../service/deliveryDriver";
 import { getAccounts } from "./../../service/account";
 import { addDriverEmail } from "../../service/driverMail";
+import { notification } from "../../utils/notification";
 
 function DeliveryDriverDetails() {
   const [deliveryDriver, setDeliveryDriver] = useState({
@@ -113,7 +115,6 @@ function DeliveryDriverDetails() {
         Math.floor(Math.random() * 10000 + 1).toString();
       console.log(new_password);
       const encrypt_password = md5(new_password);
-      
 
       const newAccount = {
         ...account,
@@ -137,13 +138,15 @@ function DeliveryDriverDetails() {
       // send driver to details
       const driver = {
         email: account.email,
-        password: new_password
-      }
+        password: new_password,
+      };
 
-      console.log("Driver",driver);
+      console.log("Driver", driver);
       const responseEmail = await addDriverEmail(driver);
-      
-      window.location = "/dashboard/deliveryDrivers";
+
+      notification("New Delivery Driver Added", "/dashboard/deliveryDrivers");
+
+      // window.location = "/dashboard/deliveryDrivers";
     } catch (error) {
       if (error.response.status === 500) {
         console.log("There was a problem with the server: ", error);
@@ -400,6 +403,7 @@ function DeliveryDriverDetails() {
             >
               Add New
             </button>
+            <ToastContainer />
           </div>
         </div>
       </form>

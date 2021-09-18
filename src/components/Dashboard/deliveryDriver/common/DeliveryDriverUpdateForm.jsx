@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Joi from "joi-browser";
+import { ToastContainer } from "react-toastify";
 import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.module.css";
 import { Link, useParams } from "react-router-dom";
 import {
@@ -12,6 +13,7 @@ import {
   getAccounts,
 } from "./../../service/account";
 import Auth from "../../service/auth";
+import { notification } from "../../utils/notification";
 
 function DeliveryDriverUpdateForm() {
   const url = window.location.pathname.split("/");
@@ -129,9 +131,17 @@ function DeliveryDriverUpdateForm() {
       );
       if (user === "Delivery Driver") {
         localStorage.setItem("userEmail", account.email);
-        window.location = `/dashboard/deliveryDriverProfile`;
+        notification(
+          "Delivery Driver Details Updated",
+          `/dashboard/deliveryDriverProfile`
+        );
+        // window.location = `/dashboard/deliveryDriverProfile`;
       } else {
-        window.location = `/dashboard/deliveryDriver/view/${id}`;
+        notification(
+          "Delivery Driver Details Updated",
+          `/dashboard/deliveryDriver/view/${id}`
+        );
+        // window.location = `/dashboard/deliveryDriver/view/${id}`;
       }
     } catch (error) {
       if (error.response.status === 500) {
@@ -400,6 +410,7 @@ function DeliveryDriverUpdateForm() {
             >
               Update
             </button>
+            <ToastContainer />
           </div>
         </div>
       </form>

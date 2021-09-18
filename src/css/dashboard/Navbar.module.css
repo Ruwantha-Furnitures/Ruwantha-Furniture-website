@@ -17,6 +17,7 @@
   display: flex;
   flex-direction: row;
 }
+
 .logo {
   order: 1;
   width: 25%;
@@ -44,7 +45,7 @@
 
 .dateSection {
   order: 2;
-  width: 75%;
+  width: 50%;
   position: relative;
 }
 
@@ -53,6 +54,8 @@
   width: 25%;
   position: relative;
   display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
 }
 
 .date {
@@ -150,4 +153,57 @@
   display: flex;
   text-decoration: none;
   align-items: center;
+}
+/* 
+@media screen and (max-width: 903px) {
+  .dateTitle {
+    border: none;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 17px;
+    line-height: 25px;
+    color: #000000;
+  }
+} */
+
+@media screen and (max-width: 833px) {
+  .logonameStyle {
+    justify-content: center;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .dateTitle {
+    /* background: #b89068; */
+    border: none;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 15px;
+    line-height: 25px;
+    color: #000000;
+  }
+
+  .accounticon {
+    color: #542b14;
+    font-size: 42px;
+    display: flex;
+  }
+
+  .logoutButton {
+    width: 88px;
+    height: 33px;
+    /* background: #b89068; */
+    background: #ffffff;
+    border-radius: 22px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    border: 1px solid #b89068;
+    color: #b89068;
+    cursor: pointer;
+  }
 }

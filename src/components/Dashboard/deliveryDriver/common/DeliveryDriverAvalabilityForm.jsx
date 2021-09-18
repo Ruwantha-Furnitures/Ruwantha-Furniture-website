@@ -5,8 +5,10 @@ import {
   editDeliveryDriverDetails,
   getDeliveryDrivers,
 } from "./../../service/deliveryDriver";
+import { ToastContainer } from "react-toastify";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import ProductStyle from "../../../../css/dashboard/Products.module.css";
+import { notification } from "../../utils/notification";
 
 function DeliveryDriverAvalabilityForm() {
   const user_email = Auth.getCurrentUserEmail();
@@ -27,6 +29,8 @@ function DeliveryDriverAvalabilityForm() {
   useEffect(() => {
     loadDeliveryDriver();
   }, []);
+
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const loadDeliveryDriver = async () => {
     try {
@@ -57,12 +61,17 @@ function DeliveryDriverAvalabilityForm() {
     e.preventDefault();
 
     try {
+      setIsSubmit(true);
       const response = await editDeliveryDriverDetails(
         deliveryDriver.id,
         deliveryDriver
       );
 
-      window.location = "/dashboard/deliveryDriverProfile";
+      notification(
+        "Change the Availability Status",
+        "/dashboard/deliveryDriverProfile"
+      );
+      // window.location = "/dashboard/deliveryDriverProfile";
 
       console.log(response.data);
     } catch (error) {
@@ -190,9 +199,13 @@ function DeliveryDriverAvalabilityForm() {
 
             <div className={ProductViewFormStyle.descButtonsAdd}>
               <div className={ProductViewFormStyle.descButtonAdd}>
-                <button className={ProductViewFormStyle.descButtonAddStyle}>
+                <button
+                  disabled={isSubmit === false ? false : true}
+                  className={ProductViewFormStyle.descButtonAddStyle}
+                >
                   Change Availabilty
                 </button>
+                <ToastContainer />
               </div>
             </div>
           </form>

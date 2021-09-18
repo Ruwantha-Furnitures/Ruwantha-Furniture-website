@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Joi from "joi-browser";
+import { ToastContainer } from "react-toastify";
 import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.module.css";
 import { Link, useParams } from "react-router-dom";
 import { getOrderDetails } from "./../../service/order";
@@ -9,6 +10,7 @@ import { addDelivery } from "../../service/delivery";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import ProductStyle from "../../../../css/dashboard/Products.module.css";
 import { sendMailToDriver } from "../../service/driverMail";
+import { notification } from "../../utils/notification";
 
 function AssignDriverForm() {
   const { id } = useParams();
@@ -146,24 +148,28 @@ function AssignDriverForm() {
     e.preventDefault();
     setIsSubmit(true);
     if (delivery.delivery_driver_id !== 0) {
-      
-
       console.log(delivery);
-      const driver = drivers.filter((driver)=> driver.id === delivery.delivery_driver_id)[0];
-      if(driver !== undefined) {
+      const driver = drivers.filter(
+        (driver) => driver.id === delivery.delivery_driver_id
+      )[0];
+      if (driver !== undefined) {
         const driver_email = driver.account.email;
         const order_id = delivery.order_id;
         const msg_level = 1;
 
         const mail_data = {
           email: driver_email,
-          order_id: order_id
-        }
+          order_id: order_id,
+        };
 
         const result = await addDelivery(delivery);
         const resultMail = await sendMailToDriver(msg_level, mail_data);
       }
-      window.location = "/dashboard/assignListOrderDriver";
+      notification(
+        "Driver Assign for Order",
+        "/dashboard/assignListOrderDriver"
+      );
+      // window.location = "/dashboard/assignListOrderDriver";
     }
   };
 
@@ -406,6 +412,7 @@ function AssignDriverForm() {
                 >
                   Assign Driver
                 </button>
+                <ToastContainer />
               </div>
             </div>
           </form>

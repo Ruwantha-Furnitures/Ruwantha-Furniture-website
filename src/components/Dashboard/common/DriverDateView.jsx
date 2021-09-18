@@ -58,7 +58,7 @@ function AllProductsView() {
           <>
             <div className={AllProductViewStyle.allProductsLabel}>
               <h1 className={AllProductViewStyle.allProductsLabelStyle}>
-                Charge for Area
+                Area Charges
               </h1>
             </div>
             <div className={AllProductViewStyle.allProductsTable}>
