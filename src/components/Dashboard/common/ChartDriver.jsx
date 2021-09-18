@@ -161,7 +161,7 @@ function ChartDriver() {
   return (
     <div className={ChartStyle.graphChart}>
       <BarChart
-        width={650}
+        width={600}
         height={250}
         data={salesOfYear}
         margin={{

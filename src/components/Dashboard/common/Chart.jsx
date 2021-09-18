@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { BarChart, Bar, XAxis, Cell, Tooltip } from "recharts";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  Cell,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 import ChartStyle from "../../../css/dashboard/Chart.module.css";
 import { getSellProducts } from "./../service/sellProduct";
 
@@ -144,26 +151,28 @@ function Chart() {
   // console.log(data);
   return (
     <div className={ChartStyle.graphChart}>
-      <BarChart
-        width={650}
-        height={250}
-        data={salesOfYear}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-        barSize={30}
-      >
-        <Tooltip />
-        <XAxis dataKey="name" size={30} axisLine={false} tickLine={false} />
-        <Bar dataKey="sales" fill="#8884d8">
-          {salesOfYear.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={barColors[index % 2]} />
-          ))}
-        </Bar>
-      </BarChart>
+      <ResponsiveContainer width="100%" height="91%">
+        <BarChart
+          width={600}
+          height={250}
+          data={salesOfYear}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+          barSize={30}
+        >
+          <Tooltip />
+          <XAxis dataKey="name" size={30} axisLine={false} tickLine={false} />
+          <Bar dataKey="sales" fill="#8884d8">
+            {salesOfYear.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={barColors[index % 2]} />
+            ))}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
       <h1 className={ChartStyle.chartLabel}>Sales Items of the Year</h1>
     </div>
   );

@@ -94,3 +94,50 @@
 .chart {
   color: #a54812;
 }
+
+@media screen and (max-width: 1214px) {
+  .pieChart {
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: flex-end;
+  }
+
+  .pieChartSection {
+    height: auto;
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 15px;
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pieChartLabelStyle {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 33px;
+    /* identical to box height */
+
+    color: #000000;
+  }
+
+  .rowTextStyle {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 25px;
+    /* identical to box height */
+
+    color: #000000;
+  }
+
+  .rowPercentageStyle {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 25px;
+    /* identical to box height */
+
+    color: #000000;
+  }
+}

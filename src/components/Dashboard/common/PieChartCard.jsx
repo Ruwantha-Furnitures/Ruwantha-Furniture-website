@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { PieChart, Pie, Cell, Tooltip } from "recharts";
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import PieChartCardStyle from "../../../css/dashboard/PieChardCard.module.css";
 import { getSellProducts } from "./../service/sellProduct";
 import { getProducts } from "./../service/product";
@@ -158,6 +158,7 @@ function PieChartCard() {
         </h1>
       </div>
       <div className={PieChartCardStyle.pieChart}>
+        {/* <ResponsiveContainer> */}
         <PieChart
           width={250}
           height={200}
@@ -186,6 +187,7 @@ function PieChartCard() {
           </Pie>
           <Tooltip />
         </PieChart>
+        {/* </ResponsiveContainer> */}
       </div>
       <div className={PieChartCardStyle.pieChartTable}>
         {Array.isArray(salesOfCategories) === true && (

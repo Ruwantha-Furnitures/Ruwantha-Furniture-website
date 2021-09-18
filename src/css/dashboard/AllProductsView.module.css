@@ -54,7 +54,7 @@
 
 .allProductsRowText {
   order: 2;
-  width: 70%;
+  width: 72%;
 }
 .allProductPointerSize {
   color: #542b14;
@@ -136,3 +136,9 @@
 /* .tooltiptext {
 
 } */
+
+@media screen and (max-width: 1278px) {
+  .allProductsSection {
+    display: none;
+  }
+}

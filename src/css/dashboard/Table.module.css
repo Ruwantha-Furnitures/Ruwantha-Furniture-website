@@ -362,3 +362,134 @@ input[type="search"]:-webkit-autofill:active {
   line-height: 22px;
   color: #ffffff;
 }
+
+@media screen and (max-width: 894px) {
+  /* table Section */
+
+  .table {
+    /* height: 288px; */
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 15px;
+    margin-top: 28px;
+    border-collapse: collapse;
+  }
+
+  .tableTitleProductStyle {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 33px;
+
+    color: #000000;
+    margin-left: 8px;
+    width: 60%;
+    order: 1;
+    position: relative;
+  }
+
+  .searchinput {
+    width: 80%;
+    height: 32px;
+    /* background: #b89068; */
+    border: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 25px;
+    color: #000000;
+  }
+
+  .searchText > ::placeholder {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 25px;
+    color: #b89068;
+  }
+
+  th {
+    text-align: inherit;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+
+    color: rgba(0, 0, 0, 0.86);
+    padding: 12px 8px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+    /* width: 15%; */
+  }
+
+  td {
+    padding: 9px 11px;
+    vertical-align: middle;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+
+    color: rgba(0, 0, 0, 0.76);
+
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+  }
+}
+
+@media screen and (max-width: 822px) {
+  /* table Section */
+
+  .searchText > ::placeholder {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 25px;
+    color: #b89068;
+  }
+
+  th:nth-child(3) {
+    display: none;
+  }
+
+  td:nth-child(3) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1205px) {
+  .tableTitleStyle {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 33px;
+
+    color: #000000;
+    margin-left: 31px;
+  }
+}
+
+@media screen and (max-width: 1120px) {
+  .tableTitleStyle {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 33px;
+
+    color: #000000;
+    margin-left: 31px;
+  }
+}
+
+@media screen and (max-width: 894px) {
+  .tableTitleStyle {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 33px;
+
+    color: #000000;
+    margin-left: 31px;
+  }
+}
