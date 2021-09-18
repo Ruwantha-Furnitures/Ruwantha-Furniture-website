@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { ToastContainer } from "react-toastify";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import ProductCategoryList from "./ProductCategoryList";
 import { Link, useParams } from "react-router-dom";
@@ -9,6 +10,7 @@ import {
 } from "./../../../service/productCategory";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import ProductStyle from "../../../../../css/dashboard/Products.module.css";
+import { notification } from "../../../utils/notification";
 
 function ProductCategoryViewForm() {
   const { id } = useParams();
@@ -20,6 +22,8 @@ function ProductCategoryViewForm() {
   useEffect(() => {
     loadCategory();
   }, [id]);
+
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const loadCategory = async () => {
     try {
@@ -42,8 +46,10 @@ function ProductCategoryViewForm() {
 
   const handleDelete = async () => {
     try {
+      setIsSubmit(true);
       const res = await deleteProductCategoriesDetails(id);
-      window.location = "/dashboard/products";
+      notification("Product Category Deleted", "/dashboard/products");
+      // window.location = "/dashboard/products";
     } catch (error) {
       console.log("There was a problem with the server: ", error);
     }
@@ -115,6 +121,7 @@ function ProductCategoryViewForm() {
                           Update
                         </button>
                         <button
+                          disabled={isSubmit === false ? false : true}
                           className={
                             ProductViewFormStyle.buttonStyle +
                             " " +
@@ -124,6 +131,7 @@ function ProductCategoryViewForm() {
                         >
                           Delete
                         </button>
+                        <ToastContainer />
                       </div>
                     )}
                   </div>

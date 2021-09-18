@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Joi from "joi-browser";
+import { ToastContainer } from "react-toastify";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import ProductImage from "../../../../../assets/dashboard/product/addPhotoNew2.png";
 import { Link } from "react-router-dom";
 import { getProductTypes } from "./../../../service/productType";
 import { uploadPhoto } from "./../../../service/image";
 import { addProduct } from "./../../../service/product";
+import { notification } from "../../../utils/notification";
 
 function ProductForm() {
   const [file, setFile] = useState("");
@@ -126,8 +128,9 @@ function ProductForm() {
       console.log(newProduct);
 
       const response = await addProduct(newProduct);
-      // handle response process
-      window.location = "/dashboard/products";
+
+      notification("New Product Added", "/dashboard/products");
+      // window.location = "/dashboard/products";
 
       // Product submit process
     } catch (error) {
@@ -489,6 +492,7 @@ function ProductForm() {
             >
               Add Product
             </button>
+            <ToastContainer />
           </div>
         </div>
       </form>

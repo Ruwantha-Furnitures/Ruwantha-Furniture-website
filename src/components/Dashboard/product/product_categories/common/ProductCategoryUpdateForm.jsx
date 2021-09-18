@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Joi from "joi-browser";
+import { ToastContainer } from "react-toastify";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import ProductCategoryList from "./ProductCategoryList";
 import { Link, useParams } from "react-router-dom";
+import { notification } from "../../../utils/notification";
 import {
   getProductCategoriesDetails,
   editProductCategoriesDetails,
@@ -60,7 +62,11 @@ function ProductCategoryUpdateForm() {
     setIsSubmit(true);
     try {
       const response = await editProductCategoriesDetails(id, category);
-      window.location = `/dashboard/product/viewProductCategory/${id}`;
+      notification(
+        "Product Category Updated",
+        `/dashboard/product/viewProductCategory/${id}`
+      );
+      // window.location = `/dashboard/product/viewProductCategory/${id}`;
     } catch (error) {
       if (error.response.status === 500) {
         console.log("There was a problem with the server: ", error);
@@ -139,9 +145,15 @@ function ProductCategoryUpdateForm() {
                         " " +
                         ProductViewFormStyle.successButtonColor
                       }
+                      disabled={
+                        Object.keys(errors).length === 0 && isSubmit === false
+                          ? false
+                          : true
+                      }
                     >
                       Update
                     </button>
+                    <ToastContainer />
                   </div>
                 </div>
               </div>

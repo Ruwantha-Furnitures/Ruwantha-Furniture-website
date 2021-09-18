@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Joi from "joi-browser";
+import { ToastContainer } from "react-toastify";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import ProductTypeList from "./ProductTypeList";
 import { Link } from "react-router-dom";
 import { getProductCategories } from "./../../../service/productCategory";
 import { addProductType } from "../../../service/productType";
+import { notification } from "../../../utils/notification";
 
 function ProductTypeAddForm() {
   const [type, setType] = useState({
@@ -67,7 +69,11 @@ function ProductTypeAddForm() {
     setIsSubmit(true);
     try {
       const response = await addProductType(type);
-      window.location = "/dashboard/product/addProductType";
+      notification(
+        "Added New Product Type",
+        "/dashboard/product/addProductType"
+      );
+      // window.location = "/dashboard/product/addProductType";
     } catch (error) {
       if (error.response.status === 500) {
         console.log("There was a problem with the server: ", error);
@@ -188,6 +194,7 @@ function ProductTypeAddForm() {
                     >
                       Add Type
                     </button>
+                    <ToastContainer />
                   </div>
                 </div>
               </div>

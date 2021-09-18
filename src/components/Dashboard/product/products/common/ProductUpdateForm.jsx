@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Joi from "joi-browser";
+import { ToastContainer } from "react-toastify";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import { Link, useParams } from "react-router-dom";
 import {
@@ -8,6 +9,7 @@ import {
 } from "./../../../service/product";
 import { getProductTypes } from "./../../../service/productType";
 import { uploadPhoto, deletePhoto } from "./../../../service/image";
+import { notification } from "../../../utils/notification";
 
 function ProductUpdateForm() {
   const { id } = useParams();
@@ -132,8 +134,9 @@ function ProductUpdateForm() {
 
       const response = await editProductDetails(id, newProduct);
 
+      notification("Product Updated", `/dashboard/product/view/${id}`);
       // handle response process
-      window.location = `/dashboard/product/view/${id}`;
+      // window.location = `/dashboard/product/view/${id}`;
     } catch (error) {
       if (error.response.status === 500) {
         console.log("There was a problem with the server: ", error);
@@ -145,7 +148,8 @@ function ProductUpdateForm() {
           const response = await editProductDetails(id, product);
           console.log(response);
           // handle response process
-          window.location = `/dashboard/product/view/${id}`;
+          notification("Product Updated", `/dashboard/product/view/${id}`);
+          // window.location = `/dashboard/product/view/${id}`;
         }
         // otherwise another error
       }
@@ -504,6 +508,7 @@ function ProductUpdateForm() {
             >
               Update
             </button>
+            <ToastContainer />
           </div>
         </div>
       </form>
