@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Joi from "joi-browser";
+import { ToastContainer } from "react-toastify";
 import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.module.css";
 import { Link, useParams } from "react-router-dom";
 import { getOrderDetails } from "./../../service/order";
@@ -13,6 +14,7 @@ import {
 import PropagateLoader from "react-spinners/PropagateLoader";
 import ProductStyle from "../../../../css/dashboard/Products.module.css";
 import { sendMailToDriver } from "../../service/driverMail";
+import { notification } from "../../utils/notification";
 
 function AssignDriverPendingForm() {
   const { id } = useParams();
@@ -184,39 +186,48 @@ function AssignDriverPendingForm() {
         createdAt: today.toISOString(),
       };
 
-
-      const old_driver = drivers.filter((driver)=> driver.id === parseInt(old_driver_id))[0];
+      const old_driver = drivers.filter(
+        (driver) => driver.id === parseInt(old_driver_id)
+      )[0];
       const old_driver_email = old_driver.account.email;
 
-      const new_driver = drivers.filter((driver)=> driver.id === parseInt(delivery.delivery_driver_id))[0];
+      const new_driver = drivers.filter(
+        (driver) => driver.id === parseInt(delivery.delivery_driver_id)
+      )[0];
       const new_driver_email = new_driver.account.email;
 
-      if(new_driver_email !== undefined && old_driver_email !== undefined) {
+      if (new_driver_email !== undefined && old_driver_email !== undefined) {
         const old_msg_level = 2;
         const new_msg_level = 1;
         const order_id = parseInt(id);
 
         const new_driver_mail = {
           email: new_driver_email,
-          order_id: order_id
-        }
+          order_id: order_id,
+        };
 
-        const resultNewDriverMail = await sendMailToDriver(new_msg_level, new_driver_mail);
+        const resultNewDriverMail = await sendMailToDriver(
+          new_msg_level,
+          new_driver_mail
+        );
 
         const old_driver_mail = {
           email: old_driver_email,
-          order_id: order_id
-        }
+          order_id: order_id,
+        };
 
-        const resultOldDriverMail = await sendMailToDriver(old_msg_level, old_driver_mail);
+        const resultOldDriverMail = await sendMailToDriver(
+          old_msg_level,
+          old_driver_mail
+        );
       }
 
       const result = await editDeliveryDetails(new_delivery.id, new_delivery);
 
-      window.location = "/dashboard/trackingOrders";
+      notification("Reassigned Driver for Order", "/dashboard/trackingOrders");
+      // window.location = "/dashboard/trackingOrders";
     }
   };
-
 
   return (
     <React.Fragment>
@@ -465,6 +476,7 @@ function AssignDriverPendingForm() {
                 >
                   Assign Driver
                 </button>
+                <ToastContainer />
               </div>
             </div>
           </form>

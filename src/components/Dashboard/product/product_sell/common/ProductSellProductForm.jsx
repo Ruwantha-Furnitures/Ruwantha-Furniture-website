@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { ToastContainer } from "react-toastify";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import { Link, useParams } from "react-router-dom";
 import { getProducts } from "./../../../service/product";
@@ -10,6 +11,7 @@ import {
 } from "../../../service/sellProduct";
 import { deleteOrder } from "./../../../service/order";
 import { deleteSellProductOrder } from "./../../../service/sellProductOrder";
+import { notification } from "../../../utils/notification";
 
 function ProductSellProductForm() {
   const { id } = useParams();
@@ -136,8 +138,9 @@ function ProductSellProductForm() {
 
   const handleFinalProcess = (e) => {
     e.preventDefault();
-    window.location = `/dashboard/product/sell/amount/${id}`;
-    console.log("handleContinueProcess");
+    notification("Product Added Final", `/dashboard/product/sell/amount/${id}`);
+    // window.location = `/dashboard/product/sell/amount/${id}`;
+    // console.log("handleContinueProcess");
     // send paramter value as customer id and date
   };
 
@@ -146,6 +149,7 @@ function ProductSellProductForm() {
     console.log(order_id);
     try {
       const response = await deleteSellProduct(order_id);
+
       window.location = `/dashboard/product/sell/product/${id}`;
     } catch (error) {
       console.log("Error", error.message);
@@ -301,6 +305,7 @@ function ProductSellProductForm() {
             >
               Cancel
             </button>
+
             <button
               className={
                 ProductViewFormStyle.descButtonAddStyle +
@@ -314,12 +319,15 @@ function ProductSellProductForm() {
               add Product
             </button>
             {totalSellProducts.length > 0 && (
-              <button
-                className={ProductViewFormStyle.descButtonAddStyle}
-                onClick={(e) => handleFinalProcess(e)}
-              >
-                Finish Add
-              </button>
+              <>
+                <button
+                  className={ProductViewFormStyle.descButtonAddStyle}
+                  onClick={(e) => handleFinalProcess(e)}
+                >
+                  Finish Add
+                </button>
+                <ToastContainer />
+              </>
             )}
           </div>
         </div>
