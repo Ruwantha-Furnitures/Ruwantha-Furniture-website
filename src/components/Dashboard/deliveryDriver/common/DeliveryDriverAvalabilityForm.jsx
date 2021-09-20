@@ -54,7 +54,9 @@ function DeliveryDriverAvalabilityForm() {
   };
 
   const onInputChange = (e) => {
-    setDeliveryDriver({ ...deliveryDriver, [e.target.name]: e.target.value });
+    if (e.target.value !== "") {
+      setDeliveryDriver({ ...deliveryDriver, [e.target.name]: e.target.value });
+    }
   };
 
   const onSubmit = async (e) => {
@@ -66,13 +68,11 @@ function DeliveryDriverAvalabilityForm() {
         deliveryDriver.id,
         deliveryDriver
       );
-
       notification(
         "Change the Availability Status",
         "/dashboard/deliveryDriverProfile"
       );
       // window.location = "/dashboard/deliveryDriverProfile";
-
       console.log(response.data);
     } catch (error) {
       if (error.response.status === 500) {
@@ -188,6 +188,7 @@ function DeliveryDriverAvalabilityForm() {
                         name="availability"
                         onChange={(e) => onInputChange(e)}
                       >
+                        <option value="">Select Availablity</option>
                         <option value="1">Available</option>
                         <option value="0">Not Availabile</option>
                       </select>
