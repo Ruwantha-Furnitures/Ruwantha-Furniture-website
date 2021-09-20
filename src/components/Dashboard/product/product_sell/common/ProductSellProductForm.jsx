@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
+import Joi from "joi-browser";
 import ProductViewFormStyle from "../../../../../css/dashboard/ProductViewForm.module.css";
 import { Link, useParams } from "react-router-dom";
 import { getProducts } from "./../../../service/product";
@@ -32,6 +33,15 @@ function ProductSellProductForm() {
     productPrice: 0,
   });
 
+  const [errors, setErrors] = useState({
+    product_id: "",
+  });
+
+  const schema = {
+    product_id: Joi.number().min(1).required().label("Product"),
+    quantity: Joi.number().min(1).required().label("Quantity"),
+  };
+
   const [totalSellProducts, setTotalSellProducts] = useState([]);
 
   useEffect(() => {
@@ -63,8 +73,23 @@ function ProductSellProductForm() {
     }
   };
 
+  const validateInput = ({ name, value }) => {
+    const obj = { [name]: parseInt(value) };
+    const newSchema = { [name]: schema[name] };
+    const { error } = Joi.validate(obj, newSchema);
+    return error ? error.details[0].message : null;
+  };
+
   const onInputChange = (e) => {
+    const newErrors = { ...errors };
+
+    // console.log(newErrors);
+
     if (e.target.name === "product_id" && e.target.value != 0) {
+      const errorMessage = validateInput(e.target);
+      if (errorMessage) newErrors[e.target.name] = errorMessage;
+      else delete newErrors[e.target.name];
+
       const product_id = e.target.value;
       const filterProduct = products.filter(
         (product) => product.id == product_id
@@ -86,6 +111,10 @@ function ProductSellProductForm() {
 
       // console.log(filterProduct);
     } else if (e.target.name === "quantity") {
+      const errorMessage = validateInput(e.target);
+      if (errorMessage) newErrors[e.target.name] = errorMessage;
+      else delete newErrors[e.target.name];
+
       const quantity = e.target.value;
       const priceTotal = sellProduct.productPrice * quantity;
       setSellProduct({
@@ -94,6 +123,7 @@ function ProductSellProductForm() {
         price: priceTotal,
       });
     }
+    setErrors(newErrors);
   };
 
   const handleSubmit = async (e) => {
@@ -162,7 +192,7 @@ function ProductSellProductForm() {
     e.preventDefault();
 
     try {
-      const responseDelteSellProducts = await deleteSellProductOrder(id);
+      // const responseDelteSellProducts = await deleteSellProductOrder(id);
 
       const resopnse = await deleteOrder(id);
       window.location = `/dashboard/product/sell/customer`;
@@ -172,7 +202,7 @@ function ProductSellProductForm() {
     // console.log(e);
   };
 
-  console.log(sellProduct);
+  console.log(Object.keys(errors).length);
 
   return (
     <React.Fragment>
@@ -210,51 +240,87 @@ function ProductSellProductForm() {
             <div className={ProductViewFormStyle.form}>
               <div
                 className={
-                  ProductViewFormStyle.formLine +
-                  " " +
-                  ProductViewFormStyle.setMarginTop
+                  errors["quantity"] || errors["product_id"]
+                    ? ProductViewFormStyle.formLineError
+                    : ProductViewFormStyle.formLine +
+                      " " +
+                      ProductViewFormStyle.setMarginTop
                 }
               >
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Product
-                  </label>
-                  <select
-                    className={ProductViewFormStyle.inputFormSelectStyle}
-                    name="product_id"
-                    onChange={(e) => onInputChange(e)}
-                    required
-                    value={sellProduct.product_id}
-                  >
-                    {/* {sellProduct.product_id === 0 ? (
+                <div className={ProductViewFormStyle.inputFormSide}>
+                  <div className={ProductViewFormStyle.dataForm}>
+                    <label className={ProductViewFormStyle.labelStyle}>
+                      Product
+                    </label>
+                    <select
+                      className={ProductViewFormStyle.inputFormSelectStyle}
+                      name="product_id"
+                      onChange={(e) => onInputChange(e)}
+                      required
+                      value={sellProduct.product_id}
+                    >
+                      {/* {sellProduct.product_id === 0 ? (
                       <option value="0">Select Product</option>
                     ) : (
                       <option value="0">Select Product</option>
                     )} */}
-                    <option value="0">Select Product</option>
-                    {Array.isArray(products) === true && (
-                      <React.Fragment>
-                        {products.map((product, index) => (
-                          <option key={index + 1} value={product.id}>
-                            {product.name}
-                          </option>
-                        ))}
-                      </React.Fragment>
-                    )}
-                  </select>
+                      <option value="0">Select Product</option>
+                      {Array.isArray(products) === true && (
+                        <React.Fragment>
+                          {products.map((product, index) => (
+                            <option key={index + 1} value={product.id}>
+                              {product.name}
+                            </option>
+                          ))}
+                        </React.Fragment>
+                      )}
+                    </select>
+                  </div>
+
+                  {errors["product_id"] && (
+                    <div className={ProductViewFormStyle.inputErrorDesc}>
+                      <span
+                        className={
+                          "material-icons " + ProductViewFormStyle.iconWidth
+                        }
+                      >
+                        error
+                      </span>
+                      <span className={ProductViewFormStyle.inputErrorText}>
+                        "Product" is not allowed to be empty
+                      </span>
+                    </div>
+                  )}
                 </div>
-                <div className={ProductViewFormStyle.data}>
-                  <label className={ProductViewFormStyle.labelStyle}>
-                    Quantity
-                  </label>
-                  <input
-                    type="number"
-                    name="quantity"
-                    value={sellProduct.quantity}
-                    onChange={(e) => onInputChange(e)}
-                    placeholder="Product Qunatity"
-                    className={ProductViewFormStyle.inputStyle}
-                  />
+
+                <div className={ProductViewFormStyle.inputFormSide}>
+                  <div className={ProductViewFormStyle.dataForm}>
+                    <label className={ProductViewFormStyle.labelStyle}>
+                      Quantity
+                    </label>
+                    <input
+                      type="number"
+                      name="quantity"
+                      value={sellProduct.quantity}
+                      onChange={(e) => onInputChange(e)}
+                      placeholder="Product Qunatity"
+                      className={ProductViewFormStyle.inputStyle}
+                    />
+                  </div>
+                  {errors["quantity"] && (
+                    <div className={ProductViewFormStyle.inputErrorDesc}>
+                      <span
+                        className={
+                          "material-icons " + ProductViewFormStyle.iconWidth
+                        }
+                      >
+                        error
+                      </span>
+                      <span className={ProductViewFormStyle.inputErrorText}>
+                        "Quantity" should more than Zero
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
               <div className={ProductViewFormStyle.formLine}>
@@ -315,6 +381,7 @@ function ProductSellProductForm() {
                 ProductViewFormStyle.addRightMargin
               }
               onClick={(e) => handleSubmit(e)}
+              disabled={Object.keys(errors).length === 0 ? false : true}
             >
               add Product
             </button>
