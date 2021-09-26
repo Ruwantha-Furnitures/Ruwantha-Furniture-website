@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import Joi from "joi-browser";
 import ProductViewFormStyle from "../../../../css/dashboard/ProductViewForm.module.css";
 import Auth from "../../service/auth";
 import {
   editDeliveryDriverDetails,
   getDeliveryDrivers,
 } from "./../../service/deliveryDriver";
+
 import { ToastContainer } from "react-toastify";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import ProductStyle from "../../../../css/dashboard/Products.module.css";
@@ -23,12 +25,20 @@ function DeliveryDriverAvalabilityForm() {
     account: {
       email: "",
     },
-    availability: 0,
+    availability: 1,
+  });
+
+  const [errors, setErrors] = useState({
+    availability: "",
   });
 
   useEffect(() => {
     loadDeliveryDriver();
   }, []);
+
+  const schema = {
+    availability: Joi.number().min(0).required(),
+  };
 
   const [isSubmit, setIsSubmit] = useState(false);
 
@@ -53,7 +63,19 @@ function DeliveryDriverAvalabilityForm() {
     }
   };
 
+  const validateInput = ({ name, value }) => {
+    const obj = { [name]: parseInt(value) };
+    const newSchema = { [name]: schema[name] };
+    const { error } = Joi.validate(obj, newSchema);
+    return error ? error.details[0].message : null;
+  };
+
   const onInputChange = (e) => {
+    const newErrors = { ...errors };
+    const errorMessage = validateInput(e.target);
+    if (errorMessage) newErrors[e.target.name] = errorMessage;
+    else delete newErrors[e.target.name];
+    setErrors(newErrors);
     setDeliveryDriver({ ...deliveryDriver, [e.target.name]: e.target.value });
   };
 
@@ -66,13 +88,11 @@ function DeliveryDriverAvalabilityForm() {
         deliveryDriver.id,
         deliveryDriver
       );
-
       notification(
         "Change the Availability Status",
         "/dashboard/deliveryDriverProfile"
       );
       // window.location = "/dashboard/deliveryDriverProfile";
-
       console.log(response.data);
     } catch (error) {
       if (error.response.status === 500) {
@@ -83,8 +103,8 @@ function DeliveryDriverAvalabilityForm() {
     }
   };
 
-  // console.log(user_email);
-  console.log(deliveryDriver);
+  console.log("DeliveryDriver", deliveryDriver);
+
   return (
     <React.Fragment>
       {loading ? (
@@ -188,6 +208,7 @@ function DeliveryDriverAvalabilityForm() {
                         name="availability"
                         onChange={(e) => onInputChange(e)}
                       >
+                        <option value="">Select Availablity</option>
                         <option value="1">Available</option>
                         <option value="0">Not Availabile</option>
                       </select>
@@ -200,7 +221,11 @@ function DeliveryDriverAvalabilityForm() {
             <div className={ProductViewFormStyle.descButtonsAdd}>
               <div className={ProductViewFormStyle.descButtonAdd}>
                 <button
-                  disabled={isSubmit === false ? false : true}
+                  disabled={
+                    Object.keys(errors).length === 0 && isSubmit === false
+                      ? false
+                      : true
+                  }
                   className={ProductViewFormStyle.descButtonAddStyle}
                 >
                   Change Availabilty

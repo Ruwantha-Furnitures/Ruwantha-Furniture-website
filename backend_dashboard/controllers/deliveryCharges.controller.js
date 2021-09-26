@@ -29,7 +29,7 @@ exports.create = (req, res) => {
 
 // retrieve the data
 exports.findAll = (req, res) => {
-  DeliveryCharges.findAll()
+  DeliveryCharges.findAll({ order: [["area", "ASC"]] })
     .then((data) => {
       res.send(data);
     })
