@@ -19,7 +19,7 @@ To run the project, (You should be inside the backend_dashboard folder) => npm r
 Prerequisites: You have to install NPM before run the project. (https://nodejs.org/en/download/)
 
 
-Contributors\
+Contributors
 ============
 
 E.A.P. Silva        18020798
