@@ -2,7 +2,7 @@ Third Year Group Project - UCSC - Group 24
 
 AR Magic - Website
 ===========================
-If you are want to deploy using the GitHub repository, use https://github.com/RuwanthaFurnitures/Ruwantha-Furniture-website.
+If you are want to deploy using the GitHub repository, use https://github.com/Ruwantha-Furnitures/Ruwantha-Furniture-website.git
 
 Then you have to clone the repository to your machine.
 
