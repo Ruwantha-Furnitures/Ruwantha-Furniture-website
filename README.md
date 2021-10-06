@@ -1,97 +1,20 @@
-#Third Year Project
+Third Year Group Project - UCSC - Group 24
 
-#UCSC
+AR Magic - Website
+===========================
+If you are want to deploy using the GitHub repository, use https://github.com/RuwanthaFurnitures/Ruwantha-Furniture-website . 
+Then you have to clone the repository to your machine.
+After that you have to open the terminal inside of the cloned folder. 
+You have to enter following commands.
+To installing packages using package.json file for the frontend, => npm install 
+To installing packages using package.json file for the backend, => cd backend_dashboard => npm install
+To run the project, (You should be inside the backend_dashboard folder) => npm run dev
+Prerequisites: You have to install NPM before run the project. (https://nodejs.org/en/download/)
 
-#Ruwantha Furniture
+Contributors
+============
 
-AR Magic
--------------------------------
-
-email 01
---------
-
-email - ucscarmagic@gmail.com
-
-password - TYPucsc123
-
-username and passwords
-----------------------
--------------------------------------------------- 
-Role        Username                    Password
---------------------------------------------------
-Owner       ucscarmagic@gmail.com       owner
---------------------------------------------------
-Admin       armagic24@outlook.com       admin
---------------------------------------------------
-Customer    asinipathmila@gmail.com     TYPucsc123
---------------------------------------------------
-Driver      driver@gmail.com            TYPucsc123  (tempory email)
---------------------------------------------------
-
----------------------------------
-
-**External Libraries**
-
-npm i react-router-dom --save
-
-npm install react-bootstrap bootstrap@4.6.0
-
-npm install --save bootstrap (put this in to src, public seperately)
-
-npm install --save reactstrap react react-dom (put this in to src, public seperately)
-
-npm install styled-components (Styled-Components --> add hover etc)
-
-npm install react-dimensions ---> Dimensions of screen (not worked)
-
-npm install react-slideshow-image -S ---> slide show
-
-npm install --save react-bootstrap (put this in to src, public seperately) 
-
-npm install react-google-login
-
--------Shopping cart--------------
-
-npm install @material-ui/core
-
-npm install @material-ui/icons
-
--------Star Rating---------------
-
-npm install @material-ui/lab
-
--------For Backend------------------
-
-npm init -y         (in the backend folder)
-
-npm install express mysql   (in the backend folder)
-
-npm install --save-dev nodemon  (in the backend folder)
-
-npm install bcrypt  (in the backend folder for encryption)
-
-npm run devStart  (in the backend folder)
-
-npm install cors  (in the backend folder)
-
-npm install sequelize (in the backend folder)
-
-npm install sequelize mysql2 sequelize-cli (in the backend folder)
-
-sequelize init (in the backend folder)
-
-npm install nodemailer
-
-----------------------------------------
-
-npm install axios
-
-npm add react-photo-gallery (Create gallary) - Not used
-
-----------------------------------------
-
-npm install dotenv (to create .env)
-
-
-
-
+E.A.P. Silva        18020798
+W.T. Gihan          18000576
+W.H.M. Gunathilaka  18020275
+K.N.H. Fernando     18020216
